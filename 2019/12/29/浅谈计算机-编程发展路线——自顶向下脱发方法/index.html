@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>浅谈计算机&amp;编程发展路线——自顶向下脱发方法 | 无涯峰</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="C++ Java Python Go 代码重构 操作系统 计算机网络 数据库 数据结构与算法" />
+  
+  
+  
+  
+  <meta name="description" content="很多年轻人打算搞IT，问要看什么书，以下是比较专业的回答： 第一阶段：《数据结构》《C语言》《C++》《C#》《PHP》《Java》《设计模式》《框架》第二阶段：《莫生气》《佛教》《道》《思想与政治》《论持久战》第三阶段：《脊椎匡扶指南》《腰间盘突出康复指南》《心脏病的预防与防止》《高血压降压宝典》《强迫症的自我恢复》第四阶段：《迷恋》《谢谢你折磨我》《自私与贪婪》《走向奴役之路》《精神变态日记》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈计算机&amp;编程发展路线——自顶向下脱发方法">
+<meta property="og:url" content="http:&#x2F;&#x2F;endlesspeak.github.io&#x2F;2019&#x2F;12&#x2F;29&#x2F;%E6%B5%85%E8%B0%88%E8%AE%A1%E7%AE%97%E6%9C%BA-%E7%BC%96%E7%A8%8B%E5%8F%91%E5%B1%95%E8%B7%AF%E7%BA%BF%E2%80%94%E2%80%94%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E8%84%B1%E5%8F%91%E6%96%B9%E6%B3%95&#x2F;index.html">
+<meta property="og:site_name" content="无涯峰">
+<meta property="og:description" content="很多年轻人打算搞IT，问要看什么书，以下是比较专业的回答： 第一阶段：《数据结构》《C语言》《C++》《C#》《PHP》《Java》《设计模式》《框架》第二阶段：《莫生气》《佛教》《道》《思想与政治》《论持久战》第三阶段：《脊椎匡扶指南》《腰间盘突出康复指南》《心脏病的预防与防止》《高血压降压宝典》《强迫症的自我恢复》第四阶段：《迷恋》《谢谢你折磨我》《自私与贪婪》《走向奴役之路》《精神变态日记》">
+<meta property="article:published_time" content="2019-12-29T13:00:00.000Z">
+<meta property="article:modified_time" content="2019-12-30T11:16:17.064Z">
+<meta property="article:author" content="Lee Sin">
+<meta property="article:tag" content="C++ Java Python Go 代码重构 操作系统 计算机网络 数据库 数据结构与算法">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="无涯峰" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/me.jpg">
+  <link rel="apple-touch-icon" href="/css/images/me.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+
+  </style>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/bootstrap.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    
+<link rel="stylesheet" href="/css/dialog.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+
+<meta name="generator" content="Hexo 4.1.0"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/me.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-浅谈计算机-编程发展路线——自顶向下脱发方法" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      浅谈计算机&amp;编程发展路线——自顶向下脱发方法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/12/29/%E6%B5%85%E8%B0%88%E8%AE%A1%E7%AE%97%E6%9C%BA-%E7%BC%96%E7%A8%8B%E5%8F%91%E5%B1%95%E8%B7%AF%E7%BA%BF%E2%80%94%E2%80%94%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E8%84%B1%E5%8F%91%E6%96%B9%E6%B3%95/" class="article-date">
+	  <time datetime="2019-12-29T13:00:00.000Z" itemprop="datePublished">2019-12-29</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>很多年轻人打算搞IT，问要看什么书，以下是比较专业的回答：</p>
+<p>第一阶段：《数据结构》《C语言》《C++》《C#》《PHP》《Java》《设计模式》《框架》<br>第二阶段：《莫生气》《佛教》《道》《思想与政治》《论持久战》<br>第三阶段：《脊椎匡扶指南》《腰间盘突出康复指南》《心脏病的预防与防止》《高血压降压宝典》《强迫症的自我恢复》<br>第四阶段：《迷恋》《谢谢你折磨我》《自私与贪婪》《走向奴役之路》《精神变态日记》<br>第五阶段：《活着》<br>第六阶段：《棺材的质量与选材》《墓地的风水与选择》《死后的思想》<br>第七阶段：《中国传统丧葬礼仪概述》<br>第八阶段：《论投胎的方法与技巧》<br>第十阶段：《论出生后如何不成为程序员》 </p>
+<p>你可能很疑惑，为什么没有第九阶段。别问，问就是喝孟婆汤忘记了。</p>
+<a id="more"></a>
+
+<h2 id="规划的原则——因材施教"><a href="#规划的原则——因材施教" class="headerlink" title="规划的原则——因材施教"></a>规划的原则——因材施教</h2><p>计算机科学技术&amp;软件工程行业发展迅速，我时常会见到这样的景象：初学者提问，计算机专业有哪些必读的书籍/计算机专业应该如何提升自己。</p>
+<p>关于这个问题，可谓是仁者见仁，智者见智。</p>
+<blockquote>
+<p>常言道，一千个人眼中有一千个哈姆莱特；常言又道，一千个人心中有一千部红楼；据此可以类比推出：常言还道，一千个人脑海里有一千种书单。</p>
+</blockquote>
+<p>想要笼统而概括地论述计算机专业&amp;编程专业的发展路线，其实不是一件容易的事情。我的观点是：<strong>因材施教</strong>。每个刚刚接触计算机&amp;接触编程的青年，都应该对自己未来的发展有明确的认识，对各方面的知识都应该广泛了解，然后在这个基础上，选择自己适宜的发展方向，规划自己的发展路线。</p>
+<p>首先我们来看下一般大学的科班——计算机科学与技术的课程表：数字电路原理、模拟电子技术、数字逻辑、数值分析、计算机组成原理、微型计算机技术、计算机网络、高级语言（C++、Java）、汇编语言、数据结构、操作系统原理、数据库原理、编译原理、计算机图形学、离散数学、概率统计、线性代数以及算法设计与分析、面向对象程序设计。</p>
+<ol>
+<li><p>高数，概率，线代，复变，离散数学等基础学科，打下了 逻辑思考的基础，以及工作中需要使用到复杂的数学运算时的数学基础。使人更加易于理解和分析如何吧现实问题转化为程序逻辑并实现。</p>
+</li>
+<li><p>模电主要让人明白信号传递的原理同时又作为数字电路的基础，而数电主要让人明白计算机内部数据到底是如何存储，如何运算，如何传输的。</p>
+</li>
+<li><p>计算机组成原理，微机原理等，主要是来解释计算机是如何组成的，早期是什么样子的，发展历程是什么，为什么会有这样的发展，现在的计算机的复杂结构下的简单核心是什么？</p>
+</li>
+<li><p>操作系统则真正讲述了，一个应用程序是如何层层传递，调用了最终硬件的；操作系统，驱动，应用程序，分别都是什么关系；cpu的运算方式是什么样子的；为什么要有多线程；为什么会有死锁；在多线程的模型下，硬件到底在做什么。</p>
+</li>
+<li><p>计算机网络，让人明白在计算机的基础之上，到底是如何传输数据的。OSI七层模型和TCP/IP协议五层模型分别有哪些层；每一层在做什么；为什么RFC的各种协议里会有那么多奇奇怪怪的头和尾；各种不同的协议是怎么产生和怎么发展的；分别有什么特色；以及我们为什么在某一种场景下使用某一种网络协议；假如我们需要一个自己的协议，该如何构建。</p>
+</li>
+<li><p>数据结构，让人明白数据是如何存储的，目前常见的存储的模型有那些？这些模型在内存里以什么样的方式存储？这些存储方式都有什么优劣？在那些场景中最为适用？</p>
+</li>
+<li><p>编译原理，让人明白高级语言到底是怎么被解释编译成机器语言的。</p>
+</li>
+<li><p>汇编语言，让人明白在接近硬件的层面上，程序到底是怎么运作的。去理解去思考，我们的操作和编写的程序，对硬件到底做了什么。不同的操作系统，不同的编译器，不同的写法，不同的逻辑，在硬件层面上，会有什么样的不同？</p>
+</li>
+<li><p>算法和高级语言，一般来讲，到这个层面往上，非科班和科班的差距开始变小。因为大部分人在实用性的学习过程中。必须来学习和接触到高级语言和算法。</p>
+</li>
+</ol>
+<p>综上所述，计算机的基础，不是你会什么C、C++、C#、Java、python、PHP、Object-c这样的语言；也不是你学了多少linux，Win32，IOS，Android，MFC，.net，Apache，Struts，Spring这样的框架；更不是你会Oracle，MySQL，SQL server这样数据库的使用；<strong>而是你是否明白，从最基础的电路和电讯号传递开始，到今天的计算机体系的大厦，是如何一步步构建出来的，每一步的取舍都是为了什么</strong>。</p>
+<p>大部分的人，要么是半路出家，上了几个编程培训班而自以为技术成熟，要么是非科班出生，对科班这一整套课程体系不屑一顾。诚然，直接从高级语言和算法开始学起，可以做到知其然，并且熟练的编程，设计生产出非常优秀的应用。但是如果知其所以然，那么是不是可以做得更好？在出现新东西的时候，能够更快的去理解这些新东西的缘由，发展和价值？</p>
+<p>我劝各位想要接触计算机行业的初学者——当然我本人也不过是初学者而已——不要学了一点皮毛就沾沾自喜。今天我们之所以不用去了解那么多基础，就可以从事这个行业。是因为无数前人帮助我们构建了一个相当完善的知识体系，在这个基础上，我们可以轻松的去学习，去操作。但我们的梦想就仅此而已了吗？我们该如何往前进一步的去推进呢？在工作学习的过程中，进步远非是要学习怎么做那样简单，更要多问问为什么。只有这样才能走的更高，更远。</p>
+<h2 id="参考书单——循序渐进"><a href="#参考书单——循序渐进" class="headerlink" title="参考书单——循序渐进"></a>参考书单——循序渐进</h2><p>我想基于我刚才提到内容的基础，结合我之前参考的很多知乎、微博和Bilibili上从事程序设计、软件架构、前端后端开发的工程师的经验和建议，以及科研工作者对计算机学习的规划与指导，谈谈我的一点浅薄之见——计算机初学者应该怎样发展自己的计算机学习。</p>
+<p>如果真真正正是零基础开始学习计算机，我的建议是需要注重兴趣，但是不能永远以兴趣为由放弃基础知识的学习。如果不能适应计算机底层的枯燥知识，最好是直接转行，不要继续待在计算机行业里。</p>
+<p>计算机学习的最开始，当然是需要对计算机整体有个清晰的把握，然后一面深究计算机底层层面，一面发展高级语言层面。按照这个思路，我提供如下的书单，以供参考。</p>
+<h3 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h3><ol>
+<li><p>数字电路与模拟电路。</p>
+<p><a href="http://www.icourse163.org/course/NJUST-1001753091" target="_blank" rel="noopener">数字逻辑电路(南理工)</a></p>
+<p>数字电路绝对是完全被低估的一门计算机基础课，笔者在大学期间就没有严肃地对待这门课，这导致笔者只了解基本的逻辑门电路，对更高级的知识知之甚少。由于有关数字电路的书籍很难找得到出众的，故这里只推荐中国大学MOOC上的公开课。</p>
+<p>模拟电路大体同上，在中国大学MOOC上搜索即可。</p>
+</li>
+<li><p>计算机组成原理</p>
+<ol>
+<li><p>《大话处理器》</p>
+</li>
+<li><p><em>CODE: The Hidden Language of Computer Hardware and Software</em> </p>
+<p>《编码:隐匿在计算机软硬件背后的语言》</p>
+</li>
+<li><p>《穿越计算机的迷雾》</p>
+</li>
+<li><p>※ <em>Computer Systems: A Programmer’s Perspective</em> </p>
+<p>《深入理解计算机系统》</p>
+</li>
+<li><p>※ <em>Structure and Interpretation of Computer Programs</em></p>
+<p>《计算机程序的构造和解释》</p>
+</li>
+</ol>
+<p>首先推荐的两本都是比较通俗易懂的书，这两本书都偏科普一些，阅读起来相当轻松，非常具有趣味性，是入门的上佳选择，如同看小说一般过一遍即可；另一本穿越计算机的迷雾目前已经绝版了，不过它的内容也是不错的，网络上可以搜索一下相关资源。</p>
+<p>第三第四本是需要重点介绍的正规教材：</p>
+<p>《深入理解计算机系统》 它从程序员的视角详细阐述了计算机系统的本质概念，并展示这些概念如何实实在在地影响应用程序的正确性、性能和实用性。</p>
+<p>《计算机程序的构造和解释》讲的是从数据抽象、过程抽象、迭代、高阶函数等编程和控制系统复杂性的思想，到数据结构和算法，到编译器/解释器、编程语言设计。 </p>
+<p>计算机组成原理很好地向我们阐述了计算机如何工作，如何计算和输出我们想要的数据的。由于本门课还是大部分大学的考研科目，所以各个大学都会有一些公开课视频，可以自行查找。</p>
+</li>
+<li><p>汇编语言</p>
+<p>《汇编语言(第2版)》(王爽著) </p>
+<p>汇编语言是一门相对比较难并且比较抽象的课程，但是却可以方便地进行实操，就像学习编程一样，可以实际运行书中的一些代码。</p>
+</li>
+<li><p>计算机操作系统</p>
+<ol>
+<li>《鸟哥的Linux私房菜》（本书作为Linux操作系统入门使用）</li>
+<li>《现代操作系统》</li>
+<li>《UNIX环境高级编程》（该本及后面两本必须先修C/C++语言后再读）</li>
+<li>《Linux程序设计》</li>
+<li>《Linux内核设计与实现》</li>
+</ol>
+<p>计算机操作系统和计算机组成原理一样是考研课程，上述的《现代操作系统》是最经典最需要读的一本书。另一本《UNIX环境高级编程》也是不遑多让，这本书之经典，三言两语无法说清。之所以推荐第二本，还有一个原因就是该书是基于UNIX的，UNIX/Linux在工作中的重要性我相信不必强调。 第四本较之第三本只略逊一筹，但仍然有非常大的参考价值。</p>
+<p>至于第五本，则是在当你对操作系统有一定理解以后阅读，它将为你打开学习Linux内核的大门，当然在此之前你得有一定的C语言开发能力，以及对Linux的了解。</p>
+</li>
+<li><p>计算机编译原理</p>
+<ol>
+<li>《编译原理 (原理、技术、工具)》（龙书）</li>
+<li>《现代编译原理》（虎书）</li>
+<li><em>Advanced COMPILER DESIGN IMPLEMENTATION</em> （鲸书）</li>
+</ol>
+<p>很多编程学习者都并不是很清楚编译时到底发生了什么事情，什么是编译期什么是运行期相信有些人还是一知半解，编译原理就是告诉我们高级语言是如何一步一步地被转化为低级语言，最终在计算机上运行的。</p>
+<p>编译原理的学习分为三大阶段，龙书阶段考虑原理、技术和工具；虎书阶段考虑技术实现和实践；鲸书阶段考虑知识的前瞻和增广扩充。</p>
+</li>
+<li><p>离散数学</p>
+<p>《离散数学及其应用》</p>
+<p>离散数学个人认为对于计算机学生而言是非常重要的一门课，可惜的是笔者在本科期间对计算机的认知不够，导致在学习这门课的时候只是把它当成一门数学来学习，并且也没有花费太多的时间以及精力，相信对于大部分计算机专业的学生来说也是这样的。</p>
+<p>不过我认为如果有时间和精力，一定要重新学习这门课，因为日后的编程与离散数学的逻辑是紧密相连，不可分割的。</p>
+</li>
+<li><p>计算机网络</p>
+<ol>
+<li>《图解HTTP》（兴趣阅读）</li>
+<li>《网络是怎样连接的》（兴趣阅读）</li>
+<li>※《计算机网络——自顶向下方法》</li>
+<li>※《TCP/IP详解》</li>
+<li>※《UNIX网络编程》</li>
+</ol>
+<p>计算机网络的原理认知对日后的发展有非常大的帮助，非常典型的例子就是分布式系统。对于计算机网络的学习，我认为可以分为两个阶段，第一阶段是快速地把两本兴趣阅读的读物给过一遍，建立起对网络的认知，然后迅速地进入第二阶段，精心研读第三、四两本史诗级巨著；最后一本讲解了Unix内核是如何实现网络通信的，其中涉及到很多网络，操作系统的知识，并且你要熟悉c语言。它也是被奉为网络编程神书的存在。</p>
+</li>
+<li><p>高级语言的学习</p>
+<p>这一节实在是太重要了，重要到必须另起一阶段，详细地阐述。</p>
+</li>
+</ol>
+<h3 id="高级语言"><a href="#高级语言" class="headerlink" title="高级语言"></a>高级语言</h3><p>高级语言大体上使用率高的基本上有：C++、Java、Python、Go、JavaScript等等，分述如下：</p>
+<h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><blockquote class="pullquote right"><p>如何学好C++？唯一的办法就是读书，读大量的书，才可以学好。  </p>
+<p>要把C++作为日常语言，而不是一种程序语言，这样才更容易掌握。  </p>
+<p>检验大家C语言学的好不好的两个最重要的指标，一是指针，二是内存管理。</p>
+</blockquote>
+
+<p>基本上中国大学的计算机专业都会把C++当作第一门语言课，C++相对其它语言来说，入门上手会相对比较难，可能会打消掉一部分同学的积极性。<em>但是C++又是一门可以进行类比的语言，C++学习到一定程度后，学习其他语言也会变得非常容易。</em>(关于这个观点存在一些争议，如果确实对C++并不看好，可以从java开始，不必要非得学习C++)</p>
+<p>学任何东西其实都有一个学习曲线，只要沉下心去学，多花点时间，总会跨过那个曲线，后面学习过程就会变得很平滑。学C++也类似，不要知难而退，而是要迎难而上，翻过大山也许就能看到彩虹。</p>
+<ol>
+<li><p>入门书籍： </p>
+<p><em>The C++ Programming Language</em>  (Bjarne Stroustrup)</p>
+<p>C++之父的经典之作，无论如何也应该读个四五遍！这是一切C++的书本的源泉。推荐英文版，如果英文不好再看中文版，此书由浅入深，知识全面，代码具有代表性。如果把书上的代码都上机打一遍，C++绝对入门了。 </p>
+</li>
+<li><p>进阶阶段1：</p>
+<ol>
+<li><em>Essential C++</em>  </li>
+<li><em>C++ Primer Plus</em></li>
+<li><em>C++ Primer</em></li>
+</ol>
+<p>后两本书都可以精读，其中第二本虽然比第三本多一个Plus，但其实第二本书更加基础一些，涵盖的内容也没有第三本广泛。<em>C++ Primer</em>的体量非常巨大，故此一定要品味第二、三本。可以先从<em>Essential C++</em>开始，它将四个C++的范型都讲了，而且讲得非常清楚。当然，也有一部分人一直认为C++Primer带着太过强烈的C的痕迹，对于学习C++未必是好事。读者需要先读这本巨著，然后再作判断。  </p>
+</li>
+<li><p>进阶阶段2：</p>
+<ol>
+<li><p><em>Thinking in C++</em> (Bruce Eckel著、候捷译)</p>
+<p>这本书每过半年建议重读一遍。可以说每一章都是写得发人深省的，这本书可以让人感受到技术运用的高超境界，语言非常平实，只要认真地读，即使基础不行，也一定可以懂。  </p>
+</li>
+<li><p><em>Effective C++</em></p>
+</li>
+<li><p><em>More Effective C++</em>  </p>
+<p>要更上一层的话，就要慢一步，先要把握C++设计习惯的良好。这是Scott Meyers的<em>Effective C++</em>和<em>More Effective C++</em>带给我们的无尽收益。这两本书是真正的经典，作者对C++的纯熟，使得语言的风格非常具有魅力，虽然C++本身并不十分有趣，但书读起来却甘之如饴，就像他站在对面在讲课。</p>
+</li>
+</ol>
+<p>如果你已经深刻地理解了<em>Effective C++</em>和<em>More EffectiveC++</em>，那你可以发现，你在众人中已经是鸡群之鹤。可以指导项目运作了，可以编写一切你想做的程序了，可以指出别人看起来不错的代码的大小问题了。如果你能一眼看出有人的代码是对应于”条款27”或”条款M6”，那你可真是令人刮目了。  </p>
+</li>
+<li><p>高级阶段：</p>
+<ol>
+<li><p><em>Exceptional C++</em></p>
+</li>
+<li><p><em>More Exceptional C++</em>  </p>
+<p>如果要写程序，<em>EC++</em>和<em>MEC++</em>的境界已经足以使你自如应付，可是如果你还不满足，想关注一些理论层面的问题，或是想看看实现的代码，你就不应该错过这几本好极了的书。(由Herb Sutter所著) </p>
+<p>这两本书的难度是非常大的。每一条的阅读笔记都应该有十多页。特别是泛型程序设计的部分，这两本书旁征博引，极尽深入探讨之能事，每每看懂一条，都应该抹浮一大白，大感酣畅淋漓。</p>
+</li>
+<li><p>《STL源码剖析》(侯捷著)   </p>
+<p>它是以实际的例子一点点地讲解一个STL是怎么样实现的。 </p>
+</li>
+<li><p><em>Inside the C++ Object Model</em>  </p>
+<p>从这本书中可以了解无数的编译器解释源代码的细节，以及记忆体分配的细节。 </p>
+</li>
+<li><p>C++沉思录 </p>
+<p>经典之作，语言是苍白无力的，必须读一遍，呃不，读无数遍，深刻体会。</p>
+</li>
+</ol>
+</li>
+<li><p>补充：</p>
+<p>如果还觉得不够的话，就订购一本C++标准，但是仅作为参考工具书使用。</p>
+<p>中国大陆作者的书，尽量不要看。一切VC++或讲特定的编译器的书，一概不要看。</p>
+<blockquote>
+<p>这里要特别提一句伟大的谭先生、谭教授THQ编写的巨著，书名就不叙述了；业内人士将其称之为谭++；我计划专门整理一篇博客，细数一下伟大的谭先生为我国C++教学事业所作的杰出贡献。另外，我要正告各位读者，如果不是为了计算机二级考试，千万不要购买谭++，入邪教而恍然不知，悔时晚矣！</p>
+</blockquote>
+<p>如果需要补C语言的课，买一本非常小的K&amp;R的The C Programming Language足矣，其它的书一概不要看。不要先学C，再学C++，而要直接学C++。你不是先学古文，再学白话的，对不对？相信我，直接来更容易。</p>
+</li>
+<li><p>其他的书：</p>
+<ol>
+<li><em>Accelerated C++</em>  从各方面评价来看，完全值得推荐。</li>
+<li>《C++ Templates全览》  (STL参考)</li>
+<li>《C++设计新思维：泛型编程与设计模式之应用》   (STL参考)</li>
+<li>《C++标准程序库：自修教程与参考手册》 (STL参考)</li>
+<li>《C++网络编程》(卷1，卷2) (网络参考)  </li>
+<li>《C和指针》 深入了解指针，看完以后对指针不再害怕。 </li>
+<li>《C陷阱和缺陷》 看完后可以避免C语言开发的一些坑。 </li>
+<li>《C专家编程》</li>
+</ol>
+</li>
+</ol>
+<h4 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h4><p>如果是真真正正完全0基础入门编程的话，其实Java作为入门语言是非常合适的。</p>
+<p>虽然Go，Kotlin等目前比较火的动态语言对Java这种静态语言造成了一定的威胁，但是短期内其冲击远远不会到影响Java的程度。Java依旧是当今当之无愧的第一就业语言，绝大部分互联网企业都选择Java作为它们的开发语言。</p>
+<p>信息化系统的建设(各种各样的业务系统，及互联网服务等)，其主流的驱动技术就是Java，而其他语言，例如PHP是呈下降状态，而Go语言目前的份额也并不大；另外一点就是Java目前的业务需求是比其他语言要大得多的。</p>
+<p>从难度上讲，Java相比c＋＋是真的容易很多。</p>
+<blockquote>
+<p>有人推荐Python，至少在中国目前这个纯就业的环境下，学Python去找个工作简直要发狂，不要相信培训公司吹的那样，搞Python不走人工智能是很难的 ，而AI，机器学习，算法这些现在的趋势都是研究生起步，学历这方面相当重要，这些东西不是经过努力学点程序就行的，更何况，有些技术不是想学就能学会的——就像有些人这辈子注定无法获得诺贝尔奖一样，现实是很残酷的……</p>
+<p>当然，不可否认的是，Python语言编写的脚本在某些方面确实给日常生活带来了便利，就这一点来说，它的易用性其实是非常优秀的，笔者认为Python是一门非常有价值的编程语言。虽然就现实来说，在就业方面可能并不是那么理想。换言之，只有优秀的Python编程者才有机会。</p>
+</blockquote>
+<ol>
+<li><p>入门书籍：</p>
+<ol>
+<li><em>Head First Java</em></li>
+<li>《疯狂Java讲义》</li>
+<li>《Java核心技术 卷I&amp;II》</li>
+</ol>
+<p>笔者没有把《Java核心技术》排在第一位的原因是：这本书的治学精神是非常值得学习的，但是入门Java并不需要在Java SE里那些不常用的技术上浪费时间，而初学者又不知道如何鉴别哪些需要学习，哪些不需要学习，基于这个原因，笔者个人建议先看前两本书。</p>
+</li>
+<li><p>进阶书籍：</p>
+<ol>
+<li>《Java编程思想》</li>
+<li><em>Effective Java</em></li>
+<li>《Java并发编程实战》</li>
+<li>《深入理解Java虚拟机》</li>
+</ol>
+<p>《编程思想》书是Java界极其经典的圣经书籍，地位相当于Java界的辞海。里面相当多的内容是非常非常值得学习的。如果错过了这本书，那么Java的学习只能用遗憾来形容。</p>
+<p><em>Effective Java</em> 作为技术人员的参考用书。介绍了在 Java 编程中 7到8 条极具实用价值的经验规则，这些经验规则涵盖了大多数开发人员每天所面临的问题的解决方案。通过对Java平台设计专家所使用的技术的全面描述，揭示了应该做什么，不应该做什么才能产生清晰、健壮和高效的代码。</p>
+<p>《并发编程》则具备企业级开发里常用的知识，多线程/多进程的精髓就在于此。当然，这本书的难度也更大一些。</p>
+<p>《Java虚拟机》虽然基于OPEN JDK1.7，但是其中的Java编程思想永不过时！不论是对于现在的Oracle JDK12，还是以前的版本，对原理的理解是没有影响的。</p>
+</li>
+<li><p>拓展书籍：</p>
+<ol>
+<li>《函数式编程思维》</li>
+<li>《TCP/IP 详解》</li>
+</ol>
+<p>《函数式》这本书对于提高代码的信噪比是非常有帮助的，当然，可能在日后的重构方面会存在一些困难。《TCP/IP》书则是为了帮助进行Java网络编程，该书在之前的计算机网络处已经叙述过了，这里不再赘述。</p>
+<blockquote>
+<p>信噪比，也就是信号噪声比，在此处意思是说用少量的代码得到更高的运行效率。</p>
+</blockquote>
+</li>
+<li><p>补充书籍</p>
+<ol>
+<li><p>《Java并发编程艺术》</p>
+<p>同样是讲Java并发编程的。Java并发编程实战相对来说全是干货，看起来可能比较晦涩。这本书可能看起来更通熟易懂些，但是没有Java并发编程实战全面，大家可以搭配着读。 </p>
+</li>
+<li><p>《第一行代码 Android》</p>
+<p>Android开发入门书籍。 Android开发是基于Java的。</p>
+</li>
+<li><p>《Android 开发艺术探索》</p>
+<p>这本书强烈推荐。是从Android初级向中高级进阶的必看书籍，里面讲的知识点都很好。重要的是Android面试会问到很多这本书里面的知识点，找Android开发必看。 </p>
+</li>
+<li><p>《Android 系统源码代码情景分析》</p>
+<p>从源码分析Android系统的书，经典程度不亚于上本。</p>
+</li>
+<li><p>《深入JavaWeb技术内幕》</p>
+<p>从Android向后台转型过程中看的一本书。比较全面的介绍了Java Web知识，可以当作Java Web的入门辅助书籍。 </p>
+</li>
+<li><p>《Spring in action 中文版》</p>
+<p>学习Spring时候看的书，主要介绍了官方文档的知识。讲的很全面，准确度也高。 </p>
+</li>
+<li><p>《Spring MVC学习指南》</p>
+</li>
+<li><p>《Maven实战》</p>
+</li>
+</ol>
+<p>Java Web离不开Maven，这本是Maven入门书籍，讲的很全面。 </p>
+<ol start="9">
+<li><p>《Spring实战》 &amp; 《Spring Boot实战》 </p>
+</li>
+<li><p>※《Spring技术内幕》  建议精读。</p>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><ol>
+<li><p>入门书籍：</p>
+<ol>
+<li>Python cookbook</li>
+</ol>
+<p>该书被多平台，多位大神联合推荐，毫无疑问，这是一本很不错的书籍。但有人会考虑，这本书适合入门吗？回答是肯定的。当然，这本书比着有些”入门书籍”要稍微深一些，这正是推荐这本书而不推荐其他书籍的原因：《Python Cookbook》和其他入门书籍、教程一样，都是在围绕数据结构、基本概念在展开，但是它对比于其他教程”蜻蜓点水”式的阐述，这本书做了更多延伸，讲解了更多高阶用法，我觉得高阶用法你不一定要记住，但是知道有这么一回事，对后期进阶、实战会有很多帮助。</p>
+<p>除此之外，还有以下Python入门书籍可供选择：</p>
+<ol start="2">
+<li>《Python编程：从入门到实践》</li>
+<li>《Python编程快速上手》</li>
+<li>《像计算机科学家一样思考Python》</li>
+<li>《Python基础教程 第2版》</li>
+<li>《笨办法学Python 3》</li>
+<li>《流畅的Python》</li>
+</ol>
+<p>《流畅的Python》致力于帮助Python开发人员挖掘这门语言及相关程序库的优秀特性，避免重复劳动，同时写出简洁、流畅、易读、易维护，并且具有地道Python风格的代码。尤其深入探讨了Python语言的高级用法，涵盖数据结构、Python风格的对象、并行与并发，以及元编程等不同的方面，适合精读。</p>
+</li>
+<li><p>进阶练习和书籍：</p>
+<ol>
+<li><p><a href="https://github.com/Yixiaohan/show-me-the-code" target="_blank" rel="noopener">Python练习册，每天一个小程序</a> 这是GitHub上超1W Star的项目。</p>
+</li>
+<li><p><a href="https://www.the5fire.com/beginning-python-10-projects.html" target="_blank" rel="noopener">Python项目练习</a> 包括十个项目的练习和代码 </p>
+</li>
+<li><p><a href="http://aosabook.org/en/500L/" target="_blank" rel="noopener">500 line or less</a>  一本Python神书，而且还有源码。 </p>
+</li>
+<li><p><a href="https://github.com/jackfrued/Python-100-Days" target="_blank" rel="noopener">Python - 100天从新手到大师</a>  骆昊 (jackfrued) 规划的一条从“从新手到大师”的百天之路。 </p>
+</li>
+<li><p><em>Python for Data Analysis</em></p>
+</li>
+<li><p>高级阶段：</p>
+<p>选择一个学习的方向：</p>
+<ol>
+<li>机器学习</li>
+<li>图像处理</li>
+<li>自然语言</li>
+<li>数据分析</li>
+<li>web</li>
+<li>……</li>
+</ol>
+<p>选择一个学习的方向，然后才清楚自己该朝着哪个方向努力、该拿哪些项目练手，对编程能力进一步巩固，这样要比“无头苍蝇”式的漫无目的学习效率要高很多。</p>
+<p>然后，可以找一些比较优秀的项目进行实战，扩展自己知识面的同时对编程能力进行巩固。</p>
+<p>以下是三个可供参考的学习链接：</p>
+<ol>
+<li><p><a href="https://github.com/nfmcclure/tensorflow_cookbook" target="_blank" rel="noopener">tensorflow_cookbook</a></p>
+</li>
+<li><p><a href="https://github.com/bharathgs/Awesome-pytorch-list" target="_blank" rel="noopener">Awesome-pytorch-list</a></p>
+</li>
+<li><p><a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1018138095494592" target="_blank" rel="noopener">WebAPP</a></p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="Go和SQL"><a href="#Go和SQL" class="headerlink" title="Go和SQL"></a>Go和SQL</h4><p>Go书籍推荐：《Go语言实战》&amp;《Go In Action》</p>
+<p>SQL书籍推荐：</p>
+<ol>
+<li><p>《MySQL必知必会》</p>
+</li>
+<li><p>※《数据库系统概念》第六版</p>
+</li>
+<li><p>《深入浅出MySQL》</p>
+</li>
+</ol>
+<blockquote>
+<p>注：《MySQL必知必会》虽然在语法上看起来是《SQL必知必会》的子集，但是实际上其内容更加全面，更加精细。</p>
+</blockquote>
+<h3 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h3><p>学习算法，不要一上来就开始啃《算法导论》，这本书有太多关于算法的数学证明（除非你喜欢这种风格，那么你就看这本）。既然这本书并不适合新手学习，而如果你之前的算法基础又比较薄弱，那么只会一直陷在“拿起来又放下”的循环里。 </p>
+<ol>
+<li><p>入门书籍：</p>
+<ol>
+<li>《算法图解》：“像小说一样有趣的算法入门书”，主打“图解”，通俗易懂 </li>
+<li>《大话数据结构》：把理论讲得有趣不枯燥；每个数据结构和算法，作者都结合了生活中的例子，能让你有非常直观的感受。 </li>
+</ol>
+</li>
+<li><p>标准教材：</p>
+<p>《数据结构与算法分析》 非常系统、全面、严谨，适合掌握了至少一门编程语言的同学。</p>
+<p>这本书有三个语言的版本：C语言描述，C++语言描述和Java语言描述 </p>
+</li>
+<li><p>进阶书籍：</p>
+<ol>
+<li>※《算法 第4版》 </li>
+<li>※《算法导论》</li>
+</ol>
+<p>这两本书都是经典，建议细细品味。</p>
+</li>
+<li><p>拓展书籍：</p>
+<ol>
+<li>《算法之美》 算法科普，从生活中的各种问题说起：租房、谈恋爱、老虎机、拍电影、面试、买彩票、各种排序、找停车位、寻找新药、临床试验、奥巴马拉赞助、预估电影票房等等，非常生活化，可以作为补充阅读。 </li>
+<li>《算法帝国》 同样是科普类书籍，并无涉及算法的原理与实现细节，也可以作为补充阅读。 </li>
+</ol>
+</li>
+<li><p>殿堂级书籍：</p>
+<p> ※ <em>The Art of Computer Programming</em> <strong>《计算机程序设计艺术》</strong> 包含共四大卷，其深度、广度、系统性、全面性是其他所有数据结构和算法书籍都无法相比的。该书建议慢慢阅读，可以当做一种挑战！</p>
+</li>
+<li><p>其他书籍：</p>
+<ol>
+<li>《算法设计与分析基础》</li>
+<li>《算法引论：一种创造性方法》</li>
+<li>《编程原本》</li>
+<li>《算法竞赛入门经典》</li>
+<li>《算法艺术与信息学竞赛》</li>
+</ol>
+</li>
+</ol>
+<h3 id="设计模式与架构"><a href="#设计模式与架构" class="headerlink" title="设计模式与架构"></a>设计模式与架构</h3><p>轻型书籍推荐：</p>
+<ol>
+<li><p>《大话设计模式》 </p>
+</li>
+<li><p>《设计模式》 （刘伟著）</p>
+<p>可以读此书配套的《设计模式实训教程》。还有《C#设计模式》和《 设计模式的艺术——软件开发人员内功修炼之道 》，后者贴近于工程实践方面的应用。另外风格相近的还有 《设计模式之禅》与《研磨设计模式》 可以作为进阶。</p>
+</li>
+<li><p>《Head First 设计模式》</p>
+</li>
+</ol>
+<p>重量级书籍推荐(以下神书排名不分先后)：</p>
+<ol>
+<li><em>Refactoring</em> 《重构——改善既有代码的设计》</li>
+<li><em>Code Complete 2</em> 《代码大全2》</li>
+<li><em>The Pragmatic Programmer</em> 《程序员修炼之道》</li>
+<li><em>Clean Code</em> 《代码整洁之道》</li>
+<li><em>Programming Pearls</em> (2nd Edition) 《编程珠玑》</li>
+<li><em>Design Patterns</em> 《设计模式：可复用面向对象软件的基础》</li>
+<li><em>The Mythical Man-Month</em> 《人月神话》</li>
+<li><em>Working Effectively with Legacy Code</em> 《修改代码的艺术》</li>
+</ol>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>本文从立意到结尾历时2天，撰写时间逾10个小时，参考和借鉴了80多位从事计算机及编程行业的工作者和爱好者在知乎的回答和在B站的视频，在此我衷心的表示感谢。</p>
+<p>原先，我本意是想简略的列一份计算机需要读的书单，但我整理的目的是想让自己按照规划的这条路线走下去，因此在整理的过程中，我花了相当多的精力考察每一本书，包括它的目录，它涉及的内容以及它的编写目的及作用。最终，在给每一本书赋予一个特定的地位的时候，我都附注了自己或者他人的理解和感悟。不同的人对同一本书的看法肯定是不同的，所以并不是说所阅读的书局限于上述书单里。书单的意义 ，是给我自己规划的一条计算机从入门到略有体会的道路。</p>
+<p>希望我整理的内容能够帮助各位有志于提高自己水平的青年学者；无论你之前是否接触过编程。国外的名著之所以比国内的教科书更加具有价值和历史意义，就是因为它们是给人看的，看书的过程也就是对话、沟通、交流、理解的过程。名著是兼容的，无论水平高低，读者都能在其中获取到知识；我希望我自己也能始终坚持谦虚好学的态度，不搞鄙视链，向各类人士兼容。</p>
+<p>真正的大师，永远怀着一颗学徒的心。以上。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>Lee Sin</a>
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/2019/12/29/浅谈计算机-编程发展路线——自顶向下脱发方法/" target="_blank" title="浅谈计算机&amp;编程发展路线——自顶向下脱发方法">http://endlesspeak.github.io/2019/12/29/浅谈计算机-编程发展路线——自顶向下脱发方法/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-Java-Python-Go-%E4%BB%A3%E7%A0%81%E9%87%8D%E6%9E%84-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">C++ Java Python Go 代码重构 操作系统 计算机网络 数据库 数据结构与算法</a></li></ul>
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/28/HelloWorld%E2%80%94%E2%80%94%E4%BB%8E%E5%86%99%E5%8D%9A%E5%AE%A2%E5%88%B0%E8%AE%B0%E5%BD%95%E4%BA%BA%E7%94%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World--从写博客到记录人生</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#规划的原则——因材施教"><span class="nav-number">1.</span> <span class="nav-text">规划的原则——因材施教</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考书单——循序渐进"><span class="nav-number">2.</span> <span class="nav-text">参考书单——循序渐进</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#底层原理"><span class="nav-number">2.1.</span> <span class="nav-text">底层原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高级语言"><span class="nav-number">2.2.</span> <span class="nav-text">高级语言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#C"><span class="nav-number">2.2.1.</span> <span class="nav-text">C++</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java"><span class="nav-number">2.2.2.</span> <span class="nav-text">Java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Python"><span class="nav-number">2.2.3.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Go和SQL"><span class="nav-number">2.2.4.</span> <span class="nav-text">Go和SQL</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构与算法"><span class="nav-number">2.3.</span> <span class="nav-text">数据结构与算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设计模式与架构"><span class="nav-number">2.4.</span> <span class="nav-text">设计模式与架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">3.</span> <span class="nav-text">结语</span></a></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 无涯峰 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+
+  
+<script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            无涯峰
+          </div>
+          <div class="panel-body">
+            Copyright © 2019 Lee Sin All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
