@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>linux技术基础-1 引言 完全使用linux工作 | 无涯峰</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Linux" />
+  
+  
+  
+  
+  <meta name="description" content="尽管很多人已经不习惯看长篇大论, 但我还是要说, 这是一篇值得你从头读到尾的长篇文章。 2005年9月22日，清华在读博士生王垠在水木社区BLOG上发表了《清华梦的粉碎–写给清华大学的退学申请》明确要求退学,引起社会各界广泛争论。 他创作的长篇文章《完全用Linux工作》, 洋洋两万多字, 从不同角度居高临下的阐述了他眼中Linux完全优越于Windows的各种理由， 这篇文章并不简单的是一篇论述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux技术基础-1 引言 完全使用Linux工作">
+<meta property="og:url" content="http:&#x2F;&#x2F;endlesspeak.github.io&#x2F;2020&#x2F;01&#x2F;09&#x2F;Linux%E6%8A%80%E6%9C%AF-1-%E5%BC%95%E8%A8%80-%E5%AE%8C%E5%85%A8%E4%BD%BF%E7%94%A8Linux%E5%B7%A5%E4%BD%9C&#x2F;index.html">
+<meta property="og:site_name" content="无涯峰">
+<meta property="og:description" content="尽管很多人已经不习惯看长篇大论, 但我还是要说, 这是一篇值得你从头读到尾的长篇文章。 2005年9月22日，清华在读博士生王垠在水木社区BLOG上发表了《清华梦的粉碎–写给清华大学的退学申请》明确要求退学,引起社会各界广泛争论。 他创作的长篇文章《完全用Linux工作》, 洋洋两万多字, 从不同角度居高临下的阐述了他眼中Linux完全优越于Windows的各种理由， 这篇文章并不简单的是一篇论述">
+<meta property="article:published_time" content="2020-01-09T14:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-09T15:31:57.424Z">
+<meta property="article:author" content="Lee Sin">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="无涯峰" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="https://s2.ax1x.com/2019/12/30/lQghKH.jpg">
+  <link rel="apple-touch-icon" href="/https://s2.ax1x.com/2019/12/30/lQghKH.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+
+  </style>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/bootstrap.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    
+<link rel="stylesheet" href="/css/dialog.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+
+<meta name="generator" content="Hexo 4.1.0"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="https://s2.ax1x.com/2019/12/30/lQghKH.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Linux技术-1-引言-完全使用Linux工作" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Linux技术基础-1 引言 完全使用Linux工作
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2020/01/09/Linux%E6%8A%80%E6%9C%AF-1-%E5%BC%95%E8%A8%80-%E5%AE%8C%E5%85%A8%E4%BD%BF%E7%94%A8Linux%E5%B7%A5%E4%BD%9C/" class="article-date">
+	  <time datetime="2020-01-09T14:00:00.000Z" itemprop="datePublished">2020-01-09</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Linux%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/">Linux技术基础</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>尽管很多人已经不习惯看长篇大论, 但我还是要说, 这是一篇值得你从头读到尾的长篇文章。</p>
+<p>2005年9月22日，清华在读博士生王垠在水木社区BLOG上发表了《清华梦的粉碎–写给清华大学的退学申请》明确要求退学,引起社会各界广泛争论。 他创作的长篇文章《完全用Linux工作》, 洋洋两万多字, 从不同角度居高临下的阐述了他眼中Linux完全优越于Windows的各种理由， 这篇文章并不简单的是一篇论述“Windows能做的事Linux都能做”这样的文章，而是通篇洋溢着一个彻底批判 Windows 平台基础的计算机哲学、计算机应用和计算机教育体系的人的万丈豪情。 尽管可能有些偏激，但是不乏详细的推理论述。</p>
+<p>我将该文分享如下，并将其作为我即将要撰写的Linux技术基础系列文章的序言，以此勉励自己时刻谨记自己学习Linux的初心，提醒自己要为非Win化的传承而努力。希望本文的研究与讨论，能为诸位读者提供更宽广的讨论空间。</p>
+<a id="more"></a>
+
+<h2 id="转变你的观念"><a href="#转变你的观念" class="headerlink" title="转变你的观念"></a>转变你的观念</h2><h3 id="Linux可以高效的工作"><a href="#Linux可以高效的工作" class="headerlink" title="Linux可以高效的工作"></a>Linux可以高效的工作</h3><p>我已经半年没有使用 Windows 的方式工作了。Linux 高效的完成了我所有的工作。</p>
+<p>GNU/Linux 不是每个人都想用的。如果你只需要处理一般的事务，打游戏，那么你不需要了解下面这些了。</p>
+<p>我不是一个狂热的自由软件份子，虽然我很喜欢自由软件。这篇文章也不是用来推行自由软件运动的，虽然我觉得自由软件运动是非常好的。</p>
+<p>这篇文章也不是用来比较 Linux 和 Windows 内核效率，文件系统，网络服务的。我现在是作为一个用户而不是一个开发者来说话的，我们的讨论是基于操作，应用层面的。是为了告诉大学里还不了解，或者不理解 UNIX 的科学工作者和大学生，UNIX 比 Windows 更适合用于科学研究工作，请大家理解 UNIX 的工作方式，不要用 Windows 的标准来要求 Linux，而要用一个科学工作者的标准来要求自己，用UNIX 的思想来武装自己。</p>
+<p>我显然是反对在大学，特别是理工科专业推广 Windows 的。我也反对在对”娃娃”们的计算机启蒙教育中使用 Windows。因为 *Windows 不论从技术上，经济上，思想风格上都是与我们培养高科技人才的目标格格不入的。Windows 的流行属于历史遗留问题，爷爷一级的人当然已经不可救药，但是我们不应该让下一代继续走上歧途。</p>
+<h3 id="UNIX-不是计算机专家的专利"><a href="#UNIX-不是计算机专家的专利" class="headerlink" title="UNIX 不是计算机专家的专利"></a>UNIX 不是计算机专家的专利</h3><p>当我建议一些非计算机专业的人用 Linux 的时候，很多人说：”UNIX 是计算机系的人用的，我们不能理解。” “UNIX 是男孩用的，我们女孩不用。”</p>
+<p>但是其实世界上的大多数科学家和工程师几乎用的都是 UNIX 作为他们的电脑工具。就因为它简单，可靠，稳定，强大，有趣。甚至很多时候 UNIX 就是唯一的选择。</p>
+<p>你说：”我们都会用 UNIX 的话，你们计算机专业的人还用来干什么？” 很容幸的告诉你，计算机专业的有一部分人就是专门为你们提供这样强大而方便的计算机工具的。如果他们制造的工具只有自己会用的话，那这个工具还有什么用？</p>
+<p>理解 GNU/Linux 不要用 Windows 的标准来要求 Linux。</p>
+<p>由于GNU/Linux这个词太长，下面如果没有特别指明，”Linux”就是指GNU/Linux”。</p>
+<p>在这个年代，恐怕没有人需要我来介绍 Linux 是什么了吧？如果你觉得”Linux 只不过是跟 DOS 差不多的东西”，那请问问你旁边的 Linux 用户，Linux 到底是什么？</p>
+<p>那为什么我还要写一篇这样的文章？因为，我发现还有很多人不不理解 Linux 和 UNIX，虽然他们也在用它，但是他们有时会问：”为什么 Linux 不能像 Windows 那样 ……？”，”怎么Redhat Linux不能 mount NTFS 分区！”，”Linux 下用什么整理硬盘？”，”什么时候OpenOffice才能完全兼容Word文件啊？”，”现在还有什么Windows能干的事情Linux干不了的？ “……</p>
+<blockquote>
+<p>他们有40G的硬盘，却只为 Linux 分配了2G空间，有时还抱怨”这个东西怎么占这么多硬盘！” 似乎 Windows 该占用大部分硬盘。他们把重要的数据装在Windows的分区，似乎信不过Linux。他们总是到处寻找新奇的，好看的GUI程序，对命令行的东西一概不屑一顾。他们对Drag&amp;Drop，菜单配置，自动升级非常感兴趣。他们如果找到一个很像 Windows 程序的 Linux 程序，一定会很高兴的说：”哈哈！Linux 也能……了！”如果Linux在某种测试中胜过Windows，他们会高兴得跳起来。他们没有办法用Linux 解决问题的时候，甚至用Wine来运行Windows程序。有时实在没办法，只好重起到Windows，或者干脆省得麻烦，在 Windows 下装一个 VMWare 虚拟一个 Linux 玩。</p>
+</blockquote>
+<p>你如果出现了上面的情况，说明你的思想受到了 Windows 的某种潜移默化的影响和误导。你没有能够从本质上理解存在于 Linux 身上的 UNIX 思想。你支持 Linux，你喜欢 Linux，你能从中感觉到快乐，这非常好。你现在只需要明白的是：<strong>Linux 从来就不是一个玩具，它是天才UNIX的后代。UNIX 是自晶体管发明以来最伟大的发明，它从诞生那一天开始就比 Windows 的设计出色。</strong></p>
+<p>你要体会什么叫做”设计”，一个糟糕的设计并不是到后来缝缝补补就可以变好的，而一个出色的设计，不但可以以不变应万变，而且可以影响到后来者。一个出色的设计配上一个出色的实现，那就是非常出色的发明。Linux 就是这样的一个出色的发明。</p>
+<p>Unix 是简单的，你不需要成为一个天才也能理解这种简单。</p>
+<blockquote class="pullquote right"><p><em>Linux 并不需要追赶 Windows，也不需要打垮微软。它的最终目标是改变整个计算机世界，还人们自由，给人们乐趣和方便。</em></p>
+</blockquote>
+
+<p>UNIX 的设计者 Dennis Ritchie 说：”<em>Unix is simple. It just takes a genius to understand its simplicity.</em>” 但是我不这么认为，因为我不是一个天才，但是我却勇敢的把 Windows 完全删除掉，遇到不明白的事情的时候努力用 UNIX 的方式去解决，而不是寻求 Windows 的帮助。现在我体会到了 UNIX 的思想和好处，我可以用比 Windows 高效几倍的效率工作。因为我相信这样的信念：”Windows 能办到的事 Linux 一定能办到，而且办的更好。”</p>
+<p>这小节开头的话应该改成：”Unix 是简单的，你不需要成为一个天才或是计算机专家。但是在这个冲斥着 Windows 错误观念的世界，你需要信念和勇气才能理解它的简单。” 我下面就告诉你一些我理解到的东西。首先，你要知道的是微软在国际科学领域是根本没有地位的。</p>
+<h3 id="微软的实际地位"><a href="#微软的实际地位" class="headerlink" title="微软的实际地位"></a>微软的实际地位</h3><p>微软的名声在欧洲和美国的大学里，特别是在计算机系里之坏，大家可能有所耳闻。我认识的 MIT，Stanford 的教授，贝尔实验室的专家，甚至一个欧洲小国的高中计算机老师都绝口不提微软的名字。在他们眼里，微软只是一个没有真技术，专靠在落后国家商业宣传和垄断经营的小公司。这个”小”并不是说它人少，钱少，而是说它先进技术少。</p>
+<p>我上次和王益合作写了一个算法演示程序，那个算法是贝尔实验室一位科学家Steven Fortune很天才的发明，为了程序能够被身边大多数人使用，我们选择了 VC+MFC 作为平台。我在分析算法时还得到 Fortune 很热情的鼓励，寄给我一份资料，还多次回信耐心的给我讲解了很多细节。但是程序完成之后，我把样品发给 Fortune，他回信说：”对不起。我机器上没有 MFC。” 话说的很客气，但是我已经感觉到了他对 Windows的不屑。然后我把 MFC 静态编译进程序再发给他，他就没有再回信了。他显然不是瞧不起我，而是确实有难处。</p>
+<p>你能感觉到这位科学家对微软和 Windows 是什么态度了吧？<em>不是反感，而是他心里根本没有 Windows 这个东西</em>！微软在高科技领域没有发展，那么它怎么生存呢？到发展中国家去发展一下，他们的人民还对电脑一无所知，我说不定甚至可以打入大学的计算机系呢。我送他们软件，我捐钱盖大楼，我出钱找图灵奖获得者来演讲，让他们觉得我们都是科学家！</p>
+<p>好了，现在全国的大学包括清华，几乎所有人机器必装盗版 Win2000，Office XP，学校的选课系统是非IE不能正确浏览，论文用 Word 编辑，演示用ppt做，email 的通知附件是 doc 文件，你不用 Word 打不开，连 863 项目都用 VC 写程序了。我很久以前就看到一份报纸说，”微软为什么不严厉打击盗版？” 这篇文章说，微软非但不打击中国的盗版行为，而且有放任之趋势。放长线吊大鱼，”以后我要你们加倍的来还我！” 确实如此，它的目的快实现了。</p>
+<h2 id="计算机教育的现状"><a href="#计算机教育的现状" class="headerlink" title="计算机教育的现状"></a>计算机教育的现状</h2><h3 id="Windows-笼罩下的中国计算机教育"><a href="#Windows-笼罩下的中国计算机教育" class="headerlink" title="Windows 笼罩下的中国计算机教育"></a>Windows 笼罩下的中国计算机教育</h3><p>说句丢脸的话，比尔盖茨很久以前是我的偶像……</p>
+<p>在中国，比尔盖茨被很多人奉为神圣，”少年电脑天才”，甚至有的人提到他的名字就做出”抱拳对天”的姿势。很多人谈到微软的”新技术”，”高科技” 都是眉飞色舞。各种”VC编程圣经”，”深入了解 Visual C++”之类的书，在开头几页都会出现非常肉麻的字眼，”在那团团的混沌中，一个开天辟地的精灵，Windows 1.0，诞生了……”</p>
+<p>微软的软件被这么多人盗用，那么人们是怎样使用这些盗版程序的呢？先看看电脑培训班，教的都是一些 DOS 命令，打字，Windows 基本操作，Word 文档处理，PowerPoint，高级班可能有 Excel，Access…… 参加各种微软认证考试，MCSE，MSDE 的人络绎不绝。考试辅导班都贴出了”280元，考过为止”之类的字样。考试参考资料更是昂贵，有些电脑书店整整两书架都是”Microsoft Press”的东西。我有个同学参加认证考试，每门考试都要200多元。而且你一次考不过可以再考，又要交钱。他后来还津津乐道跟我说，看我，花了 XXXX(一个四位数)元考过了微软认证，得到一张比尔盖茨亲笔签名的证书和价值6000元的 Windows XP 内部发行版。</p>
+<p>“电脑要从娃娃抓起”，我们再来看看娃娃们学的是什么。大部分家长给孩子买了电脑之后，他们首先就会装一个盗版的 Windows，然后买来盗版的游戏开始玩。如果哪个孩子会用 Delphi 编程序，那可不得了。报社记者，电视台争相报导，说，某某学校的初中生某某，在别人都还在玩电脑游戏这种”初级阶段”的时候就已经用 Delphi 写程序了。镜头还瞄准了他显示器上面的像框中的比尔盖茨头像！</p>
+<p>我刚进入大学计算机系时还不懂得什么是操作系统，因为我以前只用过”中华学习机”。看到新入学的同学们各个谈论的都是 “Windows 95″，”VC”…… 我简直觉得我落后了好几十年一样，整个一土人，根本跟他们答不上话。好不容易找到一个比较熟的同学问了一下：”你们天天谈论的瘟95是什么啊？”答： “win95就是一个操作系统，跟DOS是一类。””朵死是什么？” “你连DOS都不知道是什么？别在计算机系混了。” 学校上课当然不讲VC编程之类的东西，但是上 Pascal 的老师有一次就说：”嗨，我们学校真是落后。现在别人都用 C, C++，甚至 VC 了，我们还在讲 Pascal。不知道什么时候才能有VC课啊。你们出去也是要用VC的，只好自学了。” 于是，有些同学很多时候上课都捧着一本很重的”Windows 编程大全”之类的书，根本没有听课。吃饭时就念念有词的跟我说，”代码的优化是无止境的”，”匈牙利命名法真是伟大的发明” …… 这就是中国很多大学计算机系的情况。</p>
+<p>感觉到无知了？这不是偶然的，而是微软长久以来埋下的伏笔。它要让无知的大家都把它奉为神圣，它要让支持UNIX，X window的人一旦说 UNIX 好，X window 好的时候，都被一群人围着说教：”这个 Windows 也能做到”，”你对 Windows 有偏见”，”微软才是主流啊”，”你敢瞧不起 win2k？”，”.NET 就是世界潮流”，”微软的毕竟是新技术”，”有钱就是有技术”…… 甚至在一番论战比较后败下来还是要说：”Windows 性能差点，但是易用性强”，”Windows 是老百姓用的，要求别那么”，”微软那么有钱，以后想超过 UNIX 还不容易吗？”……</p>
+<h3 id="发达国家的计算机教育"><a href="#发达国家的计算机教育" class="headerlink" title="发达国家的计算机教育"></a>发达国家的计算机教育</h3><p>我前段时间在 USENET 发文问有关 Scheme 语言的问题时，认识了一位丹麦人。他解决了我所有的问题，并且建议我阅读一些很”深奥”的有关程序语言语法，文法的书，他告诉我很多网站可以学习 LISP，Scheme，人工智能，算法。他叫我看 Jonathan Rees 的论文 “Syntactic Closures”。他还打包给我寄过来一份 MIT 的 “How to Design Programs”。他说他在自己的 PC 机上装的是 Linux，他用 Emacs 编辑，运行Scheme 程序。他对 Emacs 的了解和爱好真是使人惊讶。他大学本科毕业时做的毕业设计是一个 Scheme 解释器。这对于我来说是望尘末及了。</p>
+<p>他是那么的不厌其烦，我的每一个问题他都详细的回答。我有时都觉得过于详细了，怎么这么耐心啊？我觉得他似乎是我的高中老师。他是什么样的人呢？我好奇的打听了他的情况。原来，他是丹麦一所普通高中的计算机老师。</p>
+<p>他说他在高中里讲授程序设计和算法，计算机语言文法。他说用 Scheme，他的学生不用再为内存泄漏等程序语言本身的问题而烦恼，而专注于问题和算法本身。有利于培养学生解决问题的能力，特别是用计算机解决数学问题的能力。</p>
+<p>天哪！为什么欧洲出现那么多数学家，几何学家？你看看别人重视的是什么！我们的计算机教育如果继续这样下去，只会沿着弯路越走越远！</p>
+<h3 id="微软和它的朋友们的如意算盘"><a href="#微软和它的朋友们的如意算盘" class="headerlink" title="微软和它的朋友们的如意算盘"></a>微软和它的朋友们的如意算盘</h3><p>下面来看看微软的收入是怎么来的。首先，Windows 98系列操作系统，一个就是 100多美元，每次升级又是几乎同样的价钱。Windows NT 还要贵几倍，而且有用户数目限制，5个用户的，10个用户的…… 以后如果要增加用户数目还要按比例付钱。</p>
+<p>花了如此多钱买来的操作系统就能用了吗？它竟然连压缩程序都没有提供！你装上Windows 之后一般第一件事就是去下载一个 WinZip 吧，”只要 29 美元”。Windows会中病毒啊，马上花 70 美元买一个 Norton AntiVirus 吧。还有黑客呢？再买一个Norton Internet Security 好了，100 美元。系统需要优化，磁盘需要整理，买一个Norton System Works 是你最佳的解决方案，100美元。</p>
+<p>可是你现在还是不能干正事啊！你想要一个 Word, PowerPoint？那就买一套 Office XP 吧，一起买便宜些，459.90美元。</p>
+<p>那些程序不会用啊！那些菜单怎么设置，到底有什么功能啊？看”帮助”也学不会。买本书看看吧，我推荐”<em>Special Edition Using Microsoft Office XP</em>”，不贵，才28美元。又由于这本书里面大部分是屏幕抓图，还是买一本旧的比较划算，17.85美元。</p>
+<p>你如果只是当个秘书，上面的差不多还凑合了。可是你有更高的追求，你想成为 Windows程序员。首先买一个 Visual Studio.NET 吧，要不然怎么编译程序。494.95美元。</p>
+<p>为了紧跟微软动向，世界潮流，不能不注册个 MSDN 什么的吧？这个贵一点，不过物有所值啊，2,799美元。</p>
+<p>嗯，你现在已经是上层阶级，白领人士了。你现在可以像这样”自由”的，”安全”的生活了。</p>
+<h3 id="反对使用Windows的原因"><a href="#反对使用Windows的原因" class="headerlink" title="反对使用Windows的原因"></a>反对使用Windows的原因</h3><p>很多人都说不应该完全否定 Window，Windows 也有它的长处。不应该骂微软。</p>
+<p>对。 Windows 容易操作，适合普通用户。如果微软把它自己定位在 P&amp;G，Philips 那样的地位，能够给我们的百姓提供周到的，完善的，价廉物美的服务。那我肯定是很喜欢它的。但是从上面的种种情况说明，微软是一个野心极大的国际垄断组织！它的产品没有一个是不出问题的：Windows 不稳定，容易中病毒，而微软不为大家免费提供杀毒软件。我就是要让你们花钱买我的朋友 Symantec 的杀毒软件，谁叫你们已经上了我的贼船？这叫什么售后服务啊！</p>
+<p><em>你买来微软的程序，安装的时候一般都有一个协议，说：” 由于微软的程序造成你的数据损坏或丢失，微软概不负责。” 我想很多人肯定觉得这个不合理，不想按那个 “I accept”。但是你的软件买都买来了，钱都花了，现在一按 “I decline”，安装程序马上就会退出。你只好被迫点击了 “I accept”！这不是不平等条约吗？</em></p>
+<p>我已经目睹了好几个朋友的文档被 Microsoft Word 损坏，有的是编辑了十多天的30多页的论文，有的是费了很大工夫做出来的个人简历，那个朋友为此失去了到自己向往的P&amp;G 工作的机会。就在他要投简历的前一个晚上，就在那一瞬间…… 不知道他痛哭的时候有没有想起要投诉微软，可是谁叫我们用的都是盗版呢，况且你还点击了 “I accept”。</p>
+<p>微软仗势已经占有大部分PC市场，制定不符合国际标准的”微软的标准”，以不合理的方式压制其它公司的软件，这个问题已经在美国司法部闹了很久了。他甚至在 Windows系列操作系统中放置能够通过网络泄漏用户信息的代码，以至于 Windows 刚进入澳大利亚时被澳大利亚政府禁止使用。</p>
+<p>有些人说：”微软毕竟开创了一个历史，造就了今天的 IT 行业。” </p>
+<p><strong>但是，如果没有微软，我们今天早就用上非常稳定，非常可靠，非常方便，非常”傻瓜”的软件了！微软是阻挡信息技术发展的罪魁祸首。</strong></p>
+<p>微软的程序的工作方式(注意，我只是说操作方式，病毒的事情另外算)确实适合于一般家庭，上上网，发发邮件，打打游戏都不错。可是微软却要把自己包装成什么 “高科技”企业，要在世界各地设置”研究院”，在大学计算机系赠送不适合用于科研的 Windows产品，甚至出钱请图灵奖得主来中国畅谈”二十一世纪的计算”，还在大会上宣传自己的 .NET 技术。非要把别人认为自己是科学的，自己是领导世界高科技的。但是呢？它什么高科技也没有。欧洲，美国，哪一个关键部门在用微软的东西？NASA? DOE? CERN?你仔细想一想，微软的程序对人类到底有什么重大作用？</p>
+<h2 id="Windows与Linux的比较"><a href="#Windows与Linux的比较" class="headerlink" title="Windows与Linux的比较"></a>Windows与Linux的比较</h2><p>“Windows 能干而 Linux 干不了的事情，那就是不需要干的事情。”</p>
+<p><em>有个朋友看我半年没有用 Windows，有时就会问我：”你只用 Linux，有没有发现有些Windows 能处理的事情 Linux 干不了？”<br>我回答说：”Windows 能干而 Linux 干不了的事情，那就是不需要干的事情。”</em></p>
+<h3 id="Windows-能做的有益的事情-Linux-都能做"><a href="#Windows-能做的有益的事情-Linux-都能做" class="headerlink" title="Windows 能做的有益的事情 Linux 都能做"></a>Windows 能做的有益的事情 Linux 都能做</h3><p>Windows 下的某些功能确实是我们需要的，那么 Linux 的开发者们和用户也需要这种功能，他们就会去实现这种功能，而且比 Windows 的方式好得多。由于大多数科学家，工程师用的都是 Linux 或者某种商业 UNIX, 所以几乎所有商业的科学工程程序，比如Matlab, Mathematica, AutoCAD, Candence的，Synopsys的，Avant! 的……全都是先有UNIX 的版本(包括Linux)，然后再考虑移植给 Windows，甚至根本不移植给Windows，因为 Windows 的机器一般没有足够的能力运行这样的程序。你不要以为只有 Windows 才有 PSpice, UNIX 的 HSpice 要好得多，而且可以运行在大型主机上。当然它们不是免费的，但是它们值那个价钱。</p>
+<p>但是 Windows 下有些东西在 Linux 下没有很相似的，或者你找到很多类似的，但是它们每一个比起 Windows 的那个程序都要差很多，那么原因有两种可能性：</p>
+<p>有一个完全类似的程序，但是由于它乍一看不漂亮，被你忽略了。而其它程序虽然看起来很漂亮，但是它们是一些初学编程的人写的。现在由于 Gtk, Qt 的诞生，Linux 下开发图形界面程序极其简单，很多初中生甚至小学生都可以随手编出一些漂亮不中用的程序。如果你整天寻找这样的程序挑来挑去，永远也找不到你满意的。当然也有一流的程序用 Gtk 和 Qt，比如 GVIM 就可以用 Gtk 作为图形界面，我还知道 Synopsys 一些程序用了 Qt。</p>
+<p>我曾经也犯过这样的错误，从外表区分一切。结果优秀的 FVWM, lftp, Mutt, wget 都被我忽略过。当我找回它们的时候，我是那么的羞愧不已，它们现在都是我的朋友 我第一次看到 FVWM 觉得它只不过是一个有很厚很难看边框的东西。可是现在，我的同学看到 FVWM 都说：”哇！真漂亮。”</p>
+<p>有另一种完全不同的方式可以达到相同的目的，甚至更好。</p>
+<p>很多人很关心 Open Office, Star Office, AbiWord, … 他们多么盼望有一天某一个Linux 程序能够完全兼容的打开一个复杂的 doc 文档。但是你永远也不可能有那一天。为什么呢？因为微软为了占有市场，必定不会让其它系统的程序能够完全兼容它的文档格式。它一定会不断变化 doc 文档的内部结构，隐藏一些秘密，让其它公司的程序打开 doc 文档时总是有某种问题，从而你必需购买 Microsoft Office 和 Windows。</p>
+<p><em>你应该想一下，那么多的高智商的大学教授，科学家，学生，他们用的都是 Linux 或者其它类型的 UNIX，他们没有 Word 可用，怎么处理文档呢？这么多年没有一个像Open Office 的程序出现，难道大家没有办法写文档吗？</em></p>
+<p>显然不是这样。你看看那些高水平的学术杂志，论文，那些大学教授的网页，那些漂亮的幻灯片，它们是什么做的？原来 UNIX 用户早就有非常方便的 troff, LaTeX, SGML等东西可以处理文档，而且它们比起 Word 都要高明的多。Word 显然被这些大拿忽略了，以至于很久以来没有人想在 Linux 下开发一个类似 Word 的程序，除非某些公司想抢微软的饭碗。</p>
+<p>很多人留着 Windows 在硬盘上的原因无非是为了用 Word 和 PowerPoint。我见过一个教授，他的 Windows 笔记本电脑上除了 PowerPoint 什么都没有。有一天演示的时候，他指着堆乱字符说：”对不起，这是一个公式……怎么每次都是这样……” 其实有比PowerPoint 好几百倍的东西可以制造幻灯片，你可以用最简单的方法制造世界一流效果的论文和幻灯片。你待会儿可以看看我的TeX网页，你就会知道为什么我可以完全离开 Windows。</p>
+<h3 id="Windows-能做的那些没用的事情-Linux-永远做不好"><a href="#Windows-能做的那些没用的事情-Linux-永远做不好" class="headerlink" title="Windows 能做的那些没用的事情 Linux 永远做不好"></a>Windows 能做的那些没用的事情 Linux 永远做不好</h3><h4 id="电脑游戏"><a href="#电脑游戏" class="headerlink" title="电脑游戏"></a>电脑游戏</h4><p>有些人说 Linux 下不能玩 Windows 下所能得到的所有游戏。的确，Linux 下虽然也有少量的游戏，比如 Quake。但是它没有 Counter Strike, 没有 Star Craft, ……</p>
+<p>并不是说电脑游戏不该玩，但是应该适可而止。电脑是用来处理事务，帮助你学习，解决问题的工具，而不是一个玩具！整天沉迷于电脑游戏中，而不出去感觉外面的世界，你会变得越来越冷酷，越来越缺乏人情味。你与真实的世界越来越远。</p>
+<p>你可以在 CS 里杀人，你可以在 Tomb Raider 里探险，你甚至可以在 Tony Hawk’s Pro Skaters 里滑板…… 但是 It’s not real！你虽然有很高的”反恐技巧”，但是遇到歹徒的时候，你是那么的怯懦；你虽然控制 Laura 伸手敏捷，但是你打篮球的时候怎么总是被人断球？你虽然可以轻易的在 THPS 里作出一个 “360 kickflip to hangten grind to fakie”，但是你踩在自己的滑板上的时候还不会 ollie！</p>
+<p>说回来，如果你偶尔玩一下电脑游戏未尝不可。但是世界上有远比 Windows + PC 更好的游戏方式。Sony 的 PlayStation2, SEGA 的 DreamCast, Nintendo 的 N64，Namco的街机……每一个都比 Windows 游戏精彩，每一个都有如此高的3D性能，以至于Pentium4, Itanium + GForce4 都无法与它们比美！</p>
+<p><em>Linux 的用户们都是关心解决世界的关键问题的份子，他们哪里有时间用自己的机器来玩游戏啊？他们每天用Linux高效的做完自己的工作就到阳光下享受自然去了。要玩游戏也是玩一些类似推箱子，贪吃蛇之类的智力小游戏。所以，你知道为什么 Linux 几乎没有游戏了吧？</em></p>
+<h4 id="“整理硬盘，优化系统“"><a href="#“整理硬盘，优化系统“" class="headerlink" title="“整理硬盘，优化系统“"></a>“整理硬盘，优化系统“</h4><p>这是一个非常有意思的话题，仅次于有关”病毒”的话题。相信很多 Windows 用户都有整理硬盘的经历。在很多 Windows 用户眼里，”硬盘用久了，会出现碎片，速度会减慢，需要一个程序来整理，整理硬盘的时候不要做其它工作”，这好像是天经地义的事情。</p>
+<p>我也曾经津津有味的看着 Norton Defrag 一点一点的把我的硬盘排序，调整，用图形的方式显示出来，然后报告100% 没有碎片。你的硬盘现在已经达到最佳状态。” 我现在才发觉我那时是多么的幼稚。</p>
+<p>Linux 和 UNIX 用户似乎从来没有”整理硬盘”这种说法呢？你觉得很奇怪吗？如果你觉得很奇怪，那说明你的思想在某种程度上被微软的垃圾程序禁锢了。你需要明白，UNIX 的大型主机很多必须是一天24小时，一年365又1/4天不停运转的，要是每个星期都要整理一次硬盘，在整理的时候几乎不能干任何事情，那是绝对行不通的！</p>
+<p>Linux 机器根本不用整理硬盘，这就是为什么没有看到过 Linux 用户整理硬盘。Linux 的文件系统是比 Windows 的 FAT, FAT32, NTFS 高明得多的文件系统，它们不但可以对文件设置权限，实施完全的保护，而且可以”越用越整齐”，”越用碎片越少”！你应该把文件大部分放在 Linux 的分区，而不是 Windows 分区，因为它比 Windows分区可靠得多。</p>
+<p><em>还有更滑稽的事情就是有很多”Norton System Doctor”，”Windows优化大师”，”超级兔仔注册表魔法” 之类的程序存在，而且价格昂贵。似乎一个操作系统本来应该有很多问题，需要别的厂商做程序来”优化”它，而且为了得到优化，你需要付钱！这些问题 Linux 根本就没有，所以不需要什么优化。Linux 内核本身就是高度优化的。</em></p>
+<h4 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h4><p>有些人在抱怨为什么 Linux 没有一个良好的 IDE 开发环境。Linux 现在已经有一些IDE 了，但是总是有很多问题。你是不是正在寻找，正在期望 Linux 某一天可以有一个VC那样的开发环境？你有没有发现你正在进入微软给你设下的怪圈？你为什么一定要用 IDE？你说：”IDE 开发迅速，调试方便，适合大型程序……” 那说明微软的程序在你脑子里已经比较根深蒂固，你需要好好清醒一下了，看看我来告诉你。</p>
+<p><em>高明的 UNIX 程序员不用 IDE，IDE 从来就是给初级 Windows 程序员用的。</em></p>
+<p>你看看大型的 UNIX 程序，包括 Linux 内核，各种网络服务程序，X window 程序在内，哪一个是 IDE 搞出来的？我们实验室的 EDA 程序也没有一个是 IDE 弄的，我还知道Candence, Synopsys，Mentor 的高性能的图形界面 EDA 程序也都不是 IDE 写的。你信不信，微软的人在写 Windows 本身的时候也根本不用 IDE。微软内部程序员最喜欢的编辑器其实是 VIM，用 VIM 的微软程序员上次向乌干达的可怜儿童捐助了1000多美元，这是值得称赞的。</p>
+<p>有一次某杂志采访一些出名的 Linux 内核程序员，包括 Linus 在内，没有一个人用IDE，有的人用 VIM，有的用 Emacs，只有 Linus 说”GNU Emacs is evil”，但是其实他用的是一种跟 Emacs 有同样键绑定功能的 MicroEmacs。大家都是用编辑器编辑了程序文件，然后用 make 这样的自动工具调用 gcc 编译器完成编译工作的。甚至高级的 Windows 程序员也不用 IDE，他们可以从命令行调用 cl，nmake 来编译自己的程序。虽然这样的 Windows 程序员很少，但是他们却是最了解 Windows，最高明的Windows 程序员。</p>
+<p>为什么 UNIX 程序员不用 IDE？明白了这个道理你就能体会到 UNIX 的设计思想了。首先，一个 IDE 集成了编辑器，编译器，汇编器，调试器，跟踪器…… 这个编辑器功能肯定比不上 VIM 或 Emacs，编译器比不上 GCC，汇编器比不上 as，调试器比不上 gdb，ddd, 跟踪器比不上 strace, ltrace, truss。你得到的是一套整合的低能的程序。如果你对调试器的功能不满意，你只好换用另外一套 IDE，但是这套 IDE 的热键，菜单，编辑器功能，按钮…… 跟原来那个有很大不同。你不得不花很多时间来熟悉新的环境，而不能保持原来的某些东西。</p>
+<p>而在 UNIX 下就不一样了。你可以用你最喜欢的 VIM 编辑程序，你在 VIM 里可以调用GNU make，make 可以调用 gcc, ld, … make 的出错信息可以被 VIM 捕获，VIM 能帮你在源程序里定位。你如果喜欢 icc, 你可以让 make 用 icc 而不是 gcc。你如果觉得 gdb 跟踪变量时比较麻烦，你可以用 ddd 来显示各种数据结构之间的关系。你还可以在 Emacs 里调用 gdb，那样就可以同步显示源代码了。而且 VIM 和 Emacs 还可以编辑很多其它东西，比如信件，LaTeX 文档，HTML，配置文件…… 你不用另外找一个什么编辑器来干这些杂活了。很多程序比如 Mutt, tin 都可以在内部使用 VIM，这样就更方便了。实际上 make 在其它方面还能帮你很多忙，我的每一个比较大型的 LaTeX文档都是用 make 维护的。</p>
+<h3 id="Linux-能干的高精尖的事情-Windows-都干不了"><a href="#Linux-能干的高精尖的事情-Windows-都干不了" class="headerlink" title="Linux 能干的高精尖的事情 Windows 都干不了"></a>Linux 能干的高精尖的事情 Windows 都干不了</h3><p>当然有很多事情是Linux/UNIX的专利了。因为 Windows 只能装在 PC 机上，好像以前也有 Alpha 可以使用 Windows NT，但是就是没见到有人用。PC 机的能力是很低的，像我们编程序处理 NP-Hard 问题的人，用 Windows 的机器显然速度不够，而且有时一个问题算上几天甚至几个星期，Windows 机器是以”死机”著称的，我们怎么能放心？</p>
+<p>所以几乎所有科学计算程序，EDA 程序，高性能图像处理程序都不是 Windows 的。他们有时也会移植一些给 Windows，但是常常降低那些程序的能力。你比较过 Windows 版本的 Mathematica 和 Linux 的有什么区别吗？</p>
+<p>下面举几个其他的例子：</p>
+<ol>
+<li>IBM 制造的最大的并行计算机有 8000 多个处理器，Windows 不可能有能力管理这么多处理器，它用的是什么操作系统？答案是 Linux。</li>
+<li>《泰坦尼克号》电影里的三维动画，那么细腻逼真，Windows机器能做出来吗？不行。那也是 Linux 机器做的。</li>
+<li>民航总局用来训练地情人员的虚拟现实训练设备，Windows 当然无能为力。那都是商业的 IRIX 机器。</li>
+</ol>
+<p>UNIX 是最早支持 TCP/IP 网络协议的系统。它上面有很多可以互相协作的网络服务程序，它们经过多年的使用和修订，已经达到比较完善的程度。而就在1997年，微软的比尔盖茨还在扬言：”Internet 是没有前途的。” 微软的这个”远见卓识”大家应该都已见识，它后来加上的网络服务程序IIS漏洞之多，让公安部都频频发出警报，大家也是见识了的。</p>
+<p><strong>其实你知道了，Windows 没有一样有用的事情能比 UNIX 干的更好。</strong></p>
+<h3 id="Linux-干不了的有用的事情-Windows-照样干不了"><a href="#Linux-干不了的有用的事情-Windows-照样干不了" class="headerlink" title="Linux 干不了的有用的事情 Windows 照样干不了"></a>Linux 干不了的有用的事情 Windows 照样干不了</h3><p>当然 Linux 不是万能的。它也有不能干的事情，电脑也有干不了的事情。但是 Linux干不了的事情，Windows 肯定也干不了。这些事情就是我们需要探索，需要努力的事情了。在你探索的过程中，Linux 必定是你的好伙伴。</p>
+<p>不要把Linux和X window掩盖起来！不要把我们的用户当成傻瓜。</p>
+<p>什么？你早就知道 Windows 是垃圾？噢！你怎么不早说呢！害我废话这么多。嘿嘿。</p>
+<h2 id="颠覆你的信仰"><a href="#颠覆你的信仰" class="headerlink" title="颠覆你的信仰"></a>颠覆你的信仰</h2><h3 id="“现在我知道-Windows-是垃圾，我该用什么？”"><a href="#“现在我知道-Windows-是垃圾，我该用什么？”" class="headerlink" title="“现在我知道 Windows 是垃圾，我该用什么？”"></a>“现在我知道 Windows 是垃圾，我该用什么？”</h3><p><em>问：好了，现在我已经知道windows是垃圾了，那么我应该用什么？</em></p>
+<p><em>答：“Linux + X window”</em></p>
+<p><em>问：“那我问你，X window 是什么样的？”</em></p>
+<p><em>答：“不就是跟 Windows 差不多吗？只不过 ‘Start’ 按钮比较方，而且上面不是一个Windows 标志，而是一个脚丫子。点击一下居然还有很漂亮的中文菜单。我喜欢！”</em></p>
+<p><em>问：“你知道什么是’根窗口’吗？”</em></p>
+<p><em>答：“不知道。从来没听说过呢？”</em></p>
+<p><em>问：“根窗口就是遮盖整个屏幕的那个最大的窗口。”</em></p>
+<p><em>答：“哪儿有什么窗口啊！我没有看到呢？”</em></p>
+<p>你发现了问题吗？这些 Linux 用户说是在用 Linux 和 X window，但是他们对 Linux和 X window 几乎完全不了解。很多人用了那么久 X window 都不知道根窗口是什么东西，不知道其实按钮也是窗口，不知道窗口管理器和其它程序有什么关系，大家都以为窗口上面的按钮是程序自己放上去的，不知道窗口? quot;class name”，”resource name”是什么东西。他们也不知道.Xdefaults 是用来干什么的。特别是他们很多人都不知道 X window 的字体是如何命名的，什么是 fontset，有了一个新的字体也不知道怎么安装。</p>
+<p>他们被遮在 Linux 之上的一层一层的包装迷惑了，他们等待有图形界面的工具来帮助完成一切事情，他们认为 Linux 跟 Windows 一样，只是麻烦一点。他们知道 Linux内核很好，但是他们感觉不到 Linux 和 X window 在操作层面的天生的先进性，随后不久就把 Linux 完全删除掉了。你发现没有，要用户理解 UNIX 和 X window 的操作层面的先进性，才是留住用户的最好办法。如果用户体会不到操作时的方便和高效，内核再好他们也不会理会。</p>
+<p>但是用摹仿 Windows 的作法来吸引用户，永远会失败的。因为 Linux 如果摹仿Windows那一套低效率的方式，那么 Linux 的这套”低效率方式”永远比不上Windows 的那一套”低效率方式”。那么用户就会说：”这个 Linux，没有一样比的上 Windows。”</p>
+<p>Linux 天生就是继承了 UNIX 的高效的工作方式，为什么我们要把它掩盖起来？我们为什么只告诉用户 KDE 的菜单怎么用？我们为什么不能像早期的 X window 书籍那样第一节就告诉用户什么是 X server, 什么是 X client，什么是 Window Manager, 什么是根窗口。第二章就告诉用户窗口有哪些属性，什么是 classname, resource name, hint，怎样使用 .Xdefaults, xrdb ……</p>
+<p>在这里我又不得不说一下那些 Linux 的发行公司和写书的人，他们把 Linux 和X window 包装起来，却没有从基本上告诉用户 X window 的工作原理。很多书籍讲授的层次就是在Gnome, KDE 的菜单操作的层次，靠大量抓图来占篇幅，”繁荣”Linux 书籍市场。</p>
+<p>现在很多人已经把能够利用别人的库写出一个好看的程序作为自己编程水平的象征。在这”图形化”，”可视化” 的年代，你如果还在用 troff, LaTeX 写文档，你还在用VIM 自己编辑 HTML，用 Mutt 处理邮件，你还在用文本模式的 gdb 调试程序，你还在用Xlib 写程序, 你还在用 tin 上 USENET，你还在自己写 Makefile，写机器代码，你还在玩 Clossal Cave 这样的字符模式冒险游戏，那你就是老古董。</p>
+<p>其实这种思想是错误的。虽然你是一个坚决的 Linux 支持者，但是你的思想是 Windows的思想。你认为图形界面，菜单，按钮就可以解决一切问题，就可以给你高效方便。你还是没能摆脱微软给你的潜移默化的东西。<strong>如果你离不开 Windows 那样的环境，你迟早会删掉自己的 Linux。</strong></p>
+<h3 id="GUI-vs-CLI"><a href="#GUI-vs-CLI" class="headerlink" title="GUI vs. CLI"></a>GUI vs. CLI</h3><p>做一个坚定不移的”两面派”！</p>
+<p>大家看到这个标题是不是热血沸腾？两派大虾都可以围攻我了：</p>
+<blockquote>
+<p>GUI派用户：”哇！我一看你这小子就是 CLI 的。要不然自己写什么 Makefile？用什么Mutt？”</p>
+<p>CLI派用户：”切～ 你还用 X！高手都不用 X。你是 GUI 那边的。”</p>
+<p>可怜的我：”555～～ 你们都不要我～～ GUI 和 CLI 就那么水火不容吗？”</p>
+</blockquote>
+<p>计算机界这样的门派之分还很多。很有特点的就是 CLI 和 GUI 了。CLI (Command LIne)的狂热份子声称永远不用 X。我上次在实验室看到一个同学用一个 SecureCRT 登录到Sun 机器，然后用一个 vanilla vi 编辑程序，我建议他启动一个 GVIM 过来显示在Exceed 上可以有语法加亮。但是他坚决反对，说：”高手不用X。你想想，要是我在一个很慢的网络连接怎么用 X？而且好多服务器没有装 X 程序。”</p>
+<p>但是我们实验室的网速可够快，Windows 机器都有 Exceed 啊，而且 Sun 机器有全套X 客户程序包括 GVIM。他说他是 CLI 的坚决拥护者，但是他却在用 Windows，他后来打开了好几个 SecureCRT，每次从文本框输入地址，用户名和密码，从下拉菜单选择”SSH2″，然后点击”Connnect”。他还不断的夸SecureCRT 是”网络管理员投票选出的最受欢迎的登录方式”。老天，SecureCRT 本身就是个 GUI 啊，他其实没有明白X window 的好处。</p>
+<p>你说我是 GUI 的？我虽然很少在 console 下工作。但是我对 bash, VIM 很熟悉，我可以让 bash 按照我的键绑定方式来工作。我可以在 rxvt 里使用 Mutt 来收发 email。我的每个桌面上都常常堆放着一打不同大小的 rxvt。我用 VIM 编辑 LaTeX。我自己写Makefile 来维护 LaTeX 文档。我有时用 mpg321 来放 mp3。我上BBS用的我自己写的expect 脚本。 好了，CLI 派的朋友可以收我做盟友了</p>
+<p>你说我是 CLI 的老古董？我的 FVWM 被我配置为可以”手写操作”，我只要画一个”r”就可以启动 rxvt，我只要画一个 “U” 就可以启动 GVIM，…… 我用 GVIM 语法加亮模式编辑程序，我用 Mozilla 浏览网页，…… GUI 派的现在好像认我做朋友了</p>
+<p>好了。CLI 派的朋友，虽然我很喜欢命令行，但是我有时在屏幕上左右画一下就可以执行:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Module FvwmConsole -terminal rxvt -geometry 45×5-0+0 -<span class="built_in">bg</span> gold -<span class="built_in">fg</span> midnightblue -fn “-adobe-courier-medium-r-*-*-14-*-*-*-*-*-*-*”</span></pre></td></tr></table></figure>
+
+
+<p>你是不是现在又想把我逐出师门？</p>
+<p>GUI 派的朋友，虽然我很喜欢窗口。但是我可以在 FvwmConsole 里输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">All (rxvt) MoveToDesk</span></pre></td></tr></table></figure>
+
+<p>把我所有的 rxvt 移动到我现在工作的桌面。”这家伙，怎么这么快就叛变了！”</p>
+<p>其实何必分什么 GUI 和 CLI，UNIX 和 X window 都是工业标准，它们从设计那天开始就有非常灵活的用法，各个程序，不管是 GUI 还是命令行的都可以互相协作。UNIX 和X 是一家，何必搞的那么偏激，非此即彼？你从我上面的行为可以看出 GUI 和 CLI的模糊界线吗？我就是坚定不移的”两面派”。</p>
+<h3 id="UNIX令人无法拒绝的优点"><a href="#UNIX令人无法拒绝的优点" class="headerlink" title="UNIX令人无法拒绝的优点"></a>UNIX令人无法拒绝的优点</h3><h4 id="UNIX-是简单的"><a href="#UNIX-是简单的" class="headerlink" title="UNIX 是简单的"></a>UNIX 是简单的</h4><p>“我相信简单就是最好，如果太复杂，我是不能理解的。” -Seymour Cray</p>
+<p><em>很多第一次用 Linux 的人会惊奇的发现，Linux 的程序居然不”安装”就可以运行，程序拷贝到随便那个目录都可以用，而不是一定要占用你第一个分区的空间。程序的设置只是一些简简单单的文本文件。你根本不需要什么”注册表修改器” 就可以改变系统的设置。这就叫做简单，但是简单就是美。虽然这只是 UNIX 简单性的一个肤浅的认识，你已经体会到了某些东西。</em></p>
+<p>但是简单并不意味着功能弱，并不意味着落后。相反，简单意味着强大，意味着生命力。</p>
+<p>我不会再继续阐述我理解到的”UNIX 的简单”，因为这个需要自己去体会。</p>
+<h4 id="UNIX-是永恒的"><a href="#UNIX-是永恒的" class="headerlink" title="UNIX 是永恒的"></a>UNIX 是永恒的</h4><p>有人说：”Plan9 会取代 UNIX，Mach 会取代 Linux 内核。”</p>
+<p>但是你如果是一个深入体会了 UNIX 的人，你就会知道：UNIX 的思想是永恒的，不管时过境迁，Plan9 是否代替 UNIX，UNIX 的灵魂都会在 Plan9 身上现形！</p>
+<p>我为同一个设备写过 Linux 内核和 Windows VxD 驱动程序。写 Linux 驱动程序时，我对 UNIX 设计的完美的一致性，远见性所折服。UNIX 用同样界面的 read(), write()系统调用就可以对不同的对象：普通文件，设备文件，管道，管道文件，socket，……进行统一的读写操作。我跟本不需要写一个测试用的应用程序就可以对我的设备驱动进行测试，因为 cat, cp, dd, 它们也使用了同样的 read(), write()，设备和普通文件在应用程序眼里没有区别。在那个还没有 Smalltalk, 没有 C++ 的年代，UNIX 的设计者已经使用了所谓的 “面向对象方法”。对，C 语言也可以实现面向对象。</p>
+<p>UNIX的系统调用几十年都没有很大变化，这非但不是顽固，不进步的象征，反而是UNIX 的远见卓识的体现！这就跟 TeX程序几十年都不变的情况差不多。这些才是真正的永恒的 master piece!你应该改变所有软件都必需从 0.1, 1.0, 1.1, 1.2, 2.0, …, 3.0, 3.1,95, 98, 2000, XP, … 不断升级的想法。</p>
+<p><em>Windows 就不同了，它在最开头只是一个 DOS之上的图形包装而已。后来为了兼容以前的糟糕设计，不得不加上很多累赘。我写VxD 驱动程序的时候就深有体会，Windows 95 程序对设备的操作只有用DeviceIoControl，我不得不写了两个应用程序来对设备驱动进行测试。Windows内核的不一致性和隐密性使我非常恼火。不过 Windows WDM驱动程序现在也有了 ReadFile, WriteFile，…… 那说明什么？那说明Windows 在向 UNIX 学习，或者有可能是某个 UNIX设计人员在微软打了几天临工，顺手加了几个UNIX的东西进去。这样做是没有用的，Windows从一开始就是非常糟糕的设计，它的历史的包袱太沉重了，缝缝补补有什么用？它只能永远的被UNIX 甩在身后！</em></p>
+<h4 id="UNIX-是强大的"><a href="#UNIX-是强大的" class="headerlink" title="UNIX 是强大的"></a>UNIX 是强大的</h4><p>让聪明人干任何他们想干的事情。</p>
+<p>UNIX 的一个特点就是非常高的灵活性，X window也具有这种灵活性。这种灵活性体现在哪里呢？</p>
+<p>UNIX 的程序一般都有很多参数，不管你现在用的着用不着，总有人需要某些参数。它们的行为很多都可以用配置文件来改变。比如GNU bash, 通常缺省的命令行输入方式是 Emacs 方式，但是只要我编辑一个.inputrc 文件，就可以把它变成 vi的输入方式，而且我还可以自己绑定键序列到某些操作。我可以用 shopt来设置它的很多特点，比如是否进行通配符扩展，是否可以把一个变量当作一个目录来cd，是否可以自动纠正某些明显的目录名打字错误……</p>
+<p>UNIX程序设计的思想是提供给用户“机制”，而不限制用户制定“政策”。这是一个重要的尊重用户的作法。</p>
+<p>我们再来看看 X window。X window是一个出色的设计，它把显示服务器和客户程序分开。一个显示上既可以显示本机上的程序，也可以显示别的机器上的X程序，而它们都遵守你的窗口管理器的统一指挥，它们之间可以方便的传送剪贴版数据，各种事件…… 比如有时我的 XFree86 上会出现四个不同机器上的XTerm，两个不同机器上的 GVIM，…… 它们统一受本机上的 FVWM指挥。</p>
+<p>X window 程序都具有很多很多命令行参数和 resource参数。你可以随意的在命令行或者 .Xdefaults文件设置所有的颜色，字体，尺寸…… 而且如果你用 xrdb 把 .Xdefaults导入到根窗口，那么其它机器上没有经过配置的同样的程序，显示到你的机器上的时候也会遵守同样的外观规定。</p>
+<p>X window 的窗口具有 Property,也就是一些可以自己定义的共享数据(原子)。正是因为这些 Property的存在，使得 X window 具有无比强大的生命力。X的窗口管理器和其它客户程序之间并没有统一的协议，但是后来出现了ICCCM(客户程序间通信规范)，这个规范就是通过 property定义的。现在又有人定义了一套“扩展的窗口协议(EWM Hints)”，使得X window 可以具有某些 Windows 的特征，比如一个工具条程序可以告<br>诉窗口管理器：“这个屏幕下面被我占据了24个像素的空间，你最大化程序的时候不要越过这个界线。”</p>
+<p>一个强大的窗口管理程序比如FVWM，它收到这样的提示时，可以答应工具条程序的这个要求，也可以不答应。一切选择的权力在于谁？当然是用户了！</p>
+<p>你想想，是不是有些 Windows 程序常常弹出一个窗口要你选择 “Yes orNo”？你不点击它它就不下去。你觉不觉得你的程序在侵犯你的尊严？你是一个人，一个智慧的生物，怎能受到一个程序如此的待遇？</p>
+<p>还有就是很多 Windows程序把人当成傻瓜，而它是“智能程序”。比如，有一个程序就是喜欢把你的每句话第一个字母都变成大写，我不说它是谁了，你遇到的时候就知道了。</p>
+<p><em>如果连“一句话开头一个字母要大写”这么明显的问题都需要程序帮你纠正的话，人脑还用来干什么？况且如果你故意想要不大写的话，那就更麻烦了，我楞是没有从它那一大堆菜单里找到怎么关闭这个愚蠢的选项。</em></p>
+<h3 id="只有符号才能完全操纵计算机"><a href="#只有符号才能完全操纵计算机" class="headerlink" title="只有符号才能完全操纵计算机"></a>只有符号才能完全操纵计算机</h3><p><em>我们来说说很多初学 Linux 的用户。虽然他们在用 Linux，但是他们打心眼儿里是觉得 Windows 的工作方式好，他们希望 Linux 有一天能”像Windows那样”。你说：”我鼠标一点，我菜单一拉，…… 就可以完成我的操作。” 但是我要告诉你：”Linux 从来没有摹仿 Windows，将来也不会。Linux 从诞生之日起，它的工作方式就比 Windows 的先进。Linux 属于能勇敢面对符号的人。只有符号才能完全操纵计算机。”</em></p>
+<p>看看优秀的 UNIX 程序，XFree86, FVWM, VIM, Emacs, proftpd, Mutt, wget,tin, … 没有一个不是用配置文件来设置选项的。为什么这些程序没有方便的菜单可以用来配置?难道它们的设计者就那么低能，连个图形配置界面也写不出来?</p>
+<p>当然不是。因为图形界面配置方式的能力是极其有限的，而配置文件和程序语言的表达能力却是无限的。用图形界面配置这些程序的话，如果你想达到配 置文件的效果，你需要成百上千的菜单，checkbox, radio button, … 到时候你根本没办法找到你需要修改的地方了!而各个程序的配置文件的语法都有很多相似之处，一般就是一些命令，设置一些变量，参数，…… 一旦用会了一个，其它的也就容易理解了。如果你用惯了 awk, sed, Perl，你会觉得那才是真正的自动化啊。</p>
+<p>鼠标虽然是很好的工具，但是它的表达能力是有限的。你不可能光用鼠标就让电脑完全明白你的意思，它毕竟只有3个按钮。看看我的MetaPost页你就能体会到鼠标的这一弱点。所以我们虽然很喜欢鼠标，但是却不能完全依赖它。</p>
+<h3 id="各个小程序的完美配合"><a href="#各个小程序的完美配合" class="headerlink" title="各个小程序的完美配合"></a>各个小程序的完美配合</h3><p>这就是UNIX最重要的特点了，它就是UNIX设计的思想。让每个程序只具有一项专门的能力，然后让它们合作。X window也继承了这种好传统。</p>
+<p>这恐怕就是Windows和其它操作系统望尘莫及的地方了。UNIX 程序设计之统一，配合之完美，真使我难以置信!shell, grep, find, awk, sed, make, Perl,Emacs, vi, tin, Mutt, … 它们是那么的具有一致性!你一旦学会了 sed 的正则表达式，其它程序基本上都能用了。你一旦学会了 vi 和 VIM, 你会发现它的操作是那么的有规律性，似乎vi的设计者在几十年前就已经设计好了 VIM 在今天的完美而统一的操作方式!而且vi的操作还体现在 Mutt, tin 等很多程序中。你甚至可以把 bash 设置为 vi 的输入方式来输入命令行，我就是这么做的。一个程序可以调用另外一个程序来得到数据，可以把数据交给它处理后返回来，可以在自己的窗口里”嵌入”另外一个程序。</p>
+<p>在 Windows 和其它非 UNIX 操作系统中，这种合作是非常困难的。我曾经在Windows 下使用 Perl来进行一些自动工作。但是 Windows 的文件操作，管道是如此的不稳定，程序之间基本不能合作。你别想在 Visual Studio 窗口里面嵌入UltraEdit 编辑器，你别想用一个 expect 脚本来控制 telnet 到水木清华BBS，这就是为什么 helloooo 诞生在 Linux 而不是 Windows。我曾经试图从Windows + Exceed + SecureCRT ssh 登录到 Sun 机器，然后通过 ssh 的隧道(X11 tunnel)把 X 程序传到 Exceed 上运行，但是搞了两天都没有成功!而在Linux 下这个事情根本就是不用怎么配置的，OpenSSH 和 XFree86 本来就是完美结合，只要打开 ssh 的 “forward X11″ 选项就什么都搞定了。</p>
+<p>Windows 的程序都是大而全，大而杂，所有的电子邮件程序都需要自己提供编辑器，自己发送和收取邮件，自己显示邮件的附件。每一个BBS程序都提供自己的 Virtual Terminal, 自己的通讯代码。每一个 IDE 都自己提供编辑器，编译器，汇编器，调试器。人们为了使用一种新的程序，需要适应所有这些它提供的界面，而不能使用自己喜欢的编辑器的键绑定，菜单组织…… 不能 DIY!</p>
+<p>你要知道，最高级的电脑是定做的，自己想要什么什么CPU，什么主板，多少内存，什么硬盘，键盘，鼠标，显示器都是自己选择的。最高级的滑板，自己想要什么牌子的版面，什么牌子的沙，什么桥，什么轮子，什么轴承，也都是自己选的。最高级的乒乓球拍，木板，胶皮，海绵，胶水都是可以自己选择…… 而用Windows 程序，你得到的是大杂烩，就像你去买”品牌机”，只有那么几种配置，而且附带很多你不需要的软件和服务;就像你去买组装好的滑板，你想要大一点的轮子和窄一点的板子，但是你没有这种选择余地! Windows 程序就相当于最廉价，最次的滑板。但是它却会花你更多的钱，因为一旦一个部件坏了，或者你不喜欢了，你不能另外找一个好的换掉它，你必需重新买全套配件!</p>
+<p>而 UNIX 和 X window 就是高档的”组装货”。比如我用 Mutt 的时候，我可以用VIM 也可以用 pico 来编辑邮件，我可以用 ImageMagick 也可以用 xv 来显示附件里的图片，我可以用 lynx 把 HTML 附件转成文本嵌入窗口中，我也可以把HTML 附件交给 Mozilla 图形显示。我可以让 GnuPG 帮我把邮件进行数字签名和加密，我也可以用其它 PGP 程序。我想让 Postfix 而不是 sendmail 帮我发出邮件，我想让 fetchmail 帮我收邮件，转发给 postfix，然后被我自己写的Perl过滤器处理…… 这一切我都可以办到!我可以选择我最喜欢的专门的程序来完成专门的工作，然后把它们结合在一起，我也可以分别得到它们的好处。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>我写这么多的目的是什么?</p>
+<p><em>我希望喜欢 Linux 的朋友，完全清除微软和Windows 灌输在你脑子里的谬论，别再相信它们所谓的”新技术”，别再追赶Windows，因为追赶 Windows =倒退。</em></p>
+<p>马克思有一个思想很重要，”新生事物并不一定是在最近出现的。” UNIX，X window, TeX 虽然都比 Windows 先出现，但是它们才是先进生产力的代表。我们要清楚的认识到什么才是真正的现代化，什么才是真正的自动化。</p>
+<p>勇敢的拿起像 bash, FVWM, VIM, Emacs, Mutt, lftp …… 这样强大的程序，不要再埋怨”Linux 为什么不能像 Windows 那样”，不要再浪费时间试用这样那样的程序，不要再忙着升级。</p>
+<p><strong>是你需要改变而不是 Linux 和 UNIX</strong>。<strong>Linux 现在就可以成为你的好朋友。</strong>你需要认识它，了解它，信任它，才能完全的靠它来高效的工作，省出时间来处理世界上更加值得处理的事情。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>Lee Sin</a>
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/2020/01/09/Linux技术-1-引言-完全使用Linux工作/" target="_blank" title="Linux技术基础-1 引言 完全使用Linux工作">http://endlesspeak.github.io/2020/01/09/Linux技术-1-引言-完全使用Linux工作/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/29/%E6%B5%85%E8%B0%88%E8%AE%A1%E7%AE%97%E6%9C%BA-%E7%BC%96%E7%A8%8B%E5%8F%91%E5%B1%95%E8%B7%AF%E7%BA%BF%E2%80%94%E2%80%94%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E8%84%B1%E5%8F%91%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">浅谈计算机&amp;编程发展路线——自顶向下脱发方法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#转变你的观念"><span class="nav-number">1.</span> <span class="nav-text">转变你的观念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux可以高效的工作"><span class="nav-number">1.1.</span> <span class="nav-text">Linux可以高效的工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UNIX-不是计算机专家的专利"><span class="nav-number">1.2.</span> <span class="nav-text">UNIX 不是计算机专家的专利</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微软的实际地位"><span class="nav-number">1.3.</span> <span class="nav-text">微软的实际地位</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机教育的现状"><span class="nav-number">2.</span> <span class="nav-text">计算机教育的现状</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows-笼罩下的中国计算机教育"><span class="nav-number">2.1.</span> <span class="nav-text">Windows 笼罩下的中国计算机教育</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发达国家的计算机教育"><span class="nav-number">2.2.</span> <span class="nav-text">发达国家的计算机教育</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微软和它的朋友们的如意算盘"><span class="nav-number">2.3.</span> <span class="nav-text">微软和它的朋友们的如意算盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反对使用Windows的原因"><span class="nav-number">2.4.</span> <span class="nav-text">反对使用Windows的原因</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows与Linux的比较"><span class="nav-number">3.</span> <span class="nav-text">Windows与Linux的比较</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows-能做的有益的事情-Linux-都能做"><span class="nav-number">3.1.</span> <span class="nav-text">Windows 能做的有益的事情 Linux 都能做</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows-能做的那些没用的事情-Linux-永远做不好"><span class="nav-number">3.2.</span> <span class="nav-text">Windows 能做的那些没用的事情 Linux 永远做不好</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#电脑游戏"><span class="nav-number">3.2.1.</span> <span class="nav-text">电脑游戏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#“整理硬盘，优化系统“"><span class="nav-number">3.2.2.</span> <span class="nav-text">“整理硬盘，优化系统“</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IDE"><span class="nav-number">3.2.3.</span> <span class="nav-text">IDE</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-能干的高精尖的事情-Windows-都干不了"><span class="nav-number">3.3.</span> <span class="nav-text">Linux 能干的高精尖的事情 Windows 都干不了</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-干不了的有用的事情-Windows-照样干不了"><span class="nav-number">3.4.</span> <span class="nav-text">Linux 干不了的有用的事情 Windows 照样干不了</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#颠覆你的信仰"><span class="nav-number">4.</span> <span class="nav-text">颠覆你的信仰</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#“现在我知道-Windows-是垃圾，我该用什么？”"><span class="nav-number">4.1.</span> <span class="nav-text">“现在我知道 Windows 是垃圾，我该用什么？”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GUI-vs-CLI"><span class="nav-number">4.2.</span> <span class="nav-text">GUI vs. CLI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UNIX令人无法拒绝的优点"><span class="nav-number">4.3.</span> <span class="nav-text">UNIX令人无法拒绝的优点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#UNIX-是简单的"><span class="nav-number">4.3.1.</span> <span class="nav-text">UNIX 是简单的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UNIX-是永恒的"><span class="nav-number">4.3.2.</span> <span class="nav-text">UNIX 是永恒的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UNIX-是强大的"><span class="nav-number">4.3.3.</span> <span class="nav-text">UNIX 是强大的</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#只有符号才能完全操纵计算机"><span class="nav-number">4.4.</span> <span class="nav-text">只有符号才能完全操纵计算机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#各个小程序的完美配合"><span class="nav-number">4.5.</span> <span class="nav-text">各个小程序的完美配合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结论"><span class="nav-number">5.</span> <span class="nav-text">结论</span></a></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2020 无涯峰 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+
+  
+<script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            无涯峰
+          </div>
+          <div class="panel-body">
+            Copyright © 2020 Lee Sin All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
