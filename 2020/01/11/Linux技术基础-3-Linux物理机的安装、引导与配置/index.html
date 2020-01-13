@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>linux技术基础-3 linux物理机的安装、引导与配置 | 无涯峰</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Linux" />
+  
+  
+  
+  
+  <meta name="description" content="Parrot Sec OS是Linux发行版中十大渗透测试系统之一，为广大渗透测试工作者提供了大量已经集成好的测试工具。桌面采用的是基于Gnome的Mate桌面，外观上非常炫酷，科技感十足。系统中编程环境完善，支持C++、Java、Python等多种语言编程，官方还提供了多种版本以适应不同电脑下载。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux技术基础-3 Linux物理机的安装、引导与配置">
+<meta property="og:url" content="http:&#x2F;&#x2F;endlesspeak.github.io&#x2F;2020&#x2F;01&#x2F;11&#x2F;Linux%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80-3-Linux%E7%89%A9%E7%90%86%E6%9C%BA%E7%9A%84%E5%AE%89%E8%A3%85%E3%80%81%E5%BC%95%E5%AF%BC%E4%B8%8E%E9%85%8D%E7%BD%AE&#x2F;index.html">
+<meta property="og:site_name" content="无涯峰">
+<meta property="og:description" content="Parrot Sec OS是Linux发行版中十大渗透测试系统之一，为广大渗透测试工作者提供了大量已经集成好的测试工具。桌面采用的是基于Gnome的Mate桌面，外观上非常炫酷，科技感十足。系统中编程环境完善，支持C++、Java、Python等多种语言编程，官方还提供了多种版本以适应不同电脑下载。">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;12&#x2F;loiVVU.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;12&#x2F;lTrrqJ.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;12&#x2F;lTsGQO.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;12&#x2F;lTsaTA.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;12&#x2F;lTs8SK.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;12&#x2F;lTsgmQ.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;12&#x2F;lTsfkn.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;12&#x2F;lTsolT.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;13&#x2F;lT4END.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;13&#x2F;lT57wV.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;13&#x2F;lHKcX8.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;13&#x2F;l775RO.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;13&#x2F;l7O8De.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;13&#x2F;lHpLwT.png">
+<meta property="article:published_time" content="2020-01-11T12:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-13T10:44:41.147Z">
+<meta property="article:author" content="Lee Sin">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;12&#x2F;loiVVU.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="无涯峰" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="https://s2.ax1x.com/2019/12/30/lQghKH.jpg">
+  <link rel="apple-touch-icon" href="/https://s2.ax1x.com/2019/12/30/lQghKH.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+
+  </style>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/js/bootstrap.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    
+<link rel="stylesheet" href="/css/dialog.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+  
+  
+
+<meta name="generator" content="Hexo 4.1.0"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="https://s2.ax1x.com/2019/12/30/lQghKH.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Linux技术基础-3-Linux物理机的安装、引导与配置" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Linux技术基础-3 Linux物理机的安装、引导与配置
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2020/01/11/Linux%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80-3-Linux%E7%89%A9%E7%90%86%E6%9C%BA%E7%9A%84%E5%AE%89%E8%A3%85%E3%80%81%E5%BC%95%E5%AF%BC%E4%B8%8E%E9%85%8D%E7%BD%AE/" class="article-date">
+	  <time datetime="2020-01-11T12:00:00.000Z" itemprop="datePublished">2020-01-11</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Linux%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/">Linux技术基础</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://s2.ax1x.com/2020/01/12/loiVVU.jpg" alt=""></p>
+<p>Parrot Sec OS是Linux发行版中十大渗透测试系统之一，为广大渗透测试工作者提供了大量已经集成好的测试工具。桌面采用的是基于Gnome的Mate桌面，外观上非常炫酷，科技感十足。系统中编程环境完善，支持C++、Java、Python等多种语言编程，官方还提供了多种版本以适应不同电脑下载。</p>
+<a id="more"></a>
+
+<p>本文拟以Parrot Sec OS为例，讲解如何在物理机上安装Linux发行版。选择Parrot Linux的主要原因是Windows 10+Linux双系统中Parrot Linux对<code>NVIDIA</code>显卡的“支持”比较好——在未安装对应显卡驱动前，可以选择不使用<code>NVIDIA</code>显卡，这样就不会出现无法进入Linux系统的情况。</p>
+<blockquote>
+<p>笔者曾经在笔记本上尝试安装Ubuntu 18.04 LTS，由于无法关闭显卡支持，卡死在Logo加载界面无法进入系统。当然这一问题早有解决方案，只是当时笔者并未找到而已。如果读者存有这方面的顾虑，可以先了解有关电脑的详细配置，而后在社区中寻找适合的发行版和安装的详细方法。</p>
+</blockquote>
+<p>当然，NVIDIA显卡这方面的支持在如今日趋完善，各大社区论坛中关于对显卡的适配已经是八仙过海各显神通了，关于独立显卡的支持，读者大可放心。</p>
+<p>话说回来，在物理机上安装双系统乃至多系统并不是一件多么可怕的事情，这一点读完本文即可得到证实。</p>
+<p>在开始讲Linux的安装之前，必须明确一个先决条件：<strong>你的计算机中已经安装有一个或多个Windows版本</strong>(不论它/它们是Win98、2000、Vista还是Win7、Win8、Win10)。这是因为如果你在空物理机(空物理机指的是上面没有任何操作系统)上安装Linux，以后再要安装Windows系统，那么Windows的引导程序就会将Linux的引导程序<strong>覆盖</strong>。引导覆盖会使得你无法再进入Linux系统，即使它事实上还是存在于你的计算机之中的。</p>
+<blockquote>
+<p>当然，这个问题可以修复，并且以后会详细谈到；但如果你确实这么做，解决方法很麻烦。</p>
+</blockquote>
+<h2 id="安装前的准备"><a href="#安装前的准备" class="headerlink" title="安装前的准备"></a>安装前的准备</h2><h3 id="浅析MBR引导和UEFI引导"><a href="#浅析MBR引导和UEFI引导" class="headerlink" title="浅析MBR引导和UEFI引导"></a>浅析MBR引导和UEFI引导</h3><p>当一块硬盘接驳主机之后，它的首要任务是建立分区列表，分区列表有MBR和GPT两种，其中MBR分区模式只能分4个主分区，分区列表最大为<strong>2.1TB</strong>的硬盘，GPT分区列表则支持 <strong>9.4ZB硬盘（9.4ZB=1024EB=94亿TB）</strong> 。至于NTFS，FAT32，EXT4等等是文件系统，这就像是你给分好区的硬盘上打上格子，方便填充数据。至于打成什么样的格子由你自己决定，现在WIN主流是NTFS。 </p>
+<p><strong>MBR分区表</strong>(Master Boot Record):即硬盘的主引导记录分区列表，在主引导扇区，只支持容量在 2.1TB 以下的硬盘，超过2.1TB的硬盘只能管理2.1TB，最多只支持4个主分区或三个主分区和一个扩展分区，扩展分区下可以有多个逻辑分区。 </p>
+<p><strong>GPT分区表</strong>(GUID Partition Table):即全局唯一标识分区列表，是一个物理硬盘的分区结构。它用来替代BIOS中的主引导记录分区表（MBR）。Windows最大仅支持<strong>128</strong>个GPT分区，GPT可管理硬盘大小达到了<strong>18EB</strong>( <strong>1<em>EB</em>=1024PB ,1PB=1024TB</strong>)。</p>
+<p>另外需要注意的是：<strong>只有基于UEFI平台的主板才支持GPT分区引导启动。</strong></p>
+<p><strong>UEFI</strong>(Unified Extensible Firmware Interface):全称“统一的可扩展固件接口”， 是一种详细描述全新类型接口的标准。这种接口用于操作系统自动从预启动的操作环境，加载到一种操作系统上，从而使开机程序化繁为简，节省时间。</p>
+<p><strong>ESP分区</strong>(EFI system partition):该分区用于采用了EFI BIOS的电脑系统，用来启动操作系统。分区内存放引导管理程序、驱动程序、系统维护工具等。如果电脑采用了EFI系统，或当前磁盘用于在EFI平台上启动操作系统，则应建议ESP分区。 </p>
+<p><strong>MSR分区</strong>：即微软保留分区，是GPT磁盘上用于保留空间以备用的分区，例如在将磁盘转换为动态磁盘时需要使用这些分区空间。 </p>
+<p><strong>归纳1：</strong>传统BIOS不支持GPT分区列表，仅支持MBR格式。新型引导方式UEFI则取代传统BIOS，它加入了对新硬件的支持，其中就有2TB以上硬盘。它不支持MBR模式，仅支持GPT格式。</p>
+<p>近两年出现的UEFI主板，采用UEFI+BIOS共存模式，并且在BIOS中集成UEFI启动项。</p>
+<p><strong>BIOS+MBR已经趋于淘汰，UEFI+GPT是大势所趋。</strong></p>
+<p>GPT这种新型磁盘模式，与我们常用的MBR磁盘相比更稳定，自纠错能力更强。 对于WinXP系统来说，它无法识别GPT磁盘，对于Win7、Win8来说，GPT磁盘可以任意读写，但无法安装操作系统。GPT磁盘必须在使用支持FEI的主板后才可以安装Win7、Win8。</p>
+<p>GPT磁盘的保留分区（隐藏分区）又称为FEI保留分区，可以防止将该磁盘挂接到XP系统中被误认为是未格式化的磁盘而格式化，导致数据丢失。该保留分区在将硬盘初始化（或转化）为GPT模式时自动创建，大小随硬盘总容量而定。 </p>
+<p>一般来说，GPT格式的磁盘至少有三个区，<strong>第一个是EFI系统保护区（默认隐藏不加载）第二个是MSR微软保留分区，第三个是系统数据分区</strong>。 </p>
+<p><strong>归纳2：</strong>如果你的电脑是Win10系统，那么一般是GPT分区，使用UEFI引导；如果是Win7、8的系统，那么也是GPT分区，而引导方式则有待商榷(不排除是MBR)；如果是WinXP或者Win98系统，那一定是MBR分区引导。(话说回来这年头真的还有人用Win98吗？)</p>
+<blockquote>
+<p>如果你不确定自己电脑的BIOS引导模式，请右键单击任务栏的Win图标，单击运行，输入msinfo32，按回车打开系统信息(你也可以通过控制面板/系统与安全/管理工具/系统信息来打开这个界面)。在系统信息中寻找BIOS模式，观察是否是UEFI。</p>
+</blockquote>
+<h3 id="压缩卷以提供空间给Linux"><a href="#压缩卷以提供空间给Linux" class="headerlink" title="压缩卷以提供空间给Linux"></a>压缩卷以提供空间给Linux</h3><p>磁盘分区是Linux安装中重要的部分，也是最困难的部分，因为Linux的文件系统和Windows有别。</p>
+<p>首先要明确的是，你的电脑已安装有Windows系统。那么，你选择要安装Linux，你必须划分出，一块空间用于Linux的安装。</p>
+<p>划分的方法：在Windows中右击我的电脑，在弹出的菜单中选择管理，在弹出的对话框中选择存储，在存储栏下选择磁盘管理，以加载虚拟磁盘服务。</p>
+<p>选择一块空间充足(推荐40GB空闲空间以上)的分区，右键选择压缩卷，然后压缩出至少40960MB空间(<strong>最好是和已有的分区大小不同，原因见下</strong>)。压缩卷的意思是实际要从该卷中分多少空间出来作为新卷(即新分区)用，压缩卷的容量不能超过对话框中的“可用压缩卷大小”。</p>
+<blockquote>
+<p>需要记住该压缩卷的空间大小，且最好是和已有的分区大小不同，因为在Linux下各个分区的标识符和Windows下完全不同，甚至可以说是毫无关联。所以届时可能需要通过空间大小来识别你分配的用于Linux安装的是哪一部分空间。</p>
+</blockquote>
+<h3 id="制作及调整启动媒体"><a href="#制作及调整启动媒体" class="headerlink" title="制作及调整启动媒体"></a>制作及调整启动媒体</h3><p>第一，在你所选择的发行版官网上下载ISO镜像文件。</p>
+<p>我所使用的Parrot Sec OS下载地址为：<a href="https://parrotlinux.org" target="_blank" rel="noopener">https://parrotlinux.org</a> </p>
+<p>官网上的ISO镜像文件一般分为多种版本，目前Parrot Linux分为Security、Home/Workstation、Other Builds三种版本。个人用户一般选择Security或者Home均可。<em>如果希望拥有完整的编程环境和渗透测试工具集的话，选择Security版本。</em></p>
+<p>在接下来的Installer ISO分类中选择Parrot Security(Mate)或者KDE Edition(KDE Plasma)均可。Mate桌面环境是基于Gnome的，而KDE Plasma则采用的是Kit Desktop Environment。如果要安装在虚拟机上，可以选择Parrot Security也可以选择Virtual Appliance。</p>
+<p>第二，在下载完成ISO后，使用UItraISO(软碟通)工具制作U盘启动盘(即安装所需的启动媒体)。</p>
+<p>第三，重启电脑进入BIOS，进行Boot设置。</p>
+<p>BIOS的进入，不同的电脑按键不一样，需要先了解自己的机型与配置，而后百度/谷歌。一般来说，在开机的时候<strong>连按</strong>Del键(Del键位于小键盘上)进入BIOS。进入后设置启动顺序。</p>
+<ol>
+<li>HDD代表的是硬盘启动；</li>
+<li>USB代表从USB接口启动；</li>
+<li>FDD、CD/DVD、NetWork代表是软盘，光驱和网卡，一般不使用。</li>
+</ol>
+<p>将从硬盘启动设置到从U盘启动，然后保存退出即可。</p>
+<p>当然，由于U盘启动是临时安装时使用，也可以不进入BIOS设置启动顺序，而是在开机的时候<strong>连按</strong>ESC键，在弹出的设备启动界面中选择从U盘启动即可。</p>
+<blockquote>
+<p>注意：</p>
+<ol>
+<li><p>部分电脑可能设置有Security Boot，如果切换为U盘启动，会提示：<br><strong>Secure Boot Violation</strong>:Invalid signature detected,check secure boot policy in setup. </p>
+<p>这种情况需要进入BIOS设置界面，在Security选项卡下选择secure boot control选项，调整该选项的属性为disable，保存并退出。</p>
+</li>
+<li><p>部分电脑可能在开机时按ESC键不会出现设备启动界面，这可能是由于电脑所使用的主板默认设置的并不是ESC键呼出设备启动界面；也可能是主板根本没有设备启动界面这一项设置。具体需要自行查阅自己电脑的主板信息。(尤其是淘换来的二手主板或寨板等等)</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="安装Parrot-Linux"><a href="#安装Parrot-Linux" class="headerlink" title="安装Parrot Linux"></a>安装Parrot Linux</h2><p>下面以Parrot Linux为例，说明如何安装Linux发行版。以后会补充一部分Ubuntu、Arch等发行版安装过程中可能产生的问题及解决方案。</p>
+<ol>
+<li><p>确认一切安装准备都就绪后，插入作为启动媒体的U盘，并重启电脑，选择从U盘启动。</p>
+</li>
+<li><p>进入到如下图所示的安装界面，选择Install.<br><img src="https://s2.ax1x.com/2020/01/12/lTrrqJ.png" alt=""></p>
+</li>
+</ol>
+<blockquote>
+<p>注意：从上图可以清楚的看到有一个模式是”<strong>Live Mode</strong>“启动模式，这个选项表示用户可以直接启动预载于启动媒体中的Linux系统，不需要经过安装步骤。该模式的作用是给用户预览一下此系统是怎么样的，是否符合用户预期。试用系统一般不会改变计算机中的内容。</p>
+</blockquote>
+<ol start="3">
+<li><p>选择安装模式，选择Install with GTK GUI以提供图形用户界面的配置。</p>
+</li>
+<li><p>语言选择中文(简体)，当然你也可以选择English。<br><img src="https://s2.ax1x.com/2020/01/12/lTsGQO.png" alt=""></p>
+</li>
+<li><p>选择区域为中国。<br><img src="https://s2.ax1x.com/2020/01/12/lTsaTA.png" alt=""></p>
+</li>
+<li><p>选择键盘映射为汉语，等待其加载组件完成。</p>
+</li>
+<li><p>设置<strong>管理员</strong>用户名与密码，默认的管理员用户名是root，密码自行设置。</p>
+<p><img src="https://s2.ax1x.com/2020/01/12/lTs8SK.png" alt=""></p>
+</li>
+<li><p>设置普通用户的用户名和密码</p>
+<blockquote>
+<p>注意：普通用户的密码和管理员用户密码不要填写同一个密码！关于普通用户与管理员用户的关系以后会详细讨论。</p>
+</blockquote>
+</li>
+<li><p>磁盘分区——这是最关键的一步，一定要慎之又慎。</p>
+<p><img src="https://s2.ax1x.com/2020/01/12/lTsgmQ.png" alt=""></p>
+<p>如果是安装仅Linux系统而无Windows系统，可以选择向导(使用整个磁盘)；如果是计算机先已安装有Windows，再安装Linux，则应当选择手动分区，然后单击继续按钮。</p>
+<blockquote>
+<p>对于Linux系统而言，必须有<strong>根分区</strong>(简称一切的根)”root”和<strong>交换分区</strong>“swap”。</p>
+<p>根分区被用来存放系统所必须的文件，它被挂载到根目录(/)下。</p>
+<p>交换分区则相当于Windows中的虚拟内存概念。该交换分区被当做低速RAM使用。Parrot Linux允许用户不显式地指派交换分区，如果你的系统不是很忙而内存又很充裕的话。</p>
+</blockquote>
+<p>手动分区界面中，用户可以自行建立分区方案。缺省的分区方案如下：</p>
+<ol>
+<li>将所有文件放在同一个分区中(推荐新手使用)；</li>
+<li>将/home放在单独的分区</li>
+<li>将/home、/var和/temp都分别放在单独的分区。</li>
+</ol>
+<p>选定分区方案后继续，在分区表中还可以单击各分区对其进行修改，配置详细信息。</p>
+<p>对于其他发行版，手动分区可能需要自行创建各个分区，故下面以建立根分区为例介绍建立各个分区的过程：</p>
+<ol>
+<li><p>选定之前划分的特定空间，创建一个新分区。</p>
+</li>
+<li><p>由于创建的是根分区，分区容量默认为全部剩余空间。</p>
+</li>
+<li><p>挂载点设置为”/“表示将该分区挂载至根目录下。</p>
+<blockquote>
+<p>swap分区不需要挂载点，其大小指派4G-8G均可。</p>
+</blockquote>
+</li>
+<li><p>主分区和逻辑分区的文件系统一般都设置为EXT4日志文件系统，当然为了更好的扩展性，你也可以选择btrfs文件系统。EXT4和btrfs文件系统可以转换，因此不必过分纠结。如果某些分区有默认文件系统，就选择默认。</p>
+<blockquote>
+<p>文件系统似乎是内核中比较稳定的部分，人们一直使用的 ext2/3在近年来暴露出了一些扩展性问题，于是便催生了 ext4 。然而很多目前有关 ext4 的文章都不约而同地提到了 btrfs，并认为 ext4 将是一个过渡的文件系统。 ext4 的作者 Theodore Tso 也盛赞 btrfs 并认为 btrfs 将成为下一代 Linux 标准文件系统。</p>
+</blockquote>
+</li>
+</ol>
+<p>一般来说，分区可设置为两个”/“(主分区),”swap”(逻辑分区)。如果空闲空间非常充足，可以划分的更加详细一些，例如建立boot(即根分区)，swap，/home三个分区或者更多等等。</p>
+<p><img src="https://s2.ax1x.com/2020/01/12/lTsfkn.png" alt=""></p>
+</li>
+<li><p>完成了磁盘分区的操作后，需要将GRUB安装至硬盘。</p>
+<p><img src="https://s2.ax1x.com/2020/01/12/lTsolT.png" alt=""></p>
+<p>不论电脑上是Windows+Linux，还是仅有Linux，你都需要安装GRUB。GRUB用于引导Linux的启动。单击继续后在接下来的界面中选择将GRUB安装到手动输入设备/dev/sda上。然后耐心等待安装完成。</p>
+</li>
+<li><p>出现如图所示的界面则证明安装成功。</p>
+<p><img src="https://s2.ax1x.com/2020/01/13/lT4END.png" alt=""></p>
+<blockquote>
+<p>注：安装介质就是插入的U盘。在点击重启的时候，应当拔出作为启动媒体的U盘。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="安装后的配置"><a href="#安装后的配置" class="headerlink" title="安装后的配置"></a>安装后的配置</h2><h3 id="GNU-Grub-Version-2-02"><a href="#GNU-Grub-Version-2-02" class="headerlink" title="GNU Grub Version 2.02"></a>GNU Grub Version 2.02</h3><p>重启系统后<strong>最可能遇到问题</strong>的就是出现GNU Grub Version 2.02界面了。<br>(不同的电脑可能出现的Grub的版本号不相同)<br>出现该界面表明Grub引导出现了问题，需要手动引导电脑进入操作系统。</p>
+<blockquote>
+<p>GNU Grub Version 2.02界面是指电脑会卡在开机自检后的一个黑屏界面上，电脑要求输入命令。命令行会提示grub&gt;</p>
+</blockquote>
+<p>出现该界面有两个解决方案，分述如下：</p>
+<p>解决方案一(老鸟使用)：</p>
+<ol>
+<li><p>通过设置参数手动从grub引导电脑进入操作系统</p>
+<p>先使用ls命令，找到你的Linux安装在哪个分区(<em>grub&gt;为电脑显示，后面是输入的命令</em>)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">grub&gt;ls</span></pre></td></tr></table></figure>
+
+<p>该命令会会罗列所有的磁盘分区信息，比如显示：(hd0,1),(hd0,5),(hd0,3),(hd0,2)</p>
+</li>
+<li><p>然后依次调用如下命令： X表示每个分区的标识符。</p>
+<p>如果之前安装Linux时/boot没有进行单独分区，则用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">grub&gt;ls (hd0,X)/boot/grub</span></pre></td></tr></table></figure>
+
+<p>如果之前安装Linux时对/boot进行了单独分区，则用下列命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">grub&gt;ls (hd0,X)/grub</span></pre></td></tr></table></figure>
+</li>
+<li><p>找到包含/boot的分区后，系统会列出很多文件，这表明Linux安装在该分区。</p>
+<p>假设找到（hd0,5）时，显示了文件，现在设法临时性将grub的两部分关联起来：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">grub&gt;<span class="built_in">set</span> root=(hd0,5)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">grub&gt;<span class="built_in">set</span> prefix=(hd0,5)/boot/grub <span class="comment">#/boot没有进行单独分区</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">grub&gt;<span class="built_in">set</span> prefix=(hd0,5)/grub <span class="comment">#/boot进行了单独分区</span></span></pre></td></tr></table></figure>
+</li>
+<li><p>调用如下命令，就可以加载出grub引导菜单。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">grub&gt;normal</span></pre></td></tr></table></figure>
+</li>
+<li><p>见方案二第2步。</p>
+</li>
+</ol>
+<p>解决方案二(新手使用)：</p>
+<ol>
+<li><p>重启，然后在开机的时候<strong>连按</strong>ESC键，在弹出的设备启动界面中选择LInux。</p>
+</li>
+<li><p>成功进入Linux后，在终端执行：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ sudo update-grub</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">$ sudo grub-install /dev/sda</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">$ reboot <span class="comment">#重启</span></span></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<p>注意：</p>
+<ol>
+<li>$ 标识符是命令行中默认的提示，输入时不必加上。</li>
+<li>sudo命令会提示输入管理员密码，输入密码时屏幕是没有显示的，此处要注意。</li>
+</ol>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2020/01/13/lT57wV.png" alt=""></p>
+<blockquote>
+<p>注意：</p>
+<p><strong>sda是你的硬盘号</strong>，输入sdb,sdc等都不对；</p>
+<p><strong>分区号码不要指定</strong>，输入sda1，sda5等都不对。重启后检查是否已经恢复了grub的启动菜单。</p>
+</blockquote>
+<p>即使重启后能顺利地进入Linux系统，我也建议在终端执行上述三条命令，因为笔者自己电脑的Grub是在进入Windows后重启再进入Linux的时候失效的。所以更新Grub是必须的操作，除非你每次开机的时候都调出设备启动界面手动选择要启动的操作系统。</p>
+<h3 id="Wlan0-No-Wireless-connection"><a href="#Wlan0-No-Wireless-connection" class="headerlink" title="Wlan0:No Wireless connection"></a>Wlan0:No Wireless connection</h3><p>在终端输入下面的命令，检查返回结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ iwconfig</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#一般(没有无线网卡的电脑)会出现下面的返回结果。</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">eth0:no wireless connection</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">lo:no wireless connection</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#如果(有无线网卡的电脑)出现的结果同上，那么说明无线网络配置有问题，需要重新进行配置</span></span></pre></td></tr></table></figure>
+
+<p>eth0表示的是以太网(有线网络)，lo表示的是本地环回，wlan0表示的是以太网(无线网络)。必须出现wlan0才表示有无线网络连接。如果没有显示wlan0，说明驱动安装不正确。进行下列操作：</p>
+<ol>
+<li><p>检查电脑是否有无线网卡，且无线网卡是否插好(笔记本略过此步骤)</p>
+</li>
+<li><p>输入下面两条命令中的任意一条。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ lspci | grep Network </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">$ lspci | grep -i net</span></pre></td></tr></table></figure>
+
+<p>在返回的结果中寻找wireless Network Adapter的版本信息。例如，笔者自己的电脑无线网卡版本在终端中显示为 RTL8821CE。</p>
+<p>如果智商实在不在线，建议重启后进入Windows系统，进入控制面板/网络和Internet/网络和共享中心/左侧的更改适配器设置→进入网络连接，查看WLAN下的属性信息，如下图所示：</p>
+<p><img src="https://s2.ax1x.com/2020/01/13/lHKcX8.png" alt=""></p>
+</li>
+<li><p>在github网站上下载一份驱动。对于RTL8821CE，这里推荐tomaspinho/rtl882ce。 </p>
+</li>
+<li><p>下载解压缩，在下载的文件夹中(一般是/home/download)右键→在终端中打开，然后执行下面的命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ sudo ./dkms-install.sh</span></pre></td></tr></table></figure>
+</li>
+<li><p>命令执行完成后再次执行iwconfig命令，如果出现了wlan0，说明驱动安装成功。</p>
+</li>
+<li><p>点击右上角的无线网，即可连接到无线网。</p>
+</li>
+</ol>
+<h3 id="更新源配置"><a href="#更新源配置" class="headerlink" title="更新源配置"></a>更新源配置</h3><ol>
+<li><p>查看当前的Parrot Security镜像源，输入命令：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ parrot-mirror-selector</span></pre></td></tr></table></figure>
+<p> <img src="https://s2.ax1x.com/2020/01/13/l775RO.png" alt=""></p>
+</li>
+<li><p>修改Parrot Security更新源</p>
+<p> 众所周知，Linux发行版一般为国外公司(使用Deepin OS/Red Flag等国产发行版的当我没说)，一般它们的更新源都部署在国外的服务器上，国内访问会很缓慢。故此，需要修改发行版的更新源为国内的镜像，以提高更新速度。当然，这并不是必须的。笔者实测使用默认源的平均更新速度600KB/S。</p>
+<p> 在终端执行以下命令(如果还不知道Vim/Vi是什么建议先略过）：</p>
+<blockquote>
+<p>注意，Parrot Linux有相当多配置文件的存放位置与其他Debian发行版位置不同！</p>
+</blockquote>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ vim /etc/apt/sources.list.d/parrot.list</span></pre></td></tr></table></figure>
+
+<p> <img src="https://s2.ax1x.com/2020/01/13/l7O8De.png" alt=""></p>
+<p> 使用#注释掉之前的更新源，而后将下面的代码根据地理位置任选一二拷贝到文件尾。</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#中科大和USTCLUG</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">deb http:<span class="comment">//mirrors.ustc.edu.cn/parrot parrot main contrib non-free</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#北京清华大学，TUNA协会</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">deb https:<span class="comment">//mirrors.tuna.tsinghua.edu.cn/parrot/ parrot main contrib non-free</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#上海大学</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">deb https:<span class="comment">//mirrors.shu.edu.cn/parrot/ parrot main contrib non-free</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#上海交通大学 NIX用户组</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">deb https:<span class="comment">//mirrors.sjtug.sjtu.edu.cn/parrot/ parrot main contrib non-free</span></span></pre></td></tr></table></figure>
+
+<p> 按<strong>ESC</strong>键，输入“ <strong>:wq</strong>” 回车，以保存配置文件并退出。</p>
+</li>
+<li><p>执行下面两条更新命令，第二和第三条命令任选一条执行即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">$ sudo apt-get upgrade</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">$ sudo apt-get dist-upgrade</span></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：</p>
+<ol>
+<li><p>update是更新软件的<strong>列表信息</strong>,包括版本,依赖关系等</p>
+</li>
+<li><p>upgrade在不改变现有软件设置的基础上更新<strong>软件</strong></p>
+</li>
+<li><p>dist-upgrade在会改变配置文件和改变旧的依赖关系基础上更新<strong>软件</strong></p>
+</li>
+</ol>
+</blockquote>
+<p>更新版本实际上就是更新软件包，由于Debian系列发行版都采用的是滚动升级，所以dist-upgrade仅用来升级软件，而dist-upgrade则用来更新版本。(版本升级会修改大量配置文件) </p>
+</li>
+</ol>
+<h3 id="安装中文输入法"><a href="#安装中文输入法" class="headerlink" title="安装中文输入法"></a>安装中文输入法</h3><ol>
+<li><p>安装Google拼音输入法，在终端输入命令：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install fcitx-googlepinyin</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">$ reboot</span></pre></td></tr></table></figure>
+</li>
+<li><p>安装IBUS拼音输入法，在终端输入命令：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install ibus ibus-clutter ibus-gtk ibus-gtk3 ibus-qt4</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">$ im-config -s ibus <span class="comment">#启动iBus框架</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install ibus-pinyin</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">$ sudo ibus-setup <span class="comment">#打开iBus设置</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">$ reboot</span></pre></td></tr></table></figure>
+</li>
+<li><p>安装搜狗拼音输入法，在终端依次输入下列命令：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ sudo apt --fix-broken install</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">$ sudo apt-get dist-upgrade</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install fcitx fcitx-frontend-gtk2 fcitx-module-dbus fcitx-bin fcitx-frontend-gtk3 fcitx-module-kimpanel fcitx-config-common fcitx-frontend-qt4 fcitx-module-lua fcitx-config-gtk fcitx-frontend-qt5 fcitx-modules fcitx-data fcitx-module-x11 fcitx-frontend-all fcitx-libs-dev fcitx-ui-classic</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">$ reboot</span></pre></td></tr></table></figure>
+
+<p> 如果安装任何软件的过程中提示依赖关系有错误 ，则在终端尝试输入命令解决：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install -f</span></pre></td></tr></table></figure>
+</li>
+<li><p>安装搜狗拼音输入法也可以尝试在搜狗官网上下载deb安装包，然后在下载位置打开终端，执行下面的命令：（最后的字符串是安装包名，请自行替换）</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ sudo dpkg -i sogoupinyin_2.2.0.0108_amd64.deb</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">$ reboot</span></pre></td></tr></table></figure>
+
+<p> <img src="https://s2.ax1x.com/2020/01/13/lHpLwT.png" alt=""></p>
+</li>
+</ol>
+<h3 id="DIY桌面环境"><a href="#DIY桌面环境" class="headerlink" title="DIY桌面环境"></a>DIY桌面环境</h3><ol>
+<li><p>Mate桌面下更换主题</p>
+<p> 可以在系统自带的主题中选择选择喜欢的主题，然后应用；也可以访问下面的网址。 </p>
+<p> Parrot系统 访问：<a href="https://www.mate-look.org/" target="_blank" rel="noopener">https://www.mate-look.org/</a>  (需要VPN)<br> Kali系统 访问：<a href="https://www.gnome-look.org/browse/cat/135/ord/latest/" target="_blank" rel="noopener">https://www.gnome-look.org/browse/cat/135/ord/latest/</a>  (访问缓慢)</p>
+<p> 注意一定要选择3.x版本的主题才适合，因目前的Mate桌面环境是基于Gnome 3的。 </p>
+</li>
+<li><p>Mate桌面环境更换为KDE桌面环境</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">$ sudo apt-get dist-upgrade</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install parrot-kde</span></pre></td></tr></table></figure>
+
+<p> 执行第三条命令后系统会提示选择默认会话窗口，需要从lightdm改为sddm。</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ sudo apt autoremove parrot-meta* </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">$ reboot</span></pre></td></tr></table></figure>
+
+<p> 重启后，在登录系统时，在界面上的session中选择plasma，输入口令进入。</p>
+</li>
+<li><p>安装Dock</p>
+<p>依次执行下面的命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">   $ sudo apt-get update</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install cairo-dock cairo-dock-plug-ins</span></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>Lee Sin</a>
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/2020/01/11/Linux技术基础-3-Linux物理机的安装、引导与配置/" target="_blank" title="Linux技术基础-3 Linux物理机的安装、引导与配置">http://endlesspeak.github.io/2020/01/11/Linux技术基础-3-Linux物理机的安装、引导与配置/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/01/10/Linux%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80-2-Linux%E7%BB%BC%E5%90%88%E6%A6%82%E8%BF%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Linux技术基础-2 Linux综合概述</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装前的准备"><span class="nav-number">1.</span> <span class="nav-text">安装前的准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#浅析MBR引导和UEFI引导"><span class="nav-number">1.1.</span> <span class="nav-text">浅析MBR引导和UEFI引导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩卷以提供空间给Linux"><span class="nav-number">1.2.</span> <span class="nav-text">压缩卷以提供空间给Linux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#制作及调整启动媒体"><span class="nav-number">1.3.</span> <span class="nav-text">制作及调整启动媒体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Parrot-Linux"><span class="nav-number">2.</span> <span class="nav-text">安装Parrot Linux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装后的配置"><span class="nav-number">3.</span> <span class="nav-text">安装后的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GNU-Grub-Version-2-02"><span class="nav-number">3.1.</span> <span class="nav-text">GNU Grub Version 2.02</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Wlan0-No-Wireless-connection"><span class="nav-number">3.2.</span> <span class="nav-text">Wlan0:No Wireless connection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新源配置"><span class="nav-number">3.3.</span> <span class="nav-text">更新源配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装中文输入法"><span class="nav-number">3.4.</span> <span class="nav-text">安装中文输入法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DIY桌面环境"><span class="nav-number">3.5.</span> <span class="nav-text">DIY桌面环境</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2020 无涯峰 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+
+  
+<script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            无涯峰
+          </div>
+          <div class="panel-body">
+            Copyright © 2020 Lee Sin All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
