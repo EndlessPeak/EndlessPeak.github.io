@@ -29,7 +29,7 @@
     version: '7.7.0',
     exturl: false,
     sidebar: {"position":"left","width":240,"display":"always","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":true,"show_result":false,"style":null},
+    copycode: {"enable":false,"show_result":false,"style":"flat"},
     back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
@@ -58,7 +58,7 @@
 <meta property="og:description" content="Arch Linux 是通用 x86-64 GNU&#x2F;Linux 发行版，初始安装仅提供命令行环境：用户不需要删除大量不需要的软件包，而是可以从官方软件仓库成千上万的高质量软件包中进行选择，搭建自己的系统。支持x86-64架构。Arch采用滚动升级模式，尽全力提供最新的稳定版软件。Arch 之道，或者叫Arch哲学，一言以蔽之，Keep It Simple, Stupid.(保持简单，一目了然) 简">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-01-16T14:00:00.000Z">
-<meta property="article:modified_time" content="2020-01-27T10:15:04.347Z">
+<meta property="article:modified_time" content="2020-01-28T04:37:01.338Z">
 <meta property="article:author" content="Lee Sin">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -242,7 +242,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-27 18:15:04" itemprop="dateModified" datetime="2020-01-27T18:15:04+08:00">2020-01-27</time>
+                <time title="修改时间：2020-01-28 12:37:01" itemprop="dateModified" datetime="2020-01-28T12:37:01+08:00">2020-01-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -269,14 +269,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.3k</span>
+              <span>7.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>7 分钟</span>
+              <span>12 分钟</span>
             </span>
 
         </div>
@@ -297,8 +297,8 @@
 
 <p>本文拟以<a href="https://wiki.archlinux.org/" target="_blank" rel="noopener">Arch Wiki</a>与<a href="https://wiki.archlinux.org/index.php/installation_guide" target="_blank" rel="noopener">Installation guide</a>为原本，附带一些自己的理解，尝试说明在物理机上安装Arch Linux。</p>
 <p>一般来说，安装Arch最好的也是最完备的教程就是官方的<a href="https://wiki.archlinux.org/index.php/installation_guide" target="_blank" rel="noopener">Installation guide</a>与<a href="https://wiki.archlinux.org/" target="_blank" rel="noopener">Arch Wiki</a>，虽然部分内容有中文版，但是中文的翻译有些时候会落后于英文版，所以不推荐完全依赖于中文Wiki。另外， 官方Wiki的写作方式更偏向于文档，没有我们所习惯的按步骤编排的安装过程，给不熟悉这种写作方式的人们造成了阅读与使用上的困难。 </p>
-<h2 id="安装前的准备"><a href="#安装前的准备" class="headerlink" title="安装前的准备"></a>安装前的准备</h2><h3 id="硬盘空间"><a href="#硬盘空间" class="headerlink" title="硬盘空间"></a>硬盘空间</h3><p>检查硬盘，需要有一块空闲的磁盘空间来进行安装，大小在30GiB以上。</p>
-<h3 id="安装介质"><a href="#安装介质" class="headerlink" title="安装介质"></a>安装介质</h3><p>安装之前需要准备安装介质，这里推荐U盘作为安装介质。对于Arch Linux来说，不能使用UltraISO (软碟通)制作U盘启动盘。因为软碟通制作启动盘使用的是ISO镜像，而Arch Linux制作启动盘需要<strong>DD镜像</strong>。</p>
+<h2 id="安装前的准备"><a href="#安装前的准备" class="headerlink" title="安装前的准备"></a>安装前的准备</h2><h3 id="准备硬盘空间"><a href="#准备硬盘空间" class="headerlink" title="准备硬盘空间"></a>准备硬盘空间</h3><p>检查硬盘，需要有一块空闲的磁盘空间来进行安装，大小在30GiB以上。</p>
+<h3 id="准备安装介质"><a href="#准备安装介质" class="headerlink" title="准备安装介质"></a>准备安装介质</h3><p>安装之前需要准备安装介质，这里推荐U盘作为安装介质。对于Arch Linux来说，不能使用UltraISO (软碟通)制作U盘启动盘。因为软碟通制作启动盘使用的是ISO镜像，而Arch Linux制作启动盘需要<strong>DD镜像</strong>。</p>
 <ol>
 <li><p>安装镜像的官方下载地址可参阅<a href="https://www.archlinux.org/download/" target="_blank" rel="noopener">下载页</a></p>
 </li>
@@ -346,12 +346,7 @@
 <li>wlan0是无线网络，参阅<a href="https://wiki.archlinux.org/index.php/Wireless_network_configuration_(简体中文)" target="_blank" rel="noopener">Wireless network configuration(简体中文)</a> </li>
 <li>eth0是有线网络，参阅<a href="https://wiki.archlinux.org/index.php/Network_configuration/Ethernet" target="_blank" rel="noopener">Ethernet</a> </li>
 </ol>
-<p>Arch Linux在网络工具上已经弃用了<strong>net-tools</strong>转而使用<strong>iproute2</strong>.详细命令变化如下：</p>
-<style>
-table th:first-of-type { width: 100px; }
-table th:nth-of-type(2){ width: 400px; }
-</style>
-
+<p>Arch Linux在网络工具上已经弃用了<strong>net-tools</strong>转而使用<strong>iproute2</strong>。详细命令变化如下：</p>
 <table>
 <thead>
 <tr>
@@ -364,12 +359,12 @@ table th:nth-of-type(2){ width: 400px; }
 <td align="left">ip neighbor</td>
 </tr>
 <tr>
-<td align="left"><a href="https://zh.wikipedia.org/wiki/Ifconfig" target="_blank" rel="noopener">ifconfig</a></td>
-<td align="left">ip address, ip link</td>
+<td align="left">ifconfig</td>
+<td align="left">ip address，ip link</td>
 </tr>
 <tr>
 <td align="left">netstat</td>
-<td align="left"><a href="https://wiki.archlinux.org/index.php/Network_configuration_(简体中文)#Investigate_sockets" target="_blank" rel="noopener">ss</a>[<a href="https://wiki.archlinux.org/index.php/ArchWiki:Requests#Broken_section_links" target="_blank" rel="noopener">broken link</a>: invalid section]</td>
+<td align="left">ss</td>
 </tr>
 <tr>
 <td align="left">route</td>
@@ -378,79 +373,211 @@ table th:nth-of-type(2){ width: 400px; }
 </tbody></table>
 <p>更多更完整的总结，请参阅<a href="https://dougvitale.wordpress.com/2011/12/21/deprecated-linux-networking-commands-and-their-replacements/" target="_blank" rel="noopener">这篇文章</a>。 </p>
 <p>使用下面的命令连接有线网络并测试：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># ip link ether0 up</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"># dhcpcd &#x2F;&#x2F;动态分配IP地址</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"># ping www.baidu.com &#x2F;&#x2F;使用ctrl+c结束Ping</span></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">ip link</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">dhcpcd</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">ping www.baidu.com</span></pre></td></tr></table></figure>
+<blockquote>
+<p>注：Arch Linux在启动后，守护进程dhcpcd已被默认启用以探测有线设备，会自动连接有线网络，一般不需要配置。同时，由于Arch在硬件集成上对有线网卡的适配性更好，因此，如果是在物理机上安装的话，更推荐使用有线网络。 </p>
+</blockquote>
 <p>依次使用下列命令连接无线网络并测试：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># ip link wlan0 up &#x2F;&#x2F;打开WiFi，注意将wlan0替换为电脑上的无线设备ID名称</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"># iwlist wlan0 scan | grep ESSID &#x2F;&#x2F;扫描WiFi，仅查看各WiFi的名称</span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># ip link wlan0 up #打开WiFi，注意将wlan0替换为电脑上的无线设备ID名称</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"># iwlist wlan0 scan | grep ESSID #扫描WiFi，仅查看各WiFi的名称</span></pre></td></tr></table></figure>
 <blockquote>
 <p>注：连接wifi可以用WiFimenu，但是WiFimenu一般不支持企业网络和校园网络协议。</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># wpa_passphrase 网络 密码 &gt; 文件名(如internet.conf)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"># wpa_supplicant -c internet.conf -i wlan0 &amp; &#x2F;&#x2F;注：&quot;&amp;&quot;表示后台运行</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"># dhcpcd &#x2F;&#x2F;动态分配IP地址</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"># ping www.baidu.com</span></pre></td></tr></table></figure>
 
 <p>出现类似<code>64 bytes from...</code>的内容说明成功连接网络，此时使用使用ctrl+c结束Ping命令。</p>
-<h3 id="更新系统时间"><a href="#更新系统时间" class="headerlink" title="更新系统时间"></a>更新系统时间</h3><p>使用 timedatectl命令 确保系统时间是准确的：</p>
+<h3 id="更新系统时间"><a href="#更新系统时间" class="headerlink" title="更新系统时间"></a>更新系统时间</h3><p>使用下面的命令查看系统时间是否正常。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># timedatectl status</span></pre></td></tr></table></figure>
+
+<p>使用 timedatectl命令更新系统时间以确保系统时间是准确的：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># timedatectl set-ntp true</span></pre></td></tr></table></figure>
 
 <p>正常情况下这样的命令并没有输出，所谓没有消息就是最好的消息。</p>
-<h3 id="建立硬盘分区"><a href="#建立硬盘分区" class="headerlink" title="建立硬盘分区"></a>建立硬盘分区</h3><p>系统识别磁盘后将其分配为一个块设备，固态硬盘<code>/dev/nvme0n1</code>,机械硬盘<code>/dev/sda</code>。输入：</p>
+<h3 id="建立硬盘分区"><a href="#建立硬盘分区" class="headerlink" title="建立硬盘分区"></a>建立硬盘分区</h3><p>系统识别磁盘后会将其分配为一个块设备，为固态硬盘分配的ID类似于<code>/dev/nvme0n1</code>,为机械硬盘分配的ID类似于<code>/dev/sda</code>。输入：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># fdisk -l</span></pre></td></tr></table></figure>
 
-<p>将返回的结果中以 <code>rom</code>，<code>loop</code> 或者 <code>airoot</code> 结束的<strong>忽略掉，它们非硬盘设备</strong>。 </p>
+<p>需要忽略的内容：形如以 <code>rom</code>，<code>loop</code> 或者 <code>airoot</code> 结束的内容。</p>
+<p>需要记录的内容：形如/dev/sda，/dev/nvme0n1等等之类的分区内容，最好拍照一张留以备用。</p>
 <hr>
 <ul>
 <li>如果你是BIOS/MBR方式引导，<strong>跳过创建引导分区</strong>的步骤。</li>
 <li>如果你是EFI/GPT方式引导，并且同时安装了其他系统，那么你应该可以在分区列表中发现一个较小的并且类型为EFI的分区，这是你的引导分区，请记下它的路径（/dev/sdxY)备用，<strong>跳过创建引导分区</strong>的步骤。</li>
 <li>如果你是EFI/GPT方式引导，但是没有这个较小的并且类型为EFI的引导分区（这种情况一般只会出现在新电脑+新硬盘时），那么需要<strong>先创建一个引导分区</strong>。</li>
 </ul>
+<p>分区示例：</p>
+<style>
+td {text-align:center}
+</style>
+<table border="1">
+    <tr>
+        <td colspan="4"><B>BIOS</B> with <B>MBR</B></td>
+    </tr>
+    <tr>
+        <td><B>挂载点</B></td>
+        <td><B>分区</td>
+        <td><B>分区类型</B></td>
+        <td><B>建议大小</B></td>
+    </tr>
+    <tr>
+        <td>/mnt</td>
+        <td>/dev/sdX1</td>
+        <td>Linux filesystem</td>
+        <td>30GiB以上</td>
+    </tr>
+    <tr>
+        <td>[SWAP]</td>
+        <td>/dev/sdX2</td>
+        <td>Linux swap</td>
+        <td>大于512MiB，建议4GiB</td>
+    </tr>
+    <tr>
+        <td colspan="4"><B>UEFI</B> with <B>GPT</B></td>
+    </tr>
+    <tr>
+        <td><B>挂载点</B></td>
+        <td><B>分区</td>
+        <td><B>分区类型</B></td>
+        <td><B>建议大小</B></td>
+    </tr>
+    <tr>
+        <td>/mnt/boot OR /mnt/efi</td>
+        <td>/dev/sdX1</td>
+        <td><B>EFI system partition</B></td>
+        <td>260MiB-512MiB</td>
+    </tr>
+    <tr>
+        <td>/mnt</td>
+        <td>/dev/sdX2</td>
+        <td>Linux x86-64 根目录 (/)</td>
+        <td>30GiB以上</td>
+    </tr>
+    <tr>
+        <td>[SWAP]</td>
+        <td>/dev/sdX3</td>
+        <td>Linux swap</td>
+        <td>大于512MiB，建议4GiB</td>
+    </tr>
+</table>
+
+<p>如果文件系统支持，此处也可以不设交换空间，而是用交换文件代替。</p>
+<p>能够创建分区的命令很多，如fdisk，parted，cfdisk，此处展开讲fdisk命令和带GUI的cfdisk命令。</p>
+<blockquote>
+<p>注：在物理机上分区时，要认真检查硬盘是否选择正确，如果有多个硬盘，可能用来安装Linux的硬盘并不是如下所写的/dev/sda，而是/dev/sdb，因此必须反复核对需要操作的硬盘的ID号。</p>
+</blockquote>
 <hr>
 <h4 id="创建引导分区"><a href="#创建引导分区" class="headerlink" title="创建引导分区"></a>创建引导分区</h4><p>执行命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">fdisk &#x2F;dev&#x2F;sda (如果是机械硬盘，则将sda替换成之前输出的磁盘ID如sda,sdb,sdc等)</span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># fdisk &#x2F;dev&#x2F;sda (如果是机械硬盘，则将sda替换成之前输出的磁盘ID如sda,sdb,sdc等)</span></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">fdisk &#x2F;dev&#x2F;nvme0n1 (如果有固态硬盘，则将nvme0n1替换成之前输出的固态硬盘ID)</span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># fdisk &#x2F;dev&#x2F;nvme0n1 (如果有固态硬盘，则将nvme0n1替换成之前输出的固态硬盘ID)</span></pre></td></tr></table></figure>
 
 <p>下面进入了<code>fdisk</code>的操作环境， 输入<code>m</code>并回车可以查看各命令的作用。</p>
 <ol>
-<li><p><strong>如果你是一块全新的硬盘</strong>：输入<code>g</code>来创建一个全新的gpt分区表，<strong>否则直接进行第2步</strong>。</p>
-</li>
-<li><p>输入<code>n</code>创建一个新的分区，首先会让你选择起始扇区，一般直接回车使用默认数值即可，然后可以输入结束扇区或是分区大小，这里我们输入<code>+512M</code>来创建一个512M的引导分区。</p>
-</li>
-<li><p>这时我们可以输入<code>p</code>来查看新创建的分区。</p>
-</li>
-<li><p>输入<code>t</code>并选择新创建的分区序号来更改分区的类型，输入<code>l</code>可以查看所有支持的类型，输入<code>ef</code>更改分区的类型为<code>EFI</code>。</p>
-</li>
-<li><p>输入<code>w</code>来将之前所有的操作写入磁盘生效，在这之前可以输入<code>p</code>来确认自己的分区表没有错误。</p>
-</li>
-<li><p>输入以下命令来格式化刚刚创建的引导分区：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">mkfs.fat -F32 &#x2F;dev&#x2F;sdxY (机械硬盘执行该命令并将sdxY替换为刚创建的分区)</span></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">mkfs.fat -F32 &#x2F;dev&#x2F;nvme0n1p1 (固态硬盘执行该命令并将nvme0n1p1替换为刚创建的分区)</span></pre></td></tr></table></figure>
-
-</li>
+<li><strong>如果你是一块全新的硬盘</strong>：输入<code>g</code>来创建一个全新的gpt分区表，<strong>否则直接进行第2步</strong>。</li>
+<li>输入<code>n</code>创建一个新的分区，首先会让你选择起始扇区，一般直接回车使用默认数值即可，然后可以输入结束扇区或是分区大小，这里我们输入<code>+512M</code>来创建一个512M的引导分区。</li>
+<li>这时我们可以输入<code>p</code>来查看新创建的分区。</li>
+<li>输入<code>t</code>并选择新创建的分区序号来更改分区的类型，输入<code>l</code>可以查看所有支持的类型，输入<code>ef</code>更改分区的类型为<code>EFI</code>。</li>
+<li>输入<code>w</code>来将之前所有的操作写入磁盘生效，在这之前可以输入<code>p</code>来确认自己的分区表没有错误。</li>
+<li>输入以下命令来格式化刚刚创建的引导分区：</li>
 </ol>
-<p>现在引导分区就创建好了。</p>
-<h4 id="创建根分区"><a href="#创建根分区" class="headerlink" title="创建根分区"></a>创建根分区</h4><p>输入下面的命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">fdisk &#x2F;dev&#x2F;sdx (如果要将Linux安装在机械硬盘中则将sdx替换成你要操作的磁盘如sdb sdc等)</span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># mkfs.fat -F32 &#x2F;dev&#x2F;sda (机械硬盘执行该命令并将sda替换为输出的磁盘ID如sda,sdb,sdc等)</span></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">fdisk &#x2F;dev&#x2F;nvme0n1 (如果要将Linux安装在固态硬盘中则将其替换为之前输出的固态硬盘ID)</span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># mkfs.fat -F32 &#x2F;dev&#x2F;nvme0n1p1 (固态硬盘执行该命令并将nvme0n1p1替换为刚创建的分区)</span></pre></td></tr></table></figure>
+
+<p>格式化完成，引导分区就创建好了。</p>
+<h4 id="创建根分区及交换分区"><a href="#创建根分区及交换分区" class="headerlink" title="创建根分区及交换分区"></a>创建根分区及交换分区</h4><p>输入下面的命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># fdisk &#x2F;dev&#x2F;sdx (如果要将Linux安装在机械硬盘中则将sdx替换成你要操作的磁盘如sdb sdc等)</span></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># fdisk &#x2F;dev&#x2F;nvme0n1 (如果要将Linux安装在固态硬盘中则将其替换为之前输出的固态硬盘ID)</span></pre></td></tr></table></figure>
 
 <ol>
-<li><p><strong>如果是一块全新的硬盘</strong>（<strong>否则直接进行第2步</strong>）：</p>
+<li><p><strong>如果是一块全新的硬盘，则依次考虑下面的步骤</strong>（否则直接进行第2步）：</p>
 <ol>
-<li><strong>如果你是<code>BIOS/MBR</code>引导方式</strong>：输入<code>o</code>来创建一个全新的<code>MBR</code>分区表。</li>
-<li><strong>如果你在上一步新建了分区表并创建了引导分区</strong>：直接进行步骤2。</li>
-<li><strong>如果你在另一块硬盘中已经有引导分区</strong>：输入<code>g</code>来创建一个全新的<code>gpt</code>分区表。</li>
+<li><strong>如果在之前新建了分区表并创建了引导分区</strong>：直接进行第2步。</li>
+<li><strong>如果是<code>BIOS/MBR</code>引导方式</strong>：输入<code>o</code>来创建一个全新的<code>MBR</code>分区表。</li>
+<li><strong>如果在另一块硬盘中已经有引导分区</strong>(譬如在机械硬盘中安装<code>Arch Linux</code>，而引导分区在固态硬盘中)： 输入<code>g</code>来创建一个全新的<code>gpt</code>分区表。</li>
 </ol>
 </li>
-<li><p>输入<code>n</code>创建一个新的分区，首先会让你选择起始扇区，一般直接回车使用默认数值即可，然后可以输入结束扇区或是分区大小，如果我们想要使创建的分区完全占满空闲的空间，可以直接回车使用默认结束扇区。</p>
-</li>
-<li><p>这时我们可以输入<code>p</code>来查看新创建的分区。</p>
-</li>
-<li><p>输入<code>w</code>来将之前所有的操作写入磁盘生效，在这之前可以输入<code>p</code>来确认自己的分区表没有错误。</p>
-</li>
-<li><p>输入以下命令来格式化刚刚创建的根分区：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">mkfs.ext4 &#x2F;dev&#x2F;sdxY （请将的sdxY替换为刚创建的分区）</span></pre></td></tr></table></figure></li>
+<li><p>输入<code>n</code>创建一个新的分区作为交换分区。</p>
+<ol>
+<li>要求输入分区编号，一般按默认(直接回车)，也可以指定。</li>
+<li>要求选择起始扇区，按之前记录的磁盘数据选择计划的磁盘块起始扇区，也可以直接回车使用默认数值；</li>
+<li>要求输入结束扇区或是分区大小，按之前记录的磁盘数据选择所计划的磁盘块大小或结束扇区；交换分区设512MiB-4GiB均可(输入格式写<code>+4G</code>即可)。</li>
 </ol>
+</li>
+<li><p>如法炮制地创建一个新分区作为根分区，如果我们想要使创建的分区完全占满空闲的空间，可以在要求输入结束扇区或分区大小时直接回车使用默认结束扇区。</p>
+</li>
+<li><p>这时输入<code>p</code>来查看新创建的分区，如果不正确则输入<code>d</code>将之前的分区删除并重新操作。</p>
+</li>
+<li><p>检查完成后，通过输入<code>w</code>来将之前所有的操作写入磁盘生效。</p>
+</li>
+<li><p>在终端输入以下命令来格式化刚刚创建的交换分区：</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># mkswap &#x2F;dev&#x2F;sdxY （将sdxY替换为刚创建的分区）</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"># swapon &#x2F;dev&#x2F;sdxY</span></pre></td></tr></table></figure>
 
+<ol start="7">
+<li>在终端输入以下命令来格式化刚刚创建的根分区：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># mkfs.ext4 &#x2F;dev&#x2F;sdxY （将sdxY替换为刚创建的分区）</span></pre></td></tr></table></figure>
+
+<p>如果无法根据上面的步骤完成分区，也可以使用GUI界面的cfdisk命令。</p>
+<ol>
+<li>使用cfdisk后选择分区表类型，选择对应自己电脑磁盘的类型(好像只有GPT选项，没有MBR选项)</li>
+<li>分区内容大体如上所述，分区大小可以用界面底端的Resize命令，分区类型用界面底端的Type命令。</li>
+<li>分区设置完毕后，用底端的Write命令写入磁盘，然后退出cfdisk，最后使用上面提到的mkfs命令格式化分区。</li>
+</ol>
+<h3 id="选择镜像服务"><a href="#选择镜像服务" class="headerlink" title="选择镜像服务"></a>选择镜像服务</h3><p>该步需要进行编辑配置文件的操作，所以需要掌握命令行下非常著名的数款编辑器的基本操作。此处以<code>Vim</code>为例，当然也可以用<code>nano</code>等其他编辑器。具体学习过程参阅<a href="https://coolshell.cn/articles/5426.html" target="_blank" rel="noopener">VIM教程</a>，此处尽可能详细地论述整个操作过程：</p>
+<ol>
+<li>执行以下命令，用<code>Vim</code>编辑<code>/etc/pacman.conf</code>，该文件记录了<code>Arch Linux</code>的软件包<code>pacman</code>的所有配置，包括记录所有镜像源的配置文件的存储地址。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># vim &#x2F;etc&#x2F;pacman.conf</span></pre></td></tr></table></figure>
+
+<p>输入<code>/color</code>并回车以找到写有<code>color</code>的那一行，光标选中它前面的<code>#</code>并按Del键删除以使其从注释变为可用，而后输入<code>:wq</code>回车保存并退出。</p>
+<ol start="2">
+<li>执行以下命令，用<code>Vim</code>编辑<code>/etc/pacman.d/mirrorlist</code>，该文件记录了<code>Arch Linux</code>在全球范围内部署的所有服务器。 </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># vim &#x2F;etc&#x2F;pacman.d&#x2F;mirrorlist</span></pre></td></tr></table></figure>
+
+<p>按照下面的操作配置以使中国镜像源服务器地址在更新中优先使用。</p>
+<p>输入<code>qa</code>回车以开启一个寄存器a，它表示你之后的操作都会记录到录制的宏中；</p>
+<p>输入<code>/^\n</code>回车以寻找文件的第一个空行，光标从这里开始；</p>
+<p>输入<code>/China</code>回车以从光标起始点往下寻找中国镜像源，按<code>v</code>进入可视模式，按<code>↓</code>键选中这两行，按<code>d</code>键剪切选中的内容，输入<code>:1</code>回车使光标返回到最顶端，；</p>
+<p>输入<code>/^\n</code>回车以寻找文件的第一个空行，按<code>p</code>将剪切的内容粘贴到此。</p>
+<p>输入<code>q</code>停止录制，现在你手动制作了一个自动寻找中国镜像源地址的宏，它存在vim的寄存器a中。</p>
+<p>输入<code>7@a</code>回车，即可将刚才录制的这个宏循环执行7次，将7个中国镜像源服务器地址转移到文件首。</p>
+<p>输入<code>:wq</code>保存退出该文件。</p>
+<h3 id="挂载磁盘分区"><a href="#挂载磁盘分区" class="headerlink" title="挂载磁盘分区"></a>挂载磁盘分区</h3><p>执行下面的命令，将根分区挂载到/mnt下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># mount &#x2F;dev&#x2F;sdxY &#x2F;mnt （将sdxY替换为之前创建的根分区）</span></pre></td></tr></table></figure>
+
+<p><strong>如果是EFI/GPT引导方式</strong>，还需执行以下命令创建/boot文件夹并将引导分区挂载到/mnt/boot下。<strong>BIOS/MBR引导方式则无需进行这步。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># mkdir &#x2F;mnt&#x2F;boot</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"># mount &#x2F;dev&#x2F;sdxY &#x2F;mnt&#x2F;boot （将sdxY替换为之前创建或是已经存在的引导分区）</span></pre></td></tr></table></figure>
+
+<h2 id="安装中的操作"><a href="#安装中的操作" class="headerlink" title="安装中的操作"></a>安装中的操作</h2><h3 id="安装基本包组"><a href="#安装基本包组" class="headerlink" title="安装基本包组"></a>安装基本包组</h3><p>下面的命令将安装基本的Arch Linux包组到磁盘上。这是一个联网下载并安装的过程。</p>
+<p>通过pacstrap这个脚本来安装基本包组，执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># pacstrap &#x2F;mnt base base-devel linux linux-firmware dhcpcd</span></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：19年10月底Arch Linux替换了base包组，如果说原来的base包组是完善的建筑，那么现在的base包只能算是一个脚手架，所以官方文档上只安装base软件包，linux内核与linux-frmware常规硬件的固件就显得有些太过简略了一些。</p>
+<ol>
+<li>base-devel(包含源码安装的支持软件)对大多数人来说都需要安装，除非明确地知道自己的需求；</li>
+<li>visudo，调整sudo权限依赖于vi或vim，所以你需要加入这两个软件包之一；</li>
+<li>nano默认也不再提供了，所以需要的话请追加这个包；动态分配IP的dhcpcd同样需要追加，</li>
+</ol>
+</blockquote>
+<h3 id="配置挂载文件"><a href="#配置挂载文件" class="headerlink" title="配置挂载文件"></a>配置挂载文件</h3><p>安装完成后，需要生成自动挂载分区的<code>fstab</code>文件，执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># genfstab -L &#x2F;mnt &gt;&gt; &#x2F;mnt&#x2F;etc&#x2F;fstab</span></pre></td></tr></table></figure>
+
+<p>由于这步比较重要，所以需要输出生成的文件来检查是否正确，执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># cat &#x2F;mnt&#x2F;etc&#x2F;fstab</span></pre></td></tr></table></figure>
+
+<p> 从输出结果中应该可以看到之前格式化的磁盘分区被挂载到了根分区/下；<strong>如果是<code>EFI/GPT</code>引导的还应该有引导分区被挂载到<code>/boot</code>目录</strong>。 </p>
+<h3 id="更改操作系统"><a href="#更改操作系统" class="headerlink" title="更改操作系统"></a>更改操作系统</h3><p><code>Chroot</code>意为<code>Change root</code>，相当于把操纵权交给新安装（或已经存在）的<code>Linux</code>系统，<strong>执行了这步以后的操作都相当于在磁盘上新装的系统中进行</strong>。</p>
+<p>执行如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># arch-chroot &#x2F;mnt</span></pre></td></tr></table></figure>
+
+<hr>
+<p>顺便说一下，如果以后我们的系统出现了问题，只要插入U盘启动盘并启动， 将系统根分区挂载到了<code>/mnt</code>下（如果有<code>efi</code>分区则<code>efi</code>要挂载到<code>/mnt/boot</code>下），再通过这条命令就可以进入系统进行修复操作。 </p>
+<h3 id="设置系统时区"><a href="#设置系统时区" class="headerlink" title="设置系统时区"></a>设置系统时区</h3><p>依次执行如下命令设置时区为上海并生成相关文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># ln -sf &#x2F;usr&#x2F;share&#x2F;zoneinfo&#x2F;Asia&#x2F;Shanghai &#x2F;etc&#x2F;localtimehwclock --systohc</span></pre></td></tr></table></figure>
     </div>
 
     
@@ -548,7 +675,7 @@ table th:nth-of-type(2){ width: 400px; }
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装前的准备"><span class="nav-number">1.</span> <span class="nav-text">安装前的准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#硬盘空间"><span class="nav-number">1.1.</span> <span class="nav-text">硬盘空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装介质"><span class="nav-number">1.2.</span> <span class="nav-text">安装介质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动Live环境"><span class="nav-number">1.3.</span> <span class="nav-text">启动Live环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查引导方式"><span class="nav-number">1.4.</span> <span class="nav-text">检查引导方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改变显示字体"><span class="nav-number">1.5.</span> <span class="nav-text">改变显示字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改变键盘布局"><span class="nav-number">1.6.</span> <span class="nav-text">改变键盘布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接网络环境"><span class="nav-number">1.7.</span> <span class="nav-text">连接网络环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新系统时间"><span class="nav-number">1.8.</span> <span class="nav-text">更新系统时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立硬盘分区"><span class="nav-number">1.9.</span> <span class="nav-text">建立硬盘分区</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建引导分区"><span class="nav-number">1.9.1.</span> <span class="nav-text">创建引导分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建根分区"><span class="nav-number">1.9.2.</span> <span class="nav-text">创建根分区</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装前的准备"><span class="nav-number">1.</span> <span class="nav-text">安装前的准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备硬盘空间"><span class="nav-number">1.1.</span> <span class="nav-text">准备硬盘空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备安装介质"><span class="nav-number">1.2.</span> <span class="nav-text">准备安装介质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动Live环境"><span class="nav-number">1.3.</span> <span class="nav-text">启动Live环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查引导方式"><span class="nav-number">1.4.</span> <span class="nav-text">检查引导方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改变显示字体"><span class="nav-number">1.5.</span> <span class="nav-text">改变显示字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改变键盘布局"><span class="nav-number">1.6.</span> <span class="nav-text">改变键盘布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接网络环境"><span class="nav-number">1.7.</span> <span class="nav-text">连接网络环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新系统时间"><span class="nav-number">1.8.</span> <span class="nav-text">更新系统时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立硬盘分区"><span class="nav-number">1.9.</span> <span class="nav-text">建立硬盘分区</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建引导分区"><span class="nav-number">1.9.1.</span> <span class="nav-text">创建引导分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建根分区及交换分区"><span class="nav-number">1.9.2.</span> <span class="nav-text">创建根分区及交换分区</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择镜像服务"><span class="nav-number">1.10.</span> <span class="nav-text">选择镜像服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#挂载磁盘分区"><span class="nav-number">1.11.</span> <span class="nav-text">挂载磁盘分区</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装中的操作"><span class="nav-number">2.</span> <span class="nav-text">安装中的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装基本包组"><span class="nav-number">2.1.</span> <span class="nav-text">安装基本包组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置挂载文件"><span class="nav-number">2.2.</span> <span class="nav-text">配置挂载文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改操作系统"><span class="nav-number">2.3.</span> <span class="nav-text">更改操作系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置系统时区"><span class="nav-number">2.4.</span> <span class="nav-text">设置系统时区</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -647,13 +774,13 @@ table th:nth-of-type(2){ width: 400px; }
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">64k</span>
+    <span title="站点总字数">67k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:47</span>
+    <span title="站点阅读时长">1:52</span>
 </div>
 
         

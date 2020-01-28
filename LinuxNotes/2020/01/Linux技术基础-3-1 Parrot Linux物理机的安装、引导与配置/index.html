@@ -29,7 +29,7 @@
     version: '7.7.0',
     exturl: false,
     sidebar: {"position":"left","width":240,"display":"always","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":true,"show_result":false,"style":null},
+    copycode: {"enable":false,"show_result":false,"style":"flat"},
     back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
@@ -72,7 +72,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;13&#x2F;l7O8De.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2020&#x2F;01&#x2F;13&#x2F;lHpLwT.png">
 <meta property="article:published_time" content="2020-01-11T12:00:00.000Z">
-<meta property="article:modified_time" content="2020-01-27T07:32:15.040Z">
+<meta property="article:modified_time" content="2020-01-28T04:09:28.926Z">
 <meta property="article:author" content="Lee Sin">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -257,7 +257,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-27 15:32:15" itemprop="dateModified" datetime="2020-01-27T15:32:15+08:00">2020-01-27</time>
+                <time title="修改时间：2020-01-28 12:09:28" itemprop="dateModified" datetime="2020-01-28T12:09:28+08:00">2020-01-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -316,7 +316,7 @@
 </blockquote>
 <p>在开始讲Linux的安装之前，必须明确一个先决条件：<strong>你的计算机中已经安装有一个或多个Windows版本</strong>。这是因为如果你在没有任何操作系统的空物理机上安装Linux，以后再要安装Windows系统，那么Windows的引导程序就会将Linux的引导程序<strong>覆盖</strong>。引导覆盖会使得你无法再进入Linux系统，即使它事实上还是存在于你的计算机之中的。</p>
 <blockquote>
-<p>当然，这个问题可以修复；但如果你确实这么做，解决方法很麻烦。</p>
+<p>当然，这个问题可以修复；但如果确实这么做，解决方法很麻烦。</p>
 </blockquote>
 <h2 id="安装前的准备"><a href="#安装前的准备" class="headerlink" title="安装前的准备"></a>安装前的准备</h2><h3 id="浅析引导"><a href="#浅析引导" class="headerlink" title="浅析引导"></a>浅析引导</h3><p>当一块硬盘接驳主机之后，它的首要任务是建立分区列表，分区列表有MBR和GPT两种，其中MBR分区模式只能分4个主分区，分区列表最大为<strong>2.1TB</strong>的硬盘，GPT分区列表则支持 <strong>9.4ZB硬盘（9.4ZB=1024EB=94亿TB）</strong> 。NTFS，FAT32，EXT4等属于文件系统，就像是给分好区的硬盘上打上格子，方便填充数据。至于打成什么样的格子由文件系统决定。 </p>
 <p><strong>MBR分区表</strong>(Master Boot Record):即硬盘的主引导记录分区列表，在主引导扇区，只支持容量在 2.1TB 以下的硬盘，超过2.1TB的硬盘只能管理2.1TB，最多只支持4个主分区或三个主分区和一个扩展分区，扩展分区下可以有多个逻辑分区。 </p>
@@ -449,7 +449,7 @@
 <p>出现该界面表明Grub引导出现了问题，需要手动引导电脑进入操作系统。(不同的电脑可能出现的Grub的版本号不相同) </p>
 <p>出现该界面，请考虑本机是否有固态硬盘：</p>
 <ol>
-<li>如果有固态硬盘，且Linux安装在固态硬盘上，或者没有固态硬盘，则可以选择尝试解决方案一；</li>
+<li>如果有固态硬盘，且Linux安装在固态硬盘上，或者没有固态硬盘，则可以选择解决方案一；</li>
 <li>如果有固态硬盘，但Linux没有安装在固态硬盘上，或者想迅速解决问题，请选择解决方案二。</li>
 </ol>
 <p>解决方案一：</p>
@@ -485,7 +485,7 @@
 <ol>
 <li><p>重启，然后在开机的时候<strong>连按</strong>ESC键，在弹出的设备启动界面中选择Linux。</p>
 </li>
-<li><p>成功进入Linux后，在终端执行：</p>
+<li><p>成功进入Linux后，在终端执行(<em>$为命令行显示，表示目前是普通用户，后面是输入的命令</em>)：</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ sudo update-grub</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">$ sudo grub-install /dev/sda <span class="comment">#如果你的第一块硬盘是机械硬盘则执行该命令</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">$ sudo grub-install /dev/nvme0n1 <span class="comment">#如果你的第一块硬盘是固态硬盘则执行该命令[见注2]</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">true$ reboot <span class="comment">#重启</span></span></pre></td></tr></table></figure>
 
 </li>
@@ -813,13 +813,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">64k</span>
+    <span title="站点总字数">67k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:47</span>
+    <span title="站点阅读时长">1:52</span>
 </div>
 
         
