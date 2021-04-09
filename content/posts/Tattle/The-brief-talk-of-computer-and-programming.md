@@ -2,7 +2,7 @@
 title: 浅谈计算机&编程发展路线——自顶向下脱发方法
 categories: 
   - 杂谈
-img: 'https://s1.ax1x.com/2020/04/03/Gdnm7j.jpg'
+featuredImage: https://s1.ax1x.com/2020/04/03/Gdnm7j.jpg
 toc: true
 authors:
   - EndlessPeak

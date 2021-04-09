@@ -8,11 +8,10 @@ tags:
 categories: 
   - Linux Basic
 date: 2020-01-11 20:00:00
+featuredImage: https://s2.ax1x.com/2020/01/12/loiVVU.jpg
 hidden: false
 draft: false
 ---
-
-![](https://s2.ax1x.com/2020/01/12/loiVVU.jpg)
 
 Parrot Sec OS是Linux发行版中十大渗透测试系统之一，为广大渗透测试工作者提供了大量已经集成好的测试工具。桌面采用的是基于Gnome的Mate桌面，外观上非常炫酷，科技感十足。系统中编程环境完善，支持C++、Java、Python等多种语言编程，官方还提供了多种版本以适应不同电脑下载。
 

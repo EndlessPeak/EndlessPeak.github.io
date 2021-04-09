@@ -2,7 +2,7 @@
 title: Arch Linux物理机的安装与引导
 toc: true
 date: 2020-01-16 22:00:00
-image: https://s1.ax1x.com/2020/04/04/GdMk1x.md.png
+featuredImage: https://s1.ax1x.com/2020/04/04/GdMk1x.md.png
 authors:
   - EndlessPeak
 categories: 
@@ -11,8 +11,6 @@ tags:
   - Linux
 draft: false
 ---
-
-![](https://s2.ax1x.com/2020/02/02/1YadTU.jpg)
 
 Arch Linux 是通用 x86-64 GNU/Linux 发行版，初始安装仅提供命令行环境：用户不需要删除大量不需要的软件包，而是可以从**官方软件仓库**成千上万的高质量软件包中进行选择，搭建自己的系统。支持x86-64架构。Arch采用滚动升级模式，尽全力提供最新的稳定版软件。
 
@@ -30,7 +28,9 @@ Arch 之道，或者叫Arch哲学，一言以蔽之，Keep It Simple, Stupid.(�
 
 **以用户为中心**：许多 Linux 发行版都试图变得更“用户友好”，Arch Linux 则一直是，且永远会是“以用户为中心”。Arch是为了满足贡献者的需求，而不是为了吸引尽可能多的用户。
 
-一般来说，安装Arch最好的也是最完备的教程就是官方的[Installation guide](https://wiki.archlinux.org/index.php/installation_guide)与[Arch Wiki](https://wiki.archlinux.org/)，虽然部分内容有中文版，但是中文的翻译有些时候会落后于英文版，所以不推荐完全依赖于中文Wiki。另外， 官方Wiki的写作方式更偏向于文档，没有我们所习惯的按步骤编排的安装过程，给不熟悉这种写作方式的人们造成了阅读与使用上的困难。 
+一般来说，安装Arch最好的也是最完备的教程就是官方的[Installation guide](https://wiki.archlinux.org/index.php/installation_guide)与[Arch Wiki](https://wiki.archlinux.org/)，虽然部分内容有中文版，但是中文的翻译有些时候会落后于英文版，所以不推荐完全依赖于中文Wiki。另外， 官方Wiki的写作方式更偏向于文档，没有我们所习惯的按步骤编排的安装过程，给不熟悉这种写作方式的人们造成了阅读与使用上的困难。
+
+![](https://s2.ax1x.com/2020/02/02/1YadTU.jpg) 
 
 ## 安装前准备
 
