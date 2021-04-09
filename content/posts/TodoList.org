@@ -1,0 +1,78 @@
+---
+title: "GTD-by-org-mode"
+date: 2021-04-08T12:54:03+08:00
+lastmod: 2021-04-08T23:14:02+08:00
+authors:
+  - EndlessPeak
+toc: true
+categories:
+    - Build
+tags:
+    - Hugo
+    - Org Mode
+---
+
+* GTD by Org-mode
+
+本文试图说明hugo对org-mode具有相当良好的支持，本文可作为本站的建设日志和维护的 todo list 来说明 hugo 具有渲染 org-mode 效果，但同时,我们也看到，在渲染 org-mode 方面 Eureka 主题并没有在 Emacs 上的效果好。与 Markdown 相比，渲染org-mode 更多的是简单的文本排列组合，甚至忽略了org文件本身排版的格式。
+
+<!--more-->
+
+** [DONE] 数学支持 [2/2]
+
+   - State "[DONE]"     from "[TODO]"     [2021-04-08 Thu 23:08]
+   - State "[TODO]"     from              [2021-04-08 Thu 14:31]
+   
+   
+
+   原生 hugo 不具备数学支持,测试内容包括 MathJax 和 Katex,启用 Eureka 主题后不需要额外增加内容。
+
+*** [DONE] MathJax
+
+    - State "[DONE]"     from "[TODO]"     [2021-04-08 Thu 17:05]
+    - State "[TODO]"     from              [2021-04-08 Thu 14:35]
+*** [DONE] Katex
+
+    - State "[DONE]"     from "[TODO]"     [2021-04-08 Thu 18:48]
+    - State "[TODO]"     from              [2021-04-08 Thu 17:10]
+    
+** [HOLD] 行内公式 
+
+   - State "[HOLD]"      from "[TODO]"     [2021-04-08 Thu 16:25] \\
+     Notes here
+   - State "[TODO]"      from 		       [2021-04-08 Thu 14:34]
+
+** [TODO] 撰写 Emacs Workflow [0/4]
+
+   - State "[TODO]"      from "[TODO]"     [2021-04-08 Thu 23:13]
+   - State "[TODO]"      from              [2021-04-08 Thu 18:12]
+
+   Emacs workflow 包括了如下内容：
+
+*** [TODO] Emacs Plugin
+
+    - State "[TODO]"     from              [2021-04-08 Thu 23:16]
+    
+*** [TODO] Elisp
+
+    - State "[TODO]"     from              [2021-04-08 Thu 23:16]
+    
+*** [TODO] Org Mode
+
+    - State "[TODO]"     from              [2021-04-08 Thu 23:16]
+    
+*** [TODO] EAF  Emacs Application Framework
+
+    - State "[TODO]"     from              [2021-04-08 Thu 23:17]
+    
+
+** 表格支持
+
+非GTD格式显示内容
+
+| name  | space | value |
+|-------+-------+-------|
+| test1 | test2 | test3 |
+| C-c   | C-v   | C-x   |
+
+
