@@ -65,10 +65,10 @@ authors:
 
 参阅 [文档](/docs) ,阅读我的构建经历可能有助于构建你自己的工作环境。我会持续记录有趣的项目并尝试应用到自己的电脑上，并享受这个过程所带给我的乐趣。最重要的是，记录使得我能在更换计算机时在此处找到快速重建我的工作环境的方法。
 
-- 参阅 [GNU/Linux](/posts/linux/linux-technology-1-fully-use-linux) 来了解以 GNU/Linux 工作是什么样的，了解它的优点和好处，并积极在生活和工作中去使用它。
-- 参阅 [Linux Distribution](/posts/linux/linux-technology-2-linux-comprehensive-overview) 以了解过有关软件包组和发行版本的问题。
-- 参阅 [Editor]() ，重新认识文本编辑器的魅力和潜力。
-- 参阅 [Window Manager]() 通过使用窗口管理器来安排你的日常工作，专注于开发和代码而不是其他的内容。
+- 参阅 [GNU/Linux](/docs/build-doc/operating-system-sum/linux-technology-1-fully-use-linux//) 来了解以 GNU/Linux 工作是什么样的，了解它的优点和好处，并积极在生活和工作中去使用它。
+- 参阅 [Linux Distribution](docs/build-doc/operating-system-sum/linux-technology-2-linux-comprehensive-overview/) 以了解过有关软件包组和发行版本的问题。
+- (暂未完成)参阅 [Editor]() ，重新认识文本编辑器的魅力和潜力。
+- (暂未完成)参阅 [Window Manager]() 通过使用窗口管理器来安排你的日常工作，专注于开发和代码而不是其他的内容。
 
 <p>&nbsp; </p>
 

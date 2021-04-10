@@ -12,6 +12,7 @@ categories:
   - Linux Basic
 hidden: false
 draft: false
+weight: 1
 ---
 
 尽管很多人已经不习惯看长篇大论, 但我还是要说, 这是一篇值得你从头读到尾的长篇文章。

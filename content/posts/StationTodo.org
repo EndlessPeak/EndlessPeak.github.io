@@ -6,27 +6,19 @@ tags:
   - Hugo
   - Org Mode
 categories:
-  - Build
-series: []
+  - Plan
 date: 2021-04-09T17:06:56+08:00
-lastmod: 2021-04-09T17:06:56+08:00
-featuredVideo:
 featuredImage:
 draft: false
 ---
 
-本文试图说明hugo对org-mode具有相当良好的支持，本文作为本站的建设和维护的日志，例证说明 hugo 具有渲染 org-mode 效果。当然同时我们也看到，在渲染 org-mode 方面， Eureka+Hugo 并没有在 Emacs 上的效果好。与 Markdown 相比，渲染org-mode 更多的只有简单的文本排列组合，对 org 文件本身的高亮支持并不够。
+本文是本站的建设和维护的日志。本文试图说明hugo对org-mode具有相当良好的支持，并预览 hugo 渲染 org-mode 的效果。由结果来看，在渲染 org-mode 方面， Eureka+Hugo 并没有 Emacs 原生渲染的效果好。与 Markdown 相比，hugo 渲染 org-mode 更多的只有简单的文本排列组合，对 org 文件本身的高亮支持并不够。
 
 <!--more-->
 
-* 站点构建计划
-
 ** 格式定制[2/2]
 
-*** [DONE] 数学支持 [3/3]
-
-    - State "[DONE]"     from "[TODO]"     [2021-04-08 Thu 23:08]
-    - State "[TODO]"     from              [2021-04-08 Thu 14:31]
+*** 数学支持 [3/3]
 
     原生 hugo 不具备数学支持,默认主题 Ananke 需要添加 MathJax 或 Katex,启用 Eureka 主题后不需要额外增加内容。
 
@@ -47,9 +39,7 @@ draft: false
        Change hold should add notes here
      - State "[TODO]"      from 		       [2021-04-08 Thu 14:34]
 
-*** [DONE] 表格支持
-
-    - State "[DONE]"     from              [2021-04-09 Fri 17:15]
+*** 表格支持
 
 使用Org-mode构建表格进行测试
 
@@ -61,19 +51,20 @@ draft: false
 
 ** 内容编写
 
-*** [TODO] 整理当前的笔记 
+*** Terminal Workflow[0/3]
 
-    - State "[TODO]"     from              [2021-04-09 Fri 17:18]
+    Terminal workflow 包括如下内容：
 
-当前笔记包括如下内容：
+**** [TODO] Window Manager
 
-**** 补充Eureka 
+     - State "[TODO]"     from              [2021-04-10 Sat 13:03]
+**** [TODO] Vim
 
-**** 
-*** [TODO] 撰写 Emacs Workflow [0/4]
+     - State "[TODO]"     from              [2021-04-10 Sat 13:03]
+**** [TODO] Ranger
 
-    - State "[TODO]"      from "[TODO]"     [2021-04-08 Thu 23:13]
-    - State "[TODO]"      from              [2021-04-08 Thu 18:12]
+     - State "[TODO]"     from              [2021-04-10 Sat 13:03]
+*** Emacs Workflow [0/4]
 
     Emacs workflow 包括了如下内容：
 
@@ -92,7 +83,8 @@ draft: false
 **** [TODO] EAF  Emacs Application Framework
 
      - State "[TODO]"     from              [2021-04-08 Thu 23:17]
-    
 
+*** Using Solution
 
+    等待补充。
 

@@ -1,16 +1,12 @@
 ---
-title: 我的Linux环境配置1
+title: Linux 桌面环境配置
 toc: true
 authors:
   - EndlessPeak
-tags:
-  - Linux
-categories:
-  - Linux Basic
-  - 解决方案
 date: 2020-02-18 20:00:00
 hidden: false
 draft: false
+weight: 4
 ---
 
 如果现在让我选择一个我心目中最好的Linux发行版，同时也是最简单的Linux发行版，作为长期甚至终身使用的Linux，我会选择的发行版是：Arch Linux！

@@ -9,9 +9,7 @@ tags:
   - Hugo
   - Blog
 categories: 
-  - Build Blog
-series: 
-  - Build
+  - 杂谈
 draft: false
 ---
 
@@ -122,9 +120,11 @@ Eureka 具有良好的 Markdown 高亮支持。这里介绍引用块、表格、
 
 #### Code Blocks
 
-Markdown 提供了对代码块的支持，即使你仅仅只是对代码块做四个空格这样简单的处理。但 Hugo 支持独特的内联代码块显示，具体见本文源码。
+Markdown 提供了对代码块的支持。即使你但 
 
 ##### Code block with backticks
+
+普通代码块标注。
 
 ```html
 <!doctype html>
@@ -141,6 +141,8 @@ Markdown 提供了对代码块的支持，即使你仅仅只是对代码块做�
 
 ##### Code block indented with four spaces
 
+仅仅只是对代码块做四个空格这样简单的处理。
+
     <!doctype html>
     <html lang="en">
     <head>
@@ -153,6 +155,8 @@ Markdown 提供了对代码块的支持，即使你仅仅只是对代码块做�
     </html>
 
 ##### Code block with Hugo's internal highlight shortcode
+
+Hugo 具有支持内联代码块显示的特性，使用双括号包裹高亮 HTML 的声明标签开头，最后以双括号包裹结束高亮声明的标签结尾，具体见本文源码。
 
 {{< highlight html >}}
 
@@ -171,7 +175,7 @@ Markdown 提供了对代码块的支持，即使你仅仅只是对代码块做�
 
 #### List Types
 
-下面是列表支持。
+下面是 Hugo 对 Markdown 列表的支持效果。
 
 ##### Ordered List
 
@@ -197,7 +201,7 @@ Markdown 提供了对代码块的支持，即使你仅仅只是对代码块做�
 
 #### Other Elements 
 
-Eureka 提供对其他 HTML 元素的原生支持，包括 abbr、sub、sup、kbd、mark 等属性。
+Eureka 还提供对其他 HTML 元素的原生支持，包括 abbr、sub、sup、kbd、mark 等属性。
 
 <abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
 
@@ -215,7 +219,7 @@ Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and ot
 
 ### Emoji Support
 
-Emoji can be enabled in a Hugo project in a number of ways. 
+Emoji 能够在 Hugo 项目中以多种方式启用。以下是原文档说明。
 
 The [`emojify`](https://gohugo.io/functions/emojify/) function can be called directly in templates or [Inline Shortcodes](https://gohugo.io/templates/shortcode-templates/#inline-shortcodes). 
 
@@ -255,7 +259,7 @@ The [Emoji cheat sheet](http://www.emoji-cheat-sheet.com/) is a useful reference
 
 ### Diagram Support
 
-Eureka supports the rendering of diagrams by using Mermaid.
+Eureka 支持以 Mermaid 方式渲染 Markdown 的简图。以下是原文档的说明。
 
 Please include the Mermaid diagram as below. Every mermaid chart/graph/diagram definition, has to have separate `<div>` tags.
 
@@ -282,7 +286,7 @@ And here is another:
 
 ### Math Support
 
-Eureka supports the rendering of mathematical formulas by using KaTeX.
+Eureka 默认支持以 KaTex 插件来渲染数学公式，下面是一些测试。
 
 You can type inline equation like $E=mc^2$.
 
@@ -316,14 +320,20 @@ And many other kinds of formulas.
 
 ### Installation Guide
 
-下面两种克隆方式任选其一。
+安装 Eureka 不需要安装额外的第三方插件或 npm 库。
+
+法一：可在下面两种克隆方式中任选其一。
 
 ```bash
 $ git clone https://gitee.com/wangchucheng/hugo-eureka.git hugosite/themes/eureka
 $ git clone https://github.com/wangchucheng/hugo-eureka.git hugosite/themes/eureka
 ```
+法二：如果需要对主题提供长期支持，同时又不需要对主题作修改，可考虑以子模块注册（以根目录是站点，同时已经初始化仓库的情况下）。
 
-Eureka 使用独特的配置文件夹，因此需要使用该主题，需要进行如下操作：
+```shell
+$ git submodule add <上面的url地址> hugosite/themes/eureka
+```
+Eureka 使用单独的配置文件夹而不是独立的 `config.toml` 文件，因此需要使用该主题，需要进行如下操作：
 
 ```bash
 $ cd hugosite
@@ -332,3 +342,46 @@ $ cp -r themes/eureka/examplesite/config ./ # 拷贝配置文件夹到站点根�
 ```
 
 更多配置详情内容请参阅：[Eureka](https://www.wangchucheng.com/zh/docs/hugo-eureka/)
+
+下面补充我个人站点构建的其他内容。需求是使用git管理站点仓库，推送时希望推送到源码到该仓库的develop分支，生成的页面内容推送到master分支。
+
+使用站点生成命令`hugo`自动在站点目录下生成`public`目录。
+
+创建一个自动部署博客的脚本：
+
+```
+#!/usr/bin/env sh
+
+# 确保脚本抛出遇到的错误
+set -e
+
+# 进入生成的文件夹
+cd public
+
+# 如果是发布到自定义域名
+# echo 'www.example.com' > CNAME
+
+git init
+git add -A
+git commit -m 'deploy'
+
+# 如果发布到 https://<USERNAME>.gitee.io/<REPO>
+git push -f git@gitee.com:endlesspeak/endlesspeak.git master
+
+# 如果发布到 https://<USERNAME>.github.io/<REPO>
+# git push -f git@github.com:<USERNAME>/<REPO>.git master
+
+cd - #返回到上一次的工作目录。
+
+```
+
+为站点初始化git仓库，然后指定远程分支
+
+```
+$ cd hugosite
+$ git init
+$ git remote add origin git@gitee.com:endlesspeak/endlesspeak.git
+$ git push origin master:develop
+```
+
+最后一行代表将当前本地仓库推送到远程，其中origin是远程仓库名，master是准备推送的本地仓库分支，develop是希望推送到的远程仓库分支。
