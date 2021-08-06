@@ -13,7 +13,7 @@ categories:
 draft: false
 ---
 
-Hugo 是 Go 编写的静态网站生成器，速度快，易用，可配置。Hugo 有一个内容和模板目录，把他们渲染到完全的 HTML 网站。
+Hugo 是 Go 编写的静态网站生成器，速度快，易用，可配置。Hugo 具有基于各种主题生成的内容和模板目录，以把markdown文件（包括org文件）渲染到完全静态的 HTML 网站。
 
 Eureka是一个功能丰富且可高度定制化的Hugo主题，使用Eureka可以轻松快捷地定制并部署网站。
 
