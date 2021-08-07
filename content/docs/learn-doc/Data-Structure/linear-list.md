@@ -219,15 +219,17 @@ LNode *LocateElem(LinkList L,ElemType e){
 
 ### 插入
 
+#### 给定结点插入
+
 对于给定的结点，向其前后插入。
 
-#### 向后插入
+##### 向后插入
 
 ```c++
 bool ListInsertNextNode(LNode *p,ElemType e){
-    if(p==NULL)	return false;
+    if(p==NULL)	return false;//待插入结点不合法
     LNode *s=(LNode*)malloc(sizeof(LNode));
-    if(s==NULL)	return false;
+    if(s==NULL)	return false;//无法新插入结点
     s->data=e;
     s->next=p->next;
     p->next=s;//注意上述三语句的顺序，此句和前句顺序不能颠倒
@@ -235,17 +237,17 @@ bool ListInsertNextNode(LNode *p,ElemType e){
 }
 ```
 
-#### 向前插入
+##### 向前插入
 
-方法有两种，一是传入头指针，找到第`i-1`个结点；二是转换为后插操作。
+方法有两种，一是传入头指针，找到第`i-1`个结点；二是转换为后插操作，即向后插入操作后将前驱结点p与插入结点s交换数据域。
 
 如果给定的是待插入的值，则
 
 ```C++
 bool ListInsertPriorNode(LNode *p,ElemType e){
-    if(p==NULL)	return false;
+    if(p==NULL)	return false;//待插入结点不合法
     LNode *s=(LNode*)malloc(sizeof(LNode));
-    if(s==NULL)	return false;
+    if(s==NULL)	return false;//无法新插入结点
     s->next=p->next;
     p->next=s;
     s->data=p->data;
@@ -258,9 +260,9 @@ bool ListInsertPriorNode(LNode *p,ElemType e){
 
 ```C++
 bool ListInsertPriorNode(LNode *p,LNode *s){
-    if(p==NULL)	return false;
+    if(p==NULL)	return false;//待插入结点不合法
     LNode *s=(LNode*)malloc(sizeof(LNode));
-    if(s==NULL)	return false;
+    if(s==NULL)	return false;//无法新插入结点
     s->next=p->next;
     p->next=s;
     ElemType temp;
@@ -271,9 +273,11 @@ bool ListInsertPriorNode(LNode *p,LNode *s){
 }
 ```
 
+#### 给定位序插入
+
 对于给定的位序，向其前后插入如下。
 
-#### 向后按位序插入
+##### 向后按位序插入
 
 带头结点
 
@@ -301,7 +305,7 @@ bool ListInsertNext(LinkList &L,int i,ElemType e){
 ```
 
 
-#### 向前按位序插入
+##### 向前按位序插入
 
 ```C++
 bool ListInsertPrior(LinkList &L,int i,ElemType e){
@@ -369,10 +373,13 @@ bool ListDelete(LinkList &L,int i,ElemType &e){
 
 #### 按结点删除
 
+删除某结点，方法有两种，一是传入头指针，找到第`i-1`个结点；二是该结点与其后继结点交换数据域。该方法不能删除最后一个结点。
+
 ```c++
 bool ListDeleteNode(LNode *p){
     if(p==NULL)	return false;
     LNode *q=p->next;
+    if(q==NULL) return false;//不能删除最后一个结点
     p->data=p->next->data;//被删除结点和后继结点交换数据域
     p->next=q->next;//断链
     free(q);
@@ -381,6 +388,8 @@ bool ListDeleteNode(LNode *p){
 ```
 
 ### 求表长
+
+求表长的思想类似于按位序查找结点。
 
 ```c++
 int Length(LinkList L){
@@ -505,5 +514,4 @@ void TravereBack(DNode *p){
         p=p->prior;
 }
 ```
-
 
