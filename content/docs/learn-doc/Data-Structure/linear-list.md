@@ -166,7 +166,7 @@ bool InitList(LinkList &L){
 
 ```c++
 bool InitList(LinkList &L){
-    L=（LNode*)malloc(sizeof(LNode));
+    L=(LNode*)malloc(sizeof(LNode));
     if(L==NULL)	return false;
     L->next=NULL;
     return true;
