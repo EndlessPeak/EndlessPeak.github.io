@@ -86,12 +86,13 @@ bool ListInsert(SqList &L,int i,ElemType e){
         MaxSize++;
         ElemType *new;
         new=(ElemType*)realloc(L.data,sizeof(ElemType)*(MaxSize+1));
+        if(!new)  return false;//申请空间失败
         L.data=new;
-    	if(!L.data)  return false;
     }
-    if(L.length>=MaxSize)	return false;
+    if(L.length>MaxSize)	return false;
     for(int j=L.length;j>=i;j--)
-        L.data[j]=L.data[j-1];//从最后开始，一直到i-1位，将所有元素依次往移动一位
+    //位序从最后1位一直到第i个，插入向右移，因此最后需要额外的j=L.length，共L.length-i+1位
+        L.data[j]=L.data[j-1];
     L.data[i-1]=e;
     L.length++;
     return true;
@@ -106,6 +107,7 @@ bool ListDelete(SqList &L,int i,ElemType e){
         return false;
     e=L.data[i-1];
     for(int j=i;j<L.length;j++)
+    //位序从第i+1个到最后1位，删除向左移，因此不需要最后一个j=L.length，共L.length-i个
         L.data[j-1]=L.data[j];
     L.length--;
     return true;
@@ -136,7 +138,7 @@ ElemType LocateElem(SqList L,int i){
 }
 ```
 
-## 链表
+## 单链表
 
 如无特殊说明，均指带头结点的单链表。
 
@@ -394,4 +396,114 @@ int Length(LinkList L){
     return len;
 }
 ```
+
+## 双链表
+
+### 定义
+
+```c++
+tyepdef struct DNode{
+	ElemType data;
+	struct DNode *next,*prior;
+}DNode,*LinkList;
+```
+
+### 初始化
+
+```c++
+bool InitDLinkList(DLinkList &L){
+	L=(DNode *)malloc(sizeof(DNode));//分配头结点
+	if(L==NULL) return false;//内存不足
+	L->prior=NULL;
+	L->next=NULL;
+	return true;
+```
+
+### 判空
+
+```c++
+bool Empty(DLinkList &L){
+    if(L->next==NULL) return true;//头结点
+    else return false;
+}
+```
+
+### 插入
+
+向后插入
+
+```c++
+bool InsertNextDNode(DNode *p,DNode *s){
+    if(p==NULL||s==NULL) return false;
+    s->next=p->next;
+    if(p->next!=NULL)//如果p结点有后继结点
+        p->next->prior=s;
+    s->prior=p;
+    p->next=s;
+    return true;
+}
+```
+
+向前插入
+
+```c++
+bool InsertPriorDNode(DNode *p,DNode *s){
+    if(p==NULL||s==NULL) return false;
+    if(p->prior==NULL){
+        s->next=p;
+        p->prior=s;
+    }
+    p=p->prior;//找到p的前驱结点，然后向后插入
+    s->next=p->next;
+    p->next->prior=s;
+    s->prior=p;
+    p->next=s;
+    return true;
+}
+```
+
+### 删除
+
+删除p结点的后继结点
+```c++
+bool DeleteNextNode(DNode *p){
+    if(p==NULL) return false;
+    DNode *q=p->next;
+    if(q==NULL) return false;//p没有后继结点
+    p->next=q->next;
+    q->next->prior=p;
+    free(q);
+    return true;
+}
+```
+
+### 销毁
+
+```c++
+void DestroyList(DLinkList &L){
+    while(L->next!=NULL)
+        DeleteNextNode(L);
+    free(L);
+    L=NULL;//头指针指向NULL
+}
+```
+
+### 遍历
+
+正向遍历
+```c++
+void Travere(DNode *p){
+    while(p!=NULL)
+        p=p->next;
+}
+```
+
+反向遍历
+```c++
+void TravereBack(DNode *p){
+    while(p->prior!=NULL)//略过头结点，仅处理数据结点
+        p=p->prior;
+}
+```
+
 
