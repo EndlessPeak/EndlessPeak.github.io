@@ -439,7 +439,7 @@ bool Empty(DLinkList &L){
 
 ### 插入
 
-向后插入
+#### 向后插入
 
 ```c++
 bool InsertNextDNode(DNode *p,DNode *s){
@@ -453,7 +453,7 @@ bool InsertNextDNode(DNode *p,DNode *s){
 }
 ```
 
-向前插入
+#### 向前插入
 
 ```c++
 bool InsertPriorDNode(DNode *p,DNode *s){
@@ -515,3 +515,182 @@ void TravereBack(DNode *p){
 }
 ```
 
+
+
+## 循环链表
+
+### 循环单链表
+
+循环单链表和单链表的区别在于表中最后一个结点的指针指向头结点L。
+
+#### 定义
+
+循环单链表的定义与单链表的定义完全相同。
+
+#### 初始化
+
+```C++
+bool InitList(LinkList &L){
+    L=(LNode*)malloc(sizeof(LNode));
+    if(L==NULL)
+        return false;
+    L->next=L;//头结点next指向头结点
+    return true;
+}
+```
+
+#### 判空与判尾
+
+思想：判断当前结点是否指向头结点L。
+
+```c++
+//判空
+bool Empty(LinkList L){
+    if(L->next==L)	return true;
+    else return false;
+}
+//判尾
+bool isTail(LinkList L,LNode *p){
+    if(p->next==L)	return true;
+    else return false;
+}
+```
+
+### 循环双链表
+
+循环双链表与循环单链表的区别在于其头结点的prior指针指向表尾结点。
+
+#### 定义
+
+循环双链表的定义与双链表的定义完全相同。
+
+#### 初始化
+
+```c++
+bool InitDLinkList(DLinkList &L){
+    L=(DNode*)malloc(sizeof(DNode));
+    if(L==NULL)	return false;
+    L->next=L;
+    L->prior=L;
+    return true;
+}
+```
+
+#### 判空与判尾
+
+思想：判断当前结点是否指向头结点L，与循环单链表完全相同。
+
+```C++
+//判空
+bool Empty(DLinkList L){
+    if(L->next==L)	return true;
+    else return false;
+}
+//判尾
+bool isTail(LinkList L,LNode *p){
+    if(p->next==L)	return true;
+    else return false;
+}
+```
+
+#### 插入
+
+插入部分基本同双链表，区别在于后继结点是否存在不需要额外判断。
+
+##### 向后插入
+
+```c++
+bool InsertNextDNode(DNode *p,DNode *s){
+    if(p==NULL||s==NULL) return false;
+    s->next=p->next;
+    //if(p->next!=NULL)//普通双链表需要判断p结点后是否有后继结点
+    p->next->prior=s;
+    s->prior=p;
+    p->next=s;
+    return true;
+}
+```
+
+##### 向前插入
+
+```C++
+bool InsertPriorDNode(DNode *p,DNode *s){
+    if(p==NULL||s==NULL) return false;
+    if(p==L)//不能在头结点之前插入
+        return false;
+    p=p->prior;//找到p的前驱结点，然后向后插入
+    s->next=p->next;
+    p->next->prior=s;
+    s->prior=p;
+    p->next=s;
+    return true;
+}
+```
+
+#### 删除
+
+删除p结点的后继结点，基本同双链表，区别在于后继结点是否存在不需要额外判断。
+
+```c++
+bool DeleteNextNode(DNode *p){
+    if(p==NULL) return false;
+    DNode *q=p->next;
+    //if(q==NULL) return false;//p一定有后继结点
+    p->next=q->next;
+    q->next->prior=p;
+    free(q);
+    return true;
+}
+```
+
+## 静态链表
+
+借助数组描述线性表的链式存储结构。
+
+```c++
+typedef struct{
+    ElemType data;
+    int next;//下一个元素的数组下标
+}SLinkList[MaxSize],SNode;
+SLinkList a;//等价于 struct SNode a[MaxSize];
+```
+
+游标`next=-1`表示到链表尾，`next=-2`表示该结点暂未使用。
+
+## 顺序表和链表的比较
+
+### 存取方式
+
+存取方式又叫读写方式，顺序表可以顺序存取，也可以随机存取；链表只能顺序存取，因此有下面的结论：
+
+线性表的顺序存储结构是一种**随机存取**的存储结构，线性表的链接存储结构是一种**顺序存取**的存储结构。
+
+### 逻辑与物理结构
+
+顺序存储：逻辑上相邻的元素物理上也相邻。
+
+链式存储：逻辑上相邻的元素物理上不一定相邻。
+
+### 增删改查操作
+
+#### 查改
+
+按值查找，顺序表无序时，顺序表与链表时间复杂度均为O(n)，顺序表有序时顺序表时间复杂度为O(logn)；
+
+按位序查找，顺序表时间复杂度为O(1)，链表时间复杂度为O(n)；
+
+#### 增删
+
+顺序表的插入、删除操作时间复杂度O(n)，主要来自于移动元素；
+
+链表的插入、删除操作时间复杂度O(n)，主要来自于查找元素。
+
+### 选择
+
+如果存储结构需要具有弹性、可扩容，选择链表；
+
+如果存储结构需要具有频繁的增删操作，选择链表；
+
+如果存储结构需要具有频繁的查找操作，选择顺序表；
+
+如果存储结构需要易于实现，选择顺序表。
