@@ -1,19 +1,19 @@
 ---
-title: 线性表算法题
+title: 线性表算法题解
 toc: true
 authors:
   - EndlessPeak
 date: 2021-08-07
 hidden: false
 draft: false
-weight: 3
+weight: 5
 ---
 
 本节尝试对具有代表性的线性表编程题及经典算法进行实现。
 
-## 题1
+## 题1 删除单链表中的指定结点
 
-递归算法实现删除不带头结点的单链表L中所有值为x的结点
+递归算法实现删除不带头结点的单链表L中所有值为x的结点。
 
 ```c++
 void RecurseDel(LinkList &L,ElemType x){
@@ -34,9 +34,9 @@ void RecurseDel(LinkList &L,ElemType x){
 
 > 当调用函数时，有三种向函数传递参数的方式，分别是传值调用，指针调用和引用调用。其中后两种调用时修改形式参数会影响实际参数。
 
-## 题3
+## 题2 反向输出单链表结点的值
 
-对带头结点L的单链表，从尾到头反向输出结点的值
+对带头结点L的单链表，从尾到头反向输出结点的值。
 
 思想1：采用递归，每次返回后一个结点的反向输出值，再返回当前结点的值。
 
@@ -73,10 +73,16 @@ void HeadInsertPrint(LinkList L){
 }
 ```
 
-实现法2：就地逆置，遍历输出
+实现法2：就地逆置，遍历输出（见题3）
+
+## 题3 单链表的就地逆置
+
+就地逆置单链表，最后打印单链表的内容。
+
+思想1: 将头结点摘下，然后从第一个结点开始依次头插法建立单链表。
 
 ```c++
-void HeadInsertPrint(LinkList L){
+void LinkListReversePrint(LinkList L){
     LNode *p,*q;
     p=L->next;
     L->next=NULL;
@@ -87,6 +93,29 @@ void HeadInsertPrint(LinkList L){
         p=q;
     }//头插法结束
     p=L;//将逆置链表头结点赋给p
+    while(p->next!=NULL){
+        p=p->next;
+        printf("%d",p->data);
+    }
+}
+```
+
+思想2: 使用三个工作结点 pre,p,r 依次遍历单链表，pre指示前一个结点，p指示当前结点，r指示后一个结点。每次翻转两个结点，最终得到就地逆置的单链表。
+
+```c++
+void LinkListReversePrint(LinkList L){
+    LinkList pre,p,r;
+    p=L->next;
+    r=p->next;
+    p->next=NULL;//p即是逆置后的最后一个结点，将其尾部置空
+    while(r!=NULL){
+        pre=p;
+        p=r;
+        r=r->next;
+        p->next=pre;//指针反转
+    }
+    L->next=p;//头结点的下一结点指向逆置前的最后一个结点
+    p=L;
     while(p->next!=NULL){
         p=p->next;
         printf("%d",p->data);

@@ -1,12 +1,12 @@
 ---
-title: 线性表
+title: 线性表基本操作
 toc: true
 authors:
   - EndlessPeak
 date: 2021-08-06
 hidden: false
 draft: false
-weight: 2
+weight: 4
 ---
 
 线性表的基本操作如下：
