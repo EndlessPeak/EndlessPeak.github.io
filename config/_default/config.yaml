@@ -1,4 +1,4 @@
-baseURL: https://endlesspeak.gitee.io
+baseURL: https://endlesspeak.github.io
 title: EndlessPeakBlogSite
 
 # Comment when installing using Hugo Modules
@@ -37,7 +37,7 @@ markup:
 taxonomies:
   category: categories
   tag: tags
-  series: series
+  #series: series
   author: authors
 
 build:

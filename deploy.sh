@@ -14,9 +14,10 @@ git add -A
 git commit -m 'deploy'
 
 # 发布到 https://endlesspeak.github.io
-git push -f git@gitee.com:endlesspeak/endlesspeak.git master
+#git push -f git@gitee.com:endlesspeak/endlesspeak.git master
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
+git push -f git@github.com:endlesspeak/endlesspeak.github.io master
 
 cd - #返回到上一次的工作目录。
