@@ -6,7 +6,7 @@ authors:
 date: 2021-11-03
 hidden: false
 draft: false
-weight: 2
+weight: 4
 ---
 
 ## 生产者与消费者问题
