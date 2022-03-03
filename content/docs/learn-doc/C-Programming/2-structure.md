@@ -1,10 +1,17 @@
 ---
-title: 2-程序结构分析
+title: 结构
+authors:
+  - EndlessPeak
+toc: true
+featuredImage: 
+date: 2022-02-10
+hidden: false
+draft: false
+weight: 3
 ---
 
-# 程序结构分析
 
-## 程序实例1
+## 程序实例
 
 下面是first.c的程序代码
 

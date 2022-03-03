@@ -1,6 +1,5 @@
 ---
 title: Build Doc
-description: This is an example doc layout of Eureka theme
 toc: true
 authors:
 tags:

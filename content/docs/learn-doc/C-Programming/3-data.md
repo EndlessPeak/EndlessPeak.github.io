@@ -1,8 +1,14 @@
 ---
-title: 3-数据
+title: 数据
+authors:
+  - EndlessPeak
+toc: true
+featuredImage: 
+date: 2022-02-10
+hidden: false
+draft: false
+weight: 4
 ---
-
-# 数据
 
 ## 内容概览
 
@@ -162,15 +168,15 @@ C语言提供3个附属关键字修饰基本整数类型：`short`、`long`和`u
 
 1. 对于`short`可以使用`h`前缀，如
 
-   `short int` 使用 `%hd`表示十进制，使用 `%ho`表示八进制，使用 `%hx`表示十六进制
+   `short int` 使用 `%hd`表示十进制，使用 `%ho`表示八进制，使用 `%hx`表示十六进制。
 
 2. 对于`long` 可以使用`l`前缀，如
 
-   `long int`使用 `%ld`表示十进制，使用 `%lo`表示八进制，使用 `%lx`表示十六进制
+   `long int`使用 `%ld`表示十进制，使用 `%lo`表示八进制，使用 `%lx`表示十六进制。
 
 3. 对于`long long` 可以使用`ll`前缀，如
 
-   `long long int`使用 `%lld`表示十进制，使用 `%llo`表示八进制，使用 `%llx`表示十六进制
+   `long long int`使用 `%lld`表示十进制，使用 `%llo`表示八进制，使用 `%llx`表示十六进制。
 
 4. 存在`unsigned`前缀且需要用十进制表示时用`%u`替换`%d`，其他时候不变。
 
