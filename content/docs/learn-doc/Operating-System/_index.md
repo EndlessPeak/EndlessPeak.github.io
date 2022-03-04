@@ -7,6 +7,6 @@ featuredImage:
 date: 2021-11-03
 hidden: false
 draft: false
-weight: 1
+weight: 2
 ---
 

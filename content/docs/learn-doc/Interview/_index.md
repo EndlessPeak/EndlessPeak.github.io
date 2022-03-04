@@ -1,12 +1,12 @@
 ---
-title: C/C++程序设计
+title: 计算机面试相关内容
 authors:
   - EndlessPeak
-toc: true
+toc: false
 featuredImage: 
-date: 2022-02-10
+date: 2022-03-01
 hidden: false
 draft: false
-weight: 2
+weight: 1
 ---
 
