@@ -7,12 +7,120 @@ featuredImage:
 date: 2022-03-04
 hidden: false
 draft: false
-weight: 8
+weight: 9
 ---
 
-1. 你本科阶段有哪些项目经历？
+你本科阶段有哪些项目经历？
 
-   做过三个项目，分别是一个使用Java Server Page的考务管理系统，一个使用Mybatis + Springboot的商城系统，还有一个是有关三种传统机器学习算法的实现，使用的是最大信息增益比率的决策树、序列最小最优化算法的支持向量机和前馈神经网络。
+做过三个项目，分别是一个使用Java Server Page的考务管理系统，一个使用MybatisPlus + Springboot的商城系统，还有一个是有关三种传统机器学习算法的实现，使用的是最大信息增益比率的决策树、序列最小最优化算法的支持向量机和前馈神经网络。
+
+## Java Web
+
+### 综合问题
+
+1. 使用的是什么技术，采用的是什么架构？
+
+   考务管理系统使用的是JSP+JavaBean+Servlet；
+
+   商城项目使用的是MybatisPlus + Spring Boot；
+
+   采用的是MVC模式，分别是：
+
+   1. M for Model，代表业务模型
+   2. V for view，代表视图层
+   3. C for controller，代表控制器
+
+   对于具体项目的对应关系，
+
+   1. JSP项目中，JavaBean是业务模型M，JSP是视图层V，Servlet是控制器C；
+   2. SpringBoot项目中，JSP→Web/Controller→Service→ServiceImpl→Dao/Mapper→Bean
+            1. Bean是各个基础类，属于业务模型；
+            2. Dao提供基础操作，调用数据库；
+            3. Service提供相应的服务，分模块调用各个Dao；
+            4. ServiceImpl是它们的具体实现；
+            5. Controller实现相应的功能，分模块请求多个服务，还包含请求服务时的预处理；
+            6. JSP是MVC的View层，负责展示具体的页面；
+
+2. 服务器中404 502 503 504错误分别代表什么？
+
+### Java Servlet
+
+1. Servlet中提供了两种请求方法，doGet和doPost方法，它们的联系和区别为何？
+
+   它们都是HTTP协议中的两种请求发送的方法，都是TCP连接。
+
+   1. get把参数包含在URL中，post通过request body传递参数；
+
+   2. get请求只能url编码，post支持多种编码方式；
+
+   3. get请求有长度限制，post请求则无此限制；
+
+   4. get仅接受ASCII字符，post请求无此限制；
+
+   5. get产生一个TCP数据包，post产生两个TCP数据包；
+
+      get在传输层逻辑上只传输一次，服务器返回200 ok；
+
+      post逻辑上传输两次，先传header，服务器返回100 contiune，再传data，服务器返回200 ok；
+
+2. JSP中使用的代码复用技术
+
+   在查询/删除时，结果可能存在一个或多个，一开始设计的是判断操作数量，然后分别调用功能函数。重构时，上层不关心具体的实现细节，也无需判断可能的操作数量。
+
+   对于查询/删除函数，查询时统一使用Bean类型的对象的数组存储结果并返回，SQL语句仅一条，使用ResultSet提供的方法(**待完善**)进行遍历，避免在函数编写和调用时的复杂性；而删除时（**待完善**）
+
+3. 前端接收数据格式
+
+   前端Layui使用json字符串格式数据渲染表格，因此需要将object对象转化为json格式。使用的是fastjson包。
+
+   定义转换函数：
+
+   1. 将数据object附加上code，message，count等信息；
+   2. 初始化jsonObject对象，使用jsonObject.put()方法依次加入code，message，count信息；
+   3. 使用json.toJSONString(object)将object转换为JSONObject；
+   4. 由于object可能有多个，将JSONObject装入JSONArray后再加入JSONObject；
+   5. 最后将JSONObject转为JSONString格式；
+
+4. XXX
+
+### Spring Boot
+
+1. Springboot中使用的代码复用技术
+
+2. 什么是Map，为什么用Map
+
+   Map是一个接口，它的每个元素包含一个key对象和一个value对象，key必须是唯一的且不能重复。
+
+   Map的实现类包括HashMap、TreeMap、HashTable。
+
+   1. TreeMap是有序的，HashMap和HashTable是无序的；
+   2. Hashtable的方法是同步的（线程安全），HashMap的方法是异步的（非线程安全）；
+   3. Hashtable不允许null值，HashMap允许null值（key和value都允许）
+
+   Map的通用方法有：
+
+   1. 返回map集合大小 `int size;`
+
+   2. 判断map集合为空 `boolean isEmpty();`
+
+   3. 根据key值获取value `Object get(Object key);`
+
+   4. 添加元素\<key value> `Object put(Object key,Object value);`
+
+   5. 获取元素的键和值的接口；
+
+      ```java
+       interface Entry<k,v>{
+       	k getKey();
+       	v getValue();
+       }
+      ```
+
+3. 注解@Override
+
+   1. 作为注释使用；
+   2. 代码规范，对父类方法的重写；
+   3. 编译器验证父类中是否有此方法；
 
 ## 机器学习
 
