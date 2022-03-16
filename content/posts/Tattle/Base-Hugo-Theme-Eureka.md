@@ -389,6 +389,21 @@ $ git push origin master:develop
 也可以使用关联分支命令，将本地master分支与远程的develop分支关联起来，这样以后只需要直接push就可以了，操作如下：
 
 ```bash
+$ git remote -v #查看远程仓库设置
+$ git branch -a #查看所有分支，也可选择-r查看远程分支
+```
+
+如果未显示远程分支的内容，则检查远程仓库设置是否正确。若不正确，修改远程仓库设置；若远程仓库正确，则重新fetch一次。
+
+```bash
+$ git remote rm [远程仓库别名]
+$ git remote add [远程仓库别名] [远程仓库地址]
+$ git fetch
+```
+
+一切正常后，关联本地master分支与远程的develop分支。
+
+```bash
 $ git branch -u origin/develop master
 $ git push
 ```
