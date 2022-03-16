@@ -377,7 +377,7 @@ cd - #返回到上一次的工作目录。
 
 为站点初始化git仓库，然后指定远程分支
 
-```
+```bash
 $ cd hugosite
 $ git init
 $ git remote add origin git@gitee.com:endlesspeak/endlesspeak.git
@@ -385,3 +385,11 @@ $ git push origin master:develop
 ```
 
 最后一行代表将当前本地仓库推送到远程，其中origin是远程仓库名，master是准备推送的本地仓库分支，develop是希望推送到的远程仓库分支。
+
+也可以使用关联分支命令，将本地master分支与远程的develop分支关联起来，这样以后只需要直接push就可以了，操作如下：
+
+```bash
+$ git branch -u origin/develop master
+$ git push
+```
+
