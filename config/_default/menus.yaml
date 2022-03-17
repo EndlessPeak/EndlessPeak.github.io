@@ -14,6 +14,4 @@ main:
   - name: 标签
     url: /tags
     weight: 5
-  - name: 小说
-    url: /novel
-    weight: 6
+  
