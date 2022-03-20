@@ -193,23 +193,25 @@ weight: 3
 
       算法：
 
-      1. X是终结符号，则FIRST(X)=X；
+      1. X是终结符号，则$FIRST(X)=X$；
       2. X是产生式，且$X\rightarrow Y_1Y_2...Y_n$，若a在FIRST($Y_i$)中，且$\epsilon$在FIRST($Y_1$)，FIRST($Y_2$)，...，FIRST($Y_{i-1}$)中，则把a加入FIRST(X)，如果$\epsilon$在所有的FIRST($Y_i$)中，则加入$\epsilon$ 到FIRST(X)中；
       3. 如果$X→\epsilon$是产生式，将$\epsilon$加入FIRST(X)中。
 
    2. FOLLOW(A)是可能在句型中紧跟在A右边的**终结符号集合**，其中A是非终结符号。
 
-      注：这里假设结束标记$不是任何文法的符号。
+      注：这里假设结束标记#不是任何文法的符号。
 
       算法：
 
-      1. 对于文法开始符号S，令\$∈FOLLOW(S)，\$是输入串的结束符；
+      1. 对于文法开始符号S，令$∈FOLLOW(S)
 
+         $是输入串的结束符；
+      
       2. 如果$A\rightarrow \alpha B \beta$，则将FIRST(β)中除ε以外的符号都放入到FOLLOW(B)中，即：
          $$
          FIRST(\beta) －\{\epsilon\} ⊆FOLLOW(B)
          $$
-
+      
       3. 如果$A\rightarrow \alpha B$，或$A\rightarrow \alpha B \beta$，其中FIRST(β)中包含ε（$\beta \Rightarrow *\epsilon$），则将FOLLOW(A)中所有符号都放入到FOLLOW(B)中，即：
          $$
          FOLLOW(A) ⊆FOLLOW(B)
