@@ -1,5 +1,5 @@
 ---
-title: Linux知识采撷
+title: Linux Basic
 authors:
   - EndlessPeak
 toc: true

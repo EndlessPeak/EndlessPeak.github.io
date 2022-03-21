@@ -1,10 +1,10 @@
 ---
-title: 计算机面试相关内容
+title: 算法
 authors:
   - EndlessPeak
-toc: false
+toc: true
 featuredImage: 
-date: 2022-03-01
+date: 2022-03-21
 hidden: false
 draft: false
 weight: 1

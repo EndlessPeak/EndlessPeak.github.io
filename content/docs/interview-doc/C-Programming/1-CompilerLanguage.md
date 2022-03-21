@@ -4,10 +4,10 @@ authors:
   - EndlessPeak
 toc: true
 featuredImage: 
-date: 2022-02-10
+date: 2022-03-20
 hidden: false
 draft: false
-weight: 2
+weight: 1
 ---
 
 ## 高级编程语言
@@ -40,6 +40,10 @@ weight: 2
 - 指针与内存
 
   涉及指针的编程错误难以察觉，内存管理需要承担更多的责任。
+
+问：**结构化程序设计的特点是什么？**
+
+答：便于编写和阅读，便于修改与维护，提高了可靠性，保证了质量。
 
 ## 软件过程
 

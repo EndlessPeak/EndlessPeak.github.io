@@ -1,5 +1,5 @@
 ---
-title: Learn Doc
+title: Interview Doc
 description: 
 toc: true
 authors:
@@ -12,5 +12,5 @@ draft: false
 weight: 1
 ---
 
-本系列文章目标在于记录学习时的笔记。
+本系列文章是准备考研复试的笔记。
 

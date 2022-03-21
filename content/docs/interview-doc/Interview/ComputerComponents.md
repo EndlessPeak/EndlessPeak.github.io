@@ -1,5 +1,5 @@
 ---
-title: 计算机组成原理
+title: 组成原理
 authors:
   - EndlessPeak
 toc: true
