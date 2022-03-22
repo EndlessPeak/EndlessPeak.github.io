@@ -1,5 +1,5 @@
 ---
-title: 语句与结构
+title: 结构
 authors:
   - EndlessPeak
 toc: true
