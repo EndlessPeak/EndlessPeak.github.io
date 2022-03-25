@@ -7,7 +7,7 @@ featuredImage:
 date: 2022-03-25
 hidden: false
 draft: false
-weight: 7
+weight: 70
 ---
 
 ## 结构体

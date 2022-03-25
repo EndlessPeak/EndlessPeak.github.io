@@ -7,7 +7,7 @@ featuredImage:
 date: 2022-03-22
 hidden: false
 draft: false
-weight: 5
+weight: 50
 ---
 
 所谓作用域，就是变量的有效范围。
