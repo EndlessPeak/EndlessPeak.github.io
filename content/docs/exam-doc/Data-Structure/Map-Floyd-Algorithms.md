@@ -1,4 +1,5 @@
 ---
+markup: pandoc
 title: 图的弗洛伊德算法
 toc: true
 authors:
@@ -43,7 +44,9 @@ path^{-1}=\left[
 \end{array}
 \right]
 $$
+
 第一次迭代：
+
 $$
 dist^{0}=\left[
 \begin{array}{c:ccc}
@@ -63,7 +66,9 @@ path^{0}=\left[
 \end{array}
 \right]
 $$
+
 第二次迭代：
+
 $$
 dist^{1}=\left[
 \begin{array}{c:c:cc}
@@ -107,8 +112,9 @@ path^{2}=\left[
 $$
 
 第四次迭代：
+
 $$
-dist^{2}=\left[
+dist^{3}=\left[
 \begin{array}{ccc:c}
 0 & 1 & 3 & 4 \\ 
 5 & 0 & 2 & 3 \\ 
@@ -117,7 +123,7 @@ dist^{2}=\left[
 \end{array}
 \right]
 \
-path^{2}=\left[
+path^{3}=\left[
 \begin{array}{c}
 -1 & 0 & 1 & 2 \\
 3 & -1 & 1 & 2 \\

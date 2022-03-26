@@ -1,4 +1,5 @@
 ---
+markup: pandoc
 title: 支持向量机推导
 authors:
   - EndlessPeak
@@ -24,17 +25,24 @@ weight: 3
 
 ## 线性二分类模型
 
-给定一组数据$(x_1,y_1),(x_2,y_2),⋯,(x_m,y_m)$，其中 $x_i \in R^d ,y \in {-1,1}$。
+给定一组数据$(x_1,y_1),(x_2,y_2),⋯,(x_m,y_m)$，其中 $x_i \in R^d ,y \in \{-1,1\}$。
 
 二分类任务的目标是希望从数据中学得一个假设函数$h:R \rightarrow \{-1,1\}$,使得 $h( x_ {1} )=y_ {i}$，即
+
 $$
-h( x_ 1)= \begin{cases}+1 \quad y_{1}=+1;\\-1 \quad y_{1}=-1;\end{cases}
+\begin{align}
+h(x_ 1)=\begin{cases}+1 \quad y_{1}=+1;\\-1 \quad y_{1}=-1;\end{cases}
+\end{align}
 $$
+
 更进一步，线性二分类模型认为假设函数的形式基于对特征$x_i$的线性组合，即
+
 $$
 h(x_i)=sign(\omega^T\cdot x_i+b) \quad \omega_i \in R^d,b \in R
 $$
+
 线性二分类模型的目标是找到一组合适的参数$(\omega,b)$, 使得
+
 $$
 ∀i.y_i(w^Tx _i+b)>0
 $$
@@ -75,34 +83,42 @@ $$
 ### 间隔最大化
 
 约束最优化问题：
+
 $$
 \begin{align}
 & \underset{\omega,b}{max} \quad \gamma \\
 & s.t \quad y_i(\frac{\omega}{\Vert\omega\Vert}\cdot x_i+\frac{b}{\Vert\omega\Vert})\geq \gamma, \quad i=1,2,...,N
 \end{align}
 $$
+
 带入函数间隔与几何间隔的关系得：
+
 $$
 \begin{align}
 & \underset{\omega,b}{max} \quad \frac{\hat\gamma}{\Vert\omega\Vert} \\
 & s.t. \quad y_i(\omega\cdot x_i+b)\geq \hat\gamma, \quad i=1,2,...,N
 \end{align}
 $$
+
 由于函数间隔成比例改变对目标函数的优化无影响，故转为凸优化问题：
+
 $$
 \begin{align}
 &  \underset{\omega,b}{min} \quad \frac{1}{2}\Vert\omega\Vert^2\\
 &  s.t. \quad y_i(\omega\cdot x_i+b)-1 \geq 0, \quad i=1,2,...,N\\
 \end{align}
 $$
+
 线性可分训练数据集的最大间隔分离超平面是存在且唯一的。
 
 ### 支持向量
 
 训练数据集的样本点与分离超平面距离最近的点称为支持向量。
+
 $$
 y_i(\omega\cdot x_i+b)-1 = 0
 $$
+
 在决定分离超平面的时候只有支持向量起效，其他实例点不起作用。
 
 正例所在的平行于分离超平面的超平面与负例所在的平行于超平面的超平面之间的距离称为间隔边界。
@@ -120,8 +136,13 @@ $$
 
 问：为什么拉格朗日乘子仅在支持向量中非0？
 
-1. 按KKT条件有：$\alpha^*_i\geq 0$ 且 $\alpha_i^*(y_i(\omega\cdot x_i+b)-1)=0$；
+1. 按KKT条件有：
+   $$
+   \alpha^{*}_i\geq 0\quad\alpha_i^{*}(y_i(\omega\cdot x_i+b)-1)=0
+   $$
+
 2. 若不是支持向量，则不在间隔边界上，则$y_i(\omega \cdot x_i+b)-1> 0$，故$\alpha^*_i=0$
+
 3. 若是支持向量，则在间隔边界上，则$y_i(\omega \cdot x_i+b)-1= 0$，故$\alpha^*_i>0$
 
 拉格朗日函数：

@@ -34,8 +34,8 @@ highlight:
     # See https://github.com/highlightjs/cdn-release/tree/master/build/styles for available styles.
     style: nnfx-light #qtcreator-light
 
-math:
-  handler: katex
+#math:
+  #handler: katex
 
   # katex:
   #   # Browse https://katex.org/docs/options.html to see the options available.
