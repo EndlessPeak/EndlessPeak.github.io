@@ -54,7 +54,7 @@ authors:
 
 博客主要记录我的学习经历、项目笔记以及一些兴趣配置等内容。
 
-点击 [Hello World](/posts/tattle/helloworld-from-blogs-to-life) 了解为什么我要写博客。
+点击 [Hello World](/posts/tattle/2020-HelloWorld-From-blogs-to-life) 了解为什么我要写博客。
 
 下面是博客的主要组成部分：
 

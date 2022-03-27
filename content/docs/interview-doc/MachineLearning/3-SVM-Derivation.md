@@ -3,7 +3,7 @@ markup: pandoc
 title: 支持向量机推导
 authors:
   - EndlessPeak
-toc: true
+toc: false
 featuredImage: 
 date: 2022-03-25
 hidden: false

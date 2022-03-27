@@ -1,8 +1,9 @@
 ---
+markup: pandoc
 title: 前馈神经网络问题
 authors:
   - EndlessPeak
-toc: true
+toc: false
 featuredImage: 
 date: 2022-03-25
 hidden: false
@@ -29,14 +30,16 @@ weight: 4
    4. 激活函数例如Sigmoid型（包括Logistic函数和Tanh函数）又如ReLU型。
 
       $$
-      \sigma(x)=\frac{1}{1+e^{-x}}\\
-      tanh(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}\\
-      tanh(x)=2\sigma(2x)-1\\
-      ReLU(x)=max(0,x)=
+      \begin{align}
+      &\sigma(x)=\frac{1}{1+e^{-x}}\\
+      &tanh(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}\\
+      &tanh(x)=2\sigma(2x)-1\\
+      &ReLU(x)=max(0,x)=
       \begin{cases}
       	\ x,x>0\\
       	\ 0,x<0
       \end{cases}
+      \end{align}
       $$
       
    4. **激活函数的性质**
