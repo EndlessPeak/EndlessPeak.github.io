@@ -78,3 +78,195 @@ weight: 1
    召回率：$Recall=\frac{TP}{TP+FN}$
 
    两者**通常**相互“制约”：追求精确率高，则召回率就低；追求召回率高，则通常会影响精确率。
+
+## 数据处理
+
+1. 项目过程（项目是怎么实现的）
+
+   项目主要分为数据处理、模型学习和模型预测三个步骤。具体过程见下：
+
+   环境准备
+
+   ```python
+   import numpy as np
+   import pandas as pd
+   import matplotlib.pyplot as plt
+   import math
+   ```
+
+2. 你的数据集是怎样选取的，为什么要这样选择？
+
+   我选择的数据集是CIC-IDS-2017，基于以下原因。（**待完善**）
+
+3. 你对数据做了哪些预处理？有哪些改进的方法？
+
+   主要包括：数据准备、删除缺失值、归一化和特征缩放。
+
+   数据处理这块参考了一个使用CIC-IDS-2017数据集的入侵检测基线系统，它有一个删除低关联的特征的操作，但是基于异常的入侵检测本身需要更多维度的数据作为支撑，对于未知的入侵过程来说具体哪些特征属于低关联特征是不清楚的，因此这里没有选择删除低关联的特征。
+
+4. 数据准备如何实现？
+
+   解压缩数据：
+
+   ```python
+   !unzip XXXX.zip -d ./data/
+   ```
+
+   项目使用pandas导入数据集，导入后格式为dataframe：
+
+   ```python
+   wednesday=pd.read_csv('XXX.csv',low_memory = False) #low_memory参数可以省略
+   ```
+
+   若使用numpy导入数据集，导入后格式是元组：
+
+   ```python
+   p = r'XXXX.csv'
+   with open(p,encoding = 'utf-8') as f:
+       data = np.loadtxt(f,str,delimiter = ",")
+       print(data[:5])
+   ```
+
+   注释：
+
+   1. numpy导入数据使用的方法是`numpy.loadtxt()`，默认是float格式，通过加入str参数可使其识别字符串类型数据，避免导入出错；
+   2. `with open() as f`是读入文件方法，r代表以只读方式打开文件；
+   3. `[:5]`代表的是从第1行一直到第5行。
+
+   对数据列名进行规范：
+
+   ```python
+   wednesday = wednesday.rename(str.lstrip, axis='columns')
+   ```
+
+   注释：
+
+   1. `dataframe.rename()`方法用于更改数据的行列名。通过axis参数指定行列。
+   2. `str.lstrip()`方法用于去除字符串起始部分的选定字符，默认为空格。
+
+   查看标签情况：
+
+   ```python
+   df = wednesday
+   print(df['Label'].unique())
+   ```
+
+   注释：
+
+   1. `dataframe.unique()`方法以数组形式返回列的唯一值（去除重复值），用于获知有哪些标签。
+   2. `dataframe.nunique()`方法返回的是列的唯一值的个数。
+
+   获得数据列名：
+
+   ```python
+   #法一，等价于法二
+   lables=[column for column in df] 
+   #法二
+   lables=[]
+   for column in df:
+       labels.append(column)
+   lables.remove('Label')
+   print(lables)
+   print(len(lables))
+   ```
+
+   注释：
+
+   1. `c for b in a`指的是对a中每一个迭代对象b，都进行c操作。此处将语句放在元组里等于对迭代对象使用`list.append()`方法。
+   2. `list.remove()`方法用于移除元组中的某个元素。
+   3. `list.len(list)`方法用于获得元组中的元素个数。
+
+5. 缺失值删除是如何实现的？
+
+   将inf替换为NaN，然后删除缺失值
+
+   ```python
+   df=df.replace(np.inf,np.nan)
+   df=df.dropna(axis=0)
+   ```
+
+   注释：
+
+   1. `dataframe.replace()`方法用于将数据中的某个元素统一替换为另一个元素；
+   2. `dataframe.dropna()`方法用于将数据中的缺失值删除
+   3. axis=0或'index'表示删除包含缺失值的行；axis=1或'columns'表示删除包含缺失值的列
+
+6. 标签与特征分离
+
+   ```python
+   X = df.loc[:,df.columns != "Label"]
+   y = df.loc[:,df.columns == "Label"]
+   ```
+
+   注释：
+
+   1. `dataframe.loc()`方法用于切片，提供参数为行索引名称或条件 , 列索引名称，切片结果是闭区间；
+   2. `dataframe.iloc()`方法亦用于切片，提供参数为行索引位置和列索引位置，切片结果是开区间。
+
+7. **归一化**和**特征缩放**是如何实现的？
+
+   1. 对于标签数据，使用`sklearn.LabelEncoder()`来转化
+
+      ```python
+      encoder = LabelEncoder()
+      y = encoder.fit_transform(y)
+      ```
+
+      注释：
+
+      1. `LabelEncoder` 来转化 dummy variable（虚拟数据）非常简便，encoder 可以将数据集中的文本转化成0或1的数值，从而解决二分类问题。
+      2. `fit_transform()`方法对数据进行统一处理，包括将数据缩放(映射)到某个固定区间，归一化，正则化等标准化等。特别地，得到的类型为numpy。
+
+   2. 对于非标签数据，使用`sklearn.RobustScaler()来转化`
+
+      ```python
+      scaler=RobustScaler()
+      X = scaler.fit_transform(X)
+      ```
+
+      注释：
+
+      归一化分为`StandardScaler`，`MinMaxScaler`，`RobustScaler`等；
+
+      1. 标准化缩放方法通过减去均值然后除以方差（或标准差）；
+
+      2. 最大最小值缩放方法将特征缩放到给定的最小值和最大值之间；
+
+      3. 鲁棒缩放方法使用中位数和四分位矩，不容易受到异常值影响。
+
+         原理：
+
+         1. 四分位数，把所有数值从小到大分为四等份，处于三个分割点位置的数值是四分位数；
+
+         2. 第一四分位数和第三四分位数的差称为四分位距；
+
+         3. 计算方法为：
+
+            $$
+            v_i^{'}=\frac{v_i-median}{IQR}
+            $$
+
+            其中median是中位数，IQR是样本的四分位距。
+
+   3. 另外，`dataframe.values()`方法用于将pandas转为numpy类型
+
+8. 训练集与验证集划分
+
+   使用`sklearn.train_test_split()`方法。
+
+   ```python
+   x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.30, shuffle=True, random_state=123, stratify=y)
+   ```
+
+## 其他问题
+
+1. Python的四大数据类型是哪些？
+
+   元组、列表、字典、字符串
+
+2. 项目具有哪些改进方向？
+
+   1. 决策树：CART树
+   2. 支持向量机：最小二乘法、加权、稀疏核机
+   3. 神经网络：循环神经网络
+

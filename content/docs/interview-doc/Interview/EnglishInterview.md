@@ -81,7 +81,9 @@ That’s all my self introduction,thank you.
 
 4. What's your impression of UESTC?
 
-   University of Electronic Science and Technology of China is one of the key university. It is the forefront of modern socialist universities both at home and abroad in the coordinated development of science and technology. 
+   Formerly known as Chengdu Institute of Telecommunications Engineering formed in 1956,University of Electronic Science and Technology of China is one of the key university. It is the forefront of modern socialist universities both at home and abroad in the coordinated development of science and technology. 
+
+   With electronic information science and technology as the core and engineering as the major, the university is a multi-disciplinary and research-oriented national key university.
 
 5. Do you have any plans to study abroad?
 
@@ -183,8 +185,6 @@ That’s all my self introduction,thank you.
 
 9. What have you learned from your research experience/competition experience?
 
-   科研经历或竞赛经历
-   
    Sorry but  I did not participate in any scientific research or competition activities during my undergraduate study actually. I tried ACM team selection when I was a freshman, but I didn't pay enough attention to it and didn't prepare enough at that time, so I failed. I hope I can obtain more abundant scientific research experience in the postgraduate stage.
    
 10. What do you think have been the most important change in your study field over the past 5 years?
@@ -213,9 +213,13 @@ That’s all my self introduction,thank you.
 
    Object-oriented programming is mainly composed of four concepts: abstraction, **inheritance**, **encapsulation** and **polymorphism**.
 
-   
+   Models are meant to characterize things in the real world. Abstract is a way to describe the specific characteristics of things and the law of change. 
 
-   面向对象编程：抽象、继承、封装、多态
+   Inheritance make it possible to share methods and member variables between parent and child classes. 
+
+   Encapsulate the function to reuse code and perform specific functions. 
+
+   Polymorphism refers to the fact that methods of the same name in a parent class can have different implementations.
 
 3. Please talk about TCP/IP. 
 
