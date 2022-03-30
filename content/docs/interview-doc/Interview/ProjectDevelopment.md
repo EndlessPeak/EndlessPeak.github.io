@@ -95,7 +95,7 @@ weight: 1
 7. XXX
 
 
-### Java Servlet
+## Java Servlet
 
 1. 项目介绍
 
@@ -220,7 +220,7 @@ weight: 1
     3. 请求转发只能转发到本项目其它Servlet，而重定向不只能重定向到本项目的其它Servlet，还能定向到其它项目。
     4. 请求转发是服务端行为，只需给出转发的Servlet路径，而重定向需要给出requestURI，既包含项目名。
 
-### Spring Boot
+## Spring Boot
 
 1. 项目简介
 

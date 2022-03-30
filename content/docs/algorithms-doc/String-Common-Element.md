@@ -10,6 +10,8 @@ draft: false
 weight: 5
 ---
 
+<!--more-->
+
 ## Question 1
 
 给定两个字符串，找出他们的相同元素。
@@ -99,5 +101,4 @@ int minimumSwap(string str1,string str2)
 }
 
 ```
-
 

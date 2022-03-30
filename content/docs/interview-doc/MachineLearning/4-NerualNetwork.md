@@ -93,7 +93,7 @@ weight: 4
 
    损失函数为交叉熵损失函数，**样本**的损失函数为：
    $$
-   \mathcal{L}(y,\hat{y})=-y^Tlog\hat{y}
+   \mathcal{L}(y,\hat{y})=-ylog\hat{y}
    $$
    训练集在数据集上的结构化风险函数为：
    $$
@@ -132,6 +132,7 @@ weight: 4
    1. 第l层的损失函数对第l层的净输入的偏导
 
       表示第l层神经元对最终损失函数的影响，也称其为误差项；
+
       $$
       \begin{aligned}
       \delta^{(l)}&=\frac{\partial\mathcal{L}(y,\hat{y})}{\partial z^{(l)}}\\
@@ -139,36 +140,79 @@ weight: 4
       &=f'_l(z^{(l)})\odot\left((W^{(l+1)})\delta^{(l+1)})\right)\\
       \end{aligned}
       $$
+
       **第l层的神经元误差项**：是所有与该神经元相连的第l+1层的神经元的误差项的权重和再乘以该神经元激活函数的梯度。
 
    2. 第l层的净输入对第l层的权重向量的偏导
 
       矩阵微分采用**分母布局**，一个列向量关于标量的偏导数为行向量。
+
       $$
       \begin{aligned}
       \frac{\partial z^{(l)}}{\partial\omega_{ij}^{(l)}}&=\left[
-      
       \frac{\partial z_1^{(l)}}{\partial\omega_{ij}^{(l)}},...,\frac{\partial z_i^{(l)}}{\partial\omega_{ij}^{(l)}},...,\frac{\partial z_{M_l}^{(l)}}{\partial\omega_{ij}^{(l)}},
-      
       \right]\\
       &=\left[
       0,...,\frac{\partial (W_i^{(l)}\alpha^{(l-1)}+b_i^{(l)})}{\partial\omega_{ij}^{(l)}},...,0
       \right]
       \end{aligned}
       $$
-      设结果为第i个元素为$a_j^{(l-1)}$，其余为0的行向量；
 
+      设结果为第i个元素为$a_j^{(l-1)}$，其余为0的行向量；
       $W_i^{(l)}$为权重矩阵$W^{(l)}$的第i行，即第i个神经元的权重向量。
 
-   3. 第l层的净输入对第l层的偏置的偏导（单位矩阵）；
+   3. 第l层的净输入对第l层的偏置的偏导（单位矩阵）；最终得到下面的公式：
 
-   最终得到下面的公式：
    $$
-   \frac{\partial \mathcal{L}(y^{(n)},\hat{y}^{(n)})}{\partial W^{l}}=\delta^{(l)}(\alpha^{(l-1)})^T\\
-   \frac{\partial \mathcal{L}(y^{(n)},\hat{y}^{(n)})}{\partial b^{l}}=\delta^{(l)}
+     \frac{\partial \mathcal{L}(y^{(n)},\hat{y}^{(n)})}{\partial W^{l}}=\delta^{(l)}(\alpha^{(l-1)})^T\\
+        \frac{\partial \mathcal{L}(y^{(n)},\hat{y}^{(n)})}{\partial b^{l}}=\delta^{(l)}
    $$
 
-7. 什么是随机梯度下降？为什么要随机梯度下降？
+   4. 层与层之间参数更新的方式是矩阵乘法。
+
+7. softmax函数
+
+   假设我们有一个数组V，Vi表示V中的第i个元素，那么这个元素的Softmax值为
+   $$
+   S_i=\frac{e^{V_i}}{\sum\limits_je^{V_j}}
+   $$
+   该元素的softmax值就是该元素的指数与所有元素指数和的比值。
+
+   定义交叉熵损失函数：
+   $$
+   Loss=-\sum\limits_i t_ilny_i
+   $$
+   其中$t_i$表示真实值，$y_i$​表示求出的softmax值。其中目标类的$t_i=1$，其他均为0。
+
+   当预测到第i个时，可以认为$t_i=1$，损失函数变成：
+   $$
+   Loss_i=-lny_i
+   $$
+   定义选到$y_i$的概率为
+   $$
+   P_{f_{y_i}}=\frac{e^{f_{y_i}}}{\sum\limits_je^{f_{y_i}}}
+   $$
+   把数值映射到0-1之间，和为1，则有
+   $$
+   f_{y_i}=\frac{e^{f_{y_i}}}{\sum\limits_je^{f_{y_j}}}=1-\frac{\sum\limits_{j \neq i}e^{f_{y_j}}}{\sum\limits_je^{f_{y_j}}}
+   $$
+   对损失函数求导
+   $$
+   \begin{aligned}
+   \frac{\partial Loss_i}{\partial f_{y_j}}&=\frac{\partial (-lny_i)}{\partial f_{y_j}}\\
+   &=\frac{\partial (-ln\frac{e^{f_{y_i}}}{\sum\limits_je^{f_{y_j}}})}{\partial f_{y_j}}\\
+   &=-\frac{1}{\frac{e^{f_{y_i}}}{\sum\limits_je^{f_{y_j}}}}\cdot \frac{\partial \frac{e^{f_{y_i}}}{\sum\limits_je^{f_{y_j}}}}{\partial f_{y_i}}\\
+   &=-\frac{\sum\limits_je^{f_{y_j}}}{e^{y_i}}\cdot \frac{\partial(1-\frac{\sum\limits_{j \neq i}e^{f_{y_j}}}{\sum\limits_je^{f_{y_j}}})}{\partial f_{y_i}}\\
+   &=-\frac{\sum\limits_je^{f_{y_j}}}{e^{y_i}}\cdot (-\sum\limits_{j \neq i}e^{y_j})\cdot \frac{\partial(\frac{1}{\sum\limits_j e^{y_j}})}{\partial f_{y_i}}\\
+   &=\frac{\sum\limits_j e^{f_{y_j}}\cdot \sum\limits_{j \neq i}e^{y_j}}{e^{y_i}}\cdot \frac{-e^{y_i}}{(\sum\limits_{j}e^{y_j})^2}\\
+   &=-\frac{\sum\limits_{j \neq i}e^{f_{y_j}}}{\sum\limits_je^{f_{y_j}}}\\
+   &=-(1-\frac{e^{f_{y_i}}}{\sum\limits_je^{f_{y_j}}})\\
+   &=P_{f_{y_i}}-1
+   \end{aligned}
+   $$
+   
+
+8. 什么是随机梯度下降？为什么要随机梯度下降？
 
    1. 为了使结构化风险函数最小，需要优化其中的参数。
 
@@ -182,7 +226,7 @@ weight: 4
 
    4. 批量梯度下降的开销太大，每次只计算一个样本可以简化计算，通过梯度下降找到局部最优或鞍点，通过随机噪声跳出局部最优。降低开销，提高收敛速度。
 
-8. 随机梯度下降的反向传播算法实现
+9. 随机梯度下降的反向传播算法实现
 
    1. 随机初始化权重矩阵、偏置
    2. 当模型的错误率还在下降时，循环
@@ -241,11 +285,11 @@ weight: 4
 
 6. 反向传播
 
-   $\delta^{(l)}$的更新公式见上。输出层为
+   $\delta^{(l)}$的更新公式见上。输出层为softmax函数。
    $$
    \delta^{(l)}_k=p_k-1
    $$
-   （该公式如何推导而来尚不清楚，只知道是涉及softmax）
+   （该公式推导见上面。）
 
    ```python
    delta4 = probs

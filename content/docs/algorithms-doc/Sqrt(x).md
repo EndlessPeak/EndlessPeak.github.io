@@ -10,6 +10,8 @@ draft: false
 weight: 5
 ---
 
+<!--more-->
+
 ## Question
 
 Implement *int sqrt(int x)*.
