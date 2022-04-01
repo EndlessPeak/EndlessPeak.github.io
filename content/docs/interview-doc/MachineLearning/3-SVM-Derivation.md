@@ -302,3 +302,66 @@ $$
    1. 希望目标函数具有足够大的变化；$max\ |E_1-E_2|$
    2. 否则遍历间隔边界上的样本点；
 3. 每次完成两个变量优化后需要重新计算偏置$b$和$E_i$
+
+## 最小二乘法支持向量机
+
+最小二乘法支持向量机将优化问题由非等式约束转为等式约束替换。
+$$
+\begin{aligned}
+& \underset{W,b}{min} \quad \frac{1}{2}\Vert\omega\Vert^2+\lambda\sum\limits_{i=1}^{N}\xi_i^2 \\
+& s.t. \quad y_i(\omega\cdot x_i+b)=1-\xi_i,\quad i=1,2,...,N
+\end{aligned}
+$$
+其中，$\lambda$为正则化参数。
+
+对于非线性可分的训练样本，可以将原始样本从映射到更高维的线性可分的空间中。设非线性变换$\varphi (x_i)$将$x_i$映射到更高维空间中，则上述约束条件改为
+$$
+s.t. \quad y_i(\omega \cdot \varphi (x_i)+b)=1-\xi_i \ ,\quad i=1,2,...,N
+$$
+拉格朗日函数为：
+$$
+\mathcal{L}(\omega,b,e,\alpha)=\frac{1}{2}\Vert\omega\Vert^2+\lambda\sum\limits_{i=1}^{N}e_i^2-\sum\limits_{i=1}^{N}\alpha_i\{[y_i(\omega\cdot \varphi(x_i)+b)]-1+\xi_i\}
+$$
+按KKT条件依次求偏导：
+$$
+\begin{aligned}
+& \frac{\partial \mathcal L}{\partial \omega}=0 \Rightarrow \omega=\sum\limits_{i=1}^N\alpha_i y_i\varphi(x_i)\\
+& \frac{\partial \mathcal L}{\partial b}=0 \Rightarrow \sum\limits_{i=1}^N \alpha_i y_i=0\\
+& \frac{\partial \mathcal L}{\partial \xi_i}=0 \Rightarrow \alpha_i=\lambda \xi_i \\
+& \frac{\partial \mathcal L}{\partial \alpha_i}=0 \Rightarrow y_i[\omega \cdot \varphi(x_i)+b]-1+\xi_i=0 \ ,\quad i=1,2,...,N
+\end{aligned}
+$$
+可通过矩阵运算求解$\alpha=[\alpha_1,...,\alpha_m]$和$b$：
+$$
+\left[ \begin{array}{c}
+0 & \vec{1}^T \\
+1 & \Omega+\frac{1}{\lambda}E \\
+\end{array}
+\right]
+\cdot
+\left[ \begin{array}{c}
+b \\
+\alpha \\
+\end{array}
+\right]
+=\left[ \begin{array}{c}
+0 \\
+y \\
+\end{array}
+\right]
+$$
+其中$\vec{1}^T=[1,1,...,1]^T$，$E$是单位矩阵，$Z=(\varphi(x_1)y_1,...,\varphi(x_N)y_N)$，$\Omega=ZZ^T$。
+
+求解得决策函数
+$$
+f(x)=sign(\sum\limits_{i=1}^N\alpha_i y_i K(x,x_i)+b)
+$$
+最小二乘法支持向量机模型中支持向量的拉格朗日乘子$\alpha_i=\lambda\xi_i$，因此基本不为0，几乎所有样本都是支持向量。
+
+LSSVM的优点：运算迅速，计算简单；
+
+LSSVM的缺点：
+
+1. 最小二乘法支持向量机对异常点敏感；
+2. 最小二乘法缺少稀疏性。
+   

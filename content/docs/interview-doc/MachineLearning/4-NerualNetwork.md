@@ -31,7 +31,7 @@ weight: 4
 
       $$
       \begin{align}
-      &\sigma(x)=\frac{1}{1+e^{-x}}\\
+      &sigmoid(x)=\frac{1}{1+e^{-x}}\\
       &tanh(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}\\
       &tanh(x)=2\sigma(2x)-1\\
       &ReLU(x)=max(0,x)=
@@ -211,7 +211,6 @@ weight: 4
    \end{aligned}
    $$
    
-
 8. 什么是随机梯度下降？为什么要随机梯度下降？
 
    1. 为了使结构化风险函数最小，需要优化其中的参数。

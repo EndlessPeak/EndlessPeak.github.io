@@ -68,92 +68,124 @@ weight: 8
 
 你在使用Linux的过程中分别使用过哪些命令？
 
-1. 文件管理
+### 文件管理
 
-   1. cat 查看文件内容
+1. cat 查看文件内容
 
-      ```bash
-      cat [文件名] 
-      ```
+   ```bash
+   cat [文件名] 
+   ```
 
-   2. chgrp 用于变更文件或目录的所属群组
+2. chgrp 用于变更文件或目录的所属群组
 
-      ```bash
-      chgrp [参数] [群组] [文件名]
-      ```
+   ```bash
+   chgrp [参数] [群组] [文件名]
+   chgrp -v lee test.txt #将test.txt的用户组更改为lee
+   chgrp --reference=test.log test.txt #根据test.log的用户组更改test.txt的用户组
+   ```
 
-   3. chmod 控制用户对文件的权限
+3. chmod 控制用户对文件的权限
 
-      ```bash
-      chmod [+-=] [参数]
-      ```
+   ```bash
+   chmod [+-=] [参数] [文件名]
+   chmod 775 test.txt
+   chmod +x test
+   ```
 
-   4. chown
+4. chown
 
-      ```bash
-      chown [参数] 用户[用户组][文件名]
-      ```
+   ```bash
+   chown [参数] 用户[用户组][文件名]
+   chown root test.txt
+   chown root:root test.txt
+   ```
 
-   5. diff
+5. diff
 
-      ```bash
-      diff [文件名1] [文件名2]
-      ```
+   ```bash
+   diff [文件名1] [文件名2]
+   ```
 
-   6. find
+6. find
 
-      ```bash
-      find [路径] [参数] [模式]
-      ```
+   ```bash
+   find [路径] [参数] [模式]
+   ```
 
-   7. less
+   1. `-size n `：文件大小 是 n 单位。
+   2. `-pid n`： process id 是 n 的文件。
+   3. `-type c`：文件类型是 c 的文件。
+   4. `-ctime n`
+   5. `-mtime n`
+   6. `-atime n`
 
-   8. mv
+   | 符号 | 文件类型     |
+   | ---- | ------------ |
+   | d    | 目录         |
+   | c    | 字符装置文件 |
+   | b    | 区块装置文件 |
+   | p    | 具名贮列     |
+   | f    | 一般文件     |
+   | l    | 符号链接文件 |
+   | s    | socket文件   |
 
-   9. cp
+   ```shell
+   find . -name "*.c"
+   find . -type f
+   find . -ctime 20
+   find /var/log -type f -mtime +7 -ok rm {} \;
+   ```
 
-   10. awk
+   
 
-2. 文档编辑
+7. less
 
-   1. fgrep
-   2. rgrep
+8. mv
 
-3. 磁盘管理
+9. cp
 
-   1. cd
-   2. df
-   3. du
-   4. ls
-   5. pwd
-   6. mount
-   7. tree
+10. awk
 
-4. 磁盘维护
+### 文档编辑
 
-   1. fdisk
-   2. mkfs.ext4
-   3. mkfs.fat
-   4. mkswap
+1. fgrep
+2. rgrep
 
-5. 网络通讯
+### 磁盘管理
 
-   1. ping
-   2. ifconfig
-   3. netstat
-   4. arp
+1. cd
+2. df
+3. du
+4. ls
+5. pwd
+6. mount
+7. tree
 
-6. 系统管理
+### 磁盘维护
 
-   1. date
-   2. kill
-   3. who
-   4. ps
-   5. sudo
-   6. uname
-   7. chsh
+1. fdisk
+2. mkfs.ext4
+3. mkfs.fat
+4. mkswap
 
-7. 压缩命令
+### 网络通讯
 
-   1. tar
-   2. gzip
+1. ping
+2. ifconfig
+3. netstat
+4. arp
+
+### 系统管理
+
+1. date
+2. kill
+3. who
+4. ps
+5. sudo
+6. uname
+7. chsh
+
+### 压缩命令
+
+1. tar
+2. gzip
