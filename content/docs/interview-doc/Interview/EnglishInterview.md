@@ -18,9 +18,9 @@ Tell me a few things about yourself.
 
 Dear professors, it's a great honor for me to have the opportunity to present myself. My name is Li Qing han,22 years old, come from Hu Bei province.  I received my bachelor's degree in software engineering from Chang 'an University in last June.  
 
-In the past 4 years,I focused on my study. I passed CET-4 and CET-6 in my sophomore and junior years respectively and got good grades in some software engineering subjects. In the need of my major,I participated in the course design and internship based on group cooperation as much as possible and served as the deputy leader in three of them. These development activities are most belongs to Java Web,such as Java Server Page, Java Bean or Mybatis and Spring. The technologies we use are constantly developing while our technical level is progressively improving. In addition, the experience of participating in these cooperation enhanced my ability of overall division of labor and interpersonal communication.
+In the past 4 years,I focused on my study. I passed CET-4 and CET-6 in my sophomore and junior years respectively and got good grades in some software engineering subjects. In the need of my major,I participated in the course design and internship based on group cooperation as much as possible and served as the deputy leader in three of them. These development activities are most belongs to Java Web,such as Java Server Page, Java Bean,Mybatis and Spring. The technologies we use are constantly developing while our technical level is progressively improving. In addition, the experience of participating in these cooperation enhanced my ability of overall division of labor and interpersonal communication.
 
-In my mind,I think my English comprehensive ability meet the postgraduate's requirement. For example, I installed Arch Linux on my computer hard drive independently followed by the instruction manuals written in English. In the process of my graduation project,I tried to read the English paper of  the **least square version** support vector machine to broaden my view.
+In my mind,I think my English comprehensive ability meet the postgraduate's requirement. For example, I installed Arch Linux on my computer hard drive independently followed by the instruction manuals written in English. In the process of my graduation project,I tried to read the English paper such as **least square version** support vector machine,for which I read to broaden my view.
 
 My graduation project is the concrete realization of three traditional machine learning algorithms, including decision tree, support vector machine and feed forward neural network. The more I learn,the more I find postgraduate is necessary. I dreamed one day I can have the chance to make a little contribution in academic research. 
 
@@ -28,7 +28,11 @@ That’s all my self introduction,thank you.
 
 ### 针对提问
 
-1. You mentioned Java Web, please tell me Java Server Page, Mybatis and Springboot concepts and what are they used for.
+1. Please introduce your internship or course design.
+
+   The content of the  internship I participated in is to build an online furniture mall. Unlike Taobao, jd.com and other online shopping malls, my practice project simplifies the role,which means the seller and the system administrator is the same role and own the whole system. Buyers can register, log in, browse goods, add goods to the shopping cart, settle and generate orders; The system administrator can manage orders, deliver goods for orders, and manage the user information of each buyer.
+
+2. You mentioned Java Web, please tell me Java Server Page, Mybatis and Springboot concepts and what are they used for.
 
    Sure. JSP stands for Java Server Page, it is a dynamic web page technology standard developed by Sun Company. JSP can deal with problems together with other Java programs on the server. It use JDBC (java database connectivity) to access the database.
 
@@ -36,21 +40,21 @@ That’s all my self introduction,thank you.
 
    The Spring framework is an open source container framework that integrates various types of tools and frameworks and provides comprehensive functionality, services, and management.
 
-2. What is the installation process for Arch Linux?
+3. What is the installation process for Arch Linux?
 
    The installation process of Arch Linux **boils down** to two steps: preparation and installation. 
 
    1. Preparation includes prepare the installation media, check the Live environment, check the boot mode and network connection, select mirror service, and mount disks. 
    2. Installation includes downloading the basic system packages, change root, and configure the system.
 
-3. What's your understanding about machine learning?
+4. What's your understanding about machine learning?
    Machine learning is a multidisciplinary discipline, <u>involving probability theory, statistics, approximation theory, convex analysis, algorithm and complexity theory,linear algebra and other disciplines.</u> 
 
    Machine learning using experience to improve performance.
 
    It specializes in the study of how computers simulate or realize human learning behavior to acquire new knowledge or skills and reorganize the existing knowledge structure to continuously improve its own performance.
 
-4. Could you describe the machine learning algorithms used in your graduation project briefly?
+5. Could you describe the machine learning algorithms used in your graduation project briefly?
 
    Sure. My graduation project is to solve the classification problem, using decision tree, support vector machine and feed forward neural network.
 
