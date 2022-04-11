@@ -175,8 +175,10 @@ $$
 $$
 设$\alpha^*=(\alpha_1^*,\alpha_2^*,...,\alpha_l^*)^T$是对偶最优化问题的解，则存在下标$j$使得$\alpha_j^*>0$，且
 $$
-\omega^*=\sum\limits_{i=1}^{N}\alpha_i^*y_ix_i \\
-b^*=y_j-\sum\limits_{i=1}^{N}\alpha_i^*y_i(x_i\cdot x_j)
+\begin{align}
+& \omega^*=\sum\limits_{i=1}^{N}\alpha_i^*y_ix_i \\
+& b^*=y_j-\sum\limits_{i=1}^{N}\alpha_i^*y_i(x_i\cdot x_j)
+\end{align}
 $$
 特别地，若$\alpha_i^*=0$，则$\omega^*=0$，不是原始最优化问题的解。
 
@@ -364,4 +366,3 @@ LSSVM的缺点：
 
 1. 最小二乘法支持向量机对异常点敏感；
 2. 最小二乘法缺少稀疏性。
-   

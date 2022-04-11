@@ -164,8 +164,10 @@ weight: 4
    3. 第l层的净输入对第l层的偏置的偏导（单位矩阵）；最终得到下面的公式：
 
    $$
-     \frac{\partial \mathcal{L}(y^{(n)},\hat{y}^{(n)})}{\partial W^{l}}=\delta^{(l)}(\alpha^{(l-1)})^T\\
-        \frac{\partial \mathcal{L}(y^{(n)},\hat{y}^{(n)})}{\partial b^{l}}=\delta^{(l)}
+   \begin{align}
+   & \frac{\partial \mathcal{L}(y^{(n)},\hat{y}^{(n)})}{\partial W^{l}}=\delta^{(l)}(\alpha^{(l-1)})^T\\
+   & \frac{\partial \mathcal{L}(y^{(n)},\hat{y}^{(n)})}{\partial b^{l}}=\delta^{(l)}
+   \end{align}
    $$
 
    4. 层与层之间参数更新的方式是矩阵乘法。
