@@ -1,8 +1,9 @@
 ---
 title: 第一章 紫霞
-toc: true
 authors:
   - EndlessPeak
+toc: true
+featuredImage: 
 date: 2021-11-10
 hidden: false
 draft: false

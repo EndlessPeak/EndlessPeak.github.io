@@ -1,5 +1,6 @@
 mainSections:
   - posts
+  - docs
 description: Eureka is a elegant and powerful theme for Hugo.
 
 repoURL:
