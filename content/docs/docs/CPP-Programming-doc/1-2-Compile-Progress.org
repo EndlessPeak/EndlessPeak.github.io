@@ -1,0 +1,143 @@
+#+TITLE: 编译过程
+#+DATE: <2022-07-01 Fri>
+#+AUTHOR: EndlessPeak
+#+TOC: true
+#+HIDDEN: false
+#+DRAFT: false
+#+WEIGHT: 2
+#+Description: 本文是对CPP从源代码到二进制文件的生成过程的总结。
+
+* 预处理
+处理宏定义和=include=，去除所有的注释。 *不会对语法进行检查。*
+
+#+begin_src shell
+gcc -E a.c -o a.i
+#+end_src
+
+* 编译
+生成汇编代码。
+
+#+begin_src shell
+gcc -S a.i -o a.s
+#+end_src
+
+
+* 汇编
+生成目标代码。
+
+#+begin_src shell
+gcc -c a.s -o a.o
+#+end_src
+
+
+* 链接
+将各目标代码与启动代码组合起来。
+
+特别地，链接分为静态链接和动态链接两种。
+
+#+begin_src shell
+gcc a.o -o a
+#+end_src
+
+考虑下面的两个源代码文件：
+
+A.cpp：
+#+begin_src cpp
+#include <iostream>
+extern int shared;
+extern void swap(int *a,int *b);
+int main()
+{
+    int a = 100;
+    swap(&a, &shared);
+    cout<<a<<endl;
+    cout<<b<<endl;
+}
+#+end_src
+
+B.cpp：
+#+begin_src c++
+int shared = 1;
+
+void swap(int* a, int* b){
+    int tmp = *a;
+    ,*a =  *b;
+    ,*b = tmp;
+}
+#+end_src
+
+编译上面两个程序的命令是：
+#+begin_src shell
+g++ -c A.cpp -o A.o
+g++ -c B.cpp -o B.o
+#+end_src
+
+
+** 动态链接
+*** 概念
+动态链接是运行时链接，把调⽤所需要的动态库的模块和在库中的*位置信息*链接进⽬标程序，程序运⾏的时候寻找相应的库文件，并从中执行相应的代码，因此需要被链接的动态库文件的⽀持 。
+
+=gcc=和=g++=都是默认使用动态链接的。因此不需要考虑额外的命令。
+
+使用=ldd=来检查二进制程序依赖的动态库。
+
+编译上面两个程序并运行：
+#+begin_src shell
+g++ A.o B.o -o a1
+#+end_src
+
+查看该程序依赖的动态链接库：
+#+begin_src shell
+ldd ./a1
+#+end_src
+
+*** 优点
+1. 对同一个函数的调用只会在内存中产生一份拷贝，无论是多个相同的程序还是不同的程序；
+   这是因为动态库使用相对地址，所有依赖的进程都可从同一入口进入；
+2. 更新方便，只需要对库文件进行更新，而不需要更新依赖库文件的程序；
+3. 动态库可以再包含其他的动态或静态库。
+
+*** 缺点
+链接推迟到了程序运行时，执行程序会有性能损失。
+
+** 静态链接
+*** 概念
+静态链接是编译时链接，把源⽂件中⽤到的静态库（归档文件）直接放进⽬标程序，程序运⾏的时候不再需要其它的库⽂件。
+
+使用=-static=参数显式指定使用静态链接的方式。
+
+#+begin_src shell
+g++ -static A.o B.o -o a2
+#+end_src
+
+由于是静态链接，所有依赖的库均已与该程序一起合并成了一个二进制文件，因此无法查看依赖的库。
+
+*** 优点
+直接执行程序而不需要链接，没有性能损失。
+
+*** 缺点
+1. 对同一个函数的调用会在内存中产生多份拷贝，即使是相同的程序的多个运行实例（即进程）也会如此；
+   这是因为不同的进程有各自的地址空间，入口不同，程序不知道如何共享；
+2. 库文件需要更新时，依赖它的所有程序都需要重新编译，否则只能使用原来的版本；
+3. 静态库不能再*包含其他静态库和动态库*。
+   因为静态库是编译好的归档文件，不能与其他库链接。除非重新用归档工具将多个静态库的源文件链接成一个新的静态库。
+
+* 装载运行
+运行生成的可执行文件。
+
+#+begin_src shell
+./a
+#+end_src
+
+
+* 简化步骤
+** 预处理、编译、汇编
+#+begin_src shell
+gcc -c a.c -o a.o
+#+end_src
+
+
+** 快速生成
+#+begin_src shell
+gcc a.c -o a
+#+end_src

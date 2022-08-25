@@ -1,12 +1,12 @@
 ---
-title: Linux 文本环境配置
+title: Arch Linux 文本环境配置
 toc: true
 authors:
   - EndlessPeak
 date: 2020-02-27 20:00:00
 hidden: false
 draft: false
-weight: 4
+weight: 3
 ---
 
 如果是经常从事文本工作(如软件工作者进行代码编辑、学生进行笔记整理、文字工作者的撰写、校对等工作)的用户建议选用窗口管理器作为日常工作环境。

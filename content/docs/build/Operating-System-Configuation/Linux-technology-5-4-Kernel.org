@@ -1,0 +1,33 @@
+#+TITLE: Gentoo Linux Kernel Configuration
+#+DATE: <2022-08-21 Sun>
+#+AUTHOR: EndlessPeak
+#+TOC: true
+#+HIDDEN: false
+#+DRAFT: true
+#+WEIGHT: 5
+#+Description: 本文主要讨论在 Gentoo Linux下如何配置内核，Linux内核的配置大同小异，但是Gentoo Linux 官方软件源提供了多种内核的源码，并且配置多内核之间的切换非常方便，因此以Gentoo下配置为例进行说明。
+
+* 快速生成
+快速生成的原理是从“已经能用”的内核生成“只要有用”的内核。
+
+1. 获得能用的内核
+#+begin_src shell
+  emerge -av sys-kernel/gentoo-source
+  emerge -av sys-kernel/gentoo-kernel
+  emerge -av sys-kernel/genkernel
+  make prproper #make clean
+  make
+  make -j6 && make -j6 modules_install
+  make install
+#+end_src
+
+2. 只要有用的部分
+#+begin_src shell
+  make localmodconfig
+  make localyesconfig
+  make menuconfig
+#+end_src
+
+3.
+
+* ABC

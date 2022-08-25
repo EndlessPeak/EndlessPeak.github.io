@@ -10,7 +10,7 @@ categories:
 tags:
   - Linux
 draft: false
-weight: 6
+weight: 2
 ---
 
 Arch Linux 是通用 x86-64 GNU/Linux 发行版，初始安装仅提供命令行环境：用户不需要删除大量不需要的软件包，而是可以从**官方软件仓库**成千上万的高质量软件包中进行选择，搭建自己的系统。支持x86-64架构。Arch采用滚动升级模式，尽全力提供最新的稳定版软件。
