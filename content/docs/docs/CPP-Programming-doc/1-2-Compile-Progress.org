@@ -5,77 +5,87 @@
 #+HIDDEN: false
 #+DRAFT: false
 #+WEIGHT: 2
-#+Description: 本文是对CPP从源代码到二进制文件的生成过程的总结。
+#+Description:本文是对 CPP 从源代码到二进制文件的生成过程的总结。
 
 * 预处理
-处理宏定义和=include=，去除所有的注释。 *不会对语法进行检查。*
+处理宏定义和=include=，去除所有的注释。 *不会对语法错误进行检查。*
 
+如果需要知道~#inlcude <...>~的搜素路径，可以在预处理时加上 ~-v~ 选项，显示搜索列表的详情。
+特别地，如果仅执行 ~gcc -v~ ，则得到的是 gcc 的版本。
 #+begin_src shell
-gcc -E a.c -o a.i
+  gcc -E a.c -o a.i
+  gcc -E a.c -o a.i -v
 #+end_src
 
 * 编译
-生成汇编代码。
+狭义上编译指的是生成汇编代码，并在此阶段检查语法错误。 *不会对逻辑错误进行检查。*
 
 #+begin_src shell
-gcc -S a.i -o a.s
+  gcc -S a.i -o a.s
 #+end_src
 
-
-* 汇编
-生成目标代码。
-
-#+begin_src shell
-gcc -c a.s -o a.o
-#+end_src
-
-
-* 链接
-将各目标代码与启动代码组合起来。
-
-特别地，链接分为静态链接和动态链接两种。
-
-#+begin_src shell
-gcc a.o -o a
-#+end_src
+广义上编译指一直到生成 *可重定位* 的目标代码。
 
 考虑下面的两个源代码文件：
 
 A.cpp：
 #+begin_src cpp
-#include <iostream>
-extern int shared;
-extern void swap(int *a,int *b);
-int main()
-{
-    int a = 100;
-    swap(&a, &shared);
-    cout<<a<<endl;
-    cout<<b<<endl;
-}
+  #include <iostream>
+  extern int shared;
+  extern void swap(int *a,int *b);
+  int main()
+  {
+      int a = 100;
+      swap(&a, &shared);
+      cout<<a<<endl;
+      cout<<b<<endl;
+  }
 #+end_src
 
 B.cpp：
 #+begin_src c++
-int shared = 1;
+  int shared = 1;
 
-void swap(int* a, int* b){
-    int tmp = *a;
-    ,*a =  *b;
-    ,*b = tmp;
-}
+  void swap(int* a, int* b){
+      int tmp = *a;
+      ,*a =  *b;
+      ,*b = tmp;
+  }
 #+end_src
 
 编译上面两个程序的命令是：
 #+begin_src shell
-g++ -c A.cpp -o A.o
-g++ -c B.cpp -o B.o
+  g++ -c A.cpp -o A.o
+  g++ -c B.cpp -o B.o
+#+end_src
+
+* 汇编
+生成可重定位的目标代码。
+
+#+begin_src shell
+  gcc -c a.s -o a.o
+#+end_src
+
+可重定位的目标代码不能直接执行，可使用~file~命令查看：
+#+begin_src shell
+  file a.o
+  a.o: ELF 64-bit LSB relocatable
+#+end_src
+
+* 链接
+将各个可重定位的目标代码与启动代码组合起来。
+
+** 链接类型
+链接分为静态链接和动态链接两种，默认为动态链接，不必指明链接方式，可以添加需要链接的库文件参数；静态链接则均需显式说明。
+
+#+begin_src shell
+gcc a.o -o a
 #+end_src
 
 
 ** 动态链接
 *** 概念
-动态链接是运行时链接，把调⽤所需要的动态库的模块和在库中的*位置信息*链接进⽬标程序，程序运⾏的时候寻找相应的库文件，并从中执行相应的代码，因此需要被链接的动态库文件的⽀持 。
+动态链接是运行时链接，把调用所需要的动态库的模块和在库中的*位置信息*链接进目标程序，程序运⾏的时候寻找相应的库文件，并从中执行相应的代码，因此需要被链接的动态库文件的支持 。
 
 =gcc=和=g++=都是默认使用动态链接的。因此不需要考虑额外的命令。
 
@@ -126,9 +136,16 @@ g++ -static A.o B.o -o a2
 运行生成的可执行文件。
 
 #+begin_src shell
-./a
+  ./a
 #+end_src
 
+可执行的目标代码可以直接执行，可使用~file~命令查看：
+#+begin_src shell
+  file a
+  a: ELF 64-bit LSB executable
+#+end_src
+
+如需检查返回值，使用命令~echo $?~，它将显示上次程序执行完后的返回值。
 
 * 简化步骤
 ** 预处理、编译、汇编

@@ -1,0 +1,12 @@
+#+TITLE: ROS Intergrate Environment
+#+DATE: <2022-10-18 Tue>
+#+AUTHOR: EndlessPeak
+#+TOC: true
+#+HIDDEN: false
+#+DRAFT: false
+#+WEIGHT: 3
+#+Description: 本文主要讨论如何在上一节的基础上使用VScode构建集成开发环境。
+
+* Terminal Reuse
+** terminator
+** tmux

@@ -1,0 +1,27 @@
+#+TITLE: 程序调试方法
+#+DATE: <2022-08-31 Wed>
+#+AUTHOR: EndlessPeak
+#+TOC: true
+#+HIDDEN: false
+#+DRAFT: false
+#+WEIGHT: 110
+
+* GDB
+** 调试符号
+在编译的时候加上 ~-g~ 选项，以使程序能够执行调试。如果是 ~makefile~ ，可以指定全局选项。
+
+#+begin_src makefile
+  CXX = g++
+  CXXFLAGS = -Wall -g
+#+end_src
+
+** 调试界面
+调试界面包括两种：
+1. ~gdb~ 不显示程序代码界面，仅回显步进执行结果
+2. ~gdb --tui~ 提供执行的字符界面
+
+** 调试命令
+常见的调试命令如下
+| 命令 | 简写命令 | 命令含义 |
+|------+----------+----------|
+|     |          |          |

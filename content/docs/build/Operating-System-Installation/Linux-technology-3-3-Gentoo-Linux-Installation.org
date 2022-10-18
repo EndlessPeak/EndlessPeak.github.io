@@ -678,6 +678,7 @@ gentoo 提供软件安装的仓库 overlay，如果需要添加某些软件，�
   eselect locale list
   eselect locale set X
 #+end_src
+
 * Kernel
 ** firmeware
 相当多的设备需要先在系统上安装附加的固件才能正常运行，因此 =sys-kernel/linux-firmware= 几乎是必须的。
@@ -802,6 +803,7 @@ Networkd 适用 systemd 系统。
   useradd -m -G users,wheel,audio,video -s /bin/bash leesin
   passwd leesin
 #+end_src
+
 * Boot
 检查一下你的计算机是否有启动引导器，即开机的时候尝试按 ESC 键。如果有启动引导器，事情会好办很多。
 ** Grub

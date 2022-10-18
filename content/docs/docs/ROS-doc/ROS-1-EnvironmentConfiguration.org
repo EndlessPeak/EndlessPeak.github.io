@@ -1,0 +1,205 @@
+#+TITLE: Environment Configuration
+#+DATE: <2022-10-18 Tue>
+#+AUTHOR: EndlessPeak
+#+TOC: true
+#+HIDDEN: false
+#+DRAFT: false
+#+WEIGHT: 2
+#+Description: 本文主要讨论如何构建ROS环境并运行例程。
+
+* Ubuntu Configuration
+** Additional Function
+虚拟机工具之增强功能可以使得虚拟操作系统的屏幕自适应窗口大小。
+
+1. 点击 Virualbox 菜单栏中的安装增强功能。
+2. 如果没有启动安装，可打开文件管理器，在挂载的逻辑设备中手动运行安装文件。
+3. 为使增强工具生效，需要重启操作系统，在 Virubalbox 中可以设置缩放模式。
+
+** Files Exchange
+虚拟机交换文件可以实现与宿主机的文件交换。
+
+1. 点击 Virualbox 工具栏中的设置
+2. 依次点击 *常规，高级* ，将共享剪贴板和拖放均改为双向。
+
+** VirualBox Extension
+1. 在 VirualBox 官网下载 Extension Pack
+2. 在 VirualBox 中点击 管理，扩展，添加扩展包
+
+** Input Method
+安装 fcitx5
+
+** New Template
+Ubuntu 操作系统右键菜单中没有新建文档的选项，需要到 =~/Templates= 下新建各种文档用作新建的模板。
+
+* ROS Install
+** Ubuntu Software Settings
+配置 Ubuntu 的软件和更新，允许安装不经认证的软件。
+
+1. 在 ubuntu 中搜索应用程序 *软件和更新* ，打开软件和更新对话框
+2. 依次勾选：
+   1. main
+   2. universe
+   3. restricted
+   4. multiverse
+
+** Ubuntu Software Source
+配置 Ubuntu 的软件源。
+
+*** Setup sources.list
+允许操作系统从 =packages.ros.org= 上接受软件
+#+begin_src shell
+  sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+  # 有关源的选择可以使用国内镜像源
+#+end_src
+
+国内可选的镜像源有：
+1. https://mirrors.tuna.tsinghua.edu.cn/ros/ubuntu/
+2. https://mirrors.ustc.edu.cn/ros/ubuntu/
+*** Setup keys
+#+begin_src shell
+  sudo apt install curl # if you haven't already installed curl
+  curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+#+end_src
+
+** Ubuntu Install ROS
+建议使用 ~apt~ 而不是 ~apt-get~ 
+#+begin_src shell
+  sudo apt update
+  sudo apt install ros-noetic-desktop-full # recommand
+#+end_src
+
+如果有某些包需要安装，可以直接指定包名。
+#+begin_src shell
+  sudo apt install ros-noetic-PACKAGE
+#+end_src
+
+如果需要搜索包，可以指定搜索关键词
+#+begin_src shell
+  apt search ros-noetic
+#+end_src
+
+** Environment
+#+begin_src shell
+  source /usr/share/gazebo/setup.sh
+  source /opt/ros/noetic/setup.bash # change bash to zsh if you need
+#+end_src
+
+** Dependencies
+#+begin_src shell
+  sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
+#+end_src
+
+初始化 =rosdep= 以使用部分 ROS 工具。
+#+begin_src shell
+  sudo apt install python3-rosdep
+  sudo rosdep init
+  rosdep update
+#+end_src
+
+** Test ROS Installation
+#+begin_src shell
+  roscore
+  rosrun turtlesim turtlesim_node
+  rosrun turtlasim turtle_teleop_key
+#+end_src
+
+* ROS HelloWorld
+** Create Project
+创建项目的顺序如下：
+1. 创建工作空间
+   将工作空间命名为 =ROSRace=
+   #+begin_src shell
+     mkdir -p ROSRace/src
+     cd ROSRace
+     catkin_make
+   #+end_src
+2. 创建功能包
+   将功能包命名为 =helloworld= ，并添加所需的依赖。
+   1. roscpp 是用 C++ 实现的库；
+   2. rospy 是用 python 实现的库；
+   3. std_msgs 是标准消息库 
+   #+begin_src shell
+     cd src
+     catkin_create_pkg helloworld roscpp rospy std_msgs
+   #+end_src
+3. 编辑源文件(C++)
+    #+begin_src shell
+    cd helloworld/src
+    vim helloworld_c.cpp
+    #+end_src
+
+    输入以下内容：
+    #+begin_src cpp
+    //包含ros的头文件
+    #include "ros/ros.h"
+    //编写main函数
+    int main(int argc,char* argv[]){
+        //执行ros节点初始化
+        ros::init(argc,argv,"hello_node");
+        //创建ros节点句柄，非必须
+        ros::NodeHandle n;
+        //控制台输出日志
+        ROS_INFO("hello world!");
+        return 0;
+    }
+    #+end_src
+
+4. 编辑源文件(Python)
+   #+begin_src shell
+     cd helloworld
+     mkdir scripts # python 文件必须在该文件夹下
+   #+end_src
+
+   输入以下内容：
+   #+begin_src python
+     #! /usr/bin/env python
+
+     """
+         Python 版 HelloWorld
+
+     """
+     import rospy
+
+     if __name__ == "__main__":
+         rospy.init_node("Hello")
+         rospy.loginfo("Hello World!!!!")
+
+   #+end_src
+
+   #+begin_src shell
+     chmod +x helloworld_py.py
+   #+end_src
+5. 编辑配置文件(C++)
+   编辑功能包下的 cmake 文件，~vim CMakeLists.txt~ ，修改以下内容:
+   #+begin_src text
+     add_executable( ${PROJECT_NAME}_node
+       src/helloworld_c.cpp
+     )
+     target_link_libraries( ${PROJECT_NAME}_node
+       ${catkin_LIBRARIES}
+     )
+   #+end_src
+
+   注意：
+   1. 如 =add_dependencies= 未注释，则注释该项
+   2. 需要修改源文件名与 =add_executable= 中的内容一致
+   3. 如需修改生成的可执行文件名，可修改 =project(helloworld)= 中的内容
+   
+6. 编辑配置文件(Python)
+   #+begin_src shell
+     catkin_install_python(PROGRAMS scripts/helloworld_py.py
+       DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+     )
+   #+end_src
+6. 编译并执行
+   1. 回到工作空间目录
+   2. 输入 ~catkin_make~ 编译所有 C++ 内容，python 文件是即时解释执行不需要编译
+   3. 执行下面的命令，特别地，如不执行第二行，则会报找不到 =helloworld= 包。
+      #+begin_src shell
+        roscore
+        source ./devel/setup.bash # use zsh if you need
+        # C++
+        rosrun helloworld helloworld_node # Package_name + target_name
+        # Python
+        rosrun helloworld helloworld_py.py
+      #+end_src
