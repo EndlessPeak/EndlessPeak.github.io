@@ -5,8 +5,8 @@ role: 学生
 avatar: images/avtar.png
 bio: 瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?
 organization:
-  name: 长安大学
-  url: https://example.com/
+  name: 延边大学
+  url: https://github.com/endlesspeak/
 social:
   - icon: envelope
     iconPack: fas
@@ -54,7 +54,7 @@ authors:
 
 博客主要记录我的学习经历、项目笔记以及一些兴趣配置等内容。
 
-点击 [Hello World](/posts/tattle/2020-HelloWorld-From-blogs-to-life) 了解为什么我要写博客。
+点击 [Hello World](/posts/tattle/2020-helloworld-from-blogs-to-life) 了解为什么我要写博客。
 
 下面是博客的主要组成部分：
 

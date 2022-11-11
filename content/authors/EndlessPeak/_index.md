@@ -4,8 +4,8 @@ role: 学生
 avatar: images/avtar.png
 bio: 瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?
 organization:
-  name: 长安大学
-  url: https://example.com/
+  name: 延边大学
+  url: https://github.com/endlesspeak/
 social:
   - icon: envelope
     iconPack: fas
@@ -28,8 +28,9 @@ social:
 | 属性   | 值                                             |
 | :----- | :--------------------------------------------- |
 | 姓名   | 李青翰                                         |
-| 年龄   | 22                                             |
-| 教育   | CHD 信息工程学院 软件工程系                    |
+| 年龄   | 23                                            |
+| 教育1   | CHD 信息工程学院 软件工程系  工学学士                |
+| 教育2   | YBU 工学院 计算机科学与技术系  工学硕士                |
 | QQ     | 843968093                                      |
 | Email  | endlesspeak@163.com & theblackness@foxmail.com |
 | GitHub | EndlessPeak                                    |

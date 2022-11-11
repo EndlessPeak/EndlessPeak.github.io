@@ -17,6 +17,3 @@ main:
   - name: 标签
     url: /tags
     weight: 6
-  - name: 随笔
-    url: /novel
-    weight: 7

@@ -1,13 +1,22 @@
-#+TITLE: Environment Configuration
+#+TITLE: ROS 环境配置
 #+DATE: <2022-10-18 Tue>
 #+AUTHOR: EndlessPeak
 #+TOC: true
 #+HIDDEN: false
 #+DRAFT: false
 #+WEIGHT: 2
-#+Description: 本文主要讨论如何构建ROS环境并运行例程。
+#+Description: 本文主要讨论如何构建ROS环境。
 
 * Ubuntu Configuration
+** Ubuntu Install
+虚拟机平台不限，推荐使用：
+1. VMWare
+2. Virtualbox
+3. Qemu
+
+Ubuntu 版本需要选择 Ubuntu 20.04 安装。发行版代码应该为 =focal= 。
+请使用 ~lsb_release -a~ 或 ~lsb_release -c~ 验证。
+
 ** Additional Function
 虚拟机工具之增强功能可以使得虚拟操作系统的屏幕自适应窗口大小。
 
@@ -27,9 +36,21 @@
 
 ** Input Method
 安装 fcitx5
+#+begin_src shell
+  sudo apt install fcitx5 fcitx5-*
+  im-config #配置输入法为fcitx5
+#+end_src
+特别地，尽管有多种方法配置环境变量，仍然建议将环境变量配置到 =~/.xprofile= 中。
+#+begin_src shell
+  export GTK_IM_MODULE=fcitx5
+  export QT_IM_MODULE=fcitx5
+  export XMODIFIERS=@im=fcitx
+#+end_src
+如果输入法有问题，尝试执行 ~fcitx5-dignose~ 进行问题诊断。
 
 ** New Template
 Ubuntu 操作系统右键菜单中没有新建文档的选项，需要到 =~/Templates= 下新建各种文档用作新建的模板。
+比如，至少新建一个 =.txt= 文件。
 
 * ROS Install
 ** Ubuntu Software Settings
@@ -42,46 +63,107 @@ Ubuntu 操作系统右键菜单中没有新建文档的选项，需要到 =~/Tem
    3. restricted
    4. multiverse
 
-** Ubuntu Software Source
-配置 Ubuntu 的软件源。
+** Ubuntu Mirror
+按照 [[https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu][Ubuntu 镜像使用帮助]] 操作，编辑 =/etc/apt/sources.list= 文件。
+#+begin_src shell
+  # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
 
-*** Setup sources.list
-允许操作系统从 =packages.ros.org= 上接受软件
+  # 预发布软件源，不建议启用
+  # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+#+end_src
+
+** Ubuntu Software Source
+配置 Ubuntu 的软件源。主要介绍从官方源和国内镜像源两种方法。特别地，官方源由于需要访问 github 网站，需要科学上网工具。
+*** Install From Offical
+官方源的安装方法如下：
+**** Setup sources.list
+允许操作系统从 =packages.ros.org= 上接受 ROS 软件。
 #+begin_src shell
   sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
   # 有关源的选择可以使用国内镜像源
 #+end_src
 
-国内可选的镜像源有：
-1. https://mirrors.tuna.tsinghua.edu.cn/ros/ubuntu/
-2. https://mirrors.ustc.edu.cn/ros/ubuntu/
-*** Setup keys
+**** Setup keys
+如果从官方源接受 ROS 软件，则需要执行下面的操作以安装密钥。
 #+begin_src shell
   sudo apt install curl # if you haven't already installed curl
   curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
 #+end_src
 
+*** Install From China
+国内源的安装方法如下：
+**** Setup sources.list
+下面是部分国内的镜像源：
+1. https://mirrors.tuna.tsinghua.edu.cn/ros/ubuntu/
+2. https://mirrors.ustc.edu.cn/ros/ubuntu/
+可参考对应的使用帮助：
+1. https://mirrors.tuna.tsinghua.edu.cn/help/ros
+2. https://mirrors.ustc.edu.cn/help/ros.html
 ** Ubuntu Install ROS
-建议使用 ~apt~ 而不是 ~apt-get~ 
-#+begin_src shell
-  sudo apt update
-  sudo apt install ros-noetic-desktop-full # recommand
-#+end_src
+建议使用 ~apt~ 而不是 ~apt-get~ 进行安装。
+1. 安装 ROS 本体 
+   #+begin_src shell
+     sudo apt update
+     sudo apt install ros-noetic-desktop-full # recommand
+   #+end_src
 
-如果有某些包需要安装，可以直接指定包名。
-#+begin_src shell
-  sudo apt install ros-noetic-PACKAGE
-#+end_src
+2. 安装 ROS 相关的软件
+   #+begin_src shell
+     sudo apt install ros-noetic-ackermann-msgs
+     sudo apt install ros-noetic-controller-manager
+     sudo apt install ros-noetic-driver-base
+     sudo apt install ros-noetic-effort-controllers
+     sudo apt install ros-noetic-geographic-info
+     sudo apt install ros-noetic-gazebo-ros-control
+     sudo apt install ros-noetic-gmapping
+     sudo apt install ros-noetic-joint-state-controller
+     sudo apt install ros-noetic-navigation
+     sudo apt install ros-noetic-rtabmap-ros
+     sudo apt install ros-noetic-teb-local-planner
+     sudo apt install ros-noetic-openslam-gmapping
+   #+end_src
 
-如果需要搜索包，可以指定搜索关键词
-#+begin_src shell
-  apt search ros-noetic
-#+end_src
+3. 安装其他插件
+   #+begin_src shell
+     sudo apt install tcl-dev tk-dev python3-tk
+   #+end_src
+4. 安装依赖
+   其中，=build-essential= 包括了 =gcc= , =g++= , =make= , =dpkg-dev= 等工具。
+   由于 ~catkin_make~ 命令依赖 =cmake= ，因此 =cmake= 和 =extra-cmake-modules= 是必须的。
+   #+begin_src shell
+     sudo apt install git build-essential cmake extra-cmake-modules python3 python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool 
+   #+end_src
+
+5. 下载 gazebo 模型
+   如果从 github 下载慢，可以尝试从 gitee 导入模型。
+   #+begin_src shell
+     git clone https://github.com/osrf/gazebo_models.git ~/.gazebo/models
+     sudo chmod 777 -R ~/.gazebo/models/*
+   #+end_src
+6. 如果有其他包需要安装，可以直接指定包名。
+   #+begin_src shell
+     sudo apt install ros-noetic-PACKAGE
+   #+end_src
+
+7. 如果需要搜索包，可以指定搜索关键词
+   #+begin_src shell
+     apt search ros-noetic
+   #+end_src
 
 ** Environment
+将 =ros-noetic= 和 =gazebo= 均加入 =PATH= 中，输入 ~vim ~~/.bashrc~
 #+begin_src shell
-  source /usr/share/gazebo/setup.sh
   source /opt/ros/noetic/setup.bash # change bash to zsh if you need
+  source /usr/share/gazebo/setup.bash # check if it is setup.sh
 #+end_src
 
 ** Dependencies
@@ -97,109 +179,16 @@ Ubuntu 操作系统右键菜单中没有新建文档的选项，需要到 =~/Tem
 #+end_src
 
 ** Test ROS Installation
+可以设置终端的新建方式为新建标签，然后新建三个终端标签，依次输入下面的命令用以测试 ROS 是否顺利安装。
 #+begin_src shell
   roscore
   rosrun turtlesim turtlesim_node
   rosrun turtlasim turtle_teleop_key
 #+end_src
 
-* ROS HelloWorld
-** Create Project
-创建项目的顺序如下：
-1. 创建工作空间
-   将工作空间命名为 =ROSRace=
-   #+begin_src shell
-     mkdir -p ROSRace/src
-     cd ROSRace
-     catkin_make
-   #+end_src
-2. 创建功能包
-   将功能包命名为 =helloworld= ，并添加所需的依赖。
-   1. roscpp 是用 C++ 实现的库；
-   2. rospy 是用 python 实现的库；
-   3. std_msgs 是标准消息库 
-   #+begin_src shell
-     cd src
-     catkin_create_pkg helloworld roscpp rospy std_msgs
-   #+end_src
-3. 编辑源文件(C++)
-    #+begin_src shell
-    cd helloworld/src
-    vim helloworld_c.cpp
-    #+end_src
+** Compile
+一切就绪后，~Ctrl+C~ 结束运行的测试程序，编译项目。
+#+begin_src shell
+  catkin_make
+#+end_src
 
-    输入以下内容：
-    #+begin_src cpp
-    //包含ros的头文件
-    #include "ros/ros.h"
-    //编写main函数
-    int main(int argc,char* argv[]){
-        //执行ros节点初始化
-        ros::init(argc,argv,"hello_node");
-        //创建ros节点句柄，非必须
-        ros::NodeHandle n;
-        //控制台输出日志
-        ROS_INFO("hello world!");
-        return 0;
-    }
-    #+end_src
-
-4. 编辑源文件(Python)
-   #+begin_src shell
-     cd helloworld
-     mkdir scripts # python 文件必须在该文件夹下
-   #+end_src
-
-   输入以下内容：
-   #+begin_src python
-     #! /usr/bin/env python
-
-     """
-         Python 版 HelloWorld
-
-     """
-     import rospy
-
-     if __name__ == "__main__":
-         rospy.init_node("Hello")
-         rospy.loginfo("Hello World!!!!")
-
-   #+end_src
-
-   #+begin_src shell
-     chmod +x helloworld_py.py
-   #+end_src
-5. 编辑配置文件(C++)
-   编辑功能包下的 cmake 文件，~vim CMakeLists.txt~ ，修改以下内容:
-   #+begin_src text
-     add_executable( ${PROJECT_NAME}_node
-       src/helloworld_c.cpp
-     )
-     target_link_libraries( ${PROJECT_NAME}_node
-       ${catkin_LIBRARIES}
-     )
-   #+end_src
-
-   注意：
-   1. 如 =add_dependencies= 未注释，则注释该项
-   2. 需要修改源文件名与 =add_executable= 中的内容一致
-   3. 如需修改生成的可执行文件名，可修改 =project(helloworld)= 中的内容
-   
-6. 编辑配置文件(Python)
-   #+begin_src shell
-     catkin_install_python(PROGRAMS scripts/helloworld_py.py
-       DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-     )
-   #+end_src
-6. 编译并执行
-   1. 回到工作空间目录
-   2. 输入 ~catkin_make~ 编译所有 C++ 内容，python 文件是即时解释执行不需要编译
-   3. 执行下面的命令，特别地，如不执行第二行，则会报找不到 =helloworld= 包。
-      #+begin_src shell
-        roscore
-        source ./devel/setup.bash # use zsh if you need
-        # C++
-        rosrun helloworld helloworld_node # Package_name + target_name
-        # Python
-        rosrun helloworld helloworld_py.py
-      #+end_src

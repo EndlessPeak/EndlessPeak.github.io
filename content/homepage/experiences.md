@@ -2,20 +2,18 @@
 title: 项目经验
 draft: false
 experiences:
-  - title: Example Role 1
+  - title: Linux CPP
     organization:
-      name: Example Organization 1
-      url: https://example.org
+      name: EndlessPeak
+      url: https://github.com/EndlessPeak/LinuxCPP
     dates: '2019 - Present'
-    location: Country
+    location: Single
     writeup: >
-      Donec scelerisque egestas augue at tempor. Fusce faucibus magna in.
+      Gentoo Emerge 和 Eselect 模拟实现。
 
-      - Suspendisse lacinia mauris a laoreet vehicula.
+      - 模拟Emerge处理参数交由Pacman.
 
-      - Aenean tincidunt enim vitae ante blandit tempor.
-
-      - Nam tincidunt diam quis lorem rutrum ullamcorper.
+      - 模拟实现Eselect功能.
       
 
 weight: 3
