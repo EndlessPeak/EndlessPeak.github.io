@@ -137,7 +137,7 @@ Ubuntu 操作系统右键菜单中没有新建文档的选项，需要到 =~/Tem
      sudo apt install tcl-dev tk-dev python3-tk
    #+end_src
 4. 安装依赖
-   其中，=build-essential= 包括了 =gcc= , =g++= , =make= , =dpkg-dev= 等工具。
+   其中 =build-essential= 包括了 =gcc= , =g++= , =make= , =dpkg-dev= 等工具。
    由于 ~catkin_make~ 命令依赖 =cmake= ，因此 =cmake= 和 =extra-cmake-modules= 是必须的。
    #+begin_src shell
      sudo apt install git build-essential cmake extra-cmake-modules python3 python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool 
@@ -160,7 +160,7 @@ Ubuntu 操作系统右键菜单中没有新建文档的选项，需要到 =~/Tem
    #+end_src
 
 ** Environment
-将 =ros-noetic= 和 =gazebo= 均加入 =PATH= 中，输入 ~vim ~~/.bashrc~
+将 =ros-noetic= 和 =gazebo= 均加入 =PATH= 中，编辑 =~/.bashrc=
 #+begin_src shell
   source /opt/ros/noetic/setup.bash # change bash to zsh if you need
   source /usr/share/gazebo/setup.bash # check if it is setup.sh

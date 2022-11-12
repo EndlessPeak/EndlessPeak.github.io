@@ -29,26 +29,26 @@
    
 ** Edit Source File
 1. 编辑源文件(C++)
-    #+begin_src shell
-    cd helloworld/src
-    vim helloworld_c.cpp
-    #+end_src
+   #+begin_src shell
+   cd helloworld/src
+   vim helloworld_c.cpp
+   #+end_src
 
-    输入以下内容：
-    #+begin_src cpp
-    //包含ros的头文件
-    #include "ros/ros.h"
-    //编写main函数
-    int main(int argc,char* argv[]){
-        //执行ros节点初始化
-        ros::init(argc,argv,"hello_node");
-        //创建ros节点句柄，非必须
-        ros::NodeHandle n;
-        //控制台输出日志
-        ROS_INFO("hello world!");
-        return 0;
-    }
-    #+end_src
+   输入以下内容：
+   #+begin_src cpp
+   //包含ros的头文件
+   #include "ros/ros.h"
+   //编写main函数
+   int main(int argc,char* argv[]){
+       //执行ros节点初始化
+       ros::init(argc,argv,"hello_node");
+       //创建ros节点句柄，非必须
+       ros::NodeHandle n;
+       //控制台输出日志
+       ROS_INFO("hello world!");
+       return 0;
+   }
+   #+end_src
 
 2. 编辑源文件(Python)
    #+begin_src shell
@@ -113,8 +113,8 @@
 
 ** Locale
 解决乱码问题，以下方法任选一种。
-1. 在 cpp 源文件中加入一行~setlocale(LC_ALL,"");~
-2. 在 cpp 源文件中加入一行~setlocale(LC_ALL,"zh_CN.utf8");~
+1. 在 cpp 源文件中加入一行 ~setlocale(LC_ALL,"");~
+2. 在 cpp 源文件中加入一行 ~setlocale(LC_ALL,"zh_CN.utf8");~
 
 * Terminal Reuse
 在 ROS 中，需要频繁的使用到终端，且需要同时开启多个进程，因此需要用到终端复用工具。

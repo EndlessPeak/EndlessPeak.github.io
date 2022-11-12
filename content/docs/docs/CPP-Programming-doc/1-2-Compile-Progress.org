@@ -5,7 +5,7 @@
 #+HIDDEN: false
 #+DRAFT: false
 #+WEIGHT: 2
-#+Description:本文是对 CPP 从源代码到二进制文件的生成过程的总结。
+#+Description: 本文是对 CPP 从源代码到二进制文件的生成过程的总结。
 
 * 预处理
 处理宏定义和 =include= ，去除所有的注释。 *不会对语法错误进行检查。*
