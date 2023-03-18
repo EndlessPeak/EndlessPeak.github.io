@@ -1,5 +1,5 @@
 ---
-title: Arch Linux物理机的安装与引导
+title: Arch Linux 物理机的安装与引导
 toc: true
 date: 2020-01-16 22:00:00
 featuredImage: https://s1.ax1x.com/2020/04/04/GdMk1x.md.png

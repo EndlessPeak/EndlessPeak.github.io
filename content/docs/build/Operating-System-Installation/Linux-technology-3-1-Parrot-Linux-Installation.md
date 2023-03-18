@@ -1,5 +1,5 @@
 ---
-title: Parrot Linux物理机的安装、引导与配置
+title: Parrot Linux 物理机的安装、引导与配置
 authors:
   - EndlessPeak
 toc: true

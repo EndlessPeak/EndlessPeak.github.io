@@ -1,4 +1,4 @@
-#+TITLE: Gentoo Linux Nvidia显卡驱动
+#+TITLE: Gentoo Linux Nvidia 显卡驱动
 #+DATE: <2022-08-21 Sun>
 #+AUTHOR: EndlessPeak
 #+TOC: true

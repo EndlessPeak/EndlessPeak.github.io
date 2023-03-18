@@ -1,0 +1,11 @@
+#+TITLE: STM32 Cube
+#+DATE: <2023-02-09 Thu>
+#+AUTHOR: EndlessPeak
+#+TOC: true
+#+HIDDEN: false
+#+DRAFT: false
+#+WEIGHT: 2
+#+Description: 本文主要叙述STM32Cube系列软件，并探讨用其进行STM32开发的方法。
+
+* Cube
+此处文章尚在施工。

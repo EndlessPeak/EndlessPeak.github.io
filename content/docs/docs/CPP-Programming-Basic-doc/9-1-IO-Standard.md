@@ -131,6 +131,7 @@ int printf(const char *format, ...)
 		</tr>
 	</tbody>
 </table>
+
 #### 高级用法
 
 ```c

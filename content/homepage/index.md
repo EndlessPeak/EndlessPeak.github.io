@@ -1,10 +1,10 @@
 ---
-title: 无涯峰 EndlessPeak
+title: 坐忘道琼峰 Sitting Oblivion Tao EndlessPeak
 draft: false
 role: 学生
 avatar: images/avtar.png
 organization:
-  name: 长安大学
+  name: 延边大学
   url: https://example.com/
 social:
   - icon: envelope
