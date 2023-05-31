@@ -7,7 +7,7 @@ featuredImage:
 date: 2022-02-10
 hidden: false
 draft: false
-weight: 2
+weight: 3
 ---
 
 本系列文章是C/C++程序设计基础方面的内容。

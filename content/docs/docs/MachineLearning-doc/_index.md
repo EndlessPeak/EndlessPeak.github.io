@@ -9,7 +9,7 @@ series:
 date: '2021-8-6'
 lastmod: '2021-8-6'
 draft: false
-weight: 2
+weight: 7
 ---
 
 本系列文章是机器学习方面的笔记。

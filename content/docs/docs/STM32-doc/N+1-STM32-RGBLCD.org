@@ -104,3 +104,12 @@ LTDC 有三个层：背景层（BG）、图层 1（Layer1）、图层 2（Layer2
    1. 首先，背景和图层的大小都是 Active width 和 Active height；
    2. 背景层在最下面，如果开了单个图层，则显示结果为背景层和单个图层混合结果；如果两个图层都开，则显示结果为背景层先和图层 1 混合，混合结果再与图层 2 混合的结果；
    3. 图层混合在 LTDC 硬件上是一直开启的，可以直接配置该图层用于混合的 Alapha 常量来调节整层透明度，范围为 0-255，0 为完全透明、255 为不透明、127 为半透明；
+
+
+\begin{align}
+h(x_ 1)=\begin{cases}+1 \quad y_{1}=+1;\\-1 \quad y_{1}=-1;\end{cases}
+\end{align}
+
+#+begin_src latex
+  s = \frac{a}{b} + a * b
+#+end_src
