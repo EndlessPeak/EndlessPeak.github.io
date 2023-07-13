@@ -1,0 +1,37 @@
+#+TITLE: C&CPP Mix Programming
+#+DATE: <2023-07-13 Thu>
+#+AUTHOR: EndlessPeak
+#+TOC: true
+#+HIDDEN: false
+#+DRAFT: false
+#+WEIGHT: 120
+#+Description: 
+
+* C with C++
+C 和 C++ 有一些不同的语法和命名规则，其中一个重要的区别是函数的名称修饰(Name Mangling):
+
+1. C 编译器不进行任何名称修饰。
+2. C++ 编译器会对函数和变量的名称进行修饰，以支持函数重载和其他特性
+
+当在 C++ 代码中包含 C 的 *头文件* 时，如果不采取适当的预处理措施，令 C++ 编译器对其中的函数和变量名称进行修饰，就会导致其与 C 代码中的实际定义不匹配，从而引发链接错误。
+
+通过使用 ~#ifdef __cplusplus~ 和 ~extern "C"~ ，可以将 C 代码中的函数和变量声明放置在单独的块中。它将告诉 C++ 编译器使用 C 的命名规则，而不进行修饰。这样就能够确保 C 和 C++ 之间的接口正确匹配，使得 C 和 C++ 代码可以混合编译和链接。
+
+#+begin_src cpp
+  #ifdef __cplusplus
+  extern "C" {
+  #endif
+
+  // C header files content
+
+  #ifdef __cplusplus
+  }
+  #endif
+#+end_src
+
+特别地，如果使用 ~gcc -x c++ -lstdc++~ 编译 C++文件，默认不会定义 ~__cplusplus~ 宏，这可能导致：
+1. 条件编译错误：一些 C++ 代码中使用了条件编译，通过判断 ~__cplusplus~ 的值来选择性地包含或排除某些代码块。如果该宏未定义，可能会导致条件判断出错，无法按预期进行代码包含或排除。
+2. 编译器特性缺失：一些库或框架在编译时会依赖于 ~__cplusplus~ 宏来确定编译器的 C++ 特性支持情况。如果未定义 ~__cplusplus~ ，可能导致某些 C++ 特性不可用或编译器行为有所差异。
+3. 平台兼容性问题：某些平台架构或其编译器可能依赖于 ~__cplusplus~ 宏来正确处理 C++ 代码的兼容性。如果未定义 ~__cplusplus~ ，可能会导致在特定平台上编译或执行出现问题。
+
+因此，建议尽量使用 ~g++~ 编译 C++代码，或者为 ~gcc -x c++ -lstdc++~ 添加宏定义 ~-D__cplusplus~ 。

@@ -1,5 +1,5 @@
 ---
-title: 作用域
+title: Scope
 authors:
   - EndlessPeak
 toc: true

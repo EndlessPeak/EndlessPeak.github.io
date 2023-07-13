@@ -1,5 +1,5 @@
 ---
-title: 结构
+title: Structure
 authors:
   - EndlessPeak
 toc: true

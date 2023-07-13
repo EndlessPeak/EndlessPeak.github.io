@@ -1,5 +1,5 @@
 ---
-title: 数据类型
+title: DataType
 authors:
   - EndlessPeak
 toc: true

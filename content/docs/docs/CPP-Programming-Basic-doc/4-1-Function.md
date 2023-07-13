@@ -1,5 +1,5 @@
 ---
-title: 函数
+title: Function
 authors:
   - EndlessPeak
 toc: true

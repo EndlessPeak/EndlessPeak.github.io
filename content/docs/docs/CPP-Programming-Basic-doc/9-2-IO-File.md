@@ -1,5 +1,5 @@
 ---
-title: 文件输入输出
+title: File I/O
 authors:
   - EndlessPeak
 toc: true

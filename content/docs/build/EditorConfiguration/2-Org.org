@@ -1,12 +1,13 @@
-#+TITLE: 2-Org
-#+DATE: <2022-07-01 Fri>
+#+TITLE: Org
+#+DATE: <2023-07-11 Tue> 
 #+AUTHOR: EndlessPeak
 #+TOC: true
 #+HIDDEN: false
-#+DRAFT: true
+#+DRAFT: false
 #+WEIGHT: 2
+#+Description: 本文章主要讨论在自定义Emacs中解决常见的基础配置问题。
 
-
+* Org
 具体来说它的功能有：
 
 1. 折叠
@@ -36,26 +37,26 @@
 =C-c .= 插入日期。
 
 #+begin_src latex
+  \begin{equation}
+  \begin{aligned}\\
+  [9,10] \rightarrow [34] \\
+  [2,8] \rightarrow [91] \\
+  [4,7] \rightarrow [82]
+  \end{aligned} \\
+  \downarrow \\
+  \begin{bmatrix}
+  \begin{bmatrix} 9 & 10 \end{bmatrix}\\
+  \begin{bmatrix} 2 & 8 \end{bmatrix}\\
+  \begin{bmatrix} 4 & 7 \end{bmatrix}
+  \end{bmatrix}
+  \rightarrow
+  \begin{bmatrix}
+  \begin{bmatrix} 34 \end{bmatrix}\\
+  \begin{bmatrix} 91 \end{bmatrix}\\
+  \begin{bmatrix} 82 \end{bmatrix}
+  \end{bmatrix}
+  \end{equation}
 #+end_src
 
 
 
-\begin{equation}
-\begin{aligned}\\
-[9,10] \rightarrow [34] \\
-[2,8] \rightarrow [91] \\
-[4,7] \rightarrow [82]
-\end{aligned} \\
-\downarrow \\
-\begin{bmatrix}
-\begin{bmatrix} 9 & 10 \end{bmatrix}\\
-\begin{bmatrix} 2 & 8 \end{bmatrix}\\
-\begin{bmatrix} 4 & 7 \end{bmatrix}
-\end{bmatrix}
-\rightarrow
-\begin{bmatrix}
-\begin{bmatrix} 34 \end{bmatrix}\\
-\begin{bmatrix} 91 \end{bmatrix}\\
-\begin{bmatrix} 82 \end{bmatrix}
-\end{bmatrix}
-\end{equation}

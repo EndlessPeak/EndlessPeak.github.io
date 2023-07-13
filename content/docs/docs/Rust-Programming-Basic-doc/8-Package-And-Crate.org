@@ -1,0 +1,20 @@
+#+TITLE: Package And Crate
+#+DATE: <2023-07-11 Tue>
+#+AUTHOR: EndlessPeak
+#+TOC: true
+#+HIDDEN: false
+#+DRAFT: false
+#+WEIGHT: 8
+#+Description: 本文总结了包和crate的概念以及使用。
+
+* Crate
+crate 是 Rust 代码编译单元，它可以是库或者二进制
+1. 二进制 crate 生成一个可执行文件
+2. 库 crate 可以被其他程序调用，但不能独自执行
+
+* Package
+包对应一个项目/代码仓库，它可以包含一个或多个 crate 
+1. 主 crate 是项目的入口点
+   1. 如果项目的目的是构建一个可执行文件，则用户编写的二进制 crate 是主 crate
+   2. 如果项目的目的是供其他 crate 使用，则用户编写的库 crate 是主 crate
+2. 辅助 crate 或依赖 crate，用于给主 crate 提供功能

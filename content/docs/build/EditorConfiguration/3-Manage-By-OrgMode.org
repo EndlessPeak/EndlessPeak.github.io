@@ -1,0 +1,162 @@
+#+TITLE: Manage By Org Mode
+#+DATE: <2023-07-11 Tue>
+#+AUTHOR: EndlessPeak
+#+TOC: true
+#+HIDDEN: false
+#+DRAFT: false
+#+WEIGHT: 3
+#+Description: 本文记录如何通过Org-mode管理配置文件。
+
+* Organization Form
+** Related works
+我们通常可以有如下几种形式来管理配置文件：
+1. 单文件法
+2. 模块化法 
+   1. 将所有配置文件模块化，通过 init.el 来统一加载；
+   2. 将所有配置文件通过 org 文件来管理，通过 org-babel-load-file 函数来加载；
+   3. 将所有配置文件通过 org 文件来管理，通过 tangle 的技术实现模块化；
+
+** Contributions
+本文所用的方法是：
+1. 将配置文件交给 org 管理，实现模块化；
+2. 通过 =tangle= 技术编译生成配置文件；
+3. 生成的配置结构与方法一完全相同
+
+** Advantage
+使用 Org mode 来管理所有的配置文件的好处：
+1. 通过 Org mode 强大的文学编程功能，我们可以让我们的配置文件更加清晰有序
+2. 可以添加很多注释之外的资料、链接等，让配置更加易读和可管理
+
+* Organization Structure 
+** File Structure
+首先备份已有的配置到其他文件夹，而后在 =~/.emacs.d= 文件夹中建立 =config= 目录。
+
+稍后所有的 =org= 配置文件都会放到 =config= 目录中，它们的结构基本与外层的 =el= 文件相同。
+
+** Tangle
+Org mode 提供了 =org-babel-tangle= ，它能够自动的将代码块里的代码，写入到指定的文件里去。
+
+它的配置方式有两种：
+1. 可以在代码块的参数行配置 tangle 参数
+2. 可以在 org mode 的标题行添加标题参数配置
+** Org Title
+1. 方法一：
+   1. 在标题行下方，通过 =:PROPERTIES:= 和 =:END:= 包裹的区域，即 *属性抽屉* 里，添加 =:HEADER-ARGS:= 行
+   2. 通过 :tangle 后加上指定自动写入的文件路径，来配置这个标题行下所有的代码块的自动写入行为
+2. 方法二：
+   1. 在标题栏下方，通过 =#+PROPERTY= 属性加入 =header-args= 参数
+   2. 通过 :tangle 后加上指定自动写入的文件路径，来配置这个标题行下所有的代码块的自动写入行为
+
+下面给出两个例子，演示如何在标题栏通过标题参数来配置 tangle
+
+每个 =org= 文件按统一的格式编写开头，必要的内容如下：
+#+begin_src org
+  :PROPERTIES:
+  :HEADER-ARGS: :tangle XXX.el :lexical t
+  :END:
+#+end_src
+
+Nasyxx 佬的写法是下面这样的：
+#+begin_src org
+  ,#+PROPERTY: header-args:emacs-lisp :tangle (concat temporary-file-directory "XXX.el") :lexical t
+
+#+end_src
+
+因而我的配置如下，其中我没有用到 ~(concat temporary-file-directory "str")~ 部分，因此这样写是不必要的。
+#+begin_src org
+  :PROPERTIES:
+  :HEADER-ARGS: :tangle (concat temporary-file-directory "XXX.el") :lexical t
+  :END:
+#+end_src
+
+而后可以添加代码块，语言设为 =emacs-lisp= ，并在代码块中编写配置代码。
+
+特别地，全局代码块写入肯定存在意外：
+1. 如果有一个代码块不想写入文件，在代码块参数行追加 ~:tangle no~
+2. 如果有一个子标题下的所有代码块均不想写入文件，则给子标题加参数 ~:HEADER-ARGS: :tangle no~
+
+** By Code Block
+下面的例子展示如何在代码块层级配置 tangle 
+
+在代码块写语言类型的这一行，添加 :tangle 参数，后加目标写入文件
+#+begin_src org
+  ,#+begin_src emacs-lisp :tangle ~/.emacs.d/test.el
+  (+ 1 2)
+  ,#+end_src
+#+end_src
+
+* Compilation
+代码块写好之后，如何执行写入操作呢？本部分提供两种思路：
+1. 手动 ~tangle~ 动作进行写入：对每个 =org= 文件执行 ~org-babel-tangle~ 命令
+2. 编写 ~makefile~ ，使用命令进行“编译”
+
+** Basic
+在本文的场景中，写入的原理是利用 emacs 的 =ob-tangle= 模块。
+1. ~org-babel-tangle~ 用于提取源代码块并将其保存到指定文件中的命令
+2. ~org-babel-tangle-publish~ 是一个扩展命令，用于将源代码块从 org 文件中提取并发布到指定目录中
+
+** Command
+使用下面的命令可以批量进行写入：
+#+begin_src sh
+  parameter1 = "(progn (require 'ob-tangle) (setq org-confirm-babel-evaluate nil))" 
+  parameter2 = '(org-babel-tangle-publish t "XXX.org" "XXX.el")' 
+  emacs -Q --batch --eval $parameter1 --eval $parameter2
+#+end_src
+
+** Makefile
+将配置文件通过 makefile 统一进行写入，也可以使用 shell 脚本。
+#+begin_src makefile
+  # 定义 EM 和 EE 变量
+  EM ?= emacs 
+  EE ?= $(EM) -Q --batch --eval "(progn (require 'ob-tangle) (setq org-confirm-babel-evaluate nil))"
+
+  # 需要加载的目录，可能有lisp site-lisp 等
+  DS = core etc lang
+
+  # 自定义编译模板的函数 tangle_template 用于将 *.org 转为 *.el
+  define tangle_template
+  # 检查目录是否存在，不存在就创建
+  check_dir.$(1):
+      @mkdir -p lisp/$(1)
+
+  # 目录作为目标，指示新的编译目标
+  $(1): $(patsubst config/$(1)/%.org, lisp/$(1)/%.el,$(wildcard config/$(1)/*.org))
+
+  clean-$(1):
+      rm -rf lisp/$(1)
+
+  .PHONY: clean-$(1)
+
+  # 目标的编译方法
+  lisp/$(1)/%.el: config/$(1)/%.org
+      $(EE) --eval '(org-babel-tangle-publish t "$$<" "$$(@D)/")'
+  endef
+
+  early-init.el: config/early-init.org
+      $(EE) --eval '(org-babel-tangle-publish t "$<" "$(@D)/")'
+
+  init.el: config/init.org
+      $(EE) --eval '(org-babel-tangle-publish t "$<" "$(@D)/")'
+
+  dump.el: config/dump.org
+      $(EE) --eval '(org-babel-tangle-publish t "$<" "$(@D)/")'
+
+  # (foreach var, list, template) var 是临时变量，list是需要遍历的列表，template是一个模板字符串
+  # foreach 遍历 DS 中的每个元素，作为dir传给后面的eval函数求值，所需求值的表达式为call调用模板方法生成编译命令
+  # 遍历 DS 目录，生成 tangle_template规则
+  $(foreach dir,$(DS),$(eval $(call tangle_template,$(dir))))
+
+  el: $(DS) early-init.el init.el dump.el
+
+  elc:
+      $(EM) --batch -l ./init.el -L "lisp" --eval '(byte-recompile-directory "lisp/etc" 0)'
+      $(EM) --batch -l ./init.el -L "lisp" --eval '(byte-recompile-directory "lisp/lang" 0)'
+
+  generate: el
+  generate-elc: el elc
+
+  clean:
+      rm early-init.el init.el
+      rm -rf lisp
+
+#+end_src

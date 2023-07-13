@@ -1,5 +1,5 @@
 ---
-title: 语句
+title: Statement
 authors:
   - EndlessPeak
 toc: true

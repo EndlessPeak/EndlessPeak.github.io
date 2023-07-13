@@ -1,5 +1,5 @@
 ---
-title: 标准输入输出
+title: Standard I/O
 authors:
   - EndlessPeak
 toc: true

@@ -1,5 +1,5 @@
 ---
-title: 存储类型
+title: StoreType
 authors:
   - EndlessPeak
 toc: true

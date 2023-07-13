@@ -1,4 +1,4 @@
-#+TITLE: 1-Vanilla Emacs
+#+TITLE: Vanilla Emacs
 #+DATE: <2022-07-01 Fri>
 #+AUTHOR: EndlessPeak
 #+TOC: true
@@ -49,79 +49,80 @@ sudo pacman -S xorg-fonts-misc
 设置中文字体，并为其添加 =hook= 。原因是 =doom eamcs= 大量采用了懒加载技术。
 
 #+begin_src emacs-lisp
-;;设置中文字体
-(defun leesin/set-fonts()
-  (set-fontset-font "fontset-default" 'unicode (font-spec :family "等距更纱黑体 Slab Sc"
-                                                          :size 20)
-                    nil 'prepend))
-(add-hook! 'after-setting-font-hook :append 'leesin/set-fonts)
+  ;;设置中文字体
+  (defun leesin/set-fonts()
+    (set-fontset-font "fontset-default" 'unicode (font-spec :family "等距更纱黑体 Slab Sc"
+                                                            :size 20)
+                      nil 'prepend))
+  (add-hook! 'after-setting-font-hook :append 'leesin/set-fonts)
 #+end_src
 
 设置英文字体,注释中详细说明了如何查看本机字体。简单来说，可以使用 =M-x menu-set-font= 。
 #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "SauceCodePro Nerd Font"
-                           :size 20 )
-      doom-variable-pitch-font (font-spec :family "SauceCodePro Nerd Font"
-                                          :size 20)
-      doom-unicode-font (font-spec :family "SauceCodePro Nerd Font"
-                                   :size 18)
-      doom-big-font (font-spec :family "SauceCodePro Nerd Font" :size 22))
+  (setq doom-font (font-spec :family "SauceCodePro Nerd Font"
+                             :size 20 )
+        doom-variable-pitch-font (font-spec :family "SauceCodePro Nerd Font"
+                                            :size 20)
+        doom-unicode-font (font-spec :family "SauceCodePro Nerd Font"
+                                     :size 18)
+        doom-big-font (font-spec :family "SauceCodePro Nerd Font" :size 22))
 #+end_src
 ** Vanilla Emacs 中设置字体
 待更新
 * 终端渲染
 #+begin_src emacs-lisp
-(when (display-graphic-p)
-  (set-frame-width (selected-frame) 150)
-  (set-frame-height (selected-frame) 60))
+  (when (display-graphic-p)
+    (set-frame-width (selected-frame) 150)
+    (set-frame-height (selected-frame) 60))
 #+end_src
 
 ** 代理
 #+begin_src emacs-lisp
-(defun leesin/toggle-proxy ()
-  (interactive)
-  (if (null url-proxy-services)
-      (progn
-        (setq url-proxy-services
-              '(("http" . "127.0.0.1:8889")
-                ("https" . "127.0.0.1:8889")))
-        (message "代理已开启."))
-    (setq url-proxy-services nil)
-    (message "代理已关闭.")))
+  (defun leesin/toggle-proxy ()
+    (interactive)
+    (if (null url-proxy-services)
+        (progn
+          (setq url-proxy-services
+                '(("http" . "127.0.0.1:8889")
+                  ("https" . "127.0.0.1:8889")))
+          (message "代理已开启."))
+      (setq url-proxy-services nil)
+      (message "代理已关闭.")))
 #+end_src
 
 * Org 中文行内格式
 #+begin_src emacs-lisp
-;; 设置org-mode中文格式，包括行内格式，折行问题
-;; 由于Emacs懒加载的特性，下面的代码需要加入hook才能运行
-;; 注意必须是 `add-hook' 而不能是 `add-hook!'
-(add-hook 'org-mode-hook (lambda ()
-                            (setcar (nthcdr 0 org-emphasis-regexp-components)
-                                    "-[:multibyte:][:space:]('\"{")
-                            (setcar (nthcdr 1 org-emphasis-regexp-components)
-                                    "-[:multibyte:][:space:].,:!?;'\")}\\[")
-                            (org-set-emph-re 'org-emphasis-regexp-components org-emphasis-regexp-components)
-                            (org-element-update-syntax)
-                            ;; 规定上下标必须加 {}，否则中文使用下划线时它会以为是两个连着的下标
-                            (setq org-use-sub-superscripts "{}")
-                            ;; 设置自动换行
-                            (setq truncate-lines nil)
-                            ;; 针对中文折行的问题进行设置
-                            (toggle-word-wrap nil)
-                            ))
+  ;; 设置org-mode中文格式，包括行内格式，折行问题
+  ;; 由于Emacs懒加载的特性，下面的代码需要加入hook才能运行
+  ;; 注意必须是 `add-hook' 而不能是 `add-hook!'
+  (add-hook 'org-mode-hook (lambda ()
+                              (setcar (nthcdr 0 org-emphasis-regexp-components)
+                                      "-[:multibyte:][:space:]('\"{")
+                              (setcar (nthcdr 1 org-emphasis-regexp-components)
+                                      "-[:multibyte:][:space:].,:!?;'\")}\\[")
+                              (org-set-emph-re 'org-emphasis-regexp-components org-emphasis-regexp-components)
+                              (org-element-update-syntax)
+                              ;; 规定上下标必须加 {}，否则中文使用下划线时它会以为是两个连着的下标
+                              (setq org-use-sub-superscripts "{}")
+                              ;; 设置自动换行
+                              (setq truncate-lines nil)
+                              ;; 针对中文折行的问题进行设置
+                              (toggle-word-wrap nil)
+                              ))
 #+end_src
 
 * 背景透明
 #+begin_src emacs-lisp
-;;;###autoload
-(defun leesin/toggle-transparency()
-  (interactive)
-  (let ((alpha (frame-parameter nil 'alpha)))
-    (set-frame-parameter
-     nil 'alpha
-     (if (eql (cond ((numberp alpha) alpha)
-                    ((numberp (cdr alpha)) (cdr alpha))
-                    ((numberp (cadr alpha)) (cadr alpha)))
-              100)
-              '(90 . 90) '(100 . 100)))))
+    ;;;###autoload
+  (defun leesin/toggle-transparency()
+    (interactive)
+    (let ((alpha (frame-parameter nil 'alpha)))
+      (set-frame-parameter nil 'alpha
+        (if (eql (cond ((numberp alpha) alpha)
+                      ((numberp (cdr alpha)) (cdr alpha))
+                      ((numberp (cadr alpha)) (cadr alpha)))
+                100
+                )
+           '(90 . 90) '(100 . 100)
+          ))))
 #+end_src

@@ -1,5 +1,5 @@
 ---
-title: 自定义数据类型
+title: Custom Data Type
 authors:
   - EndlessPeak
 toc: true

@@ -1,5 +1,5 @@
 ---
-title: 指针
+title: Pointer
 authors:
   - EndlessPeak
 toc: true

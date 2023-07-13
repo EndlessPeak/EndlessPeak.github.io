@@ -1,4 +1,4 @@
-#+TITLE: 编译语言
+#+TITLE: Compiler Language
 #+DATE: <2022-06-29 Wed>
 #+AUTHOR: EndlessPeak
 #+TOC: true
