@@ -86,8 +86,8 @@ date: 2019-12-29 21:00:00
    1. 《大话处理器》
 
    2.  *CODE: The Hidden Language of Computer Hardware and Software* 
-
-      《编码:隐匿在计算机软硬件背后的语言》
+       
+       《编码:隐匿在计算机软硬件背后的语言》
 
    3. 《穿越计算机的迷雾》
 
