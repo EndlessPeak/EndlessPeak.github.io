@@ -1,0 +1,146 @@
+#+TITLE: STM32 Clion Develop
+#+DATE: <2023-11-02 Thu>
+#+AUTHOR: EndlessPeak
+#+TOC: true
+#+HIDDEN: false
+#+DRAFT: false
+#+WEIGHT: 4
+#+Description: 本文主要记录使用Clion开发STM32的相关经验。
+
+* ToolChain
+** Software List
+需要配置嵌入式编译工具链，它应该包括：
+1. arm-none-eabi-gcc
+2. arm-none-eabi-g++
+3. arm-none-eabi-ar
+4. arm-none-eabi-ld (bfd 链接方式)
+5. arm-none-eabi-gdb
+6. arm-none-eabi-nm
+7. arm-none-eabi-objcopy
+8. arm-none-eabi-objdump
+
+需要安装烧录和在线调试工具 OpenOCD(Open On-Chip Debugger)
+** CFG
+OpenOCD 的烧录需要配置相关的参数，以 cfg 格式记录在文件中。
+#+begin_src conf
+  source [find interface/stlink.cfg]
+  transport select hld_swd
+  source [find target/stm32f7x.cfg]
+  reset_config none
+  adapter speed 10000 # 非必须，OpenOCD会尝试可用的速率
+#+end_src
+* CLion
+** Transfer
+对之前是stm32cubeide的项目，可以方便地转化为Clion项目
+1. 直接打开stm32cubeide项目即可转为Clion项目
+2. 配置相关的工具链路径，可以将stm32cubeide的工具链目录加入PATH，然后重启Clion，依次选择Tools->CMake->Reset Cache and Reload Project
+** CMakeLists
+下面提供一份可用的CMakeLists.txt 文件
+如果之前使用了stm32cubeide，但不愿意显式地将工具链加入PATH，则只需要把对应的编译器路径添加到相关的交叉编译器上即可。
+如将 =arm-none-eabi-gcc= 换为 =/opt/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.linux64_1.0.200.202301161003/tools/bin/arm-none-eabi-gcc= 等。
+#+begin_src cmake
+  #THIS FILE IS AUTO GENERATED FROM THE TEMPLATE! DO NOT CHANGE!
+  set(CMAKE_SYSTEM_NAME Generic)
+  set(CMAKE_SYSTEM_VERSION 1)
+  cmake_minimum_required(VERSION 3.24)
+
+  # specify cross-compilers and tools
+  set(CMAKE_C_COMPILER arm-none-eabi-gcc)
+  set(CMAKE_CXX_COMPILER arm-none-eabi-g++)
+  set(CMAKE_ASM_COMPILER  arm-none-eabi-gcc)
+  set(CMAKE_AR arm-none-eabi-ar)
+  set(CMAKE_OBJCOPY arm-none-eabi-objcopy)
+  set(CMAKE_OBJDUMP arm-none-eabi-objdump)
+  set(SIZE arm-none-eabi-size)
+  set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
+
+  # project settings
+  project(PROJECT_NAME C CXX ASM) # Write your project name here
+  set(CMAKE_CXX_STANDARD 17)
+  set(CMAKE_C_STANDARD 11)
+
+  #Uncomment for hardware floating point
+  #add_compile_definitions(ARM_MATH_CM4;ARM_MATH_MATRIX_CHECK;ARM_MATH_ROUNDING)
+  add_compile_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
+  add_link_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
+  # set FPU(Floating Point Unit) type to VFPv4 with support for single-precision and double-precision floating-point operations,along with 16 VFP registers.  
+  # you can set -mfpu=fpu-dp instead,I have not tried yet.
+
+  #Uncomment for software floating point
+  #add_compile_options(-mfloat-abi=soft)
+
+  add_compile_options(-mcpu=cortex-m7 -mthumb -mthumb-interwork)
+  add_compile_options(-ffunction-sections -fdata-sections -fno-common -fmessage-length=0)
+
+  # uncomment to mitigate c++17 absolute addresses warnings
+  #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-register")
+
+  # Enable assembler files preprocessing
+  add_compile_options($<$<COMPILE_LANGUAGE:ASM>:-x$<SEMICOLON>assembler-with-cpp>)
+  # if the current compiled language is assembly,add compile options -x assembler-with-cpp
+
+  if ("${CMAKE_BUILD_TYPE}" STREQUAL "Release")
+      message(STATUS "Maximum optimization for speed")
+      add_compile_options(-Ofast)
+  elseif ("${CMAKE_BUILD_TYPE}" STREQUAL "RelWithDebInfo")
+      message(STATUS "Maximum optimization for speed, debug info included")
+      add_compile_options(-Ofast -g)
+  elseif ("${CMAKE_BUILD_TYPE}" STREQUAL "MinSizeRel")
+      message(STATUS "Maximum optimization for size")
+      add_compile_options(-Os)
+  else ()
+      message(STATUS "Minimal optimization, debug info included")
+      add_compile_options(-Og -g)
+  endif ()
+
+  include_directories(
+    Core/Inc
+    Drivers/STM32F7xx_HAL_Driver/Inc
+    Drivers/STM32F7xx_HAL_Driver/Inc/Legacy
+    Drivers/CMSIS/Include
+    Drivers/CMSIS/Device/ST/STM32F7xx/Include
+    Drivers/CMSIS/DSP/Include
+    BSP/Inc
+  )
+
+  add_definitions(-DARM_MATH_CM7 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx)
+
+  link_directories(Drivers/CMSIS/Lib/GCC)
+  link_libraries(arm_cortexM7lfdp_math)
+
+  file(GLOB_RECURSE SOURCES "Core/*.*" "Drivers/*.*" "BSP/*.*")
+  # file(GLOB ...) is a command to add all source files in project
+
+  # set link memory map
+  set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F767IGTX_FLASH.ld)
+
+  add_link_options(-Wl,-gc-sections,--print-memory-usage,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map)
+  add_link_options(-mcpu=cortex-m7 -mthumb -mthumb-interwork -u _printf_float)
+  add_link_options(-T ${LINKER_SCRIPT})
+
+  add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
+
+  set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
+  set(BIN_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.bin)
+
+  add_custom_command(TARGET ${PROJECT_NAME}.elf POST_BUILD
+          COMMAND ${CMAKE_OBJCOPY} -Oihex $<TARGET_FILE:${PROJECT_NAME}.elf> ${HEX_FILE}
+          COMMAND ${CMAKE_OBJCOPY} -Obinary $<TARGET_FILE:${PROJECT_NAME}.elf> ${BIN_FILE}
+          COMMENT "Building ${HEX_FILE} Building ${BIN_FILE}")
+
+#+end_src
+
+** Test
+*** Download & Run
+1. 在配置部分新增 "OpenOCD Download and Run" 配置
+2. GDB Port处默认是3333
+3. Board Config file部分增加对应的 "stlink.cfg"
+*** Debug
+1. 在配置部分新增 "Embedded GDB Server"
+2. Target Remote处写OpenOCD对应GDB的端口，默认是3333
+3. GDB Server 处写OpenOCD的可执行路径
+4. GDB Server args 处写stlink.cfg的内容，用 =-f= 参数分隔，如 ~-f interface/stlink.cfg -f target/stm32f7x.cfg~
+*** SVD
+1. 在意法半导体官网下载对应芯片的SVD文件
+2. 在Clion调试中加载SVD文件
+3. 调试时可以显示对应外设的状态和相关的值
