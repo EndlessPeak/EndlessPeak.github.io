@@ -32,6 +32,8 @@ highlight:
       - java
       - python
       - dart
+      - cmake
+      - rust
     # See https://github.com/highlightjs/cdn-release/tree/master/build/styles for available styles.
     style: nnfx-light #qtcreator-light
 

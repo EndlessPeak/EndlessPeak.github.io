@@ -24,7 +24,7 @@
 OpenOCD 的烧录需要配置相关的参数，以 cfg 格式记录在文件中。
 #+begin_src conf
   source [find interface/stlink.cfg]
-  transport select hld_swd
+  transport select hla_swd
   source [find target/stm32f7x.cfg]
   reset_config none
   adapter speed 10000 # 非必须，OpenOCD会尝试可用的速率
@@ -63,7 +63,9 @@ OpenOCD 的烧录需要配置相关的参数，以 cfg 格式记录在文件中�
   #add_compile_definitions(ARM_MATH_CM4;ARM_MATH_MATRIX_CHECK;ARM_MATH_ROUNDING)
   add_compile_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
   add_link_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
-  # set FPU(Floating Point Unit) type to VFPv4 with support for single-precision and double-precision floating-point operations,along with 16 VFP registers.  
+  # set FPU(Floating Point Unit) type to VFPv4
+  # with support for single-precision and double-precision floating-point operations
+  # along with 16 VFP registers.  
   # you can set -mfpu=fpu-dp instead,I have not tried yet.
 
   #Uncomment for software floating point
@@ -106,7 +108,8 @@ OpenOCD 的烧录需要配置相关的参数，以 cfg 格式记录在文件中�
   add_definitions(-DARM_MATH_CM7 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F767xx)
 
   link_directories(Drivers/CMSIS/Lib/GCC)
-  link_libraries(arm_cortexM7lfdp_math)
+  # the following link libraries depend on you
+  # link_libraries(arm_cortexM7lfdp_math)
 
   file(GLOB_RECURSE SOURCES "Core/*.*" "Drivers/*.*" "BSP/*.*")
   # file(GLOB ...) is a command to add all source files in project

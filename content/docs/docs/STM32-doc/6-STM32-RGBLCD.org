@@ -4,7 +4,7 @@
 #+TOC: true
 #+HIDDEN: false
 #+DRAFT: false
-#+WEIGHT: 3
+#+WEIGHT: 7
 #+Description: 本文主要记述在STM32CubeIDE下如何为正点原子ALIENTEK 7 RGB LCD屏幕移植驱动程序。
 
 * 开发环境

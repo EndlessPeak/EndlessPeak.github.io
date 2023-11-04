@@ -4,7 +4,7 @@
 #+TOC: true
 #+HIDDEN: false
 #+DRAFT: false
-#+WEIGHT: 3
+#+WEIGHT: 6
 #+Description: 本文主要描述STM32使用FMC控制外部存储设备。
 
 * SDRAM      
