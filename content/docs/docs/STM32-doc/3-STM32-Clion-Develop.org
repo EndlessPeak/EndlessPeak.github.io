@@ -8,7 +8,7 @@
 #+Description: 本文主要记录使用Clion开发STM32的相关经验。
 
 * ToolChain
-** Software List
+** Embedded Toolchain
 需要配置嵌入式编译工具链，它应该包括：
 1. arm-none-eabi-gcc
 2. arm-none-eabi-g++
@@ -19,27 +19,46 @@
 7. arm-none-eabi-objcopy
 8. arm-none-eabi-objdump
 
-需要安装烧录和在线调试工具 OpenOCD(Open On-Chip Debugger)
-** CFG
+在 NixOS 上配置工具链需要如下软件包：
+#+begin_src nix
+  packages = with pkgs; [
+    gcc-arm-embedded
+  ];
+#+end_src
+
+在 Arch Linux 上需要安装如下软件包：
+#+begin_src shell
+  pacman -S arm-none-eabi-bintils arm-none-eabi-gcc arm-none-eabi-gdb arm-none-eabi-newlib
+#+end_src
+
+其中， =arm-none-eabi-newlib= 是用于编译程序的库文件，脱离库文件无法正确生成可执行的文件。
+
+** OpenOCD
+需要安装烧录和在线调试工具 OpenOCD(Open On-Chip Debugger) 以及连接工具 ST-Link(也可以是其他工具)
+
 OpenOCD 的烧录需要配置相关的参数，以 cfg 格式记录在文件中。
 #+begin_src conf
   source [find interface/stlink.cfg]
   transport select hla_swd
   source [find target/stm32f7x.cfg]
   reset_config none
-  adapter speed 10000 # 非必须，OpenOCD会尝试可用的速率
+  adapter speed 10000 # 配置速率是必须的，否则无法正常完成下载
 #+end_src
 * CLion
 ** Transfer
-对之前是stm32cubeide的项目，可以方便地转化为Clion项目
-1. 直接打开stm32cubeide项目即可转为Clion项目
-2. 配置相关的工具链路径，可以将stm32cubeide的工具链目录加入PATH，然后重启Clion，依次选择Tools->CMake->Reset Cache and Reload Project
+对之前以 =stm32cubeide= 或 =stm32cubemx= 开发的项目，可以方便地转化为 Clion 项目，转化的必要条件是:
+1. 项目包含 =.cproject= 等必要的项目描述文件
+2. 项目包含 =STM32F767IGTX_FLASH.ld= 等内存描述文件
+
+转化的过程是：
+1. 直接用 =clion= 打开 =stm32cubeide= 项目
+2. 配置相关的 =CMakeLists.txt= 文件，主要是相关的编译工具链
+   1. 方法一：将工具链目录加入 PATH
+   2. 方法二：为工具链编写绝对路径
+3. 重启 Clion，依次选择 Tools → CMake → Reset Cache and Reload Project
 ** CMakeLists
-下面提供一份可用的CMakeLists.txt 文件
-如果之前使用了stm32cubeide，但不愿意显式地将工具链加入PATH，则只需要把对应的编译器路径添加到相关的交叉编译器上即可。
-如将 =arm-none-eabi-gcc= 换为 =/opt/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.linux64_1.0.200.202301161003/tools/bin/arm-none-eabi-gcc= 等。
+下面提供一份可用的 CMakeLists.txt 文件
 #+begin_src cmake
-  #THIS FILE IS AUTO GENERATED FROM THE TEMPLATE! DO NOT CHANGE!
   set(CMAKE_SYSTEM_NAME Generic)
   set(CMAKE_SYSTEM_VERSION 1)
   cmake_minimum_required(VERSION 3.24)
@@ -55,7 +74,7 @@ OpenOCD 的烧录需要配置相关的参数，以 cfg 格式记录在文件中�
   set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
   # project settings
-  project(PROJECT_NAME C CXX ASM) # Write your project name here
+  project(<PROJECT_NAME> C CXX ASM) # Write your project name here
   set(CMAKE_CXX_STANDARD 17)
   set(CMAKE_C_STANDARD 11)
 
@@ -134,16 +153,28 @@ OpenOCD 的烧录需要配置相关的参数，以 cfg 格式记录在文件中�
 #+end_src
 
 ** Test
+*** ToolChain
+1. 依次选择 Settings → Build,Execution,Deployment → ToolChains
+2. 依次设置各个工具(如不在 PATH 中则需要配置路径)
 *** Download & Run
 1. 在配置部分新增 "OpenOCD Download and Run" 配置
-2. GDB Port处默认是3333
-3. Board Config file部分增加对应的 "stlink.cfg"
+2. GDB Port 处默认是 3333
+3. Board Config file 部分增加对应的 "stlink.cfg"
 *** Debug
-1. 在配置部分新增 "Embedded GDB Server"
-2. Target Remote处写OpenOCD对应GDB的端口，默认是3333
-3. GDB Server 处写OpenOCD的可执行路径
-4. GDB Server args 处写stlink.cfg的内容，用 =-f= 参数分隔，如 ~-f interface/stlink.cfg -f target/stm32f7x.cfg~
+1. 在配置部分新增 "Embedded GDB Server" 配置
+2. Debugger 处写 =arm-none-eabi-gdb= 的可执行路径
+3. Target Remote 处写 OpenOCD 对应 GDB 的端口，默认是 ~localhost:3333~
+4. GDB Server 处写 =OpenOCD= 的可执行路径
+5. GDB Server args 处写 stlink.cfg 的内容，用 =-f= 参数分隔，如 ~-f interface/stlink.cfg -f target/stm32f7x.cfg~
+6. 在代码中加入断点，开始调试， *并按下开发板的复位按钮*
+
+如果遇到端口被占用(如之前 openocd 启动了但没有正确退出等情况)，可用命令查看占用详情，并对对应的程序作终止处理。
+#+begin_src shell
+  netstat -ltnp | grep 6666 # openocd 默认会占用6666端口
+  ss -ltnp | grep 6666 # Arch Linux已弃用net-tools，改用iproute2
+  kill -9 <pid>
+#+end_src
 *** SVD
-1. 在意法半导体官网下载对应芯片的SVD文件
-2. 在Clion调试中加载SVD文件
+1. 在意法半导体官网下载对应芯片的 SVD 文件
+2. 在 Clion 调试中加载 SVD 文件
 3. 调试时可以显示对应外设的状态和相关的值
