@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Reuse Terminal by Tmux | Terminal  Configuration | 坐忘道琼峰</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.788395b87995af32cd489f82f320d85cfd57851423482413833461fa2299e3fd86862ab1496aaf7619961be925a8c926.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.cd2d65e90b033b5ff5087d18590179029ef6647458eacb3d21c15e42a24f83c203d7013d6f35b4808bbd257ea41a118c.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文主要介绍 Tmux 工具。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/build/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Terminal  Configuration",
+      "item":"https://endlesspeak.github.io/docs/build/terminalconfiguration/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Reuse Terminal by Tmux",
+      "item":"https://endlesspeak.github.io/docs/build/terminalconfiguration/linux-technology-6-1-tmux/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/build/terminalconfiguration/linux-technology-6-1-tmux/"
+    },
+    "headline": "Reuse Terminal by Tmux | Terminal  Configuration | 坐忘道琼峰","datePublished": "2022-10-17T00:00:00+00:00",
+    "dateModified": "2022-10-17T00:00:00+00:00",
+    "wordCount":  542 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "本文主要介绍 Tmux 工具。"
+}
+</script><meta property="og:title" content="Reuse Terminal by Tmux | Terminal  Configuration | 坐忘道琼峰" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/build/terminalconfiguration/linux-technology-6-1-tmux/" />
+
+
+
+<meta property="og:description" content="本文主要介绍 Tmux 工具。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="坐忘道琼峰" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-10-17T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2022-10-17T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">坐忘道琼峰</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/build/terminalconfiguration/">Terminal  Configuration</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/build/terminalconfiguration/linux-technology-6-1-tmux/">Reuse Terminal by Tmux</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Reuse Terminal by Tmux</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-10-17</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>2分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+Tmux Brief Report
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>Tmux 是一个终端复用器(terminal multiplexer)，属于常用的开发工具。</p>
+<div id="outline-container-headline-2" class="outline-3">
+<h3 id="headline-2">
+Session
+</h3>
+<div id="outline-text-headline-2" class="outline-text-3">
+<ol>
+<li>命令行的使用方式是：打开一个终端窗口(terminal window，以下简称&#34;窗口&#34;)，在里面输入命令</li>
+<li>用户与计算机的这种临时的交互，称为一次&#34;会话&#34;(session)</li>
+<li>会话的特点是，窗口与其中启动的进程是紧密关联的。</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-3" class="outline-3">
+<h3 id="headline-3">
+Tmux
+</h3>
+<div id="outline-text-headline-3" class="outline-text-3">
+<p>Tmux 将会话与窗口解除绑定，降低耦合</p>
+<ol>
+<li>允许在单个窗口中访问多个会话</li>
+<li>允许新窗口接入已经存在的绘画</li>
+<li>允许每个会话连接多个窗口，达到会话共享</li>
+<li>允许在会话中拆分窗口</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-2">
+<h2 id="headline-4">
+Basic Usage
+</h2>
+<div id="outline-text-headline-4" class="outline-text-2">
+<div id="outline-container-headline-5" class="outline-3">
+<h3 id="headline-5">
+Enter &amp; Exit
+</h3>
+<div id="outline-text-headline-5" class="outline-text-3">
+<ol>
+<li><code>tmux</code> 即可进入 Tmux 窗口。</li>
+<li><code>exit</code> 或 <code>Ctrl+d</code> 退出 Tmux 窗口</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-6" class="outline-3">
+<h3 id="headline-6">
+Prefix Shortcuts
+</h3>
+<div id="outline-text-headline-6" class="outline-text-3">
+<ol>
+<li><code>Ctrl+b</code> 是快捷键的前缀快捷键</li>
+<li><code>^b+?</code> 显示帮助， <code>q</code> 退出帮助</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-7" class="outline-2">
+<h2 id="headline-7">
+Session
+</h2>
+<div id="outline-text-headline-7" class="outline-text-2">
+<div id="outline-container-headline-8" class="outline-3">
+<h3 id="headline-8">
+New Session
+</h3>
+<div id="outline-text-headline-8" class="outline-text-3">
+<p><code>tmux new -s &lt;session-name&gt;</code> 创建一个 Tmux 窗口，名称是 <code class="verbatim">&lt;session-name&gt;</code></p>
+</div>
+</div>
+<div id="outline-container-headline-9" class="outline-3">
+<h3 id="headline-9">
+Detach Session
+</h3>
+<div id="outline-text-headline-9" class="outline-text-3">
+<ol>
+<li><code>tmux detach</code> 将当前会话与窗口分离</li>
+<li><code>Ctrl+b d</code> 同上</li>
+<li><code>tmux ls</code> 查看当前所有的 Tmux 会话，或者 <code>tmux list-session</code></li>
+<li><code>Ctrl+b s</code> 同上</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-10" class="outline-3">
+<h3 id="headline-10">
+Attach Session
+</h3>
+<div id="outline-text-headline-10" class="outline-text-3">
+<ol>
+<li><code>tmux attach -t 0</code> 根据会话编号接入已存在的会话</li>
+<li><code>tmux attach -t &lt;session-name&gt;</code> 根据会话名称接入</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-11" class="outline-3">
+<h3 id="headline-11">
+Kill Session
+</h3>
+<div id="outline-text-headline-11" class="outline-text-3">
+<ol>
+<li><code>tmux kill-session -t 0</code></li>
+<li><code>tmux kill-session -t &lt;session-name&gt;</code></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-12" class="outline-3">
+<h3 id="headline-12">
+Switch Session
+</h3>
+<div id="outline-text-headline-12" class="outline-text-3">
+<ol>
+<li><code>tmux switch -t 0</code></li>
+<li><code>tmux switch -t &lt;session-name&gt;</code></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-13" class="outline-3">
+<h3 id="headline-13">
+Rename Session
+</h3>
+<div id="outline-text-headline-13" class="outline-text-3">
+<ol>
+<li><code>tmux rename-session -t 0 &lt;new-name&gt;</code></li>
+<li><code>tmux rename-session -t &lt;old-name&gt; &lt;new-name&gt;</code></li>
+<li><code>Ctrl+b $</code> 重命名当前会话</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-14" class="outline-2">
+<h2 id="headline-14">
+Windows
+</h2>
+<div id="outline-text-headline-14" class="outline-text-2">
+<p>窗口指的是整个终端当前呈现给用户的内容，在一次会话中可复用多个窗口。</p>
+<ol>
+<li>c for create new window</li>
+<li>&amp; for close current window</li>
+<li>l for switch to last window</li>
+<li>n for next window</li>
+<li>p for previous window</li>
+<li>w for show window menu list</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-15" class="outline-2">
+<h2 id="headline-15">
+Pane
+</h2>
+<div id="outline-text-headline-15" class="outline-text-2">
+<p>窗格指的是对窗口进行划分的形式，一个窗口可划分为多个窗格。</p>
+<ol>
+<li>% for horizontal split</li>
+<li>&#34; for vertical split</li>
+<li>x for close current pane</li>
+<li>; for switch to last pane</li>
+<li>o for move anti-clockwise</li>
+<li>C-o for swap pane anti-clockwise</li>
+</ol>
+</div>
+</div>
+
+</article>
+
+                    
+                    
+                    
+
+                    
+
+
+
+                    
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+<ul>
+<li><a href="#headline-1">Tmux Brief Report</a>
+<ul>
+<li><a href="#headline-2">Session</a>
+</li>
+<li><a href="#headline-3">Tmux</a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-4">Basic Usage</a>
+<ul>
+<li><a href="#headline-5">Enter &amp; Exit</a>
+</li>
+<li><a href="#headline-6">Prefix Shortcuts</a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-7">Session</a>
+<ul>
+<li><a href="#headline-8">New Session</a>
+</li>
+<li><a href="#headline-9">Detach Session</a>
+</li>
+<li><a href="#headline-10">Attach Session</a>
+</li>
+<li><a href="#headline-11">Kill Session</a>
+</li>
+<li><a href="#headline-12">Switch Session</a>
+</li>
+<li><a href="#headline-13">Rename Session</a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-14">Windows</a>
+</li>
+<li><a href="#headline-15">Pane</a>
+</li>
+</ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

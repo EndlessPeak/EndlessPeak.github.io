@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>SLAM Summary | SLAM Programming Basic | 坐忘道琼峰</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.788395b87995af32cd489f82f320d85cfd57851423482413833461fa2299e3fd86862ab1496aaf7619961be925a8c926.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.cd2d65e90b033b5ff5087d18590179029ef6647458eacb3d21c15e42a24f83c203d7013d6f35b4808bbd257ea41a118c.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文对SLAM的概念和相关研究方向进行总结。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"SLAM Programming Basic",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"SLAM Summary",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/2-slam-summary/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/slam-doc/2-slam-summary/"
+    },
+    "headline": "SLAM Summary | SLAM Programming Basic | 坐忘道琼峰","datePublished": "2023-10-08T00:00:00+00:00",
+    "dateModified": "2023-10-08T00:00:00+00:00",
+    "wordCount":  2336 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "本文对SLAM的概念和相关研究方向进行总结。"
+}
+</script><meta property="og:title" content="SLAM Summary | SLAM Programming Basic | 坐忘道琼峰" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/slam-doc/2-slam-summary/" />
+
+
+
+<meta property="og:description" content="本文对SLAM的概念和相关研究方向进行总结。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="坐忘道琼峰" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2023-10-08T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2023-10-08T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">坐忘道琼峰</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/slam-doc/">SLAM Programming Basic</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/1-ros2-install/">ROS2 Installation</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/2-slam-summary/">SLAM Summary</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/3-vslam-summary/">VSLAM Summary</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/4-rotation-and-translation-exercise/">Rotation &amp; Translation Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">SLAM Summary</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2023-10-08</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>5分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+What&#39;s SLAM
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>SLAM 是 Simultaneous Localization and Mapping，即同时定位与建图。</p>
+<div id="outline-container-headline-2" class="outline-3">
+<h3 id="headline-2">
+history
+</h3>
+<div id="outline-text-headline-2" class="outline-text-3">
+<div id="outline-container-headline-3" class="outline-4">
+<h4 id="headline-3">
+separate
+</h4>
+<div id="outline-text-headline-3" class="outline-text-4">
+<p>最初，定位和建图问题是被看成两个独立问题研究的：</p>
+<ol>
+<li>定位问题的关键是事先给定环境地图；</li>
+<li>建图问题的关键是实现给定机器人观测时刻的全局位姿；</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-4">
+<h4 id="headline-4">
+unify
+</h4>
+<div id="outline-text-headline-4" class="outline-text-4">
+<ol>
+<li>
+<p>1986 年将定位和建图问题放在概率论理论框架下统一研究</p>
+<ol>
+<li>采用了基于概率论理论框架对机器人不确定性进行了讨论</li>
+<li>将定位和建图中的机器人位姿量与路标点作为统一的估计量进行整体状态估计</li>
+</ol>
+</li>
+<li>
+<p>2006 年使用 SLAM 名词进行表述 </p>
+<ol>
+<li>指定了详细的概率理论分析框架</li>
+<li>对计算效率、数据关联、收敛性、一致性进行了讨论</li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-5" class="outline-3">
+<h3 id="headline-5">
+aims
+</h3>
+<div id="outline-text-headline-5" class="outline-text-3">
+<p>SLAM 的目的是使装载了特定传感器的移动机器人能够：</p>
+<ol>
+<li>无先验环境知识的情况下</li>
+<li>在移动过程中对周围进行建图</li>
+<li>在移动过程中估计自己的运动和位置</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-6" class="outline-3">
+<h3 id="headline-6">
+status
+</h3>
+<div id="outline-text-headline-6" class="outline-text-3">
+<ol>
+<li>SLAM 在 <strong>无干扰</strong> 时，在 <strong>理论</strong> 层面上是一个已经被解决的问题
+-&gt; 工作环境限定在静态、刚体、光照变化不明显、没有人为干扰的场景时，SLAM 已相当成熟</li>
+<li>现实中实现通用的 SLAM 解决方案存在实质性问题
+-&gt; 在构建和使用感知丰富的地图时存在重大问题(见数据关联部分)</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-7" class="outline-3">
+<h3 id="headline-7">
+categories
+</h3>
+<div id="outline-text-headline-7" class="outline-text-3">
+<p>SLAM 依据概率图模型分为：</p>
+<ol>
+<li>基于贝叶斯网络的滤波方法(最大似然法)</li>
+<li>基于因子图的优化方法(最小二乘法)</li>
+</ol>
+<div id="outline-container-headline-8" class="outline-4">
+<h4 id="headline-8">
+classic
+</h4>
+<div id="outline-text-headline-8" class="outline-text-4">
+<ol>
+<li>在贝叶斯网络中采用滤波法求解 SLAM</li>
+<li>滤波法实时获取每一时刻的信息，并把信息分解到贝叶斯网络的概率中去</li>
+<li>滤波法是在线 SLAM 系统，计算代价昂贵</li>
+</ol>
+<p>滤波主要分为以下两种：</p>
+<ol>
+<li>
+<p>参数滤波</p>
+<ol>
+<li>参数滤波又分为卡尔曼滤波和信息滤波</li>
+<li>SLAM 上目前应用广泛的是扩展卡尔曼滤波(EKF)</li>
+<li>参数滤波在非线性问题上计算效率存在巨大问题，每一次观测后都需要对该协方差矩阵执行更新计算，地图规模很大时计算将无法进行下去 </li>
+</ol>
+</li>
+<li>非参数滤波
+粒子滤波(PF) -&gt; Fast SLAM / Gmapping</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-9" class="outline-4">
+<h4 id="headline-9">
+modern
+</h4>
+<div id="outline-text-headline-9" class="outline-text-4">
+<ol>
+<li>在因子图中采用优化方法求解 SLAM</li>
+<li>优化法简单地累积获取到的信息，然后利用之前所有时刻累积到的全局性信息离线计算机器人的轨迹和路标点</li>
+<li>优化法是完全 SLAM 系统，一开始实时性较差，后来优化方法在稀疏性和增量求解方面的突破，以及闭环检测方面的研究具有重大价值</li>
+</ol>
+<p>优化方法的计算信息存储在各个待估计变量的约束之中，利用这些约束条件构建目标函数进行优化求解，它是非线性化的最小二乘问题</p>
+<p>
+求解策略分为以下两种：</p>
+<ol>
+<li>
+<p>线性化求解</p>
+<ol>
+<li>对非线性化问题进行线性化近似处理</li>
+<li>直接求解线性方程得到待估计量，如 Graph SLAM</li>
+</ol>
+</li>
+<li>
+<p>迭代求解</p>
+<ol>
+<li>利用迭代策略，让目标函数快速下降到最小处</li>
+<li>如梯度下降法等</li>
+</ol>
+</li>
+</ol>
+<p>工具有：</p>
+<ol>
+<li>Ceres-Solver 非线性优化</li>
+<li>g2o 图优化</li>
+<li>GTSAM 增量优化工具</li>
+<li>iSAM</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-10" class="outline-3">
+<h3 id="headline-10">
+mainstream 
+</h3>
+<div id="outline-text-headline-10" class="outline-text-3">
+<p>主流的 SLAM 多采用基于最小二乘的迭代优化求解</p>
+<ol>
+<li>
+<p>激光 <code class="verbatim">SLAM</code></p>
+<ol>
+<li>粒子滤波 <code class="verbatim">gmapping</code></li>
+<li>室内 <code class="verbatim">cartographer</code> </li>
+<li>室外 <code class="verbatim">LOAM</code></li>
+</ol>
+</li>
+<li>
+<p>视觉 <code class="verbatim">SLAM</code></p>
+<ol>
+<li>直接法 <code class="verbatim">LSD_SLAM</code></li>
+<li>半直接法 <code class="verbatim">SVO_SLAM</code></li>
+<li>稀疏法 <code class="verbatim">ORB_SLAM</code></li>
+</ol>
+</li>
+<li>
+<p>混合 <code class="verbatim">SLAM</code></p>
+<ol>
+<li>激光+视觉 <code class="verbatim">rtabmap</code></li>
+<li><code class="verbatim">IMU</code> + 视觉 <code class="verbatim">VINS</code></li>
+</ol>
+</li>
+<li>深度 <code class="verbatim">SLAM</code></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-11" class="outline-2">
+<h2 id="headline-11">
+Key Definitions
+</h2>
+<div id="outline-text-headline-11" class="outline-text-2">
+<div id="outline-container-headline-12" class="outline-3">
+<h3 id="headline-12">
+data association
+</h3>
+<div id="outline-text-headline-12" class="outline-text-3">
+<p>SLAM 建图是增量过程，环境路标信息需要被不断加入到已构建的地图中。</p>
+<p>
+数据关联的关键在于是否能将在 <strong>不同地方</strong> 观测到的 <strong>同一个实物</strong> 所产生的路标特征判断为同一个路标特征。</p>
+<p>
+数据关联可能由下列问题导致：</p>
+<ol>
+<li>传感器观测错误
+-&gt; 多传感器联合观测；</li>
+<li>定位累积误差
+-&gt; 闭环检测是有效降低定位累积误差的方式； </li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-13" class="outline-3">
+<h3 id="headline-13">
+convergence
+</h3>
+<div id="outline-text-headline-13" class="outline-text-3">
+<p>收敛用于衡量 SLAM 在理论上的可行性。</p>
+<ol>
+<li>机器人观测模型和运动模型都具有不确定性；</li>
+<li>不确定性导致估计的路标特征与实际环境特征存在偏差；</li>
+</ol>
+<p>在概率框架下，具有以下特性：观测越多，地标估计之间的相关性单调增加。即无论机器人运动如何，对地标相对位置的了解总是会提高，地标的联合概率密度会随观察次数增加而上升。</p>
+</div>
+</div>
+<div id="outline-container-headline-14" class="outline-3">
+<h3 id="headline-14">
+consistency
+</h3>
+<div id="outline-text-headline-14" class="outline-text-3">
+<p>收敛的一致性讨论的是估计量收敛于实际数值的问题。</p>
+<ol>
+<li>弱一致收敛
+-&gt; 依概率收敛
+-&gt; 估计量取值与真值不一定一致</li>
+<li>强一致收敛
+-&gt; 严格收敛
+-&gt; 估计量取值与真值一定一致</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-15" class="outline-2">
+<h2 id="headline-15">
+Probabilistic graphical model
+</h2>
+<div id="outline-text-headline-15" class="outline-text-2">
+<div id="outline-container-headline-16" class="outline-3">
+<h3 id="headline-16">
+Bayes&#39; theorem
+</h3>
+<div id="outline-text-headline-16" class="outline-text-3">
+<p>$$
+   p(x|y)=\frac{p(y|x)p(x)}{p(y)}
+$$</p>
+<p>
+$p(y)$ 与 $x$ 是独立的，因此 $p(y)^{-1}$ 对任何 $x$ 的后验概率 $p(x|y)$ 是相同的，故 $p(y)^{-1}$ 在贝叶斯公式中常作归一化变量，用 $\eta$ 表示。</p>
+<p>
+$$
+   p(x|y,z)=\frac{p(y|x,z)p(x|z)}{p(y|z)}
+$$</p>
+</div>
+</div>
+<div id="outline-container-headline-17" class="outline-3">
+<h3 id="headline-17">
+Preliminaries
+</h3>
+<div id="outline-text-headline-17" class="outline-text-3">
+<p>在一段连续时间中的运动分解到离散的时间 $t=1,2,...K$ 中，在这些时刻中：</p>
+<ol>
+<li>$x_k$ 状态向量，描述在 $k$ 时刻机器人的位置和方向</li>
+<li>$u_k$ 控制向量，描述在 $k-1$ 时刻下达给机器人的指令，要求其在时刻 $k$ 时状态转为 $x_k$</li>
+<li>$y_i$ 地标向量，描述第 $i$ 个位置的地标，假设其位置保持时间不变</li>
+<li>$z_{k,j}$ 在时刻 $k$ 时（或在 $x_k$ 状态时），观测到第 $j$ 个地标点的观测向量</li>
+<li>$X_{0:k}=\{x_0,x_1,...,x_k\}=\{X_{0:k-1},x_k\}$ 所有的状态向量的集合</li>
+<li>$U_{1:k}=\{u_1,u_2,...,u_k\}=\{U_{1:k-1},u_k\}$ 所有的控制向量的集合</li>
+<li>$y=\{y_1,y_2,...,y_n\}$ 代表所有的地标点的集合</li>
+<li>$Z_{1:k}=\{z_1,z_2,...,z_k\}=\{Z_{1:k-1},z_k\}$ 代表所有的观测点的集合</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-18" class="outline-3">
+<h3 id="headline-18">
+Probabilistic SLAM
+</h3>
+<div id="outline-text-headline-18" class="outline-text-3">
+<div id="outline-container-headline-19" class="outline-4">
+<h4 id="headline-19">
+probabilitiy distribution
+</h4>
+<div id="outline-text-headline-19" class="outline-text-4">
+<p>$$
+  P(x_k,y|Z_{1:k},U_{1:k},X_{1:k})=P(x_k,y|Z_{1:k},U_{1:k},x_0)
+$$</p>
+<p>
+它描述了机器人状态向量和地标集合在时刻 $k$ 的联合后验概率密度。如果状态向量是完整的，那么它是所有以前时刻发生的所有状态的充分总结。</p>
+<p>
+具体来说， $x_{k-1}$ 是直到 $k-t$ 时刻的控制和测量的一个充分统计量，即 $U_{0;k-1}$ 和 $Z_{0;k-1}$ ，仅控制变量 $u_k$ 关心状态 $x_{k-1}$ 。</p>
+<p>
+$$
+  P(x_k,y|Z_{1:k-1},U_{1:k},x_0)=P(x_k,y|x_{k-1},u_{k})
+$$</p>
+</div>
+</div>
+<div id="outline-container-headline-20" class="outline-4">
+<h4 id="headline-20">
+observation model 
+</h4>
+<div id="outline-text-headline-20" class="outline-text-4">
+<p>$$
+  P(z_k|Z_{1:k-1},U_{1:k},x_k,y)=P(z_k|x_k,y)
+$$</p>
+<p>
+一旦机器人的状态和地图确定，观测值和给定地图和当前机器人状态是条件独立的。</p>
+</div>
+</div>
+<div id="outline-container-headline-21" class="outline-4">
+<h4 id="headline-21">
+motion model
+</h4>
+<div id="outline-text-headline-21" class="outline-text-4">
+<p>$$
+  P(x_k|x_{k-1},u_k)
+$$</p>
+<ol>
+<li>假设状态转换是一个马尔科夫链</li>
+<li>观测和地图都是独立的</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-22" class="outline-4">
+<h4 id="headline-22">
+time-update
+</h4>
+<div id="outline-text-headline-22" class="outline-text-4">
+<p>$$
+  P(x_k,y|Z_{1:k-1},U_{1:k},x_0)=\int P(x_k|x_{k-1},u_k)P(x_{k-1},y|Z_{1:k-1},U_{1:k-1},x_0) dx
+$$</p>
+</div>
+</div>
+<div id="outline-container-headline-23" class="outline-4">
+<h4 id="headline-23">
+mesurement-update
+</h4>
+<div id="outline-text-headline-23" class="outline-text-4">
+<p>测量更新过程：</p>
+\begin{align}
+P(x_k,y|Z_{1:k},U_{1:k},x_0)&amp;=\frac{P(z_k|Z_{1:k-1},U_{1:k},x_k,y)P(x_k,y|Z_{1:k-1},U_{1:k},x_0)}{P(z_k|Z_{1:k-1},U_{1:k})} \notag \\
+&amp;=\frac{P(z_k|x_k,y)P(x_k,y|Z_{1:k-1},U_{1:k},x_0)}{P(z_k|Z_{1:k},U_{1:k})}
+\end{align}
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-24" class="outline-3">
+<h3 id="headline-24">
+Math equation
+</h3>
+<div id="outline-text-headline-24" class="outline-text-3">
+<div id="outline-container-headline-25" class="outline-4">
+<h4 id="headline-25">
+State
+</h4>
+<div id="outline-text-headline-25" class="outline-text-4">
+<p>系统状态公式：
+$$
+   P(x_k|x_{k-1},u_k) \iff x_k = f(x_k-1,u_k,w_k)
+$$</p>
+</div>
+</div>
+<div id="outline-container-headline-26" class="outline-4">
+<h4 id="headline-26">
+Observation
+</h4>
+<div id="outline-text-headline-26" class="outline-text-4">
+<p>观测状态公式：
+$$
+   P(z_k|x_k,y) \iff z_k = h(x_k,y,v_{k,j})
+$$</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-27" class="outline-2">
+<h2 id="headline-27">
+Classical Visual SLAM Framework
+</h2>
+<div id="outline-text-headline-27" class="outline-text-2">
+<p>传感器数据 -&gt; 前端估计 -&gt; 后端优化 -&gt; 回环检测 -&gt; 建图 </p>
+<div id="outline-container-headline-28" class="outline-3">
+<h3 id="headline-28">
+Sensor data reading
+</h3>
+<div id="outline-text-headline-28" class="outline-text-3">
+<p>相机图像信息读取和预处理，相机分为以下几类：</p>
+<ol>
+<li>单目(monocular)</li>
+<li>立体(Stereo)</li>
+<li>事件(event-based)</li>
+<li>广角(omnidirectional)</li>
+<li>深度(RGB-D)</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-29" class="outline-3">
+<h3 id="headline-29">
+Visual Odometry
+</h3>
+<div id="outline-text-headline-29" class="outline-text-3">
+<p>基于局部一致性提供机器人的位姿初步估计，估算相邻图像间相机的运动，以及局部地图的形状，并发送到后端进行优化</p>
+<p>
+特别地，视觉里程计的 <strong>累积漂移</strong> 被认为是不可避免的。</p>
+</div>
+</div>
+<div id="outline-container-headline-30" class="outline-3">
+<h3 id="headline-30">
+Optimization
+</h3>
+<div id="outline-text-headline-30" class="outline-text-3">
+<p>后端接受不同时刻视觉里程计测量的相机位姿，以及回环检测的信息，得到 <strong>全局一致</strong> 的轨迹和地图。</p>
+<p>
+总体来说，后端优化处理 <strong>噪声</strong> 问题。</p>
+</div>
+</div>
+<div id="outline-container-headline-31" class="outline-3">
+<h3 id="headline-31">
+Loop Closure Detection
+</h3>
+<div id="outline-text-headline-31" class="outline-text-3">
+<p>回环检测判断是否达到过先前的位置，检测到回环会将信息提供给后端进行处理。</p>
+<p>
+通过判断图像相似性完成。</p>
+</div>
+</div>
+<div id="outline-container-headline-32" class="outline-3">
+<h3 id="headline-32">
+Mapping
+</h3>
+<div id="outline-text-headline-32" class="outline-text-3">
+<p>根据估计的轨迹，建立地图。</p>
+<div id="outline-container-headline-33" class="outline-4">
+<h4 id="headline-33">
+Metric Map
+</h4>
+<div id="outline-text-headline-33" class="outline-text-4">
+<p>度量地图精确表示物体间的位置关系，分为稀疏和稠密两种。</p>
+<ol>
+<li>稀疏地图可用于定位</li>
+<li>稠密地图可用于导航</li>
+</ol>
+<p>度量地图目前有如下类别：</p>
+<ol>
+<li>2D 栅格地图
+离散网格地图，稀疏表示</li>
+<li>3D 点云地图
+由激光雷达或 RGB-D 相机获取的大量点云数据，稠密表示</li>
+<li>3D 网格地图
+三角形或四边形网格，可提供高分辨率和精度的环境信息，稠密表示</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-34" class="outline-4">
+<h4 id="headline-34">
+Topological Map
+</h4>
+<div id="outline-text-headline-34" class="outline-text-4">
+<p>拓扑地图强调元素之间的关系，只考虑节点的连通性。
+2D 拓扑地图</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</article>
+
+                    
+                    
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/1-ros2-install/" class="block">ROS2 Installation</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/3-vslam-summary/" class="block">VSLAM Summary</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+<ul>
+<li><a href="#headline-1">What&#39;s SLAM</a>
+<ul>
+<li><a href="#headline-2">history</a>
+<ul>
+<li><a href="#headline-3">separate</a>
+</li>
+<li><a href="#headline-4">unify</a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-5">aims</a>
+</li>
+<li><a href="#headline-6">status</a>
+</li>
+<li><a href="#headline-7">categories</a>
+<ul>
+<li><a href="#headline-8">classic</a>
+</li>
+<li><a href="#headline-9">modern</a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-10">mainstream </a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-11">Key Definitions</a>
+<ul>
+<li><a href="#headline-12">data association</a>
+</li>
+<li><a href="#headline-13">convergence</a>
+</li>
+<li><a href="#headline-14">consistency</a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-15">Probabilistic graphical model</a>
+<ul>
+<li><a href="#headline-16">Bayes&#39; theorem</a>
+</li>
+<li><a href="#headline-17">Preliminaries</a>
+</li>
+<li><a href="#headline-18">Probabilistic SLAM</a>
+<ul>
+<li><a href="#headline-19">probabilitiy distribution</a>
+</li>
+<li><a href="#headline-20">observation model </a>
+</li>
+<li><a href="#headline-21">motion model</a>
+</li>
+<li><a href="#headline-22">time-update</a>
+</li>
+<li><a href="#headline-23">mesurement-update</a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-24">Math equation</a>
+<ul>
+<li><a href="#headline-25">State</a>
+</li>
+<li><a href="#headline-26">Observation</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#headline-27">Classical Visual SLAM Framework</a>
+<ul>
+<li><a href="#headline-28">Sensor data reading</a>
+</li>
+<li><a href="#headline-29">Visual Odometry</a>
+</li>
+<li><a href="#headline-30">Optimization</a>
+</li>
+<li><a href="#headline-31">Loop Closure Detection</a>
+</li>
+<li><a href="#headline-32">Mapping</a>
+<ul>
+<li><a href="#headline-33">Metric Map</a>
+</li>
+<li><a href="#headline-34">Topological Map</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

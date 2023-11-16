@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Hugo及其Eureka主题 | 坐忘道琼峰</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.788395b87995af32cd489f82f320d85cfd57851423482413833461fa2299e3fd86862ab1496aaf7619961be925a8c926.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.cd2d65e90b033b5ff5087d18590179029ef6647458eacb3d21c15e42a24f83c203d7013d6f35b4808bbd257ea41a118c.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="Hugo 是 Go 编写的静态网站生成器，速度快，易用，可配置。Hugo 具有基于各种主题生成的内容和模板目录，以把markdown文件（包括org文件）渲染到完全静态的 HTML 网站。
+Eureka是一个功能丰富且可高度定制化的Hugo主题，使用Eureka可以轻松快捷地定制并部署网站。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Posts",
+      "item":"https://endlesspeak.github.io/posts/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Hugo及其Eureka主题",
+      "item":"https://endlesspeak.github.io/posts/tattle/base-hugo-theme-eureka/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/posts/tattle/base-hugo-theme-eureka/"
+    },
+    "headline": "Hugo及其Eureka主题 | 坐忘道琼峰",
+    "image": "https://endlesspeak.github.io/images/Eureka.jpg",
+    "datePublished": "2021-04-08T12:00:00+00:00",
+    "dateModified": "2021-04-08T12:00:00+00:00",
+    "wordCount":  3313 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "\u003cp\u003eHugo 是 Go 编写的静态网站生成器，速度快，易用，可配置。Hugo 具有基于各种主题生成的内容和模板目录，以把markdown文件（包括org文件）渲染到完全静态的 HTML 网站。\u003c\/p\u003e\n\u003cp\u003eEureka是一个功能丰富且可高度定制化的Hugo主题，使用Eureka可以轻松快捷地定制并部署网站。\u003c\/p\u003e"
+}
+</script><meta property="og:title" content="Hugo及其Eureka主题 | 坐忘道琼峰" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/posts/tattle/base-hugo-theme-eureka/" />
+
+
+
+
+<meta property="og:description" content="Hugo 是 Go 编写的静态网站生成器，速度快，易用，可配置。Hugo 具有基于各种主题生成的内容和模板目录，以把markdown文件（包括org文件）渲染到完全静态的 HTML 网站。
+Eureka是一个功能丰富且可高度定制化的Hugo主题，使用Eureka可以轻松快捷地定制并部署网站。" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="坐忘道琼峰" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2021-04-08T12:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2021-04-08T12:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="posts" />
+
+
+<meta property="article:tag" content="Hugo" />
+
+<meta property="article:tag" content="Blog" />
+
+
+
+
+
+<meta property="og:see_also" content="https://endlesspeak.github.io/posts/tattle/2021-what-is-the-learn-plan-as-coder/" />
+
+<meta property="og:see_also" content="https://endlesspeak.github.io/posts/tattle/2020-helloworld-from-blogs-to-life/" />
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">坐忘道琼峰</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+  
+  
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-8 lg:pt-12">
+    <div
+      class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
+    >
+      <article class="prose">
+  <h1 class="mb-4">Hugo及其Eureka主题</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2021-04-08</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>7分钟阅读时长</span>
+  </div>
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="https://endlesspeak.github.io/categories/%E6%9D%82%E8%B0%88/" class="hover:text-eureka"
+          >杂谈</a
+        >
+      
+    </div>
+  
+
+  
+</div>
+
+
+  
+  
+    <img src="https://endlesspeak.github.io/images/Eureka.jpg" class="w-full" alt="Featured Image">
+  
+
+  <p>Hugo 是 Go 编写的静态网站生成器，速度快，易用，可配置。Hugo 具有基于各种主题生成的内容和模板目录，以把markdown文件（包括org文件）渲染到完全静态的 HTML 网站。</p>
+<p>Eureka是一个功能丰富且可高度定制化的Hugo主题，使用Eureka可以轻松快捷地定制并部署网站。</p>
+<h2 id="ssg">SSG</h2>
+<p>最原始的 Blog 应该就是纯静态的HTML页面，后来 Blog 开始火的时候，各种线上平台一统天下，而对于有点折腾能力的人来说，WordPress 、VuePress等不失为一种选择。后来，GitHub 当道，由 GitHub Pages 及其原生支持的工具链 Jekyll/Octopress 吸引了足够的眼球和人气，再后来便演变成 static site generator（本文简称为 SSG）的回归。</p>
+<p>从技术上来讲，传统的 blog 就是一个简化的CMS系统。相较于 CMS，blog 更多的是个人开放给外界的一个展示窗口，并不需要太多的交互和额外的用户注册管理系统（如各种 bbs/forum/group 等），其主要技术特性是：</p>
+<ul>
+<li>面向个人用户</li>
+<li>页面排版简单</li>
+<li>内容管理单一，基本上以 post 为主</li>
+<li>需求模块较少，基本上就是 Comments, Categories, Tags, Archives</li>
+</ul>
+<p>在这方面，SSG 所遵循的 fast, lightweight, easy-deployment 是很有优势的。最简单的 blog 完全可以只是一个 post list 页面。但是纯静态的 blog 又太简陋了，因此需要通过一些 hack 的手段，在 static 的页面上加入一些 dynamic 的东西，这个 hack 的手段，就是各种 SSG 中所谓的 compile 步骤。</p>
+<p>compile 步骤是所有 SSG 的核心，它的设计好坏决定了一个 SSG 的品质。大体上讲，SSG 的工作方式如下：</p>
+<ol>
+<li><strong>格式转换：</strong> 扫描所有 post，进行初步 compile（这步 compile 主要作用是进行格式转换，比如 markdown/textile -&gt; html）。</li>
+<li><strong>汇总 metadata：</strong> 汇总所有 post 的 metadata（比如 tag/category 可以用来做反向映射，datetime 可以用来给 post 进行排序），这些 metadata 信息可以在 template 渲染的时候访问。</li>
+<li><strong>渲染模板：</strong> 根据相应的 layout 规则，将 compile 后的 content 以及已有的 metadata 信息渲染成相应的页面（比如每篇 post 都需要有 navbar 和 footbar，这可以设定一下基础的页面 layout，包含公用的页面元素，然后通过模板继承或组合的方式，将 post 的内容以及相应的 metadata 信息渲染到这个 layout 中合适的位置，这就形成了最终看到的 static page）。</li>
+</ol>
+<p>撰写 Blog 的群体对于 SSG 框架往往还有一些特别的需求：</p>
+<ul>
+<li>代码高亮</li>
+<li>数学公式</li>
+<li>版本控制</li>
+<li>编译部署</li>
+</ul>
+<h2 id="hugo">Hugo</h2>
+<p>所以为什么要选择Hugo作为SSG平台，又为什么选择Eureka主题？</p>
+<h3 id="org-mode">org-mode</h3>
+<p>这里不得不提到 Emacs 中 org-mode 这样一个神奇的模式。我在4月份开始接触Emacs，大概花费了5天时间入门了这款古老而又现代的，完全符合GNU精神的编辑器，在我看来，它能延续至今且依然活力满满的原因有二，一是插件生态，二就是org-mode。</p>
+<p>org-mode 是一个用文本方式来快速高效地做笔记、维持待办事项和做项目计划的模式。它是一个高校的GTD系统，同时也是一个创作发布系统。可能平白说这样两句并不能让人明白 org-mode 究竟是什么，但是如果你用过幕布的话，你就会发现，幕布等大纲模式的软件其原型便来自org-mode。当然，org-mode 的功能并不仅仅只是大纲这样简单，我会另写一系列文章详细描述 <a href="">org-mode</a></p>
+<h3 id="hugos-feature">hugo&rsquo;s feature</h3>
+<p>本文讲 org-mode 是为了说明，Hugo 的特点就是支持 markdown 与 org-mode 文件并存渲染（仅部分主题）下面是 Hugo 和基于它的主题 Eureka 的优点：</p>
+<p>Hugo 是 Go 编写的静态网站生成器，快速，易用，可配置。</p>
+<ul>
+<li>
+<p>易用：Hugo 有一个内容和模板目录，把他们渲染到完全的 HTML 网站。用户可以从任意的目录中运行 Hugo，支持共享主机和其他系统。Hugo 当前提供 Windows，Linux，FreeBSD，NetBSD 和 OS X (Darwin) 的 x64, i386 和 ARM 架构的二进制预构建包。</p>
+</li>
+<li>
+<p>快速：Hugo 只需要几分之一秒就可以渲染一个经典的中型网站，最好网站的每个部分渲染只需 1 毫秒。</p>
+</li>
+<li>
+<p>可配置：Hugo 的源代码可以通过 Go 编译器工具链编译到任意地方运行，各主题源代码开放，方便进行个性化修改。</p>
+</li>
+</ul>
+<h3 id="quick-start">quick start</h3>
+<p>在 Arch Linux及其衍生发行版上运行hugo简单且快速，执行下面的代码：</p>
+<pre><code class="language-bash">$ sudo pacman -S hugo
+$ hugo new site hugosite #生成一个叫hugosite的文件夹，即站点根目录
+</code></pre>
+<p>只需不到5秒的时间，你的电脑就就成功安装了hugo并且创建了一个demo站点。</p>
+<h2 id="eureka">Eureka</h2>
+<p>回忆一下刚才所提到的撰写 Blog 的群体对于 SSG 框架的特别的需求，包括代码高亮、数学公式、版本控制、编译部署等，其中编译部署可以简单地写一个独立可执行的shell文件，因此这里略过，介绍 Eureka 对其他特性的高度支持。末尾会说明如何安装该主题。</p>
+<h3 id="markdown-syntax">Markdown Syntax</h3>
+<p>Eureka 具有良好的 Markdown 高亮支持。这里介绍引用块、表格、代码块、列表和其他元素。</p>
+<h4 id="blockquotes">Blockquotes</h4>
+<h4 id="blockquote-without-attribution">Blockquote without attribution</h4>
+<blockquote>
+<p>这是不带属性的引用块。</p>
+<p><strong>注意</strong>你可以在引用块中使用 Markdown 高亮支持。</p>
+</blockquote>
+<h4 id="blockquote-with-attribution">Blockquote with attribution</h4>
+<blockquote>
+<p>下面是一段带属性的引用块示例。</p>
+<p>Don&rsquo;t communicate by sharing memory, share memory by communicating.<br>
+— <cite>Rob Pike<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite></p>
+</blockquote>
+<h4 id="tables">Tables</h4>
+<p>表格并不是 Markdown 核心的一部分，但是对于 Hugo 来说，Hugo 支持它们开箱即用。</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bob</td>
+<td>27</td>
+</tr>
+<tr>
+<td>Alice</td>
+<td>23</td>
+</tr>
+</tbody>
+</table>
+<h5 id="inline-markdown-within-tables">Inline Markdown within tables</h5>
+<table>
+<thead>
+<tr>
+<th>Italics</th>
+<th>Bold</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>italics</em></td>
+<td><strong>bold</strong></td>
+<td><code>code</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="code-blocks">Code Blocks</h4>
+<p>Markdown 提供了对代码块的支持。即使你但</p>
+<h5 id="code-block-with-backticks">Code block with backticks</h5>
+<p>普通代码块标注。</p>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Example HTML5 Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;Test&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="code-block-indented-with-four-spaces">Code block indented with four spaces</h5>
+<p>仅仅只是对代码块做四个空格这样简单的处理。</p>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Example HTML5 Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;Test&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="code-block-with-hugos-internal-highlight-shortcode">Code block with Hugo&rsquo;s internal highlight shortcode</h5>
+<p>Hugo 具有支持内联代码块显示的特性，使用双括号包裹高亮 HTML 的声明标签开头，最后以双括号包裹结束高亮声明的标签结尾，具体见本文源码。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!doctype html&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;en&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Example HTML5 Document<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Test<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></span></span></code></pre></div>
+<h4 id="list-types">List Types</h4>
+<p>下面是 Hugo 对 Markdown 列表的支持效果。</p>
+<h5 id="ordered-list">Ordered List</h5>
+<ol>
+<li>First item</li>
+<li>Second item</li>
+<li>Third item</li>
+</ol>
+<h5 id="unordered-list">Unordered List</h5>
+<ul>
+<li>List item</li>
+<li>Another item</li>
+<li>And another item</li>
+</ul>
+<h5 id="nested-list">Nested list</h5>
+<ul>
+<li>Fruit
+<ul>
+<li>Apple</li>
+<li>Orange</li>
+<li>Banana</li>
+</ul>
+</li>
+<li>Dairy
+<ul>
+<li>Milk</li>
+<li>Cheese</li>
+</ul>
+</li>
+</ul>
+<h4 id="other-elements">Other Elements</h4>
+<p>Eureka 还提供对其他 HTML 元素的原生支持，包括 abbr、sub、sup、kbd、mark 等属性。</p>
+<p><abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.</p>
+<p>H<sub>2</sub>O</p>
+<p>X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup></p>
+<p>Press <kbd><kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd></kbd> to end the session.</p>
+<p>Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.</p>
+<h3 id="featuredimage">FeaturedImage</h3>
+<p>为每一篇文章赋特征图像，见于文章列表或文章详情页起始点，本文即为例。</p>
+<h3 id="emoji-support">Emoji Support</h3>
+<p>Emoji 能够在 Hugo 项目中以多种方式启用。以下是原文档说明。</p>
+<p>The <a href="https://gohugo.io/functions/emojify/"><code>emojify</code></a> function can be called directly in templates or <a href="https://gohugo.io/templates/shortcode-templates/#inline-shortcodes">Inline Shortcodes</a>.</p>
+<p>To enable emoji globally, set <code>enableEmoji</code> to <code>true</code> in your site&rsquo;s <a href="https://gohugo.io/getting-started/configuration/">configuration</a> and then you can type emoji shorthand codes directly in content files; e.g.</p>
+<p><span class="nowrap"><span class="emojify">🙈</span> <code>:see_no_evil:</code></span>  <span class="nowrap"><span class="emojify">🙉</span> <code>:hear_no_evil:</code></span>  <span class="nowrap"><span class="emojify">🙊</span> <code>:speak_no_evil:</code></span></p>
+<br>
+<p>The <a href="http://www.emoji-cheat-sheet.com/">Emoji cheat sheet</a> is a useful reference for emoji shorthand codes.</p>
+<p><strong>N.B.</strong> The above steps enable Unicode Standard emoji characters and sequences in Hugo, however the rendering of these glyphs depends on the browser and the platform. To style the emoji you can either use a third party emoji font or a font stack; e.g.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">.emoji {
+</span></span><span class="line"><span class="cl">  font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols;
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></div>
+
+<h3 id="diagram-support">Diagram Support</h3>
+<p>Eureka 支持以 Mermaid 方式渲染 Markdown 的简图。以下是原文档的说明。</p>
+<p>Please include the Mermaid diagram as below. Every mermaid chart/graph/diagram definition, has to have separate <code>&lt;div&gt;</code> tags.</p>
+<p>In order to render the HTML code in the Markdown file correctly, please make sure that <code>markup.goldmark.renderer.unsafe</code> in <code>config.yaml</code> is true.</p>
+<p>Here is one mermaid diagram:</p>
+<div class="mermaid">
+  graph TD
+  A[Client] --> B[Load Balancer]
+  B --> C[Server1]
+  B --> D[Server2]
+</div>
+<p>And here is another:</p>
+<div class="mermaid">
+  graph TD
+  A[Client] -->|tcp_123| B(Load Balancer)
+  B -->|tcp_456| C[Server1]
+  B -->|tcp_456| D[Server2]
+</div>
+<h3 id="math-support">Math Support</h3>
+<p>Eureka 默认支持以 KaTex 插件来渲染数学公式，下面是一些测试。</p>
+<p>You can type inline equation like $E=mc^2$.</p>
+<p>And also displayed equation like:</p>
+<div>
+\[ \int u \frac{dv}{dx}\, dx=uv-\int \frac{du}{dx}v\,dx \]
+</div>
+<p>Matrix:</p>
+<div>
+\[ \begin{pmatrix} a&b\\c&d \end{pmatrix} \quad
+\begin{bmatrix} a&b\\c&d \end{bmatrix} \quad
+\begin{Bmatrix} a&b\\c&d \end{Bmatrix} \quad
+\begin{vmatrix} a&b\\c&d \end{vmatrix} \]
+</div>
+<p>Aligned equation:</p>
+<div>
+\[\begin{aligned}
+x ={}& a+b+c+{} \\
+&d+e+f+g
+\end{aligned}\]
+</div>
+<p>And many other kinds of formulas.</p>
+<h3 id="installation-guide">Installation Guide</h3>
+<p>安装 Eureka 不需要安装额外的第三方插件或 npm 库。</p>
+<p>法一：可在下面两种克隆方式中任选其一。</p>
+<pre><code class="language-bash">$ git clone https://gitee.com/wangchucheng/hugo-eureka.git hugosite/themes/eureka
+$ git clone https://github.com/wangchucheng/hugo-eureka.git hugosite/themes/eureka
+</code></pre>
+<p>法二：如果需要对主题提供长期支持，同时又不需要对主题作修改，可考虑以子模块注册（以根目录是站点，同时已经初始化仓库的情况下）。</p>
+<pre><code class="language-shell">$ git submodule add &lt;上面的url地址&gt; hugosite/themes/eureka
+</code></pre>
+<p>Eureka 使用单独的配置文件夹而不是独立的 <code>config.toml</code> 文件，因此需要使用该主题，需要进行如下操作：</p>
+<pre><code class="language-bash">$ cd hugosite
+$ mv config.toml config.toml.bak # 备份原生hugo的配置文件
+$ cp -r themes/eureka/examplesite/config ./ # 拷贝配置文件夹到站点根目录
+</code></pre>
+<p>更多配置详情内容请参阅：<a href="https://www.wangchucheng.com/zh/docs/hugo-eureka/">Eureka</a></p>
+<p>下面补充我个人站点构建的其他内容。需求是使用git管理站点仓库，推送时希望推送到源码到该仓库的develop分支，生成的页面内容推送到master分支。</p>
+<p>使用站点生成命令<code>hugo</code>自动在站点目录下生成<code>public</code>目录。</p>
+<p>创建一个自动部署博客的脚本：</p>
+<pre><code>#!/usr/bin/env sh
+
+# 确保脚本抛出遇到的错误
+set -e
+
+# 进入生成的文件夹
+cd public
+
+# 如果是发布到自定义域名
+# echo 'www.example.com' &gt; CNAME
+
+git init
+git add -A
+git commit -m 'deploy'
+
+# 如果发布到 https://&lt;USERNAME&gt;.gitee.io/&lt;REPO&gt;
+git push -f git@gitee.com:endlesspeak/endlesspeak.git master
+
+# 如果发布到 https://&lt;USERNAME&gt;.github.io/&lt;REPO&gt;
+# git push -f git@github.com:&lt;USERNAME&gt;/&lt;REPO&gt;.git master
+
+cd - #返回到上一次的工作目录。
+
+</code></pre>
+<p>为站点初始化git仓库，然后指定远程分支</p>
+<pre><code class="language-bash">$ cd hugosite
+$ git init
+$ git remote add origin git@gitee.com:endlesspeak/endlesspeak.git
+$ git push origin master:develop
+</code></pre>
+<p>最后一行代表将当前本地仓库推送到远程，其中origin是远程仓库名，master是准备推送的本地仓库分支，develop是希望推送到的远程仓库分支。</p>
+<p>也可以使用关联分支命令，将本地master分支与远程的develop分支关联起来，这样以后只需要直接push就可以了，操作如下：</p>
+<pre><code class="language-bash">$ git remote -v #查看远程仓库设置
+$ git branch -a #查看所有分支，也可选择-r查看远程分支
+</code></pre>
+<p>如果未显示远程分支的内容，则检查远程仓库设置是否正确。若不正确，修改远程仓库设置；若远程仓库正确，则重新fetch一次。</p>
+<pre><code class="language-bash">$ git remote rm [远程仓库别名]
+$ git remote add [远程仓库别名] [远程仓库地址]
+$ git fetch
+</code></pre>
+<p>一切正常后，关联本地master分支与远程的develop分支。</p>
+<pre><code class="language-bash">$ git branch -u origin/develop master
+$ git push
+</code></pre>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>The above quote is excerpted from Rob Pike&rsquo;s <a href="https://www.youtube.com/watch?v=PAAkCSZUG1c">talk</a> during Gopherfest, November 18, 2015.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+</article>
+
+
+      
+        <div class="my-4">
+    
+    <a href="https://endlesspeak.github.io/tags/hugo/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#Hugo</a>
+    
+    <a href="https://endlesspeak.github.io/tags/blog/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#Blog</a>
+    
+</div>
+      
+
+      
+
+
+
+      
+        <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>坐忘道琼峰 Sitting Oblivion Tao EndlessPeak</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+      
+
+      
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/posts/tattle/2021-what-is-the-learn-plan-as-coder/" class="block">新目标，新征程，新的2021</a>
+      
+    </div>
+  </div>
+
+
+      
+
+
+
+    </div>
+    
+      <div class="col-span-2">
+        
+        
+          <div
+  class="
+    bg-primary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc  hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ssg">SSG</a></li>
+    <li><a href="#hugo">Hugo</a>
+      <ul>
+        <li><a href="#org-mode">org-mode</a></li>
+        <li><a href="#hugos-feature">hugo&rsquo;s feature</a></li>
+        <li><a href="#quick-start">quick start</a></li>
+      </ul>
+    </li>
+    <li><a href="#eureka">Eureka</a>
+      <ul>
+        <li><a href="#markdown-syntax">Markdown Syntax</a></li>
+        <li><a href="#featuredimage">FeaturedImage</a></li>
+        <li><a href="#emoji-support">Emoji Support</a></li>
+        <li><a href="#diagram-support">Diagram Support</a></li>
+        <li><a href="#math-support">Math Support</a></li>
+        <li><a href="#installation-guide">Installation Guide</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+        
+      </div>
+    
+
+    
+    
+      <div
+        class=" bg-secondary-bg prose col-span-2 rounded p-6 lg:col-span-6"
+      >
+        <h3>相关</h3>
+        
+          <a href="https://endlesspeak.github.io/posts/tattle/2021-what-is-the-learn-plan-as-coder/" class="no-underline">新目标，新征程，新的2021</a>
+          <br />
+        
+          <a href="https://endlesspeak.github.io/posts/tattle/2020-helloworld-from-blogs-to-life/" class="no-underline">Hello World——从写博客到记录人生</a>
+          <br />
+        
+      </div>
+    
+  </div>
+
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        hljs.highlightAll();
+      });
+    </script>
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>
