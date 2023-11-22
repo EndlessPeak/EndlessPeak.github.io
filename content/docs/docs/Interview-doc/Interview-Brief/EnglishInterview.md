@@ -16,7 +16,7 @@ weight: 2
 
 Tell me a few things about yourself.
 
-Dear professors, it's a great honor for me to have the opportunity to present myself. My name is Li Qing han,22 years old, come from Hu Bei province.  I received my bachelor's degree in software engineering from Chang 'an University in last June.  
+Dear professors, it's a great honor for me to have the opportunity to present myself. My name is Li Qing han,22 years old, come from Hu Bei province.  I received my bachelor's degree in software engineering from Chang'an University in last June.
 
 In the past 4 years,I focused on my study. I passed CET-4 and CET-6 in my sophomore and junior years respectively and got good grades in some software engineering subjects. In the need of my major,I participated in the course design and internship based on group cooperation as much as possible and served as the deputy leader in three of them. These development activities are most belongs to Java Web,such as Java Server Page, Java Bean,Mybatis and Spring. The technologies we use are constantly developing while our technical level is progressively improving. In addition, the experience of participating in these cooperation enhanced my ability of overall division of labor and interpersonal communication.
 

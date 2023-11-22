@@ -1,0 +1,433 @@
+#+TITLE: Lie Group and Lie Algebras 1
+#+DATE: <2023-11-20 Mon>
+#+AUTHOR: EndlessPeak
+#+TOC: true
+#+HIDDEN: false
+#+DRAFT: false
+#+WEIGHT: 6
+#+Description: 本文记录了李群和李代数的相关概念、性质。
+
+* Raise
+在 SLAM 中，除表示位姿(旋转)外，还需要对其进行估计和优化。然而，旋转矩阵自身带有约束(正交矩阵且行列式为 1)，此时对其进行优化显得困难。通过一定的转换关系，可以把带约束的优化问题转为无约束的优化问题。我们将这种转换称为李群——李代数转换关系。
+
+三维旋转矩阵构成了特殊正交群 SO(3)，三维欧氏变换矩阵构成了特殊欧氏群 SE(3)，三维相似变换矩阵构成了相似变换群 Sim(3)。
+
+\begin{gather}
+\operatorname{SO}(3)=\{\mathbf{R} \in \mathbb{R}^3 | \mathbf{R}\mathbf{R}^T=\mathbf{I},det(R)=1\} \\
+\operatorname{SE}(3) =\{\mathbf{T}\in\left [\begin{matrix}{\mathbf{R}}&{\mathbf{t}}\\{\mathbf{0}^{\mathrm{T}}}&{1}\\\end{matrix}\right ]\in\mathbb{R}^{4\times4}|\mathbf{R}\in\mathrm{SO}(3),\mathbf{t}\in\mathbb{R}^{3}\} \\
+\operatorname{Sim}(3) =\{\mathbf{S}\in\left [\begin{matrix}{s\mathbf{R}}&{\mathbf{t}}\\{\mathbf{0}^{\mathrm{T}}}&{1}\\\end{matrix}\right ]\in\mathbb{R}^{4\times4}|\mathbf{R}\in\mathrm{SO}(3),\mathbf{t}\in\mathbb{R}^{3}\} \\
+\end{gather}
+
+注意到旋转矩阵和变换矩阵对加法不封闭，仅对乘法封闭。
+* Group
+** Defination
+群是一种集合加一种运算的代数结构，集合记作$A$，运算记作$\cdot$，则群记为$G=(A,\cdot)$，群满足 4 个条件：
+1. 封闭性
+
+   $\forall a_1,a_2\in A, a_1\cdot a_2\in A$
+
+2. 结合律
+
+   $\forall a_1,a_2,a_3\in A,(a_1\cdot a_2)\cdot a_3=a_1\cdot(a_2\cdot a_3)$
+
+3. 幺元
+
+   $\exists a_0\in A,\mathrm{s.t.}\forall a\in A, a_0\cdot a=a\cdot a_0=a$
+
+4. 逆
+
+   $\forall a\in A,\exists a^{-1}\in A, s.t. a\cdot a^{-1}=a_{0}$
+
+常见的群有：整数的加法，去掉 0 以后有理数的乘法，由 $n \times n$ 的可逆矩阵构成的一般线性群等。
+
+接下来验证 SO(3)、SE(3)和 Sim(3)关于乘法成群。
+
+** SO(3)
+首先验证 SO(3):
+\begin{equation}
+\operatorname{SO}(3)=\{\mathbf{R} \in \mathbb{R}^3 | \mathbf{R}\mathbf{R}^T=\mathbf{I},det(R)=1\}
+\end{equation}
+
+首先验证封闭性
+\begin{gather}
+\mathbf{R}_1\mathbf{R}_2 \in \mathbb{R}^{3 \times 3} \\
+(\mathbf{R}_1\mathbf{R}_2)(\mathbf{R}_1\mathbf{R}_2)^T=\mathbf{R}_1\mathbf{R}_2\mathbf{R}_2^\mathrm{T}\mathbf{R}_1^\mathrm{T}=\boldsymbol{I} \\
+\det(\mathbf{R}_1\mathbf{R}_2)=\det(\mathbf{R}_1)\det(\mathbf{R}_2)=1
+\end{gather}
+
+其次验证结合律
+\begin{equation}
+(\mathbf{R}_1\mathbf{R}_2)\mathbf{R}_3=\mathbf{R}_1(\mathbf{R}_2)\mathbf{R}_3)
+\end{equation}
+
+再次验证幺元
+\begin{equation}
+\exists \boldsymbol{E}_{3\times 3}, s.t. \boldsymbol{R}\boldsymbol{E}=\boldsymbol{R}
+\end{equation}
+需要注意 3 维单位矩阵是旋转矩阵。
+
+最后验证逆
+\begin{align}
+\forall \boldsymbol{R}, \boldsymbol{R}_1^{-1}(\boldsymbol{R}_1^{-1})^{\mathrm{T}}=\boldsymbol{R}_1^{-1}(\boldsymbol{R}_1^{\mathrm{T}})^{-1}=\boldsymbol{R}_1^{-1}\boldsymbol{R}=\boldsymbol{I} \\
+\det(\mathbf{R}_1^{-1})=\det(\mathbf{R}_1^{\mathrm{T}})=\det(\mathbf{R})=1
+\end{align}
+
+因此证明得 SO(3)关于乘法成群。
+
+** SE(3)
+接下来验证 SE(3):
+\begin{equation}
+\operatorname{SE}(3) =\{T\in\left [\begin{matrix}{\mathbf{R}}&{\mathbf{t}}\\{\mathbf{0}^{\mathrm{T}}}&{1}\\\end{matrix}\right ]\in\mathbb{R}^{4\times4}|\mathbf{R}\in\mathrm{SO}(3),\mathbf{t}\in\mathbb{R}^{3}\}
+\end{equation}
+
+首先验证封闭性
+\begin{equation}
+T_{1}T_{2} =\begin{bmatrix}\mathbf{R}_{1}&\mathbf{t}_{1}\\\mathbf{0}^{\mathrm{T}}&1\end{bmatrix}\begin{bmatrix}\mathbf{R}_{2}&\mathbf{t}_{2}\\\mathbf{0}^{\mathrm{T}}&1\end{bmatrix}=\begin{bmatrix}\mathbf{R}_{1}\mathbf{R}_{2}&\mathbf{R}_{1}\mathbf{t}_{2}+\mathbf{t}_{1}\\\mathbf{0}^{\mathrm{T}}&1\end{bmatrix} 
+\end{equation}
+
+由上面 SO(3)的证明过程得到
+\begin{equation}
+\mathbf{R}_1\mathbf{R}_2 \in \operatorname{SO}(3)
+\end{equation}
+
+且有
+\begin{equation}
+\mathbf{R}_1\mathbf{t}_2+\mathbf{t}_1 \in \mathbb{R}^3
+\end{equation}
+
+其次验证结合律
+\begin{equation}
+(\mathbf{T}_1\mathbf{T}_2)\mathbf{T}_3=\mathbf{T}_1(\mathbf{T}_2\mathbf{T}_3)
+\end{equation}
+
+再次验证幺元
+\begin{equation}
+\exists \boldsymbol{E}_{4\times 4}, s.t. \boldsymbol{T}\boldsymbol{E}=\boldsymbol{T}
+\end{equation}
+需要注意 4 维单位矩阵是旋转矩阵。
+
+最后验证逆
+\begin{gather}
+\forall \boldsymbol{T}=\begin{bmatrix} \mathbf{R} & \mathbf{t}\\ \mathbf{0^{\mathrm{T}}} & 1 \end{bmatrix},
+\exists \mathbf{T}^{-1}=\begin{bmatrix} \mathbf{R}^{-1} & -\mathbf{R}^{-1}\mathbf{t}\\ \mathbf{0^{\mathrm{T}}} & 1 \end{bmatrix},
+s.t. \mathbf{T}^{-1} \mathbf{T} = \mathbf{E} \\
+\det{T}=\det{T}^{-1}=1
+\end{gather}
+
+因此验证得 SE(3)关于乘法成群。
+
+** Sim(3)
+接下来证明 Sim(3):
+\begin{equation}
+\operatorname{Sim}(3) = \left\{ S \in \begin{bmatrix} s\mathbf{R} & \boldsymbol{t} \\ \boldsymbol{0}^{\mathrm{T}} & 1 \end{bmatrix} \in \mathbb{R}^{4\times4} \right\}
+\end{equation}
+
+首先验证封闭性：
+\begin{equation}
+S_{1}S_{2} = \begin{bmatrix} s_{1}\mathbf{R_1} & \mathbf{t_1} \\ \mathbf{0}^{\mathrm{T}} & 1 \end{bmatrix} \begin{bmatrix} s_{2}\mathbf{R_2} & t_{2} \\ \mathbf{0}^{\mathrm{T}} & 1 \end{bmatrix} = \begin{bmatrix} s_{1}s_{2}\mathbf{R_1R_2} & s_{1}\mathbf{R_1t_2}+\mathbf{t_1} \\ \mathbf{0}^{\mathrm{T}} & 1 \end{bmatrix} \in \mathbb{R}^{4\times4}
+\end{equation}
+
+其次验证结合律
+\begin{equation}
+(\mathbf{S}_1\mathbf{S}_2)\mathbf{S}_3=\mathbf{S}_1(\mathbf{S}_2\mathbf{S}_3)
+\end{equation}
+
+再次验证幺元
+\begin{equation}
+\exists \boldsymbol{E}_{4\times 4}, s.t. \boldsymbol{S}\boldsymbol{E}=\boldsymbol{S}
+\end{equation}
+需要注意 4 维单位矩阵是特殊的相似变换矩阵。
+
+最后验证逆
+\begin{equation}
+\forall \mathbf{S}=\begin{bmatrix} s\mathbf{R} & \boldsymbol{t} \\ \boldsymbol{0}^{\mathrm{T}} & 1 \end{bmatrix},
+\exists \mathbf{S}^{-1}=\begin{bmatrix} \frac{1}{s}\mathbf{R}^{-1} & -\frac{1}{s} \mathbf{R}^{-1}\mathbf{t} \\ \boldsymbol{0}^{\mathrm{T}} & 1 \end{bmatrix}, s.t.
+\mathbf{S}^{-1}\mathbf{S} = \mathbf{E}
+\end{equation}
+
+因此证得 Sim(3)关于乘法成群。
+
+* Lie Algebras Raise
+李群是具有连续光滑性质的群。
+
+1. 直观上看，刚体能够连续地在空间中运动，所以 SO(3)和 SE(3)都是李群
+2. 可以说 SO(3)和 SE(3)在实数空间上是连续的
+
+考虑旋转矩阵 $\mathbf{R}$
+\begin{equation}
+\mathbf{R}\mathbf{R}^\mathrm{T}=I
+\end{equation}
+
+将旋转看作过程，即扩展到随时间变化的函数 $\mathbf{R}(t)$
+\begin{equation}
+\mathbf{R}(t)\mathbf{R}^\mathrm{T}(t)=I
+\end{equation}
+
+同时求导得到:
+\begin{equation}
+\dot{\mathbf{R}}(t)\mathbf{R}(t)^\mathrm{T}+\mathbf{R}(t)\dot{\mathbf{R}}(t)^\mathrm{T}=0
+\end{equation}
+
+整理得:
+\begin{equation}
+\dot{\mathbf{R}}(t)\mathbf{R}(t)^\mathrm{T}=-\left(\dot{\mathbf{R}}(t)\mathbf{R}(t)^\mathrm{T}\right)^\mathrm{T}
+\end{equation}
+
+于是$\dot{\mathbf{R}}(t)\mathbf{R}(t)^\mathrm{T}$是一个反对称矩阵。对每个向量，都可以反对称化为一个反对称矩阵；反之也成立。
+
+\begin{equation}
+\left.a^{\wedge}=A=\left[\begin{array}{ccc}0&-a_3&a_2\\\\a_3&0&-a_1\\\\-a_2&a_1&0\end{array}\right.\right],\quad A^{\vee}=a
+\end{equation}
+
+设三维向量 $\phi(t) \in \mathbb{R}^3$ 满足：
+\begin{equation}
+\dot{\mathbf{R}}(t)\mathbf{R}(t)^\mathrm{T}=\phi(t)^{\wedge}
+\end{equation}
+
+同时右乘 $\mathbf{R}(t)$，由于正交阵具有$\mathbf{R}^\mathrm{T}\mathbf{R}=I$
+\begin{equation}
+\left.\dot{\mathbf{R}}(t)=\phi(t)^{\wedge}\mathbf{R}(t)=\left[\begin{array}{ccc}0&-\phi_3&\phi_2\\ \phi_3 & 0 & -\phi_1 \\ -\phi_2 & \phi_1 & 0 \end{array}\right.\right]\mathbf{R}(t)
+\end{equation}
+
+即每次对旋转矩阵求一次导数，相当于左乘 $\phi^{\wedge}(t)$ 。
+
+接下来考虑 $t_0=0$ 时刻，设旋转矩阵$\mathbf{R}(0)=I$，则
+\begin{equation}
+\begin{aligned}
+\mathbf{R}\left(t\right) &\approx \mathbf{R}\left(t_{0}\right) + \dot{\mathbf{R}}\left(t_{0}\right)\left(t-t_{0}\right) \\
+&= \mathbf{R}\left(t_{0}\right) + \phi\left(t_0\right)^{\wedge}\mathbf{R}(t_0)\left(t-t_{0}\right) \\
+&= I + \phi\left(t_{0}\right)^{\wedge}\left(t\right)
+\end{aligned}
+\end{equation}
+
+$\phi$ 反映了 $\mathbf{R}$ 的导数性质，它在 SO(3)原点附近的正切空间上，同时在 $t_0$ 附近，设 $\phi$ 保持为常数 $\phi(t_0)=\phi_0$，则
+\begin{equation}
+\dot{\mathbf{R}}(t)=\phi(t_0)^{\wedge}\mathbf{R}(t)=\phi_0^{\wedge}\mathbf{R}(t)
+\end{equation}
+
+对上述微分方程，存在初始值 $\mathbf{R}(0)=I$，因此其特解为：
+\begin{equation}
+\mathbf{R}(t)=exp(\phi_0^{\wedge}t)
+\end{equation}
+
+综上所述，
+1. 给定某时刻 $\mathbf{R}$ 即能够求出 $\phi$ ，它描述了 $\mathbf{R}$ 在局部的导数关系，且 $\phi$ 正是对应到 SO(3)上的李代数$\mathfrak{so}(3)$
+2. 给定 $\phi$ 时，可以根据 $exp(\phi^{\wedge})$ 计算李群，反之亦然，这正是李群与李代数之间的指数和对数映射。
+
+* Lie Algebras Definations
+每个李群都有对应的李代数。
+
+1. 注意到 SO(3)和 SE(3)只有定义良好的乘法，没有定义良好的加法，因此难以进行取极限和求导的操作
+2. 李代数对应单位元附近的正切空间，描述了李群的局部性质(导数)
+
+** Definations
+李代数由集合 $\mathbb{V}$ ，数域 $\mathbb{F}$ 和一个二元运算 $[,]$ 组成。称李代数为$(\mathbb{V},\mathbb{F},[,])$，记为 $\mathfrak{g}$
+
+1. 封闭性
+
+   $\forall X,Y\in\mathbb{V},[X,Y]\in\mathbb{V}$
+
+2. 双线性
+
+   $\forall X,Y,Z\in\mathbb{V},a,b\in\mathbb{F}$,有：
+
+   $$
+   [aX+bY,Z]=a[X,Z]+b[Y,Z],\quad[Z,aX+bY]=a[Z,X]+b[Z,Y].
+   $$
+
+3. 自反性
+
+   $\forall X\in\mathbb{V},[X, X] = 0$
+
+4. 雅可比等价 
+   $$
+   \forall X,Y,Z\in\mathbb{V},[X,[Y,Z]]+[Z,[X,Y]]+[Y,[Z,X]]=0
+   $$
+
+满足上述性质的 $(\mathbb{V},\mathbb{F},[,])$ 称为李代数，二元运算称为李括号。
+
+** Example and Provement
+下面以三维向量叉积为例，证明 $\mathfrak{g}=(\mathbb{R}^3,\mathbb{R},\times)$ 构成李代数。
+
+首先验证封闭性
+
+\begin{equation}
+\forall X,Y\in\mathbb{R}^3 X\times Y\in\mathbb{R}^3
+\end{equation}
+
+然后验证双线性 $\forall X,Y,\mathbf{Z}\in\mathbb{R}^3,a,b\in\mathbb{R}$, 由叉乘的分配率可知
+
+\begin{equation}
+\begin{aligned}
+(aX+bY)\times\mathbf{Z}=a(X\times\mathbf{Z})+b(Y\times\mathbf{Z})
+\mathbf{Z}\times(a\mathbf{X}+b\mathbf{Y})=a(\mathbf{Z}\times\mathbf{X})+b(\mathbf{Z}\times\mathbf{Y})
+\end{aligned}
+\end{equation}
+
+其次验证自反性 $\forall X\in\mathbb{R}^3$，由叉乘定义可知 $X\times X=0$
+
+最后验证雅可比等价
+$\forall X,Y,Z\in\mathbb{R}^3$，由叉乘的定义展开计算可以得到
+
+\begin{equation}
+X\times(Y\times\mathbf{Z})+\mathbf{Z}\times(X\times Y)+Y\times(\mathbf{Z}\times X)=\mathbf{0}
+\end{equation}
+
+* Two Lie Algebras
+** SO(3)
+记 SO(3)对应的李代数为 $\phi$，它是定义在 $\mathbb{R}^3$ 上的向量。
+
+定义 $\mathbf{\phi}$ 满足
+\begin{equation}
+\mathbf{\phi}=\phi^{\wedge}=\left[\begin{array}{ccc}0&-\phi_3&\phi_2\\ \phi_3 & 0 & -\phi_1 \\ -\phi_2 & \phi_1 & 0 \end{array}\right]\in\mathbb{R}^{3 \times 3}
+\end{equation}
+
+则两个向量 $\phi_1,\phi_2$ 的李括号为
+\begin{equation}
+[\phi_1,\phi_2]=(\mathbf{\Phi}_1\mathbf{\Phi}_2-\mathbf{\Phi}_2\mathbf{\Phi}_1)^\vee 
+\end{equation}
+
+下面证明该李代数满足上述性质。
+\begin{equation}
+\mathfrak{so}(3)=\{\phi\in\mathbb{R}^{3},\Phi=\phi^{\wedge}\in\mathbb{R}^{3\times3}\}
+\end{equation}
+
+
+对于 $\mathfrak{so}(3)$ 的封闭性
+\begin{equation}
+\forall\phi_{1},\phi_{2}\in\mathbb{R}^{3},[\phi_{1},\phi_{2}]=(\Phi_{1}\Phi_{2}-\Phi_{2}\Phi_{1})^{\vee}\in\mathbb{R}^{3}
+\end{equation}
+
+对于 $\mathfrak{so}(3)$ 的双线性
+\begin{equation}
+\begin{aligned}
+&\forall\phi_1,\phi_2,\phi_3\in\mathbb{R}^3,a,b\in\mathbb{R} \\
+\left[a\phi_{1}+b\phi_{2},\phi_{3}\right] &=[(a\Phi_{1}+b\Phi_{2})\Phi_{3}-\Phi_{3}(a\Phi_{1}+b\Phi_{2})]^{v} \\
+&=[a(\Phi_{1}\Phi_{3}-\Phi_{3}\Phi_{1})+b(\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})]^{v} \\
+&=a(\Phi_{1}\Phi_{3}-\Phi_{3}\Phi_{1})^{\vee}+b(\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})^{\vee} \\
+&=a[\phi_{1},\phi_{3}]+b[\phi_{2},\phi_{3}]
+\end{aligned}
+\end{equation}
+
+同理可得
+\begin{equation}
+[\phi_{3},a\phi_{1}+b\phi_{2}]=a[\phi_{3},\phi_{1}]+b[\phi_{3},\phi_{2}]
+\end{equation}
+
+对于 $\mathfrak{so}(3)$ 的自反性
+\begin{equation}
+\forall\phi\in\mathbb{R}^3,[\phi,\phi]=(\Phi\Phi-\Phi\Phi)^\vee=\mathbf{0}
+\end{equation}
+
+对于 $\mathfrak{so}(3)$ 的雅可比等价
+\begin{equation}
+\begin{aligned}
+&\forall\phi,\phi_{\circ}\phi_{\circ}\in\mathbb{R}^{3} \\
+\left[\phi_{1},[\phi_{2},\phi_{3}]\right]&=[\phi_{1},(\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})^{\vee}] \\
+&=[\Phi_{1}(\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})-(\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})\Phi_{1}]^{\vee}
+\end{aligned}
+\end{equation}
+
+同理
+\begin{equation}
+\begin{aligned}
+\left[\phi_{3},[\phi_{1},\phi_{2}]\right]=[\Phi_{3}(\Phi_{1}\Phi_{2}-\Phi_{2}\Phi_{1})-(\Phi_{1}\Phi_{2}-\Phi_{2}\Phi_{1})\Phi_{3}]^{\vee} \\
+\left[\phi_{2},[\phi_{3},\phi_{1}]\right]=[\Phi_{2}(\Phi_{3}\Phi_{1}-\Phi_{1}\Phi_{3})-(\Phi_{3}\Phi_{1}-\Phi_{1}\Phi_{3})\Phi_{2}]^{\vee}
+\end{aligned}
+\end{equation}
+
+相加可得
+\begin{equation}
+\left[\phi_{1},[\phi_{2},\phi_{3}]\right]+\left[\phi_{3},[\phi_{1},\phi_{2}]\right]+\left[\phi_{2},[\phi_{3},\phi_{1}]\right]=0
+\end{equation}
+
+综上所述，$\mathfrak{so}(3)$ 满足李代数的性质，该李代数形式为:
+\begin{equation}
+\mathfrak{so}(3) = \left\{ \phi \in \mathbb{R}^3 , \Phi=\phi^{\wedge} \in \mathbb{R}^{3 \times 3}\right\}
+\end{equation}
+
+该李代数是一个由三维向量组成的集合，每个向量对应到一个反对称矩阵，它与特殊正交群 SO(3)的关系为指数映射
+\begin{equation}
+\mathbf{R}(t)=exp(\phi^{\wedge})
+\end{equation}
+** SE(3)
+与 $\mathfrak{so}(3)$ 相似，$\mathfrak{se}(3)$ 位于 $\mathbb{R}^6$ 空间中 
+\begin{equation}
+\mathfrak{se}(3)=\left\{\xi=\left[\begin{array}{c}\rho\\\phi\end{array}\right]\in\mathbb{R}^6,\rho\in\mathbb{R}^3,\phi\in\mathfrak{so}\left(3\right),\xi^{\wedge}=\left[\begin{array}{cc}\phi^{\wedge}&\rho\\\\\mathbf{0}^{\mathrm{T}}&0\end{array}\right]\in\mathbb{R}^{4\times4}\right\}
+\end{equation}
+
+把每个 $\mathfrak{se}(3)$ 元素记作 $\epsilon$ ，它是一个六维向量，
+1. 前三维为平移(不是变换矩阵中的平移)，记为 $\rho$，
+2. 后三维为旋转，记作 $\phi$，实质上是 $\mathfrak{so}(3)$ 元素
+
+此处 $\wedge$ 不再表示反对称，而是满足
+\begin{equation}
+\xi^{\wedge}=\left[\begin{array}{cc}\phi^{\wedge}&\rho\\ \mathbf{0}^{\mathrm{T}}&0\end{array}\right]\in\mathbb{R}^{4\times4}
+\end{equation}
+
+形式上仍然保留 $\wedge$ 和 $\vee$ 来指代从“向量到矩阵”和“从矩阵到向量”的关系，李代数 $\mathfrak{se}(3)$ 可以简单理解成一个平移加一个 $\mathfrak{so}(3)$ 构成的向量(此平移不直接是平移)
+
+李代数 $\mathfrak{se}(3)$ 具有李括号:
+\begin{equation}
+\left[\xi_1,\xi_2\right]=(\xi_1^{\wedge}\xi_2^{\wedge}-\xi_2^{\wedge}\xi_1^{\wedge})^\vee
+\end{equation}
+
+下面证明 $\mathfrak{se}(3)$  满足李代数的性质
+
+对于 $\mathfrak{se}(3)$ 封闭性，
+\begin{equation}
+\begin{aligned}
+&\forall\boldsymbol{\xi}_1,\boldsymbol{\xi}_2\in\mathbb{R}^6 \\
+[\xi_{1},\xi_{2}]& =(\xi_{1}^{\Lambda}\xi\xi_{2}^{\Lambda}-\xi_{2}^{\Lambda}\xi_{1}^{\Lambda})^{\vee}  \\
+&\left.=\left(\begin{bmatrix}\phi_1^{\wedge}&\boldsymbol{\rho}_1\\\mathbf{0}^{\mathrm{T}}&0\end{bmatrix}\right.\begin{bmatrix}\phi_2^{\wedge}&\boldsymbol{\rho}_2\\\mathbf{0}^{\mathrm{T}}&0\end{bmatrix}-\begin{bmatrix}\phi_2^{\wedge}&\boldsymbol{\rho}_2\\\mathbf{0}^{\mathrm{T}}&0\end{bmatrix}\begin{bmatrix}\phi_1^{\wedge}&\boldsymbol{\rho}_1\\\mathbf{0}^{\mathrm{T}}&0\end{bmatrix}\right)^{\vee} \\
+&\left.=\left(\begin{bmatrix}\phi_1^{\wedge}\phi_2^{\wedge}&\phi_1^{\wedge}\boldsymbol{\rho}_2\\\mathbf{0}^\mathrm{T}&0\end{bmatrix}\right.-\begin{bmatrix}\phi_2^{\wedge}\phi_1^{\wedge}&\phi_2^{\wedge}\boldsymbol{\rho}_1\\\mathbf{0}^\mathrm{T}&0\end{bmatrix}\right)^{\vee} \\
+&=\begin{bmatrix}\phi_{1}^{\wedge}\phi_{2}^{\wedge}-\phi_{2}^{\wedge}\phi_{1}^{\wedge}&\phi_{1}^{\wedge}\rho_{2}-\phi_{2}^{\wedge}\rho_{1}\\\mathbf{0}^{\mathrm{T}}&0\end{bmatrix}^{\vee}
+\end{aligned}
+\end{equation}
+
+由于 $\mathfrak{so}(3)$ 的封闭性可知
+\begin{equation}
+(\phi_{1}^{\wedge}\phi_{2}^{\wedge}-\phi_{2}^{\wedge}\phi_{1}^{\wedge})^{\vee}\in\mathfrak{so}(3)
+\end{equation}
+
+由于 $\phi_i^{\wedge}$ 为 $3 \times 3$ 反对称矩阵，且 $\mathbf{\rho}_i$ 是三维向量，因此容易得到
+\begin{equation}
+\phi_1^\wedge\boldsymbol{\rho}_2-\phi_2^\wedge\boldsymbol{\rho}_1\in\mathbb{R}^6
+\end{equation}
+
+对于 $\mathfrak{se}(3)$ 的双线性
+\begin{equation}
+\begin{aligned}
+&\forall\xi_{1},\xi_{2},\xi_{3}\in\mathbb{R}^{6},a,b\in\mathbb{R} \\
+[a\xi_{1}+b\xi_{2},\xi_{3}]& =[(a\xi_{1}^{\Lambda}+b\xi_{2}^{\Lambda})\xi_{3}^{\Lambda}-\xi_{3}^{\Lambda}(a\xi_{1}^{\Lambda}+b\xi_{2}^{\Lambda})]^{\vee}  \\
+&=[a(\xi_{1}^{\Lambda}\xi_{3}^{\Lambda}-\xi_{3}^{\Lambda}\xi_{1}^{\Lambda})+b(\xi_{2}^{\Lambda}\xi_{3}^{\Lambda}-\xi_{3}^{\Lambda}\xi_{2}^{\Lambda})]^{\vee} \\
+&=a[\xi_{1},\xi_{3}]+b[\xi_{2},\xi_{3}]
+\end{aligned}
+\end{equation}
+
+对于 $\mathfrak{se}(3)$ 的自反性
+\begin{equation}
+\forall\xi\in\mathbb{R}^6,[\xi,\xi]=(\xi^\Lambda\xi^\Lambda-\xi^\Lambda\xi^\Lambda)^\vee=\mathbf{0}
+\end{equation}
+
+对于 $\mathfrak{se}(3)$ 的雅可比等价性
+\begin{equation}
+\begin{aligned}
+&\forall\xi_{1},\xi_{2},\xi_{3}\in\mathbb{R}^{6},a,b\in\mathbb{R} \\
+\left[\xi_{1},[\xi_{2},\xi_{3}]\right]& =[\xi_{1},(\xi_{2}^{\Lambda}\xi_{3}^{\Lambda}-\xi_{3}^{\Lambda}\xi_{2}^{\Lambda})^{\vee}]  \\
+&=[\xi_{1}^{\Lambda}(\xi_{2}^{\Lambda}\xi_{3}^{\Lambda}-\xi_{3}^{\Lambda}\xi_{2}^{\Lambda})-(\xi_{2}^{\Lambda}\xi_{3}^{\Lambda}-\xi_{3}^{\Lambda}\xi_{2}^{\Lambda})\xi_{1}^{\Lambda}]^{\vee}
+\end{aligned}
+\end{equation}
+
+同理可得
+\begin{equation}
+\begin{aligned}
+\left[\xi_{3},[\xi_{1},\xi_{2}]\right]=[\xi_{3}^{\Lambda}(\xi_{1}^{\Lambda}\xi_{2}^{\Lambda}-\xi_{2}^{\Lambda}\xi_{1}^{\Lambda})-(\xi_{1}^{\Lambda}\xi_{2}^{\Lambda}-\xi_{2}^{\Lambda}\xi_{1}^{\Lambda})\xi_{3}^{\Lambda}]^{V} \\
+\left[\xi_{2},[\xi_{3},\xi_{1}]\right]=[\xi_{2}^{\Lambda}(\xi_{3}^{\Lambda}\xi_{1}^{\Lambda}-\xi_{1}^{\Lambda}\xi_{3}^{\Lambda})-(\xi_{3}^{\Lambda}\xi_{1}^{\Lambda}-\xi_{1}^{\Lambda}\xi_{3}^{\Lambda})\xi_{2}^{\Lambda}]^{V}
+\end{aligned}
+\end{equation}
+
+三个式子相加即得
+\begin{equation}
+\left[\xi_{1},[\xi_{2},\xi_{3}]\right]+\left[\xi_{3},[\xi_{1},\xi_{2}]\right]+\left[\xi_{2},[\xi_{3},\xi_{1}]\right]=0
+\end{equation}
