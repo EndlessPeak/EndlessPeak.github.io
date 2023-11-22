@@ -2,8 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://endlesspeak.github.io/docs/docs/stm32-doc/</loc>
-    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+    <loc>https://endlesspeak.github.io/docs/docs/slam-doc/</loc>
+    <lastmod>2023-10-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/docs/build/terminalconfiguration/</loc>
     <lastmod>2022-10-18T10:00:00+00:00</lastmod>
@@ -42,8 +42,8 @@
   </url><url>
     <loc>https://endlesspeak.github.io/homepage/</loc>
   </url><url>
-    <loc>https://endlesspeak.github.io/docs/docs/slam-doc/</loc>
-    <lastmod>2023-10-28T00:00:00+00:00</lastmod>
+    <loc>https://endlesspeak.github.io/docs/docs/cpp-programming-advanced-doc/1-modules/</loc>
+    <lastmod>2023-11-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/docs/docs/slam-doc/1-ros2-install/</loc>
     <lastmod>2023-10-08T00:00:00+00:00</lastmod>
@@ -53,9 +53,6 @@
   </url><url>
     <loc>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/2-hello-cargo/</loc>
     <lastmod>2023-07-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/</loc>
-    <lastmod>2023-06-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/docs/docs/stm32-doc/1-stm32-basic/</loc>
     <lastmod>2023-02-09T00:00:00+00:00</lastmod>
@@ -107,6 +104,12 @@
   </url><url>
     <loc>https://endlesspeak.github.io/docs/build/operating-system-sum/linux-technology-2-linux-comprehensive-overview/</loc>
     <lastmod>2020-01-10T14:50:00+00:00</lastmod>
+  </url><url>
+    <loc>https://endlesspeak.github.io/docs/docs/cpp-programming-advanced-doc/</loc>
+    <lastmod>2023-11-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://endlesspeak.github.io/docs/docs/cpp-programming-advanced-doc/n-compare/</loc>
+    <lastmod>2023-11-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/docs/docs/slam-doc/2-slam-summary/</loc>
     <lastmod>2023-10-08T00:00:00+00:00</lastmod>
@@ -174,6 +177,9 @@
     <loc>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/4-variable/</loc>
     <lastmod>2023-07-11T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://endlesspeak.github.io/docs/docs/stm32-doc/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://endlesspeak.github.io/docs/docs/ros-doc/3-racecarnotes/</loc>
     <lastmod>2022-11-11T00:00:00+00:00</lastmod>
   </url><url>
@@ -182,9 +188,6 @@
   </url><url>
     <loc>https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/4-nerualnetwork/</loc>
     <lastmod>2022-03-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://endlesspeak.github.io/docs/docs/algorithms-doc/</loc>
-    <lastmod>2022-03-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/</loc>
     <lastmod>2022-03-01T00:00:00+00:00</lastmod>
@@ -210,6 +213,9 @@
     <loc>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/5-data-type/</loc>
     <lastmod>2023-07-11T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/</loc>
+    <lastmod>2023-06-18T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://endlesspeak.github.io/docs/build/terminalconfiguration/linux-technology-6-1-tmux/</loc>
     <lastmod>2022-10-17T00:00:00+00:00</lastmod>
   </url><url>
@@ -225,9 +231,6 @@
     <loc>https://endlesspeak.github.io/docs/docs/algorithms-doc/string-common-element/</loc>
     <lastmod>2022-03-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://endlesspeak.github.io/docs/docs/develop-doc/</loc>
-    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://endlesspeak.github.io/novel/volume1/ch4/</loc>
     <lastmod>2021-11-10T00:00:00+00:00</lastmod>
   </url><url>
@@ -236,6 +239,9 @@
   </url><url>
     <loc>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-algorithms/</loc>
     <lastmod>2021-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras/</loc>
+    <lastmod>2023-11-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/6-function/</loc>
     <lastmod>2023-07-11T00:00:00+00:00</lastmod>
@@ -249,6 +255,9 @@
     <loc>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-2/</loc>
     <lastmod>2022-04-11T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://endlesspeak.github.io/docs/docs/algorithms-doc/</loc>
+    <lastmod>2022-03-21T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-1/</loc>
     <lastmod>2022-03-04T00:00:00+00:00</lastmod>
   </url><url>
@@ -261,17 +270,20 @@
     <loc>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/file-manage/</loc>
     <lastmod>2021-11-03T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras2/</loc>
+    <lastmod>2023-11-21T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-6-rdp/</loc>
     <lastmod>2023-07-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://endlesspeak.github.io/docs/docs/machinelearning-doc/</loc>
-    <lastmod>2023-05-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/docs/docs/stm32-doc/6-stm32-rgblcd/</loc>
     <lastmod>2023-02-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computercomponents/</loc>
     <lastmod>2022-03-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://endlesspeak.github.io/docs/docs/develop-doc/</loc>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/novel/volume1/ch7/</loc>
     <lastmod>2021-11-10T00:00:00+00:00</lastmod>
@@ -281,6 +293,9 @@
   </url><url>
     <loc>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/8-package-and-crate/</loc>
     <lastmod>2023-07-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://endlesspeak.github.io/docs/docs/machinelearning-doc/</loc>
+    <lastmod>2023-05-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/linuxpoints/</loc>
     <lastmod>2022-03-11T00:00:00+00:00</lastmod>
@@ -358,19 +373,19 @@
     <lastmod>2023-07-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/docs/</loc>
-    <lastmod>2023-11-16T00:00:00+00:00</lastmod>
+    <lastmod>2023-11-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/docs/docs/</loc>
-    <lastmod>2023-11-16T00:00:00+00:00</lastmod>
+    <lastmod>2023-11-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/</loc>
-    <lastmod>2023-11-16T00:00:00+00:00</lastmod>
+    <lastmod>2023-11-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/authors/</loc>
-    <lastmod>2023-10-28T00:00:00+00:00</lastmod>
+    <lastmod>2023-11-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/authors/endlesspeak/</loc>
-    <lastmod>2023-10-28T00:00:00+00:00</lastmod>
+    <lastmod>2023-11-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/docs/build/</loc>
     <lastmod>2023-07-11T00:00:00+00:00</lastmod>

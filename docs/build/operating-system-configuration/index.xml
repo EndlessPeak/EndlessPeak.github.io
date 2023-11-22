@@ -8,49 +8,60 @@
     <language>zh</language>
     <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
 </copyright>
-    <lastBuildDate>Tue, 18 Feb 2020 20:00:00 +0000</lastBuildDate>
-    <atom:link href="https://endlesspeak.github.io/docs/build/operating-system-configuration/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Feb 2020 20:00:00 +0000</lastBuildDate><atom:link href="https://endlesspeak.github.io/docs/build/operating-system-configuration/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Arch Linux 桌面环境配置</title>
       <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-1-desktop-config/</link>
       <pubDate>Tue, 18 Feb 2020 20:00:00 +0000</pubDate>
+      
       <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-1-desktop-config/</guid>
       <description>&lt;p&gt;如果现在让我选择一个我心目中最好的Linux发行版，同时也是最简单的Linux发行版，作为长期甚至终身使用的Linux，我会选择的发行版是：Arch Linux！&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>Arch Linux 文本环境配置</title>
       <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-2-textmode-config/</link>
       <pubDate>Thu, 27 Feb 2020 20:00:00 +0000</pubDate>
+      
       <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-2-textmode-config/</guid>
       <description>&lt;p&gt;如果是经常从事文本工作(如软件工作者进行代码编辑、学生进行笔记整理、文字工作者的撰写、校对等工作)的用户建议选用窗口管理器作为日常工作环境。&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>Gentoo Linux Nvidia 显卡驱动</title>
       <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-3-gentoo-nvidia/</link>
       <pubDate>Sun, 21 Aug 2022 00:00:00 +0000</pubDate>
+      
       <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-3-gentoo-nvidia/</guid>
       <description>Kernel Dist Kernel 编辑 x11-drivers/nvidia-drivers 所需要使用的 use 选项，加入 dist-kernel 这一项。 Custom Kernel 依次开启下列选项： CONFIG_MODULES CONFIG_MTRR CONFIG_VGA_ARB CONFIG_ACPI_IPMI CONFIG_AGP 内核版本 在 5.15 及以前的需开启 CONFIG_SYSFB_SIMPLEFB CONFIG_FB_SIMPLE 注意开启该选项需要关闭 Simple framebuffer device 在 5.15 以后的需开</description>
     </item>
+    
     <item>
       <title>Linux Kernel Configuration</title>
       <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-4-kernel/</link>
       <pubDate>Sun, 21 Aug 2022 00:00:00 +0000</pubDate>
+      
       <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-4-kernel/</guid>
       <description>写在前面 参考文献 LINUX 内核技术手册 LINUX KERNEL IN A NUTSHELL Linux-4.4-x86_64 内核配置选项简介 参阅更多 金步国作品集 写作动机 工作应用 嵌入式实时操作系统需要裁剪内核以获得专用性、适配性和性能</description>
     </item>
+    
     <item>
       <title>Linux KDE  桌面使用指南</title>
       <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-5-usage/</link>
       <pubDate>Sat, 18 Mar 2023 00:00:00 +0000</pubDate>
+      
       <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-5-usage/</guid>
       <description>Dolphin Panel Dolphin 左侧视图为 panel，通过 &amp;#34;View&amp;#34;-&amp;#34;Show panels&amp;#34; 可以查看所有的 panel. places 提供常用的导航路径； folder 提供当前位置的视图； information 显示当前 folder 的信息； places 提供 XDG user directories 导航； 提供远程位置、最</description>
     </item>
+    
     <item>
       <title>RDP 远程桌面连接</title>
       <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-6-rdp/</link>
       <pubDate>Fri, 07 Jul 2023 00:00:00 +0000</pubDate>
+      
       <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-6-rdp/</guid>
       <description>RDP(Remote Desktop Protocol)是一种远程桌面协议，由微软开发用于远程连接和控制计算机。允许用户通过网络从本地计算机的远程桌面客户端连接到远程计算机。 Server 在需要被</description>
     </item>
+    
   </channel>
 </rss>

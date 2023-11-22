@@ -10,8 +10,16 @@
 <title>Program Compilation by GCC | C/C&#43;&#43; Programming Basic | 坐忘道琼峰</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
-<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.788395b87995af32cd489f82f320d85cfd57851423482413833461fa2299e3fd86862ab1496aaf7619961be925a8c926.css">
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.b4df0caebd058a56d5556ac52e8e433c3b8d42aac8ccf30094e707fc2ea0773f5edfd5db2025486b3bd252a5dee3136f.css">
 <script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
 
 
 
@@ -24,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload"
-  href="https://fonts.googleapis.com/css2?family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;display=swap"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
   as="style" onload="this.onload=null;this.rel='stylesheet'">
 
 
@@ -51,7 +59,7 @@
 <link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
 
 
-<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.cd2d65e90b033b5ff5087d18590179029ef6647458eacb3d21c15e42a24f83c203d7013d6f35b4808bbd257ea41a118c.js"></script>
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.b4f1978adbf138f91919e66604fb97f7ffbc18fc5078464da4042025d876d999b2c3a943f9dcce8524696594f5730ccf.js"></script>
 
 
 
@@ -122,7 +130,7 @@
     },
     "headline": "Program Compilation by GCC | C\/C\u002b\u002b Programming Basic | 坐忘道琼峰","datePublished": "2022-07-01T00:00:00+00:00",
     "dateModified": "2022-07-01T00:00:00+00:00",
-    "wordCount":  1841 ,
+    "wordCount":  2329 ,
     "publisher": {
         "@type": "Person",
         "name": "EndlessPeak",
@@ -499,7 +507,7 @@
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>4分钟阅读时长</span>
+    <span>5分钟阅读时长</span>
   </div>
 
   
@@ -546,13 +554,13 @@ GNU Compile Collection
 <p>语言选项</p>
 <div class="src src-text">
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">  -ansi	支持符合ANSI标准的C语言程序
-</span></span><span class="line"><span class="cl">  -x      用户可以输出希望gcc处理的语言</span></span></code></pre></div>
+</span></span><span class="line"><span class="cl">  -x	用户可以输出希望gcc处理的语言</span></span></code></pre></div>
 </div>
 <p>对 GCC 的 <code class="verbatim">-x</code> 功能说明：</p>
 <ol>
 <li>可以用该功能调用 GCC 针对不同语言的编译前端处理不同的代码，支持 <code class="verbatim">c/c++/assembly</code> 等三种语言</li>
 <li>
-<p><code>-x c++</code> 可以处理 C++代码</p>
+<p><code>-x c++</code> 可以处理 C++代码，但是有以下内容需要注意：</p>
 <ol>
 <li>gcc 默认不会链接 C++的标准库，需要 <code>-lstdc++</code> 才能正常编译</li>
 <li>gcc 不会自动定义 <code>__cplusplus</code> 宏，需要手动添加 <code>-D__cplusplus</code> 参数</li>
@@ -613,7 +621,8 @@ Preprocessing
 <div id="outline-text-headline-2" class="outline-text-2">
 <p>处理宏定义和 <code class="verbatim">include</code> ，去除所有的注释。 <strong>不会对语法错误进行检查。</strong></p>
 <p>
-如果需要知道 <code>#inlcude &lt;...&gt;</code> 的搜素路径，可以在预处理时加上 <code>-v</code> 选项，显示搜索列表的详情。
+如果需要知道 <code>#inlcude &lt;...&gt;</code> 的搜素路径，可以在预处理时加上 <code>-v</code> 选项，显示搜索列表的详情。</p>
+<p>
 特别地，如果仅执行 <code>gcc -v</code> ，则得到的是 gcc 的版本。</p>
 <div class="src src-shell">
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">  gcc -E a.c -o a.i
@@ -637,39 +646,6 @@ Native Compilation
 </div>
 <p>
 广义上编译指一直到生成 <strong>可重定位</strong> 的目标代码。</p>
-<p>
-考虑下面的两个源代码文件：</p>
-<p>
-A.cpp：</p>
-<div class="src src-cpp">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">  <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>  <span class="k">extern</span> <span class="kt">int</span> <span class="n">shared</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="k">extern</span> <span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="kt">int</span> <span class="o">*</span><span class="n">b</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">  <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="n">swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">shared</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">b</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span></span></span></code></pre></div>
-</div>
-<p>
-B.cpp：</p>
-<div class="src src-c++">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">shared</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span> <span class="n">b</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">      <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="o">*</span><span class="n">a</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="p">,</span><span class="o">*</span><span class="n">a</span> <span class="o">=</span>  <span class="o">*</span><span class="n">b</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="p">,</span><span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span></span></span></code></pre></div>
-</div>
-<p>
-编译上面两个程序的命令是：</p>
-<div class="src src-shell">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">  g++ -c A.cpp -o A.o
-</span></span><span class="line"><span class="cl">  g++ -c B.cpp -o B.o</span></span></code></pre></div>
-</div>
 </div>
 </div>
 <div id="outline-container-headline-5" class="outline-3">
@@ -689,15 +665,51 @@ Cross Compilation
 Assembly
 </h2>
 <div id="outline-text-headline-6" class="outline-text-2">
-<p>生成可重定位的目标代码。</p>
+<p>使用 <code>-C</code> 参数生成可重定位的目标代码。</p>
 <div class="src src-shell">
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">  gcc -c a.s -o a.o</span></span></code></pre></div>
 </div>
 <p>
-可重定位的目标代码不能直接执行，可使用~file~命令查看：</p>
+可重定位的目标代码不能直接执行，可使用 <code>file</code> 命令查看：</p>
 <div class="src src-shell">
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">  file a.o
 </span></span><span class="line"><span class="cl">  a.o: ELF 64-bit LSB relocatable</span></span></code></pre></div>
+</div>
+<p>
+考虑下面的两个 C++ 源代码文件：
+A.cpp：</p>
+<div class="src src-cpp">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">  <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>  <span class="cp">#include</span> <span class="cpf">&#34;B.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>  <span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">      <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">shared</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">shared</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span></span></span></code></pre></div>
+</div>
+<p>
+B.h:</p>
+<div class="src src-cpp">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">  <span class="k">extern</span> <span class="kt">int</span> <span class="n">shared</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span> <span class="n">b</span><span class="p">);</span></span></span></code></pre></div>
+</div>
+<p>
+B.cpp：</p>
+<div class="src src-cpp">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">  <span class="cp">#include</span> <span class="cpf">&#34;B.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>  <span class="kt">int</span> <span class="n">shared</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span><span class="o">*</span> <span class="n">b</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">      <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="o">*</span><span class="n">a</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">,</span><span class="o">*</span><span class="n">a</span> <span class="o">=</span>  <span class="o">*</span><span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">,</span><span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span></span></span></code></pre></div>
+</div>
+<p>
+编译上面两个程序的命令是：</p>
+<div class="src src-shell">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">  g++ -c B.cpp -o B.o
+</span></span><span class="line"><span class="cl">  g++ -c A.cpp -o A.o</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -707,42 +719,72 @@ Linking
 </h2>
 <div id="outline-text-headline-7" class="outline-text-2">
 <p>将各个可重定位的目标代码与启动代码组合起来。</p>
-<div id="outline-container-headline-8" class="outline-3">
-<h3 id="headline-8">
-Linking Type
-</h3>
-<div id="outline-text-headline-8" class="outline-text-3">
-<p>链接分为静态链接和动态链接两种，默认为动态链接，不必指明链接方式，可以添加需要链接的库文件参数；静态链接则均需显式说明。</p>
 <div class="src src-shell">
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">gcc a.o -o a</span></span></code></pre></div>
 </div>
-</div>
-</div>
-<div id="outline-container-headline-9" class="outline-3">
-<h3 id="headline-9">
-Dynamic Linking
-</h3>
-<div id="outline-text-headline-9" class="outline-text-3">
-<div id="outline-container-headline-10" class="outline-4">
-<h4 id="headline-10">
-Concept
-</h4>
-<div id="outline-text-headline-10" class="outline-text-4">
-<p>动态链接是运行时链接，把调用所需要的动态库的模块和在库中的*位置信息*链接进目标程序，程序运⾏的时候寻找相应的库文件，并从中执行相应的代码，因此需要被链接的动态库文件的支持 。</p>
 <p>
-<code class="verbatim">gcc</code> 和 <code class="verbatim">g++</code> 都是默认使用动态链接的。因此不需要考虑额外的命令。</p>
-<p>
-使用 <code class="verbatim">ldd</code> 来检查二进制程序依赖的动态库。</p>
-<p>
-编译上面两个程序并运行：</p>
+例如，将上面两个程序的目标代码组合并运行：</p>
 <div class="src src-shell">
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">g++ A.o B.o -o a1</span></span></code></pre></div>
 </div>
 <p>
-查看该程序依赖的动态链接库：</p>
+链接分为静态链接和动态链接两种，默认为动态链接，不必指明链接方式，可以添加需要链接的库文件参数；静态链接则均需显式说明。</p>
+<p>
+需要注意的是，无论是静态链接还是动态链接，链接的目标都是 <strong>库文件</strong> 而不是 <strong>目标文件</strong> 。</p>
+<div id="outline-container-headline-8" class="outline-3">
+<h3 id="headline-8">
+Dynamic Linking
+</h3>
+<div id="outline-text-headline-8" class="outline-text-3">
+<div id="outline-container-headline-9" class="outline-4">
+<h4 id="headline-9">
+Concept
+</h4>
+<div id="outline-text-headline-9" class="outline-text-4">
+<p>动态链接是运行时链接，把调用所需要的动态库(或称为共享库)的模块和在库中的*位置信息*链接进目标程序，程序运⾏的时候寻找相应的库文件，并从中执行相应的代码，因此需要被链接的动态库文件的支持 。</p>
+<p>
+<code class="verbatim">gcc</code> 和 <code class="verbatim">g++</code> 都是默认使用动态链接的。因此不需要考虑额外的命令。</p>
+</div>
+</div>
+<div id="outline-container-headline-10" class="outline-4">
+<h4 id="headline-10">
+Generate
+</h4>
+<div id="outline-text-headline-10" class="outline-text-4">
+<p>生成动态库的方法如下：</p>
+<ol>
+<li>准备好源文件和其对应的头文件，源文件可以有多个，头文件数量可以和源文件数量不同，也可以和编译出的库文件数量不同；</li>
+<li>
+<p>使用下面的命令编译动态库： </p>
+<div class="src src-shell">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">  g++ B.cpp -shared -fPIC -o libB.so</span></span></code></pre></div>
+</div>
+<p>需要注意：</p>
+<ol>
+<li><code>-shared</code> 表明编译的是共享库</li>
+<li><code>-fPIC</code> 表明指定生成位置无关代码</li>
+<li>特别地，此处绝对不能使用 <code>-c</code> 选项，否则编译结果将为可重定向的目标文件，而非共享库</li>
+</ol>
+</li>
+<li>
+<p>使用下面的命令链接：</p>
+<div class="src src-shell">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">  g++ A.cpp -L . -lB -o A</span></span></code></pre></div>
+</div>
+</li>
+<li>
+<p>由于默认动态库的链接路径为 <code class="verbatim">/usr/lib</code> ，因此从当前路径链接需要修改生成的二进制文件，可以修改 <code class="verbatim">LD_LIBRARY_PATH</code> 或者使用 <code class="verbatim">patchelf</code></p>
+<div class="src src-shell">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">  patchelf --add-rpath . A</span></span></code></pre></div>
+</div>
+</li>
+<li>
+<p>使用 <code class="verbatim">ldd</code> 来检查二进制程序依赖的动态库。</p>
 <div class="src src-shell">
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ldd ./a1</span></span></code></pre></div>
 </div>
+</li>
+</ol>
 </div>
 </div>
 <div id="outline-container-headline-11" class="outline-4">
@@ -778,29 +820,56 @@ Static Linking
 Concept
 </h4>
 <div id="outline-text-headline-14" class="outline-text-4">
-<p>静态链接是编译时链接，把源⽂件中⽤到的静态库（归档文件）直接放进⽬标程序，程序运⾏的时候不再需要其它的库⽂件。</p>
-<p>
-使用 <code class="verbatim">-static</code> 参数显式指定使用静态链接的方式。</p>
-<div class="src src-shell">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">g++ -static A.o B.o -o a2</span></span></code></pre></div>
-</div>
-<p>
-由于是静态链接，所有依赖的库均已与该程序一起合并成了一个二进制文件，因此无法查看依赖的库。</p>
+<p>静态链接是编译时链接，把源文件中用到的静态库（归档文件）直接放进目标程序，程序运行的时候不再需要其它的库文件。</p>
 </div>
 </div>
 <div id="outline-container-headline-15" class="outline-4">
 <h4 id="headline-15">
-Advantage
+Generate
 </h4>
 <div id="outline-text-headline-15" class="outline-text-4">
-<p>直接执行程序而不需要链接，没有性能损失。</p>
+<p>生成静态库的方法如下：</p>
+<ol>
+<li>
+<p>编译代码为目标文件</p>
+<div class="src src-shell">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">  g++ -c B.cpp -o B.o</span></span></code></pre></div>
+</div>
+</li>
+<li>
+<p>将目标文件生成静态库(归档文件)</p>
+<ol>
+<li><code>r</code> 将文件插入到静态库中，如果文件已经存在于库中，则替换原有的文件</li>
+<li><code>c</code> 创建一个静态库，如果库文件不存在，则创建一个新的库文件</li>
+<li><code>s</code> 为静态库中的成员文件创建符号表，这对于链接时解析符号非常重要</li>
+</ol>
+<div class="src src-shell">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">  ar rcs libB.a B.o</span></span></code></pre></div>
+</div>
+</li>
+<li>
+<p>使用 <code class="verbatim">-static</code> 参数显式指定使用静态链接的方式。</p>
+<div class="src src-shell">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">  g++ -static A.o -L . -lB -o a2</span></span></code></pre></div>
+</div>
+</li>
+</ol>
+<p>静态链接下，所有依赖的库均已与该程序一起合并成了一个二进制文件，因此无法查看依赖的库。</p>
 </div>
 </div>
 <div id="outline-container-headline-16" class="outline-4">
 <h4 id="headline-16">
-Disadvantage
+Advantage
 </h4>
 <div id="outline-text-headline-16" class="outline-text-4">
+<p>直接执行程序而不需要链接，没有性能损失。</p>
+</div>
+</div>
+<div id="outline-container-headline-17" class="outline-4">
+<h4 id="headline-17">
+Disadvantage
+</h4>
+<div id="outline-text-headline-17" class="outline-text-4">
 <ol>
 <li>对同一个函数的调用会在内存中产生多份拷贝，即使是相同的程序的多个运行实例（即进程）也会如此；
 这是因为不同的进程有各自的地址空间，入口不同，程序不知道如何共享；</li>
@@ -814,11 +883,11 @@ Disadvantage
 </div>
 </div>
 </div>
-<div id="outline-container-headline-17" class="outline-2">
-<h2 id="headline-17">
+<div id="outline-container-headline-18" class="outline-2">
+<h2 id="headline-18">
 Loading
 </h2>
-<div id="outline-text-headline-17" class="outline-text-2">
+<div id="outline-text-headline-18" class="outline-text-2">
 <p>运行生成的可执行文件。</p>
 <div class="src src-shell">
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">  ./a</span></span></code></pre></div>
@@ -833,26 +902,29 @@ Loading
 如需检查返回值，使用命令 <code>echo $?</code> ，它将显示上次程序执行完后的返回值。</p>
 </div>
 </div>
-<div id="outline-container-headline-18" class="outline-2">
-<h2 id="headline-18">
+<div id="outline-container-headline-19" class="outline-2">
+<h2 id="headline-19">
 Optimization
 </h2>
-<div id="outline-text-headline-18" class="outline-text-2">
-<div id="outline-container-headline-19" class="outline-3">
-<h3 id="headline-19">
+<div id="outline-text-headline-19" class="outline-text-2">
+<p>编译的过程并非每一步命令都是必须的，可以跳过一些步骤，编译器会自动处理。</p>
+<div id="outline-container-headline-20" class="outline-3">
+<h3 id="headline-20">
 Pre/Compile/Assembly
 </h3>
-<div id="outline-text-headline-19" class="outline-text-3">
+<div id="outline-text-headline-20" class="outline-text-3">
+<p>从源文件快速生成目标文件的命令：</p>
 <div class="src src-shell">
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">gcc -c a.c -o a.o</span></span></code></pre></div>
 </div>
 </div>
 </div>
-<div id="outline-container-headline-20" class="outline-3">
-<h3 id="headline-20">
+<div id="outline-container-headline-21" class="outline-3">
+<h3 id="headline-21">
 Rapid Generation
 </h3>
-<div id="outline-text-headline-20" class="outline-text-3">
+<div id="outline-text-headline-21" class="outline-text-3">
+<p>从源文件快速生成可执行文件的命令：</p>
 <div class="src src-shell">
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">gcc a.c -o a</span></span></code></pre></div>
 </div>
@@ -930,11 +1002,11 @@ Rapid Generation
 </li>
 <li><a href="#headline-7">Linking</a>
 <ul>
-<li><a href="#headline-8">Linking Type</a>
-</li>
-<li><a href="#headline-9">Dynamic Linking</a>
+<li><a href="#headline-8">Dynamic Linking</a>
 <ul>
-<li><a href="#headline-10">Concept</a>
+<li><a href="#headline-9">Concept</a>
+</li>
+<li><a href="#headline-10">Generate</a>
 </li>
 <li><a href="#headline-11">Advantage</a>
 </li>
@@ -946,21 +1018,23 @@ Rapid Generation
 <ul>
 <li><a href="#headline-14">Concept</a>
 </li>
-<li><a href="#headline-15">Advantage</a>
+<li><a href="#headline-15">Generate</a>
 </li>
-<li><a href="#headline-16">Disadvantage</a>
+<li><a href="#headline-16">Advantage</a>
+</li>
+<li><a href="#headline-17">Disadvantage</a>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#headline-17">Loading</a>
+<li><a href="#headline-18">Loading</a>
 </li>
-<li><a href="#headline-18">Optimization</a>
+<li><a href="#headline-19">Optimization</a>
 <ul>
-<li><a href="#headline-19">Pre/Compile/Assembly</a>
+<li><a href="#headline-20">Pre/Compile/Assembly</a>
 </li>
-<li><a href="#headline-20">Rapid Generation</a>
+<li><a href="#headline-21">Rapid Generation</a>
 </li>
 </ul>
 </li>
