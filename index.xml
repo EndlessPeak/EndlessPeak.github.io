@@ -574,7 +574,7 @@
       <pubDate>Mon, 20 Nov 2023 00:00:00 +0000</pubDate>
       
       <guid>https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras/</guid>
-      <description>Raise 在 SLAM 中，除表示位姿(旋转)外，还需要对其进行估计和优化。然而，旋转矩阵自身带有约束(正交矩阵且行列式为 1)，此时对其进行优化显得困难。通过一定的转换</description>
+      <description>SLAM 主要是需要 一点耐心 ，以及相对应的 数学能力 。 比如说，我们注意到 \begin{equation} 33=8866128975287528^3+(-8778405442862239)^3+(-2736111468807040)^3 \end{equation} 显然成立。 Raise 在 SLAM 中，除表示位姿(旋转)外，还需要对其进行估计和优化。然而，旋转矩阵</description>
     </item>
     
     <item>
