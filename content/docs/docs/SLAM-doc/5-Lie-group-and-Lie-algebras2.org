@@ -23,7 +23,7 @@
 
 但该定义涉及矩阵的无穷次幂，难以计算。
 
-由于 $\phi$ 是三维向量，定义其模长和方向分别为 $\theta$ 和 $\boldsymbol{a}$，则 $\phi=\theta \boldsymbol{a}$，这里规定方向向量是单位向量，则 $\boldsymbol{a}=1$
+由于 $\phi$ 是三维向量，定义其模长和方向分别为 $\theta$ 和 $\boldsymbol{a}$，则 $\phi=\theta \boldsymbol{a}$，这里规定方向向量是单位向量，则 $\parallel \boldsymbol{a}\parallel=1$
 
 对于 $\boldsymbol{a}^{\wedge}$，有以下性质:
 \begin{equation}
@@ -47,7 +47,7 @@ a_3 & 0 & -a_1 \\
 \begin{aligned}
 \exp\left(\phi^{\wedge}\right)& =\exp{(\theta \boldsymbol{a}^{\wedge})}=\sum_{n=0}^{\infty}\frac{1}{n!}{(\theta \boldsymbol{a}^{\wedge})}^{n}  \\
 &=I+\theta \boldsymbol{a}^{\wedge}+\frac1{2!}\theta^{2}\boldsymbol{a}^{\wedge}\boldsymbol{a}^{\wedge}+\frac1{3!}\theta^{3}\boldsymbol{a}^{\wedge}\boldsymbol{a}^{\wedge}\boldsymbol{a}^{\wedge}+\frac1{4!}\theta^{4}\left(\boldsymbol{a}^{\wedge}\right)^{4}+... \\
-&=aa^{\mathrm{T}}-\boldsymbol{a}^{\wedge}\boldsymbol{a}^{\wedge}+\theta \boldsymbol{a}^{\wedge}+\frac{1}{2!}\theta^{2}\boldsymbol{a}^{\wedge}\boldsymbol{a}^{\wedge}-\frac{1}{3!}\theta^{3}\boldsymbol{a}^{\wedge}-\frac{1}{4!}\theta^{4}\big(\boldsymbol{a}^{\wedge}\big)^{2}+... \\
+&=\boldsymbol{a}\boldsymbol{a}^{\mathrm{T}}-\boldsymbol{a}^{\wedge}\boldsymbol{a}^{\wedge}+\theta \boldsymbol{a}^{\wedge}+\frac{1}{2!}\theta^{2}\boldsymbol{a}^{\wedge}\boldsymbol{a}^{\wedge}-\frac{1}{3!}\theta^{3}\boldsymbol{a}^{\wedge}-\frac{1}{4!}\theta^{4}\big(\boldsymbol{a}^{\wedge}\big)^{2}+... \\
 &=\boldsymbol{a}\boldsymbol{a}^{\mathrm{T}}+\underbrace{\left(\theta-\frac{1}{3!}\theta^3+\frac{1}{5!}\theta^5-...\right)}_{\sin\theta}\boldsymbol{a}^{\wedge}-\underbrace{\left(1-\frac{1}{2!}\theta^2+\frac{1}{4!}\theta^4-...\right)}_{\cos\theta}\boldsymbol{a}^{\wedge}\boldsymbol{a}^{\wedge} \\
 &=\boldsymbol{a}^{\wedge}\boldsymbol{a}^{\wedge}+I+\sin\theta \boldsymbol{a}^{\wedge}-\cos\theta \boldsymbol{a}^{\wedge}\boldsymbol{a}^{\wedge} \\
 &=(1-\cos\theta)\boldsymbol{a}^\wedge\boldsymbol{a}^\wedge+\boldsymbol{I}+\sin\theta\boldsymbol{a}^\wedge  \\
@@ -61,7 +61,7 @@ a_3 & 0 & -a_1 \\
 
 该公式与罗德里格斯公式形式完全相同。这说明 $\mathfrak{so}(3)$ 是由所谓 *旋转向量* 组成的空间，而 *指数映射即罗德里格斯公式* 。
 
-通过它们可以把 $\mathfrak{so}(3)$ 中任意一个向量对应到位于SO(3)中的旋转矩阵，反之，如果定义对数映射，也能把SO(3)中的元素对应到 $\mathfrak{so}(3)$ 中
+通过它们可以把 $\mathfrak{so}(3)$ 中任意一个向量对应到位于 SO(3)中的旋转矩阵，反之，如果定义对数映射，也能把 SO(3)中的元素对应到 $\mathfrak{so}(3)$ 中
 \begin{equation}
 \phi = \ln (\boldsymbol{R})^{\vee}=\left(\sum_{n=0}^{\infty} \frac{(-1)^n}{n+1}(\boldsymbol{R}-\boldsymbol{I})^{n+1} \right)^{\vee} 
 \end{equation}
@@ -73,7 +73,7 @@ a_3 & 0 & -a_1 \\
 
 根据迹的性质分别求解转角和转轴。
 
-指数映射是满射，但不是单射，即每个SO(3)中的元素都能找到 $\mathfrak{so}(3)$ 对应，但是可能存在多个 $\mathfrak{so}(3)$ 元素对应同一个SO(3)。
+指数映射是满射，但不是单射，即每个 SO(3)中的元素都能找到 $\mathfrak{so}(3)$ 对应，但是可能存在多个 $\mathfrak{so}(3)$ 元素对应同一个 SO(3)。
 
 但是如果把旋转角度固定在 $\pm \pi$ 之间，那么李群和李代数是一一对应的。
 
@@ -97,7 +97,7 @@ SE(3)对应的李代数 $\mathfrak{se}(3)$ 的指数映射形式如下：
 \end{aligned}
 \end{equation}
 
-可以看到，$\boldsymbol{R}$ 是SO(3)中的元素，与 $\mathfrak{se}(3)$ 中的旋转部分 $\phi$ 对应，而 $\boldsymbol{J}$ 则满足
+可以看到，$\boldsymbol{R}$ 是 SO(3)中的元素，与 $\mathfrak{se}(3)$ 中的旋转部分 $\phi$ 对应，而 $\boldsymbol{J}$ 则满足
 \begin{equation}
 \boldsymbol{J}=\frac{\sin\theta}\theta I+\left(1-\frac{\sin\theta}\theta\right)aa^{T}+\frac{1-\cos\theta}\theta a^{\wedge}
 \end{equation}
@@ -113,8 +113,8 @@ SE(3)对应的李代数 $\mathfrak{se}(3)$ 的指数映射形式如下：
 #+CAPTION: SO(3) SE(3)及其李代数对应关系图
 [[https://z1.ax1x.com/2023/11/22/pid9J1J.png]]
 
-* Differentiation & Pertubation Model 
-以上讨论SO(3)和SE(3)的关系(即李群与李代数的关系)，但在SO(3)完成两个矩阵乘法的时候，李代数 $\mathfrak{so}(3)$ 上怎样改变？
+* Differentiation
+以上讨论 SO(3)和 SE(3)的关系(即李群与李代数的关系)，但在 SO(3)完成两个矩阵乘法的时候，李代数 $\mathfrak{so}(3)$ 上怎样改变？
 
 ** BCH Equation
 矩阵的指数函数不满足
@@ -134,7 +134,7 @@ SE(3)对应的李代数 $\mathfrak{se}(3)$ 的指数映射形式如下：
 
 BCH 公式指出，当处理两个矩阵的指数之积时，它们会产生李括号余项。
 
-考虑SO(3)上的李代数 $\ln(\exp(\phi_1^{\wedge})\exp(\phi_2^{\wedge}))^{\vee}$，当 $\phi_1$ 或 $\phi_2$ 为小量时，小量二次以上的项都可以被忽略掉。此时
+考虑 SO(3)上的李代数 $\ln(\exp(\phi_1^{\wedge})\exp(\phi_2^{\wedge}))^{\vee}$，当 $\phi_1$ 或 $\phi_2$ 为小量时，小量二次以上的项都可以被忽略掉。此时
 \begin{equation}
 \left.\ln\left(\exp\left(\phi_1^{\wedge}\right)\exp\left(\phi_2^{\wedge}\right)\right)^{\vee}\approx\left\{\begin{array}{ll}J_{l}(\phi_2)^{-1}\phi_1+\phi_2&\text{当}\phi_1\text{为小量},\\J_{r}(\phi_1)^{-1}\phi_2+\phi_1&\text{当}\phi_2\text{为小量}.\end{array}\right.\right.
 \end{equation}
@@ -145,7 +145,7 @@ BCH 公式指出，当处理两个矩阵的指数之积时，它们会产生李�
 
 于是，李代数在 BCH 近似下，分成了左乘近似和右乘近似两种，在使用时须注意使用的是左乘模型还是右乘模型。
 
-左乘BCH近似雅可比 $\boldsymbol{J}_l$
+左乘 BCH 近似雅可比 $\boldsymbol{J}_l$
 \begin{equation}
 J_{l}=J =\frac{\sin\theta}\theta I+\left(1-\frac{\sin\theta}\theta\right)aa^{\mathrm{T}}+\frac{1-\cos\theta}\theta a^{\wedge}
 \end{equation}
@@ -177,7 +177,7 @@ BCH 近似的意义:
 \exp\left(\left(\phi+\Delta\phi\right)^{\wedge}\right)=\exp\left(\left(J_{l}\Delta\phi\right)^{\wedge}\right)\exp\left(\phi^{\wedge}\right)=\exp\left(\phi^{\wedge}\right)\exp\left(\left(J_{r}\Delta\phi\right)^{\wedge}\right)
 \end{equation}
 
-对于SE(3)，也有类似的BCH近似
+对于 SE(3)，也有类似的 BCH 近似
 \begin{equation}
 \begin{aligned}\exp\left(\Delta\xi^{\wedge}\right)\exp\left(\xi^{\wedge}\right)&\approx\exp\left(\left(\mathcal{J}_{l}^{-1}\Delta\xi+\xi\right)^{\wedge}\right),\\\\\exp\left(\xi^{\wedge}\right)\exp\left(\Delta\xi^{\wedge}\right)&\approx\exp\left(\left(\mathcal{J}_{r}^{-1}\Delta\xi+\xi\right)^{\wedge}\right).\end{aligned}
 \end{equation}
@@ -185,7 +185,7 @@ BCH 近似的意义:
 ** SO(3) Lie Algebras Differentiation Basic
 讨论一个带有李代数的函数，如何关于该李代数求导。
 
-在SLAM 中要估计一个相机的位置和姿态，该位姿是由SO(3) 上的旋转矩阵或SE(3) 上的变
+在 SLAM 中要估计一个相机的位置和姿态，该位姿是由 SO(3) 上的旋转矩阵或 SE(3) 上的变
 换矩阵描述。
 
 设某个时刻位姿为 $T$ ，它观察到一个世界坐标位于 $p$ 的点，产生了观测数据 $z$ 。那么，由坐标变换关系知：
@@ -216,11 +216,11 @@ e=z-Tp
 2. 对李群左乘或右乘微小扰动，然后对该扰动求导，分为左扰动和右扰动。
 
 ** SO(3) Lie Algebras Differentiation Process
-考虑SO(3) 上，假设我们对一个空间点 $p$ 进行了旋转，得到了 $Rp$。
+考虑 SO(3) 上，假设我们对一个空间点 $p$ 进行了旋转，得到了 $Rp$。
 
 现在，要计算旋转之后点的坐标相对于旋转的导数，记为 $\frac{\partial\left(Rp\right)}{\partial R}$ 
 
-由于SO(3) 没有加法，所以该导数无法按照导数的定义进行计算。根据旋转矩阵 $R$ 对应的李代数 $\phi$ 转而计算 $\frac{\partial\left(\exp\left(\phi^{\wedge}\right)p\right)}{\partial\phi}$
+由于 SO(3) 没有加法，所以该导数无法按照导数的定义进行计算。根据旋转矩阵 $R$ 对应的李代数 $\phi$ 转而计算 $\frac{\partial\left(\exp\left(\phi^{\wedge}\right)p\right)}{\partial\phi}$
 
 需要注意：
 1. 严格说来，在矩阵微分中，只能求行向量关于列向量的导数，所得结果是一个矩阵
@@ -239,7 +239,7 @@ e=z-Tp
 &=\lim_{\delta\phi\to\mathbf{0}}\frac{-(\exp\left(\phi^{\wedge}\right)p)^{\wedge}J_{l}\delta\phi}{\delta\phi}=-(Rp)^{\wedge}J_{l}.
 \end{aligned}
 \end{equation}
-其中，第2 行的近似为BCH 线性近似，第3行为泰勒展开舍去高阶项后的近似（但由于取了极限，可以写等号），第4 行至第5 行将反对称符号看作叉积，交换之后变号。
+其中，第 2 行的近似为 BCH 线性近似，第 3 行为泰勒展开舍去高阶项后的近似（但由于取了极限，可以写等号），第 4 行至第 5 行将反对称符号看作叉积，交换之后变号。
 
 旋转后的点相对于李代数的导数为
 \begin{equation}
@@ -248,8 +248,9 @@ e=z-Tp
 
 然而这里仍然含有形式复杂的 $\boldsymbol{J}_l$
 
+* Pertubation Model 
 ** SO(3) Pertubation Model
-另一种求导方式是对R 进行一次扰动 $\delta R$，看结果相对于扰动的变化率。这个扰动可以乘在左边也可以乘在右边，最后结果会有一点儿微小的差异
+另一种求导方式是对 R 进行一次扰动 $\delta R$，看结果相对于扰动的变化率。这个扰动可以乘在左边也可以乘在右边，最后结果会有一点儿微小的差异
 
 以左扰动为例。设左扰动ΔR 对应的李代数为 $\phi$，对 $\phi$ 求导，即
 \begin{equation}
@@ -263,7 +264,7 @@ e=z-Tp
 这里相比于直接对李代数求导，省略了雅可比 $\boldsymbol{J}_l$ 的计算。
 
 ** SE(3) Pertubation Model
-最后，讨论SE(3)上的扰动模型
+最后，讨论 SE(3)上的扰动模型
 
 假设某空间点 $p$ 经过一次变换 $T$ (对应李代数为 $\xi$ ),得到 $Tp^\mathrm{o}$，给 $T$ 左乘一个扰动 $\Delta T=\exp\left(\delta\xi^\wedge\right)$，设扰动项的李代数为 $\delta\xi=[\delta\rho,\delta\phi]^{\mathrm{T}}$，则
 \begin{equation}

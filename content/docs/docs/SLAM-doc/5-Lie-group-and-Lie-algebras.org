@@ -7,6 +7,14 @@
 #+WEIGHT: 6
 #+Description: 本文记录了李群和李代数的相关概念、性质。
 
+#+begin_quote
+SLAM 主要是需要 *一点耐心* ，以及相对应的 *数学能力* 。
+比如说，我们注意到
+\begin{equation}
+33=8866128975287528^3+(-8778405442862239)^3+(-2736111468807040)^3
+\end{equation}
+显然成立。
+#+end_quote
 * Raise
 在 SLAM 中，除表示位姿(旋转)外，还需要对其进行估计和优化。然而，旋转矩阵自身带有约束(正交矩阵且行列式为 1)，此时对其进行优化显得困难。通过一定的转换关系，可以把带约束的优化问题转为无约束的优化问题。我们将这种转换称为李群——李代数转换关系。
 
@@ -176,7 +184,7 @@ S_{1}S_{2} = \begin{bmatrix} s_{1}\mathbf{R_1} & \mathbf{t_1} \\ \mathbf{0}^{\ma
 于是$\dot{\mathbf{R}}(t)\mathbf{R}(t)^\mathrm{T}$是一个反对称矩阵。对每个向量，都可以反对称化为一个反对称矩阵；反之也成立。
 
 \begin{equation}
-\left.a^{\wedge}=A=\left[\begin{array}{ccc}0&-a_3&a_2\\\\a_3&0&-a_1\\\\-a_2&a_1&0\end{array}\right.\right],\quad A^{\vee}=a
+a^{\wedge}=A=\left[\begin{array}{ccc}0&-a_3&a_2\\a_3&0&-a_1\\-a_2&a_1&0\end{array}\right],\quad A^{\vee}=a
 \end{equation}
 
 设三维向量 $\phi(t) \in \mathbb{R}^3$ 满足：
@@ -191,7 +199,7 @@ S_{1}S_{2} = \begin{bmatrix} s_{1}\mathbf{R_1} & \mathbf{t_1} \\ \mathbf{0}^{\ma
 
 即每次对旋转矩阵求一次导数，相当于左乘 $\phi^{\wedge}(t)$ 。
 
-接下来考虑 $t_0=0$ 时刻，设旋转矩阵$\mathbf{R}(0)=I$，则
+考虑简单情况，假设 $t_0=0$ 时刻，旋转矩阵$\mathbf{R}(0)=I$，则
 \begin{equation}
 \begin{aligned}
 \mathbf{R}\left(t\right) &\approx \mathbf{R}\left(t_{0}\right) + \dot{\mathbf{R}}\left(t_{0}\right)\left(t-t_{0}\right) \\
@@ -200,7 +208,9 @@ S_{1}S_{2} = \begin{bmatrix} s_{1}\mathbf{R_1} & \mathbf{t_1} \\ \mathbf{0}^{\ma
 \end{aligned}
 \end{equation}
 
-$\phi$ 反映了 $\mathbf{R}$ 的导数性质，它在 SO(3)原点附近的正切空间上，同时在 $t_0$ 附近，设 $\phi$ 保持为常数 $\phi(t_0)=\phi_0$，则
+函数 $\phi$ 反映了 $\mathbf{R}$ 的导数性质，它在 SO(3)原点附近的正切空间上，同时在单位元 $t_0$ 附近，称其为单位元是因为 $R(t_0)=I$ 。
+
+设 $\phi$ 保持为常数 $\phi(t_0)=\phi_0$，则
 \begin{equation}
 \dot{\mathbf{R}}(t)=\phi(t_0)^{\wedge}\mathbf{R}(t)=\phi_0^{\wedge}\mathbf{R}(t)
 \end{equation}
@@ -255,31 +265,43 @@ $\phi$ 反映了 $\mathbf{R}$ 的导数性质，它在 SO(3)原点附近的正�
 \forall X,Y\in\mathbb{R}^3 X\times Y\in\mathbb{R}^3
 \end{equation}
 
-然后验证双线性 $\forall X,Y,\mathbf{Z}\in\mathbb{R}^3,a,b\in\mathbb{R}$, 由叉乘的分配率可知
+然后验证双线性
+
+$\forall X,Y,Z\in\mathbb{R}^3,a,b\in\mathbb{R}$, 由叉乘的分配率可知
 
 \begin{equation}
 \begin{aligned}
-(aX+bY)\times\mathbf{Z}=a(X\times\mathbf{Z})+b(Y\times\mathbf{Z})
-\mathbf{Z}\times(a\mathbf{X}+b\mathbf{Y})=a(\mathbf{Z}\times\mathbf{X})+b(\mathbf{Z}\times\mathbf{Y})
+(aX+bY)\times Z=a(X\times Z)+b(Y\times Z)
+Z\times(aX+bY)=a(Z\times X)+b(Z\times Y)
 \end{aligned}
 \end{equation}
 
-其次验证自反性 $\forall X\in\mathbb{R}^3$，由叉乘定义可知 $X\times X=0$
+其次验证自反性
+
+$\forall X\in\mathbb{R}^3$，由叉乘定义可知 $X\times X=0$
 
 最后验证雅可比等价
-$\forall X,Y,Z\in\mathbb{R}^3$，由叉乘的定义展开计算可以得到
 
+$\forall X,Y,Z\in\mathbb{R}^3$，由叉乘的定义，展开计算可以得到
 \begin{equation}
-X\times(Y\times\mathbf{Z})+\mathbf{Z}\times(X\times Y)+Y\times(\mathbf{Z}\times X)=\mathbf{0}
+X\times(Y\times Z)=(X\cdot Z)\cdot Y-(X\cdot Y)\cdot Z
 \end{equation}
 
+因此有
+\begin{equation}
+X\times(Y\times Z)+Z\times(X\times Y)+Y\times(Z\times X)=\mathbf{0}
+\end{equation}
+
+该式类似球对称的性质。
+
 * Two Lie Algebras
+下面讨论 SO(3)和 SE(3)上的李代数。
 ** SO(3)
 记 SO(3)对应的李代数为 $\phi$，它是定义在 $\mathbb{R}^3$ 上的向量。
 
-定义 $\mathbf{\phi}$ 满足
+定义 $\mathbf{\Phi}$ 满足
 \begin{equation}
-\mathbf{\phi}=\phi^{\wedge}=\left[\begin{array}{ccc}0&-\phi_3&\phi_2\\ \phi_3 & 0 & -\phi_1 \\ -\phi_2 & \phi_1 & 0 \end{array}\right]\in\mathbb{R}^{3 \times 3}
+\mathbf{\Phi}=\phi^{\wedge}=\left[\begin{array}{ccc}0&-\phi_3&\phi_2\\ \phi_3 & 0 & -\phi_1 \\ -\phi_2 & \phi_1 & 0 \end{array}\right]\in\mathbb{R}^{3 \times 3}
 \end{equation}
 
 则两个向量 $\phi_1,\phi_2$ 的李括号为
@@ -302,8 +324,8 @@ X\times(Y\times\mathbf{Z})+\mathbf{Z}\times(X\times Y)+Y\times(\mathbf{Z}\times 
 \begin{equation}
 \begin{aligned}
 &\forall\phi_1,\phi_2,\phi_3\in\mathbb{R}^3,a,b\in\mathbb{R} \\
-\left[a\phi_{1}+b\phi_{2},\phi_{3}\right] &=[(a\Phi_{1}+b\Phi_{2})\Phi_{3}-\Phi_{3}(a\Phi_{1}+b\Phi_{2})]^{v} \\
-&=[a(\Phi_{1}\Phi_{3}-\Phi_{3}\Phi_{1})+b(\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})]^{v} \\
+\left[a\phi_{1}+b\phi_{2},\phi_{3}\right] &=[(a\Phi_{1}+b\Phi_{2})\Phi_{3}-\Phi_{3}(a\Phi_{1}+b\Phi_{2})]^{\vee} \\
+&=[a(\Phi_{1}\Phi_{3}-\Phi_{3}\Phi_{1})+b(\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})]^{\vee} \\
 &=a(\Phi_{1}\Phi_{3}-\Phi_{3}\Phi_{1})^{\vee}+b(\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})^{\vee} \\
 &=a[\phi_{1},\phi_{3}]+b[\phi_{2},\phi_{3}]
 \end{aligned}
@@ -322,17 +344,43 @@ X\times(Y\times\mathbf{Z})+\mathbf{Z}\times(X\times Y)+Y\times(\mathbf{Z}\times 
 对于 $\mathfrak{so}(3)$ 的雅可比等价
 \begin{equation}
 \begin{aligned}
-&\forall\phi,\phi_{\circ}\phi_{\circ}\in\mathbb{R}^{3} \\
+&\forall\phi_1,\phi_2,\phi_3\in\mathbb{R}^{3} \\
 \left[\phi_{1},[\phi_{2},\phi_{3}]\right]&=[\phi_{1},(\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})^{\vee}] \\
-&=[\Phi_{1}(\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})-(\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})\Phi_{1}]^{\vee}
+&=(\Phi_{1}(\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})-(\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})\Phi_{1})^{\vee}
 \end{aligned}
 \end{equation}
+
+#+begin_quote
+关于上式的详细说明：
+
+对于给定的三个旋转向量 $\phi_1, \phi_2, \phi_3 \in \mathbb{R}^3$ ，考虑李代数 $\mathfrak{so}(3)$ 中的雅可比等式。
+
+\begin{equation}
+\left[\phi_{1},[\phi_{2},\phi_{3}]\right] = [\phi_{1}, (\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})^{\vee}]
+\end{equation}
+
+这里，$[\phi_{1},[\phi_{2},\phi_{3}]]$ 表示两次李括号运算，$(\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})^{\vee}$ 表示将矩阵形式转换为向量形式（即反对称矩阵到旋转向量）。
+
+根据李括号的定义，有
+
+\begin{equation}
+[\phi_{1},[\phi_{2},\phi_{3}]] = [\phi_{1}, \Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2}]
+\end{equation}
+
+现在展开右侧的李括号运算，得到
+
+\begin{equation}
+[\phi_{1}, \Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2}] = (\Phi_1 (\Phi_2 \Phi_3 - \Phi_3 \Phi_2) - (\Phi_2 \Phi_3 - \Phi_3 \Phi_2) \Phi_1)^{\vee}
+\end{equation}
+
+因此上式成立
+#+end_quote
 
 同理
 \begin{equation}
 \begin{aligned}
-\left[\phi_{3},[\phi_{1},\phi_{2}]\right]=[\Phi_{3}(\Phi_{1}\Phi_{2}-\Phi_{2}\Phi_{1})-(\Phi_{1}\Phi_{2}-\Phi_{2}\Phi_{1})\Phi_{3}]^{\vee} \\
-\left[\phi_{2},[\phi_{3},\phi_{1}]\right]=[\Phi_{2}(\Phi_{3}\Phi_{1}-\Phi_{1}\Phi_{3})-(\Phi_{3}\Phi_{1}-\Phi_{1}\Phi_{3})\Phi_{2}]^{\vee}
+\left[\phi_{3},[\phi_{1},\phi_{2}]\right]=(\Phi_{3}(\Phi_{1}\Phi_{2}-\Phi_{2}\Phi_{1})-(\Phi_{1}\Phi_{2}-\Phi_{2}\Phi_{1})\Phi_{3})^{\vee} \\
+\left[\phi_{2},[\phi_{3},\phi_{1}]\right]=(\Phi_{2}(\Phi_{3}\Phi_{1}-\Phi_{1}\Phi_{3})-(\Phi_{3}\Phi_{1}-\Phi_{1}\Phi_{3})\Phi_{2})^{\vee}
 \end{aligned}
 \end{equation}
 
@@ -353,16 +401,16 @@ X\times(Y\times\mathbf{Z})+\mathbf{Z}\times(X\times Y)+Y\times(\mathbf{Z}\times 
 ** SE(3)
 与 $\mathfrak{so}(3)$ 相似，$\mathfrak{se}(3)$ 位于 $\mathbb{R}^6$ 空间中 
 \begin{equation}
-\mathfrak{se}(3)=\left\{\xi=\left[\begin{array}{c}\rho\\\phi\end{array}\right]\in\mathbb{R}^6,\rho\in\mathbb{R}^3,\phi\in\mathfrak{so}\left(3\right),\xi^{\wedge}=\left[\begin{array}{cc}\phi^{\wedge}&\rho\\\\\mathbf{0}^{\mathrm{T}}&0\end{array}\right]\in\mathbb{R}^{4\times4}\right\}
+\mathfrak{se}(3)=\left\{\xi=\left[\begin{array}{c}\boldsymbol{\rho}\\\phi\end{array}\right]\in\mathbb{R}^6,\boldsymbol{\rho}\in\mathbb{R}^3,\phi\in\mathfrak{so}\left(3\right),\xi^{\wedge}=\left[\begin{array}{cc}\phi^{\wedge}&\boldsymbol{\rho}\\\mathbf{0}^{\mathrm{T}}&0\end{array}\right]\in\mathbb{R}^{4\times4}\right\}
 \end{equation}
 
 把每个 $\mathfrak{se}(3)$ 元素记作 $\epsilon$ ，它是一个六维向量，
-1. 前三维为平移(不是变换矩阵中的平移)，记为 $\rho$，
+1. 前三维为平移(不是变换矩阵中的平移)，记为 $\boldsymbol{\rho}$，
 2. 后三维为旋转，记作 $\phi$，实质上是 $\mathfrak{so}(3)$ 元素
 
 此处 $\wedge$ 不再表示反对称，而是满足
 \begin{equation}
-\xi^{\wedge}=\left[\begin{array}{cc}\phi^{\wedge}&\rho\\ \mathbf{0}^{\mathrm{T}}&0\end{array}\right]\in\mathbb{R}^{4\times4}
+\xi^{\wedge}=\left[\begin{array}{cc}\phi^{\wedge}&\boldsymbol{\rho}\\ \mathbf{0}^{\mathrm{T}}&0\end{array}\right]\in\mathbb{R}^{4\times4}
 \end{equation}
 
 形式上仍然保留 $\wedge$ 和 $\vee$ 来指代从“向量到矩阵”和“从矩阵到向量”的关系，李代数 $\mathfrak{se}(3)$ 可以简单理解成一个平移加一个 $\mathfrak{so}(3)$ 构成的向量(此平移不直接是平移)
@@ -377,11 +425,11 @@ X\times(Y\times\mathbf{Z})+\mathbf{Z}\times(X\times Y)+Y\times(\mathbf{Z}\times 
 对于 $\mathfrak{se}(3)$ 封闭性，
 \begin{equation}
 \begin{aligned}
-&\forall\boldsymbol{\xi}_1,\boldsymbol{\xi}_2\in\mathbb{R}^6 \\
-[\xi_{1},\xi_{2}]& =(\xi_{1}^{\Lambda}\xi\xi_{2}^{\Lambda}-\xi_{2}^{\Lambda}\xi_{1}^{\Lambda})^{\vee}  \\
+&\forall \xi_1,\xi_2 \in \mathbb{R}^6 \\
+[\xi_{1},\xi_{2}]& =(\xi_{1}^{\wedge}\xi_{2}^{\wedge}-\xi_{2}^{\wedge}\xi_{1}^{\wedge})^{\vee}  \\
 &\left.=\left(\begin{bmatrix}\phi_1^{\wedge}&\boldsymbol{\rho}_1\\\mathbf{0}^{\mathrm{T}}&0\end{bmatrix}\right.\begin{bmatrix}\phi_2^{\wedge}&\boldsymbol{\rho}_2\\\mathbf{0}^{\mathrm{T}}&0\end{bmatrix}-\begin{bmatrix}\phi_2^{\wedge}&\boldsymbol{\rho}_2\\\mathbf{0}^{\mathrm{T}}&0\end{bmatrix}\begin{bmatrix}\phi_1^{\wedge}&\boldsymbol{\rho}_1\\\mathbf{0}^{\mathrm{T}}&0\end{bmatrix}\right)^{\vee} \\
 &\left.=\left(\begin{bmatrix}\phi_1^{\wedge}\phi_2^{\wedge}&\phi_1^{\wedge}\boldsymbol{\rho}_2\\\mathbf{0}^\mathrm{T}&0\end{bmatrix}\right.-\begin{bmatrix}\phi_2^{\wedge}\phi_1^{\wedge}&\phi_2^{\wedge}\boldsymbol{\rho}_1\\\mathbf{0}^\mathrm{T}&0\end{bmatrix}\right)^{\vee} \\
-&=\begin{bmatrix}\phi_{1}^{\wedge}\phi_{2}^{\wedge}-\phi_{2}^{\wedge}\phi_{1}^{\wedge}&\phi_{1}^{\wedge}\rho_{2}-\phi_{2}^{\wedge}\rho_{1}\\\mathbf{0}^{\mathrm{T}}&0\end{bmatrix}^{\vee}
+&=\begin{bmatrix}\phi_{1}^{\wedge}\phi_{2}^{\wedge}-\phi_{2}^{\wedge}\phi_{1}^{\wedge}&\phi_{1}^{\wedge}\boldsymbol{\rho_{2}}-\phi_{2}^{\wedge}\boldsymbol{\rho_{1}}\\\mathbf{0}^{\mathrm{T}}&0\end{bmatrix}^{\vee}
 \end{aligned}
 \end{equation}
 
@@ -399,31 +447,31 @@ X\times(Y\times\mathbf{Z})+\mathbf{Z}\times(X\times Y)+Y\times(\mathbf{Z}\times 
 \begin{equation}
 \begin{aligned}
 &\forall\xi_{1},\xi_{2},\xi_{3}\in\mathbb{R}^{6},a,b\in\mathbb{R} \\
-[a\xi_{1}+b\xi_{2},\xi_{3}]& =[(a\xi_{1}^{\Lambda}+b\xi_{2}^{\Lambda})\xi_{3}^{\Lambda}-\xi_{3}^{\Lambda}(a\xi_{1}^{\Lambda}+b\xi_{2}^{\Lambda})]^{\vee}  \\
-&=[a(\xi_{1}^{\Lambda}\xi_{3}^{\Lambda}-\xi_{3}^{\Lambda}\xi_{1}^{\Lambda})+b(\xi_{2}^{\Lambda}\xi_{3}^{\Lambda}-\xi_{3}^{\Lambda}\xi_{2}^{\Lambda})]^{\vee} \\
+[a\xi_{1}+b\xi_{2},\xi_{3}]& =[(a\xi_{1}^{\wedge}+b\xi_{2}^{\wedge})\xi_{3}^{\wedge}-\xi_{3}^{\wedge}(a\xi_{1}^{\wedge}+b\xi_{2}^{\wedge})]^{\vee}  \\
+&=[a(\xi_{1}^{\wedge}\xi_{3}^{\wedge}-\xi_{3}^{\wedge}\xi_{1}^{\wedge})+b(\xi_{2}^{\wedge}\xi_{3}^{\wedge}-\xi_{3}^{\wedge}\xi_{2}^{\wedge})]^{\vee} \\
 &=a[\xi_{1},\xi_{3}]+b[\xi_{2},\xi_{3}]
 \end{aligned}
 \end{equation}
 
 对于 $\mathfrak{se}(3)$ 的自反性
 \begin{equation}
-\forall\xi\in\mathbb{R}^6,[\xi,\xi]=(\xi^\Lambda\xi^\Lambda-\xi^\Lambda\xi^\Lambda)^\vee=\mathbf{0}
+\forall\xi\in\mathbb{R}^6,[\xi,\xi]=(\xi^\wedge\xi^\wedge-\xi^\wedge\xi^\wedge)^\vee=\mathbf{0}
 \end{equation}
 
 对于 $\mathfrak{se}(3)$ 的雅可比等价性
 \begin{equation}
 \begin{aligned}
 &\forall\xi_{1},\xi_{2},\xi_{3}\in\mathbb{R}^{6},a,b\in\mathbb{R} \\
-\left[\xi_{1},[\xi_{2},\xi_{3}]\right]& =[\xi_{1},(\xi_{2}^{\Lambda}\xi_{3}^{\Lambda}-\xi_{3}^{\Lambda}\xi_{2}^{\Lambda})^{\vee}]  \\
-&=[\xi_{1}^{\Lambda}(\xi_{2}^{\Lambda}\xi_{3}^{\Lambda}-\xi_{3}^{\Lambda}\xi_{2}^{\Lambda})-(\xi_{2}^{\Lambda}\xi_{3}^{\Lambda}-\xi_{3}^{\Lambda}\xi_{2}^{\Lambda})\xi_{1}^{\Lambda}]^{\vee}
+\left[\xi_{1},[\xi_{2},\xi_{3}]\right]& =[\xi_{1},(\xi_{2}^{\wedge}\xi_{3}^{\wedge}-\xi_{3}^{\wedge}\xi_{2}^{\wedge})^{\vee}]  \\
+&=[\xi_{1}^{\wedge}(\xi_{2}^{\wedge}\xi_{3}^{\wedge}-\xi_{3}^{\wedge}\xi_{2}^{\wedge})-(\xi_{2}^{\wedge}\xi_{3}^{\wedge}-\xi_{3}^{\wedge}\xi_{2}^{\wedge})\xi_{1}^{\wedge}]^{\vee}
 \end{aligned}
 \end{equation}
 
 同理可得
 \begin{equation}
 \begin{aligned}
-\left[\xi_{3},[\xi_{1},\xi_{2}]\right]=[\xi_{3}^{\Lambda}(\xi_{1}^{\Lambda}\xi_{2}^{\Lambda}-\xi_{2}^{\Lambda}\xi_{1}^{\Lambda})-(\xi_{1}^{\Lambda}\xi_{2}^{\Lambda}-\xi_{2}^{\Lambda}\xi_{1}^{\Lambda})\xi_{3}^{\Lambda}]^{V} \\
-\left[\xi_{2},[\xi_{3},\xi_{1}]\right]=[\xi_{2}^{\Lambda}(\xi_{3}^{\Lambda}\xi_{1}^{\Lambda}-\xi_{1}^{\Lambda}\xi_{3}^{\Lambda})-(\xi_{3}^{\Lambda}\xi_{1}^{\Lambda}-\xi_{1}^{\Lambda}\xi_{3}^{\Lambda})\xi_{2}^{\Lambda}]^{V}
+\left[\xi_{3},[\xi_{1},\xi_{2}]\right]=[\xi_{3}^{\wedge}(\xi_{1}^{\wedge}\xi_{2}^{\wedge}-\xi_{2}^{\wedge}\xi_{1}^{\wedge})-(\xi_{1}^{\wedge}\xi_{2}^{\wedge}-\xi_{2}^{\wedge}\xi_{1}^{\wedge})\xi_{3}^{\wedge}]^{\vee} \\
+\left[\xi_{2},[\xi_{3},\xi_{1}]\right]=[\xi_{2}^{\wedge}(\xi_{3}^{\wedge}\xi_{1}^{\wedge}-\xi_{1}^{\wedge}\xi_{3}^{\wedge})-(\xi_{3}^{\wedge}\xi_{1}^{\wedge}-\xi_{1}^{\wedge}\xi_{3}^{\wedge})\xi_{2}^{\wedge}]^{\vee}
 \end{aligned}
 \end{equation}
 
