@@ -1,4 +1,4 @@
-#+TITLE: Linux KDE  桌面使用指南
+#+TITLE: Linux KDE 桌面使用指南
 #+DATE: <2023-03-18 Sat>
 #+AUTHOR: EndlessPeak
 #+TOC: true
@@ -7,7 +7,28 @@
 #+WEIGHT: 6
 #+Description: 本文记录在Linux KDE桌面环境下的一些常用配置过程。
 
+* Plasma Configuration
+如果 KDE 的外观设置下载缓慢，可以在 [[https://store.kde.org/][KDE 商店]] 中下载。
+** Global Theme
+1. 全局主题安装在 =~/.local/share/plasma/look-and-feel= 下，其包括 =layouts= 和 =splash= 等部分
+2. 一般地，安装全局主题后会自动配置 Plasma 主题和 Colors 等部分
+** Plasma Theme
+Plasma 主题安装在 =~/.local/share/plasma/desktoptheme= 下
+** Colors
+Colors 安装在 =~/.local/share/color-schemes= 下
+** Splash Screen
+1. 开机加载画面安装在 =~/.local/share/plasma/look-and-feel= 的全局主题包中 =splash= 下
+2. 其中 =background.png= 是加载画面的背景图，=logo.svg= 是图片中心的图标
+** Icon
+1. NixOS 的主题图标在 =/nix/store/<sha256>-nixos-icons-<date>/share/icons= 下，可以用 =fuzzy file finder= 寻找
+2. plasma 的图标在 =~/.local/share/icons= 下
+** Backgrounds
+1. 记录壁纸的配置文件在 =~/.config/plasmarc= 中
+2. 背景可在 [[https://www.freepik.com/][FreePik]] 中下载。
+
 * Dolphin
+** Mode
+按空格可以进入多选模式，再按依次推出该模式
 ** Panel
 1. Dolphin 左侧视图为 panel，通过 ="View"-"Show panels"= 可以查看所有的 panel.
    1. places 提供常用的导航路径；
@@ -34,9 +55,12 @@
 
         [Desktop Action openQTerminalHere]
         Name=Open alacritty here
-        Icon=utilities-terminal
-        Exec=/usr/bin/qterminal --working-directory %f
+        Icon=Alacritty
+        Exec=alacritty --working-directory %f
       #+end_src
-      特别地， =alacritty= 需要指定的工作目录参数为 ~--working-directory~ ，而一般的 terminal 则需要指定 ~--workdir~ 。
+      特别地，
+      1. 在 =NixOS= 中，alacritty 位于 =/etc/profiles/per-user/<username>/bin= 或 =/run/current-system/sw/bin= 中
+
+      2. =alacritty= 需要指定的工作目录参数为 ~--working-directory~ ，而一般的 terminal 则需要指定 ~--workdir~ 。
 3. Dolphin 对 Context Menu 中的内容修改的方式为 ="Settings"-"Context Menu"= 进行增删。
 

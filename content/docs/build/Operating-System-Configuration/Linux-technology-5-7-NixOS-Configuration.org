@@ -1,0 +1,242 @@
+#+TITLE: NixOS 配置说明
+#+DATE: <2023-12-19 Tue>
+#+AUTHOR: EndlessPeak
+#+TOC: true
+#+HIDDEN: false
+#+DRAFT: false
+#+WEIGHT: 8
+#+Description: 
+
+* Self Configuration
+** Import Configuration
+以 =sddm= 为例，浅谈如何导入 nix 配置文件。
+
+如下所示，在基本设置中导入 =sddm-theme.nix= 。
+#+begin_src nix
+  # Enable the X11 windowing system.
+  services = {
+    xserver = {
+      enable = true;
+
+      # Enable the Plasma 5 Desktop Environment.
+      displayManager ={
+        sddm.enable = true;
+        sddm.theme = "${import ./sddm-theme.nix { inherit pkgs;}}";
+      };
+
+      desktopManager.plasma5.enable = true;
+
+      # Enable touchpad support (enabled default in most desktopManager).
+      libinput.enable = true;
+    };
+  };
+#+end_src
+
+在 =sddm-theme.nix= 中写入
+#+begin_src nix
+  # sddm-theme-nix
+  { pkgs }:
+
+  let
+    image = pkgs.fetchurl {
+      url = "https://z1.ax1x.com/2023/11/18/piNMTFs.jpg";
+      sha256 = "02pgyhmm42bdx31yn64vbmyx7cfnn89zswj40rwr32fdgz83bxy7";
+    };
+  in
+  pkgs.stdenv.mkDerivation {
+    name = "sddm-theme";
+    # src = pkgs.fetchFromGitHub {
+    #   owner = "MarianArlt";
+    #   repo = "kde-plasma-chili";
+    #   rev = "a371123959676f608f01421398f7400a2f01ae06";
+    #   sha256 = "sha256-fWRf96CPRQ2FRkSDtD+N/baZv+HZPO48CfU5Subt854=";
+    # };
+
+    src = pkgs.fetchFromGitLab {
+      domain = "framagit.org";
+      owner = "MarianArlt";
+      repo = "sddm-sugar-candy";
+      #url = "https://framagit.org/MarianArlt/sddm-sugar-candy.git";
+      rev = "2b72ef6c6f720fe0ffde5ea5c7c48152e02f6c4f";
+      sha256 = "1db4p2d0k5a6avr7dg9h1r7y9mx711ci5dgwmljqjb8pq5b0a22y";
+    };
+    installPhase = ''
+      mkdir -p $out
+      cp -R ./* $out/ 
+      cd $out/Backgrounds
+      cp -r ${image} $out/Backgrounds/magenta.jpg
+      cd $out
+      sed -i 's/Background="Backgrounds\/Mountain.jpg"/Background="Backgrounds\/magenta.jpg"/g' theme.conf
+
+    '';
+      # the following are commented
+  }
+
+#+end_src
+
+特别地，使用 =SDDM= 主题需要额外加上两个软件包：
+#+begin_src nix
+  environment.systemPackage = with pkgs;[
+    libsForQt5.qt5.qtquickcontrols2
+    libsForQt5.qt5.qtgraphicaleffects
+  ];
+#+end_src
+
+** OverAttrs Configuration
+下面的两个例子提供了软件包 =overrideAttrs= 的方法。
+#+begin_src nix
+  environment.systemPackage = with pkgs;[
+    # KDE Programs
+    # latte-dock is out of date,let's override it.
+    # Refer to https://nixos.org/manual/nixpkgs/stable/#chap-overrides
+    (latte-dock.overrideAttrs{
+      version = "v0.10";
+      src = fetchFromGitLab {
+        domain = "invent.kde.org";
+        owner = "plasma";
+        repo = "latte-dock";
+        rev = "a840ac6faa9acb1570f8fa016e7ac7f2e5686e90";
+        sha256 = "sha256-+9ksvGB6IRlJ1PXsrLA5PuHFCHs80tkKPAu2iknNEAQ=";
+      };
+    })
+  ];
+#+end_src
+
+如果希望对打包的过程进行修改，可以用 =old= 参数指代原有的步骤，并在后面附上需要添加的内容。
+#+begin_src nix
+  environment.systemPackages = with pkgs-unstable;[
+    # IDE
+    (jetbrains.clion.overrideAttrs (old:{
+      postFixup = ''
+        ${old.postFixup}
+
+        # add ja-netfilter
+        cd $out/clion/bin
+        echo '-javaagent:/home/leesin/Downloads/jetbra/ja-netfilter.jar=jetbrains' >> clion64.vmoptions
+        echo '--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED' >> clion64.vmoptions
+        echo '--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED' >> clion64.vmoptions
+      '';
+    }))
+  ];
+#+end_src
+
+** Concat List
+连接列表有两种办法。
+1. 使用语法糖
+   #+begin_src nix
+     (with pkgs;[
+       git
+     ])++
+     (with pkgs-unstable;[
+       eza
+     ])
+   #+end_src
+2. 使用库自带的函数
+   #+begin_src nix
+     lib.concatLists [
+       (with pkgs;[
+         git
+       ])
+       (with pkgs-unstable;[
+         eza
+       ])
+     ];
+   #+end_src
+
+* Self Package
+自行打的包记录如下：
+#+begin_src nix
+  {   stdenv,
+      fetchurl,
+      dpkg,
+      buildFHSUserEnv, 
+      pkgs,
+      makeWrapper,
+      writeText,
+      ...
+  }:
+  let
+      baidunetdisk = stdenv.mkDerivation rec {
+          pname = "baidunetdisk";
+          version = "4.17.7";
+
+          src = fetchurl{
+              url = "http://wppkg.baidupcs.com/issue/netdisk/Linuxguanjia/${version}/baidunetdisk_${version}_amd64.deb";
+              sha256 = "sha256-UOwY8FYmoT9X7wNGMEFtSBaCvBAYU58zOX1ccbxlOz0=";
+          };
+          nativeBuildInputs = [ dpkg  makeWrapper ];
+          unpackPhase = "dpkg-deb -x ${src} .";
+
+          # 菜单项
+          desktopFile = writeText "baidunetdisk.desktop" ''
+              [Desktop Entry]
+              Name=baidunetdisk
+              Name[zh_CN]=百度网盘
+              Name[zh_TW]=百度网盘
+              Exec=baidunetdisk --no-sandbox %U
+              Terminal=false
+              Type=Application
+              Icon=baidunetdisk
+              StartupWMClass=baidunetdisk
+              Comment=百度网盘
+              Comment[zh_CN]=百度网盘
+              Comment[zh_TW]=百度网盘
+              MimeType=x-scheme-handler/baiduyunguanjia;
+              Categories=Network;
+          '';
+
+          installPhase = ''
+              mkdir -p $out/opt/${pname}
+              mkdir -p $out/share
+              mkdir -p $out/bin
+              cp -r ./usr/share/* $out/share
+              rm $out/share/applications/${pname}.desktop
+              install -Dm644 ${desktopFile} $out/share/applications/${pname}.desktop
+              cp -r ./opt/${pname}/* $out/opt/${pname}
+              chmod 644 $out/opt/${pname}/*.so
+              makeWrapper $out/opt/${pname}/${pname} $out/bin/${pname} --set LD_LIBRARY_PATH $out/opt/${pname} --run "echo $out"
+          '';
+  };
+  in
+  buildFHSUserEnv {
+      name = "${baidunetdisk.pname}";
+      targetPkgs = pkgs:
+          (with pkgs.xorg; [
+              libX11
+              libxcb
+              libXcomposite
+              libXcursor
+              libXdamage
+              libXext
+              libXfixes
+              libXi
+              libXrandr
+              libXrender
+              libXScrnSaver
+              libXtst ]) ++
+          (with pkgs; [
+              nss
+              nspr
+              atk
+              alsa-lib
+              cups
+              at-spi2-atk
+              dbus
+              glib
+              gdk-pixbuf
+              gtk3-x11
+              pango
+              cairo 
+              expat
+              libdrm
+              libxkbcommon
+              libGL
+              stdenv.cc.cc.lib
+              mesa
+              libudev0-shim
+          ]) ++
+          (with pkgs; [ ]) ++ [baidunetdisk];
+      runScript = "/bin/${baidunetdisk.pname}";
+
+  }
+#+end_src

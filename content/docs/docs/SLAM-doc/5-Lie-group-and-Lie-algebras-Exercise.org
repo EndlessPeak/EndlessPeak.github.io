@@ -1,0 +1,26 @@
+#+TITLE: Lie Group and Lie Algebras Exercise
+#+DATE: <2023-12-07 Thu>
+#+AUTHOR: EndlessPeak
+#+TOC: true
+#+HIDDEN: false
+#+DRAFT: false
+#+WEIGHT: 8
+#+Description: 本文记录了适用于李群和李代数的Sophus库的相关实践。
+
+* Lie Group & Lie Algebras
+李群 $\mathcal{L}$ 是一个群同时也是一个光滑的(可微的)的流形, 定义其上的群乘法和求逆运算均可微;
+
+李代数 $\mathcal{A}$ 是 $\mathcal{L}$ 的在单位元 $\mathcal{1}$ 处的正切空间;最常见的李群就是 SO(n) 和 SE(n)
+
+李群/李代数/正切向量的映射关系:
+
+1. $\wedge:\mathbb{R}^n \to \mathcal{A}$ 把正切向量映射到李代数 $\mathcal{A}$ 中的元素
+2. $exp(\phi^{\wedge}):\mathbb{R}^n \to \mathcal{L}$ 把正切向量 $\phi$ 映射到李代数元素, 然后再映射到李群中的元素
+3. $\vee:\mathcal{A} \to \mathbb{R}^n$ $\wedge$ 的逆运算, 把李代数中的元素映射到正切向量
+4. $ln⁡(R)^{vee}:\mathcal{L} \to \mathbb{R}^n$ $exp$ 的逆运算，把李群中的元素映射导李代数中的元素，然后再映射到正切向量
+
+其中 $\mathbb{R}^n$ 代表 n 维向量空间
+
+
+
+
