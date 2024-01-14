@@ -59,7 +59,7 @@
 <link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
 
 
-<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.b4f1978adbf138f91919e66604fb97f7ffbc18fc5078464da4042025d876d999b2c3a943f9dcce8524696594f5730ccf.js"></script>
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.cd2d65e90b033b5ff5087d18590179029ef6647458eacb3d21c15e42a24f83c203d7013d6f35b4808bbd257ea41a118c.js"></script>
 
 
 
@@ -358,6 +358,28 @@
     </li>
     
     
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras-exercise/">Lie Group and Lie Algebras Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/10-orb-slam3-adjustments/">ORB SLAM Adjustments</a>
+        </div>
+        
+    </li>
+    
+    
 </ul>
 
 </div>
@@ -577,8 +599,7 @@ Matrix inverse
 <div id="outline-text-headline-9" class="outline-text-4">
 <p>矩阵求逆的三种方法：</p>
 <div class="src src-cpp">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="c1">// 直接求逆法
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">  <span class="c1">// 直接求逆法
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">int</span> <span class="nf">matrix_equation_direct</span><span class="p">(</span><span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="n">MATRIX_SIZE</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="n">MATRIX_SIZE</span><span class="p">,</span> <span class="n">MATRIX_SIZE</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">matrix_NN</span><span class="p">,</span><span class="k">const</span> <span class="n">Eigen</span><span class="o">::</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="n">MATRIX_SIZE</span><span class="p">,</span><span class="mi">1</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">v_Nd</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="n">time_stt</span> <span class="o">=</span> <span class="n">clock</span><span class="p">();</span> <span class="c1">// 计时
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="n">x</span> <span class="o">=</span> <span class="n">matrix_NN</span><span class="p">.</span><span class="n">inverse</span><span class="p">()</span> <span class="o">*</span> <span class="n">v_Nd</span><span class="p">;</span>

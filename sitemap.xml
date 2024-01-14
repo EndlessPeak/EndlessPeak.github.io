@@ -168,6 +168,9 @@
     <loc>https://endlesspeak.github.io/docs/build/operating-system-installation/</loc>
     <lastmod>2020-01-11T20:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-4-nixos-linux-installation/</loc>
+    <lastmod>2023-12-19T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://endlesspeak.github.io/docs/docs/stm32-doc/3-stm32-clion-develop/</loc>
     <lastmod>2023-11-02T00:00:00+00:00</lastmod>
   </url><url>
@@ -246,7 +249,7 @@
     <loc>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/6-function/</loc>
     <lastmod>2023-07-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-5-usage/</loc>
+    <loc>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-5-kde-usage/</loc>
     <lastmod>2023-03-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/docs/docs/stm32-doc/5-stm32-fmc/</loc>
@@ -291,6 +294,12 @@
     <loc>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/stack-operation/</loc>
     <lastmod>2021-11-03T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-7-nixos-configuration/</loc>
+    <lastmod>2023-12-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras-exercise/</loc>
+    <lastmod>2023-12-07T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/8-package-and-crate/</loc>
     <lastmod>2023-07-11T00:00:00+00:00</lastmod>
   </url><url>
@@ -311,6 +320,9 @@
   </url><url>
     <loc>https://endlesspeak.github.io/novel/volume1/ch9/</loc>
     <lastmod>2021-11-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://endlesspeak.github.io/docs/docs/slam-doc/10-orb-slam3-adjustments/</loc>
+    <lastmod>2024-01-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/novel/volume1/ch10/</loc>
     <lastmod>2021-11-10T00:00:00+00:00</lastmod>
@@ -372,23 +384,29 @@
     <loc>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/12-ccpp-mix-programming/</loc>
     <lastmod>2023-07-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://endlesspeak.github.io/docs/</loc>
-    <lastmod>2023-11-21T00:00:00+00:00</lastmod>
+    <loc>https://endlesspeak.github.io/posts/linux/linux-technology-8-dependency-management/</loc>
+    <lastmod>2024-01-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://endlesspeak.github.io/docs/docs/</loc>
-    <lastmod>2023-11-21T00:00:00+00:00</lastmod>
+    <loc>https://endlesspeak.github.io/posts/</loc>
+    <lastmod>2024-01-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/</loc>
-    <lastmod>2023-11-21T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://endlesspeak.github.io/docs/</loc>
+    <lastmod>2024-01-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://endlesspeak.github.io/docs/docs/</loc>
+    <lastmod>2024-01-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://endlesspeak.github.io/docs/build/</loc>
+    <lastmod>2023-12-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/authors/</loc>
     <lastmod>2023-11-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/authors/endlesspeak/</loc>
     <lastmod>2023-11-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://endlesspeak.github.io/docs/build/</loc>
-    <lastmod>2023-07-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/novel/</loc>
     <lastmod>2021-11-10T00:00:00+00:00</lastmod>
@@ -403,9 +421,6 @@
     <lastmod>2021-04-08T12:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/posts/tattle/base-hugo-theme-eureka/</loc>
-    <lastmod>2021-04-08T12:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://endlesspeak.github.io/posts/</loc>
     <lastmod>2021-04-08T12:00:00+00:00</lastmod>
   </url><url>
     <loc>https://endlesspeak.github.io/tags/</loc>

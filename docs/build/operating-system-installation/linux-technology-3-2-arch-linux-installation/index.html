@@ -59,7 +59,7 @@
 <link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
 
 
-<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.b4f1978adbf138f91919e66604fb97f7ffbc18fc5078464da4042025d876d999b2c3a943f9dcce8524696594f5730ccf.js"></script>
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.cd2d65e90b033b5ff5087d18590179029ef6647458eacb3d21c15e42a24f83c203d7013d6f35b4808bbd257ea41a118c.js"></script>
 
 
 
@@ -133,7 +133,7 @@
     "image": "https://s1.ax1x.com/2020/04/04/GdMk1x.md.png",
     "datePublished": "2020-01-16T22:00:00+00:00",
     "dateModified": "2020-01-16T22:00:00+00:00",
-    "wordCount":  9376 ,
+    "wordCount":  9434 ,
     "author": {
         "@type": "Person",
         "name": ["EndlessPeak"]
@@ -340,6 +340,17 @@
         <div class="">
             <a class=" hover:text-eureka"
                 href="https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-3-gentoo-linux-installation/">Gentoo Linux 物理机安装与配置</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-4-nixos-linux-installation/">NixOS Linux 物理机安装与配置</a>
         </div>
         
     </li>
@@ -685,15 +696,40 @@ swapon /dev/sdxY  #开启交换空间
 </ol>
 <pre><code class="language-bash">vim /etc/pacman.d/mirrorlist
 </code></pre>
+<blockquote>
+<p><strong>该引用块的内容不再可用</strong></p>
+</blockquote>
+<blockquote>
 <p>按照下面的操作配置以使中国镜像源服务器地址在更新中优先使用。</p>
+</blockquote>
+<blockquote>
 <p>初始时保持光标在页面最顶层，是普通模式；</p>
+</blockquote>
+<blockquote>
 <p>输入<code>qa</code>回车以开启一个寄存器a，它表示你之后的操作都会记录到录制的宏中；</p>
+</blockquote>
+<blockquote>
 <p>输入<code>/^\n</code>回车以寻找文件的第一个空行，光标从这里开始；</p>
+</blockquote>
+<blockquote>
 <p>输入<code>/China</code>回车以从光标起始点往下寻找中国镜像源，按<code>V</code>进入(行)可视模式，再按<code>↓</code>键选中这两行，按<code>d</code>键剪切选中的内容，输入<code>:1</code>回车使光标返回到最顶端，；</p>
+</blockquote>
+<blockquote>
 <p>输入<code>/^\n</code>回车以寻找文件的第一个空行，按<code>P</code>将剪切的内容以向前插入的方式粘贴到此。</p>
+</blockquote>
+<blockquote>
 <p>输入<code>q</code>停止录制，现在你手动制作了一个自动寻找中国镜像源地址的宏，它存在vim的寄存器a中。</p>
+</blockquote>
+<blockquote>
 <p>输入<code>7@a</code> 即可将刚才录制的这个宏循环执行7次，将7个中国镜像源服务器地址转移到文件首。</p>
+</blockquote>
+<blockquote>
 <p>输入<code>:wq</code>保存退出该文件。</p>
+</blockquote>
+<p>更正：目前只会记录一部分服务器，且不会显式按地区分类，因此需要手动添加服务器。</p>
+<pre><code class="language-text">Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.cernet.edu.cn/archlinux/$repo/os/$arch
+</code></pre>
 <h3 id="挂载磁盘分区">挂载磁盘分区</h3>
 <p>执行下面的命令，将根分区挂载到/mnt下：</p>
 <pre><code class="language-bash">mount /dev/sdxY /mnt #将sdxY替换为之前创建的根分区
@@ -709,7 +745,7 @@ mount /dev/sdxZ /mnt/home
 <h3 id="安装基本包组">安装基本包组</h3>
 <p>下面的命令将安装基本的Arch Linux包组到磁盘上。这是一个联网下载并安装的过程。</p>
 <p>通过pacstrap这个脚本来安装基本包组，执行以下命令：</p>
-<pre><code class="language-bash">pacstrap /mnt base linux linux-firmware #见下面的注释
+<pre><code class="language-bash">pacstrap /mnt base base-devel linux linux-firmware linux-headers #见下面的注释
 </code></pre>
 <blockquote>
 <p>注：19年10月底Arch Linux替换了base包组，如果说原来的base包组是完善的建筑，那么现在的base包只能算是一个脚手架，所以官方文档上只安装base软件包，linux内核与linux-frmware常规硬件的固件就显得有些太过简略了一些，下面的包组请考虑按需追加：</p>

@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>ORB SLAM Adjustments | SLAM Programming Basic | 坐忘道琼峰</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.b4df0caebd058a56d5556ac52e8e433c3b8d42aac8ccf30094e707fc2ea0773f5edfd5db2025486b3bd252a5dee3136f.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.cd2d65e90b033b5ff5087d18590179029ef6647458eacb3d21c15e42a24f83c203d7013d6f35b4808bbd257ea41a118c.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文记录了 ORB-SLAM 系列框架在 ArchLinux 上的编译适配过程。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"SLAM Programming Basic",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"ORB SLAM Adjustments",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/10-orb-slam3-adjustments/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/slam-doc/10-orb-slam3-adjustments/"
+    },
+    "headline": "ORB SLAM Adjustments | SLAM Programming Basic | 坐忘道琼峰","datePublished": "2024-01-07T00:00:00+00:00",
+    "dateModified": "2024-01-07T00:00:00+00:00",
+    "wordCount":  1651 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "本文记录了 ORB-SLAM 系列框架在 ArchLinux 上的编译适配过程。"
+}
+</script><meta property="og:title" content="ORB SLAM Adjustments | SLAM Programming Basic | 坐忘道琼峰" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/slam-doc/10-orb-slam3-adjustments/" />
+
+
+
+<meta property="og:description" content="本文记录了 ORB-SLAM 系列框架在 ArchLinux 上的编译适配过程。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="坐忘道琼峰" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2024-01-07T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2024-01-07T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">坐忘道琼峰</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/slam-doc/">SLAM Programming Basic</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/1-ros2-install/">ROS2 Installation</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/2-slam-summary/">SLAM Summary</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/3-vslam-summary/">VSLAM Summary</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/4-rotation-and-translation-exercise/">Rotation &amp; Translation Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras/">Lie Group and Lie Algebras 1</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras2/">Lie Group and Lie Algebras 2</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras-exercise/">Lie Group and Lie Algebras Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/10-orb-slam3-adjustments/">ORB SLAM Adjustments</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">ORB SLAM Adjustments</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2024-01-07</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>4分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+ORB SLAM3
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>orb-slam3 的项目地址：<a href="https://github.com/UZ-SLAMLab/ORB_SLAM3">https://github.com/UZ-SLAMLab/ORB_SLAM3</a>
+目前 orb-slam3 的代码直接编译会报错，因此需要解决一些冲突。</p>
+<div id="outline-container-headline-2" class="outline-3">
+<h3 id="headline-2">
+Eigen
+</h3>
+<div id="outline-text-headline-2" class="outline-text-3">
+<p>Eigen 是一个矩阵运算库，可以直接从系统包管理器安装，也可以从源码编译。</p>
+<ol>
+<li>官方项目地址：<a href="https://gitlab.com/libeigen/eigen">https://gitlab.com/libeigen/eigen</a></li>
+<li>官方文档地址：<a href="https://eigen.tuxfamily.org/index.php?title=Main_Page">https://eigen.tuxfamily.org/index.php?title=Main_Page</a>
+有关如何在 CMake 项目中使用 Eigen，可以在对应版本的 Eigen 文档中参考 <a href="https://eigen.tuxfamily.org/dox/TopicCMakeGuide.html">Using Eigen in CMake Projects</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-3" class="outline-3">
+<h3 id="headline-3">
+Sophus
+</h3>
+<div id="outline-text-headline-3" class="outline-text-3">
+<p>Sophus 是一个李群李代数库，一般发行版不提供安装，可以从源码编译，但是 <strong>编译测试部分时会报错误</strong> 。</p>
+<ol>
+<li>官方项目地址：<a href="https://github.com/strasdat/Sophus">https://github.com/strasdat/Sophus</a></li>
+<li>该项目可选依赖于 <code class="verbatim">fmt</code> ，可以通过包管理器安装该库。</li>
+</ol>
+<p>安装说明：</p>
+<ol>
+<li>
+<p>若安装到系统环境下，为以后所有依赖 Sophus 的项目使用，可以添加参数去除测试部分的编译</p>
+<div class="src src-bash">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">  cmake .. -DBUILD_SOPHUS_TEST<span class="o">=</span>OFF -DBUILD_SOPHUS_EXAMPLES<span class="o">=</span>OFF</span></span></code></pre></div>
+</div>
+</li>
+<li>
+<p>若作为项目依赖，仅为单个项目使用，可以在 <code class="verbatim">CMakeLists.txt</code> 中添加如下代码</p>
+<div class="src src-cmake">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmake" data-lang="cmake"><span class="line"><span class="cl">  <span class="nb">add_compile_options</span><span class="p">(</span><span class="s">-Wno-error=array-bounds</span><span class="p">)</span></span></span></code></pre></div>
+</div>
+</li>
+</ol>
+<p>NixOS 上可以通过编写 <code class="verbatim">sophus.nix</code> 的方式安装到系统</p>
+<div class="src src-nix">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-nix" data-lang="nix"><span class="line"><span class="cl">  <span class="p">{</span> <span class="n">lib</span>
+</span></span><span class="line"><span class="cl">  <span class="o">,</span> <span class="n">stdenv</span>
+</span></span><span class="line"><span class="cl">  <span class="o">,</span> <span class="n">fetchFromGitHub</span>
+</span></span><span class="line"><span class="cl">  <span class="o">,</span> <span class="n">cmake</span>
+</span></span><span class="line"><span class="cl">  <span class="o">,</span> <span class="n">pkgs</span>
+</span></span><span class="line"><span class="cl">  <span class="o">,</span> <span class="o">...</span> 
+</span></span><span class="line"><span class="cl">  <span class="p">}:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">stdenv</span><span class="o">.</span><span class="n">mkDerivation</span> <span class="k">rec</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pname</span> <span class="o">=</span> <span class="s2">&#34;sophus&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">version</span> <span class="o">=</span> <span class="s2">&#34;1.22.10&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">src</span> <span class="o">=</span> <span class="n">fetchFromGitHub</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">owner</span> <span class="o">=</span> <span class="s2">&#34;strasdat&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">repo</span> <span class="o">=</span> <span class="s2">&#34;Sophus&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">rev</span> <span class="o">=</span> <span class="s2">&#34;d270df2be6e46501b1e7efc09b107517e0be0645&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">sha256</span> <span class="o">=</span> <span class="s2">&#34;sha256-t0PkXdXO+2PChlsMeKK3IPxudurqrDD4oOllNKphglk=&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">buildInputs</span> <span class="o">=</span> <span class="k">with</span> <span class="n">pkgs</span><span class="p">;[</span>
+</span></span><span class="line"><span class="cl">      <span class="n">eigen</span>
+</span></span><span class="line"><span class="cl">      <span class="n">fmt</span>
+</span></span><span class="line"><span class="cl">    <span class="p">];</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    <span class="n">nativeBuildInputs</span> <span class="o">=</span> <span class="p">[</span> <span class="n">cmake</span> <span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cmakeFlags</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;-DBUILD_SOPHUS_TESTS=OFF&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;-DBUILD_SOPHUS_EXAMPLES=OFF&#34;</span> 
+</span></span><span class="line"><span class="cl">    <span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">meta</span> <span class="o">=</span> <span class="k">with</span> <span class="n">lib</span><span class="p">;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">homepage</span> <span class="o">=</span> <span class="s2">&#34;https://strasdat.github.io/Sophus&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">description</span> <span class="o">=</span> <span class="s2">&#34;C++ implementation of Lie groups commonly used for 2d and 3d geometric problems&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">license</span> <span class="o">=</span> <span class="n">licenses</span><span class="o">.</span><span class="n">lgpl3Plus</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">maintainers</span> <span class="o">=</span> <span class="k">with</span> <span class="n">maintainers</span><span class="p">;</span> <span class="p">[</span> <span class="n">endlesspeak</span> <span class="p">];</span>
+</span></span><span class="line"><span class="cl">      <span class="n">platforms</span> <span class="o">=</span> <span class="n">platforms</span><span class="o">.</span><span class="n">unix</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span></span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-3">
+<h3 id="headline-4">
+Pangolin
+</h3>
+<div id="outline-text-headline-4" class="outline-text-3">
+<p>Pangolin 是一个轻量可移植的 OpenGL 显示管理图形库。
+Pangolin 可以直接从系统包管理器安装，也可以从源码安装。</p>
+<ol>
+<li>官方项目地址：<a href="https://github.com/stevenlovegrove/Pangolin">https://github.com/stevenlovegrove/Pangolin</a></li>
+<li>该项目建议安装到系统环境，因为各 SLAM 框架基本都依赖 Pangolin 。</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-5" class="outline-3">
+<h3 id="headline-5">
+qt5/qt6
+</h3>
+<div id="outline-text-headline-5" class="outline-text-3">
+<p>orb-slam3 的运行需要 qt 界面显示运行结果，可以安装 Qt5 或 Qt6 。</p>
+</div>
+</div>
+<div id="outline-container-headline-6" class="outline-3">
+<h3 id="headline-6">
+realsense2
+</h3>
+<div id="outline-text-headline-6" class="outline-text-3">
+<p>orb-slam3 可选依赖于该库，去掉该依赖项仅会导致与 realsense2 有关的测试代码不能正确生成</p>
+</div>
+</div>
+<div id="outline-container-headline-7" class="outline-3">
+<h3 id="headline-7">
+C++14 support
+</h3>
+<div id="outline-text-headline-7" class="outline-text-3">
+<p>orb-slam3 需要 C++ 14 的支持， <strong>即使 Readme 上说只需要 C++ 11</strong> 。为此，需要修改所有和 C++11 有关的内容，这包括 <code class="verbatim">CMakeLists.txt</code> 和代码中的宏。</p>
+<p>
+可以使用下面的代码替换掉 <code class="verbatim">CMakeLists.txt</code> 中的内容</p>
+<div class="src src-bash">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">  sed -i <span class="s1">&#39;s/++11/++14/g&#39;</span> CMakeLists.txt</span></span></code></pre></div>
+</div>
+<p>
+代码中还需要手动将 <code>COMPILEDWITHC11</code> 替换为 <code>COMPILEDWITHC14</code> 宏。</p>
+</div>
+</div>
+<div id="outline-container-headline-8" class="outline-3">
+<h3 id="headline-8">
+ROS support
+</h3>
+<div id="outline-text-headline-8" class="outline-text-3">
+<p>orb-slam3 可选依赖于 ROS，但是 ROS 在非 Ubuntu 上的安装并不容易，因此该部分建议使用 docker 或虚拟机部署。</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-9" class="outline-2">
+<h2 id="headline-9">
+ORB SLAM2
+</h2>
+<div id="outline-text-headline-9" class="outline-text-2">
+<p>ORB SLAM2 需要的依赖同上，例外的是不需要 <code class="verbatim">Sophus</code> 和 <code class="verbatim">realsence2</code> 。
+项目地址：<a href="https://github.com/raulmur/ORB_SLAM2/">https://github.com/raulmur/ORB_SLAM2/</a></p>
+<div id="outline-container-headline-10" class="outline-3">
+<h3 id="headline-10">
+Problems
+</h3>
+<div id="outline-text-headline-10" class="outline-text-3">
+<div id="outline-container-headline-11" class="outline-4">
+<h4 id="headline-11">
+C++ 14 support
+</h4>
+<div id="outline-text-headline-11" class="outline-text-4">
+<p>根据“保持最新”理念，升级到 C++14 已成必然。步骤与 ORB SLAM3 类似。</p>
+</div>
+</div>
+<div id="outline-container-headline-12" class="outline-4">
+<h4 id="headline-12">
+CMake Modules
+</h4>
+<div id="outline-text-headline-12" class="outline-text-4">
+<p>删除 <code class="verbatim">cmake_modules</code> 文件夹，因为它指示了错误的 <code class="verbatim">Eigen</code> 依赖寻找方法。</p>
+</div>
+</div>
+<div id="outline-container-headline-13" class="outline-4">
+<h4 id="headline-13">
+static assert std map
+</h4>
+<div id="outline-text-headline-13" class="outline-text-4">
+<p>Corrected typedef so that map value_type and allocator are the same. 参考 <a href="https://github.com/raulmur/ORB_SLAM2/pull/585/commits/d5c04468ce85d600f8a0a23fa280b0153fe115e0">PullRequest #585</a> 或 <a href="https://github.com/craymichael/ORB_SLAM2/">Repo</a></p>
+<p>
+更改 <code class="verbatim">include/LoopClosing.h</code> 第 50 行。</p>
+<div class="src src-cpp">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">  <span class="k">typedef</span> <span class="n">map</span><span class="o">&lt;</span><span class="n">KeyFrame</span><span class="o">*</span><span class="p">,</span><span class="n">g2o</span><span class="o">::</span><span class="n">Sim3</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">less</span><span class="o">&lt;</span><span class="n">KeyFrame</span><span class="o">*&gt;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">Eigen</span><span class="o">::</span><span class="n">aligned_allocator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">KeyFrame</span><span class="o">*</span> <span class="k">const</span><span class="p">,</span> <span class="n">g2o</span><span class="o">::</span><span class="n">Sim3</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">KeyFrameAndPose</span><span class="p">;</span><span class="c1">//原来是 const KeyFrame*
+</span></span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-14" class="outline-4">
+<h4 id="headline-14">
+double free or corruption
+</h4>
+<div id="outline-text-headline-14" class="outline-text-4">
+<p>这是由于 <code>-march=native</code> 导致的，这个问题在 orb-slam3 上不存在，具体原因尚不明确。</p>
+<p>
+修改时，需要为 <strong>所有</strong> 依赖的构建都取消该编译选项。</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-15" class="outline-3">
+<h3 id="headline-15">
+OpenCV Version
+</h3>
+<div id="outline-text-headline-15" class="outline-text-3">
+<p>关于 OpenCV 的 PullRequest，参考 <a href="https://github.com/raulmur/ORB_SLAM2/pull/1076/commits/966ac5e218820248f353b86fa4406d530a9e9585">PullRequest #1076</a> 或 <a href="https://github.com/aaronxavier/ORB_SLAM2/">Repo</a></p>
+<div id="outline-container-headline-16" class="outline-4">
+<h4 id="headline-16">
+cmake
+</h4>
+<div id="outline-text-headline-16" class="outline-text-4">
+<ol>
+<li>将所有 cmake 文件中的 <code class="verbatim">find_package</code> 中的 opencv 版本更正到 OpenCV 4 。</li>
+<li>如果需要与 ROS 集成调试，需要在 <code class="verbatim">Examples/ROS/ORB_SLAM2/CMakeLists.txt</code> 中添加 <code>-lboost_system</code> 链接选项</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-17" class="outline-4">
+<h4 id="headline-17">
+header
+</h4>
+<div id="outline-text-headline-17" class="outline-text-4">
+<ol>
+<li>将所有 <code>#include&lt;opencv/cv.h&gt;</code> 更正为 <code>#include&lt;opencv2/opencv.hpp&gt;</code></li>
+<li>
+<p>在下列文件范围内进行操作。
+操作内容：</p>
+<ol>
+<li>新增 <code>#include&lt;opencv2/imgproc/types_c.h&gt;</code></li>
+<li>新增 <code>#include&lt;opencv2/opencv.hpp&gt;</code></li>
+<li>新增命名空间标识符或 <code>using namespace cv;</code></li>
+</ol>
+<p>文件范围： </p>
+<ol>
+<li><code class="verbatim">include/PnPsolver.h</code></li>
+<li><code class="verbatim">include/Sim3Solver.h</code></li>
+<li><code class="verbatim">include/System.h</code></li>
+<li><code class="verbatim">src/FrameDrawer.cc</code></li>
+<li><code class="verbatim">src/LoopClosing.cc</code></li>
+<li><code class="verbatim">src/Optimizer.cc</code></li>
+<li><code class="verbatim">src/Tracking.cc</code></li>
+</ol>
+</li>
+<li>
+<p>在下列文件中新增 <code>#include&lt;opencv2/core/core_c.h&gt;</code></p>
+<ol>
+<li><code class="verbatim">src/Sim3Solver.cc</code></li>
+</ol>
+</li>
+<li>
+<p>在头文件 <code class="verbatim">System.h</code> 中新增 <code>#include &lt;unistd.h&gt;</code>
+需要说明的是：</p>
+<ol>
+<li>这是为了解决 <code>usleep()</code> 函数未定义的问题</li>
+<li>相当一部分 PullRequest 给每个使用到 <code>usleep()</code> 的函数都添加了该头文件，个人认为这是没有必要的</li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-18" class="outline-4">
+<h4 id="headline-18">
+cv macro
+</h4>
+<div id="outline-text-headline-18" class="outline-text-4">
+<ol>
+<li>
+<p>更改下列标识符</p>
+<ol>
+<li>
+<p><code>CvMat</code> → <code>cv::Mat</code>
+由于：</p>
+<ol>
+<li><code>cvCreate(rows,cols,type)</code> 返回的是 <code>CvMat</code> 类型的指针</li>
+<li><code>cv::Mat(rows,cols,type)</code> 返回的是 <code>cv::Mat</code> 类型的对象</li>
+</ol>
+<p>因此：</p>
+<ol>
+<li>形参中，~CvMat *~ 改为 <code>cv::Mat *</code> ，到时候实参传 <code>&amp;M</code> 进去</li>
+<li>函数内 <code>CvMat *</code> 或 <code>CvMat</code> 都改为 <code>cv::Mat</code> ，同时 <code>cvCreateMat()</code> 也改为 <code>cv::Mat</code></li>
+<li>经过2的修改，函数内临时变量变为 <code>cv::Mat</code> 类型，在进行其他函数运算时可以去掉 <code>&amp;</code></li>
+</ol>
+</li>
+<li>
+<p><code>cvMulTransposed()</code> → <code>cv::mulTransposed()</code></p>
+<div class="src src-cpp">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">  <span class="n">cvMulTransposed</span><span class="p">(</span><span class="n">PW0</span><span class="p">,</span><span class="o">&amp;</span><span class="n">PW0tPW0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cv</span><span class="o">::</span><span class="n">mulTransposed</span><span class="p">(</span><span class="n">PW0</span><span class="p">,</span><span class="n">PW0tPW0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span></span></span></code></pre></div>
+</div>
+</li>
+<li>
+<p><code>cvSVD()</code> → <code>cv::SVD::compute()</code></p>
+<div class="src src-cpp">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">  <span class="n">cvSVD</span><span class="p">(</span><span class="o">&amp;</span><span class="n">PW0tPW0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">DC</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">UCt</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">CV_SVD_MODIFY_A</span> <span class="o">|</span> <span class="n">CV_SVD_U_T</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cv</span><span class="o">::</span><span class="n">SVD</span><span class="o">::</span><span class="n">compute</span><span class="p">(</span><span class="n">PW0tPW0</span><span class="p">,</span><span class="n">DC</span><span class="p">,</span><span class="n">UCt</span><span class="p">,</span><span class="n">cv</span><span class="o">::</span><span class="n">Mat</span><span class="p">(),</span> <span class="n">cv</span><span class="o">::</span><span class="n">SVD</span><span class="o">::</span><span class="n">MODIFY_A</span> <span class="o">|</span> <span class="n">cv</span><span class="o">::</span><span class="n">SVD</span><span class="o">::</span><span class="n">NO_UV</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cvSVD</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ABt</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ABt_D</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ABt_U</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ABt_V</span><span class="p">,</span> <span class="n">CV_SVD_MODIFY_A</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cv</span><span class="o">::</span><span class="n">SVD</span><span class="o">::</span><span class="n">compute</span><span class="p">(</span><span class="n">ABt</span><span class="p">,</span> <span class="n">ABt_D</span><span class="p">,</span> <span class="n">ABt_U</span><span class="p">,</span> <span class="n">ABt_V</span><span class="p">,</span> <span class="n">cv</span><span class="o">::</span><span class="n">SVD</span><span class="o">::</span><span class="n">MODIFY_A</span><span class="p">);</span></span></span></code></pre></div>
+</div>
+</li>
+<li>
+<p><code>cvInvert</code> → <code>cv::invert()</code></p>
+<div class="src src-cpp">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">  <span class="n">cvInvert</span><span class="p">(</span><span class="o">&amp;</span><span class="n">CC</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">CC_inv</span><span class="p">,</span> <span class="n">CV_SVD</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cv</span><span class="o">::</span><span class="n">invert</span><span class="p">(</span><span class="n">CC</span><span class="p">,</span> <span class="n">CC_inv</span><span class="p">,</span> <span class="n">cv</span><span class="o">::</span><span class="n">DECOMP_SVD</span><span class="p">);</span></span></span></code></pre></div>
+</div>
+</li>
+<li>
+<p><code>(CvMat *)M-&gt;data.db + x</code> → <code>(cv::Mat *)M-&gt;ptr&lt;double&gt;(x)</code></p>
+<div class="src src-cpp">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">  <span class="c1">//data成员的db数组是double数组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">double</span> <span class="o">*</span> <span class="n">M1</span> <span class="o">=</span> <span class="n">M</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">.</span><span class="n">db</span> <span class="o">+</span> <span class="n">row</span> <span class="o">*</span> <span class="mi">12</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="c1">//使用cv::Mat::ptr 成员函数访问矩阵某行的指针，该行是double
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">double</span> <span class="o">*</span> <span class="n">M1</span> <span class="o">=</span> <span class="n">M</span><span class="o">-&gt;</span><span class="n">ptr</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">row</span> <span class="o">*</span> <span class="mi">12</span><span class="p">);</span></span></span></code></pre></div>
+</div>
+</li>
+<li>
+<p><code>cvSetZero(CvMat *)</code> → <code>cv::Mat.setTo(0)</code></p>
+<div class="src src-cpp">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">  <span class="n">cvSetZero</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ABt</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ABt</span><span class="p">.</span><span class="n">setTo</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span></span></span></code></pre></div>
+</div>
+</li>
+<li>
+<p><code>cvmSet()</code> → <code>cv::Mat-&gt;at&lt;double&gt;</code></p>
+<div class="src src-cpp">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">  <span class="n">cvmSet</span><span class="p">(</span><span class="o">&amp;</span><span class="n">L_6x4</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">cvmGet</span><span class="p">(</span><span class="n">L_6x10</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cvmSet</span><span class="p">(</span><span class="o">&amp;</span><span class="n">L_6x4</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">cvmGet</span><span class="p">(</span><span class="n">L_6x10</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cvmSet</span><span class="p">(</span><span class="o">&amp;</span><span class="n">L_6x4</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">cvmGet</span><span class="p">(</span><span class="n">L_6x10</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cvmSet</span><span class="p">(</span><span class="o">&amp;</span><span class="n">L_6x4</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">cvmGet</span><span class="p">(</span><span class="n">L_6x10</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">6</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="n">L_6x4</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">L_6x10</span><span class="o">-&gt;</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">L_6x4</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">L_6x10</span><span class="o">-&gt;</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">L_6x4</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">L_6x10</span><span class="o">-&gt;</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">L_6x4</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">L_6x10</span><span class="o">-&gt;</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span></span></span></code></pre></div>
+</div>
+</li>
+<li>
+<p><code>cvSolve()</code> → <code>cv::solve()</code></p>
+<div class="src src-cpp">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">  <span class="n">cvSolve</span><span class="p">(</span><span class="o">&amp;</span><span class="n">L_6x4</span><span class="p">,</span> <span class="n">Rho</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">B4</span><span class="p">,</span> <span class="n">CV_SVD</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cv</span><span class="o">::</span><span class="n">solve</span><span class="p">(</span><span class="n">L_6x4</span><span class="p">,</span> <span class="o">*</span><span class="n">Rho</span><span class="p">,</span> <span class="n">B4</span><span class="p">,</span> <span class="n">cv</span><span class="o">::</span><span class="n">DECOMP_SVD</span><span class="p">);</span></span></span></code></pre></div>
+</div>
+</li>
+</ol>
+</li>
+<li>
+<p>更正下列 OpenCV 颜色宏</p>
+<ol>
+<li>将 <code>CV_BGR2GRAY</code> 更正为 <code>cv::COLOR_BGR2GRAY</code></li>
+<li>将 <code>CV_RGB2GRAY</code> 更正为 <code>cv::COLOR_RGB2GRAY</code></li>
+<li>将 <code>CV_BGRA2GRAY</code> 更正为 <code>cv::COLOR_BGRA2GRAY</code></li>
+<li>将 <code>CV_RGBA2GRAY</code> 更正为 <code>cv::COLOR_RGBA2GRAY</code></li>
+</ol>
+</li>
+<li>
+<p>更正下列 OpenCV 加载宏</p>
+<ol>
+<li>将 <code>CV_LOAD_IMAGE_UNCHANGED</code> 更正为 <code>cv::IMREAD_UNCHANGED</code></li>
+<li>将 <code>CV_REDUCE_SUM</code> 更正为 <code>cv::REDUCE_SUM</code></li>
+</ol>
+</li>
+</ol>
+<p><a href="https://github.com/StarterX4/dolphin-service-open-with-code">https://github.com/StarterX4/dolphin-service-open-with-code</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</article>
+
+                    
+                    
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras-exercise/" class="block">Lie Group and Lie Algebras Exercise</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+<ul>
+<li><a href="#headline-1">ORB SLAM3</a>
+<ul>
+<li><a href="#headline-2">Eigen</a>
+</li>
+<li><a href="#headline-3">Sophus</a>
+</li>
+<li><a href="#headline-4">Pangolin</a>
+</li>
+<li><a href="#headline-5">qt5/qt6</a>
+</li>
+<li><a href="#headline-6">realsense2</a>
+</li>
+<li><a href="#headline-7">C++14 support</a>
+</li>
+<li><a href="#headline-8">ROS support</a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-9">ORB SLAM2</a>
+<ul>
+<li><a href="#headline-10">Problems</a>
+<ul>
+<li><a href="#headline-11">C++ 14 support</a>
+</li>
+<li><a href="#headline-12">CMake Modules</a>
+</li>
+<li><a href="#headline-13">static assert std map</a>
+</li>
+<li><a href="#headline-14">double free or corruption</a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-15">OpenCV Version</a>
+<ul>
+<li><a href="#headline-16">cmake</a>
+</li>
+<li><a href="#headline-17">header</a>
+</li>
+<li><a href="#headline-18">cv macro</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>
