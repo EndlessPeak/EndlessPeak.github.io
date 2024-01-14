@@ -105,7 +105,8 @@ Corrected typedef so that map value_type and allocator are the same. 参考 [[ht
 
 更改 =include/LoopClosing.h= 第 50 行。
 #+begin_src cpp
-  Eigen::aligned_allocator<std::pair<KeyFrame* const, g2o::Sim3> > > KeyFrameAndPose;//原来是 const KeyFrame*
+  typedef map<KeyFrame*,g2o::Sim3,std::less<KeyFrame*>,
+      Eigen::aligned_allocator<std::pair<KeyFrame* const, g2o::Sim3> > > KeyFrameAndPose;//原来是 const KeyFrame*
 #+end_src
 *** double free or corruption
 这是由于 ~-march=native~ 导致的，这个问题在 orb-slam3 上不存在，具体原因尚不明确。
