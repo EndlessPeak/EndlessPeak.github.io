@@ -1,0 +1,61 @@
+#+TITLE: Git submodule Manage
+#+DATE: <2024-01-20 Sat>
+#+AUTHOR: EndlessPeak
+#+TOC: true
+#+HIDDEN: false
+#+DRAFT: false
+#+WEIGHT: 1
+#+Description: 本文讨论的Git子模块的相关功能。
+
+Git子模块是一个强大的工具，用于在Git仓库中跟踪和管理另一个Git仓库。当你想要在你的项目中包含并跟踪第三方库（比如库的特定版本）的时候会使用到。
+
+** 添加子模块
+当你第一次添加子模块时，你可以使用如下命令：
+
+#+begin_src sh
+  git submodule add <repository-url> <path-to-submodule>
+#+end_src
+
+这会在项目中添加一个新的子模块并克隆子模块仓库到指定的路径。
+
+** 初始化子模块
+克隆一个包含子模块的项目时，子模块目录会存在，但会是空的。你需要运行两个命令来初始化并更新子模块：
+
+#+begin_src sh
+  git submodule init
+  git submodule update
+#+end_src
+
+或者你可以在克隆时使用 ~--recurse-submodules~ 参数来自动初始化和更新子模块。
+
+** 更新子模块
+要更新子模块到最新的提交，你需要进入到子模块的目录中，然后拉取所需的更改。这可以通过以下命令完成：
+
+#+begin_src sh
+  cd <path-to-submodule>
+  git fetch
+  git checkout <desired-branch-or-tag>
+#+end_src
+
+之后，你需要在主仓库中提交这个更改，这样就会记录子模块的新提交。
+
+** 提交子模块更改
+子模块实际上是指向特定提交的引用。当你更新子模块后，你的主项目会检测到子模块的提交指针已经变化。你需要提交这个变化到你的主仓库，这样其他人在更新代码或者克隆仓库时就会得到子模块的正确版本。
+
+#+begin_src sh
+  git add <path-to-submodule>
+  git commit -m "Update the submodule to the latest commit"
+  git push
+#+end_src
+
+** gitignore
+子模块的路径不应该被添加到 =.gitignore= 文件。当你添加一个子模块时，Git会在你的主仓库中创建两个重要的文件：
+
+1. =.gitmodules= 包含子模块的URL和配置信息。
+2. =<path-to-submodule>= 一个特殊的文件，它实际上是一个Git链接，指向子模块的特定提交。
+这些文件应该被提交到你的主仓库中，这样其他协作者或者环境就可以正确地初始化和更新子模块。
+
+** 注意事项
+当你更新子模块后，确保运行测试以验证更新没有破坏任何东西。
+如果你的子模块指向一个特定的分支，你可以在子模块目录中运行git pull来获取最新的提交，然后在主项目中提交这个更改。
+如果你删除了一个子模块，确保从.gitmodules和你的主仓库配置中移除相关的条目，否则Git会在某些操作时继续尝试访问已删除的子模块。
