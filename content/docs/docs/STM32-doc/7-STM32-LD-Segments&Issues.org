@@ -1,0 +1,229 @@
+#+TITLE: STM32 LD Segments & Issues
+#+DATE: <2024-01-23 Tue>
+#+AUTHOR: EndlessPeak
+#+TOC: true
+#+HIDDEN: false
+#+DRAFT: false
+#+WEIGHT: 8
+#+Description: 本文记录了GNU ld以及其在STM32上的arm-none-eabi-ld的相关问题
+
+* Reference
+[1] [[https://www.redhat.com/en/blog/linkers-warnings-about-executable-stacks-and-segments][The linker’s warnings about executable stacks and segments]]
+
+[2] [[https://wiki.gentoo.org/wiki/Hardened/GNU_stack_quickstart][Hardened/GNU stack quickstart]]
+
+[3] [[https://www.airs.com/blog/archives/518][Executable Stack]]
+
+[4] [[https://gcc.gnu.org/onlinedocs/gcc/Nested-Functions.html][Nested Functions]]
+
+[5] [[https://stackoverflow.com/questions/73429929/gnu-linker-elf-has-a-load-segment-with-rwx-permissions-embedded-arm-project][Arm Gcc warning: Load segment with RWX permissions]]
+
+[6] [[https://metebalci.com/blog/solution-to-load-segment-with-rwx-permissions-warning-with-cmsis/][Solution to LOAD segment with RWX permissions warning with CMSIS]]
+* Summary
+本文讨论 BFD 链接器中添加的一些新警告消息：它们的含义、重要性以及可以采取哪些措施来预防或压制它们。
+
+注意：这些警告目前特定于 BFD 链接器 (ld.bfd)，但类似的警告也可能会出现在 =gold=、=lld= 和 =mold= 链接器中。
+
+* The new warnings 
+链接器中添加了一些新的警告[1]。虽然新的警告通常不是问题，但这些警告很特殊，因为它们有可能在之前编译和链接没有任何问题的程序上触发。
+
+这些警告涵盖两个相关区域
+1. 程序的堆栈
+2. 程序的代码和数据段
+
+这两个区域都是攻击者的主要目标，如果他们可以将指令插入任一区域，那么他们就可以将它们用作接管程序的垫脚石。
+
+通常可以通过确保堆栈和数据段都不能包含代码并且代码段不能被修改来防止这种情况。新的警告是为了在这些安全条件不具备时提醒开发者。
+
+有时，拥有可执行堆栈或可写代码段是有充分理由的。程序加载器可能需要它才能使程序工作，或者编译器可能需要它才能实现程序的特定功能。但开发人员最好知道这种情况正在自己的程序上发生，并且这样的程序可能容易受到攻击，而不是生活在无知中。
+
+** The executable stack warnings
+程序的堆栈用于记录有关函数调用的信息(如函数定义处、函数参数等)。它通常不应该包含自己的任何代码，因此它不应该具有可执行属性。
+
+当堆栈可执行时，链接器将生成以下警告消息之一：
+1. warning: enabling an executable stack because of -z execstack command line option
+   1. 此警告表明已通过链接器命令行选项 =-z execstack= 显式请求可执行堆栈，并且它只是作为提醒而存在
+   2. 可以通过 –no-warn-exec-stack 命令行选项来抑制警告
+   3. 审慎考虑为什么使用 =-z execstack= 选项。如果程序在没有它的情况下也能工作，那么最好根本不使用它。
+2. warning: <file>: requires executable stack (because the .note.GNU-stack section is executable)
+   1. 当编译器请求可执行堆栈时会生成这种警告
+   2. 在某些情况下，编译器会决定它确实需要可执行堆栈，并且有一种机制可以告诉链接器这一点，参考[2]和[3]
+   3. 编译器需要可执行堆栈的情况并不常见，消除警告的最佳方法是重新编写源代码，从而消除这种需要。
+      如消除嵌套函数等，标准C不支持嵌套，但GNU C支持嵌套函数，参考[4]；特别地，GNU C++不支持嵌套函数。
+3. warning: <file>: missing .note.GNU-stack section implies executable stack
+   1. 这是最严重的，因为程序在意想不到的情况下被赋予了可执行堆栈。
+   2. 当程序与一个或多个未标记为需要或不需要可执行堆栈的目标文件链接时，就会发生这种情况
+   3. 此类目标文件要么是从汇编程序源代码创建的，要么是由较旧的编译器创建的，这些编译器不知道用于向链接器传达堆栈要求的方法。
+
+关于嵌套函数，这里举一个例子：
+#+begin_src cpp
+  extern int abandon(int (*)(int));
+  int bend (int arg1)
+  {
+      int cease (int arg2) { return arg2 * arg1; }
+      return abandon (& cease) + arg1;
+  }
+#+end_src
+
+这里的问题是，嵌套函数 ~cease()~ 无法在编译时创建，因为它使用了 ~bend()~ 的 =arg1= 参数，但它也必须存在，因为它的地址被传递给 ~abandon()~。因此编译器安排 ~cease()~ 在运行时在堆栈上构造。
+
+代码可以被重写为
+#+begin_src cpp
+  extern int abandon (int (*)(int));
+  static int saved_arg = 1;
+  static int cease (int arg2) { return arg2 * saved_arg; }
+  int bend (int arg1)
+  {
+      int res;
+      int prev_saved_arg = saved_arg;
+
+      saved_arg = arg1;
+      res = abandon (& cease) + arg1;
+      saved_arg = prev_saved_arg;
+      return res;
+  }
+#+end_src
+
+1. 全局变量 =saved_arg= 用于调用 ~cease()~ 时保存 =arg1= 参数的值
+2. 修改 ~cease()~ 函数，不再捕获 ~bend()~ 的参数 =arg1=，而是使用全局变量 =saved_arg=
+3. 在 ~bend()~ 函数中保存与恢复 =saved_arg= 的值
+
+需要注意的是：
+1. 作用域
+   1. 全局变量和函数默认是有外部链接的，意味着它们可以在程序的其他文件中被访问（如果有声明的话）
+   2. 此处变量和函数使用 =static= 修饰是为了保持作用域，将变量或函数限制在单个源文件中，以避免名称冲突和保持封装性。
+2. 多线程
+   如果在多线程环境中使用重写后的代码，它会导致线程不安全。
+
+** The executable segment warnings
+当加载到内存中时，程序通常被分成不同的段:
+1. 代码段
+2. 数据段
+3. 其他段
+   用于各种特殊用途
+
+这些段具有可读、可写和可执行等属性中的某一部分，如果它们同时具有这三个属性，那么它们很容易受到攻击。
+
+在这种情况下，链接器将产生以下警告之一：
+1. warning: <file> has a LOAD segment with RWX permissions
+   1. 此警告表明存在一个或多个易受攻击的段
+      这些段可以通过 ~readelf -lW <file>~ 来找到
+   2. 出现此警告的最常见原因是使用自定义链接描述文件进行链接，该链接描述文件不会将代码和数据分成不同的段，所以最好的解决办法就是更新脚本。
+   3. 另一个潜在的原因是使用了 =-z noseparate-code= 链接器命令行选项。如果可以的话，这允许链接器组合代码和数据段。这确实会导致可执行文件变小，但也容易受到攻击。但是，除非程序大小确实很重要，否则不建议使用该选项。
+
+2. warning: <file> has a TLS segment with execute permission
+   1. 这是 RWX 段警告的特殊形式。有些程序可以有一种特殊类型的数据段，称为 TLS（线程本地存储）段。这就像一个普通的数据段，只不过程序中的每个线程都有自己独立的副本。然而，与普通数据段一样，TLS 段永远不应该设置执行权限。
+   2. 修复此警告可能很困难，因为它取决于线程代码试图实现的目标。不过，一般来说，该过程与修复有关编译器请求的可执行堆栈的警告相同：找到包含可执行 TLS 部分的目标文件，检查该文件的源代码并根据需要重写。
+      命令为 ~readelf -SW <file> | grep XT~
+      
+在 LOAD segment with RWX permissions 问题中：
+1. 在 =readelf= 的输出中，段的可执行标志标记为 E 而不是 X，因此查找 RWE 而不是 RWX。
+2. 显示的 =readelf= 命令将显示每个段包含哪些部分，因此应该可以计算出需要如何更新链接器映射，以便将代码部分与可写部分分开。通常这需要确保使用足够的对齐方式。
+
+例如以下脚本：
+#+begin_src ld-script
+  SECTIONS
+  {
+    .text : { *(.text) }
+    .data : { *(.data) }
+  }
+#+end_src
+
+很可能会触发警告，因为代码和数据彼此相邻放置。
+
+而以下脚本：
+#+begin_src ld-script
+  SECTIONS
+  {
+    .text : { *(.text) }
+    . = ALIGN (CONSTANT (COMMONPAGESIZE));
+    .data : { *(.data) }
+  }
+#+end_src
+
+应该能防止出现警告，因为 ALIGN 指令会增加当前内存地址，使其成为所提供参数的倍数。这将确保 .text 和 .data 节之间至少有 COMMONPAGESIZE 字节的间隙，因此链接器将能够将这些节放置到不同的内存段中。
+
+* Eliminate the warnings
+** Disabling the warnings
+如有必要，可以通过链接器命令行选项禁用这些警告消息。
+1. 使用 =--no-warn-execstack= 禁用有关创建可执行堆栈的警告
+   使用 =--warn-execstack= 重新启用警告
+2. 使用 =--no-warn-rwx-segments= 禁用有关可执行段的警告
+   使用 =--warn-rwx-segments= 重新启用警告
+
+在CMake中有两种方法增加链接选项：
+#+begin_src cmake
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --no-warn-execstack --no-warn-rwx-segments")
+  add_link_options(-Wl,--no-warn-rwx-segments)
+#+end_src
+其中测试STM32构建时发现，后一种方法不会出错，前一种方法在构建时出错，因为它把链接选项传递给了 =arm-none-eabi-gcc= 而不是 =arm-none-eabi-ld= 。
+
+也可以在默认情况下禁用其中一个或两个选项的情况下重新编译和构建链接器。
+1. 使用 =--enable-warn-execstack=no=
+2. 使用 =--enable-warn-rwx-segments=no=
+
+最后，还可以编辑链接器源代码以根据目标配置设置这些警告的默认值。 =ld/configure.tgt= 文件开头有可用于此目的的代码。
+
+** Rewrite ld scripts
+本节参考了[5]和[6]的解决方法。
+
+首先可以使用下面的命令查看构建的内存配置：
+#+begin_src bash
+  readelf -SW 1_KEYLED.elf
+  readelf -lW 1_KEYLED.elf
+  readelf -l 1_KEYLED.elf
+#+end_src
+
+检查链接脚本中每个段的权限配置，常见段的典型权限需求如下：
+1. =.isr_vector= 中断服务例程向量:
+   1. 需要可读（R）权限，因为中断向量需要在程序运行时被CPU读取
+   2. 不需要写（W）权限，因为在程序运行后中断向量表通常不会被修改
+   3. 不需要执行（X）权限，因为中断向量表本身包含的是指针，而不是直接执行的代码
+2. =.text= 程序代码:
+   1. 需要可读（R）权限，因为包含程序的执行代码
+   2. 不需要写（W）权限，因为执行代码在运行时不应被修改
+   3. 需要执行（X）权限，因为这一段包含了要执行的机器代码
+3. =.rodata= 只读数据:
+   1. 需要可读（R）权限，因为包含了常量和只读数据
+   2. 不需要写（W）权限，因为数据不应在运行时被改变
+   3. 不需要执行（X）权限，因为它包含的是数据而不是代码
+4. =.preinit_array=、=.init_array=、=.fini_array= 初始化和终止函数数组:
+   1. 需要可读（R）权限，以便在程序启动和终止时访问这些函数指针
+   2. 不需要写（W）权限，因为这些表在启动后通常不会修改
+   3. 需要执行（X）权限，因为这些数组包含函数指针，这些函数将被调用
+5. =.data= 初始化的全局变量和静态变量:
+   1. 需要可读（R）权限和写（W）权限，因为变量在程序运行时会被读取和修改
+   2. 不需要执行（X）权限，因为这里存储的是变量的值，不是要执行的代码
+6. =.bss= 未初始化的全局变量和静态变量:
+   1. 需要可读（R）权限和写（W）权限，因为变量在程序运行时会被读取和修改
+   2. 不需要执行（X）权限，因为.bss段用于变量的存储，不包含可执行代码
+
+总结各段的权限如下：
+
+| segment        | permission |
+|----------------+------------|
+| .isr_vector    |          4 |
+| .text          |          5 |
+| .rodata        |          4 |
+| .preinit_array |          5 |
+| .init_array    |          5 |
+| .final_array   |          5 |
+| .data          |          6 |
+| .bss           |          6 |
+
+在实际的链接器脚本中，可以通过在PHDRS子句中设置FLAGS来指定这些权限。
+#+begin_src ld-script
+  PHDRS
+  {
+    ram PT_LOAD FLAGS(6);   /* 可读可写 */
+    flash PT_LOAD FLAGS(5); /* 可读可执行 */
+  }
+#+end_src
+
+在修改时，需要注意：
+1. 在各个段结尾加上对应的修饰
+   1. 对于 ~>FLASH~ ，改为 ~>FLASH AT> FLASH : flash~
+   2. 对于 ~>RAM~ ，改为 ~>RAM AT> RAM : ram~
+2. =.data= 段
+   1. 它被配置为位于RAM中，但是它的初始内容来自FLASH（程序被烧录到FLASH后在启动时复制到RAM）这是典型的嵌入式系统配置，其中变量在启动时从非易失性存储（如FLASH）复制到易失性存储（如RAM）中
+   2. 它的配置应该为 ~>RAM AT>FLASH:ram~
