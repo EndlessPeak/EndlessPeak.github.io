@@ -1,0 +1,116 @@
+#+TITLE: VSCode Configuration
+#+DATE: <2024-01-19 Fri>
+#+AUTHOR: EndlessPeak
+#+TOC: true
+#+HIDDEN: false
+#+DRAFT: false
+#+WEIGHT: 1
+#+Description: 本文主要讨论在 Linux 下如何配置 VSCode 。
+
+* Installation
+参考 [[https://code.visualstudio.com/docs/setup/linux][Visual Studio Code Installation]]
+** Deb install
+从官网下载 deb 包，使用命令安装
+#+begin_src bash
+  sudo dpkg -i code_XXX_amd64.deb
+  sudo apt install ./code_XXX_amd64.deb
+#+end_src
+
+使用 ~apt install~ 命令安装后会自动将该软件的 apt 存储库和签名密钥添加到系统包管理器中，其位于 =/etc/apt/keyrings/packages.microsoft.gpg= 。
+
+也可以从官网手动添加 apt 存储库和签名密钥，然后更新包缓存安装。
+** Rpm install
+从官网下载 rpm 包，使用命令安装
+#+begin_src bash
+  sudo dnf install code_XXX_amd64.rpm
+#+end_src
+
+也可以从官网手动添加，注意 =dnf= 和 =yum= 并不支持自动识别和添加存储库及密钥。
+** Package Manager
+建议从软件包管理器提供的软件安装。
+
+* Open with Code
+** Gnome
+Gnome 环境的文件管理器是 =nautilus= ，有两种方法配置：
+*** Python Extension For Nautilus
+运行命令：
+#+begin_src bash
+  wget -qO- https://raw.githubusercontent.com/harry-cpp/code-nautilus/master/install.sh | bash
+#+end_src
+ 
+或首先手动下载 [[https://github.com/harry-cpp/code-nautilus][Github:harry-cpp/code-nautilus]] 仓库，然后本地执行。
+
+*** Filemanager Actions
+安装 =filemanager-actions= ，使用 =fma-config-tool= 进行配置。
+
+需要注意目前该包由于缺乏更新已被归档，替代产品见 [[https://github.com/bassmanitram/actions-for-nautilus][Actions for nautilus]] 。
+
+** KDE
+在 =~/.local/share/kservices5/ServiceMenus/= 下添加 =.desktop= 文件并编辑。
+
+对于 =edit code here= ，内容为：
+#+begin_src desktop
+  [Desktop Action opencodeossfile]
+  Exec=code %F
+  Icon=vscode
+  Name=Edit with Code - OSS
+
+  [Desktop Entry]
+  Actions=opencodeossfile
+  MimeType=text/plain;application/octet-stream;
+  ServiceTypes=KonqPopupMenu/Plugin
+  Type=Service
+  X-KDE-Priority=TopLevel
+#+end_src
+
+对于 =open code here= ，内容为：
+#+begin_src desktop
+  [Desktop Action opencodeossdir]
+  Exec=code %F
+  Icon=vscode
+  Name=Open with Code - OSS
+
+  [Desktop Entry]
+  Actions=opencodeossdir
+  MimeType=inode/directory;
+  ServiceTypes=KonqPopupMenu/Plugin
+  Type=Service
+  X-KDE-Priority=TopLevel
+#+end_src
+
+
+* Configuration
+** Trust
+该功能位于 Security→Workspace→Trust
+
+1. Enable 选项控制是否开启信任功能 
+   #+begin_src json
+     "security.workspace.trust.enabled": false,
+   #+end_src
+2. Empty Window 选项控制是否默认信任空窗口
+3. Untrusted Files 选项控制如何打开默认不信任的文件
+   
+** Title
+该功能位于 Window 部分
+1. 标题栏组成：Title ，包含多个组件
+2. 标题栏显示样式：Title Bar Style ，包含 native 和 custom 两种
+** Font
+*** Zoom
+此部分用于更改全局缩放大小。
+*** Editor Font
+此部分更改字体大小仅对编辑区的字体生效，且需要字体本身支持以下属性。
+1. font Ligatures
+   字体连字通常用于美化代码和提高可读性，如 Fira Code 和 Operator Mono，都支持连字特性。
+   #+begin_src json
+     "editor.fontLigatures": true,
+   #+end_src
+
+2. Font Variations（字体变化）
+   字体变化是指使用不同的字体变体来显示不同的字形或字符，需要可变字体。
+   #+begin_src json
+     "editor.fontVariations": "'wdth' 93, 'wght' 90, 'GRAD' 88",
+   #+end_src
+3. Font Weight（字体粗细）
+   字体粗细是指字体的粗细程度，可以通过 =normal= 或 =bold= 等关键字或从 1-1000 的数字值控制。
+
+   

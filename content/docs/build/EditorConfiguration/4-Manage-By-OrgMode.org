@@ -4,7 +4,7 @@
 #+TOC: true
 #+HIDDEN: false
 #+DRAFT: false
-#+WEIGHT: 3
+#+WEIGHT: 4
 #+Description: 本文记录如何通过Org-mode管理配置文件。
 
 * Organization Form

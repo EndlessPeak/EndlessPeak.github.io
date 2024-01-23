@@ -4,7 +4,7 @@
 #+TOC: true
 #+HIDDEN: false
 #+DRAFT: false
-#+WEIGHT: 2
+#+WEIGHT: 3
 #+Description: 本文章主要讨论在自定义Emacs中解决常见的基础配置问题。
 
 * Org
