@@ -1,0 +1,10 @@
+#+TITLE: STM32 Rust Develop
+#+DATE: <2024-01-24 Wed>
+#+AUTHOR: EndlessPeak
+#+TOC: true
+#+HIDDEN: false
+#+DRAFT: false
+#+WEIGHT: 9
+#+Description: 本文记录了如何使用Rust语言开发STM32的方式。
+
+ 

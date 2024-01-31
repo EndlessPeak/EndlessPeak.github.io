@@ -1,15 +1,40 @@
 #+TITLE: ORB SLAM Adjustments
-#+DATE: <2024-01-07 Sun>
+#+DATE: <2024-01-27 Sat>
 #+AUTHOR: EndlessPeak
 #+TOC: true
 #+HIDDEN: false
 #+DRAFT: false
 #+WEIGHT: 10
-#+Description: 本文记录了 ORB-SLAM 系列框架在 ArchLinux 上的编译适配过程。 
+#+Description: 本文记录了 ORB-SLAM 系列框架在 ArchLinux 和 NixOS 上的编译适配过程。 
 
 * ORB SLAM3
 orb-slam3 的项目地址：https://github.com/UZ-SLAMLab/ORB_SLAM3
 目前 orb-slam3 的代码直接编译会报错，因此需要解决一些冲突。
+** Opencv
+orb-slam 系列要求 opencv 版本包含了对 gtk 的支持，这一点尤其重要。
+
+在 NixOS 中可以使用下面的代码开启对 gtk 的支持。
+#+begin_src nix
+  let
+      pkgs = nixpkgs.legacyPackages.${system};
+      opencv = pkgs.opencv;
+      opencvGtk = opencv.override( old:{
+        enableGtk2 = true;
+        gtk2 = pkgs.gtk2;
+        enableGtk3 = true;
+        gtk3 = pkgs.gtk3;
+        enableDocs = true;
+      });
+  in
+    {
+      devShells.default = pkgs.mkShell {
+        packages = with pkgs; [
+          opencvGtk
+        ];
+      }
+    }
+#+end_src
+
 ** Eigen
 Eigen 是一个矩阵运算库，可以直接从系统包管理器安装，也可以从源码编译。
 1. 官方项目地址：https://gitlab.com/libeigen/eigen
@@ -21,9 +46,9 @@ Sophus 是一个李群李代数库，一般发行版不提供安装，可以从�
 2. 该项目可选依赖于 =fmt= ，可以通过包管理器安装该库。
 
 安装说明：
-1. 若安装到系统环境下，为以后所有依赖 Sophus 的项目使用，可以添加参数去除测试部分的编译
+1. 若安装到系统环境下，为以后所有依赖 Sophus 的项目使用，可以添加参数去除测试部分的编译（仅对较新的版本有效）
    #+begin_src bash
-     cmake .. -DBUILD_SOPHUS_TEST=OFF -DBUILD_SOPHUS_EXAMPLES=OFF
+     cmake .. -DBUILD_SOPHUS_TESTS=OFF -DBUILD_SOPHUS_EXAMPLES=OFF
    #+end_src
 2. 若作为项目依赖，仅为单个项目使用，可以在 =CMakeLists.txt= 中添加如下代码
    #+begin_src cmake
@@ -70,15 +95,45 @@ NixOS 上可以通过编写 =sophus.nix= 的方式安装到系统
     };
   }
 #+end_src
+
 ** Pangolin
 Pangolin 是一个轻量可移植的 OpenGL 显示管理图形库。
 Pangolin 可以直接从系统包管理器安装，也可以从源码安装。
 1. 官方项目地址：https://github.com/stevenlovegrove/Pangolin
 2. 该项目建议安装到系统环境，因为各 SLAM 框架基本都依赖 Pangolin 。
-** qt5/qt6
-orb-slam3 的运行需要 qt 界面显示运行结果，可以安装 Qt5 或 Qt6 。
-** realsense2
+
+由于 Gcc13 不再包含 =cstdint= 头文件，在 NixOS 中需要显式指明：
+#+begin_src nix
+  (pangolin.overrideAttrs(old:{
+    env.CXXFLAGS = toString [
+      # GCC 13: error: 'uint32_t' does not name a type
+      "-include cstdint"
+    ];
+  }))
+#+end_src
+
+
+** Other Dependencies
+*** realsense2
 orb-slam3 可选依赖于该库，去掉该依赖项仅会导致与 realsense2 有关的测试代码不能正确生成
+*** dependencies
+1. orb-slam3 的运行需要 qt 界面显示运行结果，可以安装 Qt5 或 Qt6 。
+2. orb-slam3 的 =src/System.cc= 引入了 =openssl= 的头文件。
+3. orb-slam3 的 =DBoW2= 模块要求 =boost= 库。
+
+*** NixOS configuration
+#+begin_src nix
+  devShells.default = pkgs.mkShell {
+    packages = with pkgs; [
+      qt6.full
+      boost
+      openssl
+    ];
+  }
+
+#+end_src
+*** ROS support
+orb-slam3 可选依赖于 ROS，但是 ROS 在非 Ubuntu 上的安装并不容易，因此该部分建议使用 docker 或虚拟机部署。
 
 ** C++14 support
 orb-slam3 需要 C++ 14 的支持， *即使 Readme 上说只需要 C++ 11* 。为此，需要修改所有和 C++11 有关的内容，这包括 =CMakeLists.txt= 和代码中的宏。
@@ -89,8 +144,9 @@ orb-slam3 需要 C++ 14 的支持， *即使 Readme 上说只需要 C++ 11* 。�
 #+end_src
 
 代码中还需要手动将 ~COMPILEDWITHC11~ 替换为 ~COMPILEDWITHC14~ 宏。
-** ROS support
-orb-slam3 可选依赖于 ROS，但是 ROS 在非 Ubuntu 上的安装并不容易，因此该部分建议使用 docker 或虚拟机部署。
+
+** Compile
+给它一个编译核心，它能从 1.8GiB 干到 6.1GiB。如果不想内存寄掉就别 ~make -j~
 * ORB SLAM2
 ORB SLAM2 需要的依赖同上，例外的是不需要 =Sophus= 和 =realsence2= 。
 项目地址：https://github.com/raulmur/ORB_SLAM2/
@@ -123,7 +179,7 @@ Corrected typedef so that map value_type and allocator are the same. 参考 [[ht
    操作内容：
    1. 新增 ~#include<opencv2/imgproc/types_c.h>~
    2. 新增 ~#include<opencv2/opencv.hpp>~
-   3. 新增命名空间标识符或 ~using namespace cv;~
+   3. [deprecated]新增命名空间标识符或 ~using namespace cv;~
    文件范围： 
    1. =include/PnPsolver.h=
    2. =include/Sim3Solver.h=
@@ -148,7 +204,7 @@ Corrected typedef so that map value_type and allocator are the same. 参考 [[ht
       因此：
       1. 形参中，~CvMat *~ 改为 ~cv::Mat *~ ，到时候实参传 ~&M~ 进去
       2. 函数内 ~CvMat *~ 或 ~CvMat~ 都改为 ~cv::Mat~ ，同时 ~cvCreateMat()~ 也改为 ~cv::Mat~
-      3. 经过2的修改，函数内临时变量变为 ~cv::Mat~ 类型，在进行其他函数运算时可以去掉 ~&~
+      3. 经过 2 的修改，函数内临时变量变为 ~cv::Mat~ 类型，在进行其他函数运算时可以去掉 ~&~
    2. ~cvMulTransposed()~ → ~cv::mulTransposed()~
       #+begin_src cpp
         cvMulTransposed(PW0,&PW0tPW0,1);
@@ -202,5 +258,3 @@ Corrected typedef so that map value_type and allocator are the same. 参考 [[ht
 3. 更正下列 OpenCV 加载宏
    1. 将 ~CV_LOAD_IMAGE_UNCHANGED~ 更正为 ~cv::IMREAD_UNCHANGED~
    2. 将 ~CV_REDUCE_SUM~ 更正为 ~cv::REDUCE_SUM~
-
-https://github.com/StarterX4/dolphin-service-open-with-code
