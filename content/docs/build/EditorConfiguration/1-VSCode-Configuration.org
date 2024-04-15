@@ -11,7 +11,7 @@
 参考 [[https://code.visualstudio.com/docs/setup/linux][Visual Studio Code Installation]]
 ** Deb install
 从官网下载 deb 包，使用命令安装
-#+begin_src bash
+#+begin_src shell
   sudo dpkg -i code_XXX_amd64.deb
   sudo apt install ./code_XXX_amd64.deb
 #+end_src
@@ -21,7 +21,7 @@
 也可以从官网手动添加 apt 存储库和签名密钥，然后更新包缓存安装。
 ** Rpm install
 从官网下载 rpm 包，使用命令安装
-#+begin_src bash
+#+begin_src shell
   sudo dnf install code_XXX_amd64.rpm
 #+end_src
 
@@ -34,7 +34,7 @@
 Gnome 环境的文件管理器是 =nautilus= ，有两种方法配置：
 *** Python Extension For Nautilus
 运行命令：
-#+begin_src bash
+#+begin_src shell
   wget -qO- https://raw.githubusercontent.com/harry-cpp/code-nautilus/master/install.sh | bash
 #+end_src
  

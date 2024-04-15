@@ -97,7 +97,7 @@ Nasyxx 佬的写法是下面这样的：
 
 ** Command
 使用下面的命令可以批量进行写入：
-#+begin_src sh
+#+begin_src shell
   parameter1 = "(progn (require 'ob-tangle) (setq org-confirm-babel-evaluate nil))" 
   parameter2 = '(org-babel-tangle-publish t "XXX.org" "XXX.el")' 
   emacs -Q --batch --eval $parameter1 --eval $parameter2

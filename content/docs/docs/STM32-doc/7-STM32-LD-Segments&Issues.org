@@ -168,7 +168,7 @@
 本节参考了[5]和[6]的解决方法。
 
 首先可以使用下面的命令查看构建的内存配置：
-#+begin_src bash
+#+begin_src shell
   readelf -SW 1_KEYLED.elf
   readelf -lW 1_KEYLED.elf
   readelf -l 1_KEYLED.elf

@@ -25,7 +25,7 @@ xRDP 可以与不同的桌面环境（如 GNOME、Xfce、MATE 等）配合使用
 2. 启动 =xrdp= 服务： ~sudo systemctl enable xrdp~
 3. 设置防火墙规则
    在 ubuntu 发行版上，使用 =ufw= 配置防火墙规则。
-   #+begin_src sh
+   #+begin_src shell
      sudo ufw status
      sudo ufw enable
      sudo ufw allow 3389/tcp
@@ -39,7 +39,7 @@ Windows 默认安装有 =msctc= ，可以直接用于远程桌面控制。
 Linux 可以考虑安装 =freerdp= ，它提供了一个 =xfreerdp= 命令用于连接远程计算机。
 
 =xfreerdp= 的基本使用方式如下：
-#+begin_src sh
+#+begin_src shell
   xfreerdp /u:<username> /p:<password> /v:<remote>
 #+end_src
 

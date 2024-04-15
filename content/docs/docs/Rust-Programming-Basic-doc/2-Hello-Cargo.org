@@ -50,7 +50,7 @@ Cargo 是 Rust 的构建系统和包管理器。
 6. 代码检查
 
 创建项目的命令如下：
-#+begin_src sh
+#+begin_src shell
   cargo new hello_cargo
   cd hello_cargo
 #+end_src

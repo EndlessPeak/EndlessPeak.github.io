@@ -47,7 +47,7 @@ Sophus 是一个李群李代数库，一般发行版不提供安装，可以从�
 
 安装说明：
 1. 若安装到系统环境下，为以后所有依赖 Sophus 的项目使用，可以添加参数去除测试部分的编译（仅对较新的版本有效）
-   #+begin_src bash
+   #+begin_src shell
      cmake .. -DBUILD_SOPHUS_TESTS=OFF -DBUILD_SOPHUS_EXAMPLES=OFF
    #+end_src
 2. 若作为项目依赖，仅为单个项目使用，可以在 =CMakeLists.txt= 中添加如下代码
@@ -139,7 +139,7 @@ orb-slam3 可选依赖于 ROS，但是 ROS 在非 Ubuntu 上的安装并不容�
 orb-slam3 需要 C++ 14 的支持， *即使 Readme 上说只需要 C++ 11* 。为此，需要修改所有和 C++11 有关的内容，这包括 =CMakeLists.txt= 和代码中的宏。
 
 可以使用下面的代码替换掉 =CMakeLists.txt= 中的内容
-#+begin_src bash
+#+begin_src shell
   sed -i 's/++11/++14/g' CMakeLists.txt
 #+end_src
 

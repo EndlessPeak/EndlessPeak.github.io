@@ -12,7 +12,7 @@
 
 ** Unix
 标准的安装 Rust 最新稳定版本的 =rustup= 的流程为：
-#+begin_src sh
+#+begin_src shell
   curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 #+end_src
 

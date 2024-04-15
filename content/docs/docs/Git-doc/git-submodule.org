@@ -9,53 +9,115 @@
 
 Git子模块是一个强大的工具，用于在Git仓库中跟踪和管理另一个Git仓库。当你想要在你的项目中包含并跟踪第三方库（比如库的特定版本）的时候会使用到。
 
-** 添加子模块
+* Basic Operation
+** Add Submodule
 当你第一次添加子模块时，你可以使用如下命令：
 
-#+begin_src sh
+#+begin_src shell
   git submodule add <repository-url> <path-to-submodule>
 #+end_src
 
 这会在项目中添加一个新的子模块并克隆子模块仓库到指定的路径。
 
-** 初始化子模块
+** Init Submodule
 克隆一个包含子模块的项目时，子模块目录会存在，但会是空的。你需要运行两个命令来初始化并更新子模块：
 
-#+begin_src sh
-  git submodule init
-  git submodule update
+#+begin_src shell
+  git submodule init --recursive
+  git submodule update --recursive
 #+end_src
 
-或者你可以在克隆时使用 ~--recurse-submodules~ 参数来自动初始化和更新子模块。
+当然这两个命令可以合并为一个：
+#+begin_src shell
+  git submodule update --init --recursive
+#+end_src
 
-** 更新子模块
+或者你可以在克隆时使用参数来自动初始化和更新子模块。
+#+begin_src shell
+  git clone <repository-url> --recursive
+  git clone <repository-url> --recurse-submodules 
+#+end_src
+
+** Update Submodule
 要更新子模块到最新的提交，你需要进入到子模块的目录中，然后拉取所需的更改。这可以通过以下命令完成：
 
-#+begin_src sh
+#+begin_src shell
   cd <path-to-submodule>
   git fetch
   git checkout <desired-branch-or-tag>
 #+end_src
 
-之后，你需要在主仓库中提交这个更改，这样就会记录子模块的新提交。
+之后，你需要在主仓库中提交这个更改，这样就会记录子模块的新提交。当你更新子模块后，确保运行测试以验证更新没有破坏任何东西。
 
-** 提交子模块更改
+如果你的子模块指向一个特定的分支，你可以在子模块目录中运行git pull来获取最新的提交，然后在主项目中提交这个更改。
+** Commit Submodule
 子模块实际上是指向特定提交的引用。当你更新子模块后，你的主项目会检测到子模块的提交指针已经变化。你需要提交这个变化到你的主仓库，这样其他人在更新代码或者克隆仓库时就会得到子模块的正确版本。
 
-#+begin_src sh
+#+begin_src shell
   git add <path-to-submodule>
   git commit -m "Update the submodule to the latest commit"
   git push
 #+end_src
 
-** gitignore
-子模块的路径不应该被添加到 =.gitignore= 文件。当你添加一个子模块时，Git会在你的主仓库中创建两个重要的文件：
+** Gitignore & Gitmodules
+子模块的路径不应该被添加到 =.gitignore= 文件。
 
+当你添加一个子模块时，Git会在你的主仓库中创建两个重要的文件：
 1. =.gitmodules= 包含子模块的URL和配置信息。
 2. =<path-to-submodule>= 一个特殊的文件，它实际上是一个Git链接，指向子模块的特定提交。
 这些文件应该被提交到你的主仓库中，这样其他协作者或者环境就可以正确地初始化和更新子模块。
 
-** 注意事项
-当你更新子模块后，确保运行测试以验证更新没有破坏任何东西。
-如果你的子模块指向一个特定的分支，你可以在子模块目录中运行git pull来获取最新的提交，然后在主项目中提交这个更改。
 如果你删除了一个子模块，确保从.gitmodules和你的主仓库配置中移除相关的条目，否则Git会在某些操作时继续尝试访问已删除的子模块。
+
+* Advance Operation
+此处介绍如何在Git中更改子模块的URL或路径。子模块是Git项目中的独立仓库，可以在主项目中作为一个独立的组件进行管理。有时候，我们需要更改子模块的URL或路径，以适应项目的需求或进行项目结构优化。
+
+下面将介绍两种常见的更改子模块URL或路径的情况。
+
+** Update Submodule's URL
+下面是更改子模块URL的步骤：
+
+1. 进入主项目的根目录，找到包含子模块的目录
+2. 将子模块从 =.gitmodules= 文件中删除
+3. 将子模块从主项目中删除
+4. 删除子模块相关的配置文件，例如 =.git/modules/<submodule-name>= 目录
+5. 添加新的子模块到主项目中
+
+命令如下：
+#+begin_src shell
+  cd main-project
+  git submodule deinit my-submodule
+  git rm my-submodule
+  rm -rf .git/modules/my-submodule
+  git submodule add <new-url> my-submodule
+#+end_src
+
+** Update Submodule's Path
+下面是更改子模块路径步骤
+
+1. 进入主项目的根目录，找到包含子模块的目录
+2. 将子模块移动到新的路径。
+3. 更新 =.gitmodules= 文件中子模块的路径。
+
+命令如下：
+#+begin_src shell
+  cd main-project
+  git mv old-subdir/my-submodule new-subdir/my-submodule
+  git config -f .gitmodules submodule.my-submodule.path new-subdir/my-submodule
+#+end_src
+
+** Repair Submodule Config Files
+Git子模块的信息存储在几个地方：
+1. =.gitmodules= 文件：存储了子模块的URL和期望的路径
+2. =.git/config= 文件：存储了关于子模块的本地配置信息
+3. =.git/modules= 目录：存储了每个子模块的Git数据
+
+当子模块的配置文件没有被正确更新时，需要进行修复，步骤如下
+1. 更新 =.gitmodules= 文件
+   确保子模块的配置是正确的
+2. 同步 =.gitmodules= 的更改
+   执行 ~git submodule sync~
+3. 修复子模块的 git数据目录
+   1. 删除旧模块路径 ~rm -rf .git/modules/old-subdir/my-submodule~
+   2. 取消初始化子模块 ~git submodule deinit -f -- sub-dir/my-submodule~
+   3. 重新初始化子模块 ~git submodule update --init -- sub-dir/my-submodule~
