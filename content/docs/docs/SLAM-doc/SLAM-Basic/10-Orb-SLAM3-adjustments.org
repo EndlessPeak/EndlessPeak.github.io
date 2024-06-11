@@ -4,7 +4,7 @@
 #+TOC: true
 #+HIDDEN: false
 #+DRAFT: false
-#+WEIGHT: 10
+#+WEIGHT: 100
 #+Description: 本文记录了 ORB-SLAM 系列框架在 ArchLinux 和 NixOS 上的编译适配过程。 
 
 * ORB SLAM3

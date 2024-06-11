@@ -1,5 +1,5 @@
 ---
-title: SLAM Programming and Interviewing
+title: SLAM Programming Basic
 authors:
   - EndlessPeak
 toc: true
@@ -8,7 +8,6 @@ date: 2023-10-28
 hidden: false
 draft: false
 weight: 1
-layout: doc-list
 ---
 
-本系列文章是SLAM方面的内容。
+本系列文章是SLAM方面的基础内容。

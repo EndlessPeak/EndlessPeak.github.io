@@ -4,7 +4,7 @@
 #+TOC: true
 #+HIDDEN: false
 #+DRAFT: false
-#+WEIGHT: 4
+#+WEIGHT: 20
 #+Description: 本文对Visual SLAM 的相关研究进行概括和综述。
 
 * Visual SLAM

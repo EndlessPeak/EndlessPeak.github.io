@@ -4,7 +4,7 @@
 #+TOC: true
 #+HIDDEN: false
 #+DRAFT: false
-#+WEIGHT: 8
+#+WEIGHT: 50
 #+Description: 本文记录了适用于李群和李代数的Sophus库的相关实践。
 
 * Lie Group & Lie Algebras

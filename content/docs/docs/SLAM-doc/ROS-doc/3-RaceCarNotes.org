@@ -1,4 +1,4 @@
-#+TITLE: ROS 无人小车项目
+#+TITLE: Race Car Project
 #+DATE: <2022-11-11 Fri>
 #+AUTHOR: EndlessPeak
 #+TOC: true

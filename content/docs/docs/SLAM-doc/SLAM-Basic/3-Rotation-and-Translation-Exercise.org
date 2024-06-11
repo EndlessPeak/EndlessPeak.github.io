@@ -4,7 +4,7 @@
 #+TOC: true
 #+HIDDEN: false
 #+DRAFT: false
-#+WEIGHT: 5
+#+WEIGHT: 30
 #+Description: 本文记录了旋转和平移的相关实验。
 
 * Eigen

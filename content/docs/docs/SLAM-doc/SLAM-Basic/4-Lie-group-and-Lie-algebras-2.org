@@ -4,7 +4,7 @@
 #+TOC: true
 #+HIDDEN: false
 #+DRAFT: false
-#+WEIGHT: 7
+#+WEIGHT: 41
 #+Description: 本文记录了李群和李代数的相关概念、性质。
 
 * Exponential and Logarithmic Mapping

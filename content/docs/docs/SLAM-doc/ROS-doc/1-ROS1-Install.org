@@ -1,10 +1,10 @@
-#+TITLE: ROS 环境配置
+#+TITLE: ROS1 Installation
 #+DATE: <2022-10-18 Tue>
 #+AUTHOR: EndlessPeak
 #+TOC: true
 #+HIDDEN: false
 #+DRAFT: false
-#+WEIGHT: 2
+#+WEIGHT: 1
 #+Description: 本文主要讨论如何构建ROS环境。
 
 * Ubuntu Configuration

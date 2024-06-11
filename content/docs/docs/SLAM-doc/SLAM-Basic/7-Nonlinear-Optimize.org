@@ -1,0 +1,64 @@
+#+TITLE: Non linear Optimize
+#+DATE: <2024-06-01 Sat>
+#+AUTHOR: EndlessPeak
+#+TOC: true
+#+HIDDEN: false
+#+DRAFT: false
+#+WEIGHT: 70
+#+Description: 
+
+* Matrix
+** Derivative of a matrix with respect to a vector
+假设 $x$ 是一个 $n \times 1$ 的列向量，$A$ 是一个 $n \times n$的对称矩阵
+1. 展开 $x^TAx$:
+   $$
+   x^TAx=\sum_{i=1}^{n}\sum_{j=1}^{n}x_iA_{ij}x_j
+   $$
+   其中 $x_i$ 是 $x$ 的第 $i$ 个分量，$A_{ij}$ 是 $A$ 的第 $i$ 行第 $j$ 列的元素。
+   
+2. 对 $x_k$ 求导：
+   $$
+   \frac{\partial }{\partial x} \left ( \sum_{i=1}^{n} \sum_{j=1}^{n} x_i A_{ij} x_j \right ) = \sum_{i=1}^n\sum_{j=1}^n \frac{\partial }{\partial x_k}(x_i A_{ij} x_j) 
+   $$
+
+3. 考虑每一项 $x_i A_{ij} x_j$ 的导数：
+   $$
+   \frac{\partial}{\partial x_k} \left ( x_i A_{ij} x_j \right ) = \delta_{ik} A_{ij} x_j + x_i A_{ij} \delta_{jk}
+   $$
+
+   其中 $\delta_{ik}$ 和 $\delta_{jk}$ 是克罗内克$\delta$函数，当且仅当 $i=k$ 或 $j=k$ 时其值为 1，否则为 0。
+
+4. 非零项的和为：
+   $$
+   \sum_{i=1}^{n} \sum_{j=1}^{n} (\delta_{ik} A_{ij} x_j + x_i A_{ij} \delta_{jk})=\sum_{j=1}^{n}A_{kj}x_j + \sum_{i=1}^{n}x_iA_{ik}
+   $$
+
+5. 由于 $A$ 是对称的，即 $A_{ij}=A_{ji}$ ，所以：
+   $$
+   \sum_{j=1}^{n}A_{kj}x_j + \sum_{i=1}^{n}x_iA_{ik} = \sum_{j=1}^{n}A_{kj}x_j + \sum_{j=1}^{n}x_jA_{jk} =
+   2\sum_{j=1}^{n}A_{kj}x_j
+   $$
+
+   相当于：
+   $$
+   \frac{\partial}{\partial x_k}(x^TAx)=2(Ax)_k
+   $$
+
+6. 因此向量形式的求导结果是：
+   $$
+   \frac{\partial}{\partial x}(x^TAx)=2Ax
+   $$
+
+* Non linear Optimize
+对 $\Delta x$ 向量，$\frac{1}{2} \Delta x^T H \Delta x$ 关于 $\Delta x$ 求导：
+1. 由于 $H$ 是 Hessian 矩阵，因此它是对称的
+2. 根据
+   $$
+   \frac{\partial}{\partial x}(x^TAx)=2Ax
+   $$
+   其中，$A$ 是对称矩阵。
+
+   我们有：
+   $$
+   \frac{\partial}{\partial x}(\frac{1}{2} x^TAx)=Ax
+   $$

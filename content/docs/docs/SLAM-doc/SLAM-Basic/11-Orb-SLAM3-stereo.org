@@ -4,7 +4,7 @@
 #+TOC: true
 #+HIDDEN: false
 #+DRAFT: false
-#+WEIGHT: 12
+#+WEIGHT: 110
 #+Description: ORB-SLAM3 双目适配。
 
 * Stereo Kitti

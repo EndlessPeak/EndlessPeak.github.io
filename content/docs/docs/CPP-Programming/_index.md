@@ -1,13 +1,13 @@
 ---
-title: Computer Interview
+title: CPP Programming
 authors:
   - EndlessPeak
 toc: false
 featuredImage: 
-date: 2022-03-01
+date: 2024-05-28
 hidden: false
 draft: false
-weight: 3
+weight: 2
 layout: doc-list
 ---
 

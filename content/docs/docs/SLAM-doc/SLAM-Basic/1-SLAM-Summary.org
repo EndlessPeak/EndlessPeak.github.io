@@ -4,7 +4,7 @@
 #+TOC: true
 #+HIDDEN: false
 #+DRAFT: false
-#+WEIGHT: 3
+#+WEIGHT: 10
 #+Description: 本文对SLAM的概念和相关研究方向进行总结。
 
 * What's SLAM

@@ -71,3 +71,8 @@ Tmux 将会话与窗口解除绑定，降低耦合
 4. ; for switch to last pane
 5. o for move anti-clockwise
 6. C-o for swap pane anti-clockwise
+
+* Double Tmux
+当本地与远程同时使用 tmux 时，快捷键会被本地 tmux 捕获，解决办法：
+1. 使用双前缀方法，让第一次快捷键被本地 tmux 捕获，第二次快捷键被远程 tmux 捕获。
+2. 更改本地或远程的 tmux 快捷键。
