@@ -31,6 +31,19 @@ markup:
     endLevel: 3
     ordered: false
   goldmark:
+    # https://gohugo.io/content-management/mathematics/
+    extensions:
+      passthrough:
+        delimiters:
+          block:
+          - - \[
+            - \]
+          - - $$
+            - $$
+          inline:
+          - - \(
+            - \)
+        enable: true
     renderer:
       unsafe: true
 taxonomies:

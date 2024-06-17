@@ -11,8 +11,9 @@ weight: 1
 description: 本文记录C++STL编程的相关知识。
 ---
 
-# Basic Thread
-## C Thread Impl
+## Basic Thread
+
+### C Thread Impl
 C中实现多线程编程需要使用如下的函数原型：
 ```cpp
 int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine) (void *), void *arg);
@@ -54,7 +55,7 @@ int main() {
 }
 ```
 
-## CPP Thread Impl
+### CPP Thread Impl
 以下是C++进行多线程编程的示例：
 ```cpp
   #include <iostream>
@@ -79,15 +80,3 @@ int main() {
       return 0;
   }
 ```
-
-
-## C Plus Plus
-1. Eigen 是行优先还是列优先 
-2. 说一下 Mat 是如何析构的
-3. 说一下智能指针，shared_ptr 与 unique_ptr
-4. 说一下什么是虚函数
-5. 普通指针如何实现一块内存只能有一个指针指向这种功能
-6. C++ RTTI 是什么东西？
-7. C++是如何实现多态的？
-8. vector 的 iterator 什么时候失效？
-9.  写 CmakeLists.txt，写 gcc 指令
