@@ -10,7 +10,7 @@
 <title>Arch Linux 物理机的安装与引导 | Linux 安装教程 | 坐忘道琼峰</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
-<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.b4df0caebd058a56d5556ac52e8e433c3b8d42aac8ccf30094e707fc2ea0773f5edfd5db2025486b3bd252a5dee3136f.css">
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
 <script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
 
 
@@ -59,7 +59,7 @@
 <link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
 
 
-<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.cd2d65e90b033b5ff5087d18590179029ef6647458eacb3d21c15e42a24f83c203d7013d6f35b4808bbd257ea41a118c.js"></script>
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.986d5dbb170eaf500c5a411aacebc556d5340a0e51e01e7a4d0cafe92c9f4fa5acb6c77a98d4b0b9cab0029d445f0583.js"></script>
 
 
 
@@ -415,7 +415,7 @@
 <p><strong>实用</strong>：Arch 注重实用性，避免意识形态之争。</p>
 <p><strong>以用户为中心</strong>：许多 Linux 发行版都试图变得更“用户友好”，Arch Linux 则一直是，且永远会是“以用户为中心”。Arch是为了满足贡献者的需求，而不是为了吸引尽可能多的用户。</p>
 <p>一般来说，安装Arch最好的也是最完备的教程就是官方的<a href="https://wiki.archlinux.org/index.php/installation_guide">Installation guide</a>与<a href="https://wiki.archlinux.org/">Arch Wiki</a>，虽然部分内容有中文版，但是中文的翻译有些时候会落后于英文版，所以不推荐完全依赖于中文Wiki。另外， 官方Wiki的写作方式更偏向于文档，没有我们所习惯的按步骤编排的安装过程，给不熟悉这种写作方式的人们造成了阅读与使用上的困难。</p>
-<p><img src="https://s2.ax1x.com/2020/02/02/1YadTU.jpg" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/02/1YadTU.jpg"></p>
 <h2 id="安装前准备">安装前准备</h2>
 <p><em>命令约定：无<code>$</code>标识符的命令代表以<code>root</code>身份执行；通常它们在终端中以<code>#</code>开头。</em></p>
 <h3 id="准备硬盘空间">准备硬盘空间</h3>
@@ -475,10 +475,10 @@
 <p>Arch Linux并不能离线安装，它需要联网来下载需要的组件，所以此时需要连接网络。</p>
 <pre><code class="language-shell">ip link #查看网络设备
 </code></pre>
-<p>对笔记本电脑来说网络设备一般有三种，名称分别应该类似于lo,wlan0,eth0。查看网络连接可以参阅<a href="https://wiki.archlinux.org/index.php/Network_configuration_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Network configuration (简体中文)</a></p>
+<p>对笔记本电脑来说网络设备一般有三种，名称分别应该类似于lo,wlan0,eth0。查看网络连接可以参阅<a href="https://wiki.archlinux.org/index.php/Network_configuration_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">Network configuration (简体中文)</a></p>
 <ol>
 <li>lo是本地环回；</li>
-<li>wlan0是无线网络，参阅<a href="https://wiki.archlinux.org/index.php/Wireless_network_configuration_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Wireless network configuration(简体中文)</a></li>
+<li>wlan0是无线网络，参阅<a href="https://wiki.archlinux.org/index.php/Wireless_network_configuration_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">Wireless network configuration(简体中文)</a></li>
 <li>eth0是有线网络，参阅<a href="https://wiki.archlinux.org/index.php/Network_configuration/Ethernet">Ethernet</a></li>
 </ol>
 <p>Arch Linux在网络工具上已经弃用了<strong>net-tools</strong>转而使用<strong>iproute2</strong>。其详细命令变化如下：</p>

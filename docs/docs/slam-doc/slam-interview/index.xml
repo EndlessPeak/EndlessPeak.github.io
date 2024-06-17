@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SLAM Interviewing on 坐忘道琼峰</title>
+    <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/</link>
+    <description>Recent content in SLAM Interviewing on 坐忘道琼峰</description>
+    <generator>Hugo</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Tue, 11 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SLAM Interview</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/1-slam-interview/</link>
+      <pubDate>Tue, 28 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/1-slam-interview/</guid>
+      <description>SLAM Problems Matrix and Sophus 求导 $ \frac{\partial R_1R_2}{\partial R_1} $ 简述李群和李代数的关系。 给定 \((H,W)\) 图像或者 matrix，问如何去访问每一个元素，是先访问行呢？还是先访问列？跟缓存还有关系~ Sensors Model 除</description>
+    </item>
+    <item>
+      <title>OpenCV</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/2-opencv/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/2-opencv/</guid>
+      <description>CV::Mat 在 OpenCV 中，cv::Mat 是用于表示图像或矩阵的主要数据结构。它封装了一个 n 维数组，可以存储不同类型的数值（如图像的像素值）。 cv::Mat 的构造和析构过程涉及内存</description>
+    </item>
+    <item>
+      <title>Kalman Filter</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/3-kalman-filter/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/3-kalman-filter/</guid>
+      <description>Kalman Filter Process Model 假设系统状态空间模型为： $$ \begin{aligned} X(k) &amp;= AX(k-1) + BU(k-1) + W(k) \\ Z(k) &amp;= HX(k) + V(k) \end{aligned} $$ 其中： $A$ 和 $B$ 分别表示系统状态参数矩阵和系统控制参数矩阵； $Z(k)$ 是在 $k$ 时刻的测量值; $H$ 是系</description>
+    </item>
+    <item>
+      <title>Pose Caculating</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/4-pose-caculating/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/4-pose-caculating/</guid>
+      <description>Rotation Matrix 2 Dimensional 从二维角度推导旋转矩阵更加明确。 假设二维坐标系 $xOy$ 的第一象限中有点 $P(x,y)$，其与原点 $O$ 的连线 $OP$ 与 $x$ 轴正向夹角为 $\alpha$，则： $$ \left</description>
+    </item>
+  </channel>
+</rss>

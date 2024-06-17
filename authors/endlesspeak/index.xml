@@ -4,18 +4,46 @@
     <title>坐忘道琼峰 Sitting Oblivion Tao EndlessPeak on 坐忘道琼峰</title>
     <link>https://endlesspeak.github.io/authors/endlesspeak/</link>
     <description>Recent content in 坐忘道琼峰 Sitting Oblivion Tao EndlessPeak on 坐忘道琼峰</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh</language>
     <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
 </copyright>
-    <lastBuildDate>Sun, 19 Nov 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 11 Jun 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://endlesspeak.github.io/authors/endlesspeak/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>SLAM Programming Basic</title>
+      <title>Company Seek</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/company/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/company/</guid>
+      <description>记录简历投递的相关情况。</description>
+    </item>
+    <item>
+      <title>Thread</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/1-thread/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/1-thread/</guid>
+      <description>Basic Thread C Thread Impl C中实现多线程编程需要使用如下的函数原型： int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine) (void *), void *arg); 其中： *pthread_t thread 用于存储创建的线程标识符； *const pthread_attr_t attr 用于设置线程属性； void *(*start_routine)(void *) 是指向函</description>
+    </item>
+    <item>
+      <title>SLAM Programming and Interviewing</title>
       <link>https://endlesspeak.github.io/docs/docs/slam-doc/</link>
       <pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate>
       <guid>https://endlesspeak.github.io/docs/docs/slam-doc/</guid>
       <description>本系列文章是SLAM方面的内容。</description>
+    </item>
+    <item>
+      <title>SLAM Programming Basic</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/</link>
+      <pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/</guid>
+      <description>本系列文章是SLAM方面的基础内容。</description>
+    </item>
+    <item>
+      <title>SLAM Summary</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/1-slam-summary/</link>
+      <pubDate>Sun, 08 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/1-slam-summary/</guid>
+      <description>What&amp;rsquo;s SLAM SLAM 是 Simultaneous Localization and Mapping，即同时定位与建图。 history separate 最初，定位和建图问题是被看成两个独立问题研究的： 定位问题的关键是事先给定环境地图； 建图问题的关键是</description>
     </item>
     <item>
       <title>Terminal  Configuration</title>
@@ -23,6 +51,13 @@
       <pubDate>Tue, 18 Oct 2022 10:00:00 +0000</pubDate>
       <guid>https://endlesspeak.github.io/docs/build/terminalconfiguration/</guid>
       <description></description>
+    </item>
+    <item>
+      <title>Compiler Language</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-1-compilerlanguage/</link>
+      <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-1-compilerlanguage/</guid>
+      <description>计算机系统层次结构 微程序级 本级的语言是微指令集，使用微指令编写微程序，由硬件执行。微命令→微指令→微程序 传统机器级 本级的语言是指令集，可以使用微程序翻</description>
     </item>
     <item>
       <title>机器学习综述</title>
@@ -44,6 +79,13 @@
       <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
       <guid>https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/</guid>
       <description></description>
+    </item>
+    <item>
+      <title>C/C&#43;&#43; Programming Basic</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/</link>
+      <pubDate>Thu, 10 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/</guid>
+      <description>本系列文章是C/C++程序设计基础方面的内容。</description>
     </item>
     <item>
       <title>第一卷</title>
@@ -81,10 +123,52 @@
       <description>&lt;p&gt;尽管很多人已经不习惯看长篇大论, 但我还是要说, 这是一篇值得你从头读到尾的长篇文章。&lt;/p&gt;</description>
     </item>
     <item>
+      <title>OpenCV</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/2-opencv/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/2-opencv/</guid>
+      <description>CV::Mat 在 OpenCV 中，cv::Mat 是用于表示图像或矩阵的主要数据结构。它封装了一个 n 维数组，可以存储不同类型的数值（如图像的像素值）。 cv::Mat 的构造和析构过程涉及内存</description>
+    </item>
+    <item>
+      <title>STL</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/2-stl/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/2-stl/</guid>
+      <description>Vector Brief std::vector 是 C++ 标准模板库(STL)中的一个动态数组类。它能够自动管理内存，在需要时自动扩展或收缩。std::vector 具有以下特点： 动态大小：可以根据需</description>
+    </item>
+    <item>
+      <title>CPP Programming</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/</link>
+      <pubDate>Tue, 28 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/</guid>
+      <description>本系列文章记录在计算机面试过程中涉及到的知识内容。</description>
+    </item>
+    <item>
+      <title>SLAM Interviewing</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/</link>
+      <pubDate>Tue, 28 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/</guid>
+      <description>本系列文章是SLAM方面的面试内容。</description>
+    </item>
+    <item>
+      <title>C&#43;&#43; Programming Advanced</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/2-advanced-doc/</link>
+      <pubDate>Sun, 19 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/2-advanced-doc/</guid>
+      <description>本系列文章是C++20 高级编程方面的内容。</description>
+    </item>
+    <item>
+      <title>VSLAM Summary</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/2-vslam-summary/</link>
+      <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/2-vslam-summary/</guid>
+      <description>Visual SLAM 在计算机视觉中，与同时定位与地图构建(Simultaneous Localization And Mapping)相似的是运动推断结构(Structure from motion,SFM)</description>
+    </item>
+    <item>
       <title>Robot Operation System</title>
-      <link>https://endlesspeak.github.io/docs/docs/ros-doc/</link>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/</link>
       <pubDate>Tue, 18 Oct 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/ros-doc/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/</guid>
       <description>本系列文章是ROS机器人操作系统方面的内容。</description>
     </item>
     <item>
@@ -102,6 +186,13 @@
       <description>原理 简要描述一下决策树的原理 决策树解决二分类问题时，每一次决策都选择一种最佳属性进行划分，最终得到结果。 为了得到最佳划分，就需要在每次划分中获得更多的</description>
     </item>
     <item>
+      <title>Algorithms</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/</guid>
+      <description>本系列文章记录算法学习方面的笔记。</description>
+    </item>
+    <item>
       <title>英语面试</title>
       <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/englishinterview/</link>
       <pubDate>Fri, 04 Mar 2022 00:00:00 +0000</pubDate>
@@ -114,13 +205,6 @@
       <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
       <guid>https://endlesspeak.github.io/novel/volume1/ch1/</guid>
       <description>​ 襄州，地处平原中部，夏季凉爽宜人，冬季略有寒意，山峦稀少略有起伏，河流宽阔少见湍急，温润时不显潮湿，干爽时不见燥闷，非常适合居住。闻名江湖的真武道宗</description>
-    </item>
-    <item>
-      <title>Operating System</title>
-      <link>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/</link>
-      <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/</guid>
-      <description>本系列文章记录操作系统方面的内容。</description>
     </item>
     <item>
       <title>数据结构基本概念</title>
@@ -172,11 +256,25 @@
       <description>&lt;p&gt;GNU/Linux，无论你是否相信，它已经成为目前增长最迅速的系统。无论是企业还是个人用户，Linux都是一个足够可靠的选择。我希望本系列文章能够使更多的人完全理解Linux，并热切地尝试去使用甚至探索它。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>C&#43;&#43; Programming Advanced</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-advanced-doc/</link>
-      <pubDate>Sun, 19 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-advanced-doc/</guid>
-      <description>本系列文章是C++20 高级编程方面的内容。</description>
+      <title>Kalman Filter</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/3-kalman-filter/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/3-kalman-filter/</guid>
+      <description>Kalman Filter Process Model 假设系统状态空间模型为： $$ \begin{aligned} X(k) &amp;= AX(k-1) + BU(k-1) + W(k) \\ Z(k) &amp;= HX(k) + V(k) \end{aligned} $$ 其中： $A$ 和 $B$ 分别表示系统状态参数矩阵和系统控制参数矩阵； $Z(k)$ 是在 $k$ 时刻的测量值; $H$ 是系</description>
+    </item>
+    <item>
+      <title>C&#43;&#43; Programming Interview</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/</link>
+      <pubDate>Tue, 28 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/</guid>
+      <description>本系列文章是C++ 面试方面的内容。</description>
+    </item>
+    <item>
+      <title>Rotation &amp; Translation Exercise</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-rotation-and-translation-exercise/</link>
+      <pubDate>Thu, 16 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-rotation-and-translation-exercise/</guid>
+      <description>Eigen Usage Eigen 是用头文件组成的库，对于它的使用，有两种办法： 理论上只需要引入头文件即可，见下面代码中的“直接引入”； 按照官网说明和 cmake 规范，依次 find_package 并 target_link_libraries 下面提供了</description>
     </item>
     <item>
       <title>支持向量机问题</title>
@@ -193,6 +291,13 @@
       <description>专业问题 谈谈你对大数据的认识 大数据，或称巨量资料。是具有如下特点的信息资产。 数据量大 增长速度快 形式多样 大数据的类型： 结构化数据 半结构化数据 非结构化数据</description>
     </item>
     <item>
+      <title>Computer Interview</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/</guid>
+      <description>本系列文章记录在计算机面试过程中涉及到的知识内容。</description>
+    </item>
+    <item>
       <title>编译原理</title>
       <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/compilersprinciples/</link>
       <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
@@ -205,13 +310,6 @@
       <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
       <guid>https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/</guid>
       <description></description>
-    </item>
-    <item>
-      <title>C/C&#43;&#43; Programming Basic</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/</link>
-      <pubDate>Thu, 10 Feb 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/</guid>
-      <description>本系列文章是C/C++程序设计基础方面的内容。</description>
     </item>
     <item>
       <title>第二章 是非</title>
@@ -261,6 +359,20 @@
       <pubDate>Sat, 11 Jan 2020 20:00:00 +0000</pubDate>
       <guid>https://endlesspeak.github.io/docs/build/operating-system-installation/</guid>
       <description>本系列文章讲述Linux安装方面的内容，包括Parrot OS和Arch Linux等系统的安装内容。</description>
+    </item>
+    <item>
+      <title>Pose Caculating</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/4-pose-caculating/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/4-pose-caculating/</guid>
+      <description>Rotation Matrix 2 Dimensional 从二维角度推导旋转矩阵更加明确。 假设二维坐标系 $xOy$ 的第一象限中有点 $P(x,y)$，其与原点 $O$ 的连线 $OP$ 与 $x$ 轴正向夹角为 $\alpha$，则： $$ \left</description>
+    </item>
+    <item>
+      <title>Lie Group and Lie Algebras 1</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/4-lie-group-and-lie-algebras-1/</link>
+      <pubDate>Mon, 20 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/4-lie-group-and-lie-algebras-1/</guid>
+      <description>Raise 在 SLAM 中，除表示位姿(旋转)外，还需要对其进行估计和优化。然而，旋转矩阵自身带有约束(正交矩阵且行列式为 1)，此时对其进行优化显得困难。通过一定的转换</description>
     </item>
     <item>
       <title>STM32 Develop Documents</title>
@@ -319,6 +431,13 @@
       <description>本系列文章讲述Linux环境方面的内容，包括桌面环境(DE)和窗口管理器(WM)等内容。</description>
     </item>
     <item>
+      <title>Lie Group and Lie Algebras Exercise</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/5-lie-group-and-lie-algebras-exercise/</link>
+      <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/5-lie-group-and-lie-algebras-exercise/</guid>
+      <description>Lie Group &amp;amp; Lie Algebras 李群 \(\mathcal{L}\) 是一个群同时也是一个光滑的(可微的)的流形, 定义其上的群乘法和求逆运算均可微; 李代数 \(\mathcal{A}\) 是 \(\mathcal{L}\) 的在单位元 \(\mathcal{1}\) 处的正切空间;最常见的李群就是 SO(n)</description>
+    </item>
+    <item>
       <title>Rust Programming Basic</title>
       <link>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/</link>
       <pubDate>Sun, 18 Jun 2023 00:00:00 +0000</pubDate>
@@ -334,16 +453,16 @@
     </item>
     <item>
       <title>Sqrt(x)</title>
-      <link>https://endlesspeak.github.io/docs/docs/algorithms-doc/sqrtx/</link>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/sqrtx/</link>
       <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/algorithms-doc/sqrtx/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/sqrtx/</guid>
       <description></description>
     </item>
     <item>
       <title>字符串公共元素问题</title>
-      <link>https://endlesspeak.github.io/docs/docs/algorithms-doc/string-common-element/</link>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/string-common-element/</link>
       <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/algorithms-doc/string-common-element/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/string-common-element/</guid>
       <description></description>
     </item>
     <item>
@@ -352,6 +471,13 @@
       <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
       <guid>https://endlesspeak.github.io/novel/volume1/ch4/</guid>
       <description>燕书磐正要继续给一云子摆脸色，可是他还没来得及实施，就被狂怒的一云子拎小鸡一般拎起来。身形一闪，一云子带着燕书磐掠上太极道场前的一道崖壁，两人的身影才</description>
+    </item>
+    <item>
+      <title>Operating System</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/</link>
+      <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/</guid>
+      <description>本系列文章记录操作系统方面的内容。</description>
     </item>
     <item>
       <title>进程管理</title>
@@ -375,25 +501,11 @@
       <description>请解释数据库的四个基本概念 数据 数据(Data)是描述事物的符号记录，是数据库中存储的基本对象。 数据库 数据库(Data Base DB)是长期存储在计算机内，有组</description>
     </item>
     <item>
-      <title>Algorithms</title>
-      <link>https://endlesspeak.github.io/docs/docs/algorithms-doc/</link>
-      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/algorithms-doc/</guid>
-      <description>本系列文章记录算法学习方面的笔记。</description>
-    </item>
-    <item>
       <title>数据库原理</title>
       <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-1/</link>
       <pubDate>Fri, 04 Mar 2022 00:00:00 +0000</pubDate>
       <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-1/</guid>
       <description>绪论 graph LR A[现实世界]--&gt;|抽象|B[信息世界 E-R图] B--&gt;|设计|C[计算机世界 关系模式] 请解释数据库的四个基本概念 数据 数据(Data)是描述</description>
-    </item>
-    <item>
-      <title>Computer Interview</title>
-      <link>https://endlesspeak.github.io/docs/docs/interview-doc/</link>
-      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/</guid>
-      <description>本系列文章记录在计算机面试过程中涉及到的知识内容。</description>
     </item>
     <item>
       <title>第五章 天籁</title>
@@ -408,6 +520,13 @@
       <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
       <guid>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/file-manage/</guid>
       <description>文件分配方式 简述连续分配、链接分配、索引分配方式的原理、主要优缺点。 连续分配： 优点：由于线性地占用磁盘上一组连续的物理块，因此寻道数和寻道时间最小。支</description>
+    </item>
+    <item>
+      <title>Non linear Optimize</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/7-nonlinear-optimize/</link>
+      <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/7-nonlinear-optimize/</guid>
+      <description>Matrix Derivative 下面介绍矩阵求导的相关内容。 矩阵和向量求导是批量求导数的一种方式，其本质上还是矩阵或向量中的标量在求导，只是借助矩阵或者向量的形式，同时对多个因变</description>
     </item>
     <item>
       <title>组成原理</title>
@@ -466,6 +585,13 @@
       <description>张慎峰看出来江云梦的难过，温言宽慰道：“师妹放心，我真武师叔一辈的人物皆是德高望重之辈，断不可能做出强娶强嫁之事。今日师妹以琴曲直抒胸臆，寒湘子师叔必</description>
     </item>
     <item>
+      <title>ORB SLAM Adjustments</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/10-orb-slam3-adjustments/</link>
+      <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/10-orb-slam3-adjustments/</guid>
+      <description>ORB SLAM3 orb-slam3 的项目地址：https://github.com/UZ-SLAMLab/ORB_SLAM3 目前 orb-slam3 的代码直接编译会报错，因此需要解决一些冲突。 Opencv orb-slam</description>
+    </item>
+    <item>
       <title>第十章 待修改</title>
       <link>https://endlesspeak.github.io/novel/volume1/ch10/</link>
       <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
@@ -480,11 +606,25 @@
       <description>二叉排序树 查找长度计算 查找成功情况下： $$ ASL_{成功}=\frac{SearchLength}{N} $$ $SearchLength$是链表中搜索各有值</description>
     </item>
     <item>
+      <title>ORB SLAM3 Stereo</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/11-orb-slam3-stereo/</link>
+      <pubDate>Wed, 31 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/11-orb-slam3-stereo/</guid>
+      <description>Stereo Kitti Yaml modification 修改 KITTI00-02.yaml 文件中的 Viewer.ViewpointY: -100 改为 Viewer.ViewpointY: -100.0 Settings Orb slam3 在运行 stereo 时，输出第二个摄像头参数位置报 segment fault //for(size_t i = 0; i &amp;lt; settings.originalCalib2_-&amp;gt;size(); i++){ // output &amp;lt;&amp;lt; &amp;quot; &amp;quot; &amp;lt;&amp;lt; settings.originalCalib2_-&amp;gt;getParameter(i); //} if (settings.cameraType_ == Settings::PinHole) { for(size_t i = 0; i &amp;lt; settings.originalCalib2_-&amp;gt;size(); i++){ output &amp;lt;&amp;lt; &amp;quot; &amp;quot; &amp;lt;&amp;lt;</description>
+    </item>
+    <item>
       <title>第X章 待修改</title>
       <link>https://endlesspeak.github.io/novel/volume1/extra/</link>
       <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
       <guid>https://endlesspeak.github.io/novel/volume1/extra/</guid>
       <description>“为什么？为什么你的心中只有剑，难道我为你做的这一切，甚至拨不起你的心中的一道褶皱吗？”张慎峰披头散发，状若疯魔，脸上泛着血色的光，眼中似有火焰在燃烧</description>
+    </item>
+    <item>
+      <title>SLAM Evaluation</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/12-slam-evo/</link>
+      <pubDate>Sat, 30 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/12-slam-evo/</guid>
+      <description>EVO 在使用evo对ORB-SLAM或OpenVSLAM等SLAM系统在KITTI数据集上以双目模式运行的结果进行评估时，你首先需要确保你的轨迹文件和基准</description>
     </item>
     <item>
       <title>图的基本概念</title>
@@ -505,83 +645,83 @@
       <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/search-hash/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/search-hash/</guid>
-      <description>处理冲突方法 主要分为开放定址法、拉链法（链地址法）和再散列法。 开放定址法 开放定址法意思是可存放新表项的空闲地址既向同义词开放，又向非同义词开放。 $$ H_i=(H(key)+d_i)%m $$</description>
+      <description>处理冲突方法 主要分为开放定址法、拉链法（链地址法）和再散列法。 开放定址法 开放定址法意思是可存放新表项的空闲地址既向同义词开放，又向非同义词开放。 $$ H_i=(H(key)+d_i)\%m $$</description>
     </item>
     <item>
       <title>DataType</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/2-1-datatype/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-1-datatype/</link>
       <pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/2-1-datatype/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-1-datatype/</guid>
       <description></description>
     </item>
     <item>
       <title>StoreType</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/2-2-storetype/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-2-storetype/</link>
       <pubDate>Fri, 01 Apr 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/2-2-storetype/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-2-storetype/</guid>
       <description>概述 存储类型指示编译器以何种方式使用变量，它定义程序中变量/函数的范围（可见性）和生命周期。 数据类型用于声明不同类型的变量或函数，变量的类型决定了变量</description>
     </item>
     <item>
       <title>Statement</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/3-1-statement/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-1-statement/</link>
       <pubDate>Tue, 22 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/3-1-statement/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-1-statement/</guid>
       <description>运算符 优先级 运算符 名称或含义 使用形式 结合方向 说明 1 [] 数组下标 数组名[常量表达式] 左到右 -- () 圆括号 (表达式）/函数名(形参表) -- . 成员选择（对象） 对象.</description>
     </item>
     <item>
       <title>Structure</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/3-2-structure/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-2-structure/</link>
       <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/3-2-structure/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-2-structure/</guid>
       <description>循环结构 continue&amp;amp;break 注意continue和break关键字的用法： continue指的是结束本次循环，进行下一次循环； break指的是结束本次循环并跳出循环体；</description>
     </item>
     <item>
       <title>Function</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/4-1-function/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-1-function/</link>
       <pubDate>Tue, 22 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/4-1-function/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-1-function/</guid>
       <description>函数组成 概念 函数是以固定的格式封装，可以重复使用的代码模块，用于完成特定的功能。 通过调用模块名来重复使用这段代码。 特别地， 函数不能嵌套定义。 函数外不能</description>
     </item>
     <item>
       <title>Pass By Value &amp; Reference</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/4-2-functionassignment/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-2-functionassignment/</link>
       <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/4-2-functionassignment/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-2-functionassignment/</guid>
       <description>值传递 变量作值传递 函数参数通过值来传递，即传递给被调用函数的参数值存放在临时变量中，而不是原来的变量中。 void swap1(int a,int b){ int temp = a; a = b; b = temp; } int main(){ swap1(</description>
     </item>
     <item>
       <title>Scope</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/5-scope/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/5-scope/</link>
       <pubDate>Tue, 22 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/5-scope/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/5-scope/</guid>
       <description>所谓作用域，就是变量的有效范围。 局部变量 定义在函数内部或代码块内部的变量称为局部变量，它的作用域仅限于函数或代码块内部， 否则无效。 说明： 在 main 函数中定义</description>
     </item>
     <item>
       <title>Pointer</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/6-pointer/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/6-pointer/</link>
       <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/6-pointer/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/6-pointer/</guid>
       <description>概念 计算机程序在存储数据时需要跟踪三种属性： 信息存储在何处 存储的值是多少 存储的信息是什么类型 声明变量时： 通过声明语句指明的符号名跟踪内存单元； 程序为该</description>
     </item>
     <item>
       <title>Custom Data Type</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/7-customdatatypes/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/7-customdatatypes/</link>
       <pubDate>Fri, 25 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/7-customdatatypes/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/7-customdatatypes/</guid>
       <description>结构体 存储空间：所有成员变量占用内存空间的和。 结构体定义： struct student{ int num; char name[20]; char sex; char addr[20]; }std1,std2;//分号前可以直接声明具有结构体类型的变量 声明结构</description>
     </item>
     <item>
       <title>Standard I/O</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/9-1-io-standard/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-1-io-standard/</link>
       <pubDate>Wed, 23 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/9-1-io-standard/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-1-io-standard/</guid>
       <description>Output puts()：只能输出字符串，并且输出结束后会自动换行； putchar()：只能输出单个字符； printf()：可以输出各种类型的数据； Printf() int printf(const char *format, ...)</description>
     </item>
     <item>
       <title>File I/O</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/9-2-io-file/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-2-io-file/</link>
       <pubDate>Wed, 23 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/9-2-io-file/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-2-io-file/</guid>
       <description>概述 文件输入输出主要包括： 文件打开与关闭 打开函数fopen() 关闭函数fclose() 文件状态 是否到文件尾函数feof() 检查错误函数ferror()</description>
     </item>
     <item>

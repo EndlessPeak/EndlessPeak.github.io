@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>散列查找 | Computer Interview | 坐忘道琼峰</title>
+<title>散列查找 | Data Structure | 坐忘道琼峰</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
-<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.b4df0caebd058a56d5556ac52e8e433c3b8d42aac8ccf30094e707fc2ea0773f5edfd5db2025486b3bd252a5dee3136f.css">
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
 <script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
 
 
@@ -59,7 +59,7 @@
 <link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
 
 
-<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.cd2d65e90b033b5ff5087d18590179029ef6647458eacb3d21c15e42a24f83c203d7013d6f35b4808bbd257ea41a118c.js"></script>
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.986d5dbb170eaf500c5a411aacebc556d5340a0e51e01e7a4d0cafe92c9f4fa5acb6c77a98d4b0b9cab0029d445f0583.js"></script>
 
 
 
@@ -93,7 +93,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="处理冲突方法 主要分为开放定址法、拉链法（链地址法）和再散列法。 开放定址法 开放定址法意思是可存放新表项的空闲地址既向同义词开放，又向非同义词开放。 $$ H_i=(H(key)&#43;d_i)%m $$">
+  content="处理冲突方法 主要分为开放定址法、拉链法（链地址法）和再散列法。 开放定址法 开放定址法意思是可存放新表项的空闲地址既向同义词开放，又向非同义词开放。 $$ H_i=(H(key)&#43;d_i)\%m $$">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -132,9 +132,9 @@
         "@type": "WebPage",
         "@id": "https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/search-hash/"
     },
-    "headline": "散列查找 | Computer Interview | 坐忘道琼峰","datePublished": "2021-02-10T00:00:00+00:00",
+    "headline": "散列查找 | Data Structure | 坐忘道琼峰","datePublished": "2021-02-10T00:00:00+00:00",
     "dateModified": "2021-02-10T00:00:00+00:00",
-    "wordCount":  607 ,
+    "wordCount":  601 ,
     "author": {
         "@type": "Person",
         "name": ["EndlessPeak"]
@@ -147,9 +147,9 @@
             "url": "https://endlesspeak.github.io/images/avtar.png"
         }
         },
-    "description": "处理冲突方法 主要分为开放定址法、拉链法（链地址法）和再散列法。 开放定址法 开放定址法意思是可存放新表项的空闲地址既向同义词开放，又向非同义词开放。 $$ H_i=(H(key)\u002bd_i)%m $$"
+    "description": "处理冲突方法 主要分为开放定址法、拉链法（链地址法）和再散列法。 开放定址法 开放定址法意思是可存放新表项的空闲地址既向同义词开放，又向非同义词开放。 $$ H_i=(H(key)\u002bd_i)\\%m $$"
 }
-</script><meta property="og:title" content="散列查找 | Computer Interview | 坐忘道琼峰" />
+</script><meta property="og:title" content="散列查找 | Data Structure | 坐忘道琼峰" />
 <meta property="og:type" content="article" />
 
 
@@ -161,7 +161,7 @@
 
 
 
-<meta property="og:description" content="处理冲突方法 主要分为开放定址法、拉链法（链地址法）和再散列法。 开放定址法 开放定址法意思是可存放新表项的空闲地址既向同义词开放，又向非同义词开放。 $$ H_i=(H(key)&#43;d_i)%m $$" />
+<meta property="og:description" content="处理冲突方法 主要分为开放定址法、拉链法（链地址法）和再散列法。 开放定址法 开放定址法意思是可存放新表项的空闲地址既向同义词开放，又向非同义词开放。 $$ H_i=(H(key)&#43;d_i)\%m $$" />
 
 
 
@@ -283,11 +283,6 @@
 
 
 
-
-
-
-
-
 <div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
     <span class="font-semibold">目录</span>
     <i class='fas fa-caret-right ms-1'></i>
@@ -297,7 +292,7 @@
     class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
     <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
         <a class=" hover:text-eureka"
-            href="https://endlesspeak.github.io/docs/docs/interview-doc/">Computer Interview</a>
+            href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/">Data Structure</a>
         
         
         
@@ -305,89 +300,6 @@
 
     </div>
     
-<ul class="ps-6">
-    
-    
-    
-    <li class="py-2">
-        <div class=" pb-2 ">
-            <a class=" hover:text-eureka"
-                href="https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/">Operating System</a>
-        </div>
-        
-        
-<ul class="ps-6">
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/operating-system-summary/">绪论</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/process-manage/">进程管理</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/synchronization-exclusion/">经典同步问题</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/memory-manage/">进程管理</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/file-manage/">文件管理</a>
-        </div>
-        
-    </li>
-    
-    
-</ul>
-
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class=" pb-2 ">
-            <a class=" hover:text-eureka"
-                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/">Data Structure</a>
-        </div>
-        
-        
 <ul class="ps-6">
     
     
@@ -513,142 +425,7 @@
     
 </ul>
 
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class=" pb-2 ">
-            <a class=" hover:text-eureka"
-                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/">Computer Interview</a>
-        </div>
-        
-        
-<ul class="ps-6">
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/projectdevelopment/">项目经历</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/softwareengineering/">软件工程</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/englishinterview/">英语面试</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/comprehensiveinterview/">综合问题</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/compilersprinciples/">编译原理</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computernetwork/">计算机网络</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-2/">数据库原理</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-1/">数据库原理</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computercomponents/">组成原理</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/linuxpoints/">Linux Basic</a>
-        </div>
-        
-    </li>
-    
-    
-</ul>
-
-        
-    </li>
-    
-    
-</ul>
-
 </div>
-
-
 
 
 
@@ -690,9 +467,11 @@
 <p>主要分为开放定址法、拉链法（链地址法）和再散列法。</p>
 <h3 id="开放定址法">开放定址法</h3>
 <p>开放定址法意思是可存放新表项的空闲地址既向同义词开放，又向非同义词开放。
+</p>
 $$
-H_i=(H(key)+d_i)%m
+H_i=(H(key)+d_i)\%m
 $$
+<p>
 主要分为</p>
 <ol>
 <li>线性探测（再散列）法</li>
@@ -702,60 +481,64 @@ $$
 <h2 id="查找长度计算">查找长度计算</h2>
 <h3 id="线性探测法">线性探测法</h3>
 <h4 id="查找成功">查找成功</h4>
-<p>$$
+$$
 ASL_{成功}=\frac{SearchCount}{N}
-$$</p>
+$$
 <p>对于查找次数$SearchCount$，它是通过哈希函数查找到各元素的次数总和，即：
+</p>
 $$
 SearchCount=\sum_{i=1}^{N}a_{i}
-$$</p>
-<p>$$
+$$
+$$
 a_i=\begin{equation}
-\left{
-\begin{array}{lr}
-1 &amp; 若元素无冲突 \
-&hellip; &amp; 冲突次数不确定 \<br>
-\end{array}
+\left\{
+		\begin{array}{lr}
+        1 & 若元素无冲突 \\
+        ... & 冲突次数不确定 \\  
+    	\end{array}
 \right.
 \end{equation}
-$$</p>
+$$
 <h4 id="查找失败">查找失败</h4>
-<p>$$
-ASL_{失败}=\frac{SearchCount&rsquo;}{p}
-$$</p>
+$$
+ASL_{失败}=\frac{SearchCount'}{p}
+$$
 <p>对于质数$p$，它是哈希函数选取的用作MOD的数。</p>
 <p>对于查找次数$SearchCount’$，它是对长为质数$p$的表中各个元素一直查找到空为止的次数和，即：
+</p>
 $$
-SearchCount&rsquo;=\sum_{i=1}^{p}p_i
-$$</p>
-<p>$$
+SearchCount'=\sum_{i=1}^{p}p_i
+$$
+$$
 p_i=\begin{equation}
-\left{
-\begin{array}{lr}
-1  &amp; 若表的该处为空 \
-N-i+1  &amp; 若该处一直到表的结尾均不为空 \
-&hellip; &amp; 到空位置为止，空位置算一次 \<br>
-\end{array}
+\left\{
+             \begin{array}{lr}
+             1  & 若表的该处为空 \\
+             N-i+1  & 若该处一直到表的结尾均不为空 \\
+             ... & 到空位置为止，空位置算一次 \\  
+             \end{array}
 \right.
 \end{equation}
-$$</p>
+$$
 <p>哈希表长$m&gt;p$。</p>
 <h3 id="链地址法">链地址法</h3>
 <h4 id="查找成功-1">查找成功</h4>
-<p>$$
+$$
 ASL_{成功}=\frac{SearchLength}{N}
-$$</p>
+$$
 <p>$SearchLength$是链表中搜索各有值结点的路径长度和；
+</p>
 $$
 SearchLength=\sum_{i=1}^{N}l_i
 $$
+<p>
 $l_i$是每个元素从链结点到该结点的长度；</p>
 <p>$N$是关键字序列的个数(即链表中的空元素不计算)；</p>
 <p>$p$是链表长度(拉链长度通常取质数$p$，小于表长)。</p>
 <h4 id="查找失败-1">查找失败</h4>
-<p>$$
+$$
 ASL_{失败}=\frac{N}{p}
-$$</p>
+$$
 
 </article>
 

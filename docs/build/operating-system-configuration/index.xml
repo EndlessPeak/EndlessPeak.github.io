@@ -4,11 +4,11 @@
     <title>Linux 环境配置 on 坐忘道琼峰</title>
     <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/</link>
     <description>Recent content in Linux 环境配置 on 坐忘道琼峰</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh</language>
     <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
 </copyright>
-    <lastBuildDate>Tue, 18 Feb 2020 20:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 19 Dec 2023 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://endlesspeak.github.io/docs/build/operating-system-configuration/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Arch Linux 桌面环境配置</title>
@@ -58,6 +58,13 @@
       <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
       <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-7-nixos-configuration/</guid>
       <description>Self Configuration Import Configuration 以 sddm 为例，浅谈如何导入 nix 配置文件。 如下所示，在基本设置中导入 sddm-theme.nix 。 # Enable the X11 windowing system. services = { xserver = { enable = true; # Enable the Plasma 5 Desktop Environment. displayManager ={ sddm.enable = true; sddm.theme = &amp;#34;${import ./sddm-theme.nix { inherit pkgs;}}&amp;#34;; }; desktopManager.plasma5.enable = true; #</description>
+    </item>
+    <item>
+      <title>Linux 迁移</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-8-linux-migrating/</link>
+      <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-8-linux-migrating/</guid>
+      <description>Migrating rsync -aAXvhP --exclude={&amp;#34;/dev/*&amp;#34;,&amp;#34;/proc/*&amp;#34;,&amp;#34;/sys/*&amp;#34;,&amp;#34;/tmp/*&amp;#34;,&amp;#34;/run/*&amp;#34;,&amp;#34;/mnt/*&amp;#34;,&amp;#34;/media/*&amp;#34;,&amp;#34;/lost+found&amp;#34;} / /mnt rsync是一个用于复制和同步文件的强大工具。在您提供的命令中，-aAXv选项组合的意义如下： -a（或–archive）：这个选项是多个选</description>
     </item>
   </channel>
 </rss>

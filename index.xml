@@ -4,24 +4,66 @@
     <title>坐忘道琼峰</title>
     <link>https://endlesspeak.github.io/</link>
     <description>Recent content on 坐忘道琼峰</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh</language>
     <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
 </copyright>
-    <lastBuildDate>Tue, 09 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 17 Jun 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://endlesspeak.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Vanilla Emacs</title>
-      <link>https://endlesspeak.github.io/docs/build/editorconfiguration/1-vanillaemacs/</link>
-      <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/build/editorconfiguration/1-vanillaemacs/</guid>
-      <description>参考配置 以下记录在 Emacs 中所遇到的常见问题与解决方案。 如果不希望从零开始，这里有一些常见的配置推荐（持续更新）： MatthewZMD&amp;#39;s emacs Centaur&amp;#39;s emacs Redguard&amp;#39;s emacs Evanmeek&amp;#39;s emacs SpringHan&amp;#39;s emacs Cabins&amp;#39; emacs 7ym0n&amp;#39;s emacs 中文输入 fcitx5 是新</description>
+      <title>Thread</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/1-thread/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/1-thread/</guid>
+      <description>Basic Thread C Thread Impl C中实现多线程编程需要使用如下的函数原型： int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine) (void *), void *arg); 其中： *pthread_t thread 用于存储创建的线程标识符； *const pthread_attr_t attr 用于设置线程属性； void *(*start_routine)(void *) 是指向函</description>
+    </item>
+    <item>
+      <title>Merge Sorted Array</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/1-merge-sorted-array/</link>
+      <pubDate>Mon, 10 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/1-merge-sorted-array/</guid>
+      <description>Question 题目链接: Merge Sorted Array 给你两个按 非递减顺序 排列的整数数组 nums1 和 nums2=，另有两个整数 =m 和 n ，分别表示 nums1 和 nums2 中的元素数目。 请你 合并 nums2 到 nums1 中，使合并后的数组</description>
+    </item>
+    <item>
+      <title>SLAM Interview</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/1-slam-interview/</link>
+      <pubDate>Tue, 28 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/1-slam-interview/</guid>
+      <description>SLAM Problems Matrix and Sophus 求导 $ \frac{\partial R_1R_2}{\partial R_1} $ 简述李群和李代数的关系。 给定 \((H,W)\) 图像或者 matrix，问如何去访问每一个元素，是先访问行呢？还是先访问列？跟缓存还有关系~ Sensors Model 除</description>
+    </item>
+    <item>
+      <title>Git submodule Manage</title>
+      <link>https://endlesspeak.github.io/docs/docs/git-doc/git-submodule/</link>
+      <pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/git-doc/git-submodule/</guid>
+      <description>Git子模块是一个强大的工具，用于在Git仓库中跟踪和管理另一个Git仓库。当你想要在你的项目中包含并跟踪第三方库（比如库的特定版本）的时候会使用到。</description>
+    </item>
+    <item>
+      <title>VSCode Configuration</title>
+      <link>https://endlesspeak.github.io/docs/build/editorconfiguration/1-vscode-configuration/</link>
+      <pubDate>Fri, 19 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/editorconfiguration/1-vscode-configuration/</guid>
+      <description>Installation 参考 Visual Studio Code Installation Deb install 从官网下载 deb 包，使用命令安装 sudo dpkg -i code_XXX_amd64.deb sudo apt install ./code_XXX_amd64.deb 使用 apt install 命令安装后会自动将该软件的 apt 存储库和签名密钥添加到系统包管理器中，其位于 /etc/apt/keyrings/packages.microsoft.gpg 。 也可</description>
+    </item>
+    <item>
+      <title>SLAM Summary</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/1-slam-summary/</link>
+      <pubDate>Sun, 08 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/1-slam-summary/</guid>
+      <description>What&amp;rsquo;s SLAM SLAM 是 Simultaneous Localization and Mapping，即同时定位与建图。 history separate 最初，定位和建图问题是被看成两个独立问题研究的： 定位问题的关键是事先给定环境地图； 建图问题的关键是</description>
+    </item>
+    <item>
+      <title>ROS1 Installation</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/1-ros1-install/</link>
+      <pubDate>Tue, 18 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/1-ros1-install/</guid>
+      <description>Ubuntu Configuration Ubuntu Install 虚拟机平台不限，推荐使用： VMWare Virtualbox Qemu Ubuntu 版本需要选择 Ubuntu 20.04 安装。发行版代码应该为 focal 。 请使用 lsb_release -a 或 lsb_release -c 验证。 Additional Function 虚拟机工具之增强功能可以使得虚拟操作系统</description>
     </item>
     <item>
       <title>Compiler Language</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/1-1-compilerlanguage/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-1-compilerlanguage/</link>
       <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/1-1-compilerlanguage/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-1-compilerlanguage/</guid>
       <description>计算机系统层次结构 微程序级 本级的语言是微指令集，使用微指令编写微程序，由硬件执行。微命令→微指令→微程序 传统机器级 本级的语言是指令集，可以使用微程序翻</description>
     </item>
     <item>
@@ -67,25 +109,53 @@
       <description></description>
     </item>
     <item>
+      <title>OpenCV</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/2-opencv/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/2-opencv/</guid>
+      <description>CV::Mat 在 OpenCV 中，cv::Mat 是用于表示图像或矩阵的主要数据结构。它封装了一个 n 维数组，可以存储不同类型的数值（如图像的像素值）。 cv::Mat 的构造和析构过程涉及内存</description>
+    </item>
+    <item>
+      <title>Python Development on NixOS</title>
+      <link>https://endlesspeak.github.io/docs/build/nixos-configuration/1-python-poetry-devshell/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/nixos-configuration/1-python-poetry-devshell/</guid>
+      <description>Discourse NixOS 该部分文章尚未完成。 Impure Python Poetry devShell (pkgs.poetry.override { python = pkgs.python39; }) poetry run python -c &amp;#34;import matplotlib&amp;#34; Traceback (most recent call last): File &amp;#34;&amp;lt;string&amp;gt;&amp;#34;, line 1, in &amp;lt;module&amp;gt; ModuleNotFoundError: No module named &amp;#39;matplotlib&amp;#39; python -m site sys.path = [ &amp;#39;/home/asymmetric/code/foo&amp;#39;, &amp;#39;/nix/store/6qk2ybm2yx2dxmx9h4dikr1shjhhbpfr-python3-3.10.11/lib/python310.zip&amp;#39;, &amp;#39;/nix/store/6qk2ybm2yx2dxmx9h4dikr1shjhhbpfr-python3-3.10.11/lib/python3.10&amp;#39;, &amp;#39;/nix/store/6qk2ybm2yx2dxmx9h4dikr1shjhhbpfr-python3-3.10.11/lib/python3.10/lib-dynload&amp;#39;, &amp;#39;/nix/store/6qk2ybm2yx2dxmx9h4dikr1shjhhbpfr-python3-3.10.11/lib/python3.10/site-packages&amp;#39;, &amp;#39;/nix/store/qyy1khnfvvv6m57gkh8qijj45v3h78jy-python3-3.10.11-env/lib/python3.10/site-packages&amp;#39;, ] USER_BASE: &amp;#39;/home/asymmetric/.local&amp;#39; (exists) USER_SITE: &amp;#39;/home/asymmetric/.local/lib/python3.10/site-packages&amp;#39; (doesn&amp;#39;t exist) ENABLE_USER_SITE: False poetry run python -m site sys.path = [ &amp;#39;/home/asymmetric/code/foo&amp;#39;,</description>
+    </item>
+    <item>
+      <title>STL</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/2-stl/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/2-stl/</guid>
+      <description>Vector Brief std::vector 是 C++ 标准模板库(STL)中的一个动态数组类。它能够自动管理内存，在需要时自动扩展或收缩。std::vector 具有以下特点： 动态大小：可以根据需</description>
+    </item>
+    <item>
+      <title>Remove Element</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/2-remove-elements/</link>
+      <pubDate>Mon, 10 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/2-remove-elements/</guid>
+      <description>Remove Element 给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素。元素的顺序可能发生改变。然后返回 nums 中与 val 不同的元素的数量。 假设 nums 中不等于 val 的元素</description>
+    </item>
+    <item>
       <title>Modules for CPP</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-advanced-doc/1-modules/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/2-advanced-doc/1-modules/</link>
       <pubDate>Sun, 19 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-advanced-doc/1-modules/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/2-advanced-doc/1-modules/</guid>
       <description>GCC GCC 13 支持 p1689 特性，但是与 cmake 配合尚存在一定问题。 Clang Clang 16 支持 p1689 特性，且可以直接与 cmake 配合使用。 注意： 模块特性尚处于实验状态，需要开启对应的 cmake 版本的 API。 目</description>
     </item>
     <item>
-      <title>ROS2 Installation</title>
-      <link>https://endlesspeak.github.io/docs/docs/slam-doc/1-ros2-install/</link>
-      <pubDate>Sun, 08 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/1-ros2-install/</guid>
-      <description>Install ROS2 by one command fishros 可用 fishros 提供的实用程序一行代码在 ubuntu 上安装 ROS2。 wget http://fishros.com/install -O fishros &amp;amp;&amp;amp; . fishros global view 总体来看，它的安装流程包含如下命令: mkdir -p /tmp/fishinstall/tools wget http://fishros.com/install/install1s/install.py -O /tmp/fishinstall/install.py 2&amp;gt;&amp;gt;/dev/null source /etc/profile sudo apt install python3-distro python3-yaml -y if [</description>
+      <title>VSLAM Summary</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/2-vslam-summary/</link>
+      <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/2-vslam-summary/</guid>
+      <description>Visual SLAM 在计算机视觉中，与同时定位与地图构建(Simultaneous Localization And Mapping)相似的是运动推断结构(Structure from motion,SFM)</description>
     </item>
     <item>
-      <title>Org</title>
-      <link>https://endlesspeak.github.io/docs/build/editorconfiguration/2-org/</link>
-      <pubDate>Tue, 11 Jul 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/build/editorconfiguration/2-org/</guid>
-      <description>Org 具体来说它的功能有： 折叠 这个在 IDE 里是很常见的了，但是我所见到的大多限于对于函数的折叠。如果只是想写写提纲，草稿，这个功能就能很有效地帮助理清思路，和</description>
+      <title>ROS2 Installation</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/1-ros2-install/</link>
+      <pubDate>Sun, 08 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/1-ros2-install/</guid>
+      <description>Install ROS2 by one command fishros 可用 fishros 提供的实用程序一行代码在 ubuntu 上安装 ROS2。 wget http://fishros.com/install -O fishros &amp;amp;&amp;amp; . fishros global view 总体来看，它的安装流程包含如下命令: mkdir -p /tmp/fishinstall/tools wget http://fishros.com/install/install1s/install.py -O /tmp/fishinstall/install.py 2&amp;gt;&amp;gt;/dev/null source /etc/profile sudo apt install python3-distro python3-yaml -y if [</description>
     </item>
     <item>
       <title>Hello Cargo</title>
@@ -109,18 +179,18 @@
       <description>Cube 此处文章尚在施工。</description>
     </item>
     <item>
-      <title>ROS 环境配置</title>
-      <link>https://endlesspeak.github.io/docs/docs/ros-doc/1-environmentconfiguration/</link>
-      <pubDate>Tue, 18 Oct 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/ros-doc/1-environmentconfiguration/</guid>
-      <description>Ubuntu Configuration Ubuntu Install 虚拟机平台不限，推荐使用： VMWare Virtualbox Qemu Ubuntu 版本需要选择 Ubuntu 20.04 安装。发行版代码应该为 focal 。 请使用 lsb_release -a 或 lsb_release -c 验证。 Additional Function 虚拟机工具之增强功能可以使得虚拟操作系统</description>
+      <title>Program Compilation by GCC</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-2-program-compilation-by-gcc/</link>
+      <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-2-program-compilation-by-gcc/</guid>
+      <description>GNU Compile Collection Linux 平台上使用的编译器是 GCC(GNU Compile Collection) 编译器。 当提到 GCC 时，通常指的是 GNU 编译器套件，它支持多种高级语言（实验性的），提供较好支持的语言包括： C/C++ Fortran Ada Objective-C/C++ D Rust GCC 为</description>
     </item>
     <item>
-      <title>Program Compilation by GCC</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/1-2-program-compilation-by-gcc/</link>
+      <title>Vanilla Emacs</title>
+      <link>https://endlesspeak.github.io/docs/build/editorconfiguration/2-vanilla-emacs-configuration/</link>
       <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/1-2-program-compilation-by-gcc/</guid>
-      <description>GNU Compile Collection Linux 平台上使用的编译器是 GCC(GNU Compile Collection) 编译器。 当提到 GCC 时，通常指的是 GNU 编译器套件，它支持多种高级语言（实验性的），提供较好支持的语言包括： C/C++ Fortran Ada Objective-C/C++ D Rust GCC 为</description>
+      <guid>https://endlesspeak.github.io/docs/build/editorconfiguration/2-vanilla-emacs-configuration/</guid>
+      <description>参考配置 以下记录在 Emacs 中所遇到的常见问题与解决方案。 如果不希望从零开始，这里有一些常见的配置推荐（持续更新）： MatthewZMD&amp;#39;s emacs Centaur&amp;#39;s emacs Redguard&amp;#39;s emacs Evanmeek&amp;#39;s emacs SpringHan&amp;#39;s emacs Cabins&amp;#39; emacs 7ym0n&amp;#39;s emacs 中文输入 fcitx5 是新</description>
     </item>
     <item>
       <title>软件工程</title>
@@ -200,32 +270,53 @@
       <description>&lt;p&gt;GNU/Linux，无论你是否相信，它已经成为目前增长最迅速的系统。无论是企业还是个人用户，Linux都是一个足够可靠的选择。我希望本系列文章能够使更多的人完全理解Linux，并热切地尝试去使用甚至探索它。&lt;/p&gt;</description>
     </item>
     <item>
+      <title>MeiTuan Interview 1</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/3-meituan-interview/</link>
+      <pubDate>Mon, 17 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/3-meituan-interview/</guid>
+      <description>平衡矩阵 小美拿到了一个 $n∗n$ 的矩阵，其中每个元素是 0 或者 1。小美认为一个矩形区域是完美的，当且仅当该区域内 0 的数量恰好等于 1 的数量。 现在，小美希望</description>
+    </item>
+    <item>
+      <title>Kalman Filter</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/3-kalman-filter/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/3-kalman-filter/</guid>
+      <description>Kalman Filter Process Model 假设系统状态空间模型为： $$ \begin{aligned} X(k) &amp;= AX(k-1) + BU(k-1) + W(k) \\ Z(k) &amp;= HX(k) + V(k) \end{aligned} $$ 其中： $A$ 和 $B$ 分别表示系统状态参数矩阵和系统控制参数矩阵； $Z(k)$ 是在 $k$ 时刻的测量值; $H$ 是系</description>
+    </item>
+    <item>
+      <title>System Management</title>
+      <link>https://endlesspeak.github.io/docs/build/terminalconfiguration/linux-technology-6-2-sysstat/</link>
+      <pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/terminalconfiguration/linux-technology-6-2-sysstat/</guid>
+      <description>Mem management All Mem statistic 统计本机所有内存使用量。 free -h Sort by all user 统计所有用户的内存使用量。 ps aux --sort=-%mem | head -n 10 | awk &amp;#39;NR==1 {print $0; next} { $5=int($5/1024) &amp;#34;M&amp;#34;; $6=int($6/1024) &amp;#34;M&amp;#34;; $11=substr($11, 1, 100); print $0; }&amp;#39; 其中，~$11=substr(</description>
+    </item>
+    <item>
       <title>Compare</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-advanced-doc/n-compare/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/2-advanced-doc/n-compare/</link>
       <pubDate>Sun, 19 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-advanced-doc/n-compare/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/2-advanced-doc/n-compare/</guid>
       <description>Three-way Comparison 三向比较运算符是C++20引入的特性，可用于确定两个值的大小顺序。它返回一个类枚举(enumeration-like)类型，其定义在 &amp;lt;compare&amp;gt; 和 std 名称空间</description>
     </item>
     <item>
-      <title>SLAM Summary</title>
-      <link>https://endlesspeak.github.io/docs/docs/slam-doc/2-slam-summary/</link>
-      <pubDate>Sun, 08 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/2-slam-summary/</guid>
-      <description>What&amp;#39;s SLAM SLAM 是 Simultaneous Localization and Mapping，即同时定位与建图。 history separate 最初，定位和建图问题是被看成两个独立问题研究的： 定位问题的关键是事先给定环境地图； 建图问题的关键是</description>
+      <title>Rotation &amp; Translation Exercise</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-rotation-and-translation-exercise/</link>
+      <pubDate>Thu, 16 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-rotation-and-translation-exercise/</guid>
+      <description>Eigen Usage Eigen 是用头文件组成的库，对于它的使用，有两种办法： 理论上只需要引入头文件即可，见下面代码中的“直接引入”； 按照官网说明和 cmake 规范，依次 find_package 并 target_link_libraries 下面提供了</description>
     </item>
     <item>
       <title>Program Compilation by Clang</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/1-3-program-compilation-by-clang/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-3-program-compilation-by-clang/</link>
       <pubDate>Thu, 13 Jul 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/1-3-program-compilation-by-clang/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-3-program-compilation-by-clang/</guid>
       <description>Low Level Virtual Machine General LLVM(Low Level Virtual Machine)是一个开源的编辑器基础设施项目。 LLVM 最初设计时，因为只想着做优化方面的研究，所以只是想搭建一套虚拟机，所以当时这个的全称</description>
     </item>
     <item>
-      <title>Manage By Org Mode</title>
-      <link>https://endlesspeak.github.io/docs/build/editorconfiguration/3-manage-by-orgmode/</link>
+      <title>Org</title>
+      <link>https://endlesspeak.github.io/docs/build/editorconfiguration/3-org/</link>
       <pubDate>Tue, 11 Jul 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/build/editorconfiguration/3-manage-by-orgmode/</guid>
-      <description>Organization Form Related works 我们通常可以有如下几种形式来管理配置文件： 单文件法 模块化法 将所有配置文件模块化，通过 init.el 来统一加载； 将所有配置文件通过 org 文件来管理，通过 org-babel-load-file 函数来</description>
+      <guid>https://endlesspeak.github.io/docs/build/editorconfiguration/3-org/</guid>
+      <description>Org 具体来说它的功能有： 折叠 这个在 IDE 里是很常见的了，但是我所见到的大多限于对于函数的折叠。如果只是想写写提纲，草稿，这个功能就能很有效地帮助理清思路，和</description>
     </item>
     <item>
       <title>Guess Number</title>
@@ -242,10 +333,10 @@
       <description>目标综述 在特征空间中找到一 分离超平面 能将实例分到不同类。 当数据集 线性可分 时，有无数个分离超平面可将数据正确分开，支持向量机利用 间隔最大化 求解最优分离超</description>
     </item>
     <item>
-      <title>ROS 集成开发环境</title>
-      <link>https://endlesspeak.github.io/docs/docs/ros-doc/2-intergrateenvironment/</link>
+      <title>Intergrate Environment</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/2-intergrateenvironment/</link>
       <pubDate>Tue, 25 Oct 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/ros-doc/2-intergrateenvironment/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/2-intergrateenvironment/</guid>
       <description>ROS HelloWorld Create Project 创建项目的顺序如下： 创建工作空间 将工作空间命名为 ROSRace mkdir -p ROSRace/src cd ROSRace catkin_make 创建功能包 将功能包命名为 helloworld ，并添加所需的依赖。 roscpp 是用 C++ 实现的库； rospy 是用 python 实现的库</description>
     </item>
     <item>
@@ -312,11 +403,25 @@
       <description>&lt;p&gt;如果是经常从事文本工作(如软件工作者进行代码编辑、学生进行笔记整理、文字工作者的撰写、校对等工作)的用户建议选用窗口管理器作为日常工作环境。&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Pose Caculating</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/4-pose-caculating/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-interview/4-pose-caculating/</guid>
+      <description>Rotation Matrix 2 Dimensional 从二维角度推导旋转矩阵更加明确。 假设二维坐标系 $xOy$ 的第一象限中有点 $P(x,y)$，其与原点 $O$ 的连线 $OP$ 与 $x$ 轴正向夹角为 $\alpha$，则： $$ \left</description>
+    </item>
+    <item>
       <title>NixOS Linux 物理机安装与配置</title>
       <link>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-4-nixos-linux-installation/</link>
       <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
       <guid>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-4-nixos-linux-installation/</guid>
       <description>Reference 参考资料如下： NixOS 中文网 NixOS Manual Start Network Configuration NixOS 使用 wpa_supplicant 作为无线守护程序，因此可以使用交互式命令行或配置文件的形式进行网络连接 Passphrase 可以用 wpa_passphrase 生成一个用于连接 WIFI 的配置文件</description>
+    </item>
+    <item>
+      <title>Lie Group and Lie Algebras 1</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/4-lie-group-and-lie-algebras-1/</link>
+      <pubDate>Mon, 20 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/4-lie-group-and-lie-algebras-1/</guid>
+      <description>Raise 在 SLAM 中，除表示位姿(旋转)外，还需要对其进行估计和优化。然而，旋转矩阵自身带有约束(正交矩阵且行列式为 1)，此时对其进行优化显得困难。通过一定的转换</description>
     </item>
     <item>
       <title>STM32 Clion Develop</title>
@@ -326,11 +431,11 @@
       <description>ToolChain Embedded Toolchain 需要配置嵌入式编译工具链，它应该包括： arm-none-eabi-gcc arm-none-eabi-g++ arm-none-eabi-ar arm-none-eabi-ld (bfd 链接方式) arm-none-eabi-gdb arm-none-eabi-nm arm-none-eabi-objcopy arm-none-eabi-objdump 在 NixOS 上配置工具链需要如下软件包： packages = with pkgs; [ gcc-arm-embedded ]; 在 Arch Linux 上需要安装如下软件包： pacman -S</description>
     </item>
     <item>
-      <title>VSLAM Summary</title>
-      <link>https://endlesspeak.github.io/docs/docs/slam-doc/3-vslam-summary/</link>
-      <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/3-vslam-summary/</guid>
-      <description>Visual SLAM 在计算机视觉中，与同时定位与地图构建(Simultaneous Localization And Mapping)相似的是运动推断结构(Structure from motion,SFM)</description>
+      <title>Manage By Org Mode</title>
+      <link>https://endlesspeak.github.io/docs/build/editorconfiguration/4-manage-by-orgmode/</link>
+      <pubDate>Tue, 11 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/editorconfiguration/4-manage-by-orgmode/</guid>
+      <description>Organization Form Related works 我们通常可以有如下几种形式来管理配置文件： 单文件法 模块化法 将所有配置文件模块化，通过 init.el 来统一加载； 将所有配置文件通过 org 文件来管理，通过 org-babel-load-file 函数来</description>
     </item>
     <item>
       <title>Variable</title>
@@ -340,10 +445,10 @@
       <description>Variable Basic Varibale 变量拥有以下特性： 默认情况下变量是不可变的(immutable) 它是 Rust 众多精妙特性的其中一个 它令用户充分利用 Rust 提供的安全性和简单并发性的方式来编</description>
     </item>
     <item>
-      <title>ROS 无人小车项目</title>
-      <link>https://endlesspeak.github.io/docs/docs/ros-doc/3-racecarnotes/</link>
+      <title>Race Car Project</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/3-racecarnotes/</link>
       <pubDate>Fri, 11 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/ros-doc/3-racecarnotes/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/3-racecarnotes/</guid>
       <description>Project Init Project 从 github 上克隆代码，以此作为工作目录，克隆完成后进入工作目录。 git clone https://github.com/endlesspeak/rosracecar Racecar_ws cd Racecar_ws 配置环境变量，以便每次启动项目不必切换到工作目录。编辑 ~/.bashrc source ~/Racecar_ws/devel/setup.bash Run Project 通过键盘控</description>
     </item>
     <item>
@@ -389,11 +494,18 @@
       <description>线性表的基本操作如下： void InitList(&amp;amp;L);//初始化表，构造一个空的线性表 int Length(L);//求表长 ElemType LocateElem(L,</description>
     </item>
     <item>
-      <title>Rotation &amp; Translation Exercise</title>
-      <link>https://endlesspeak.github.io/docs/docs/slam-doc/4-rotation-and-translation-exercise/</link>
-      <pubDate>Thu, 16 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/4-rotation-and-translation-exercise/</guid>
-      <description>Eigen Usage Eigen 是用头文件组成的库，对于它的使用，有两种办法： 理论上只需要引入头文件即可，见下面代码中的“直接引入”； 按照官网说明和 cmake 规范，依次 find_package 并 target_link_libraries 下面提供了</description>
+      <title>STM32 LED &amp; KEY</title>
+      <link>https://endlesspeak.github.io/docs/docs/stm32-doc/4-stm32-ledkey/</link>
+      <pubDate>Sun, 21 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/stm32-doc/4-stm32-ledkey/</guid>
+      <description>GPIO GPIO 是通用型输入输出，可以输入或输出高低电平。高电平是 3.3V，低电平是 0V。 Output 输出控制器接两个 MOS 管，一个 PMOS 管，一个 NMOS 管。 No Q1 Q2 Status 1 打开 关闭 高电平 2 关</description>
+    </item>
+    <item>
+      <title>Lie Group and Lie Algebras Exercise</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/5-lie-group-and-lie-algebras-exercise/</link>
+      <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/5-lie-group-and-lie-algebras-exercise/</guid>
+      <description>Lie Group &amp;amp; Lie Algebras 李群 \(\mathcal{L}\) 是一个群同时也是一个光滑的(可微的)的流形, 定义其上的群乘法和求逆运算均可微; 李代数 \(\mathcal{A}\) 是 \(\mathcal{L}\) 的在单位元 \(\mathcal{1}\) 处的正切空间;最常见的李群就是 SO(n)</description>
     </item>
     <item>
       <title>Data Type</title>
@@ -418,16 +530,16 @@
     </item>
     <item>
       <title>Sqrt(x)</title>
-      <link>https://endlesspeak.github.io/docs/docs/algorithms-doc/sqrtx/</link>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/sqrtx/</link>
       <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/algorithms-doc/sqrtx/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/sqrtx/</guid>
       <description></description>
     </item>
     <item>
       <title>字符串公共元素问题</title>
-      <link>https://endlesspeak.github.io/docs/docs/algorithms-doc/string-common-element/</link>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/string-common-element/</link>
       <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/algorithms-doc/string-common-element/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/string-common-element/</guid>
       <description></description>
     </item>
     <item>
@@ -450,13 +562,6 @@
       <pubDate>Sat, 07 Aug 2021 00:00:00 +0000</pubDate>
       <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-algorithms/</guid>
       <description>本节尝试对具有代表性的线性表编程题及经典算法进行实现。 题1 删除单链表中的指定结点 递归算法实现删除不带头结点的单链表L中所有值为x的结点。 void RecurseDel(LinkList &amp;amp;L,ElemType x){ if(L==NULL) return; if(L-&amp;gt;data!=x)</description>
-    </item>
-    <item>
-      <title>Lie Group and Lie Algebras 1</title>
-      <link>https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras/</link>
-      <pubDate>Mon, 20 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras/</guid>
-      <description>Raise 在 SLAM 中，除表示位姿(旋转)外，还需要对其进行估计和优化。然而，旋转矩阵自身带有约束(正交矩阵且行列式为 1)，此时对其进行优化显得困难。通过一定的转换</description>
     </item>
     <item>
       <title>Function</title>
@@ -508,11 +613,11 @@
       <description>文件分配方式 简述连续分配、链接分配、索引分配方式的原理、主要优缺点。 连续分配： 优点：由于线性地占用磁盘上一组连续的物理块，因此寻道数和寻道时间最小。支</description>
     </item>
     <item>
-      <title>Lie Group and Lie Algebras 2</title>
-      <link>https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras2/</link>
-      <pubDate>Tue, 21 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras2/</guid>
-      <description>Exponential and Logarithmic Mapping SO(3) Exponential Mapping 考虑如何计算 $exp(\phi^{\wedge})$，它是一个矩阵的指数，因此称之为指数映射。 任意矩阵的指数都可以泰勒展开，但只有在收敛</description>
+      <title>Non linear Optimize</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/7-nonlinear-optimize/</link>
+      <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/7-nonlinear-optimize/</guid>
+      <description>Matrix Derivative 下面介绍矩阵求导的相关内容。 矩阵和向量求导是批量求导数的一种方式，其本质上还是矩阵或向量中的标量在求导，只是借助矩阵或者向量的形式，同时对多个因变</description>
     </item>
     <item>
       <title>RDP 远程桌面连接</title>
@@ -550,18 +655,18 @@
       <description>栈的基本操作如下： bool InitStack(LinkStack &amp;amp;L); bool IsEmpty(LinkStack L); bool Push(LinkStack &amp;amp;L, ElemType x); bool Pop(LinkStack &amp;amp;L, ElemType &amp;amp;x); bool GetTop(LinkStack L, ElemType &amp;amp;x); bool DestroyStstack(LinkStack &amp;amp;L); 顺序栈 栈的顺序存储类型： #define MaxSize 50 typedef struct{ ElemType data[MaxSize]; int top; }SqStack; 初始化： bool InitStack(SqStack S){ S.top=-1; return true; } 判断栈空： bool IsEmpty(SqStack S){ if(S.top==-1)</description>
     </item>
     <item>
+      <title>STM32 LD Segments &amp; Issues</title>
+      <link>https://endlesspeak.github.io/docs/docs/stm32-doc/7-stm32-ld-segmentsissues/</link>
+      <pubDate>Tue, 23 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/stm32-doc/7-stm32-ld-segmentsissues/</guid>
+      <description>Reference [1] The linker’s warnings about executable stacks and segments [2] Hardened/GNU stack quickstart [3] Executable Stack [4] Nested Functions [5] Arm Gcc warning: Load segment with RWX permissions [6] Solution to LOAD segment with RWX permissions warning with CMSIS Summary 本文讨论 BFD 链接器中添加的一些新警告消息：它们的含义、重</description>
+    </item>
+    <item>
       <title>NixOS 配置说明</title>
       <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-7-nixos-configuration/</link>
       <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
       <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-7-nixos-configuration/</guid>
       <description>Self Configuration Import Configuration 以 sddm 为例，浅谈如何导入 nix 配置文件。 如下所示，在基本设置中导入 sddm-theme.nix 。 # Enable the X11 windowing system. services = { xserver = { enable = true; # Enable the Plasma 5 Desktop Environment. displayManager ={ sddm.enable = true; sddm.theme = &amp;#34;${import ./sddm-theme.nix { inherit pkgs;}}&amp;#34;; }; desktopManager.plasma5.enable = true; #</description>
-    </item>
-    <item>
-      <title>Lie Group and Lie Algebras Exercise</title>
-      <link>https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras-exercise/</link>
-      <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras-exercise/</guid>
-      <description>Lie Group &amp;amp; Lie Algebras 李群 $\mathcal{L}$ 是一个群同时也是一个光滑的(可微的)的流形, 定义其上的群乘法和求逆运算均可微; 李代数 $\mathcal{A}$ 是 $\mathcal{L}$ 的在单位元 $\mathcal{1}$ 处的正切空间;最常见的李群就是 SO(n)</description>
     </item>
     <item>
       <title>Package And Crate</title>
@@ -592,6 +697,20 @@
       <description>二叉树存储结构 二叉树链式存储数据结构如下： typedef struct BitNode { int data; BitNode *left; BitNode *right; }BitNode,*BiTree; 二叉树遍历 设根结点为N，左结点L，右结点R。常见遍历有先序、中序、后序、层序遍历。 递归</description>
     </item>
     <item>
+      <title>STM32 Rust Develop</title>
+      <link>https://endlesspeak.github.io/docs/docs/stm32-doc/8-stm32-rust-develop/</link>
+      <pubDate>Wed, 24 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/stm32-doc/8-stm32-rust-develop/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux 迁移</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-8-linux-migrating/</link>
+      <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-8-linux-migrating/</guid>
+      <description>Migrating rsync -aAXvhP --exclude={&amp;#34;/dev/*&amp;#34;,&amp;#34;/proc/*&amp;#34;,&amp;#34;/sys/*&amp;#34;,&amp;#34;/tmp/*&amp;#34;,&amp;#34;/run/*&amp;#34;,&amp;#34;/mnt/*&amp;#34;,&amp;#34;/media/*&amp;#34;,&amp;#34;/lost+found&amp;#34;} / /mnt rsync是一个用于复制和同步文件的强大工具。在您提供的命令中，-aAXv选项组合的意义如下： -a（或–archive）：这个选项是多个选</description>
+    </item>
+    <item>
       <title>二叉树的算法</title>
       <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-algorithms/</link>
       <pubDate>Thu, 10 Feb 2022 00:00:00 +0000</pubDate>
@@ -607,10 +726,10 @@
     </item>
     <item>
       <title>ORB SLAM Adjustments</title>
-      <link>https://endlesspeak.github.io/docs/docs/slam-doc/10-orb-slam3-adjustments/</link>
-      <pubDate>Sun, 07 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/10-orb-slam3-adjustments/</guid>
-      <description>ORB SLAM3 orb-slam3 的项目地址：https://github.com/UZ-SLAMLab/ORB_SLAM3 目前 orb-slam3 的代码直接编译会报错，因此需要解决一些冲突。 Eigen Eigen</description>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/10-orb-slam3-adjustments/</link>
+      <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/10-orb-slam3-adjustments/</guid>
+      <description>ORB SLAM3 orb-slam3 的项目地址：https://github.com/UZ-SLAMLab/ORB_SLAM3 目前 orb-slam3 的代码直接编译会报错，因此需要解决一些冲突。 Opencv orb-slam</description>
     </item>
     <item>
       <title>第十章 待修改</title>
@@ -627,11 +746,25 @@
       <description>二叉排序树 查找长度计算 查找成功情况下： $$ ASL_{成功}=\frac{SearchLength}{N} $$ $SearchLength$是链表中搜索各有值</description>
     </item>
     <item>
+      <title>ORB SLAM3 Stereo</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/11-orb-slam3-stereo/</link>
+      <pubDate>Wed, 31 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/11-orb-slam3-stereo/</guid>
+      <description>Stereo Kitti Yaml modification 修改 KITTI00-02.yaml 文件中的 Viewer.ViewpointY: -100 改为 Viewer.ViewpointY: -100.0 Settings Orb slam3 在运行 stereo 时，输出第二个摄像头参数位置报 segment fault //for(size_t i = 0; i &amp;lt; settings.originalCalib2_-&amp;gt;size(); i++){ // output &amp;lt;&amp;lt; &amp;quot; &amp;quot; &amp;lt;&amp;lt; settings.originalCalib2_-&amp;gt;getParameter(i); //} if (settings.cameraType_ == Settings::PinHole) { for(size_t i = 0; i &amp;lt; settings.originalCalib2_-&amp;gt;size(); i++){ output &amp;lt;&amp;lt; &amp;quot; &amp;quot; &amp;lt;&amp;lt;</description>
+    </item>
+    <item>
       <title>第X章 待修改</title>
       <link>https://endlesspeak.github.io/novel/volume1/extra/</link>
       <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
       <guid>https://endlesspeak.github.io/novel/volume1/extra/</guid>
       <description>“为什么？为什么你的心中只有剑，难道我为你做的这一切，甚至拨不起你的心中的一道褶皱吗？”张慎峰披头散发，状若疯魔，脸上泛着血色的光，眼中似有火焰在燃烧</description>
+    </item>
+    <item>
+      <title>SLAM Evaluation</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/12-slam-evo/</link>
+      <pubDate>Sat, 30 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/12-slam-evo/</guid>
+      <description>EVO 在使用evo对ORB-SLAM或OpenVSLAM等SLAM系统在KITTI数据集上以双目模式运行的结果进行评估时，你首先需要确保你的轨迹文件和基准</description>
     </item>
     <item>
       <title>图的基本概念</title>
@@ -652,104 +785,104 @@
       <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/search-hash/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/search-hash/</guid>
-      <description>处理冲突方法 主要分为开放定址法、拉链法（链地址法）和再散列法。 开放定址法 开放定址法意思是可存放新表项的空闲地址既向同义词开放，又向非同义词开放。 $$ H_i=(H(key)+d_i)%m $$</description>
+      <description>处理冲突方法 主要分为开放定址法、拉链法（链地址法）和再散列法。 开放定址法 开放定址法意思是可存放新表项的空闲地址既向同义词开放，又向非同义词开放。 $$ H_i=(H(key)+d_i)\%m $$</description>
     </item>
     <item>
       <title>DataType</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/2-1-datatype/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-1-datatype/</link>
       <pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/2-1-datatype/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-1-datatype/</guid>
       <description></description>
     </item>
     <item>
       <title>StoreType</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/2-2-storetype/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-2-storetype/</link>
       <pubDate>Fri, 01 Apr 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/2-2-storetype/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-2-storetype/</guid>
       <description>概述 存储类型指示编译器以何种方式使用变量，它定义程序中变量/函数的范围（可见性）和生命周期。 数据类型用于声明不同类型的变量或函数，变量的类型决定了变量</description>
     </item>
     <item>
       <title>Statement</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/3-1-statement/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-1-statement/</link>
       <pubDate>Tue, 22 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/3-1-statement/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-1-statement/</guid>
       <description>运算符 优先级 运算符 名称或含义 使用形式 结合方向 说明 1 [] 数组下标 数组名[常量表达式] 左到右 -- () 圆括号 (表达式）/函数名(形参表) -- . 成员选择（对象） 对象.</description>
     </item>
     <item>
       <title>Structure</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/3-2-structure/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-2-structure/</link>
       <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/3-2-structure/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-2-structure/</guid>
       <description>循环结构 continue&amp;amp;break 注意continue和break关键字的用法： continue指的是结束本次循环，进行下一次循环； break指的是结束本次循环并跳出循环体；</description>
     </item>
     <item>
       <title>Function</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/4-1-function/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-1-function/</link>
       <pubDate>Tue, 22 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/4-1-function/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-1-function/</guid>
       <description>函数组成 概念 函数是以固定的格式封装，可以重复使用的代码模块，用于完成特定的功能。 通过调用模块名来重复使用这段代码。 特别地， 函数不能嵌套定义。 函数外不能</description>
     </item>
     <item>
       <title>Pass By Value &amp; Reference</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/4-2-functionassignment/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-2-functionassignment/</link>
       <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/4-2-functionassignment/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-2-functionassignment/</guid>
       <description>值传递 变量作值传递 函数参数通过值来传递，即传递给被调用函数的参数值存放在临时变量中，而不是原来的变量中。 void swap1(int a,int b){ int temp = a; a = b; b = temp; } int main(){ swap1(</description>
     </item>
     <item>
       <title>Scope</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/5-scope/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/5-scope/</link>
       <pubDate>Tue, 22 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/5-scope/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/5-scope/</guid>
       <description>所谓作用域，就是变量的有效范围。 局部变量 定义在函数内部或代码块内部的变量称为局部变量，它的作用域仅限于函数或代码块内部， 否则无效。 说明： 在 main 函数中定义</description>
     </item>
     <item>
       <title>Pointer</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/6-pointer/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/6-pointer/</link>
       <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/6-pointer/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/6-pointer/</guid>
       <description>概念 计算机程序在存储数据时需要跟踪三种属性： 信息存储在何处 存储的值是多少 存储的信息是什么类型 声明变量时： 通过声明语句指明的符号名跟踪内存单元； 程序为该</description>
     </item>
     <item>
       <title>Custom Data Type</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/7-customdatatypes/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/7-customdatatypes/</link>
       <pubDate>Fri, 25 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/7-customdatatypes/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/7-customdatatypes/</guid>
       <description>结构体 存储空间：所有成员变量占用内存空间的和。 结构体定义： struct student{ int num; char name[20]; char sex; char addr[20]; }std1,std2;//分号前可以直接声明具有结构体类型的变量 声明结构</description>
     </item>
     <item>
       <title>Standard I/O</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/9-1-io-standard/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-1-io-standard/</link>
       <pubDate>Wed, 23 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/9-1-io-standard/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-1-io-standard/</guid>
       <description>Output puts()：只能输出字符串，并且输出结束后会自动换行； putchar()：只能输出单个字符； printf()：可以输出各种类型的数据； Printf() int printf(const char *format, ...)</description>
     </item>
     <item>
       <title>File I/O</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/9-2-io-file/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-2-io-file/</link>
       <pubDate>Wed, 23 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/9-2-io-file/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-2-io-file/</guid>
       <description>概述 文件输入输出主要包括： 文件打开与关闭 打开函数fopen() 关闭函数fclose() 文件状态 是否到文件尾函数feof() 检查错误函数ferror()</description>
     </item>
     <item>
       <title>Module Development</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/10-modules-development/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/10-modules-development/</link>
       <pubDate>Wed, 31 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/10-modules-development/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/10-modules-development/</guid>
       <description>Module Develop 一般地，C 中的模块化开发可以归纳为： 在头文件中定义接口 在源文件中实现接口 链接模块 一般地，C++中的模块化开发可以归纳为： 在声明类的头文件中定义接口</description>
     </item>
     <item>
       <title>Debug Method</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/11-debug-method/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/11-debug-method/</link>
       <pubDate>Wed, 31 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/11-debug-method/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/11-debug-method/</guid>
       <description>GDB 调试符号 在编译的时候加上 -g 选项，以使程序能够执行调试。如果是 makefile ，可以指定全局选项。 CXX = g++ CXXFLAGS = -Wall -g 调试界面 调试界面包括两种： gdb 不显示程序代码界面，仅回</description>
     </item>
     <item>
       <title>C&amp;CPP Mix Programming</title>
-      <link>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/12-ccpp-mix-programming/</link>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/12-ccpp-mix-programming/</link>
       <pubDate>Thu, 13 Jul 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming-basic-doc/12-ccpp-mix-programming/</guid>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/12-ccpp-mix-programming/</guid>
       <description>C with C++ C 和 C++ 有一些不同的语法和命名规则，其中一个重要的区别是函数的名称修饰(Name Mangling): C 编译器不进行任何名称修饰。 C++ 编译器会对函数和变量的名称进行修饰</description>
     </item>
     <item>
@@ -807,6 +940,20 @@
       <pubDate>Sat, 28 Dec 2019 20:00:00 +0000</pubDate>
       <guid>https://endlesspeak.github.io/posts/tattle/2020-helloworld-from-blogs-to-life/</guid>
       <description>&lt;p&gt;时光，匆匆，像是天空中，自由变幻的一缕缕云烟；人生，短暂，像是电影剪辑里的一帧帧片段。&lt;/p&gt;&#xA;&lt;p&gt;简单的事物，总是比想象中更美一些，而博客的作用，大抵就是记录下这些瞬间。多年之后，再点开博客，饱含着记忆的旧时光如同投入镜湖中的石子，在脑海中荡漾起一圈圈的涟漪；又仿佛清晨的微风，扑面而来，令人心旷神怡。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/3-pointer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/3-pointer/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/company/delivery/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/company/delivery/</guid>
+      <description>投递 拼多多 https://careers.pinduoduo.com/campus/personal-center</description>
     </item>
     <item>
       <title>Search</title>

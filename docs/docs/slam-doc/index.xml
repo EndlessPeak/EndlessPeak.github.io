@@ -1,70 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>SLAM Programming Basic on 坐忘道琼峰</title>
+    <title>SLAM Programming and Interviewing on 坐忘道琼峰</title>
     <link>https://endlesspeak.github.io/docs/docs/slam-doc/</link>
-    <description>Recent content in SLAM Programming Basic on 坐忘道琼峰</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in SLAM Programming and Interviewing on 坐忘道琼峰</description>
+    <generator>Hugo</generator>
     <language>zh</language>
     <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
 </copyright>
-    <lastBuildDate>Sat, 28 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate></lastBuildDate>
     <atom:link href="https://endlesspeak.github.io/docs/docs/slam-doc/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>ROS2 Installation</title>
-      <link>https://endlesspeak.github.io/docs/docs/slam-doc/1-ros2-install/</link>
-      <pubDate>Sun, 08 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/1-ros2-install/</guid>
-      <description>Install ROS2 by one command fishros 可用 fishros 提供的实用程序一行代码在 ubuntu 上安装 ROS2。 wget http://fishros.com/install -O fishros &amp;amp;&amp;amp; . fishros global view 总体来看，它的安装流程包含如下命令: mkdir -p /tmp/fishinstall/tools wget http://fishros.com/install/install1s/install.py -O /tmp/fishinstall/install.py 2&amp;gt;&amp;gt;/dev/null source /etc/profile sudo apt install python3-distro python3-yaml -y if [</description>
-    </item>
-    <item>
-      <title>SLAM Summary</title>
-      <link>https://endlesspeak.github.io/docs/docs/slam-doc/2-slam-summary/</link>
-      <pubDate>Sun, 08 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/2-slam-summary/</guid>
-      <description>What&amp;#39;s SLAM SLAM 是 Simultaneous Localization and Mapping，即同时定位与建图。 history separate 最初，定位和建图问题是被看成两个独立问题研究的： 定位问题的关键是事先给定环境地图； 建图问题的关键是</description>
-    </item>
-    <item>
-      <title>VSLAM Summary</title>
-      <link>https://endlesspeak.github.io/docs/docs/slam-doc/3-vslam-summary/</link>
-      <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/3-vslam-summary/</guid>
-      <description>Visual SLAM 在计算机视觉中，与同时定位与地图构建(Simultaneous Localization And Mapping)相似的是运动推断结构(Structure from motion,SFM)</description>
-    </item>
-    <item>
-      <title>Rotation &amp; Translation Exercise</title>
-      <link>https://endlesspeak.github.io/docs/docs/slam-doc/4-rotation-and-translation-exercise/</link>
-      <pubDate>Thu, 16 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/4-rotation-and-translation-exercise/</guid>
-      <description>Eigen Usage Eigen 是用头文件组成的库，对于它的使用，有两种办法： 理论上只需要引入头文件即可，见下面代码中的“直接引入”； 按照官网说明和 cmake 规范，依次 find_package 并 target_link_libraries 下面提供了</description>
-    </item>
-    <item>
-      <title>Lie Group and Lie Algebras 1</title>
-      <link>https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras/</link>
-      <pubDate>Mon, 20 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras/</guid>
-      <description>Raise 在 SLAM 中，除表示位姿(旋转)外，还需要对其进行估计和优化。然而，旋转矩阵自身带有约束(正交矩阵且行列式为 1)，此时对其进行优化显得困难。通过一定的转换</description>
-    </item>
-    <item>
-      <title>Lie Group and Lie Algebras 2</title>
-      <link>https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras2/</link>
-      <pubDate>Tue, 21 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras2/</guid>
-      <description>Exponential and Logarithmic Mapping SO(3) Exponential Mapping 考虑如何计算 $exp(\phi^{\wedge})$，它是一个矩阵的指数，因此称之为指数映射。 任意矩阵的指数都可以泰勒展开，但只有在收敛</description>
-    </item>
-    <item>
-      <title>Lie Group and Lie Algebras Exercise</title>
-      <link>https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras-exercise/</link>
-      <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/5-lie-group-and-lie-algebras-exercise/</guid>
-      <description>Lie Group &amp;amp; Lie Algebras 李群 $\mathcal{L}$ 是一个群同时也是一个光滑的(可微的)的流形, 定义其上的群乘法和求逆运算均可微; 李代数 $\mathcal{A}$ 是 $\mathcal{L}$ 的在单位元 $\mathcal{1}$ 处的正切空间;最常见的李群就是 SO(n)</description>
-    </item>
-    <item>
-      <title>ORB SLAM Adjustments</title>
-      <link>https://endlesspeak.github.io/docs/docs/slam-doc/10-orb-slam3-adjustments/</link>
-      <pubDate>Sun, 07 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/10-orb-slam3-adjustments/</guid>
-      <description>ORB SLAM3 orb-slam3 的项目地址：https://github.com/UZ-SLAMLab/ORB_SLAM3 目前 orb-slam3 的代码直接编译会报错，因此需要解决一些冲突。 Eigen Eigen</description>
-    </item>
   </channel>
 </rss>

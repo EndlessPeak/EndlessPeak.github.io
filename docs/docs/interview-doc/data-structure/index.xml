@@ -4,11 +4,11 @@
     <title>Data Structure on 坐忘道琼峰</title>
     <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/</link>
     <description>Recent content in Data Structure on 坐忘道琼峰</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh</language>
     <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
 </copyright>
-    <lastBuildDate>Fri, 06 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 10 Feb 2022 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>数据结构基本概念</title>
@@ -85,7 +85,7 @@
       <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/search-hash/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/search-hash/</guid>
-      <description>处理冲突方法 主要分为开放定址法、拉链法（链地址法）和再散列法。 开放定址法 开放定址法意思是可存放新表项的空闲地址既向同义词开放，又向非同义词开放。 $$ H_i=(H(key)+d_i)%m $$</description>
+      <description>处理冲突方法 主要分为开放定址法、拉链法（链地址法）和再散列法。 开放定址法 开放定址法意思是可存放新表项的空闲地址既向同义词开放，又向非同义词开放。 $$ H_i=(H(key)+d_i)\%m $$</description>
     </item>
   </channel>
 </rss>

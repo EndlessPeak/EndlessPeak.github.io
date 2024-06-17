@@ -10,7 +10,7 @@
 <title>Docs | 坐忘道琼峰</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
-<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.b4df0caebd058a56d5556ac52e8e433c3b8d42aac8ccf30094e707fc2ea0773f5edfd5db2025486b3bd252a5dee3136f.css">
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
 <script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
 
 
@@ -59,7 +59,7 @@
 <link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
 
 
-<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.cd2d65e90b033b5ff5087d18590179029ef6647458eacb3d21c15e42a24f83c203d7013d6f35b4808bbd257ea41a118c.js"></script>
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.986d5dbb170eaf500c5a411aacebc556d5340a0e51e01e7a4d0cafe92c9f4fa5acb6c77a98d4b0b9cab0029d445f0583.js"></script>
 
 
 
@@ -132,18 +132,24 @@
         },{
             "@type":"ListItem",
             "position":  3 ,
+            "name": "Python Development on NixOS",
+            "description": "本文记录了在NixOS上如何进行python开发环境的构建。",
+            "url": "https://endlesspeak.github.io/docs/build/nixos-configuration/1-python-poetry-devshell/"
+        },{
+            "@type":"ListItem",
+            "position":  4 ,
             "name": "Linux 安装教程",
             "description": "本系列文章讲述Linux安装方面的内容，包括Parrot OS和Arch Linux等系统的安装内容。",
             "url": "https://endlesspeak.github.io/docs/build/operating-system-installation/"
         },{
             "@type":"ListItem",
-            "position":  4 ,
+            "position":  5 ,
             "name": "Linux 环境配置",
             "description": "本系列文章讲述Linux环境方面的内容，包括桌面环境(DE)和窗口管理器(WM)等内容。",
             "url": "https://endlesspeak.github.io/docs/build/operating-system-configuration/"
         },{
             "@type":"ListItem",
-            "position":  5 ,
+            "position":  6 ,
             "name": "文本编辑器配置",
             "description": "本系列文章讲述文本编辑器配置的内容，主要是 Emacs 的内容。",
             "url": "https://endlesspeak.github.io/docs/build/editorconfiguration/"
@@ -181,7 +187,7 @@
 
 
 
-<meta property="og:updated_time" content="2023-12-19T00:00:00&#43;00:00" />
+<meta property="og:updated_time" content="2024-06-11T00:00:00&#43;00:00" />
 
 
 
@@ -287,6 +293,15 @@
   
     <div class="mx-6">
       
+        <a href="https://endlesspeak.github.io/docs/build/terminalconfiguration/linux-technology-6-2-sysstat/" class="no-underline">
+          <h4>System Management</h4>
+        </a>
+        
+          Mem management All Mem statistic 统计本机所有内存使用量。 free -h Sort by all user 统计所有用户的内存使用量。 ps aux --sort=-%mem | head -n 10 | awk &#39;NR==1 {print $0; next} { $5=int($5/1024) &#34;M&#34;; $6=int($6/1024) &#34;M&#34;; $11=substr($11, 1, 100); print $0; }&#39; 其中，~$11=substr(
+        
+      
+        
+          <div class="-mx-4 my-4 border-t"></div>
         <a href="https://endlesspeak.github.io/docs/build/terminalconfiguration/linux-technology-6-1-tmux/" class="no-underline">
           <h4>Reuse Terminal by Tmux</h4>
         </a>
@@ -346,6 +361,39 @@
         
       
       <a href="https://endlesspeak.github.io/docs/build/operating-system-sum/" class="no-underline">
+        <h4>
+          阅读更多
+          <i
+            class="fas fa-caret-right ms-1"
+          ></i>
+        </h4>
+      </a>
+    </div>
+  
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="prose">
+  <a href="https://endlesspeak.github.io/docs/build/nixos-configuration/1-python-poetry-devshell/" class="no-underline">
+    <h3 class="mt-0">Python Development on NixOS</h3>
+  </a>
+  
+    本文记录了在NixOS上如何进行python开发环境的构建。
+  
+
+  
+    <div class="mx-6">
+      
+      <a href="https://endlesspeak.github.io/docs/build/nixos-configuration/1-python-poetry-devshell/" class="no-underline">
         <h4>
           阅读更多
           <i
@@ -499,7 +547,16 @@
   
     <div class="mx-6">
       
-        <a href="https://endlesspeak.github.io/docs/build/editorconfiguration/1-vanillaemacs/" class="no-underline">
+        <a href="https://endlesspeak.github.io/docs/build/editorconfiguration/1-vscode-configuration/" class="no-underline">
+          <h4>VSCode Configuration</h4>
+        </a>
+        
+          本文主要讨论在 Linux 下如何配置 VSCode 。
+        
+      
+        
+          <div class="-mx-4 my-4 border-t"></div>
+        <a href="https://endlesspeak.github.io/docs/build/editorconfiguration/2-vanilla-emacs-configuration/" class="no-underline">
           <h4>Vanilla Emacs</h4>
         </a>
         
@@ -508,20 +565,11 @@
       
         
           <div class="-mx-4 my-4 border-t"></div>
-        <a href="https://endlesspeak.github.io/docs/build/editorconfiguration/2-org/" class="no-underline">
+        <a href="https://endlesspeak.github.io/docs/build/editorconfiguration/3-org/" class="no-underline">
           <h4>Org</h4>
         </a>
         
           本文章主要讨论在自定义Emacs中解决常见的基础配置问题。
-        
-      
-        
-          <div class="-mx-4 my-4 border-t"></div>
-        <a href="https://endlesspeak.github.io/docs/build/editorconfiguration/3-manage-by-orgmode/" class="no-underline">
-          <h4>Manage By Org Mode</h4>
-        </a>
-        
-          本文记录如何通过Org-mode管理配置文件。
         
       
       <a href="https://endlesspeak.github.io/docs/build/editorconfiguration/" class="no-underline">

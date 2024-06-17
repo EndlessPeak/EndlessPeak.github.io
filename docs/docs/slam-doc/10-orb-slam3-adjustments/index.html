@@ -93,7 +93,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="本文记录了 ORB-SLAM 系列框架在 ArchLinux 上的编译适配过程。">
+  content="本文记录了 ORB-SLAM 系列框架在 ArchLinux 和 NixOS 上的编译适配过程。">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -128,9 +128,9 @@
         "@type": "WebPage",
         "@id": "https://endlesspeak.github.io/docs/docs/slam-doc/10-orb-slam3-adjustments/"
     },
-    "headline": "ORB SLAM Adjustments | SLAM Programming Basic | 坐忘道琼峰","datePublished": "2024-01-07T00:00:00+00:00",
-    "dateModified": "2024-01-07T00:00:00+00:00",
-    "wordCount":  1651 ,
+    "headline": "ORB SLAM Adjustments | SLAM Programming Basic | 坐忘道琼峰","datePublished": "2024-01-27T00:00:00+00:00",
+    "dateModified": "2024-01-27T00:00:00+00:00",
+    "wordCount":  1877 ,
     "publisher": {
         "@type": "Person",
         "name": "EndlessPeak",
@@ -139,7 +139,7 @@
             "url": "https://endlesspeak.github.io/images/avtar.png"
         }
         },
-    "description": "本文记录了 ORB-SLAM 系列框架在 ArchLinux 上的编译适配过程。"
+    "description": "本文记录了 ORB-SLAM 系列框架在 ArchLinux 和 NixOS 上的编译适配过程。"
 }
 </script><meta property="og:title" content="ORB SLAM Adjustments | SLAM Programming Basic | 坐忘道琼峰" />
 <meta property="og:type" content="article" />
@@ -152,7 +152,7 @@
 
 
 
-<meta property="og:description" content="本文记录了 ORB-SLAM 系列框架在 ArchLinux 上的编译适配过程。" />
+<meta property="og:description" content="本文记录了 ORB-SLAM 系列框架在 ArchLinux 和 NixOS 上的编译适配过程。" />
 
 
 
@@ -168,10 +168,10 @@
 
 
 
-<meta property="article:published_time" content="2024-01-07T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2024-01-27T00:00:00&#43;00:00" />
 
 
-<meta property="article:modified_time" content="2024-01-07T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2024-01-27T00:00:00&#43;00:00" />
 
 
 
@@ -380,6 +380,28 @@
     </li>
     
     
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/11-orb-slam3-stereo/">ORB SLAM3 Stereo</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/12-slam-evo/">SLAM Evaluation</a>
+        </div>
+        
+    </li>
+    
+    
 </ul>
 
 </div>
@@ -403,7 +425,7 @@
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2024-01-07</span
+      >2024-01-27</span
     >
   </div>
   <div class="me-6 my-2">
@@ -430,9 +452,39 @@ ORB SLAM3
 目前 orb-slam3 的代码直接编译会报错，因此需要解决一些冲突。</p>
 <div id="outline-container-headline-2" class="outline-3">
 <h3 id="headline-2">
-Eigen
+Opencv
 </h3>
 <div id="outline-text-headline-2" class="outline-text-3">
+<p>orb-slam 系列要求 opencv 版本包含了对 gtk 的支持，这一点尤其重要。</p>
+<p>
+在 NixOS 中可以使用下面的代码开启对 gtk 的支持。</p>
+<div class="src src-nix">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-nix" data-lang="nix"><span class="line"><span class="cl">  <span class="k">let</span>
+</span></span><span class="line"><span class="cl">      <span class="n">pkgs</span> <span class="o">=</span> <span class="n">nixpkgs</span><span class="o">.</span><span class="n">legacyPackages</span><span class="o">.</span><span class="si">${</span><span class="n">system</span><span class="si">}</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">opencv</span> <span class="o">=</span> <span class="n">pkgs</span><span class="o">.</span><span class="n">opencv</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">opencvGtk</span> <span class="o">=</span> <span class="n">opencv</span><span class="o">.</span><span class="n">override</span><span class="p">(</span> <span class="n">old</span><span class="p">:{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">enableGtk2</span> <span class="o">=</span> <span class="no">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">gtk2</span> <span class="o">=</span> <span class="n">pkgs</span><span class="o">.</span><span class="n">gtk2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">enableGtk3</span> <span class="o">=</span> <span class="no">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">gtk3</span> <span class="o">=</span> <span class="n">pkgs</span><span class="o">.</span><span class="n">gtk3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">enableDocs</span> <span class="o">=</span> <span class="no">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="k">in</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">devShells</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="n">pkgs</span><span class="o">.</span><span class="n">mkShell</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">packages</span> <span class="o">=</span> <span class="k">with</span> <span class="n">pkgs</span><span class="p">;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">          <span class="n">opencvGtk</span>
+</span></span><span class="line"><span class="cl">        <span class="p">];</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-3" class="outline-3">
+<h3 id="headline-3">
+Eigen
+</h3>
+<div id="outline-text-headline-3" class="outline-text-3">
 <p>Eigen 是一个矩阵运算库，可以直接从系统包管理器安装，也可以从源码编译。</p>
 <ol>
 <li>官方项目地址：<a href="https://gitlab.com/libeigen/eigen">https://gitlab.com/libeigen/eigen</a></li>
@@ -441,11 +493,11 @@ Eigen
 </ol>
 </div>
 </div>
-<div id="outline-container-headline-3" class="outline-3">
-<h3 id="headline-3">
+<div id="outline-container-headline-4" class="outline-3">
+<h3 id="headline-4">
 Sophus
 </h3>
-<div id="outline-text-headline-3" class="outline-text-3">
+<div id="outline-text-headline-4" class="outline-text-3">
 <p>Sophus 是一个李群李代数库，一般发行版不提供安装，可以从源码编译，但是 <strong>编译测试部分时会报错误</strong> 。</p>
 <ol>
 <li>官方项目地址：<a href="https://github.com/strasdat/Sophus">https://github.com/strasdat/Sophus</a></li>
@@ -454,9 +506,9 @@ Sophus
 <p>安装说明：</p>
 <ol>
 <li>
-<p>若安装到系统环境下，为以后所有依赖 Sophus 的项目使用，可以添加参数去除测试部分的编译</p>
-<div class="src src-bash">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">  cmake .. -DBUILD_SOPHUS_TEST<span class="o">=</span>OFF -DBUILD_SOPHUS_EXAMPLES<span class="o">=</span>OFF</span></span></code></pre></div>
+<p>若安装到系统环境下，为以后所有依赖 Sophus 的项目使用，可以添加参数去除测试部分的编译（仅对较新的版本有效）</p>
+<div class="src src-shell">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">  cmake .. -DBUILD_SOPHUS_TESTS<span class="o">=</span>OFF -DBUILD_SOPHUS_EXAMPLES<span class="o">=</span>OFF</span></span></code></pre></div>
 </div>
 </li>
 <li>
@@ -508,93 +560,137 @@ Sophus
 </div>
 </div>
 </div>
-<div id="outline-container-headline-4" class="outline-3">
-<h3 id="headline-4">
+<div id="outline-container-headline-5" class="outline-3">
+<h3 id="headline-5">
 Pangolin
 </h3>
-<div id="outline-text-headline-4" class="outline-text-3">
+<div id="outline-text-headline-5" class="outline-text-3">
 <p>Pangolin 是一个轻量可移植的 OpenGL 显示管理图形库。
 Pangolin 可以直接从系统包管理器安装，也可以从源码安装。</p>
 <ol>
 <li>官方项目地址：<a href="https://github.com/stevenlovegrove/Pangolin">https://github.com/stevenlovegrove/Pangolin</a></li>
 <li>该项目建议安装到系统环境，因为各 SLAM 框架基本都依赖 Pangolin 。</li>
 </ol>
+<p>由于 Gcc13 不再包含 <code class="verbatim">cstdint</code> 头文件，在 NixOS 中需要显式指明：</p>
+<div class="src src-nix">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-nix" data-lang="nix"><span class="line"><span class="cl">  <span class="p">(</span><span class="n">pangolin</span><span class="o">.</span><span class="n">overrideAttrs</span><span class="p">(</span><span class="n">old</span><span class="p">:{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">env</span><span class="o">.</span><span class="n">CXXFLAGS</span> <span class="o">=</span> <span class="nb">toString</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="c1"># GCC 13: error: &#39;uint32_t&#39; does not name a type</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;-include cstdint&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}))</span></span></span></code></pre></div>
 </div>
-</div>
-<div id="outline-container-headline-5" class="outline-3">
-<h3 id="headline-5">
-qt5/qt6
-</h3>
-<div id="outline-text-headline-5" class="outline-text-3">
-<p>orb-slam3 的运行需要 qt 界面显示运行结果，可以安装 Qt5 或 Qt6 。</p>
 </div>
 </div>
 <div id="outline-container-headline-6" class="outline-3">
 <h3 id="headline-6">
-realsense2
+Other Dependencies
 </h3>
 <div id="outline-text-headline-6" class="outline-text-3">
+<div id="outline-container-headline-7" class="outline-4">
+<h4 id="headline-7">
+realsense2
+</h4>
+<div id="outline-text-headline-7" class="outline-text-4">
 <p>orb-slam3 可选依赖于该库，去掉该依赖项仅会导致与 realsense2 有关的测试代码不能正确生成</p>
 </div>
 </div>
-<div id="outline-container-headline-7" class="outline-3">
-<h3 id="headline-7">
-C++14 support
-</h3>
-<div id="outline-text-headline-7" class="outline-text-3">
-<p>orb-slam3 需要 C++ 14 的支持， <strong>即使 Readme 上说只需要 C++ 11</strong> 。为此，需要修改所有和 C++11 有关的内容，这包括 <code class="verbatim">CMakeLists.txt</code> 和代码中的宏。</p>
-<p>
-可以使用下面的代码替换掉 <code class="verbatim">CMakeLists.txt</code> 中的内容</p>
-<div class="src src-bash">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">  sed -i <span class="s1">&#39;s/++11/++14/g&#39;</span> CMakeLists.txt</span></span></code></pre></div>
-</div>
-<p>
-代码中还需要手动将 <code>COMPILEDWITHC11</code> 替换为 <code>COMPILEDWITHC14</code> 宏。</p>
+<div id="outline-container-headline-8" class="outline-4">
+<h4 id="headline-8">
+dependencies
+</h4>
+<div id="outline-text-headline-8" class="outline-text-4">
+<ol>
+<li>orb-slam3 的运行需要 qt 界面显示运行结果，可以安装 Qt5 或 Qt6 。</li>
+<li>orb-slam3 的 <code class="verbatim">src/System.cc</code> 引入了 <code class="verbatim">openssl</code> 的头文件。</li>
+<li>orb-slam3 的 <code class="verbatim">DBoW2</code> 模块要求 <code class="verbatim">boost</code> 库。</li>
+</ol>
 </div>
 </div>
-<div id="outline-container-headline-8" class="outline-3">
-<h3 id="headline-8">
+<div id="outline-container-headline-9" class="outline-4">
+<h4 id="headline-9">
+NixOS configuration
+</h4>
+<div id="outline-text-headline-9" class="outline-text-4">
+<div class="src src-nix">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-nix" data-lang="nix"><span class="line"><span class="cl">  <span class="n">devShells</span><span class="o">.</span><span class="n">default</span> <span class="err">=</span> <span class="n">pkgs</span><span class="o">.</span><span class="n">mkShell</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">packages</span> <span class="o">=</span> <span class="k">with</span> <span class="n">pkgs</span><span class="p">;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="n">qt6</span><span class="o">.</span><span class="n">full</span>
+</span></span><span class="line"><span class="cl">      <span class="n">boost</span>
+</span></span><span class="line"><span class="cl">      <span class="n">openssl</span>
+</span></span><span class="line"><span class="cl">    <span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span></span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-10" class="outline-4">
+<h4 id="headline-10">
 ROS support
-</h3>
-<div id="outline-text-headline-8" class="outline-text-3">
+</h4>
+<div id="outline-text-headline-10" class="outline-text-4">
 <p>orb-slam3 可选依赖于 ROS，但是 ROS 在非 Ubuntu 上的安装并不容易，因此该部分建议使用 docker 或虚拟机部署。</p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-headline-9" class="outline-2">
-<h2 id="headline-9">
+<div id="outline-container-headline-11" class="outline-3">
+<h3 id="headline-11">
+C++14 support
+</h3>
+<div id="outline-text-headline-11" class="outline-text-3">
+<p>orb-slam3 需要 C++ 14 的支持， <strong>即使 Readme 上说只需要 C++ 11</strong> 。为此，需要修改所有和 C++11 有关的内容，这包括 <code class="verbatim">CMakeLists.txt</code> 和代码中的宏。</p>
+<p>
+可以使用下面的代码替换掉 <code class="verbatim">CMakeLists.txt</code> 中的内容</p>
+<div class="src src-shell">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">  sed -i <span class="s1">&#39;s/++11/++14/g&#39;</span> CMakeLists.txt</span></span></code></pre></div>
+</div>
+<p>
+代码中还需要手动将 <code>COMPILEDWITHC11</code> 替换为 <code>COMPILEDWITHC14</code> 宏。</p>
+</div>
+</div>
+<div id="outline-container-headline-12" class="outline-3">
+<h3 id="headline-12">
+Compile
+</h3>
+<div id="outline-text-headline-12" class="outline-text-3">
+<p>给它一个编译核心，它能从 1.8GiB 干到 6.1GiB。如果不想内存寄掉就别 <code>make -j</code></p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-13" class="outline-2">
+<h2 id="headline-13">
 ORB SLAM2
 </h2>
-<div id="outline-text-headline-9" class="outline-text-2">
+<div id="outline-text-headline-13" class="outline-text-2">
 <p>ORB SLAM2 需要的依赖同上，例外的是不需要 <code class="verbatim">Sophus</code> 和 <code class="verbatim">realsence2</code> 。
 项目地址：<a href="https://github.com/raulmur/ORB_SLAM2/">https://github.com/raulmur/ORB_SLAM2/</a></p>
-<div id="outline-container-headline-10" class="outline-3">
-<h3 id="headline-10">
+<div id="outline-container-headline-14" class="outline-3">
+<h3 id="headline-14">
 Problems
 </h3>
-<div id="outline-text-headline-10" class="outline-text-3">
-<div id="outline-container-headline-11" class="outline-4">
-<h4 id="headline-11">
+<div id="outline-text-headline-14" class="outline-text-3">
+<div id="outline-container-headline-15" class="outline-4">
+<h4 id="headline-15">
 C++ 14 support
 </h4>
-<div id="outline-text-headline-11" class="outline-text-4">
+<div id="outline-text-headline-15" class="outline-text-4">
 <p>根据“保持最新”理念，升级到 C++14 已成必然。步骤与 ORB SLAM3 类似。</p>
 </div>
 </div>
-<div id="outline-container-headline-12" class="outline-4">
-<h4 id="headline-12">
+<div id="outline-container-headline-16" class="outline-4">
+<h4 id="headline-16">
 CMake Modules
 </h4>
-<div id="outline-text-headline-12" class="outline-text-4">
+<div id="outline-text-headline-16" class="outline-text-4">
 <p>删除 <code class="verbatim">cmake_modules</code> 文件夹，因为它指示了错误的 <code class="verbatim">Eigen</code> 依赖寻找方法。</p>
 </div>
 </div>
-<div id="outline-container-headline-13" class="outline-4">
-<h4 id="headline-13">
+<div id="outline-container-headline-17" class="outline-4">
+<h4 id="headline-17">
 static assert std map
 </h4>
-<div id="outline-text-headline-13" class="outline-text-4">
+<div id="outline-text-headline-17" class="outline-text-4">
 <p>Corrected typedef so that map value_type and allocator are the same. 参考 <a href="https://github.com/raulmur/ORB_SLAM2/pull/585/commits/d5c04468ce85d600f8a0a23fa280b0153fe115e0">PullRequest #585</a> 或 <a href="https://github.com/craymichael/ORB_SLAM2/">Repo</a></p>
 <p>
 更改 <code class="verbatim">include/LoopClosing.h</code> 第 50 行。</p>
@@ -605,11 +701,11 @@ static assert std map
 </div>
 </div>
 </div>
-<div id="outline-container-headline-14" class="outline-4">
-<h4 id="headline-14">
+<div id="outline-container-headline-18" class="outline-4">
+<h4 id="headline-18">
 double free or corruption
 </h4>
-<div id="outline-text-headline-14" class="outline-text-4">
+<div id="outline-text-headline-18" class="outline-text-4">
 <p>这是由于 <code>-march=native</code> 导致的，这个问题在 orb-slam3 上不存在，具体原因尚不明确。</p>
 <p>
 修改时，需要为 <strong>所有</strong> 依赖的构建都取消该编译选项。</p>
@@ -617,28 +713,28 @@ double free or corruption
 </div>
 </div>
 </div>
-<div id="outline-container-headline-15" class="outline-3">
-<h3 id="headline-15">
+<div id="outline-container-headline-19" class="outline-3">
+<h3 id="headline-19">
 OpenCV Version
 </h3>
-<div id="outline-text-headline-15" class="outline-text-3">
+<div id="outline-text-headline-19" class="outline-text-3">
 <p>关于 OpenCV 的 PullRequest，参考 <a href="https://github.com/raulmur/ORB_SLAM2/pull/1076/commits/966ac5e218820248f353b86fa4406d530a9e9585">PullRequest #1076</a> 或 <a href="https://github.com/aaronxavier/ORB_SLAM2/">Repo</a></p>
-<div id="outline-container-headline-16" class="outline-4">
-<h4 id="headline-16">
+<div id="outline-container-headline-20" class="outline-4">
+<h4 id="headline-20">
 cmake
 </h4>
-<div id="outline-text-headline-16" class="outline-text-4">
+<div id="outline-text-headline-20" class="outline-text-4">
 <ol>
 <li>将所有 cmake 文件中的 <code class="verbatim">find_package</code> 中的 opencv 版本更正到 OpenCV 4 。</li>
 <li>如果需要与 ROS 集成调试，需要在 <code class="verbatim">Examples/ROS/ORB_SLAM2/CMakeLists.txt</code> 中添加 <code>-lboost_system</code> 链接选项</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-headline-17" class="outline-4">
-<h4 id="headline-17">
+<div id="outline-container-headline-21" class="outline-4">
+<h4 id="headline-21">
 header
 </h4>
-<div id="outline-text-headline-17" class="outline-text-4">
+<div id="outline-text-headline-21" class="outline-text-4">
 <ol>
 <li>将所有 <code>#include&lt;opencv/cv.h&gt;</code> 更正为 <code>#include&lt;opencv2/opencv.hpp&gt;</code></li>
 <li>
@@ -647,7 +743,7 @@ header
 <ol>
 <li>新增 <code>#include&lt;opencv2/imgproc/types_c.h&gt;</code></li>
 <li>新增 <code>#include&lt;opencv2/opencv.hpp&gt;</code></li>
-<li>新增命名空间标识符或 <code>using namespace cv;</code></li>
+<li>[deprecated]新增命名空间标识符或 <code>using namespace cv;</code></li>
 </ol>
 <p>文件范围： </p>
 <ol>
@@ -677,11 +773,11 @@ header
 </ol>
 </div>
 </div>
-<div id="outline-container-headline-18" class="outline-4">
-<h4 id="headline-18">
+<div id="outline-container-headline-22" class="outline-4">
+<h4 id="headline-22">
 cv macro
 </h4>
-<div id="outline-text-headline-18" class="outline-text-4">
+<div id="outline-text-headline-22" class="outline-text-4">
 <ol>
 <li>
 <p>更改下列标识符</p>
@@ -697,7 +793,7 @@ cv macro
 <ol>
 <li>形参中，~CvMat *~ 改为 <code>cv::Mat *</code> ，到时候实参传 <code>&amp;M</code> 进去</li>
 <li>函数内 <code>CvMat *</code> 或 <code>CvMat</code> 都改为 <code>cv::Mat</code> ，同时 <code>cvCreateMat()</code> 也改为 <code>cv::Mat</code></li>
-<li>经过2的修改，函数内临时变量变为 <code>cv::Mat</code> 类型，在进行其他函数运算时可以去掉 <code>&amp;</code></li>
+<li>经过 2 的修改，函数内临时变量变为 <code>cv::Mat</code> 类型，在进行其他函数运算时可以去掉 <code>&amp;</code></li>
 </ol>
 </li>
 <li>
@@ -778,7 +874,6 @@ cv macro
 </ol>
 </li>
 </ol>
-<p><a href="https://github.com/StarterX4/dolphin-service-open-with-code">https://github.com/StarterX4/dolphin-service-open-with-code</a></p>
 </div>
 </div>
 </div>
@@ -810,6 +905,9 @@ cv macro
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
       
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/11-orb-slam3-stereo/" class="block">ORB SLAM3 Stereo</a>
+      
     </div>
   </div>
 
@@ -838,43 +936,53 @@ cv macro
 <ul>
 <li><a href="#headline-1">ORB SLAM3</a>
 <ul>
-<li><a href="#headline-2">Eigen</a>
+<li><a href="#headline-2">Opencv</a>
 </li>
-<li><a href="#headline-3">Sophus</a>
+<li><a href="#headline-3">Eigen</a>
 </li>
-<li><a href="#headline-4">Pangolin</a>
+<li><a href="#headline-4">Sophus</a>
 </li>
-<li><a href="#headline-5">qt5/qt6</a>
+<li><a href="#headline-5">Pangolin</a>
 </li>
-<li><a href="#headline-6">realsense2</a>
+<li><a href="#headline-6">Other Dependencies</a>
+<ul>
+<li><a href="#headline-7">realsense2</a>
 </li>
-<li><a href="#headline-7">C++14 support</a>
+<li><a href="#headline-8">dependencies</a>
 </li>
-<li><a href="#headline-8">ROS support</a>
+<li><a href="#headline-9">NixOS configuration</a>
+</li>
+<li><a href="#headline-10">ROS support</a>
 </li>
 </ul>
 </li>
-<li><a href="#headline-9">ORB SLAM2</a>
-<ul>
-<li><a href="#headline-10">Problems</a>
-<ul>
-<li><a href="#headline-11">C++ 14 support</a>
+<li><a href="#headline-11">C++14 support</a>
 </li>
-<li><a href="#headline-12">CMake Modules</a>
-</li>
-<li><a href="#headline-13">static assert std map</a>
-</li>
-<li><a href="#headline-14">double free or corruption</a>
+<li><a href="#headline-12">Compile</a>
 </li>
 </ul>
 </li>
-<li><a href="#headline-15">OpenCV Version</a>
+<li><a href="#headline-13">ORB SLAM2</a>
 <ul>
-<li><a href="#headline-16">cmake</a>
+<li><a href="#headline-14">Problems</a>
+<ul>
+<li><a href="#headline-15">C++ 14 support</a>
 </li>
-<li><a href="#headline-17">header</a>
+<li><a href="#headline-16">CMake Modules</a>
 </li>
-<li><a href="#headline-18">cv macro</a>
+<li><a href="#headline-17">static assert std map</a>
+</li>
+<li><a href="#headline-18">double free or corruption</a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-19">OpenCV Version</a>
+<ul>
+<li><a href="#headline-20">cmake</a>
+</li>
+<li><a href="#headline-21">header</a>
+</li>
+<li><a href="#headline-22">cv macro</a>
 </li>
 </ul>
 </li>
