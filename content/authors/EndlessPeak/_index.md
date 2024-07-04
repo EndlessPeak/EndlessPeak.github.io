@@ -1,5 +1,5 @@
 ---
-title: 坐忘道琼峰 Sitting Oblivion Tao EndlessPeak
+title: Serene Feather Pavilion # 博客英文名称
 role: 学生
 avatar: images/avtar.png
 bio: 瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?

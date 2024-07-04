@@ -1,0 +1,139 @@
+---
+title: Hello Cargo
+authors:
+  - EndlessPeak
+toc: true 
+date: 2023-07-07
+hidden: false
+draft: false
+weight: 2
+description: 本文介绍Rust编程语言的简单使用。
+---
+
+## Hello Rust {#hello-rust}
+
+
+### Editor {#editor}
+
+主流编辑器均支持 Rust 语言。此处仅讨论 `Emacs` 中如何获得 Rust 支持。
+
+首先，可以通过 `melpa` 安装 `rust-mode` ，基本配置如下：
+
+```emacs-lisp
+(use-package rust-mode
+  :ensure t
+  :mode ("\\.rs\\'" . rust-mode)
+  :hook
+  (rust-mode . (lambda () (setq tab-width 4)))
+  )
+```
+
+其次，Rust 代码风格不支持 `tab` ，而是将缩进映射为 4 个空格，可以默认禁用 `tab` ，例如作如下配置：
+
+```emacs-lisp
+(setq-default tab-width 4
+              indent-tabs-mode nil)
+```
+
+
+### Hello World {#hello-world}
+
+Rust 命名风格：
+
+1.  Rust 文件通常以 `.rs` 结尾。
+2.  如果文件名中使用了多个单词，应 **使用下划线隔开** 。
+3.  左括号与函数声明建议在同一行，且带有一个空格。
+
+<!--listend-->
+
+```rust
+fn main() {
+    println!("Hello, world!");
+}
+```
+
+
+## Hello Cargo {#hello-cargo}
+
+
+### What's cargo {#what-s-cargo}
+
+Cargo 是 Rust 的构建系统和包管理器。
+
+官方建议 Rustacean 使用 Cargo 来管理他们的 Rust 项目，用于:
+
+1.  创建项目
+2.  构建代码
+3.  下载依赖库
+4.  编译依赖库
+5.  运行测试
+6.  代码检查
+
+创建项目的命令如下：
+
+```shell
+cargo new hello_cargo
+cd hello_cargo
+```
+
+1.  一般地， `cargo` 会初始化 `git` 仓库，并带有 `.gitignore` 文件。
+2.  特别地，在 `Git` 仓库中运行 `cargo` 命令不会生成子仓库，除非使用 `cargo new --vcs=git` 无视此限制。
+
+
+### Cargo config {#cargo-config}
+
+Cargo 配置的项目一般包含一个 `cargo.toml` 文件，用于描述 cargo 的配置。它是 TOML (Tom's Obvious, Minimal Language) 格式。
+
+```toml
+[package]
+name = "hello_cargo"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+```
+
+注释：
+
+1.  `[package]` ，是一个表块（section）标题，表明下面的语句用来配置一个包（package）。
+2.  `edition` ，指的是 Rust 语言的版本。每 6 周 Rust 发布一个小更新，每 2-3 年 Rust 生成一个新的版本。
+3.  `[dependencies]` ，指明项目所依赖的任何包，它们被称为 `crate` 。
+
+
+### Cargo dependency {#cargo-dependency}
+
+包与 Crate 的概念
+
+1.  crate 是 Rust 代码编译单元，它可以是库或者二进制
+2.  包对应一个项目/代码仓库，它可以包含一个或多个 crate
+3.  有关更详细的内容，见 Package And Crate 小节
+
+新增外部依赖的方式：
+
+```toml
+[dependencies]
+rand = "0.8.5"
+```
+
+Cargo 理解语义化版本（Semantic Versioning，有时也称为 SemVer）
+
+1.  语义化是一种定义版本号的标准
+2.  小版本与大版本
+    1.  0.X 是大版本
+    2.  0.X.Y 是小版本
+    3.  小版本具有兼容的公有 API
+3.  0.8.5 实际上是 ^0.8.5 的简写，它表示任何至少包含 0.8.5 但低于 0.9.0 的版本
+4.  0.9.0 或更高版本则不再确保 API 相同
+
+
+### Cargo command {#cargo-command}
+
+1.  `cargo build` 命令会在 `target/debug/hello_cargo` 下创建一个可执行文件。
+2.  `cargo run` 命令会一次性完成编译并执行过程。
+3.  `cargo check` 命令用于快速检查代码，它 **不** 产生可执行文件。
+4.  `cargo fix` 命令用于修复代码常见问题
+    1.  语言本身版本升级带来的 API 变化
+    2.  依赖版本过时时自动更新
+    3.  自动应用一些 lint 规则建议，如代码风格与错误处理
+    4.  特别注意，对于依赖包的 API 变化，本命令 **无法修改**
+5.  `cargo doc --open` 命令构建本地依赖提供的文档

@@ -7,7 +7,7 @@ date: 2024-06-01
 featuredImage: 
 hidden: false
 draft: false
-weight: 7
+weight: 70
 description: 本文记录了非线性优化的相关内容。
 ---
 
@@ -229,6 +229,8 @@ $$
 接下来探讨为什么SLAM问题中使用优化方法时需要引入最小二乘。
 
 在SLAM（Simultaneous Localization and Mapping，即时定位与地图构建）中，最小二乘法是用于优化的问题解决方法之一。我们需要从SLAM中的条件概率分布出发，通过后验概率分布的最大化，再到最大似然估计，最终引出最小二乘的使用。
+
+即，**最小二乘问题的解等价于状态的最大似然估计。**
 
 ### Conditional Probability Distribution
 在SLAM中，我们需要估计机器人在环境中的位置和地图，这可以表示为状态变量 $\mathbf{x}$（包括机器人的位置和地图的所有特征）。SLAM问题可以描述为在给定所有观测数据 $\mathbf{z}$ 和运动数据 $\mathbf{u}$ 的条件下，求状态变量 $\mathbf{x}$ 的概率分布：

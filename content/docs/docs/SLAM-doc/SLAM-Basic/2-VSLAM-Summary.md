@@ -7,7 +7,7 @@ date: 2023-10-18
 featuredImage: 
 hidden: false
 draft: false
-weight: 2
+weight: 20
 description: 本文对Visual SLAM 的相关研究进行概括和综述。
 ---
 
@@ -27,7 +27,7 @@ VSLAM 的目标是同时恢复出每帧图像对应的相机运动参数 \\(C\_1
 
 1.  相机运动参数是描述相机在世界坐标系中的运动状态的向量
 2.  每个相机运动参数 \\(C\_i\\) 包含了相机的位置和朝向信息，或者包含相机的平移和旋转的信息
-3.  通常表达为一个 3×3 的旋转矩阵(或四元数、欧拉角等) \\(R\_i\\) 和一个三维位置变量 \\(p\_i\\) (或位移向量)。
+3.  相机运动参数通常表达为一个 3×3 的旋转矩阵(或四元数、欧拉角等) \\(R\_i\\) 和一个三维位置变量 \\(p\_i\\) (或位移向量)。
 4.  通过恢复相机运动参数，可以了解相机在场景中的位置和姿态变化，以将不同帧的图像对齐并构建出场景的三维结构
 
 
@@ -39,6 +39,7 @@ VSLAM 的目标是同时恢复出每帧图像对应的相机运动参数 \\(C\_1
 
 
 #### Transform Equation
+VSLAM的目标是同时恢复出每帧图像对应的相机运动参数 $C_1 \dots C_m$ 及场景三维结构 $X_1 \dots X_n$，其中每个相机运动参数的含义和表达如前文所述。
 
 \\(R\_i\\) 和 \\(p\_i\\) 将世界坐标系下的三维点 \\(X\_j\\) 变换到 \\(C\_i\\) 的局部坐标系：
 \\[
@@ -107,7 +108,7 @@ VI-SLAM 引入了一个运动方程，其中 \\(f(C\_i,Z\_i)\\) 为 \\(Z\_i\\) �
 
 #### GPS
 
-若再引入一项 GPS 数据 \\(\boldsymbol{p}\_i^{G}\\)
+需要再引入一项 GPS 数据 \\(\boldsymbol{p}\_i^{G}\\)到目标函数中：
 \\[
   { \underset{C\_1...C\_m,\boldsymbol{X}\_1...\boldsymbol{X}\_n }{\arg\min}} \sum\_{i=1}^{m} \sum\_{j=1}^{n} \lVert h(C\_i,\boldsymbol{X}\_j)-\hat{x}\_{ij} \rVert\_{\Sigma\_{ij}} + \sum\_{i=1}^{m-1} \lVert f(C\_i,Z\_i)-C\_{i+1} \rVert\_{\Gamma\_{i}} + \sum\_{i=1}^{m-1} \lVert \boldsymbol{p}\_i - \boldsymbol{\hat{p}}\_i^{G} \rVert\_{\Lambda\_i}
 \\]

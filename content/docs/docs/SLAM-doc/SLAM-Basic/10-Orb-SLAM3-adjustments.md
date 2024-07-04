@@ -7,7 +7,7 @@ date: 2024-01-27
 featuredImage: 
 hidden: false
 draft: false
-weight: 10
+weight: 100
 description: 本文记录了 ORB-SLAM 系列框架在 ArchLinux 和 NixOS 上的编译适配过程。
 ---
 

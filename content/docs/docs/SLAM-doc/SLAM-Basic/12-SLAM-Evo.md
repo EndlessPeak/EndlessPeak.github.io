@@ -7,7 +7,7 @@ date: 2024-03-30
 featuredImage: 
 hidden: false
 draft: false
-weight: 12
+weight: 120
 description: 本文记录了SLAM中的EVO轨迹评估工具的使用方法。
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: 坐忘道琼峰 Sitting Oblivion Tao EndlessPeak
+title: Serene Feather Pavilion # 博客英文名称
 draft: false
 role: 学生
 avatar: images/avtar.png

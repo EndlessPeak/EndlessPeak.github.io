@@ -7,11 +7,11 @@ date: 2023-11-20
 featuredImage: 
 hidden: false
 draft: false
-weight: 4
+weight: 40
 description: 本文记录了李群和李代数的相关概念、性质。
 ---
 
-## Raise {#raise}
+## Raise
 
 在 SLAM 中，除表示位姿(旋转)外，还需要对其进行估计和优化。然而，旋转矩阵自身带有约束(正交矩阵且行列式为 1)，此时对其进行优化显得困难。通过一定的转换关系，可以把带约束的优化问题转为无约束的优化问题。我们将这种转换称为李群——李代数转换关系。
 
@@ -20,24 +20,28 @@ description: 本文记录了李群和李代数的相关概念、性质。
 $$
 \begin{aligned}
 &\operatorname{SO}(3) = \left \{\mathbf{R} \in \mathbb{R}^3 | \mathbf{R}\mathbf{R}^T=\mathbf{I},det( R)=1 \right \} \\
-&\operatorname{SE}(3) = \left\{ \mathbf{T} \in \mathbb{R}^{4 \times 4} \mid \mathbf{T} = \begin{bmatrix}
+&\operatorname{SE}(3) = \left\{ \mathbf{T} \in \mathbb{R}^{4 \times 4} \mid \mathbf{T} = 
+\begin{bmatrix}
 \mathbf{R} & \mathbf{t} \\
 \mathbf{0}^\mathrm{T} & 1
-\end{bmatrix}, \mathbf{R} \in \mathrm{SO}(3), \mathbf{t} \in \mathbb{R}^3 \right\} \\
-&\operatorname{Sim}(3) = \left\{ \mathbf{S} \in \mathbb{R}^{4 \times 4} \mid \mathbf{S} = \begin{bmatrix}
+\end{bmatrix}, 
+\mathbf{R} \in \mathrm{SO}(3), \mathbf{t} \in \mathbb{R}^3 \right\} \\
+&\operatorname{Sim}(3) = \left\{ \mathbf{S} \in \mathbb{R}^{4 \times 4} \mid \mathbf{S} = 
+\begin{bmatrix}
 s\mathbf{R} & \mathbf{t} \\
 \mathbf{0}^\mathrm{T} & 1
-\end{bmatrix}, \mathbf{R} \in \mathrm{SO}(3), \mathbf{t} \in \mathbb{R}^3 \right\}
+\end{bmatrix}, 
+\mathbf{R} \in \mathrm{SO}(3), \mathbf{t} \in \mathbb{R}^3 \right\}
 \end{aligned}
 $$
 
 注意到旋转矩阵和变换矩阵对加法不封闭，仅对乘法封闭。
 
 
-## Group {#group}
+## Group
 
 
-### Defination {#defination}
+### Defination
 
 群是一种集合加一种运算的代数结构，集合记作\(A\)，运算记作\(\cdot\)，则群记为\(G=(A,\cdot)\)，群满足 4 个条件：
 
@@ -62,7 +66,7 @@ $$
 接下来验证 SO(3)、SE(3)和 Sim(3)关于乘法成群。
 
 
-### SO(3) {#so--3}
+### SO(3)
 
 首先验证 SO(3):
 
@@ -102,7 +106,7 @@ $$
 因此证明得 SO(3)关于乘法成群。
 
 
-### SE(3) {#se--3}
+### SE(3)
 
 接下来验证 SE(3):
 
@@ -158,7 +162,7 @@ s.t. \mathbf{T}^{-1} \mathbf{T} = \mathbf{E} \\\\
 因此验证得 SE(3)关于乘法成群。
 
 
-### Sim(3) {#sim--3}
+### Sim(3)
 
 接下来证明 Sim(3):
 
@@ -197,7 +201,7 @@ S\_{1}S\_{2} = \begin{bmatrix} s\_{1}\mathbf{R\_1} & \mathbf{t\_1} \\\ \mathbf{0
 因此证得 Sim(3)关于乘法成群。
 
 
-## Lie Algebras Raise {#lie-algebras-raise}
+## Lie Algebras Raise
 
 李群是具有连续光滑性质的群。
 
@@ -283,7 +287,7 @@ $$
 2.  给定 \\(\phi\\) 时，可以根据 \\(exp(\phi^{\wedge})\\) 计算李群，反之亦然，这正是李群与李代数之间的指数和对数映射。
 
 
-## Lie Algebras Definations {#lie-algebras-definations}
+## Lie Algebras Definations
 
 每个李群都有对应的李代数。
 
@@ -291,7 +295,7 @@ $$
 2.  李代数对应单位元附近的正切空间，描述了李群的局部性质(导数)
 
 
-### Definations {#definations}
+### Definations
 
 李代数由集合 \\(\mathbb{V}\\) ，数域 \\(\mathbb{F}\\) 和一个二元运算 \\([,]\\) 组成。称李代数为\\((\mathbb{V},\mathbb{F},[,])\\)，记为 \\(\mathfrak{g}\\)
 
@@ -319,7 +323,7 @@ $$
 满足上述性质的 \\((\mathbb{V},\mathbb{F},[,])\\) 称为李代数，二元运算称为李括号。
 
 
-### Example and Provement {#example-and-provement}
+### Example and Provement
 
 下面以三维向量叉积为例，证明 \\(\mathfrak{g}=(\mathbb{R}^3,\mathbb{R},\times)\\) 构成李代数。
 
@@ -361,12 +365,12 @@ X\times(Y\times Z)+Z\times(X\times Y)+Y\times(Z\times X)=\mathbf{0}
 该式类似球对称的性质。
 
 
-## Two Lie Algebras {#two-lie-algebras}
+## Two Lie Algebras
 
 下面讨论 SO(3)和 SE(3)上的李代数。
 
 
-### SO(3) {#so--3}
+### SO(3)
 
 记 SO(3)对应的李代数为 \\(\phi\\)，它是定义在 \\(\mathbb{R}^3\\) 上的向量。
 
@@ -480,7 +484,7 @@ X\times(Y\times Z)+Z\times(X\times Y)+Y\times(Z\times X)=\mathbf{0}
 \end{equation}
 
 
-### SE(3) {#se--3}
+### SE(3)
 
 与 \\(\mathfrak{so}(3)\\) 相似，\\(\mathfrak{se}(3)\\) 位于 \\(\mathbb{R}^6\\) 空间中
 

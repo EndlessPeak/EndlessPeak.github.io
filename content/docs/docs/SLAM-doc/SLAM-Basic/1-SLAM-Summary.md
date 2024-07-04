@@ -7,7 +7,7 @@ date: 2023-10-08
 featuredImage: 
 hidden: false
 draft: false
-weight: 1
+weight: 10
 description: 本文对SLAM的概念和相关研究方向进行总结。
 ---
 

@@ -6,7 +6,7 @@ authors:
 date: 2020-02-18 20:00:00
 hidden: false
 draft: false
-weight: 2
+weight: 1
 ---
 
 如果现在让我选择一个我心目中最好的Linux发行版，同时也是最简单的Linux发行版，作为长期甚至终身使用的Linux，我会选择的发行版是：Arch Linux！

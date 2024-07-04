@@ -7,11 +7,11 @@ date: 2023-12-07
 featuredImage: 
 hidden: false
 draft: false
-weight: 5
+weight: 50
 description: 本文记录了适用于李群和李代数的Sophus库的相关实践。
 ---
 
-## Lie Group &amp; Lie Algebras {#lie-group-and-lie-algebras}
+## Lie Group & Lie Algebras
 
 李群 \\(\mathcal{L}\\) 是一个群同时也是一个光滑的(可微的)的流形, 定义其上的群乘法和求逆运算均可微;
 

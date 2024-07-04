@@ -1,9 +1,0 @@
-#+title: 文本编辑器配置
-#+toc: true
-#+authors: EndlessPeak
-#+date: <2022-07-01 Fri>
-#+hidden: false
-#+draft: false
-#+weight: 5
-
-本系列文章讲述文本编辑器配置的内容，主要是 Emacs 的内容。

@@ -1,0 +1,261 @@
+---
+title: Guess Number
+authors:
+  - EndlessPeak
+toc: true 
+date: 2023-07-10
+hidden: false
+draft: false
+weight: 3
+description: 本文记录了一个Rust猜数字游戏的编写过程。
+---
+
+## Handle A Guess {#handle-a-guess}
+
+请求用户输入，处理输入，并检查是否符合预期。
+
+```rust
+use std::io;
+
+fn main() {
+    println!("Guess the number.");
+
+    println!("Please input your guess.");
+
+    let mut guess = String::new();
+
+    io::stdin()
+        .read_line(&mut guess)
+        .expect("Failed to read line.");
+
+    println!("You guessed: {}",guess);
+}
+```
+
+在这段程序中包含了下面的内容：
+
+1.  `prelude`
+    1.  prelude 是 Rust 自动导入每个 Rust 程序的内容的列表
+    2.  它保持尽可能的小，并专注于几乎在每个 Rust 程序中使用的东西，尤其是 traits
+2.  `trait`
+    1.  它是一种定义共享行为的机制，它定义一组方法或功能的规范
+    2.  通过实现 trait，类型可以表达它们能够执行的操作或拥有的行为
+    3.  trait 类似其他编程语言接口的概念，当然也有一些不同，这一点在后面讨论
+3.  `println!`
+    1.  使用换行符打印到标准输出
+    2.  如果给予的字符串参数为空，则仅打印换行符
+    3.  如果写入 `io::stdout` 失败，则出现 panics
+4.  关联函数
+    1.  `String::new()` 的 `::` 表明 new 是 String 类型的一个关联函数
+    2.  它是定义在特定类型的命名空间中的静态函数
+    3.  它可以通过类型名称直接调用，而不必创建该类型的实例
+5.  引用
+    1.  引用可以让代码的多个部分访问同一处数据，而无需在内存中多次拷贝
+    2.  引用默认是不可变的
+6.  `readline`
+    1.  `readline` 将用户输入传递到字符串中，返回 `io::Result`
+    2.  `Result` 类型是枚举，成员包括 `OK` 和 `Err` ，它一般与 `match` 一起使用
+7.  `expect`
+    1.  用于返回 Result 的值
+    2.  如果值为 OK，则返回 OK 内部包含的值
+    3.  如果值为 Err，就会出现 panics，其中 panic 消息包括传递的消息以及 Err 的内容
+
+
+## Generate A Rand Number {#generate-a-rand-number}
+
+代码如下所示：
+
+```rust
+use std::io;
+use rand::Rng;
+
+fn main() {
+    println!("Guess the number!");
+
+    let secret_number = rand::thread_rng().gen_range(1..101);
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    println!("The secret number is: {}", secret_number);
+
+    println!("Please input your guess.");
+
+    let mut guess = String::new();
+
+    io::stdin()
+        .read_line(&mut guess)
+        .expect("Failed to read line");
+
+    println!("You guessed: {}", guess);
+}
+```
+
+注：gen_range 方法
+
+1.  获得一个区间表达式（range expression）作为参数，并在区间内生成一个随机数
+2.  区间表达式采用的格式为 start..end，它 **左开右闭**
+3.  可以传入 1..101 或者传入 1..=100
+
+
+## Comparison {#comparison}
+
+比较变量，代码如下所示：
+
+```rust
+use rand::Rng;
+use std::cmp::Ordering;
+use std::io;
+
+fn main() {
+    println!("Guess the number!");
+
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    println!("The secret number is: {}", secret_number);
+
+    let mut guess = String::new();
+
+    io::stdin()
+        .read_line(&mut guess)
+        .expect("Failed to read line");
+
+    let guess: u32 = guess.trim().parse().expect("Please type a number!");
+
+    println!("You guessed: {}", guess);
+
+    match guess.cmp(&secret_number) {
+        Ordering::Less => println!("Too small!"),
+        Ordering::Greater => println!("Too big!"),
+        Ordering::Equal => println!("You win!"),
+    }
+}
+
+```
+
+注：
+
+1.  类型推断
+    1.  Rust 是静态类型语言，具有类型推断，字面值可以自动推断
+    2.  存在不同类型时需要指定类型
+2.  遮蔽
+    1.  遮蔽允许我们复用变量的名字，而不是被迫创建两个不同变量
+    2.  有关更多遮蔽的内容见 **变量** 小节
+3.  字符串方法
+    1.  `String.parse()`
+        1.  它将字符串解析成数字
+        2.  由于可以解析成（返回）多种数字类型，因此需要指定类型
+    2.  `String.trim()`
+        1.  去除字符串的开头与结尾的空白字符
+        2.  返回类型还是字符串
+
+
+## Loop and exit {#loop-and-exit}
+
+生成循环和处理无效输入，代码如下
+
+```rust
+use rand::Rng;
+use std::cmp::Ordering;
+use std::io;
+
+fn main() {
+    println!("Guess the number!");
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+    println!("The secret number is: {}", secret_number);
+
+    loop {
+        println!("Please input your guess.");
+
+        let mut guess = String::new();
+
+        io::stdin()
+            .read_line(&mut guess)
+            .expect("Failed to read line");
+
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        }
+
+        println!("You guessed: {}", guess);
+
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Too small!"),
+            Ordering::Greater => println!("Too big!"),
+            Ordering::Equal =>{
+                println!("You win!");
+                break;
+            }
+        }
+    }
+}
+```
+
+有必要解释一下：
+
+1.  解析成功， `Ok(num)` 分支将返回解析得到的数字并将其赋值给 guess 变量
+2.  解析失败， `Err(_)` 分支会使用 continue 关键字跳过当前循环迭代
+
+
+## Denest Code {#denest-code}
+
+我们应该需要一点代码美学，以免过多的嵌套破坏代码的可读性。见 <https://youtu.be/CFRhGnuXG-4>
+
+解除嵌套的方法不外乎两种
+
+1.  提炼(extraction)
+    将代码的嵌套部分提成单独的函数，并在本函数中调用
+
+2.  反转(inversion)
+    将短结束的部分提前退出，这样可以减少嵌套层数
+
+修改后的代码如下所示：
+
+```rust
+use std::io;
+use rand::Rng;
+use std::cmp::Ordering;
+
+fn guess(secret_number: u32) -> i32 {
+    println!("Guess a number and Input:");
+
+    let mut guess = String::new();
+
+    io::stdin().read_line(&mut guess).expect("Unable to read line.");
+
+    //shadow the guess variable
+    let guess:u32 = match guess.trim().parse(){
+        Ok(num) => num,
+        Err(_) => {
+            println!("Input invalid!");
+            return -1;//input failed,need reinput
+        },
+    };
+
+    println!("Your guess number is {}",guess);
+
+    match guess.cmp(&secret_number){
+        Ordering::Less => println!("Too Small!"),
+        Ordering::Greater => println!("Too big!"),
+        Ordering::Equal => {
+            println!("Success!");
+            return 0;//guess success and stop
+        },
+    }
+
+    return 1;//continue guess without problem
+}
+fn main() {
+    println!("Guess number game.");
+
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+    println!("The secret_number is {}", secret_number);
+
+    loop {
+        match guess(secret_number){
+            1 | -1 => continue,
+            0 => break,
+            _ => continue,
+        }
+    }
+}
+```
