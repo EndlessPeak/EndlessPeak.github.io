@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Linux Dependency Management | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="依赖管理是Linux中极其重要的部分，本文浅要分析一下依赖管理中的相关内容。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Posts",
+      "item":"https://endlesspeak.github.io/posts/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Linux Dependency Management",
+      "item":"https://endlesspeak.github.io/posts/linux/linux-technology-8-dependency-management/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/posts/linux/linux-technology-8-dependency-management/"
+    },
+    "headline": "Linux Dependency Management | 悦翎轩","datePublished": "2024-01-09T00:00:00+00:00",
+    "dateModified": "2024-01-09T00:00:00+00:00",
+    "wordCount":  4546 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "依赖管理是Linux中极其重要的部分，本文浅要分析一下依赖管理中的相关内容。"
+}
+</script><meta property="og:title" content="Linux Dependency Management | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/posts/linux/linux-technology-8-dependency-management/" />
+
+
+
+<meta property="og:description" content="依赖管理是Linux中极其重要的部分，本文浅要分析一下依赖管理中的相关内容。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2024-01-09T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2024-01-09T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="posts" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+  
+  
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-8 lg:pt-12">
+    <div
+      class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
+    >
+      <article class="prose">
+  <h1 class="mb-4">Linux Dependency Management</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2024-01-09</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>10分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+Import
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>多年以后，面对开源社区的欢呼，Eelco Dolstra 工程师将会回想起他撰写博士毕业论文的某个遥远的下午。[1]</p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-2">
+<h2 id="headline-2">
+Package Management
+</h2>
+<div id="outline-text-headline-2" class="outline-text-2">
+<div id="outline-container-headline-3" class="outline-3">
+<h3 id="headline-3">
+SAT
+</h3>
+<div id="outline-text-headline-3" class="outline-text-3">
+<p>包管理器的依赖解决过程本质上是一个SAT(Boolean Satisfiability Problem) 求解器。</p>
+<p>
+SAT 求解器是一种精确的求解方法，可以确定是否存在一组满足约束条件的变量赋值。</p>
+<blockquote>
+<p>其目的是在满足</p>
+<ol>
+<li>
+<p>版本约束</p>
+<ol>
+<li>用户要求的版本约束</li>
+<li>依赖关系定义的版本约束</li>
+</ol>
+</li>
+<li>
+<p>条件约束</p>
+<ol>
+<li>编译选项约束</li>
+<li>额外功能约束</li>
+<li>文档约束</li>
+<li>…</li>
+<li>其他条件约束的约束</li>
+</ol>
+</li>
+</ol>
+<p>以上所有约束的情况下尽可能安装版本最高的软件。</p>
+</blockquote>
+<p>
+SAT作为NPC问题，没有多项式时间复杂度的算法。</p>
+<p>
+现代 SAT 求解器使用的主要技术 [2] 包括</p>
+<ol>
+<li>Davis-Putnam-Logemann-Loveland (DPLL)
+完整的、基于回溯的搜索算法，思想和深度优先搜索相似</li>
+<li>冲突驱动子句学习(conflict-driven clause learning CDCL)
+在DPLL算法基础上发展的增强算法，通过学习新的子句来减少搜索空间，并使用冲突分析和回溯机制来指导搜索过程。区别在于CDCL 的回跳是非时间顺序的。</li>
+<li>随机局部搜索算法(如 WalkSAT)
+启发式算法通常用于解决大规模的SAT问题，尤其是当问题的解空间非常大时。</li>
+</ol>
+<p>一般各个包管理器使用的是启发式算法。</p>
+<blockquote>
+<p>用户在安装软件前等待了很长的时间，最终得到的也不一定是最优解，甚至可能得到的是无解。</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-3">
+<h3 id="headline-4">
+Kiss
+</h3>
+<div id="outline-text-headline-4" class="outline-text-3">
+<p>Arch能从一众发行版包中脱颖，是因为KISS原则。</p>
+<blockquote>
+<p>KISS(Keep It Simple, Stupid)是一种设计原则，强调简单性和直接性。</p>
+<p>
+在设计和开发过程中尽量保持简洁、直观和易于理解的方式来解决问题，避免复杂性和不必要的细节。</p>
+</blockquote>
+<ol>
+<li>简洁而灵活的安装：用户可以根据自己的需求进行自定义安装</li>
+<li>滚动更新：持续提供最新版本的软件包和系统更新</li>
+<li>自由的软件选择：鼓励用户自由选择他们喜欢的软件包和工具，而不仅限于预设的选项</li>
+<li>文档和社区支持：拥有详细而全面的文档，以及活跃的社区支持</li>
+</ol>
+<p>其中，在包管理方面保持KISS原则的体现是：</p>
+<ol>
+<li>分级管理</li>
+<li>保证包的“相对最新性”</li>
+<li>为每个软件仅提供“一个”相对最新的版本</li>
+</ol>
+<p>上述方案避免了大量的依赖求解过程，显著减少求解空间</p>
+<blockquote>
+<p>Arch将软件分为多个等级：</p>
+<ol>
+<li>core </li>
+<li>extra/multilib </li>
+<li>arch user repository </li>
+</ol>
+<p>为什么是相对最新，因为绝对最新具有以下不可实现性：</p>
+<ol>
+<li>main分支并不保证所有功能都立即完全可用</li>
+<li>较新tag的部分并不保证没有严重bug</li>
+</ol>
+<p>以上所说的“一个”指代的是：</p>
+<ol>
+<li>核心仓库仅提供“尽可能少”的相对最新版本，降低冲突可能性</li>
+<li>用户有额外需要，可以从用户仓库获取其他各种版本</li>
+</ol>
+<p>对于核心仓库，频繁维护；对于用户仓库，降低依赖冲突的检查力度，责任自负</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-5" class="outline-2">
+<h2 id="headline-5">
+Costs and Problems
+</h2>
+<div id="outline-text-headline-5" class="outline-text-2">
+<div id="outline-container-headline-6" class="outline-3">
+<h3 id="headline-6">
+Pacman
+</h3>
+<div id="outline-text-headline-6" class="outline-text-3">
+<p>发行版的包管理方式都是有代价的，对于Pacman来说，具体有三个方面：</p>
+<ol>
+<li>
+<p>不是所有的人都遵循保持最新的理念，或者有意愿保持最新
+当软件被陈旧的技术和依赖所裹挟的时候，它已经不再是一件精美的艺术品，而是一座难以言喻的山</p>
+<ol>
+<li>典型技术：=gcc 4.8.5= 、=java8=</li>
+<li>
+<p>典型依赖：XX软件园、DLL下载专区</p>
+<blockquote>
+<p>我并不想批判追求技术和追求盈利的问题，因为</p>
+<ol>
+<li>它们本就陌路
+完全追求技术很难成功，而完全追求盈利却很可能成功 [3]，于是产生了“软件灾难”</li>
+<li>大部分人从利出发，对技术没有“足够”热爱
+在这种背景下，如果某个程序的所有依赖(包括软件本身)都“碰巧”被其他人提供(而不是一种规范的提供方式)，大部分人不会去思考有关依赖的深层次的问题</li>
+</ol>
+<p>因此，合理的原因造就了客观上的现实，不能不说是一种遗憾。</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li>
+<p>软件开发者的水平也是参差不齐，因为本可避免的问题而导致不能保持适配</p>
+<blockquote>
+<p>这里不得不说一句暴论，即绝大部分软件开发者（至少嵌入式软件开发者）的水平已经差到一种令人发指的程度——这很容易理解，因为大部分嵌入式工程师都是从硬件入行，他们也许并没有机会深刻学习和思考过软件的开发 [4]。</p>
+<p>
+无意批判已成定式的现实，但这种现象令人担忧：我们知道新人都很菜，也理解由新人成长为专家需要代价，但是当一群自以为是的“专家”因为害怕所谓的“新技术”会导致不可控因素而规劝新人不要尝试的时候，我很难抑制失望，进而厌恶“专家”本身。他们就像是行业蛀虫，“洋洋自得”地散发着肮脏的气息。</p>
+</blockquote>
+<ol>
+<li>由于代码详细设计上能力的不足导致软件需要增加更多冗余的依赖关系</li>
+<li>由于代码灵活性或可扩展性不足导致先期开发预设的立场后期不能改变</li>
+</ol>
+</li>
+<li>
+<p>频繁的滚动更新对软件开发“不一定利”</p>
+<blockquote>
+<p>试想编译一个稍有规模的程序，这也许需要5-10分钟的时间。</p>
+<p>
+现在假设你的程序依赖的动态链接库是opencv 4.9.0-1，结果当你第二天顺手更新了系统的时候，它们变成opencv 4.9.0-2了，于是你的程序不能够再正常运行（因为动态链接库变化了）；</p>
+<p>
+此时你正在开发，你尚不能知道是否有其他问题导致程序不能运行，但你已经对代码进行了修改，这导致你需要完全编译所有代码（而不是现行修改部分代码）来解决动态链接问题；</p>
+<p>
+同时，假设你希望回到上一次成功的生成来查看效果，也不现实，除非你通过版本管理工具回到上个版本重新编译源码，或者使用 patchelf 等工具；</p>
+<p>
+综合来说，你的调试不会特别顺利，这对开发是一种不小的打击。</p>
+</blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-7" class="outline-3">
+<h3 id="headline-7">
+Dependency
+</h3>
+<div id="outline-text-headline-7" class="outline-text-3">
+<p>包管理器求解依赖有很多问题 [5]</p>
+<ol>
+<li>
+<p>依赖全面度
+在FHS的模式下，维护者（甚至有时候是软件包开发者）无法精确地知道一个软件包究竟依赖哪些包，一旦 <code>/usr/include</code> 和 <code>/usr/lib</code> 碰巧有程序所必须的内容，软件可能直接就成功运行了。但是这样的构建可能是不可复现的。</p>
+<blockquote>
+<p>就像一千个人眼中有一千个哈姆雷特一样。</p>
+</blockquote>
+</li>
+<li>
+<p>依赖多样性
+当存在同一软件的多个版本时，依赖路径问题难以解决。可能的解决办法是：</p>
+<ol>
+<li>
+<p>小版本软件迭代</p>
+<ol>
+<li>子版本不同的软件的库文件放到不同的目录中</li>
+<li>可执行文件或其他会冲突的文件使用实用工具进行软链接管理，如 <code class="verbatim">eselect</code> 、=archlinux-java-run= 等</li>
+</ol>
+</li>
+<li>
+<p>大版本软件更新</p>
+<ol>
+<li>可执行文件更名，如使用 <code class="verbatim">python2</code> 和 <code class="verbatim">python3</code></li>
+<li>创建虚拟环境      </li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>多用户依赖冲突</p>
+<ol>
+<li>当系统中存在多个具有管理员权限的用户时，每个用户可能都需要以系统管理员身份安装一些软件，这可能导致多用户依赖冲突。</li>
+<li>产生依赖冲突问题时，在系统层面上可能无法做到在不破坏其他用户安装的依赖的情况下解决冲突</li>
+</ol>
+</li>
+<li>升级安全性
+目前，一般的包管理工具均采用“同名替换”或“增量更新”策略，这会导致软件更新操作不是“直接可逆”的，在系统软件包的升级过程（对以前的Arch来说甚至是升级后）是危险的，需要配置快照等手段进行回滚。</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-8" class="outline-2">
+<h2 id="headline-8">
+Why Nix and why not
+</h2>
+<div id="outline-text-headline-8" class="outline-text-2">
+<div id="outline-container-headline-9" class="outline-3">
+<h3 id="headline-9">
+Nix is good
+</h3>
+<div id="outline-text-headline-9" class="outline-text-3">
+<p>这就是我要说的重点。为什么人们应该需要Nix ?为什么自从遇见NixOS，我就一直在尝试接近它。</p>
+<ol>
+<li>NixOS是人类群星闪耀时的现代版本</li>
+<li>NixOS的推出是现代Linux的全面革新</li>
+</ol>
+<blockquote>
+<p>曲一线说，五年高考三年模拟让每一位学生分享高品质教育；</p>
+<p>
+我想说，NixOS会让每一位用户得到高品质使用体验。</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-headline-10" class="outline-3">
+<h3 id="headline-10">
+Why Nix is good
+</h3>
+<div id="outline-text-headline-10" class="outline-text-3">
+<blockquote>
+<p>如果说二十年前的Nix还是咿呀学语，天真烂漫，那么二十年后的Nix已经玲珑有致，狡黠率然。我热切的希望每个能认识到Nix优势的人们都能陷入和Nix沟通的美好意境中。</p>
+</blockquote>
+<p>Nix包管理器解决了以上讨论的通用包管理器问题 [5]：</p>
+<ol>
+<li>
+<p>精确依赖
+由于每一个软件的构建和运行都在完全隔绝的环境中，每一个通过Nix构建的软件它的依赖关系会完全展现在维护者面前；</p>
+<blockquote>
+<p>Nix不会从除了软件包所声明的依赖以外的其他任何地方寻找依赖，因此如果构建的软件依赖“不全”，软件将不会正确运行。这保证了所有成功构建的软件它们的依赖都是完全的。</p>
+</blockquote>
+</li>
+<li>多样性依赖共存
+可以同时安装一个软件包的多个版本或变体。由于哈希方案，包的不同版本最终会出现在 Nix 存储中的不同路径中，因此它们不会相互干扰；</li>
+<li>多用户支持
+任何属于不同依赖关系的软件都会独立构建，任何被其他软件所依赖的软件互相隔离，因此多用户安装软件不会破坏已有的依赖关系；</li>
+<li>原子升级和回滚
+包管理操作不会覆盖已有的软件包，而是在不同路径中添加新版本，包升级不会干扰已有包的运行，而切换后自动替换到新包，因此不会产生问题；</li>
+</ol>
+<p>还有一些其他优点，如：</p>
+<ol>
+<li>记录式、声明式的构建</li>
+<li>Nix具有高度可移植性</li>
+</ol>
+<blockquote>
+<p>这是Nix的完美之处，卓越之处，精彩之处，绝妙之处，非凡之处。每一次和nix的交流都是有效的；构建的每一个结果都是精确且可复现的；换言之，蓝图所描述的每一句都会被Nix用于构建安全、稳定的“未来”。</p>
+<p>
+人最害怕什么？“不确定性”。人生就像囚徒，困在某个维度的茧房之中动弹受限。随着时间推移，囚牢中的人越来越少，同时不可言喻的东西也就越来越多。在不确定性扩大的过程中，解脱不是理想的结果，但解脱客观上已经渐渐成为了一种理想。</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-headline-11" class="outline-3">
+<h3 id="headline-11">
+Why Nix is bad
+</h3>
+<div id="outline-text-headline-11" class="outline-text-3">
+<p>这一节其实想探讨的不是Nix的问题，而是“目前”Nix所“面临”的问题 [6] 。</p>
+<ol>
+<li>
+<p>软件发行与维护问题</p>
+<ol>
+<li>
+<p>开发者不一定比发行版维护者更懂Linux</p>
+<blockquote>
+<p>国内很多网页默认Linux端就是安卓，因此你能在Linux上正常访问网页已经很不容易了。</p>
+</blockquote>
+<p>开发者可能会作出各种符合 FHS 标准的假设，因此可能需要打补丁纠正。</p>
+<ol>
+<li>软件开发者不一定开放源代码</li>
+<li>开发者不使用标准的编译方式，或者使用了非正常的目录结构</li>
+<li>开发者不声明完全所需的依赖，或运行时额外需要其他依赖，导致 <code class="verbatim">autopatchelf</code> 不能达到预期效果</li>
+<li>程序主动探测运行环境或对其本身的修改 (SaaS类型软件)</li>
+<li>
+<p>手动打包需要掌握的前置知识过多</p>
+<blockquote>
+<p>即使没有上述问题，手动完成一次打包也可能需要耗费大量的时间和精力，学习门槛过高。</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li>
+<p>软件间通信问题</p>
+<ol>
+<li>通常可以用Xdg Open来解决软件“唤起”的问题</li>
+<li>如果已经为某个包创建了FHS虚拟环境，当它唤起其他非FHS环境的包的时候存在问题</li>
+<li>使用动态链接库魔改浏览器内核的方式唤起页面内浏览器，基本不可行</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>使用理念问题
+使用理念问题可以归为“狂热Nix信徒”，“自由Nix门徒”两派。</p>
+<ol>
+<li>
+<p>狂热Nix信徒希望 all in nix way</p>
+<ol>
+<li>VSCode 所有插件均转为Nix表达式</li>
+<li>
+<p>Python所有功能包均转为Nix表达式</p>
+<blockquote>
+<p>尽管现在稍新一些的发行版都已禁用Python全局安装功能包，但是它们支持创建类似conda的虚拟环境，而这对于NixOS来说似乎是不可接受的，因为有观点认为Nix已经是最好的conda了。</p>
+</blockquote>
+</li>
+<li>Rust/Nodejs所有依赖库均转为Nix表达式</li>
+<li>家目录下所有配置文件均转为Nix表达式</li>
+</ol>
+</li>
+<li>
+<p>自由Nix门徒则希望 all in soft way</p>
+<ol>
+<li>VSCode 安装FHS版本，想装哪个插件就装哪个</li>
+<li>Python/Rust/Nodejs等等的问题留给它们自己的包管理器解决</li>
+<li>家目录只管理重要的配置</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>存储空间占用问题
+Nix目前对依赖的复用介于“完全复用”和“完全不复用”之间，完全安装一个软件相较于其他发行版可能更加耗费存储空间</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-12" class="outline-3">
+<h3 id="headline-12">
+Why Nix Combined with Arch is bad
+</h3>
+<div id="outline-text-headline-12" class="outline-text-3">
+<p>既然完全使用Nix会面临以上问题，于是很自然地想到一个可能性，平常用Arch，编程开发用Nix环境。</p>
+<ol>
+<li>
+<p>很难在非NixOS环境上安装Nix软件包</p>
+<ol>
+<li>一般视频都用的是 <code>nix run</code> 和 <code>nix-shell -p</code> 这种临时性选项</li>
+<li><code>nix profile install</code> 或 <code>nix-env -iA</code> 这种方式没有 <code class="verbatim">flake.nix</code> 的优点</li>
+<li>目前我能想到的方案是单独安装 <code class="verbatim">home manager</code></li>
+</ol>
+</li>
+<li>
+<p>使用Nix软件不方便访问到 <code class="verbatim">/nix</code> 目录以外的依赖，而使用Arch的工具则很难查找 <code class="verbatim">/nix</code> 内的依赖</p>
+<ol>
+<li>使用 Nix 软件时， <code class="verbatim">gcc</code> 和 <code class="verbatim">g++</code> 自动默认用 <code class="verbatim">nix</code> 提供的</li>
+<li><code class="verbatim">cmake</code> 在 Nix下安装时，见 <code class="verbatim">001-search-path.diff</code></li>
+<li>图形化程序不能正常工作
+如 <code class="verbatim">pangolin</code> 由于依赖 <code class="verbatim">xorg.libX11</code> ， 在 <code class="verbatim">/nix</code> 内的 <code class="verbatim">xorg.libX11</code> 不能正确显示图形，如果改用 Arch安装的 <code class="verbatim">pangolin</code> ，则需要增加 <code class="verbatim">cmake</code> 的搜索路径</li>
+</ol>
+</li>
+<li>
+<p>环境变量问题</p>
+<ol>
+<li>需要安装 <code class="verbatim">direnv</code> 和 <code class="verbatim">nix-direnv</code></li>
+<li>更改 <code class="verbatim">$HOME/.config/direnv/direnvrc</code> 中的内容</li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-13" class="outline-2">
+<h2 id="headline-13">
+Summary
+</h2>
+<div id="outline-text-headline-13" class="outline-text-2">
+<p>没有绝对完美的包管理系统，Nix还有很长的路要走。</p>
+<blockquote>
+<p>有人说当一个人开始回忆起过去的时候，他就老了。Nix无疑是成功的，但是我的探索Nix的应用之旅却显得有些失败。</p>
+<p>
+我不知道Eelco Dolstra 工程师回忆起过去是什么样的，我回忆起4个月前刚接触NixOS的时候，脑海里想到的一句话是“花未凋，月未缺，人就在天涯，一切都很好。”</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-headline-14" class="outline-2">
+<h2 id="headline-14">
+Reference
+</h2>
+<div id="outline-text-headline-14" class="outline-text-2">
+<p>[1] <a href="https://www.zhihu.com/question/55109864/answer/3041602533">包构建/管理系统简史</a></p>
+<p>
+[2] <a href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem#Algorithms_for_solving_SAT">Algorithms for solving SAT</a></p>
+<p>
+[3] <a href="https://www.zhihu.com/question/312019918/answer/608965942">世界上没有技术驱动型公司</a></p>
+<p>
+[4] <a href="https://www.zhihu.com/question/335790805/answer/2111472871">单片机工程师要求C++</a></p>
+<p>
+[5] <a href="https://nixos.org/manual/nix/stable/">Nix Reference Manual</a></p>
+<p>
+[6] <a href="https://lantian.pub/article/modify-computer/nixos-packaging.lantian/">NixOS 软件打包从入门到放弃</a></p>
+</div>
+</div>
+
+</article>
+
+
+      
+
+      
+
+
+
+      
+
+      
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/posts/tattle/base-hugo-theme-eureka/" class="block">Hugo及其Eureka主题</a>
+      
+    </div>
+  </div>
+
+
+      
+
+
+
+    </div>
+    
+      <div class="col-span-2">
+        
+        
+          <div
+  class="
+    bg-primary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc  hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+<ul>
+<li><a href="#headline-1">Import</a>
+</li>
+<li><a href="#headline-2">Package Management</a>
+<ul>
+<li><a href="#headline-3">SAT</a>
+</li>
+<li><a href="#headline-4">Kiss</a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-5">Costs and Problems</a>
+<ul>
+<li><a href="#headline-6">Pacman</a>
+</li>
+<li><a href="#headline-7">Dependency</a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-8">Why Nix and why not</a>
+<ul>
+<li><a href="#headline-9">Nix is good</a>
+</li>
+<li><a href="#headline-10">Why Nix is good</a>
+</li>
+<li><a href="#headline-11">Why Nix is bad</a>
+</li>
+<li><a href="#headline-12">Why Nix Combined with Arch is bad</a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-13">Summary</a>
+</li>
+<li><a href="#headline-14">Reference</a>
+</li>
+</ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+        
+      </div>
+    
+
+    
+    
+  </div>
+
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        hljs.highlightAll();
+      });
+    </script>
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

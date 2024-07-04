@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SLAM Interviewing on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/</link>
+    <description>Recent content in SLAM Interviewing on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Tue, 18 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kalman Filter</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/1-kalman-filter/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/1-kalman-filter/</guid>
+      <description>Kalman Filter Process Model 假设系统状态空间模型为： $$ \begin{aligned} X(k) &amp;= AX(k-1) + BU(k-1) + W(k) \\ Z(k) &amp;= HX(k) + V(k) \end{aligned} $$ 其中： $A$ 和 $B$ 分别表示系统状态参数矩阵和系统控制参数矩阵； $Z(k)$ 是在 $k$ 时刻的测量值; $H$ 是系</description>
+    </item>
+    <item>
+      <title>SLAM Interview</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/slam-interview/</link>
+      <pubDate>Tue, 28 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/slam-interview/</guid>
+      <description>SLAM Problems Matrix and Sophus 求导 $ \frac{\partial R_1R_2}{\partial R_1} $ 简述李群和李代数的关系。 给定 \((H,W)\) 图像或者 matrix，问如何去访问每一个元素，是先访问行呢？还是先访问列？跟缓存还有关系~ Sensors Model 除</description>
+    </item>
+    <item>
+      <title>Pose Caculating</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/2-pose-caculating/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/2-pose-caculating/</guid>
+      <description>Rotation Matrix 2 Dimensional 从二维角度推导旋转矩阵更加明确。 假设二维坐标系 $xOy$ 的第一象限中有点 $P(x,y)$，其与原点 $O$ 的连线 $OP$ 与 $x$ 轴正向夹角为 $\alpha$，则： $$ \left</description>
+    </item>
+    <item>
+      <title>Matrix Base</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/3-matrix-basic/</link>
+      <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/3-matrix-basic/</guid>
+      <description>Direct Method Gauss LU Decomposition QR Decomposition Cholesky Decomposition 迭代解法 迭代解法通常用于处理大型稀疏矩阵，或当矩阵 A 具有特定结构时。 Jacobi Method 雅可比迭代法 Gauss-Seidel Method 高斯-赛德尔迭代法是雅可比迭代法的改进，每次</description>
+    </item>
+    <item>
+      <title>Sophus</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/5-sophus/</link>
+      <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/5-sophus/</guid>
+      <description>Basic Sophus 是Strasdat 维护的 Sophus 库，地址。 此处介绍 Sophus 的基础使用方法。 #include &amp;lt;iostream&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;Eigen/Core&amp;gt; #include &amp;lt;Eigen/Geometry&amp;gt; #include &amp;quot;sophus/se3.hpp&amp;quot; using namespace std; using namespace Eigen; /// 本程序演示sophus的基本用法 int main(int argc, char **argv) { // 沿Z</description>
+    </item>
+    <item>
+      <title>OpenCV</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/6-opencv/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/6-opencv/</guid>
+      <description>CV::Mat 在 OpenCV 中，cv::Mat 是用于表示图像或矩阵的主要数据结构。它封装了一个 n 维数组，可以存储不同类型的数值（如图像的像素值）。 cv::Mat 的构造和析构过程涉及内存</description>
+    </item>
+    <item>
+      <title>Guass Newton Algorithm</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/7-gauss-newton/</link>
+      <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/7-gauss-newton/</guid>
+      <description>Guass Newton 考虑曲线拟合问题，使用加权非线性最小二乘法 代码如下： #include &amp;lt;Eigen/Core&amp;gt; #include &amp;lt;Eigen/Dense&amp;gt; #include &amp;lt;chrono&amp;gt; #include &amp;lt;iostream&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;opencv2/opencv.hpp&amp;gt; using namespace std; using namespace Eigen; int main(int argc, char **argv){ double ar = 1.0, br = 2.0, cr = 1.0; // 真实参数值 double ae = 2.0, be = -1.0, ce</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/6-camera/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/6-camera/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

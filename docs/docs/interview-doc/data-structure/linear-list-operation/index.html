@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>线性表基本操作 | Data Structure | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="线性表的基本操作如下： void InitList(&amp;L);//初始化表，构造一个空的线性表 int Length(L);//求表长 ElemType LocateElem(L,">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Computer Interview",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Data Structure",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"线性表基本操作",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-operation/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-operation/"
+    },
+    "headline": "线性表基本操作 | Data Structure | 悦翎轩","datePublished": "2021-08-06T00:00:00+00:00",
+    "dateModified": "2021-08-06T00:00:00+00:00",
+    "wordCount":  3128 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "线性表的基本操作如下： void InitList(\u0026amp;L);\/\/初始化表，构造一个空的线性表 int Length(L);\/\/求表长 ElemType LocateElem(L,"
+}
+</script><meta property="og:title" content="线性表基本操作 | Data Structure | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-operation/" />
+
+
+
+
+<meta property="og:description" content="线性表的基本操作如下： void InitList(&amp;L);//初始化表，构造一个空的线性表 int Length(L);//求表长 ElemType LocateElem(L," />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2021-08-06T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2021-08-06T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/">Data Structure</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/datastructure-summary/">数据结构基本概念</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-terms/">线性表基本概念</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-operation/">线性表基本操作</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-algorithms/">线性表算法题解</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/stack-operation/">栈基本操作</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-operation/">二叉树的基本操作</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-algorithms/">二叉树的算法</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-sort-caculation/">二叉排序树</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/map-basic-terms/">图的基本概念</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/map-floyd-algorithms/">图的弗洛伊德算法</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/search-hash/">散列查找</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">线性表基本操作</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2021-08-06</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>7分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <p>线性表的基本操作如下：</p>
+<pre><code class="language-c++">void InitList(&amp;L);//初始化表，构造一个空的线性表
+int Length(L);//求表长
+ElemType LocateElem(L,e);//按值查找
+ElemType GetElem(L,e);//按位查找
+bool ListInsert(&amp;L,i,e);//插入操作
+bool ListDelete(&amp;L,i,&amp;e);//删除操作
+void PrintList(L);//输出操作
+bool Empty(L);//判空操作
+bool DestroyList(&amp;L);//销毁操作
+</code></pre>
+<h2 id="顺序表">顺序表</h2>
+<h3 id="定义">定义</h3>
+<h4 id="静态分配">静态分配</h4>
+<pre><code class="language-c++">static const int MaxSize=50;
+typedef int ElemType;
+typedef struct{
+    ElemType data[MaxSize];//定义即开辟了存储空间
+    int length;
+}SqList;
+</code></pre>
+<h4 id="动态分配">动态分配</h4>
+<pre><code class="language-c++">static const int MaxSize=50;
+typedef int ElemType;
+typedef struct{
+    ElemType *data;
+    int MaxSize,length;//此处需要声明最大存储空间
+}SqList;
+</code></pre>
+<h3 id="初始化">初始化</h3>
+<h4 id="静态分配-1">静态分配</h4>
+<pre><code class="language-c++">void InitList(SqList &amp;L){
+    for(int i=0;i&lt;MaxSize;i++)
+        L.data[i]=0;
+    L.length=0;
+}
+</code></pre>
+<h4 id="动态分配-1">动态分配</h4>
+<pre><code class="language-c++">void InitList(SqList &amp;L){
+    //以下两种初始化内存空间方式分别对应C与C++
+    L.data=(ElemType*)malloc(sizeof(ElemType)*MaxSize);
+    L.data=new ElemType[InitSize];
+    for(int i=0;i&lt;MaxSize;i++)
+        L.data[i]=0;
+    L.length=0;
+}
+</code></pre>
+<h3 id="插入">插入</h3>
+<p>其中<code>i</code>是位序。</p>
+<pre><code class="language-c++">bool ListInsert(SqList &amp;L,int i,ElemType e){
+	if(i&lt;1||i&gt;L.length+1)	
+        return false;
+    if(L.length==MaxSize){//可以直接返回错误，理由是存储空间已满；或分配内存空间
+        MaxSize++;
+        ElemType *new;
+        new=(ElemType*)realloc(L.data,sizeof(ElemType)*(MaxSize+1));
+        if(!new)  return false;//申请空间失败
+        L.data=new;
+    }
+    if(L.length&gt;MaxSize)	return false;
+    for(int j=L.length;j&gt;=i;j--)
+    //位序从最后1位一直到第i个，插入向右移，因此最后需要额外的j=L.length，共L.length-i+1位
+        L.data[j]=L.data[j-1];
+    L.data[i-1]=e;
+    L.length++;
+    return true;
+}
+</code></pre>
+<h3 id="删除">删除</h3>
+<pre><code class="language-c++">bool ListDelete(SqList &amp;L,int i,ElemType e){
+    if(i&lt;1||i&gt;L.length+1)
+        return false;
+    e=L.data[i-1];
+    for(int j=i;j&lt;L.length;j++)
+    //位序从第i+1个到最后1位，删除向左移，因此不需要最后一个j=L.length，共L.length-i个
+        L.data[j-1]=L.data[j];
+    L.length--;
+    return true;
+}
+</code></pre>
+<h3 id="查找">查找</h3>
+<h4 id="按值查找">按值查找</h4>
+<pre><code class="language-C++">ElemType LocateElem(SqList L,ElemType e){
+    int i;
+    for(i=0;i&lt;L.length;i++)
+        if(L.data[i]==e)
+            return i+1;
+    return 0;
+}
+</code></pre>
+<h4 id="按位查找">按位查找</h4>
+<pre><code class="language-C++">ElemType LocateElem(SqList L,int i){
+    if(i&lt;1||i&gt;L.length)
+        return NULL;
+    return L.data[i-1];
+}
+</code></pre>
+<h2 id="单链表">单链表</h2>
+<p>如无特殊说明，均指带头结点的单链表。</p>
+<h3 id="定义-1">定义</h3>
+<pre><code class="language-C++">typedef struct LNode{
+    ElemType data;
+    struct LNode *next;
+}LNode,*LinkList;
+</code></pre>
+<h3 id="初始化-1">初始化</h3>
+<h4 id="不带头结点">不带头结点</h4>
+<pre><code class="language-c++">bool InitList(LinkList &amp;L){
+    L=NULL;//防止内存中的脏数据进入单链表
+    return true;
+}
+</code></pre>
+<h4 id="带头结点">带头结点</h4>
+<pre><code class="language-c++">bool InitList(LinkList &amp;L){
+    L=(LNode*)malloc(sizeof(LNode));
+    if(L==NULL)	return false;
+    L-&gt;next=NULL;
+    return true;
+}
+</code></pre>
+<h3 id="判空">判空</h3>
+<pre><code class="language-C++">bool Empty(LinkList L){
+    return (L==NULL);//不带头结点
+    return (L-&gt;next==NULL);//带头结点
+}
+</code></pre>
+<h3 id="查找-1">查找</h3>
+<h4 id="按位查找-1">按位查找</h4>
+<p>带头结点的按位查找如下</p>
+<pre><code class="language-c++">LNode *GetElem(LinkList L,int i){
+    int j=0;//从0开始查找
+    LNode *p=L;
+    /*或改写成
+    int j=1;
+    LNode *p=L-&gt;next;
+    */
+    if(i==0)	return L;
+    if(i&lt;1)	return NULL;
+    while(p&amp;&amp;j&lt;i){
+        p=p-&gt;next;
+        j++;
+    }
+    return p;//返回第i个结点的指针，若大于表长，返回的则是NULL
+}
+</code></pre>
+<h4 id="按值查找-1">按值查找</h4>
+<pre><code class="language-c++">LNode *LocateElem(LinkList L,ElemType e){
+    LNode *p=L-&gt;next;
+    while(p!=NULL&amp;&amp;p-&gt;data!=e)
+        p=p-&gt;next;
+    return p;//要么返回指针，要么返回NULL
+}
+</code></pre>
+<h3 id="插入-1">插入</h3>
+<h4 id="给定结点插入">给定结点插入</h4>
+<p>对于给定的结点，向其前后插入。</p>
+<h5 id="向后插入">向后插入</h5>
+<pre><code class="language-c++">bool ListInsertNextNode(LNode *p,ElemType e){
+    if(p==NULL)	return false;//待插入结点不合法
+    LNode *s=(LNode*)malloc(sizeof(LNode));
+    if(s==NULL)	return false;//无法新插入结点
+    s-&gt;data=e;
+    s-&gt;next=p-&gt;next;
+    p-&gt;next=s;//注意上述三语句的顺序，此句和前句顺序不能颠倒
+    return true;
+}
+</code></pre>
+<h5 id="向前插入">向前插入</h5>
+<p>方法有两种，一是传入头指针，找到第<code>i-1</code>个结点；二是转换为后插操作，即向后插入操作后将前驱结点p与插入结点s交换数据域。</p>
+<p>如果给定的是待插入的值，则</p>
+<pre><code class="language-C++">bool ListInsertPriorNode(LNode *p,ElemType e){
+    if(p==NULL)	return false;//待插入结点不合法
+    LNode *s=(LNode*)malloc(sizeof(LNode));
+    if(s==NULL)	return false;//无法新插入结点
+    s-&gt;next=p-&gt;next;
+    p-&gt;next=s;
+    s-&gt;data=p-&gt;data;
+    p-&gt;data=e;
+    return true;
+}
+</code></pre>
+<p>如果给定的是待插入的结点，则</p>
+<pre><code class="language-C++">bool ListInsertPriorNode(LNode *p,LNode *s){
+    if(p==NULL)	return false;//待插入结点不合法
+    LNode *s=(LNode*)malloc(sizeof(LNode));
+    if(s==NULL)	return false;//无法新插入结点
+    s-&gt;next=p-&gt;next;
+    p-&gt;next=s;
+    ElemType temp;
+    temp=p-&gt;data;
+    p-&gt;data=s-&gt;data;
+    s-&gt;data=temp;
+    return true;
+}
+</code></pre>
+<h4 id="给定位序插入">给定位序插入</h4>
+<p>对于给定的位序，向其前后插入如下。</p>
+<h5 id="向后按位序插入">向后按位序插入</h5>
+<p>带头结点</p>
+<pre><code class="language-C++">bool ListInsertNext(LinkList &amp;L,int i,ElemType e){
+    p=GetElem(L,i);
+    return ListInsertNextNode(p,e);
+}
+</code></pre>
+<p>不带头结点</p>
+<pre><code class="language-C++">bool ListInsertNext(LinkList &amp;L,int i,ElemType e){
+    p=GetElem(L,i);
+    if(i!=1)	return ListInsertNextNode(p,e);
+    if(i==1){
+        LNode *s=(LNode*)malloc(sizeof(LNode));
+        s-&gt;data=e;
+        s-&gt;next=L;
+        L=s;//注意体会此处的书写
+        return true;
+    }
+}
+</code></pre>
+<h5 id="向前按位序插入">向前按位序插入</h5>
+<pre><code class="language-C++">bool ListInsertPrior(LinkList &amp;L,int i,ElemType e){
+    p=GetElem(L,i);
+    return ListInsertPriorNode(p,e);
+}
+</code></pre>
+<h3 id="建表">建表</h3>
+<h4 id="尾插法">尾插法</h4>
+<pre><code class="language-c++">LinkList List_TailInsert(LinkList &amp;L){
+    int x;
+    L=(LinkList)malloc(sizeof(LNode));
+    LNode *s,*r=L;//r是表尾指针
+    scanf(&quot;%d&quot;,&amp;x);
+    while(x!=9999){//输入9999表示结束
+        s=(LNode*)malloc(sizeof(LNode));
+        s-&gt;data=x;
+        r-&gt;next=s;
+        r=s;
+        scanf(&quot;%d&quot;,&amp;x);
+    }
+    r-&gt;next=NULL;
+    return L;
+}
+</code></pre>
+<h4 id="头插法">头插法</h4>
+<p>带头结点</p>
+<pre><code class="language-C++">LinkList List_HeadInsert(LinkList &amp;L){
+    int x;
+    L=(LinkList)malloc(sizeof(LNode));
+    LNode *s;
+    L-&gt;next=NULL;//不带头结点则 L=NULL;
+    scanf(&quot;%d&quot;,&amp;x);
+    while(x!=9999){//输入9999表示结束
+        s=(LNode*)malloc(sizeof(LNode));
+        s-&gt;data=x;
+        s-&gt;next=L-&gt;next;//不带头结点则 s-&gt;next=L;
+        L-&gt;next=s;//不带头结点则 L=s;
+        scanf(&quot;%d&quot;,&amp;x);
+    }
+    return L;
+}
+</code></pre>
+<h3 id="删除-1">删除</h3>
+<h4 id="按位序删除">按位序删除</h4>
+<pre><code class="language-c++">bool ListDelete(LinkList &amp;L,int i,ElemType &amp;e){
+    LNode *p=GetElem(L,i-1);//寻找被删除结点的前驱结点
+    LNode *q=p-&gt;next;//q指向被删除的结点
+    p-&gt;next=q-&gt;next;
+    free(q);
+}
+</code></pre>
+<h4 id="按结点删除">按结点删除</h4>
+<p>删除某结点，方法有两种，一是传入头指针，找到第<code>i-1</code>个结点；二是该结点与其后继结点交换数据域。该方法不能删除最后一个结点。</p>
+<pre><code class="language-c++">bool ListDeleteNode(LNode *p){
+    if(p==NULL)	return false;
+    LNode *q=p-&gt;next;
+    if(q==NULL) return false;//不能删除最后一个结点
+    p-&gt;data=p-&gt;next-&gt;data;//被删除结点和后继结点交换数据域
+    p-&gt;next=q-&gt;next;//断链
+    free(q);
+    return true;
+}
+</code></pre>
+<h3 id="求表长">求表长</h3>
+<p>求表长的思想类似于按位序查找结点。</p>
+<pre><code class="language-c++">int Length(LinkList L){
+    int len=0;
+    LNode *p=L;
+    /*不带头结点
+    if(L==NULL)	return len;
+    */
+    while(p-&gt;next!=NULL){
+        p=p-&gt;next;
+        len++;
+    }
+    return len;
+}
+</code></pre>
+<h2 id="双链表">双链表</h2>
+<h3 id="定义-2">定义</h3>
+<pre><code class="language-c++">tyepdef struct DNode{
+	ElemType data;
+	struct DNode *next,*prior;
+}DNode,*LinkList;
+</code></pre>
+<h3 id="初始化-2">初始化</h3>
+<pre><code class="language-c++">bool InitDLinkList(DLinkList &amp;L){
+	L=(DNode *)malloc(sizeof(DNode));//分配头结点
+	if(L==NULL) return false;//内存不足
+	L-&gt;prior=NULL;
+	L-&gt;next=NULL;
+	return true;
+</code></pre>
+<h3 id="判空-1">判空</h3>
+<pre><code class="language-c++">bool Empty(DLinkList &amp;L){
+    if(L-&gt;next==NULL) return true;//头结点
+    else return false;
+}
+</code></pre>
+<h3 id="插入-2">插入</h3>
+<h4 id="向后插入-1">向后插入</h4>
+<pre><code class="language-c++">bool InsertNextDNode(DNode *p,DNode *s){
+    if(p==NULL||s==NULL) return false;
+    s-&gt;next=p-&gt;next;
+    if(p-&gt;next!=NULL)//如果p结点有后继结点
+        p-&gt;next-&gt;prior=s;
+    s-&gt;prior=p;
+    p-&gt;next=s;
+    return true;
+}
+</code></pre>
+<h4 id="向前插入-1">向前插入</h4>
+<pre><code class="language-c++">bool InsertPriorDNode(DNode *p,DNode *s){
+    if(p==NULL||s==NULL) return false;
+    if(p-&gt;prior==NULL){
+        s-&gt;next=p;
+        p-&gt;prior=s;
+    }
+    p=p-&gt;prior;//找到p的前驱结点，然后向后插入
+    s-&gt;next=p-&gt;next;
+    p-&gt;next-&gt;prior=s;
+    s-&gt;prior=p;
+    p-&gt;next=s;
+    return true;
+}
+</code></pre>
+<h3 id="删除-2">删除</h3>
+<p>删除p结点的后继结点</p>
+<pre><code class="language-c++">bool DeleteNextNode(DNode *p){
+    if(p==NULL) return false;
+    DNode *q=p-&gt;next;
+    if(q==NULL) return false;//p没有后继结点
+    p-&gt;next=q-&gt;next;
+    q-&gt;next-&gt;prior=p;
+    free(q);
+    return true;
+}
+</code></pre>
+<h3 id="销毁">销毁</h3>
+<pre><code class="language-c++">void DestroyList(DLinkList &amp;L){
+    while(L-&gt;next!=NULL)
+        DeleteNextNode(L);
+    free(L);
+    L=NULL;//头指针指向NULL
+}
+</code></pre>
+<h3 id="遍历">遍历</h3>
+<p>正向遍历</p>
+<pre><code class="language-c++">void Travere(DNode *p){
+    while(p!=NULL)
+        p=p-&gt;next;
+}
+</code></pre>
+<p>反向遍历</p>
+<pre><code class="language-c++">void TravereBack(DNode *p){
+    while(p-&gt;prior!=NULL)//略过头结点，仅处理数据结点
+        p=p-&gt;prior;
+}
+</code></pre>
+<h2 id="循环链表">循环链表</h2>
+<h3 id="循环单链表">循环单链表</h3>
+<p>循环单链表和单链表的区别在于表中最后一个结点的指针指向头结点L。</p>
+<h4 id="定义-3">定义</h4>
+<p>循环单链表的定义与单链表的定义完全相同。</p>
+<h4 id="初始化-3">初始化</h4>
+<pre><code class="language-C++">bool InitList(LinkList &amp;L){
+    L=(LNode*)malloc(sizeof(LNode));
+    if(L==NULL)
+        return false;
+    L-&gt;next=L;//头结点next指向头结点
+    return true;
+}
+</code></pre>
+<h4 id="判空与判尾">判空与判尾</h4>
+<p>思想：判断当前结点是否指向头结点L。</p>
+<pre><code class="language-c++">//判空
+bool Empty(LinkList L){
+    if(L-&gt;next==L)	return true;
+    else return false;
+}
+//判尾
+bool isTail(LinkList L,LNode *p){
+    if(p-&gt;next==L)	return true;
+    else return false;
+}
+</code></pre>
+<h3 id="循环双链表">循环双链表</h3>
+<p>循环双链表与循环单链表的区别在于其头结点的prior指针指向表尾结点。</p>
+<h4 id="定义-4">定义</h4>
+<p>循环双链表的定义与双链表的定义完全相同。</p>
+<h4 id="初始化-4">初始化</h4>
+<pre><code class="language-c++">bool InitDLinkList(DLinkList &amp;L){
+    L=(DNode*)malloc(sizeof(DNode));
+    if(L==NULL)	return false;
+    L-&gt;next=L;
+    L-&gt;prior=L;
+    return true;
+}
+</code></pre>
+<h4 id="判空与判尾-1">判空与判尾</h4>
+<p>思想：判断当前结点是否指向头结点L，与循环单链表完全相同。</p>
+<pre><code class="language-C++">//判空
+bool Empty(DLinkList L){
+    if(L-&gt;next==L)	return true;
+    else return false;
+}
+//判尾
+bool isTail(LinkList L,LNode *p){
+    if(p-&gt;next==L)	return true;
+    else return false;
+}
+</code></pre>
+<h4 id="插入-3">插入</h4>
+<p>插入部分基本同双链表，区别在于后继结点是否存在不需要额外判断。</p>
+<h5 id="向后插入-2">向后插入</h5>
+<pre><code class="language-c++">bool InsertNextDNode(DNode *p,DNode *s){
+    if(p==NULL||s==NULL) return false;
+    s-&gt;next=p-&gt;next;
+    //if(p-&gt;next!=NULL)//普通双链表需要判断p结点后是否有后继结点
+    p-&gt;next-&gt;prior=s;
+    s-&gt;prior=p;
+    p-&gt;next=s;
+    return true;
+}
+</code></pre>
+<h5 id="向前插入-2">向前插入</h5>
+<pre><code class="language-C++">bool InsertPriorDNode(DNode *p,DNode *s){
+    if(p==NULL||s==NULL) return false;
+    if(p==L)//不能在头结点之前插入
+        return false;
+    p=p-&gt;prior;//找到p的前驱结点，然后向后插入
+    s-&gt;next=p-&gt;next;
+    p-&gt;next-&gt;prior=s;
+    s-&gt;prior=p;
+    p-&gt;next=s;
+    return true;
+}
+</code></pre>
+<h4 id="删除-3">删除</h4>
+<p>删除p结点的后继结点，基本同双链表，区别在于后继结点是否存在不需要额外判断。</p>
+<pre><code class="language-c++">bool DeleteNextNode(DNode *p){
+    if(p==NULL) return false;
+    DNode *q=p-&gt;next;
+    //if(q==NULL) return false;//p一定有后继结点
+    p-&gt;next=q-&gt;next;
+    q-&gt;next-&gt;prior=p;
+    free(q);
+    return true;
+}
+</code></pre>
+<h2 id="静态链表">静态链表</h2>
+<p>借助数组描述线性表的链式存储结构。</p>
+<pre><code class="language-c++">typedef struct{
+    ElemType data;
+    int next;//下一个元素的数组下标
+}SLinkList[MaxSize],SNode;
+SLinkList a;//等价于 struct SNode a[MaxSize];
+</code></pre>
+<p>游标<code>next=-1</code>表示到链表尾，<code>next=-2</code>表示该结点暂未使用。</p>
+<h2 id="顺序表和链表的比较">顺序表和链表的比较</h2>
+<h3 id="存取方式">存取方式</h3>
+<p>存取方式又叫读写方式，顺序表可以顺序存取，也可以随机存取；链表只能顺序存取，因此有下面的结论：</p>
+<p>线性表的顺序存储结构是一种<strong>随机存取</strong>的存储结构，线性表的链接存储结构是一种<strong>顺序存取</strong>的存储结构。</p>
+<h3 id="逻辑与物理结构">逻辑与物理结构</h3>
+<p>顺序存储：逻辑上相邻的元素物理上也相邻。</p>
+<p>链式存储：逻辑上相邻的元素物理上不一定相邻。</p>
+<h3 id="增删改查操作">增删改查操作</h3>
+<h4 id="查改">查改</h4>
+<p>按值查找，顺序表无序时，顺序表与链表时间复杂度均为O(n)，顺序表有序时顺序表时间复杂度为O(logn)；</p>
+<p>按位序查找，顺序表时间复杂度为O(1)，链表时间复杂度为O(n)；</p>
+<h4 id="增删">增删</h4>
+<p>顺序表的插入、删除操作时间复杂度O(n)，主要来自于移动元素；</p>
+<p>链表的插入、删除操作时间复杂度O(n)，主要来自于查找元素。</p>
+<h3 id="选择">选择</h3>
+<p>如果存储结构需要具有弹性、可扩容，选择链表；</p>
+<p>如果存储结构需要具有频繁的增删操作，选择链表；</p>
+<p>如果存储结构需要具有频繁的查找操作，选择顺序表；</p>
+<p>如果存储结构需要易于实现，选择顺序表。</p>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-terms/" class="block">线性表基本概念</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-algorithms/" class="block">线性表算法题解</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#顺序表">顺序表</a>
+      <ul>
+        <li><a href="#定义">定义</a></li>
+        <li><a href="#初始化">初始化</a></li>
+        <li><a href="#插入">插入</a></li>
+        <li><a href="#删除">删除</a></li>
+        <li><a href="#查找">查找</a></li>
+      </ul>
+    </li>
+    <li><a href="#单链表">单链表</a>
+      <ul>
+        <li><a href="#定义-1">定义</a></li>
+        <li><a href="#初始化-1">初始化</a></li>
+        <li><a href="#判空">判空</a></li>
+        <li><a href="#查找-1">查找</a></li>
+        <li><a href="#插入-1">插入</a></li>
+        <li><a href="#建表">建表</a></li>
+        <li><a href="#删除-1">删除</a></li>
+        <li><a href="#求表长">求表长</a></li>
+      </ul>
+    </li>
+    <li><a href="#双链表">双链表</a>
+      <ul>
+        <li><a href="#定义-2">定义</a></li>
+        <li><a href="#初始化-2">初始化</a></li>
+        <li><a href="#判空-1">判空</a></li>
+        <li><a href="#插入-2">插入</a></li>
+        <li><a href="#删除-2">删除</a></li>
+        <li><a href="#销毁">销毁</a></li>
+        <li><a href="#遍历">遍历</a></li>
+      </ul>
+    </li>
+    <li><a href="#循环链表">循环链表</a>
+      <ul>
+        <li><a href="#循环单链表">循环单链表</a></li>
+        <li><a href="#循环双链表">循环双链表</a></li>
+      </ul>
+    </li>
+    <li><a href="#静态链表">静态链表</a></li>
+    <li><a href="#顺序表和链表的比较">顺序表和链表的比较</a>
+      <ul>
+        <li><a href="#存取方式">存取方式</a></li>
+        <li><a href="#逻辑与物理结构">逻辑与物理结构</a></li>
+        <li><a href="#增删改查操作">增删改查操作</a></li>
+        <li><a href="#选择">选择</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

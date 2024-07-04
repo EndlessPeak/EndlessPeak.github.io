@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>机器学习综述 | Machine Learning Doc | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="名词释义 入侵检测技术的原理如何？ 包括基于数据源划分和基于检测技术的划分。数据源就是数据如何产生，可基于主机或基于网络；检测技术则分为基于误用和基于异常">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Machine Learning Doc",
+      "item":"https://endlesspeak.github.io/docs/docs/machinelearning-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"传统机器学习系列",
+      "item":"https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"机器学习综述",
+      "item":"https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/1-summarize/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/1-summarize/"
+    },
+    "headline": "机器学习综述 | Machine Learning Doc | 悦翎轩","datePublished": "2022-03-25T00:00:00+00:00",
+    "dateModified": "2022-03-25T00:00:00+00:00",
+    "wordCount":  3156 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "名词释义 入侵检测技术的原理如何？ 包括基于数据源划分和基于检测技术的划分。数据源就是数据如何产生，可基于主机或基于网络；检测技术则分为基于误用和基于异常"
+}
+</script><meta property="og:title" content="机器学习综述 | Machine Learning Doc | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/1-summarize/" />
+
+
+
+
+<meta property="og:description" content="名词释义 入侵检测技术的原理如何？ 包括基于数据源划分和基于检测技术的划分。数据源就是数据如何产生，可基于主机或基于网络；检测技术则分为基于误用和基于异常" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-03-25T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2022-03-25T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/machinelearning-doc/">Machine Learning Doc</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/">传统机器学习系列</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/1-summarize/">机器学习综述</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/2-decisiontree/">决策树问题</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/3-svm-derivation/">支持向量机推导</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/3-svm/">支持向量机问题</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/4-nerualnetwork/">前馈神经网络问题</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">机器学习综述</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-03-25</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>7分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="名词释义">名词释义</h2>
+<ol>
+<li>
+<p>入侵检测技术的原理如何？</p>
+<p>包括基于数据源划分和基于检测技术的划分。数据源就是数据如何产生，可基于主机或基于网络；检测技术则分为基于误用和基于异常。基于误用可以理解为模式匹配，基于异常是只要不合法就判断为非法。入侵检测技术可简化成一种二分类问题。</p>
+</li>
+<li>
+<p>如何选择研究方法？</p>
+<p>由于使用基于异常的检测技术，也就是对正常或者不正常的访问进行划分，数据集中包含了最终的分类标签，因此采用的是监督学习。</p>
+<p>在生成方法和判别方法中，生成方法是统计得到联合概率，计算后得到条件概率；判别方法则直接学习条件概率，因此判别方法可以<strong>简化学习问题</strong>。</p>
+<p>毕业课题中，第一，所有的变量理论上都可以观测到值，不存在隐变量；第二，实际应用中部署的是训练好的模型，生成模型学习收敛速度快这点并不占优势，最后是由于判别方法直接学习条件概率或决策函数，准确率较高。</p>
+</li>
+<li>
+<p>什么是输入空间，什么是输出空间，什么是特征空间？</p>
+<ol>
+<li>
+<p>输入X可能取值的集合是输入空间；</p>
+</li>
+<li>
+<p>输出Y可能取值的集合是输出空间；</p>
+</li>
+<li>
+<p>每个具体的输入是一个实例，由特征向量表示；</p>
+<p>所有特征向量存在的空间称为特征空间。</p>
+<p>特征空间与输入空间有时候不同，不同的情况是输入空间通过某种映射生成了特征空间。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>什么是损失函数，什么是经验风险，什么是期望风险，什么是结构风险？</p>
+<ol>
+<li>损失函数：针对单个具体样本，表示模型预测值与真实样本值之间的差距。常见的损失函数有0-1损失函数、平方损失函数、绝对损失函数、对数损失函数（对数似然损失函数）。</li>
+<li>经验风险：对所有<strong>训练样本</strong>的损失函数的平均值，或模型对<strong>所有训练样本</strong>的预测能力。</li>
+<li>期望风险：对所有<strong>样本</strong>的损失函数的平均值，或模型对未知样本和已知的训练样本的综合预测能力。</li>
+<li>结构风险：是对经验风险和期望风险的折中，在经验风险函数后面加一个<strong>正则化项</strong>。</li>
+</ol>
+</li>
+<li>
+<p>为什么使用决策树、支持向量机、前馈神经网络算法实现入侵检测？</p>
+<ol>
+<li>
+<p>选择决策树是因为它原理简单，可解释性高，可视性好，一开始使用迭代二分法决策树作为原型，后面改用最大信息增益比率决策树进行实现，原因是需要对连续值进行划分；</p>
+</li>
+<li>
+<p>选择支持向量机则是因为它是传统机器学习算法中表现最优异的一种，推导严谨，分类比较精确，具体实现上使用序列最小优化算法进行实现，后面借鉴了一下最小二乘法的实现；</p>
+</li>
+<li>
+<p>选择前馈神经网络，它结构简单，实现快，可用它与传统机器学习算法进行对照。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>没有免费午餐定理</p>
+<p>任何一个预测函数，如果在某些样本上表现好，那么在另一些样本上就表现不好。</p>
+<p><u>如果不对数据在特征空间的先验分布有一定假设</u>，那么表现好与表现不好的情况一样多。</p>
+<p>定理价值：</p>
+<ol>
+<li>必须假设：在特征空间上接近的样本属于同一类别的概率更高。</li>
+<li>没有放之四海而皆准的最好算法，因为没有人知道特征空间先验分布的真正情况。</li>
+</ol>
+</li>
+<li>
+<p>如何评价学习的效果？采用何种标准？</p>
+<p>样本共有4类，分别是：</p>
+<ol>
+<li>TP：实例是正例，且被判定为正例</li>
+<li>FP：实例是反例，但被判定为正例，误报</li>
+<li>TN：实例是反例，且被判定为反例</li>
+<li>FN：实例是反例，但被判定为正例，漏报</li>
+</ol>
+<p>正确率：$Accuracy=\frac{TP+TN}{TP+TN+FP+FN}$</p>
+<p>精确率：$Precision=\frac{TP}{TP+FP}$</p>
+<p>召回率：$Recall=\frac{TP}{TP+FN}$</p>
+<p>两者<strong>通常</strong>相互“制约”：追求精确率高，则召回率就低；追求召回率高，则通常会影响精确率。</p>
+</li>
+</ol>
+<h2 id="数据处理">数据处理</h2>
+<ol>
+<li>
+<p>项目过程（项目是怎么实现的）</p>
+<p>项目主要分为数据处理、模型学习和模型预测三个步骤。具体过程见下：</p>
+<p>环境准备</p>
+<pre><code class="language-python">import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import math
+</code></pre>
+</li>
+<li>
+<p>你的数据集是怎样选取的，为什么要这样选择？</p>
+<p>我选择的数据集是CIC-IDS-2017，基于以下原因。（<strong>待完善</strong>）</p>
+</li>
+<li>
+<p>你对数据做了哪些预处理？有哪些改进的方法？</p>
+<p>主要包括：数据准备、删除缺失值、归一化和特征缩放。</p>
+<p>数据处理这块参考了一个使用CIC-IDS-2017数据集的入侵检测基线系统，它有一个删除低关联的特征的操作，但是基于异常的入侵检测本身需要更多维度的数据作为支撑，对于未知的入侵过程来说具体哪些特征属于低关联特征是不清楚的，因此这里没有选择删除低关联的特征。</p>
+</li>
+<li>
+<p>数据准备如何实现？</p>
+<p>解压缩数据：</p>
+<pre><code class="language-python">!unzip XXXX.zip -d ./data/
+</code></pre>
+<p>项目使用pandas导入数据集，导入后格式为dataframe：</p>
+<pre><code class="language-python">wednesday=pd.read_csv('XXX.csv',low_memory = False) #low_memory参数可以省略
+</code></pre>
+<p>若使用numpy导入数据集，导入后格式是元组：</p>
+<pre><code class="language-python">p = r'XXXX.csv'
+with open(p,encoding = 'utf-8') as f:
+    data = np.loadtxt(f,str,delimiter = &quot;,&quot;)
+    print(data[:5])
+</code></pre>
+<p>注释：</p>
+<ol>
+<li>numpy导入数据使用的方法是<code>numpy.loadtxt()</code>，默认是float格式，通过加入str参数可使其识别字符串类型数据，避免导入出错；</li>
+<li><code>with open() as f</code>是读入文件方法，r代表以只读方式打开文件；</li>
+<li><code>[:5]</code>代表的是从第1行一直到第5行。</li>
+</ol>
+<p>对数据列名进行规范：</p>
+<pre><code class="language-python">wednesday = wednesday.rename(str.lstrip, axis='columns')
+</code></pre>
+<p>注释：</p>
+<ol>
+<li><code>dataframe.rename()</code>方法用于更改数据的行列名。通过axis参数指定行列。</li>
+<li><code>str.lstrip()</code>方法用于去除字符串起始部分的选定字符，默认为空格。</li>
+</ol>
+<p>查看标签情况：</p>
+<pre><code class="language-python">df = wednesday
+print(df['Label'].unique())
+</code></pre>
+<p>注释：</p>
+<ol>
+<li><code>dataframe.unique()</code>方法以数组形式返回列的唯一值（去除重复值），用于获知有哪些标签。</li>
+<li><code>dataframe.nunique()</code>方法返回的是列的唯一值的个数。</li>
+</ol>
+<p>获得数据列名：</p>
+<pre><code class="language-python">#法一，等价于法二
+lables=[column for column in df] 
+#法二
+lables=[]
+for column in df:
+    labels.append(column)
+lables.remove('Label')
+print(lables)
+print(len(lables))
+</code></pre>
+<p>注释：</p>
+<ol>
+<li><code>c for b in a</code>指的是对a中每一个迭代对象b，都进行c操作。此处将语句放在元组里等于对迭代对象使用<code>list.append()</code>方法。</li>
+<li><code>list.remove()</code>方法用于移除元组中的某个元素。</li>
+<li><code>list.len(list)</code>方法用于获得元组中的元素个数。</li>
+</ol>
+</li>
+<li>
+<p>缺失值删除是如何实现的？</p>
+<p>将inf替换为NaN，然后删除缺失值</p>
+<pre><code class="language-python">df=df.replace(np.inf,np.nan)
+df=df.dropna(axis=0)
+</code></pre>
+<p>注释：</p>
+<ol>
+<li><code>dataframe.replace()</code>方法用于将数据中的某个元素统一替换为另一个元素；</li>
+<li><code>dataframe.dropna()</code>方法用于将数据中的缺失值删除</li>
+<li>axis=0或&rsquo;index&rsquo;表示删除包含缺失值的行；axis=1或&rsquo;columns&rsquo;表示删除包含缺失值的列</li>
+</ol>
+</li>
+<li>
+<p>标签与特征分离</p>
+<pre><code class="language-python">X = df.loc[:,df.columns != &quot;Label&quot;]
+y = df.loc[:,df.columns == &quot;Label&quot;]
+</code></pre>
+<p>注释：</p>
+<ol>
+<li><code>dataframe.loc()</code>方法用于切片，提供参数为行索引名称或条件 , 列索引名称，切片结果是闭区间；</li>
+<li><code>dataframe.iloc()</code>方法亦用于切片，提供参数为行索引位置和列索引位置，切片结果是开区间。</li>
+</ol>
+</li>
+<li>
+<p><strong>归一化</strong>和<strong>特征缩放</strong>是如何实现的？</p>
+<ol>
+<li>
+<p>对于标签数据，使用<code>sklearn.LabelEncoder()</code>来转化</p>
+<pre><code class="language-python">encoder = LabelEncoder()
+y = encoder.fit_transform(y)
+</code></pre>
+<p>注释：</p>
+<ol>
+<li><code>LabelEncoder</code> 来转化 dummy variable（虚拟数据）非常简便，encoder 可以将数据集中的文本转化成0或1的数值，从而解决二分类问题。</li>
+<li><code>fit_transform()</code>方法对数据进行统一处理，包括将数据缩放(映射)到某个固定区间，归一化，正则化等标准化等。特别地，得到的类型为numpy。</li>
+</ol>
+</li>
+<li>
+<p>对于非标签数据，使用<code>sklearn.RobustScaler()来转化</code></p>
+<pre><code class="language-python">scaler=RobustScaler()
+X = scaler.fit_transform(X)
+</code></pre>
+<p>注释：</p>
+<p>归一化分为<code>StandardScaler</code>，<code>MinMaxScaler</code>，<code>RobustScaler</code>等；</p>
+<ol>
+<li>
+<p>标准化缩放方法通过减去均值然后除以方差（或标准差）；</p>
+</li>
+<li>
+<p>最大最小值缩放方法将特征缩放到给定的最小值和最大值之间；</p>
+</li>
+<li>
+<p>鲁棒缩放方法使用中位数和四分位矩，不容易受到异常值影响。</p>
+<p>原理：</p>
+<ol>
+<li>
+<p>四分位数，把所有数值从小到大分为四等份，处于三个分割点位置的数值是四分位数；</p>
+</li>
+<li>
+<p>第一四分位数和第三四分位数的差称为四分位距；</p>
+</li>
+<li>
+<p>计算方法为：</p>
+$$
+            v_i^{'}=\frac{v_i-median}{IQR}
+            $$
+<p>其中median是中位数，IQR是样本的四分位距。</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>另外，<code>dataframe.values()</code>方法用于将pandas转为numpy类型</p>
+</li>
+</ol>
+</li>
+<li>
+<p>训练集与验证集划分</p>
+<p>使用<code>sklearn.train_test_split()</code>方法。</p>
+<pre><code class="language-python">x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.30, shuffle=True, random_state=123, stratify=y)
+</code></pre>
+</li>
+</ol>
+<h2 id="其他问题">其他问题</h2>
+<ol>
+<li>
+<p>Python的四大数据类型是哪些？</p>
+<p>元组、列表、字典、字符串</p>
+</li>
+<li>
+<p>项目具有哪些改进方向？</p>
+<ol>
+<li>决策树：CART树</li>
+<li>支持向量机：最小二乘法、加权、稀疏核机</li>
+<li>神经网络：循环神经网络</li>
+</ol>
+</li>
+</ol>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/2-decisiontree/" class="block">决策树问题</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#名词释义">名词释义</a></li>
+    <li><a href="#数据处理">数据处理</a></li>
+    <li><a href="#其他问题">其他问题</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

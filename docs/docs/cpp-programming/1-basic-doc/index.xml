@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C/C&#43;&#43; Programming Basic on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/</link>
+    <description>Recent content in C/C&#43;&#43; Programming Basic on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Thu, 13 Jul 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Compiler Language</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-1-compilerlanguage/</link>
+      <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-1-compilerlanguage/</guid>
+      <description>计算机系统层次结构 微程序级 本级的语言是微指令集，使用微指令编写微程序，由硬件执行。微命令→微指令→微程序 传统机器级 本级的语言是指令集，可以使用微程序翻</description>
+    </item>
+    <item>
+      <title>Program Compilation by GCC</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-2-program-compilation-by-gcc/</link>
+      <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-2-program-compilation-by-gcc/</guid>
+      <description>GNU Compile Collection Linux 平台上使用的编译器是 GCC(GNU Compile Collection) 编译器。 当提到 GCC 时，通常指的是 GNU 编译器套件，它支持多种高级语言（实验性的），提供较好支持的语言包括： C/C++ Fortran Ada Objective-C/C++ D Rust GCC 为</description>
+    </item>
+    <item>
+      <title>Program Compilation by Clang</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-3-program-compilation-by-clang/</link>
+      <pubDate>Thu, 13 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-3-program-compilation-by-clang/</guid>
+      <description>Low Level Virtual Machine General LLVM(Low Level Virtual Machine)是一个开源的编辑器基础设施项目。 LLVM 最初设计时，因为只想着做优化方面的研究，所以只是想搭建一套虚拟机，所以当时这个的全称</description>
+    </item>
+    <item>
+      <title>DataType</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-1-datatype/</link>
+      <pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-1-datatype/</guid>
+      <description>概述 数据类型用于声明不同类型的变量或函数，变量的类型决定了变量存储占用的空间和变量存储的格式。 存储类型定义程序中变量/函数的范围（可见性）和生命周期。</description>
+    </item>
+    <item>
+      <title>StoreType</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-2-storetype/</link>
+      <pubDate>Fri, 01 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-2-storetype/</guid>
+      <description>概述 存储类型指示编译器以何种方式使用变量，它定义程序中变量/函数的范围（可见性）和生命周期。 数据类型用于声明不同类型的变量或函数，变量的类型决定了变量</description>
+    </item>
+    <item>
+      <title>Statement</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-1-statement/</link>
+      <pubDate>Tue, 22 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-1-statement/</guid>
+      <description>运算符 优先级 运算符 名称或含义 使用形式 结合方向 说明 1 [] 数组下标 数组名[常量表达式] 左到右 -- () 圆括号 (表达式）/函数名(形参表) -- . 成员选择（对象） 对象.</description>
+    </item>
+    <item>
+      <title>Structure</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-2-structure/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-2-structure/</guid>
+      <description>循环结构 continue&amp;amp;break 注意continue和break关键字的用法： continue指的是结束本次循环，进行下一次循环； break指的是结束本次循环并跳出循环体；</description>
+    </item>
+    <item>
+      <title>Function</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-1-function/</link>
+      <pubDate>Tue, 22 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-1-function/</guid>
+      <description>函数组成 概念 函数是以固定的格式封装，可以重复使用的代码模块，用于完成特定的功能。 通过调用模块名来重复使用这段代码。 特别地， 函数不能嵌套定义。 函数外不能</description>
+    </item>
+    <item>
+      <title>Pass By Value &amp; Reference</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-2-functionassignment/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-2-functionassignment/</guid>
+      <description>值传递 变量作值传递 函数参数通过值来传递，即传递给被调用函数的参数值存放在临时变量中，而不是原来的变量中。 void swap1(int a,int b){ int temp = a; a = b; b = temp; } int main(){ swap1(</description>
+    </item>
+    <item>
+      <title>Scope</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/5-scope/</link>
+      <pubDate>Tue, 22 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/5-scope/</guid>
+      <description>所谓作用域，就是变量的有效范围。 局部变量 定义在函数内部或代码块内部的变量称为局部变量，它的作用域仅限于函数或代码块内部， 否则无效。 说明： 在 main 函数中定义</description>
+    </item>
+    <item>
+      <title>Pointer</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/6-pointer/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/6-pointer/</guid>
+      <description>概念 计算机程序在存储数据时需要跟踪三种属性： 信息存储在何处 存储的值是多少 存储的信息是什么类型 声明变量时： 通过声明语句指明的符号名跟踪内存单元； 程序为该</description>
+    </item>
+    <item>
+      <title>Custom Data Type</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/7-customdatatypes/</link>
+      <pubDate>Fri, 25 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/7-customdatatypes/</guid>
+      <description>结构体 存储空间：所有成员变量占用内存空间的和。 结构体定义： struct student{ int num; char name[20]; char sex; char addr[20]; }std1,std2;//分号前可以直接声明具有结构体类型的变量 声明结构</description>
+    </item>
+    <item>
+      <title>Standard I/O</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-1-io-standard/</link>
+      <pubDate>Wed, 23 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-1-io-standard/</guid>
+      <description>Output puts()：只能输出字符串，并且输出结束后会自动换行； putchar()：只能输出单个字符； printf()：可以输出各种类型的数据； Printf() int printf(const char *format, ...)</description>
+    </item>
+    <item>
+      <title>File I/O</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-2-io-file/</link>
+      <pubDate>Wed, 23 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-2-io-file/</guid>
+      <description>概述 文件输入输出主要包括： 文件打开与关闭 打开函数fopen() 关闭函数fclose() 文件状态 是否到文件尾函数feof() 检查错误函数ferror()</description>
+    </item>
+    <item>
+      <title>Module Development</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/10-modules-development/</link>
+      <pubDate>Wed, 31 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/10-modules-development/</guid>
+      <description>Module Develop 一般地，C 中的模块化开发可以归纳为： 在头文件中定义接口 在源文件中实现接口 链接模块 一般地，C++中的模块化开发可以归纳为： 在声明类的头文件中定义接口</description>
+    </item>
+    <item>
+      <title>Debug Method</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/11-debug-method/</link>
+      <pubDate>Wed, 31 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/11-debug-method/</guid>
+      <description>GDB 调试符号 在编译的时候加上 -g 选项，以使程序能够执行调试。如果是 makefile ，可以指定全局选项。 CXX = g++ CXXFLAGS = -Wall -g 调试界面 调试界面包括两种： gdb 不显示程序代码界面，仅回</description>
+    </item>
+    <item>
+      <title>C&amp;CPP Mix Programming</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/12-ccpp-mix-programming/</link>
+      <pubDate>Thu, 13 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/12-ccpp-mix-programming/</guid>
+      <description>C with C++ C 和 C++ 有一些不同的语法和命名规则，其中一个重要的区别是函数的名称修饰(Name Mangling): C 编译器不进行任何名称修饰。 C++ 编译器会对函数和变量的名称进行修饰</description>
+    </item>
+  </channel>
+</rss>

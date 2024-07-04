@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>React前端开发 on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/docs/develop-doc/blog-react-springboot/</link>
+    <description>Recent content in React前端开发 on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Thu, 12 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/docs/develop-doc/blog-react-springboot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello React</title>
+      <link>https://endlesspeak.github.io/docs/docs/develop-doc/blog-react-springboot/react-develop-1/</link>
+      <pubDate>Thu, 12 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/develop-doc/blog-react-springboot/react-develop-1/</guid>
+      <description>创建项目 用create-next-app快速创建项目。create-next-app是Next.js的脚手架工具，用于直接建立项目目录和基本结构。首次</description>
+    </item>
+  </channel>
+</rss>

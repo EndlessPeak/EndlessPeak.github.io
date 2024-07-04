@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Guass Newton Algorithm | SLAM Interviewing | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文记录了手写高斯牛顿法及使用非线性优化库的相关实验。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"SLAM Programming and Interviewing",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"SLAM Interviewing",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"Guass Newton Algorithm",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/7-gauss-newton/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/7-gauss-newton/"
+    },
+    "headline": "Guass Newton Algorithm | SLAM Interviewing | 悦翎轩","datePublished": "2024-06-18T00:00:00+00:00",
+    "dateModified": "2024-06-18T00:00:00+00:00",
+    "wordCount":  2513 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "本文记录了手写高斯牛顿法及使用非线性优化库的相关实验。"
+}
+</script><meta property="og:title" content="Guass Newton Algorithm | SLAM Interviewing | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/7-gauss-newton/" />
+
+
+
+<meta property="og:description" content="本文记录了手写高斯牛顿法及使用非线性优化库的相关实验。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2024-06-18T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2024-06-18T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/">SLAM Interviewing</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/1-kalman-filter/">Kalman Filter</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/slam-interview/">SLAM Interview</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/2-pose-caculating/">Pose Caculating</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/3-matrix-basic/">Matrix Base</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/5-sophus/">Sophus</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/6-opencv/">OpenCV</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/7-gauss-newton/">Guass Newton Algorithm</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/6-camera/"></a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Guass Newton Algorithm</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2024-06-18</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>6分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="guass-newton">Guass Newton</h2>
+<p>考虑曲线拟合问题，使用加权非线性最小二乘法</p>
+<p>代码如下：</p>
+<pre><code class="language-cpp">#include &lt;Eigen/Core&gt;
+#include &lt;Eigen/Dense&gt;
+#include &lt;chrono&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;opencv2/opencv.hpp&gt;
+
+using namespace std;
+using namespace Eigen;
+
+int main(int argc, char **argv){
+    double ar = 1.0, br = 2.0, cr = 1.0;    // 真实参数值
+    double ae = 2.0, be = -1.0, ce = 5.0;   // 估计参数值
+    int N = 100;                            // 数据点
+    double w_sigma = 1.0;                   // 噪声标准差
+    double inv_sigma = 1.0 / w_sigma;       // 噪声标准差的倒数
+    cv::RNG rng;                            // 随机数产生器
+
+    vector&lt;double&gt; x_data, y_data;          // 拟合数据
+    for (int i = 0; i &lt; N; i++){
+        double x = i / 100.0;
+        x_data.push_back(x);
+        // 生成带噪声的数据
+        y_data.push_back(exp(ar * x * x + br * x + cr) + rng.gaussian(w_sigma * w_sigma));
+    }
+
+    // 开始Gauss-Newton迭代
+    int iterations = 100;                   // 迭代次数
+    double cost = 0, lastCost = 0;          // 本次迭代的代价和上一次迭代的代价
+
+    chrono::steady_clock::time_point t1 = chrono::steady_clock::now();
+    for (int iter = 0; iter &lt; iterations; iter++){
+        Matrix3d H = Matrix3d::Zero(); // Hessian = J^T W^{-1} J in Gauss-Newton
+        Vector3d b = Vector3d::Zero(); // 偏置向量 bias
+        cost = 0;
+
+        for (int i = 0; i &lt; N; i++){
+            double xi = x_data[i], yi = y_data[i];  // 第i个数据点
+            double error = yi - exp(ae * xi * xi + be * xi + ce);
+            Vector3d J; // 雅可比矩阵
+            J(0) = -xi * xi * exp(ae * xi * xi + be * xi + ce); // de/da
+            J(1) = -xi * exp(ae * xi * xi + be * xi + ce);      // de/db
+            J(2) = -exp(ae * xi * xi + be * xi + ce);           // de/dc
+
+            // 构建 Hessian 矩阵和偏置向量 b
+            // 这里 W^{-1} 是标量，因此可以约去
+            H += inv_sigma * inv_sigma * J * J.transpose();
+            b += -inv_sigma * inv_sigma * error * J;
+
+            cost += error * error;  // 累加当前的误差平方和
+        }
+
+        // 求解线性方程 Hx=b
+        // 对于正定矩阵，使用LDL^T分解（cholesky 分解法的一种）
+        Vector3d dx = H.ldlt().solve(b);
+        if (isnan(dx[0])){
+            cout &lt;&lt; &quot;result is nan!&quot; &lt;&lt; endl;
+            break;
+        }
+
+        // 如果当前迭代的代价大于等于上一次迭代的代价，则终止迭代
+        if (iter &gt; 0 &amp;&amp; cost &gt;= lastCost){
+            cout &lt;&lt; &quot;cost: &quot; &lt;&lt; cost &lt;&lt; &quot;&gt;= last cost: &quot; &lt;&lt; lastCost &lt;&lt; &quot;, break.&quot; &lt;&lt; endl;
+            break;
+        }
+
+        // 更新估计后的参数值
+        ae += dx[0];
+        be += dx[1];
+        ce += dx[2];
+
+        // 更新上一次迭代的代价
+        lastCost = cost;
+
+        // 输出当前迭代的总代价和更新后的参数
+        cout &lt;&lt; &quot;total cost: &quot; &lt;&lt; cost &lt;&lt; &quot;, \t\tupdate: &quot; &lt;&lt; dx.transpose() &lt;&lt; &quot;\t\testimated params: &quot; &lt;&lt; ae &lt;&lt; &quot;,&quot;
+             &lt;&lt; be &lt;&lt; &quot;,&quot; &lt;&lt; ce &lt;&lt; endl;
+    }
+
+    chrono::steady_clock::time_point t2 = chrono::steady_clock::now(); // 记录结束时间
+    chrono::duration&lt;double&gt; time_used = chrono::duration_cast&lt;chrono::duration&lt;double&gt;&gt;(t2 - t1);
+    cout &lt;&lt; &quot;solve time cost = &quot; &lt;&lt; time_used.count() &lt;&lt; &quot; seconds. &quot; &lt;&lt; endl;
+    // 输出最终估计的参数值
+    cout &lt;&lt; &quot;estimated abc = &quot; &lt;&lt; ae &lt;&lt; &quot;, &quot; &lt;&lt; be &lt;&lt; &quot;, &quot; &lt;&lt; ce &lt;&lt; endl;
+    return 0;
+}
+
+</code></pre>
+<h2 id="ceres-solver">Ceres Solver</h2>
+<p>步骤如下：</p>
+<ol>
+<li>构建最小二乘问题 <code>ceres::Problem problem</code>
+<ol>
+<li>创建代价函数的计算模型，可以是 <code>struct</code> 或 <code>class</code></li>
+<li>向问题中添加误差项 <code>problem.AddResidualBlock</code></li>
+<li>描述代价函数的微分，指定代价函数的类型、残差维度、参数维度等</li>
+</ol>
+</li>
+<li>构建求解器 <code>ceres::Solver</code>
+<ol>
+<li>配置求解器的选项 <code>ceres::Solver::Options options</code></li>
+<li>声明求解器的摘要 <code>ceres::Solver::Summary summary</code></li>
+</ol>
+</li>
+<li>执行优化 <code>ceres::solve(options,&amp;problem,&amp;summary)</code>
+代码如下：</li>
+</ol>
+<pre><code class="language-cpp">#include &lt;ceres/ceres.h&gt;
+#include &lt;chrono&gt;
+#include &lt;iostream&gt;
+#include &lt;opencv2/core/core.hpp&gt;
+
+using namespace std;
+
+// 代价函数的计算模型
+struct CURVE_FITTING_COST {
+    CURVE_FITTING_COST(double x, double y) : _x(x), _y(y) {}
+
+    // 残差的计算
+    // 声明模板；abc是指向待估计参数的预测值的指针，residual是指向残差的指针
+    // 该 operator 将在 ceres 库的内部被调用
+    template &lt;typename T&gt;
+    bool operator()(const T * const abc, T * residual) const{
+        // 使用 ceres 提供的模板化指数函数，否则无法用 ceres 优化
+        // 使用强制类型转换
+        residual[0] = T(_y) - ceres::exp(abc[0] * T(_x) * T(_x) + abc[1] * T(_x) + abc[2]);
+        // y - exp(ax^2 + bx + c)
+        // Ceres 要求 operator() 返回一个 bool 值，以指示计算是否成功。
+        return true;
+    }
+
+    // 类的属性包括 x, y 数据
+    const double _x, _y;
+};
+
+int main(int argc, char **argv)
+{
+    double ar = 1.0, br = 2.0, cr = 1.0;  // 真实参数值
+    double ae = 2.0, be = -1.0, ce = 5.0; // 估计参数值
+    int N = 100;                          // 数据点数量
+    double w_sigma = 1.0;                 // 噪声的标准差
+    double inv_sigma = 1.0 / w_sigma;
+    cv::RNG rng; // OpenCV随机数产生器
+
+    vector&lt;double&gt; x_data, y_data; // 数据
+    for (int i = 0; i &lt; N; i++)
+    {
+        double x = i / 100.0;
+        x_data.push_back(x);
+        // 生成带有噪声的y数据
+        y_data.push_back(exp(ar * x * x + br * x + cr) + rng.gaussian(w_sigma * w_sigma));
+    }
+
+    double abc[3] = {ae, be, ce}; // 待估计的参数
+    // 也可以用 Eigen 的 Vector3d 作为参数
+    // Vector3d abc;
+    // abc &lt;&lt; ae, be, ce;
+
+    // 构建最小二乘问题
+    ceres::Problem problem;
+    for (int i = 0; i &lt; N; i++){
+        // 向问题中添加误差项
+        problem.AddResidualBlock( 
+            // 使用自动微分代价函数进行自动求导，或者也可以使用其他方法
+            // 模板参数：误差类型，输出维度，输入维度，维数要与前面struct中一致
+            // 1. 自动求导 Auto Diff
+            // 2. 数值求导 Numeric Diff
+            // 3. 自行推导解析的导数形式
+            new ceres::AutoDiffCostFunction&lt;CURVE_FITTING_COST, 1, 3&gt;(new CURVE_FITTING_COST(x_data[i], y_data[i])),
+            nullptr,// 核函数，这里不使用，为空
+            abc     // 待估计参数
+            // abc.data()  // 使用 Eigen 的 data() 方法获取指向数据的指针
+        );
+    }
+
+    // 配置求解器
+    ceres::Solver::Options options;                             // 这里有很多配置项可以填
+    options.linear_solver_type = ceres::DENSE_NORMAL_CHOLESKY;  // 增量方程使用 cholesky 分解
+    // 1. DENSE_QR
+    // 2. DENSE_NORMAL_CHOLESKY
+    options.minimizer_progress_to_stdout = true;                // 输出到 cout
+
+    ceres::Solver::Summary summary; // 优化信息
+    chrono::steady_clock::time_point t1 = chrono::steady_clock::now(); // 记录起始时间
+    ceres::Solve(options, &amp;problem, &amp;summary); // 开始优化
+    chrono::steady_clock::time_point t2 = chrono::steady_clock::now(); // 记录结束时间
+    chrono::duration&lt;double&gt; time_used = chrono::duration_cast&lt;chrono::duration&lt;double&gt;&gt;(t2 - t1); // 计算总耗时
+    cout &lt;&lt; &quot;solve time cost = &quot; &lt;&lt; time_used.count() &lt;&lt; &quot; seconds. &quot; &lt;&lt; endl;
+
+    // 输出结果
+    cout &lt;&lt; summary.BriefReport() &lt;&lt; endl; // 输出优化摘要
+    cout &lt;&lt; &quot;estimated a,b,c = &quot;;
+    for (auto a : abc)
+        cout &lt;&lt; a &lt;&lt; &quot; &quot;;
+    cout &lt;&lt; endl;
+    // 使用 Eigen 时
+    // cout &lt;&lt; &quot;estimated a,b,c = &quot; &lt;&lt; abc.transpose() &lt;&lt; endl;
+
+    return 0;
+}
+
+</code></pre>
+<h2 id="g2o">G2O</h2>
+<p>G2O 是通用的图优化库，图优化是将非线性优化与图论结合起来的理论。</p>
+<p>图是图论意义上的图，由若干个顶点和边组成，顶点表示的是优化变量，边表示的是误差项，因此对于非线性最小二乘问题，都可以构建与之对应的图，或称<strong>贝叶斯图</strong>、<strong>因子图</strong>。</p>
+<p>G2O 可选依赖于 <code>suitesparse</code> 和 <code>cxsparse</code> 。</p>
+<p>步骤如下：</p>
+<ol>
+<li>定义顶点类，表示优化问题中的参数，继承自 <code>g2o::BaseVertex</code>，重写其虚函数
+<ol>
+<li>重置顶点的估计值 <code>void setToOriginImpl()</code></li>
+<li>更新顶点的估计值 <code>void oplusImpl(const double *update)</code></li>
+</ol>
+</li>
+<li>定义边类，表示误差项，它可以连接一个或多个顶点，继承自一元边 <code>g2o::BaseUnaryEdge</code> 或二元边 <code>g2o::BaseBinaryEdge</code> 或多元边 <code>BaseMultiEdge</code>
+<ol>
+<li>计算误差 <code>void computeError()</code></li>
+<li>计算雅可比矩阵 <code>void linearizeOplus()</code></li>
+</ol>
+</li>
+<li>构建优化问题
+<ol>
+<li>创建g2o图模型，设置求解器</li>
+<li>向图中添加顶点和边</li>
+<li>执行优化</li>
+</ol>
+</li>
+</ol>
+<p>代码如下：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;opencv2/core/core.hpp&gt;
+#include &lt;chrono&gt;
+#include &lt;cmath&gt;
+#include &lt;Eigen/Core&gt;
+#include &lt;g2o/core/base_unary_edge.h&gt;
+#include &lt;g2o/core/base_vertex.h&gt;
+#include &lt;g2o/core/block_solver.h&gt;
+#include &lt;g2o/core/g2o_core_api.h&gt;
+#include &lt;g2o/core/optimization_algorithm_dogleg.h&gt;
+#include &lt;g2o/core/optimization_algorithm_gauss_newton.h&gt;
+#include &lt;g2o/core/optimization_algorithm_levenberg.h&gt;
+#include &lt;g2o/solvers/dense/linear_solver_dense.h&gt;
+
+using namespace std;
+// 曲线模型的顶点类，优化变量
+// 模板参数：优化变量维度和数据类型
+class CurveFittingVertex : public g2o::BaseVertex&lt;3, Eigen::Vector3d&gt;{
+public:
+    EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
+    // 重置顶点的估计值
+    // `virtual` 关键字可以省略，因为这是在派生类中重写基类的函数，但是加上则有助于可读和维护；
+    virtual void setToOriginImpl() override { 
+        _estimate &lt;&lt; 0, 0, 0; 
+    }
+
+    // 更新顶点的估计值
+    virtual void oplusImpl(const double *update) override { 
+        _estimate += Eigen::Vector3d(update); 
+    }
+
+    // 存盘和读盘：留空
+    virtual bool read(istream &amp;in) {}
+
+    virtual bool write(ostream &amp;out) const {}
+};
+
+// 曲线模型的边类，误差模型 
+// 模板参数：观测值维度，类型，连接顶点类型
+class CurveFittingEdge : public g2o::BaseUnaryEdge&lt;1, double, CurveFittingVertex&gt;{
+public:
+    EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
+    CurveFittingEdge(double x) : BaseUnaryEdge(), _x(x) {}
+
+    // 计算曲线模型误差
+    virtual void computeError() override{
+        const CurveFittingVertex *v = static_cast&lt;const CurveFittingVertex *&gt;(_vertices[0]);
+        const Eigen::Vector3d abc = v-&gt;estimate();
+        _error(0, 0) = _measurement - std::exp(abc(0, 0) * _x * _x + abc(1, 0) * _x + abc(2, 0));
+    }
+
+    // 计算雅可比矩阵，微分部分
+    virtual void linearizeOplus() override
+    {
+        const CurveFittingVertex *v = static_cast&lt;const CurveFittingVertex *&gt;(_vertices[0]);
+        const Eigen::Vector3d abc = v-&gt;estimate();
+        double y = exp(abc[0] * _x * _x + abc[1] * _x + abc[2]);
+        _jacobianOplusXi[0] = -_x * _x * y;
+        _jacobianOplusXi[1] = -_x * y;
+        _jacobianOplusXi[2] = -y;
+    }
+
+    virtual bool read(istream &amp;in) {}
+
+    virtual bool write(ostream &amp;out) const {}
+
+public:
+    double _x; // x 值， y 值为 _measurement
+};
+
+int main(int argc, char **argv)
+{
+    double ar = 1.0, br = 2.0, cr = 1.0;    // 真实参数值
+    double ae = 2.0, be = -1.0, ce = 5.0;   // 估计参数值
+    int N = 100;                            // 数据点
+    double w_sigma = 1.0;                   // 噪声的标准差
+    double inv_sigma = 1.0 / w_sigma;       // 噪声的标准差的倒数
+    cv::RNG rng;                            // OpenCV随机数产生器
+
+    vector&lt;double&gt; x_data, y_data;          // 数据
+    for (int i = 0; i &lt; N; i++){
+        double x = i / 100.0;
+        x_data.push_back(x);
+        y_data.push_back(exp(ar * x * x + br * x + cr) + rng.gaussian(w_sigma * w_sigma));
+    }
+
+    // 构建图优化
+    // 先设定g2o
+    // 每个误差项优化变量维度为3，误差值维度为1
+    typedef g2o::BlockSolver&lt;g2o::BlockSolverTraits&lt;3, 1&gt;&gt; BlockSolverType;
+    // 线性求解器类型
+    typedef g2o::LinearSolverDense&lt;BlockSolverType::PoseMatrixType&gt; LinearSolverType; 
+
+    // 梯度下降方法，可以从GN, LM, DogLeg 中选
+    // solver 可选
+    // 1. OptimizationAlgorithmGaussNewton
+    // 2. OptimizationAlgorithmLevenberg
+    // 3. OptimizationAlgorithmDogleg
+    auto solver = new g2o::OptimizationAlgorithmGaussNewton(
+        g2o::make_unique&lt;BlockSolverType&gt;(g2o::make_unique&lt;LinearSolverType&gt;()));
+    g2o::SparseOptimizer optimizer; // 图模型
+    optimizer.setAlgorithm(solver); // 设置求解器
+    optimizer.setVerbose(true);     // 打开调试输出
+
+    // 往图中增加顶点
+    CurveFittingVertex *v = new CurveFittingVertex();
+    v-&gt;setEstimate(Eigen::Vector3d(ae, be, ce));
+    v-&gt;setId(0);
+    optimizer.addVertex(v);
+
+    // 往图中增加边
+    for (int i = 0; i &lt; N; i++){
+        CurveFittingEdge *edge = new CurveFittingEdge(x_data[i]);
+        edge-&gt;setId(i);
+        // 顶点索引，顶点指针
+        edge-&gt;setVertex(0, v);                      // 设置连接的顶点
+        edge-&gt;setMeasurement(y_data[i]);            // 观测数值
+        edge-&gt;setInformation(Eigen::Matrix&lt;double, 1, 1&gt;::Identity() * 1 /
+                             (w_sigma * w_sigma));  // 信息矩阵：协方差矩阵之逆
+        optimizer.addEdge(edge);
+    }
+
+    // 执行优化
+    cout &lt;&lt; &quot;start optimization&quot; &lt;&lt; endl;
+    chrono::steady_clock::time_point t1 = chrono::steady_clock::now();
+    optimizer.initializeOptimization();
+    optimizer.optimize(10);
+    chrono::steady_clock::time_point t2 = chrono::steady_clock::now();
+    chrono::duration&lt;double&gt; time_used = chrono::duration_cast&lt;chrono::duration&lt;double&gt;&gt;(t2 - t1);
+    cout &lt;&lt; &quot;solve time cost = &quot; &lt;&lt; time_used.count() &lt;&lt; &quot; seconds. &quot; &lt;&lt; endl;
+
+    // 输出优化值
+    Eigen::Vector3d abc_estimate = v-&gt;estimate();
+    cout &lt;&lt; &quot;estimated model: &quot; &lt;&lt; abc_estimate.transpose() &lt;&lt; endl;
+
+    return 0;
+}
+
+</code></pre>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/6-opencv/" class="block">OpenCV</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/6-camera/" class="block"></a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#guass-newton">Guass Newton</a></li>
+    <li><a href="#ceres-solver">Ceres Solver</a></li>
+    <li><a href="#g2o">G2O</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

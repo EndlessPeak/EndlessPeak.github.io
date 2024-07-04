@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Arch Linux 文本环境配置 | Linux 环境配置 | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="如果是经常从事文本工作(如软件工作者进行代码编辑、学生进行笔记整理、文字工作者的撰写、校对等工作)的用户建议选用窗口管理器作为日常工作环境。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/build/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Linux 环境配置",
+      "item":"https://endlesspeak.github.io/docs/build/operating-system-configuration/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Arch Linux 文本环境配置",
+      "item":"https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-2-textmode-config/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-2-textmode-config/"
+    },
+    "headline": "Arch Linux 文本环境配置 | Linux 环境配置 | 悦翎轩","datePublished": "2020-02-27T20:00:00+00:00",
+    "dateModified": "2020-02-27T20:00:00+00:00",
+    "wordCount":  2895 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "\u003cp\u003e如果是经常从事文本工作(如软件工作者进行代码编辑、学生进行笔记整理、文字工作者的撰写、校对等工作)的用户建议选用窗口管理器作为日常工作环境。\u003c\/p\u003e"
+}
+</script><meta property="og:title" content="Arch Linux 文本环境配置 | Linux 环境配置 | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-2-textmode-config/" />
+
+
+
+
+<meta property="og:description" content="如果是经常从事文本工作(如软件工作者进行代码编辑、学生进行笔记整理、文字工作者的撰写、校对等工作)的用户建议选用窗口管理器作为日常工作环境。" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2020-02-27T20:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2020-02-27T20:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/build/operating-system-configuration/">Linux 环境配置</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-1-desktop-config/">Arch Linux 桌面环境配置</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-2-textmode-config/">Arch Linux 文本环境配置</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-3-gentoo-nvidia/">Gentoo Linux Nvidia 显卡驱动</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-4-kernel/">Linux Kernel Configuration</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-5-kde-usage/">Linux KDE 桌面使用指南</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-9-ubuntu/">Ubuntu Linux 桌面环境</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Arch Linux 文本环境配置</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2020-02-27</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>6分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <p>如果是经常从事文本工作(如软件工作者进行代码编辑、学生进行笔记整理、文字工作者的撰写、校对等工作)的用户建议选用窗口管理器作为日常工作环境。</p>
+<p>独立的窗口管理器可以和KDE、Gnome等桌面环境搭配使用，一来可以起到工作环境转换的适应作用；二来集成化的桌面环境可以应对各种不时之需。所以我将之放在本篇介绍；当然，熟练地使用窗口管理器，原则上可以不借助其他任何桌面环境就能完成所需的各种工作。</p>
+<h2 id="shell">Shell</h2>
+<p>查看系统当前使用的shell。</p>
+<pre><code class="language-bash">$ echo $SHELL
+/bin/bash
+</code></pre>
+<p>查看系统是否安装了zsh (有些发行版可能自带zsh，而fish一般不会自带)</p>
+<pre><code class="language-bash">$ cat /etc/shells #列出当前可用的终端
+/bin/sh
+/bin/bash
+/sbin/nologin
+/usr/bin/sh
+/usr/bin/bash
+/usr/sbin/nologin
+/bin/tcsh
+/bin/csh
+/bin/zsh
+</code></pre>
+<p>安装功能强大、智能友好的终端命令解析器Fish Shell和Z Shell的具体内容见下。</p>
+<h3 id="fish-shell">Fish Shell</h3>
+<h4 id="安装fish-shell">安装Fish Shell</h4>
+<pre><code class="language-bash">$ sudo pacman -S fish
+$ which fish #查看fish Shell的安装位置
+$ chsh -l #列出当前可用的终端(另一种命令方式)
+$ chsh -s /usr/bin/fish #为当前用户切换终端
+</code></pre>
+<h4 id="安装oh-my-fish">安装Oh-my-fish</h4>
+<pre><code class="language-bash">$ git clone https://github.com/oh-my-fish/oh-my-fish
+$ cd oh-my-fish
+$ bin/install --offline
+$ fish_config #Colors:Dracula Prompt:Terlar 完成后点选set theme和set prompt
+#最后回车得到fish和oh-my-fish
+</code></pre>
+<h4 id="配置oh-my-fish">配置Oh-my-fish</h4>
+<pre><code class="language-bash">$ omf install wttr #安装fish shell下的天气显示插件
+$ alias c clear #定义快捷命令
+$ funcsave c #记录快捷命令到配置文件
+$ alias l &quot;ls -la&quot; 
+$ funcsave l
+</code></pre>
+<p>**注意！**如果不小心定义了错误的快捷命令，可能会导致严重的后果。最典型的例子就是定义循环的命令，例如输入<code>alias A B</code> 和<code>alias B A</code>(A和B分别代表一条命令)，然后再输入A或者B，那么计算机可能会输出大量function错误，也可能直接崩溃宕机关闭。</p>
+<p>如果已经定义了错误的命令，如<code>alias fuck ls</code>,有以下两种修复办法：</p>
+<ol>
+<li>在<code>~/.config/fish/functions</code>中查找之前定义的别名的文件，本例中文件名为<code>fuck.fish</code>，删除之即可。</li>
+<li>再定义一次命令，将<code>fuck</code>转义回原来的语义。输入<code>alias fuck fuck</code>即可。</li>
+</ol>
+<h3 id="z-shell">Z Shell</h3>
+<h4 id="安装z-shell">安装Z shell</h4>
+<pre><code class="language-bash">$ sudo pacman -S zsh
+</code></pre>
+<h4 id="安装oh-my-zsh">安装Oh-my-zsh</h4>
+<pre><code class="language-bash">#方法一，通过curl下载安装
+$ sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot; 
+#方法二，通过wget下载安装
+$ sh -c &quot;$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;
+</code></pre>
+<p>由于诸位都懂的原因， 使用<code>curl</code>和<code>wget</code>从github上下载的安装方式通常可能报错port 443拒绝访问。这个时候就需要使用 <del>工具云托管平台</del> 码云托管平台了。</p>
+<p>在码云极速下载这个镜像账号中找到oh-my-zsh的仓库，链接如下：https://gitee.com/mirrors/oh-my-zsh</p>
+<p>方法一：更改脚本中的克隆位置，运行脚本：</p>
+<p>在tools文件夹中复制install.sh的全部内容到Linux下的任一编辑器。GVIM、NeoVim和Emacs等终端下编辑器需要使用<code>Ctrl+Shift+C/V</code>或<code>&quot;+p</code>粘贴。其他如Kate，Gedit，VScode等则不用改变键位。</p>
+<p>修改该文件的Default settings部分：</p>
+<pre><code class="language-text">- # Default settings
+- ZSH=${ZSH:-~/.oh-my-zsh}
+- REPO=${REPO:-mirrors/oh-my-zsh}
+- REMOTE=${REMOTE:-https://gitee.com/${REPO}.git}
+- BRANCH=${BRANCH:-master}
++ # Default settings
++ ZSH=${ZSH:-~/.oh-my-zsh}
++ REPO=${REPO:-mirrors/oh-my-zsh}
++ REMOTE=${REMOTE:-https://gitee.com/${REPO}.git}
++ BRANCH=${BRANCH:-master}
+</code></pre>
+<p>然后在终端中运行命令：</p>
+<pre><code class="language-bash">$ cd /path/to/install.sh  #注意先切换到文件存放位置
+$ ./install.sh #再运行安装脚本，即可从码云镜像站下载oh-my-zsh的源代码。
+</code></pre>
+<p>方法二：先克隆整个项目到~/.config/oh-my-zsh。克隆命令如下：</p>
+<pre><code> git clone -c core.eol=lf -c core.autocrlf=false \
+	 -c fsck.zeroPaddedFilemode=ignore \
+     -c fetch.fsck.zeroPaddedFilemode=ignore \
+	 -c receive.fsck.zeroPaddedFilemode=ignore \
+	 --depth=1 --branch &quot;master&quot; https://gitee.com/mirrors/oh-my-zsh ~/.oh-my-zsh
+</code></pre>
+<p>然后对仓库中的install.sh脚本进行修改：删去main函数中调用setup_ohmyzsh函数的行。</p>
+<pre><code class="language-bash">$ cd /path/to/install.sh  #注意先切换到文件存放位置
+$ ./install.sh #再运行安装脚本，即可从码云镜像站下载oh-my-zsh的源代码。
+</code></pre>
+<h4 id="配置oh-my-zsh">配置Oh-my-zsh</h4>
+<h5 id="修改oh-my-zsh的主题">修改Oh-my-zsh的主题</h5>
+<pre><code class="language-bash">$ vim  ~/.zshrc
+ZSH_THEME=&quot;robbyrussel&quot;
+</code></pre>
+<h5 id="自动提示与命令补全">自动提示与命令补全</h5>
+<pre><code class="language-bash">$ git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins
+</code></pre>
+<p>打开 <code>~/.zshrc</code> 文件，找到插件设置命令，修改为</p>
+<pre><code class="language-text">- plugins=(git)
++ plugins=(zsh-autosuggestions git)
+</code></pre>
+<h5 id="语法高亮">语法高亮</h5>
+<pre><code class="language-bash">$ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins
+</code></pre>
+<pre><code class="language-text">- plugins=( [plugins...])
++ plugins=( [plugins...] zsh-syntax-highlighting) 
+</code></pre>
+<p>如果语法高亮不生效，则考虑zsh-syntax-highlighting放置在插件列表的最后以解决问题。以下是官方文档说明：</p>
+<blockquote>
+<p><strong>Why must <code>zsh-syntax-highlighting.zsh</code> be sourced at the end of the <code>.zshrc</code> file?</strong></p>
+<p><code>zsh-syntax-highlighting.zsh</code> wraps ZLE widgets. It must be sourced after all custom widgets have been created (i.e., after all <code>zle -N</code>calls and after running <code>compinit</code>). Widgets created later will work, but will not update the syntax highlighting.</p>
+</blockquote>
+<h5 id="使配置生效">使配置生效</h5>
+<pre><code class="language-bash">$ source ~/.zshrc
+</code></pre>
+<h2 id="terminal-applications">Terminal Applications</h2>
+<p>关于它们各自的配置以后会提到，这些工具都是完全自定义化的，首先应该参考它们的官方文档。</p>
+<ol>
+<li>
+<p>文件管理器<code>Ranger</code></p>
+</li>
+<li>
+<p>系统硬件查看器<code>neofetch</code>或<code>screenfetch</code></p>
+</li>
+<li>
+<p>系统资源查看工具<code>htop</code></p>
+</li>
+<li>
+<p>使用图形渲染的终端模拟器<code>alacritty</code></p>
+</li>
+<li>
+<p>展示目录下的文件工具<code>tree</code></p>
+</li>
+<li>
+<p>展示本地或远程的包的结构工具<code>pactree</code></p>
+</li>
+<li>
+<p>解压缩软件<code>zip</code></p>
+</li>
+<li>
+<p>将终端输出的内容重定向到剪切板工具<code>xsel</code></p>
+</li>
+<li>
+<p>终端下的<code>Todo List</code>工具<code>task</code></p>
+</li>
+<li>
+<p>终端命令代理<code>privoxy</code>或<code>proxychains</code></p>
+</li>
+<li>
+<p>来自<code>Suckless</code>社区中<code>X</code>下的极简终端模拟器st</p>
+</li>
+</ol>
+<pre><code class="language-bash">$ sudo pacman -S ranger neofetch htop alacritty tree pactree zip task privoxy
+$ git clone https://git.suckless.org/st   # 克隆源代码的仓库
+$ cd st/
+$ sudo make clean install                 # 编译安装
+</code></pre>
+<h2 id="i3-window-manager">I3 Window Manager</h2>
+<h3 id="安装i3wm">安装i3wm：</h3>
+<pre><code class="language-bash">$ sudo pacman -S i3 #默认回车即可。由于i3-gaps和i3-wm冲突，因此最后实际安装的是i3-gaps，而这正是我所需要的。
+$ sudo pacman -S alacritty
+$ sudo pacman -S lxappearance
+$ sudo pacman -S feh #安装设置壁纸的软件
+lxappearance #打开外观配置
+feh --bg-fill /this/path/to/your/picture
+</code></pre>
+<h3 id="配置i3wm">配置i3wm：</h3>
+<p>输入命令:<code>xmodmap -pke &gt; ~/.Xmodmap</code></p>
+<blockquote>
+<p>注：该命令是将键盘布局生成可阅读的文本文件并保存到家目录下。</p>
+</blockquote>
+<p>输入命令:<code>vim ~/.config/i3/config</code>，在配置文件中添加下面的内容。</p>
+<pre><code class="language-bash">exec --no-startup-id xrandr -s 1920x1080 #可选项，修改屏幕分辨率
+exec xmodmap ~/.Xmodmap #载入当前键盘布局配置文件
+bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec rofi -show window #该条与上条任选其一
+new window 1pixel #窗口仅有1像素单位的边框
+gaps inner 15 #窗口边框距离屏幕边缘距离15个单位
+</code></pre>
+<blockquote>
+<p>注1：</p>
+<p>bindsym表示使用快捷键执行；$mod表示i3下的Super键；</p>
+<p>exec表示执行程序；-show run指定为运行程序，-show window指定为显示打开的窗口。故有些情形下两个参数可以混用。</p>
+<p>注2：</p>
+<p>更多其他配置敬请自行探索。我本人的Dotfiles已上传到代码托管平台。</p>
+</blockquote>
+<h3 id="安装窗口渲染器">安装窗口渲染器</h3>
+<p>我安装的是自行编译的compton,为顺利安装compton,先安装系统可能缺少的依赖，命令如下：</p>
+<pre><code class="language-bash">$ sudo pacman -S libconfig asciidoc make #安装相关的依赖
+</code></pre>
+<p>不过现在已经出现了<code>picom</code>，<code>Xcompmgr</code>，而<code>compton</code>已经不再维护，有需要的完全可以通过官方库安装它们。</p>
+<pre><code class="language-bash">$ git clone https://github.com/tryone144/compton.git
+$ cd /path/to/compton #切换到克隆的compton库文件夹中
+$ make #可能会有一些警告，忽略
+$ make docs #这是可选的，制作帮助文档，使用man compton获取。
+$ make clean install #clean是可选参数，可以不加
+</code></pre>
+<p>在克隆的<code>compton</code>库中有一份配置文件模版，将之拷贝到用户个人的配置文件夹里，并在编译成功之后即可配置该文件：</p>
+<pre><code class="language-bash">$ cp compton.sample.conf ~/.config/compton.conf
+$ vim ~/.config/compton.conf
+</code></pre>
+<h3 id="安装自定义计算机状态栏">安装自定义计算机状态栏</h3>
+<p>我使用的是polybar，如果你喜欢i3status，可以不安装polybar。</p>
+<pre><code class="language-bash">$ sudo pacman -S cmake git python python2 pkg-config wireless_tools 
+#安装polybar构建所需的依赖
+$ yay -S polybar
+</code></pre>
+<p>下面是最重要也是最困难的部分：安装字体。</p>
+<pre><code class="language-bash">$ yay -S tty-unifont siji-git
+</code></pre>
+<blockquote>
+<p>此处的困难是对于网络而不是技术层面上来说的，由于软件包取自AUR，速度极慢，极易失败。</p>
+</blockquote>
+<p>新安装的polybar需要拷贝一份配置文件，然后自行修改polybar的配置文件进行配置。</p>
+<pre><code class="language-bash">$ cd ~/.config
+$ mkdir polybar
+$ cp /usr/share/doc/polybar/config ~/.config/polybar/ #将配置文件拷贝到用户当前目录下
+</code></pre>
+<p>默认polybar的名称为example，载入polybar的命令为：</p>
+<pre><code class="language-bash">$ polybar example
+</code></pre>
+<p>默认在i3wm中设置自动启动的办法：</p>
+<pre><code class="language-bash">$ exec_always polybar example &amp;
+</code></pre>
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-1-desktop-config/" class="block">Arch Linux 桌面环境配置</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-3-gentoo-nvidia/" class="block">Gentoo Linux Nvidia 显卡驱动</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#shell">Shell</a>
+      <ul>
+        <li><a href="#fish-shell">Fish Shell</a></li>
+        <li><a href="#z-shell">Z Shell</a></li>
+      </ul>
+    </li>
+    <li><a href="#terminal-applications">Terminal Applications</a></li>
+    <li><a href="#i3-window-manager">I3 Window Manager</a>
+      <ul>
+        <li><a href="#安装i3wm">安装i3wm：</a></li>
+        <li><a href="#配置i3wm">配置i3wm：</a></li>
+        <li><a href="#安装窗口渲染器">安装窗口渲染器</a></li>
+        <li><a href="#安装自定义计算机状态栏">安装自定义计算机状态栏</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Pointer | C/C&#43;&#43; Programming Basic | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="概念 计算机程序在存储数据时需要跟踪三种属性： 信息存储在何处 存储的值是多少 存储的信息是什么类型 声明变量时： 通过声明语句指明的符号名跟踪内存单元； 程序为该">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"CPP Programming",
+      "item":"https://endlesspeak.github.io/docs/docs/cpp-programming/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"C/C++ Programming Basic",
+      "item":"https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"Pointer",
+      "item":"https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/6-pointer/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/6-pointer/"
+    },
+    "headline": "Pointer | C\/C\u002b\u002b Programming Basic | 悦翎轩","datePublished": "2022-03-21T00:00:00+00:00",
+    "dateModified": "2022-03-21T00:00:00+00:00",
+    "wordCount":  5086 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "概念 计算机程序在存储数据时需要跟踪三种属性： 信息存储在何处 存储的值是多少 存储的信息是什么类型 声明变量时： 通过声明语句指明的符号名跟踪内存单元； 程序为该"
+}
+</script><meta property="og:title" content="Pointer | C/C&#43;&#43; Programming Basic | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/6-pointer/" />
+
+
+
+
+<meta property="og:description" content="概念 计算机程序在存储数据时需要跟踪三种属性： 信息存储在何处 存储的值是多少 存储的信息是什么类型 声明变量时： 通过声明语句指明的符号名跟踪内存单元； 程序为该" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-03-21T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2022-03-21T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/">C/C&#43;&#43; Programming Basic</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-1-compilerlanguage/">Compiler Language</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-2-program-compilation-by-gcc/">Program Compilation by GCC</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-3-program-compilation-by-clang/">Program Compilation by Clang</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-1-datatype/">DataType</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-2-storetype/">StoreType</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-1-statement/">Statement</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-2-structure/">Structure</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-1-function/">Function</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-2-functionassignment/">Pass By Value &amp; Reference</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/5-scope/">Scope</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/6-pointer/">Pointer</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/7-customdatatypes/">Custom Data Type</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-1-io-standard/">Standard I/O</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-2-io-file/">File I/O</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/10-modules-development/">Module Development</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/11-debug-method/">Debug Method</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/12-ccpp-mix-programming/">C&amp;CPP Mix Programming</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Pointer</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-03-21</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>11分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="概念">概念</h2>
+<p>计算机程序在存储数据时需要跟踪三种属性：</p>
+<ol>
+<li>信息存储在何处</li>
+<li>存储的值是多少</li>
+<li>存储的信息是什么类型</li>
+</ol>
+<p>声明变量时：</p>
+<ol>
+<li>通过声明语句指明的符号名跟踪内存单元；</li>
+<li>程序为该变量分配内存来存储值；</li>
+<li>声明语句指出值的类型和符号名；</li>
+</ol>
+<p>变量的<strong>地址</strong>称为该变量的<strong>指针</strong>，保存变量地址的变量称为指针变量；</p>
+<p>通过变量A存储变量B的地址，并可以通过A访问B，则称A为指向B的<strong>指针变量</strong>，一般简称A为指向B的指针。</p>
+<h2 id="指针">指针</h2>
+<h3 id="声明">声明</h3>
+<p>定义指针变量：<code>dataType * p;</code></p>
+<ol>
+<li>
+<p>*在与数据类型结合时，表示这是一个指向该数据类型的指针类型；</p>
+</li>
+<li>
+<p>*与变量名结合时，作为间接值/间接访问/解除引用运算符，表示将通过该指针变量间接找到所指向的变量的值；或表示p是一个引用，通过解除引用该指针变量从而找到它指向变量的值；</p>
+</li>
+</ol>
+<p>综上，称<code>p</code>是<code>dataType*</code>类型，而<code>*p</code>是<code>dataType</code>类型。</p>
+<p>连续定义时每个变量前都需要带*，否则只有第一个变量会被解析为指针变量。</p>
+<pre><code class="language-c">int *a,*b,*c;
+</code></pre>
+<p>特别地，<u>数组名可以被认为是指针常量</u>。</p>
+<h3 id="赋值与取值">赋值与取值</h3>
+<p>由于指针保存变量的地址，因此用取地址运算符对变量取地址，而后将地址赋给指针。</p>
+<pre><code class="language-c">int *p=&amp;a;
+//这种声明即赋值的方法等效于下面两行：
+int *p;
+p=&amp;a;
+</code></pre>
+<p>注意到<code>p</code>是<code>int*</code>类型，<code>a</code>是<code>int</code>类型，<code>&amp;a</code>是<code>int*</code>类型。</p>
+<p>对指针作解除引用运算，得到指针所指向的变量的值。</p>
+<pre><code class="language-c">int c=*p;
+</code></pre>
+<p>对指针变量A所指向的变量B的值的操作等效于直接对B进行操作。</p>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+int main(){
+    int a=10;
+    int *p=&amp;a;
+    *p=20;
+    printf(&quot;%d&quot;,a);
+}
+</code></pre>
+<p>下面的操作等价：</p>
+<pre><code class="language-c">int a[2]={1,2};
+int *p1=&amp;a[0];
+int *p2=&amp;*a;
+int *p3=a;
+</code></pre>
+<h3 id="地址">地址</h3>
+<h4 id="指针大小">指针大小</h4>
+<p>指针变量保存的是地址，地址本质上是整数。</p>
+<p>一般地，<strong>指针变量大小由当前CPU运行模式的寻址位数决定。</strong></p>
+<style>
+	table,table tr th, table tr td { border:1px solid #000000;text-align:center; }
+</style>
+<table>
+    <tbody>
+    	<tr>
+            <td>
+                <p>
+                	<b>寻址位数(bit)</b>
+                </p>
+            </td>
+            <td>
+            	<p>
+                	<b>指针大小(字节)</b>
+                </p>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<p>
+                    16
+                </p>
+            </td>
+            <td>
+            	<p>
+                    2
+                </p>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<p>
+                    32
+                </p>
+            </td>
+            <td>
+            	<p>
+                    4
+                </p>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<p>
+                    64
+                </p>
+            </td>
+            <td>
+            	<p>
+                    8
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h4 id="指针移动">指针移动</h4>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+int main(){
+	char a='A',*pa=&amp;a，*paa = &amp;a;
+    int b=20,*pb=&amp;b;
+    double c=99.9,*pc=&amp;c;
+    printf(&quot;&amp;a=%#xc, &amp;b=%#x, &amp;c=%#x\n&quot;, &amp;a, &amp;b, &amp;c);
+    printf(&quot;pa=%#X, pb=%#X, pc=%#X\n&quot;, pa, pb, pc);
+    pa++; pb++; pc++;
+    printf(&quot;pa=%#X, pb=%#X, pc=%#X\n&quot;, pa, pb, pc);
+    pa -= 2; pb -= 2; pc -= 2;
+    printf(&quot;pa=%#X, pb=%#X, pc=%#X\n&quot;, pa, pb, pc);
+    //比较运算
+    if(pa == paa){
+        printf(&quot;%d\n&quot;, *paa);
+    }else{
+        printf(&quot;%d\n&quot;, *pa);
+    }
+    return 0;
+}
+</code></pre>
+<p>注意到pa、pb、pc 每次加 1，它们的地址分别增加 4、8、1，正好是 int、double、char 类型所占字节的长度；减 2 时，地址分别减少 8、16、2，正好是 int、double、char 类型所占字节的长度的 2 倍。</p>
+<p>对于指向数据类型为T的指针p：</p>
+<ol>
+<li>表达式<code>p+1</code>
+<ol>
+<li>实际上地址值变化<code>sizeof(T)</code>；</li>
+<li>当p保存数组首地址时，具体含义是指向<strong>下一个元素</strong>。</li>
+</ol>
+</li>
+<li>表达式<code>&amp;p+1</code>
+<ol>
+<li>实际上地址值变化<code>sizeof(p)</code>；</li>
+<li>不一定有具体含义。</li>
+</ol>
+</li>
+</ol>
+<p>特别注意：</p>
+<ol>
+<li><code>(*p)++</code>代表指向的元素自增，去掉括号则代表指向下一个元素！因为单目运算符结合顺序是<strong>右到左</strong>。</li>
+<li>不能对指针变量进行乘、除、取余等运算。</li>
+</ol>
+<h2 id="数组">数组</h2>
+<h3 id="数组概念">数组概念</h3>
+<p>数组是一种数据格式，用来存储多个同类型的值。</p>
+<ol>
+<li>
+<p>声明数组应指出：存储的元素的<u>数据类型</u>、<u>数组名</u>、数组元素<u>个数</u>。</p>
+</li>
+<li>
+<p>访问数组则应从0开始，一直到n-1结束。</p>
+<p>特别地，编译器不会检查下标是否有效。因此保证下标的有效性尤为重要。</p>
+</li>
+</ol>
+<h3 id="数组与指针">数组与指针</h3>
+<p>数组名<u>可以认为</u>是指针常量，指向数组的第0个元素。 <strong>数组第 0 个元素的地址也称为数组的首地址。</strong></p>
+<p>数组名的本意是表示整个数组，且<strong>数组名和数组首地址并不总是等价。</strong> 其特点如下：</p>
+<ol>
+<li><u>编译时</u>编译器知道数组的长度；</li>
+<li>数组名在其<u>作用域内</u>编译器认为它是数组；</li>
+<li>在作用域外数组名退化为指向数组第 0 个元素的指针；</li>
+</ol>
+<p>下面的例子说明数组名可以认为是数组首地址的情况：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int main(){
+    int arr[] = { 1, 2, 3, 4, 5 };
+    int len = sizeof(arr) / sizeof(int);  //求数组长度
+    int i;
+    for(i=0; i&lt;len; i++){
+        printf(&quot;%d  &quot;, *(arr+i) );  //*(arr+i)等价于arr[i]
+    }
+    printf(&quot;\n&quot;);
+    return 0;
+}
+</code></pre>
+<p>下面的例子说明数组名在作用域内代表整个数组，在作用域外退化为指针常量：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int* test(int arr[]){
+    return arr;
+}
+int main(){
+    int arr[] = { 1, 2, 3, 4, 5 };
+    int len1=sizeof(arr)/sizeof(int);
+    int *p=test(arr);
+    int len2=sizeof(test(arr))/sizeof(int);
+    int len3=sizeof(p)/sizeof(int);
+    printf(&quot;%d,%d,%d&quot;,len1,len2,len3);
+    return 0;
+}
+</code></pre>
+<p>注意：</p>
+<ol>
+<li>
+<p><code>sizeof</code>是运算符，它的值(或它代表的表达式)在编译时已经确定。</p>
+</li>
+<li>
+<p>C标准规定<code>sizeof</code>不能用于函数，但是GNU C扩展了，使之对void类型返回1，<u>对函数类型返回函数指针的长度(在64位寻址能力的CPU上是8)</u>。（注意划线部分也可能输出1）</p>
+</li>
+<li>
+<p>上述程序中函数<code>test</code>的返回值类型不要写错了。</p>
+<p>由于指针可以由整型变量保存，因此如果写<code>int</code>，编译器报“从返回类型为<code>int</code>的函数返回<code>int * </code>，将指针转换为整型而不进行类型转换”，而后返回整型，执行时会抛出异常，非常“贴心”。</p>
+</li>
+</ol>
+<h3 id="指针引用数组元素">指针引用数组元素</h3>
+<p>对于一维数组，引用方法如下：定义<code>int a[10];</code></p>
+<ol>
+<li>下标法<code>a[i]</code></li>
+<li>指针法<code>*(a+i)</code></li>
+</ol>
+<p>指针运算方法：定义<code>int *p=a;</code> 注意对指针访问进行是否越界检查。</p>
+<ol>
+<li>
+<p>下一个元素<code>*(p+1)</code>或<code>*(p+=1)</code>或<code>*(++p)</code>；</p>
+</li>
+<li>
+<p>上一个元素<code>*(p-1)</code>或<code>*(p-=1)</code>或`*(++p)；</p>
+</li>
+<li>
+<p>定义<code>int *p1,*p2</code>都指向同一数组的元素</p>
+<p><code>p1-p2</code>代表表示两个元素之间差了多少个元素。</p>
+</li>
+</ol>
+<p>注意为什么不写<code>a++</code>，因为a的值是常量。</p>
+<p>对于二维数组，见二维数组指针节。</p>
+<h3 id="指针数组">指针数组</h3>
+<p>数组中所有元素保存的元素是指针，称为指针数组。<u>类型上可以将它当做二级指针使用。</u></p>
+<pre><code class="language-c">dataType *arrayName[length]//[]优先级高于*，故应该理解为 dataType *(arrayName[length])
+</code></pre>
+<p>在访问各个指针元素时使用<code>*(*arrayName+j)</code>或<code>*arrayName[j]</code>。</p>
+<p>下面是整型指针数组的例子：</p>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+int main(){
+    int a=1,b=2,c=3;
+    int *arr[3]={&amp;a,&amp;b,&amp;c};
+    int **parr=arr;
+    //指针和二级指针的值输出
+    printf(&quot;%d, %d, %d, %d\n&quot;,arr,parr,*arr,*parr);
+    //二级指针指向的值的输出
+    printf(&quot;%d, %d, %d\n&quot;, *arr[0], *arr[1], *arr[2]);
+    printf(&quot;%d, %d, %d\n&quot;, **(parr+0), **(parr+1), **(parr+2));
+    return 0;
+}
+</code></pre>
+<p>可以发现指针数组中一级指针和二级指针输出的地址不同。</p>
+<p><strong>数组指针的应用</strong>：处理多个字符串，利用函数数组指针实现<code>if-else</code>功能。</p>
+<p>下面是字符串指针数组的例子：</p>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+int main(){
+	char *str[3] = {
+        &quot;String Test.&quot;,
+        &quot;Using Char Data Type.&quot;,
+        &quot;It is in C Language.&quot;
+    };
+    printf(&quot;%s\n%s\n%s\n&quot;, str[0], str[1], str[2]);
+    printf(&quot;%d,%d,%s&quot;,str,*str,*str);
+    return 0;
+}
+</code></pre>
+<p>字符数组str中存放的是字符串的首地址，不是字符串本身。</p>
+<p>字符串存储的位置在其他的内存区域，和字符数组是分开的。</p>
+<h3 id="一维数组和数组指针">一维数组和数组指针</h3>
+<ol>
+<li>
+<p>数组名是常量，代表数组首元素的地址；</p>
+</li>
+<li>
+<p>对数组名进行取地址操作，其类型为整个数组</p>
+<pre><code class="language-c">int a[10];
+int *p1=a;//相当于 int *p1=&amp;a[0];
+int (*p2)[10]=&amp;a;
+</code></pre>
+<p>注意，在面对a+1和&amp;a+1的区别时：</p>
+<ol>
+<li>
+<p>a表示数组首元素首地址，其类型为<code>int *</code>，因此<code>a+1</code>相当于数组首地址值<code>+sizeof(int)</code>；</p>
+<p>称p1是指向数组a的指针，通过<code>p1[i]</code>能够访问a的每一个元素。</p>
+</li>
+<li>
+<p>&amp;a表示整个数组的首地址，其类型为<code>int (*)[10]</code>，因此<code>&amp;a+1</code>相当于数组首地址值<code>+sizeof(a)</code>。</p>
+<p>称p2是指向数组a的首地址的指针，</p>
+<ol>
+<li>通过<code>(*p2)[i]</code>能够访问a的每一个元素；</li>
+<li>通过<code>(*p2)+i</code>能够访问a的每一个元素的地址。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="多维数组">多维数组</h2>
+<h3 id="二维数组">二维数组</h3>
+<ol>
+<li>二维数组在逻辑上是二维的，在内存中所有的数组元素都是连续排列的；</li>
+<li>二维数组中的各个元素存放顺序是按行优先排列的；</li>
+<li>允许把二维数组分解成多个一维数组来处理；</li>
+</ol>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+int main(){
+    int a[3][4]={1,3,5,7,9,11,13,15,17,19,21,23};
+    //打印第一维数组的数组名，它保存的是a[0]的首地址；打印第二维数组的数组名，它保存着a[0][0]的首地址
+    printf(&quot;%d %d\n&quot;,a,*a);
+    //均打印第二维数组的数组名，它保存它第一个元素a[0][0]的首地址
+    printf(&quot;%d %d\n&quot;,a[0],*(a+0));
+    //打印第一维数组的数组名，它保存的是a[0]的首地址；打印第一个元素a[0][0]的首地址
+    printf(&quot;%d %d\n&quot;,&amp;a[0],&amp;a[0][0]);
+    printf(&quot;%d %d\n&quot;,a[1],a+1);
+    printf(&quot;%d %d\n&quot;,&amp;a[1][0],*(a+1)+0);
+    printf(&quot;%d %d\n&quot;,a[2],*(a+2));
+    printf(&quot;%d %d\n&quot;,&amp;a[2],a+2);
+    printf(&quot;%d %d\n&quot;,a[1][0],*(*(a+1)+0));
+    return 0;
+}
+</code></pre>
+<p>设二维数组的数组名为a，则访问的元素的数据类型：</p>
+<ol>
+<li>形如<code>*(*(a+i)+j)</code>或<code>a[i][j]</code>或<code>*(a[i]+j)</code>或<code>*(a+i)[j]</code>，程序员需要注意检查是否越界；</li>
+<li>形如<code>a</code>,<code>*a</code>,<code>a[0]</code>,<code>*(a+0)</code>,<code>&amp;a[0]</code>,<code>&amp;a[0][0]</code>的均为首地址，具体代表内容需要根据情况判断；</li>
+<li>其他指针类型的地址值具体计算方法见下：</li>
+</ol>
+<p>设二维数组中第一级M个指针，第二级N个指针。数据类型为<code>dataType</code></p>
+<ol>
+<li>一级指针每变化1，地址值变化<code>sizeof(N*sizeof(dataType))</code>，即到上一行或下一行</li>
+<li>二级指针每变化1，地址值变化<code>sizeof(dataType)</code>，即到上一个元素或下一个元素；</li>
+</ol>
+<h3 id="二维数组与数组指针">二维数组与数组指针</h3>
+<p>首先明确：<strong>二级指针和二维数组不是一个概念！多维同理！</strong></p>
+<pre><code class="language-c">int a[3][4]={1,3,5,7,9,11,13,15,17,19,21,23};//定义二维数组a
+int (*p1)[3][4]=&amp;a;//&amp;a为整个数组的首地址，类型为int (*)[3][4],定义指向&amp;a的指针变量p1；
+int (*p2)[4]=a;//a为第一维数组的数组名，类型为int (*)[4]，定义指向a的指针变量p2
+int *p3 =a[0];//a[0]为第二维数组的数组名，类型为int *，定义指向a[0]的指针变量p3
+</code></pre>
+<p>注意，在面对a+1、&amp;a+1的区别时：</p>
+<ol>
+<li>
+<p>a[0]表示数组（第一行的）第一个元素的首地址，其类型为<code>int *</code>，因此<code>a[0]+1</code>相当于数组首地址值<code>+sizeof(int)</code>；</p>
+<p>称p3是指向数组a第一行的指针，能够访问a的第一行的每一个元素。</p>
+</li>
+<li>
+<p>a表示数组第一行的首地址，其类型为<code>int (*)[4]</code>，因此<code>a+1</code>相当于数组首地址值<code>+sizeof(int[4])</code>；</p>
+<p>称p2是指向数组a的指针，能够访问a的每一个元素</p>
+</li>
+<li>
+<p>&amp;a表示整个数组的首地址，其类型为<code>int (*)[3][4]</code>，因此<code>&amp;a+1</code>相当于数组首地址值<code>+sizeof(a)</code>。</p>
+<p>称p1是指向数组a的首地址的指针，能够访问a的每一个元素的地址。</p>
+</li>
+</ol>
+<p><strong>特别地，数组名 a 在表达式中会被转换为和 p2 等价的指针！</strong></p>
+<p>注意：写作<code>int *p[4]</code>，那么应该理解为<code>int *(p[4])</code>，p 就成了一个指针数组，而不是数组指针。</p>
+<h3 id="指针数组和数组指针的区别">指针数组和数组指针的区别</h3>
+<p>指针数组和数组指针在定义时非常相似，只是括号的位置不同：</p>
+<pre><code class="language-c">int *(p1[5]);  //指针数组，可以去掉括号直接写作 int *p1[5];
+int (*p2)[5];  //数组指针，不能去掉括号
+</code></pre>
+<p>指针数组和二维数组指针有着本质上的区别：</p>
+<ol>
+<li>
+<p><strong>指针数组是一个数组</strong>，只是每个元素保存的都是指针；</p>
+<p>它用于访问一系列指针。</p>
+</li>
+<li>
+<p><strong>数组指针是一个指针</strong>，它指向一个数组；</p>
+<p>它用于访问一维数组中每个元素的地址<code>*(*p)+n</code>或二维数组中的每个元素<code>*(*p+i)+j</code>；</p>
+</li>
+</ol>
+<style>
+	table,table tr th, table tr td { border:1px solid #000000;text-align:center; }
+</style>
+<table>
+    <tbody>
+    	<tr>
+            <td colspan="2">
+                <p>
+                	<b>实参</b>
+                </p>
+            </td>
+            <td colspan="2">
+            	<p>
+                	<b>形参</b>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>
+                	<b>类型名</b>
+                </p>
+            </td>
+            <td>
+            	<p>
+                	<b>类型</b>
+                </p>
+            </td>
+            <td>
+                <p>
+                	<b>类型名</b>
+                </p>
+            </td>
+            <td>
+            	<p>
+                	<b>类型</b>
+                </p>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<p>
+                    数组的数组（二维数组）
+                </p>
+            </td>
+            <td>
+            	<p>
+                    int c[8][10]
+                </p>
+            </td>
+            <td>
+            	<p>
+                    数组指针
+                </p>
+            </td>
+            <td>
+            	<p>
+                    int (*)[10]
+                </p>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<p>
+                    指针数组
+                </p>
+            </td>
+            <td>
+            	<p>
+                    int *c[10]
+                </p>
+            </td>
+            <td>
+            	<p>
+                    指针的指针（二级指针）
+                </p>
+            </td>
+            <td>
+            	<p>
+                    int ** c
+                </p>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<p>
+                    数组指针
+                </p>
+            </td>
+            <td>
+            	<p>
+                    int (*)[10]
+                </p>
+            </td>
+            <td>
+            	<p>
+                    不改变
+                </p>
+            </td>
+            <td>
+            	<p>
+                    int (*)[10]
+                </p>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<p>
+                    指针的指针（二级指针）
+                </p>
+            </td>
+            <td>
+            	<p>
+                    char **
+                </p>
+            </td>
+            <td>
+            	<p>
+                    不改变
+                </p>
+            </td>
+            <td>
+            	<p>
+                    char **
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="作为函数参数的多维数组">作为函数参数的多维数组</h3>
+<p>本节摘自《C与指针》中的指针节。</p>
+<pre><code class="language-c">int matrix[3][10];
+func(matrix);
+</code></pre>
+<p>函数原型应为：</p>
+<pre><code class="language-c">void func(int (*mat)[10]);
+void func(int mat[][10]);
+</code></pre>
+<p>该函数中，mat的第一个下标根据包含10个元素的整型数组长度进行调整，第二个下标根据整型的长度进行调整。</p>
+<p>关键在于编译器必须知道第二个及以后的维度的长度才能够对各下标求值，故原型中必须声明这些维的长度。而第一维的长度并不需要，计算下标值时用不到它（可被自动计算）。</p>
+<p>因此编写一维数组的形参的函数原型时，既可以写成数组形式，也可以写成指针的形式。但是对于多维数组，只有第一维可以如此选择。特别地，下面的原型是错误的：</p>
+<pre><code class="language-c">void func(int **mat);
+</code></pre>
+<p>语法检查的时候不会报错，但是运行的时候会出现段错误。</p>
+<p>这是因为该原型把mat声明为一个<strong>指向整型指针的指针</strong>，但是需要的是<strong>指向整型数组的指针</strong>。</p>
+<p>下面的例子更详细地讨论多维数组作参数时的情况：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int test1(int (*a)[2][3])
+{
+    printf(&quot;%d\n&quot;, ***a);//a[0][0][0]=1
+    printf(&quot;%d\n&quot;, *(*(*a + 1) + 1));//a[0][1][1]=5
+    return 0;
+}
+int test2(int (*a)[3])
+{
+    printf(&quot;%d\n&quot;, *(*a));//a[1][0][0]=7
+    printf(&quot;%d\n&quot;, *(*a + 1));//a[1][0][1]=8
+    printf(&quot;%d\n&quot;, *(*a + 2));//a[1][0][2]=9
+    return 0;
+}
+int test3(int *a)
+{
+    printf(&quot;%d\n&quot;, *a);//a[0][1][0]=4
+    printf(&quot;%d\n&quot;, *(a + 1));//a[0][1][1]=5
+    printf(&quot;%d\n&quot;, *(a + 2));//a[0][1][2]=6
+    return 0;
+}
+int main(int argc, char const *argv[])
+{
+    int a[2][2][3] = {{{1, 2, 3},{4, 5, 6}},{{7, 8, 9}, {10, 11, 12}}};
+    test1(a);
+    test2(*(a + 1));
+    test3(*(*a + 1));
+    return 0;
+}
+</code></pre>
+<h2 id="函数指针">函数指针</h2>
+<p>函数指针是指向函数的指针，保存函数的入口地址。通过函数指针可以调用该函数。</p>
+<p>函数指针声明：</p>
+<pre><code class="language-c">returnType (*pointerName)(param list);
+</code></pre>
+<p>注意<code>()</code>的优先级高于<code>*</code>，第一个括号不能省略，如果写作<code>returnType *pointerName(param list);</code>就成了函数原型，它表明函数的返回值类型为<code>returnType *</code>。</p>
+<p>函数指针调用时可以直接用指针名<code>pointerName(param list)</code>，也可以用<code>(*pointerName)(param list)</code>。</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+//返回两个数中较大的一个
+int max(int a, int b){
+    return a&gt;b ? a : b;
+}
+int main(){
+    int x, y, maxval;
+    //定义函数指针
+    int (*pmax)(int, int) = max;  //也可以写作int (*pmax)(int a, int b)
+    printf(&quot;Input two numbers:&quot;);
+    scanf(&quot;%d %d&quot;, &amp;x, &amp;y);
+    maxval = (*pmax)(x, y);//也可以写作maxval=pmax(x,y);
+    printf(&quot;Max value: %d\n&quot;, maxval);
+    return 0;
+}
+</code></pre>
+<h2 id="总结">总结</h2>
+<style>
+	table,table tr th, table tr td { border:1px solid #000000;text-align:center; }
+</style>
+<table>
+    <tbody>
+        <tr>
+        	<td>
+            	<p>
+                    定义
+                </p>
+            </td>
+            <td>
+            	<p>
+                    含义
+                </p>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<p>
+                    int *p;
+                </p>
+            </td>
+            <td>
+            	<p>
+                    p 可以指向 int 类型的数据，也可以指向类似 int arr[n] 的数组。
+                </p>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<p>
+                    int **p;
+                </p>
+            </td>
+            <td>
+            	<p>
+                   p 为二级指针，指向 int * 类型的数据。
+                </p>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<p>
+                    int *p[n];
+                </p>
+            </td>
+            <td>
+            	<p>
+                   p 为指针数组。[]的优先级高于 *，所以应该理解为 int *(p[n]);
+                </p>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<p>
+                    int (*p)[n];
+                </p>
+            </td>
+            <td>
+            	<p>
+                    p 为二维数组指针。
+                </p>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<p>
+                    int *p();
+                </p>
+            </td>
+            <td>
+            	<p>
+                    p 是一个函数，它的返回值类型为 int *。
+                </p>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<p>
+                    int (*p)();
+                </p>
+            </td>
+            <td>
+            	<p>
+                    p 是一个函数指针，指向原型为 int func() 的函数。
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>特别注意：</p>
+<ol>
+<li>
+<p>指针变量可以进行加减运算，具体跟指针指向的数据类型有关。</p>
+</li>
+<li>
+<p>给指针变量赋值时，要将一份数据的地址赋给它，不能直接赋给数据；</p>
+</li>
+<li>
+<p>使用指针变量之前一定要初始化，否则指针就成了野指针，可能造成崩溃。</p>
+<p>对于暂时没有指向的指针，建议赋值<code>NULL</code>。</p>
+</li>
+<li>
+<p>若两个指针变量指向同一个数组中的某个元素，那么两个指针变量可以相减，相减的结果就是两个指针之间相差的元素个数。</p>
+</li>
+<li>
+<p>数组也是有类型的，数组名的本意是表示一组类型相同的数据。</p>
+<ol>
+<li>在定义数组时，或者和 sizeof、&amp; 运算符一起使用时数组名才表示整个数组；</li>
+<li>表达式或形参列表中的数组名会被转换为一个指向数组的指针。</li>
+</ol>
+</li>
+</ol>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/5-scope/" class="block">Scope</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/7-customdatatypes/" class="block">Custom Data Type</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概念">概念</a></li>
+    <li><a href="#指针">指针</a>
+      <ul>
+        <li><a href="#声明">声明</a></li>
+        <li><a href="#赋值与取值">赋值与取值</a></li>
+        <li><a href="#地址">地址</a></li>
+      </ul>
+    </li>
+    <li><a href="#数组">数组</a>
+      <ul>
+        <li><a href="#数组概念">数组概念</a></li>
+        <li><a href="#数组与指针">数组与指针</a></li>
+        <li><a href="#指针引用数组元素">指针引用数组元素</a></li>
+        <li><a href="#指针数组">指针数组</a></li>
+        <li><a href="#一维数组和数组指针">一维数组和数组指针</a></li>
+      </ul>
+    </li>
+    <li><a href="#多维数组">多维数组</a>
+      <ul>
+        <li><a href="#二维数组">二维数组</a></li>
+        <li><a href="#二维数组与数组指针">二维数组与数组指针</a></li>
+        <li><a href="#指针数组和数组指针的区别">指针数组和数组指针的区别</a></li>
+        <li><a href="#作为函数参数的多维数组">作为函数参数的多维数组</a></li>
+      </ul>
+    </li>
+    <li><a href="#函数指针">函数指针</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

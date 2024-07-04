@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43; Programming Advanced on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/docs/cpp-programming/2-advanced-doc/</link>
+    <description>Recent content in C&#43;&#43; Programming Advanced on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Sun, 19 Nov 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/docs/cpp-programming/2-advanced-doc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Modules for CPP</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/2-advanced-doc/1-modules/</link>
+      <pubDate>Sun, 19 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/2-advanced-doc/1-modules/</guid>
+      <description>GCC GCC 13 支持 p1689 特性，但是与 cmake 配合尚存在一定问题。 Clang Clang 16 支持 p1689 特性，且可以直接与 cmake 配合使用。 注意： 模块特性尚处于实验状态，需要开启对应的 cmake 版本的 API。 目</description>
+    </item>
+    <item>
+      <title>Compare</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/2-advanced-doc/n-compare/</link>
+      <pubDate>Sun, 19 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/2-advanced-doc/n-compare/</guid>
+      <description>Three-way Comparison 三向比较运算符是C++20引入的特性，可用于确定两个值的大小顺序。它返回一个类枚举(enumeration-like)类型，其定义在 &amp;lt;compare&amp;gt; 和 std 名称空间</description>
+    </item>
+  </channel>
+</rss>

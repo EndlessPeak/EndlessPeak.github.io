@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Pose Caculating | SLAM Interviewing | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文记录姿态解算的相关知识。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"SLAM Programming and Interviewing",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"SLAM Interviewing",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"Pose Caculating",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/2-pose-caculating/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/2-pose-caculating/"
+    },
+    "headline": "Pose Caculating | SLAM Interviewing | 悦翎轩","datePublished": "2024-06-11T00:00:00+00:00",
+    "dateModified": "2024-06-11T00:00:00+00:00",
+    "wordCount":  1648 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "本文记录姿态解算的相关知识。"
+}
+</script><meta property="og:title" content="Pose Caculating | SLAM Interviewing | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/2-pose-caculating/" />
+
+
+
+<meta property="og:description" content="本文记录姿态解算的相关知识。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2024-06-11T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2024-06-11T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/">SLAM Interviewing</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/1-kalman-filter/">Kalman Filter</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/slam-interview/">SLAM Interview</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/2-pose-caculating/">Pose Caculating</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/3-matrix-basic/">Matrix Base</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/5-sophus/">Sophus</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/6-opencv/">OpenCV</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/7-gauss-newton/">Guass Newton Algorithm</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/6-camera/"></a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Pose Caculating</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2024-06-11</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>4分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="rotation-matrix">Rotation Matrix</h2>
+<h3 id="2-dimensional">2 Dimensional</h3>
+<p>从二维角度推导旋转矩阵更加明确。</p>
+<p>假设二维坐标系 $xOy$ 的第一象限中有点 $P(x,y)$，其与原点 $O$ 的连线 $OP$ 与 $x$ 轴正向夹角为 $\alpha$，则：</p>
+$$
+\left \{ 
+\begin{aligned}
+x&=|OP|\cos \alpha \\
+y&=|OP|\sin \alpha
+\end{aligned}
+\right .
+$$
+<ol>
+<li>
+<p>当坐标系向逆时针方向旋转 $\beta$ 角时，原 $P$ 点的坐标变为：
+</p>
+$$
+   \left \{ 
+   \begin{aligned}
+   x'&=|OP|\cos (\alpha-\beta)=|OP|(\cos\alpha\cos\beta+\sin\alpha\sin\beta)=x\cos\beta+y\sin\beta \\
+   y'&=|OP|\sin (\alpha-\beta)=|OP|(-\cos\alpha\sin\beta+\sin\alpha\cos\beta)=-x\sin\beta+y\cos\beta
+   \end{aligned}
+   \right .
+   $$
+<p>写成矩阵形式即：
+</p>
+$$
+   \begin{bmatrix}
+   x' \\
+   y'
+   \end{bmatrix} = 
+   \begin{bmatrix}
+   \cos\beta & \sin\beta \\
+   -\sin\beta & \cos\beta
+   \end{bmatrix}
+   \begin{bmatrix}
+   x \\
+   y
+   \end{bmatrix}
+   $$
+</li>
+<li>
+<p>当坐标系向顺时针方向旋转 $\beta$ 角时，原 $P$ 点的坐标变为：
+</p>
+$$
+   \left \{ 
+   \begin{aligned}
+   x'&=|OP|\cos (\alpha+\beta)=|OP|(\cos\alpha\cos\beta-\sin\alpha\sin\beta)=x\cos\beta-y\sin\beta \\
+   y'&=|OP|\sin (\alpha+\beta)=|OP|(\sin\alpha\cos\beta+\cos\alpha\sin\beta)=-x\sin\beta+y\cos\beta
+   \end{aligned}
+   \right .
+   $$
+<p>写成矩阵形式即：
+</p>
+$$
+   \begin{bmatrix}
+   x' \\
+   y'
+   \end{bmatrix} = 
+   \begin{bmatrix}
+   \cos\beta & -\sin\beta \\
+   \sin\beta & \cos\beta
+   \end{bmatrix}
+   \begin{bmatrix}
+   x \\
+   y
+   \end{bmatrix}
+   $$
+</li>
+</ol>
+<h3 id="coordinate-system">Coordinate System</h3>
+<p>常见的坐标系包括地理坐标系（地球固连坐标系/导航坐标系）和载体坐标系（机体坐标系）。</p>
+<ol>
+<li>地理坐标系：用于研究飞行器相对地面的运动状态，相当于世界坐标系。</li>
+<li>载体坐标系：以运动载体自身结构构成坐标系。</li>
+</ol>
+<p>姿态是载体坐标系与地理坐标系的变换关系。</p>
+<h3 id="3-dimensional">3 Dimensional</h3>
+<p>当扩展到三维旋转时，可以使用齐次坐标的方式将旋转矩阵增广到三维矩阵，令未变化的坐标轴相对应的保持不变。</p>
+<p>由于线性变换不满足乘法交换律，因此为了得到确定的姿态，需要规定确定的旋转次序。假设旋转次序按照以下方式：</p>
+<ol>
+<li>绕物体的 $Z$ 轴旋转 $\alpha$，得到偏航角 $yaw$</li>
+<li>绕旋转之后的 $Y$ 轴旋转 $\beta$，得到俯仰角 $pitch$</li>
+<li>绕旋转之后的 $X$ 轴旋转 $\gamma$，得到滚转角 $roll$</li>
+</ol>
+<p>旋转矩阵均是正交矩阵：
+</p>
+$$
+\begin{aligned}
+R_z(\alpha) &= 
+\begin{bmatrix}
+\cos \alpha & -\sin \alpha & 0 \\
+\sin \alpha & \cos \alpha & 0 \\
+0 & 0 & 1
+\end{bmatrix} \\
+R_y(\beta) &= 
+\begin{bmatrix}
+\cos \beta & 0 & \sin \beta  \\
+0 & 1 & 0 \\
+-\sin \beta & 0 & \cos \beta
+\end{bmatrix} \\
+R_x(\gamma) &= 
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & \cos \gamma & -\sin \gamma \\
+0 & \sin \gamma & \cos \gamma
+\end{bmatrix}
+\end{aligned}
+$$
+<hr>
+<p>这里需要注意，为什么 $Y$ 轴的旋转矩阵负号和其他两维不一样，因为对于 $Y$ 轴旋转时，其旋转矩阵维度顺序是
+</p>
+$$
+\begin{bmatrix} 
+z' \\
+x'
+\end{bmatrix}=
+\begin{bmatrix} 
+\cos\beta & -\sin\beta \\
+\sin\beta & \cos\beta
+\end{bmatrix}
+\begin{bmatrix} 
+z \\ 
+x
+\end{bmatrix}
+$$
+<p>
+当对向量进行反序时
+</p>
+$$
+\begin{bmatrix} 
+x \\ 
+z
+\end{bmatrix}=
+\begin{bmatrix} 
+\cos\beta & \sin\beta \\
+-\sin\beta & \cos\beta
+\end{bmatrix}
+\begin{bmatrix} 
+x \\ 
+z
+\end{bmatrix}
+$$
+<p>
+可以看到，其负号形式自然就发生变化了。</p>
+<hr>
+<p>地理坐标系依次经过欧拉角 $yaw$,$pitch$,$roll$ 角度旋转 $\alpha,\beta,\gamma$ 角度得到载体坐标系，则<strong>由地理坐标系到载体坐标系</strong>变换的姿态变换矩阵为：
+</p>
+$$
+\begin{aligned}
+R_n^b(\alpha, \beta, \gamma) &= R_z(\alpha)R_y(\beta)R_x(\gamma) \\
+&= 
+\begin{bmatrix}
+\cos\alpha & -\sin\alpha & 0 \\
+\sin\alpha & \cos\alpha & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+\cos\beta & 0 & \sin\beta  \\
+0 & 1 & 0 \\
+-\sin\beta & 0 & \cos\beta
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & \cos\gamma & -\sin\gamma \\
+0 & \sin\gamma & \cos\gamma
+\end{bmatrix} \\
+&= 
+\begin{bmatrix}
+\cos\alpha\cos\beta & -\sin\alpha\cos\gamma+\cos\alpha\sin\beta\sin\gamma & \sin\alpha\sin\gamma+\cos\alpha\sin\beta\cos\gamma \\
+\sin\alpha\cos\beta & \cos\alpha\cos\gamma+\sin\alpha\sin\beta\sin\gamma & -\cos\alpha\sin\gamma+\sin\alpha\sin\beta\cos\gamma \\
+-\sin\beta & \cos\beta\sin\gamma & \cos\beta\cos\gamma
+\end{bmatrix}
+\end{aligned}
+$$
+<p>反过来，<strong>由载体坐标系向地理坐标系</strong>变换的姿态变换矩阵为：
+</p>
+$$
+\begin{aligned}
+R_b^n(\alpha, \beta, \gamma)&= R_x(-\gamma)R_y(-\beta)R_z(-\alpha) \\
+&= 
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & \cos\gamma & \sin\gamma \\
+0 & -\sin\gamma & \cos\gamma
+\end{bmatrix}
+\begin{bmatrix}
+\cos\beta & 0 & -\sin\beta  \\
+0 & 1 & 0 \\
+\sin\beta & 0 & \cos\beta
+\end{bmatrix}
+\begin{bmatrix}
+\cos\alpha & \sin\alpha & 0 \\
+-\sin\alpha & \cos\alpha & 0 \\
+0 & 0 & 1
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+\cos\alpha\cos\beta & \sin\alpha\cos\beta & -\sin\beta \\
+-\sin\alpha\cos\gamma+\cos\alpha\sin\beta\sin\gamma & 
+\cos\alpha\cos\gamma+\sin\alpha\sin\beta\sin\gamma & 
+\cos\beta\sin\gamma \\
+\sin\alpha\sin\gamma+\cos\alpha\sin\beta\cos\gamma & -\cos\alpha\sin\gamma+\sin\alpha\sin\beta\cos\gamma & \cos\beta\cos\gamma\\
+\end{bmatrix}
+\end{aligned}
+$$
+<h2 id="inertial-measurement-unit">Inertial Measurement Unit</h2>
+<p>由于惯性运动单元测量得到的姿态角通常是基于载体坐标系的，而不是地理坐标系的，因此其姿态变换矩阵与前述姿态变换矩阵对应关系正好相反。</p>
+<p>假设载体坐标系测量得到的欧拉角为 $yaw$,$pitch$,$roll$，则存在下列对应关系：</p>
+<ol>
+<li>由载体坐标系到地理坐标系的姿态变换矩阵 $C_n^b=R_b^n$</li>
+<li>由地理坐标系到载体坐标系的姿态变换矩阵 $C_b^n=R_n^b$</li>
+</ol>
+<h3 id="gyromscope">Gyromscope</h3>
+<p>惯性测量单元所在的载体坐标系和地理坐标系重合时，加速度计的测量值为 $A_n=\begin{bmatrix} 0 &amp; 0 &amp; g \end{bmatrix}^T$</p>
+<p>若载体处于任意一个位置时，加速度计的测量值为 $A_n=\begin{bmatrix} a_x &amp; a_y &amp; a_z \end{bmatrix}^T$。</p>
+<p>根据
+</p>
+$$
+\begin{bmatrix}
+a_x \\
+a_y \\
+a_z
+\end{bmatrix}=
+\begin{bmatrix}
+\cos\alpha\cos\beta & \sin\alpha\cos\beta & -\sin\beta \\
+-\sin\alpha\cos\gamma+\cos\alpha\sin\beta\sin\gamma & 
+\cos\alpha\cos\gamma+\sin\alpha\sin\beta\sin\gamma & 
+\cos\beta\sin\gamma \\
+\sin\alpha\sin\gamma+\cos\alpha\sin\beta\cos\gamma & -\cos\alpha\sin\gamma+\sin\alpha\sin\beta\cos\gamma & \cos\beta\cos\gamma\\
+\end{bmatrix}
+\begin{bmatrix}
+0 \\
+0 \\
+g
+\end{bmatrix} 
+$$
+<p>化简得
+</p>
+$$
+\begin{bmatrix}
+a_x \\
+a_y \\
+a_z
+\end{bmatrix}=
+\begin{bmatrix}
+-\sin\beta \\
+\cos\beta\sin\gamma \\
+\cos\beta\cos\gamma
+\end{bmatrix} g
+$$
+<p>解算得到
+</p>
+$$
+\left \{
+\begin{aligned}
+&\beta = \arcsin \frac{a_y}{a_z} \\
+&\gamma = -\arcsin \frac{a_x}{\sqrt{a_y^2+a_z^2}}
+\end{aligned}
+\right .
+$$
+<h3 id="magnetometer">Magnetometer</h3>
+<p>惯性测量单元所在的载体坐标系和地理坐标系重合时，磁力计的测量值为 $M_n=\begin{bmatrix} M_N &amp; 0 &amp; M_D \end{bmatrix}^T$。</p>
+<p>这里磁力计的测量值只包含了 $x,z$ 两轴，若记 $x,y,z$ 三轴分别对应地理坐标系上的南、东、天，则可以发现：</p>
+<ol>
+<li>东方向始终在地球上绘制同心圆，天和南方向组成的向量指向了地球的南极；</li>
+<li>测量值中，$M_N$ 代表了北（南）方向的磁场强度分量，$M_D$ 代表地心（天）方向的磁场强度分量。</li>
+</ol>
+<p>若载体处于任意一个位置时，磁力计的测量值为 $M_b=\begin{bmatrix} M_x &amp; M_y &amp; M_z \end{bmatrix}^T$。</p>
+<p>根据载体坐标系和地理坐标系的关系：
+</p>
+$$
+M_b=C_n^bM_n
+$$
+<p>推导可得：
+</p>
+$$
+\begin{bmatrix}
+M_x \\
+M_y \\
+M_z
+\end{bmatrix}=
+\begin{bmatrix}
+M_N\cos\alpha_m\cos\beta - M_D\sin\beta \\
+M_N(\cos\alpha_m\sin\beta\cos\gamma-\sin\alpha_m\cos\gamma)+M_D\cos\beta\sin\gamma \\
+M_N(\cos\alpha_m\sin\beta\cos\gamma+\sin\alpha_m\sin\gamma)+M_D\cos\beta\cos\gamma
+\end{bmatrix}
+$$
+<p>即有：
+</p>
+$$
+\left \{
+\begin{aligned}
+&M_x\cos\beta+M_y\sin\beta\sin\gamma+M_z\sin\beta\cos\gamma=M_N\cos\alpha_m \\
+&M_x\sin\gamma-M_y\cos\gamma=M_N\sin\alpha_m
+\end{aligned}
+\right .
+$$
+<p>从而可以计算出载体<strong>相对地磁北极的航向角</strong>：
+</p>
+$$
+\alpha_m = \arctan \frac{M_x\sin\gamma-M_y\cos\beta}{M_x\cos\beta+M_y\sin\beta\sin\gamma+M_z\sin\beta\cos\gamma}
+$$
+<p>最终航向角 $\alpha = \alpha_m + \Delta \alpha$，其中 $\Delta \alpha$ 是地磁北极与地理北极的夹角。</p>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/slam-interview/" class="block">SLAM Interview</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/3-matrix-basic/" class="block">Matrix Base</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#rotation-matrix">Rotation Matrix</a>
+      <ul>
+        <li><a href="#2-dimensional">2 Dimensional</a></li>
+        <li><a href="#coordinate-system">Coordinate System</a></li>
+        <li><a href="#3-dimensional">3 Dimensional</a></li>
+      </ul>
+    </li>
+    <li><a href="#inertial-measurement-unit">Inertial Measurement Unit</a>
+      <ul>
+        <li><a href="#gyromscope">Gyromscope</a></li>
+        <li><a href="#magnetometer">Magnetometer</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

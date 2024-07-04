@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/tags/</link>
+    <description>Recent content in Tags on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Thu, 08 Apr 2021 12:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blog</title>
+      <link>https://endlesspeak.github.io/tags/blog/</link>
+      <pubDate>Thu, 08 Apr 2021 12:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/tags/blog/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugo</title>
+      <link>https://endlesspeak.github.io/tags/hugo/</link>
+      <pubDate>Thu, 08 Apr 2021 12:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://endlesspeak.github.io/tags/linux/</link>
+      <pubDate>Tue, 05 May 2020 15:00:07 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Windows</title>
+      <link>https://endlesspeak.github.io/tags/windows/</link>
+      <pubDate>Thu, 09 Jan 2020 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/tags/windows/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Programming</title>
+      <link>https://endlesspeak.github.io/tags/programming/</link>
+      <pubDate>Sun, 29 Dec 2019 21:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/tags/programming/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>随笔</title>
+      <link>https://endlesspeak.github.io/tags/%E9%9A%8F%E7%AC%94/</link>
+      <pubDate>Sat, 28 Dec 2019 20:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/tags/%E9%9A%8F%E7%AC%94/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

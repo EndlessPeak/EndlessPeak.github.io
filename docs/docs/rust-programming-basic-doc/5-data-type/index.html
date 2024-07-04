@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Data Type | Rust Programming Basic | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文记录了Rust中常见的数据类型。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Rust Programming Basic",
+      "item":"https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Data Type",
+      "item":"https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/5-data-type/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/5-data-type/"
+    },
+    "headline": "Data Type | Rust Programming Basic | 悦翎轩","datePublished": "2023-07-11T00:00:00+00:00",
+    "dateModified": "2023-07-11T00:00:00+00:00",
+    "wordCount":  1484 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "本文记录了Rust中常见的数据类型。"
+}
+</script><meta property="og:title" content="Data Type | Rust Programming Basic | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/5-data-type/" />
+
+
+
+<meta property="og:description" content="本文记录了Rust中常见的数据类型。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2023-07-11T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2023-07-11T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/">Rust Programming Basic</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/1-installation/">Rust Installation</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/2-hello-cargo/">Hello Cargo</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/3-guessnumber/">Guess Number</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/4-variable/">Variable</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/5-data-type/">Data Type</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/6-function/">Function</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/8-package-and-crate/">Package And Crate</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Data Type</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2023-07-11</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>3分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="data-type">Data Type</h2>
+<p>Rust 是一种静态类型（statically typed）的语言，它必须在编译期知道所有变量的类型。</p>
+<ol>
+<li>常见的静态类型语言有 C/C++/Java/C#/Rust/Go/Swift/TypeScript/Kotlin/Haskell</li>
+<li>常见的动态类型语言有 JavaScript/Python/Ruby/PHP/Perl/Lua/Shell/R/Matlab/Lisp</li>
+</ol>
+<h2 id="scalar">Scalar</h2>
+<p>标量类型表示单个值，Rust 基本的标量类型有整型、浮点型、布尔型、字符</p>
+<h3 id="integer">Integer</h3>
+<h4 id="type">Type</h4>
+<p>Rust 整型如表所示：</p>
+<table>
+<thead>
+<tr>
+<th>长度</th>
+<th>有符号类型</th>
+<th>无符号类型</th>
+<th>字节</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8 位</td>
+<td>i8</td>
+<td>u8</td>
+<td>1</td>
+</tr>
+<tr>
+<td>16 位</td>
+<td>i16</td>
+<td>u16</td>
+<td>2</td>
+</tr>
+<tr>
+<td>32 位</td>
+<td>i32</td>
+<td>u32</td>
+<td>4</td>
+</tr>
+<tr>
+<td>64 位</td>
+<td>i64</td>
+<td>u64</td>
+<td>8</td>
+</tr>
+<tr>
+<td>128 位</td>
+<td>i128</td>
+<td>u128</td>
+<td>16</td>
+</tr>
+<tr>
+<td>arch</td>
+<td>iszie</td>
+<td>usize</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>注：</p>
+<ol>
+<li>有符号和无符号表示数字能否取负数，有符号数字以二进制补码形式存储。</li>
+<li>存储范围
+<ol>
+<li>每个有符号类型存储范围是 \(-(2^{n-1})\) ~ \(2^{n-1}-1\)</li>
+<li>每个无符号类型存储范围是 0 ~ \(2^{n}-1\)</li>
+</ol>
+</li>
+<li>默认整型是 <code>i32</code></li>
+<li><code>isize</code> 和 <code>usize</code> 主要用于某些集合的索引</li>
+</ol>
+<p>对于数学计算：</p>
+<ol>
+<li>Rust 所有数字类型都支持基本数学运算</li>
+<li>整数除法会向下取整</li>
+</ol>
+<h4 id="literal">Literal</h4>
+<p>Rust 整型字面量格式如表所示：</p>
+<table>
+<thead>
+<tr>
+<th>数字字面量</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>十进制</td>
+<td>98_222</td>
+</tr>
+<tr>
+<td>十六进制</td>
+<td>0xff</td>
+</tr>
+<tr>
+<td>八进制</td>
+<td>0o77</td>
+</tr>
+<tr>
+<td>二进制</td>
+<td>0b1111_0000</td>
+</tr>
+<tr>
+<td>字节</td>
+<td>b&rsquo;A'</td>
+</tr>
+</tbody>
+</table>
+<p>注：字节字面量仅限于 <code>u8</code> 类型。</p>
+<h4 id="overflow">Overflow</h4>
+<p>整型溢出分为两种：</p>
+<ol>
+<li>当在调试（debug）模式编译时，Rust 会检查整型溢出，若存在这些问题则使程序在编译时 panic。</li>
+<li>在当使用 <code>--release</code> 参数进行发布（release）模式构建时
+<ol>
+<li>Rust 不检测会导致 panic 的整型溢出</li>
+<li>当运行到整型溢出时，Rust 会进行一种被称为二进制补码包裹（two’s complement wrapping）的操作</li>
+<li>简而言之类似环绕，从最大值变为最小值</li>
+</ol>
+</li>
+</ol>
+<p>要显式处理溢出的可能性，可以使用标准库针对原始数字类型提供的以下一系列方法：</p>
+<ol>
+<li>使用 <code>wrapping_*</code> 方法在所有模式下进行包裹</li>
+<li>使用 <code>checked_*</code> 方法，发生溢出则返回 <code>None</code> 值</li>
+<li>使用 <code>overflowing_*</code> 方法返回该值和一个指示是否存在溢出的布尔值</li>
+<li>使用 <code>saturating_*</code> 方法使该值达到最小值或最大值</li>
+</ol>
+<h3 id="floating">Floating</h3>
+<p>Rust 的浮点类型有两种类型：</p>
+<ol>
+<li><code>f32</code> 大小为 32 位</li>
+<li><code>f64</code> 大小为 64 位
+<ol>
+<li>它是默认浮点类型</li>
+<li>在现代的 CPU 中它的速度与 <code>f32</code> 的几乎相同，但精度更高</li>
+</ol>
+</li>
+</ol>
+<p>注：所有浮点型都是有符号的。</p>
+<h3 id="boolean-and-char">Boolean &amp; Char</h3>
+<ol>
+<li>布尔类型可用 <code>bool</code> 声明，布尔值的大小为 1 个字节。</li>
+<li>字符类型可用 <code>char</code> 声明，字符类型大小为 4 个字节。</li>
+</ol>
+<p>注：</p>
+<ol>
+<li>字符 <code>char</code> 字面量采用 <strong>单引号</strong> 括起来</li>
+<li>字符串 <code>String</code> 字面量采用 <strong>双引号</strong> 括起来</li>
+<li>字符表示的是一个 Unicode 标量值，这意味着它可以表示的远远不止 ASCII</li>
+</ol>
+<h2 id="compound">Compound</h2>
+<h3 id="tuple">Tuple</h3>
+<ol>
+<li>元组是将多种类型的多个值组合到一个复合类型中的一种基本方式</li>
+<li>元组的长度是固定的，声明后就无法修改</li>
+</ol>
+<p>元组的绑定与通过模式匹配进行解构的过程如下所示：</p>
+<pre><code class="language-rust">fn main() {
+    let tup = (500, 6.4, 1);
+    let tup: (i32, f64, u8) = (500, 6.4, 1);
+
+    let (x, y, z) = tup;
+
+    println!(&quot;The value of x is: {}&quot;, x);
+    println!(&quot;The value of y is: {}&quot;, y);
+    println!(&quot;The value of z is: {}&quot;, z);
+}
+</code></pre>
+<p>元组的元素访问如下所示：</p>
+<pre><code class="language-rust">fn main() {
+    let x: (i32, f64, u8) = (500, 6.4, 1);
+    let five_hundered = x.0;
+    let six_point_four = x.1;
+    let one = x.2;
+}
+</code></pre>
+<p>Rust 元组与 C 语言结构体的相似之处：</p>
+<ol>
+<li>都可以用于组合多个值，以作为整体进行处理</li>
+<li>元组和结构体都可以包含不同类型的数据成员</li>
+<li>元组和结构体都可以通过索引访问成员</li>
+</ol>
+<p>Rust 元组与 C 语言结构体的不同之处</p>
+<ol>
+<li>成员构成
+<ol>
+<li>元组的成员仅有值，只能通过索引访问，索引用 <strong>点号</strong></li>
+<li>结构体的成员是键值对，即可以通过索引或字段名访问</li>
+</ol>
+</li>
+<li>应用场景
+<ol>
+<li>元组主要为临时存储、函数返回值等简单场景</li>
+<li>结构体主要用于自定义数据结构</li>
+</ol>
+</li>
+</ol>
+<p>特别注意，Rust 中存在空元组的概念：</p>
+<ol>
+<li>没有任何值的元组 <code>()</code> 是一种特殊的类型，它只有一个值 <code>()</code></li>
+<li>该类型被称为单元类型(unit type)，该值被称为单元值(unit value)</li>
+<li>如果表达式不返回任何其他值，就隐式地返回单元值</li>
+<li>由于它没有元素，因此无法解构或访问其中的内容</li>
+</ol>
+<h3 id="array">Array</h3>
+<ol>
+<li>数组的每个元素都具有相同类型，Rust 中数组具有固定长度。</li>
+<li>当希望数据分配到栈上而非堆上时，或希望确保始终具有固定数量元素，选择数组</li>
+<li>如果希望使用动态数组，选择 <code>vector</code></li>
+</ol>
+<!--listend-->
+<pre><code class="language-rust">fn main() {
+    let weekdays = [&quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;];
+    let a: [i32; 5] = [1, 2, 3, 4, 5];
+    let a = [3; 5];
+
+    let first = a[0];
+}
+</code></pre>
+<p>如果产生了无效的数组元素访问，则会导致运行时错误，Rust 程序会 panic 并退出。</p>
+<pre><code class="language-rust">use std::io;
+fn main() {
+    let a = [1, 2, 3, 4, 5];
+    println!(&quot;Please enter an array index.&quot;);
+
+    let mut index = String::new();
+
+    //这里用直接expect的写法
+    io::stdin()
+        .readline(&amp;mut index)
+        .expect(&quot;Failed to read line.&quot;);
+
+    //这里用match的方法
+    let index: usize = match index.trim().parse() {
+        Ok(num) =&gt; num,
+        Err(_) =&gt; expect(&quot;Failed to parse number&quot;),
+    };
+
+    let element = a[index];
+
+    println!(
+        &quot;The value of the element at index {} is {}&quot;,
+        index, element
+    );
+}
+</code></pre>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/4-variable/" class="block">Variable</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/6-function/" class="block">Function</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#data-type">Data Type</a></li>
+    <li><a href="#scalar">Scalar</a>
+      <ul>
+        <li><a href="#integer">Integer</a></li>
+        <li><a href="#floating">Floating</a></li>
+        <li><a href="#boolean-and-char">Boolean &amp; Char</a></li>
+      </ul>
+    </li>
+    <li><a href="#compound">Compound</a>
+      <ul>
+        <li><a href="#tuple">Tuple</a></li>
+        <li><a href="#array">Array</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

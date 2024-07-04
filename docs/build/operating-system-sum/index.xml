@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux 绪论 on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/build/operating-system-sum/</link>
+    <description>Recent content in Linux 绪论 on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Fri, 10 Jan 2020 14:50:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/build/operating-system-sum/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>完全使用Linux工作</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-sum/linux-technology-1-fully-use-linux/</link>
+      <pubDate>Thu, 09 Jan 2020 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-sum/linux-technology-1-fully-use-linux/</guid>
+      <description>&lt;p&gt;尽管很多人已经不习惯看长篇大论, 但我还是要说, 这是一篇值得你从头读到尾的长篇文章。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Linux综合概述</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-sum/linux-technology-2-linux-comprehensive-overview/</link>
+      <pubDate>Fri, 10 Jan 2020 14:50:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-sum/linux-technology-2-linux-comprehensive-overview/</guid>
+      <description>&lt;p&gt;GNU/Linux，无论你是否相信，它已经成为目前增长最迅速的系统。无论是企业还是个人用户，Linux都是一个足够可靠的选择。我希望本系列文章能够使更多的人完全理解Linux，并热切地尝试去使用甚至探索它。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

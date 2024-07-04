@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computer Interview on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/</link>
+    <description>Recent content in Computer Interview on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Mon, 11 Apr 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>项目经历</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/projectdevelopment/</link>
+      <pubDate>Fri, 04 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/projectdevelopment/</guid>
+      <description>你本科阶段有哪些项目经历？ 做过三个项目，分别是一个使用Java Server Page的考务管理系统，一个使用MybatisPlus + Springboot的商城系统</description>
+    </item>
+    <item>
+      <title>软件工程</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/softwareengineering/</link>
+      <pubDate>Fri, 01 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/softwareengineering/</guid>
+      <description>基本概念 软件概念 软件：软件=程序+数据+文档 程序:按事先设计的功能和性能需求执行的指令序列； 数据:是程序能正常操纵信息的数据结构； 文档:与程序开发、维</description>
+    </item>
+    <item>
+      <title>英语面试</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/englishinterview/</link>
+      <pubDate>Fri, 04 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/englishinterview/</guid>
+      <description>基本情况 自我介绍 Tell me a few things about yourself. Dear professors, it&amp;rsquo;s a great honor for me to have the opportunity to present myself. My name is Li Qing han,22 years old, come from Hu Bei province. I received my bachelor&amp;rsquo;s degree in software engineering from Chang&amp;rsquo;an University in last June. In the past 4 years,I focused on my study. I passed CET-4 and CET-6 in my sophomore and</description>
+    </item>
+    <item>
+      <title>综合问题</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/comprehensiveinterview/</link>
+      <pubDate>Fri, 04 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/comprehensiveinterview/</guid>
+      <description>专业问题 谈谈你对大数据的认识 大数据，或称巨量资料。是具有如下特点的信息资产。 数据量大 增长速度快 形式多样 大数据的类型： 结构化数据 半结构化数据 非结构化数据</description>
+    </item>
+    <item>
+      <title>编译原理</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/compilersprinciples/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/compilersprinciples/</guid>
+      <description>词法分析 什么是形式语言？ 人们把用一组数学符号和规则来描述语言的方式称为形式描述； 把所用的数学符号和规则称为形式语言。 说明词法分析器的作用？ 主要任务：读</description>
+    </item>
+    <item>
+      <title>计算机网络</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computernetwork/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computernetwork/</guid>
+      <description>概述 21世纪的三大特征？三类网络是哪三类？ 数字化、信息化、网络化；电信网络、有线电视网络、计算机网络 计算机网络经历了哪些发展阶段？ 一共有三大阶段，分别</description>
+    </item>
+    <item>
+      <title>数据库原理</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-2/</link>
+      <pubDate>Mon, 11 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-2/</guid>
+      <description>请解释数据库的四个基本概念 数据 数据(Data)是描述事物的符号记录，是数据库中存储的基本对象。 数据库 数据库(Data Base DB)是长期存储在计算机内，有组</description>
+    </item>
+    <item>
+      <title>数据库原理</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-1/</link>
+      <pubDate>Fri, 04 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-1/</guid>
+      <description>绪论 graph LR A[现实世界]--&gt;|抽象|B[信息世界 E-R图] B--&gt;|设计|C[计算机世界 关系模式] 请解释数据库的四个基本概念 数据 数据(Data)是描述</description>
+    </item>
+    <item>
+      <title>组成原理</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computercomponents/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computercomponents/</guid>
+      <description>计算机系统概述 冯诺依曼结构是什么？ 冯提出了存储程序的概念，以该思想为基础的计算机称为冯诺依曼机。 计算机硬件系统由运算器、存储器、控制器、输入设备、输出</description>
+    </item>
+    <item>
+      <title>Linux Basic</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/linuxpoints/</link>
+      <pubDate>Fri, 11 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/linuxpoints/</guid>
+      <description>发行版 Linux分为哪些发行版？具体而言有什么区别？ 概括地讲，Linux的发行版本可以大体分为两类 商业公司维护的发行版本，如Redhat Enterprise Linux 社区组织维</description>
+    </item>
+  </channel>
+</rss>

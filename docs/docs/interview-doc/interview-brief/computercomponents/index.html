@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>组成原理 | Computer Interview | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="计算机系统概述 冯诺依曼结构是什么？ 冯提出了存储程序的概念，以该思想为基础的计算机称为冯诺依曼机。 计算机硬件系统由运算器、存储器、控制器、输入设备、输出">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Computer Interview",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Computer Interview",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"组成原理",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computercomponents/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computercomponents/"
+    },
+    "headline": "组成原理 | Computer Interview | 悦翎轩","datePublished": "2022-03-01T00:00:00+00:00",
+    "dateModified": "2022-03-01T00:00:00+00:00",
+    "wordCount":  4303 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "计算机系统概述 冯诺依曼结构是什么？ 冯提出了存储程序的概念，以该思想为基础的计算机称为冯诺依曼机。 计算机硬件系统由运算器、存储器、控制器、输入设备、输出"
+}
+</script><meta property="og:title" content="组成原理 | Computer Interview | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computercomponents/" />
+
+
+
+
+<meta property="og:description" content="计算机系统概述 冯诺依曼结构是什么？ 冯提出了存储程序的概念，以该思想为基础的计算机称为冯诺依曼机。 计算机硬件系统由运算器、存储器、控制器、输入设备、输出" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-03-01T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2022-03-01T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/">Computer Interview</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/projectdevelopment/">项目经历</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/softwareengineering/">软件工程</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/englishinterview/">英语面试</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/comprehensiveinterview/">综合问题</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/compilersprinciples/">编译原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computernetwork/">计算机网络</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-2/">数据库原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-1/">数据库原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computercomponents/">组成原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/linuxpoints/">Linux Basic</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">组成原理</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-03-01</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>9分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="计算机系统概述">计算机系统概述</h2>
+<ol>
+<li>
+<p>冯诺依曼结构是什么？</p>
+<p>冯提出了存储程序的概念，以该思想为基础的计算机称为冯诺依曼机。</p>
+<ol>
+<li>计算机硬件系统由运算器、存储器、控制器、输入设备、输出设备五部分构成；</li>
+<li>指令和数据同等地存储在存储器中，并可按地址寻址；</li>
+<li>指令和数据以二进制代码表示；</li>
+<li>指令由操作码和地址码表示；</li>
+<li>指令按顺序存放，按顺序执行；</li>
+<li>以运算器为中心；</li>
+</ol>
+</li>
+<li>
+<p>现代计算机组织结构与冯诺依曼机的区别</p>
+<p>以存储器为中心，IO操作绕过CPU，直接在IO设备和存储器之间完成；</p>
+</li>
+<li>
+<p>什么是MAR，MDR，MMU</p>
+<ol>
+<li>MAR是Memory Address Register，即地址寄存器，用于寻址，位数对应存储单元的位数。</li>
+<li>MDR是Memory Data Register，即数据寄存器，位数等于存储字长。</li>
+<li>MMU是Memory Management Unit，即内存管理单元，是CPU用来管理虚拟存储器、物理存储器的控制线路，同时将虚拟地址映射为物理地址，以及提供硬件机制的内存访问授权。</li>
+</ol>
+<p>特别地，MAR和MDR逻辑上属于存储器，但在现代计算机结构中是存在于CPU中的。同样的还有高速缓存Cache。</p>
+</li>
+<li>
+<p>CPU如何区分数据和指令？</p>
+<p>CPU根据指令周期的不同阶段区分数据和指令。</p>
+</li>
+<li>
+<p>指令执行的过程？</p>
+<ol>
+<li>
+<p>取指令</p>
+<p>根据指令地址（程序计数器PC提供）从存储器中取指令到指令寄存器IR</p>
+</li>
+<li>
+<p>分析指令</p>
+<ol>
+<li>对取出的指令进行译码分析，控制器根据指令的操作码生成相应的控制信号；</li>
+<li>根据寻址方式将指令的地址码送MAR，送地址总线，控制单元CU读存储器，形成操作数的地址，取地址存至MDR；</li>
+</ol>
+</li>
+<li>
+<p>执行指令</p>
+<p>根据操作码生成的相关控制信号和操作数的地址，通过运算器的算术逻辑单元ALU运算完成指令。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>低级语言与高级语言的概念，高级语言的优势？</p>
+<ol>
+<li>低级语言泛指机器语言和汇编语言，机器语言由01组成，直接对应CPU指令与内存位置；汇编语言用字母组合表示01组合，方便记忆；</li>
+<li>高级语言对低级语言进行了封装与抽象，使它更接近我们平常的思维，需要由翻译程序（编译程序或解释程序）翻译成低级语言才能被计算机识别；</li>
+<li>高级语言的优势：表达能力更强，可方便地表示数据的运算和程序的控制结构，能更好的描述算法，容易学习掌握；</li>
+</ol>
+</li>
+</ol>
+<h2 id="数据的表示与运算">数据的表示与运算</h2>
+<p>注：D代表十进制，B代表八进制，H代表十六进制。</p>
+<ol>
+<li>
+<p>二进制如何转为八进制或十六进制？</p>
+<ol>
+<li>对于转八进制，将二进制数分为3位一组，最左边加0补齐，而后对每组二进制数分别用对应的八进制数替代。</li>
+<li>对于转十六进制，将二进制数分为4位一组，同上。</li>
+</ol>
+</li>
+<li>
+<p>任意进制如何转为十进制？</p>
+<p>使用按权展开相加法：将任意进制数的各位数码与它们的权值相乘，再把乘积相加；</p>
+<p>小数点前$n$位则乘以$k^n$，小数点后$n$位则乘以$k^{-n}$</p>
+</li>
+<li>
+<p>十进制如何转为任意进制？</p>
+<ol>
+<li>对整数部分，使用除基取余法，最高位在下，最低位在上；</li>
+<li>对小数部分，使用乘基取整法，最高位在上，最低位在下；</li>
+</ol>
+<p>特别地，不是每个十进制数都可以用二进制表示，但是每个二进制数都可以用十进制表示。</p>
+</li>
+<li>
+<p>字符编码ASCII码</p>
+<p>0-31和127是控制字符。32是空格，48-57是0-9，65-90是A-Z，97-122是a-z。</p>
+</li>
+<li>
+<p>海明码检错与纠错的关系</p>
+<p>两个合法编码对应比特取值不同的比特数称为海明距离。</p>
+<ol>
+<li>
+<p>海明距离为$d+1$的编码能检测出d位差错。
+因为在距离为$d+1$的检验码中，只改变d位的值，不可能产生另一个合法码。如奇偶校验码，海明距离为2，能查出单个错。</p>
+</li>
+<li>
+<p>海明距离为$2d+1$的编码，能纠正d位差错。
+因为此时，如果一个码字有d位发生差错，它仍然距离原来的码字距离最近，可以直接恢复为该码。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>海明码校验原理</p>
+<ol>
+<li>
+<p>设$n$是有效信息位数，$k$为检验信息位数，应满足$n+k \leq 2^k-1$，若要检验两位错，则校验位需要增加一位。</p>
+</li>
+<li>
+<p>校验位$P_i$在海明位号为$2^{i-1}$上，其余各位为信息位。</p>
+</li>
+<li>
+<p>分组形成校验关系：被校验数据位的海明位号等于校验该数据位的各校验位海明位号之和。</p>
+<p>或者，用二进制通配符，海明位号依次能检验$<strong>1，<em>1</em>，1</strong>,&hellip;$位上的数据。</p>
+</li>
+<li>
+<p>校验位的值等于由该校验位所检验的各数据位的值求异或。</p>
+</li>
+<li>
+<p>从高到低，每个校验位和参与形成该校验位的各数据位的异或，形成一列二进制数，若该数各位全0则代表无错。若某位为1说明该数据位有错，直接将该位取反。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>循环冗余校验码CRC</p>
+<ol>
+<li>首先已知信息码$k$位和生成多项式最高次幂为$r$；</li>
+<li>移位，将原信息码向左移动$r$位，低位补0；</li>
+<li>用该数对生成多项式的二进制数进行模2除法（即不借位），产生余数；</li>
+<li>原信息码后附加上余数成为CRC码；</li>
+<li>接收端对CRC码用生成多项式做模2除法，余数为0则无错，若某位为1说明该位出错，将该位取反。</li>
+</ol>
+</li>
+<li>
+<p>原码，补码，反码</p>
+</li>
+<li>
+<p>浮点数标准化的目的？具体规则如何？</p>
+<p>统一进行表示有利于软件在不同环境上的移植。</p>
+<ol>
+<li>采用三元组（数符，阶码，尾数）表示浮点数；</li>
+<li>一共有32位，其中数符1位，阶码8位，尾数23位；</li>
+<li>阶码采用移码表示，实际为阶码减去偏移量$2^7-1$；</li>
+<li>尾数采用原码表示，除非阶码全1或全0，否则尾数默认表示1以后的部分；</li>
+</ol>
+</li>
+<li>
+<p>布尔运算</p>
+<ol>
+<li>与：全真则真，有假则假</li>
+<li>或：有真则真，无真则假</li>
+<li>非：取反</li>
+<li>异或：相同则假，不同则真 或 同0异1</li>
+</ol>
+</li>
+</ol>
+<h2 id="存储系统">存储系统</h2>
+<ol>
+<li>
+<p>DRAM和SRAM分别是什么？</p>
+<ol>
+<li>SRAM是静态随机存储器，存储元是双稳态触发器（六晶体管MOS），信息读出后不需要再生，存取快，集成低，功耗大，用于组成高速缓冲存储器；</li>
+<li>DRAM是动态随机存储器，存储元是一个晶体管，利用存储元电路中栅极电容上的电荷存储信息，电荷只能维持2ms，需要不断地刷新。密度更高，采用地址复用技术，容易集成，容量大，功耗低，但是存取比SRAM慢，用于组成大容量主存系统；</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>SRAM</th>
+<th>DRAM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>存储信息</td>
+<td>双稳态<strong>触发器</strong></td>
+<td>栅极<strong>电容</strong></td>
+</tr>
+<tr>
+<td>破坏性读出</td>
+<td>否</td>
+<td>是</td>
+</tr>
+<tr>
+<td>刷新或再生</td>
+<td>否</td>
+<td>是</td>
+</tr>
+<tr>
+<td>送行列地址</td>
+<td>同时送</td>
+<td>分两次送</td>
+</tr>
+<tr>
+<td>运行速度</td>
+<td>快</td>
+<td>慢</td>
+</tr>
+<tr>
+<td>集成度</td>
+<td>低</td>
+<td>高</td>
+</tr>
+<tr>
+<td>功耗</td>
+<td>大</td>
+<td>小</td>
+</tr>
+<tr>
+<td>成本</td>
+<td>高</td>
+<td>低</td>
+</tr>
+<tr>
+<td>用途</td>
+<td>高速缓冲存储</td>
+<td>主存内存</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>DRAM的三种刷新方式是什么？</p>
+<p>集中刷新，分散刷新，异步刷新；</p>
+<ol>
+<li>集中刷新：在一个刷新时间内利用固定的刷新时间对存储器所有行集中进行逐一再生，此时称为死时间，无法读写；</li>
+<li>分散刷新：对每行的刷新分散到各个工作周期中，存储器工作周期因此分成两部分，前半部分用于正常读写或保持，后半部分用于刷新某一行；</li>
+<li>异步刷新：异步刷新是前两种方法的结合，刷新周期除以行数，得到两次刷新的间隔t，在此间隔时间内对各行依次刷新一遍；</li>
+</ol>
+</li>
+<li>
+<p>Cache和主存的映射方式有哪些？</p>
+<ol>
+<li>
+<p>直接映射</p>
+<p>主存中的每一个块只能装入Cache的唯一位置，冲突时原来的块会被无条件替换出去。
+</p>
+$$
+      j=i \ mod \ 2^c
+      $$
+<p>
+其中，$j$是Cache的块号，$i$是主存的块号，$2^c$是Cache中的总块数。</p>
+</li>
+<li>
+<p>全相联映射</p>
+<p>主存中的每一块可以装入Cache中的任何位置。每行具有标记，用于指出该行取自主存的哪一块。
+</p>
+$$
+      j=i\ mod \ 1
+      $$
+</li>
+<li>
+<p>组相联映射</p>
+<p>Cache空间分为大小相同的组，主存上的一个块可以装入一个组内的任意位置。即组内直接映射，组外全相联映射。
+</p>
+$$
+      j=i\ mod \ Q
+      $$
+<p>
+其中$Q \in[1,Cache]$，Cache中的块从0开始计算。</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="指令系统">指令系统</h2>
+<ol>
+<li>
+<p>CISC和RISC是什么？区别是什么？</p>
+<ol>
+<li>CISC是复杂指令系统计算机，如X86。主要特点：指令系统复杂庞大，指令长度不定，访存指令无限制，各种指令使用频率相差很大，执行时间相差也很大，控制器采用微程序控制，难以优化编译生成高效的目标代码程序；</li>
+<li>RISC是精简指令计算机，如ARM，MIPS。主要特点：指令系统简单，复杂指令由简单指令组合实现，指令长度固定，仅Load/Store指令访存，CPU中通用寄存器数量相当多，大部分指令在一个周期完成，以硬布线为主，特别重视编译优化工作，减少程序执行时间；</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>CISC</th>
+<th>RISC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>指令系统</td>
+<td>复杂</td>
+<td>简单</td>
+</tr>
+<tr>
+<td>指令数目</td>
+<td>多</td>
+<td>少</td>
+</tr>
+<tr>
+<td>指令字长</td>
+<td>不定长</td>
+<td>定长</td>
+</tr>
+<tr>
+<td>可访存指令</td>
+<td>无限制</td>
+<td>仅Load/Store指令</td>
+</tr>
+<tr>
+<td>指令执行时间</td>
+<td>相差较大</td>
+<td>多在一个周期</td>
+</tr>
+<tr>
+<td>指令使用频度</td>
+<td>相差较大</td>
+<td>常用</td>
+</tr>
+<tr>
+<td>通用寄存器</td>
+<td>少</td>
+<td>多</td>
+</tr>
+<tr>
+<td>目标代码</td>
+<td>难以优化</td>
+<td>优化、高效</td>
+</tr>
+<tr>
+<td>控制方式</td>
+<td>微程序</td>
+<td>组合逻辑、硬布线</td>
+</tr>
+<tr>
+<td>指令流水线</td>
+<td>可以实现</td>
+<td>必须实现</td>
+</tr>
+<tr>
+<td>兼容性</td>
+<td>可兼容</td>
+<td>难以兼容</td>
+</tr>
+<tr>
+<td>运算速度</td>
+<td>更慢</td>
+<td>更快</td>
+</tr>
+<tr>
+<td>成本</td>
+<td>更高</td>
+<td>更低</td>
+</tr>
+<tr>
+<td>可靠性</td>
+<td>更低</td>
+<td>更高</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>XXX</p>
+</li>
+</ol>
+<h2 id="中央处理器">中央处理器</h2>
+<ol>
+<li>
+<p>指令流水线有哪些冲突？如何克服它们？</p>
+<p>有结构相关、数据相关、控制相关三种冲突；</p>
+<ol>
+<li>
+<p>结构相关（资源相关）：流水线中多条指令在同一时钟周期内争用同一功能部件的现象，即因硬件资源满足不了指令重叠执行的要求而发生的冲突；</p>
+<p>解决办法：令流水线在完成前一条指令对数据的存储器访问时访问暂停取后一条指令；</p>
+</li>
+<li>
+<p>数据相关：如某程序下一条指令会用到上一条指令计算的结果，称这两条指令为数据冒险；当各指令重叠操作可能改变对操作数的读写访问顺序从而导致数据相关冲突；</p>
+<p>解决办法：</p>
+<ol>
+<li>在前一条指令遇到数据相关时停顿后一条指令的执行；</li>
+<li>设置相关专用通路，即数据旁路技术；</li>
+<li>用编译器进行编译优化，调整指令顺序；</li>
+</ol>
+</li>
+<li>
+<p>控制相关：执行转移、调用或返回等指令的时候改变程序计数器的值，从而造成断流；</p>
+<p>解决办法：</p>
+<ol>
+<li>对转移指令进行分支预测，尽早生成转移目标地址；</li>
+<li>预取转移成功和不成功两个控制流方向上的目标指令；</li>
+<li>加快和提前形成条件码；</li>
+<li>提高转移方向的猜准率；</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="总线">总线</h2>
+<ol>
+<li>
+<p>数据线，控制信号线，地址线的数目分别有什么作用？</p>
+<p>数据线的总数决定计算机的存储字长，地址线的数目决定计算机的存储单元个数，控制线的数目决定计算机能够发出信号的种类数目；</p>
+</li>
+<li>
+<p>总线带宽的决定因素是什么？</p>
+<p>总线带宽(Bps)=总线工作频率(Hz)×总线宽度(B)</p>
+<p>总线带宽(bps)=总线工作频率(Hz)×总线宽度(bit)</p>
+</li>
+</ol>
+<h2 id="输入输出系统">输入输出系统</h2>
+<ol>
+<li>
+<p>什么是中断？中断有什么作用？</p>
+<p>中断是指在计算机执行现行程序的过程中，出现某些急需处理的异常情况或特殊请求，CPU暂时中止现行程序，转而对异常情况或特殊请求进行处理。</p>
+<p>中断的作用：</p>
+<ol>
+<li>CPU与IO设备并行工作；</li>
+<li>处理硬件故障和软件错误；</li>
+<li>实现人机交互，用户干预；</li>
+<li>实现多道程序、分时操作；</li>
+<li>实时处理系统需要中断才能快速响应；</li>
+<li>应用程序和操作系统之间的切换需要（管态与目态）；</li>
+<li>多处理器系统中各处理器之间协作需要；</li>
+</ol>
+</li>
+<li>
+<p>中断处理流程是怎样的？</p>
+<div class="mermaid">
+graph TD
+	A((1.关中断))-->B[2.保存断点]
+	B-->C[3.引出中断服务程序]
+	C-->D[4.保存现场和屏蔽字]
+	D-->E((5.开中断))
+	E-->F[6.执行中断服务程序]
+	F-->G((7.关中断))
+	G-->H[8.恢复现场和屏蔽字]
+	H-->I((9.开中断))
+    I-->J[中断返回]
+</div>
+<p>其中，1-3由中断隐指令完成，4-9由中断服务程序完成。</p>
+</li>
+<li>
+<p>中断控制器的功能</p>
+<ol>
+<li>中断源的识别</li>
+<li>中断源的屏蔽</li>
+<li>中断优先级处理</li>
+</ol>
+</li>
+<li>
+<p>什么是单中断，什么是多重中断？</p>
+<p>在CPU执行中断服务程序的过程中，出现了新的中断请求，此时：</p>
+<ol>
+<li>对新的中断请求不予响应，则称为单中断；</li>
+<li>转而处理新的中断请求，则称为多重中断；</li>
+</ol>
+<p>两者的区别在于“开中断”的时间不同，单中断的“开中断”时间在最后的中断返回之前，而多重中断的“开中断&quot;时间在“保存现场与屏蔽字”之后。</p>
+</li>
+<li>
+<p>XXX</p>
+</li>
+</ol>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-1/" class="block">数据库原理</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/linuxpoints/" class="block">Linux Basic</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#计算机系统概述">计算机系统概述</a></li>
+    <li><a href="#数据的表示与运算">数据的表示与运算</a></li>
+    <li><a href="#存储系统">存储系统</a></li>
+    <li><a href="#指令系统">指令系统</a></li>
+    <li><a href="#中央处理器">中央处理器</a></li>
+    <li><a href="#总线">总线</a></li>
+    <li><a href="#输入输出系统">输入输出系统</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

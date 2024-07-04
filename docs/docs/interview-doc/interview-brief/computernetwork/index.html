@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>计算机网络 | Computer Interview | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="概述 21世纪的三大特征？三类网络是哪三类？ 数字化、信息化、网络化；电信网络、有线电视网络、计算机网络 计算机网络经历了哪些发展阶段？ 一共有三大阶段，分别">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Computer Interview",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Computer Interview",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"计算机网络",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computernetwork/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computernetwork/"
+    },
+    "headline": "计算机网络 | Computer Interview | 悦翎轩","datePublished": "2022-03-01T00:00:00+00:00",
+    "dateModified": "2022-03-01T00:00:00+00:00",
+    "wordCount":  5732 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "概述 21世纪的三大特征？三类网络是哪三类？ 数字化、信息化、网络化；电信网络、有线电视网络、计算机网络 计算机网络经历了哪些发展阶段？ 一共有三大阶段，分别"
+}
+</script><meta property="og:title" content="计算机网络 | Computer Interview | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computernetwork/" />
+
+
+
+
+<meta property="og:description" content="概述 21世纪的三大特征？三类网络是哪三类？ 数字化、信息化、网络化；电信网络、有线电视网络、计算机网络 计算机网络经历了哪些发展阶段？ 一共有三大阶段，分别" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-03-01T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2022-03-01T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/">Computer Interview</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/projectdevelopment/">项目经历</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/softwareengineering/">软件工程</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/englishinterview/">英语面试</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/comprehensiveinterview/">综合问题</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/compilersprinciples/">编译原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computernetwork/">计算机网络</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-2/">数据库原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-1/">数据库原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computercomponents/">组成原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/linuxpoints/">Linux Basic</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">计算机网络</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-03-01</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>12分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="概述">概述</h2>
+<ol>
+<li>
+<p>21世纪的三大特征？三类网络是哪三类？</p>
+<p>数字化、信息化、网络化；电信网络、有线电视网络、计算机网络</p>
+</li>
+<li>
+<p>计算机网络经历了哪些发展阶段？</p>
+<p>一共有三大阶段，分别是：</p>
+<ol>
+<li>单个网络向互联网发展；</li>
+<li>建成三级结构的互联网；</li>
+<li>形成多层次ISP结构的互联网；</li>
+</ol>
+</li>
+<li>
+<p>互联网最重要的两个特点？</p>
+<p><strong>连通性</strong>和<strong>共享</strong>。连通性是交换信息，共享是资源共享。</p>
+<ol>
+<li>硬件资源共享</li>
+<li>软件资源共享</li>
+<li>用户间信息交换</li>
+<li>分布式处理</li>
+</ol>
+</li>
+<li>
+<p>互联网的组成？</p>
+<p>分为边缘部分和核心部分。</p>
+<ol>
+<li>边缘部分由连接在互联网上的主机构成，由用户直接使用，功能是通信和资源共享；</li>
+<li>核心部分由网络和路由器构成，为边缘部分提供服务，功能是连通性和交换。</li>
+</ol>
+</li>
+<li>
+<p>网络边缘部分通信方式有哪些？</p>
+<p>客户-服务器 C/S 方式和对等 P2P 方式。</p>
+<ol>
+<li>
+<p>B/S</p>
+<p>本质上是 C/S 架构，对用户来说，可以通过固定的客户端（浏览器）接入互联网</p>
+<ol>
+<li>优点：接入方式统一，具有一定的安全性；</li>
+<li>缺点：浏览器在部分系统上的特定操作无法执行；</li>
+<li>应用：搜索引擎；</li>
+</ol>
+</li>
+<li>
+<p>C/S</p>
+<p>客户端和服务端的模式；客户端向服务器发送请求，服务端根据请求向客户端返回数据；</p>
+<ol>
+<li>优点：可以根据需要定制客户端</li>
+<li>缺点：需要安装客户端才能启动</li>
+<li>应用：QQ、微信</li>
+</ol>
+</li>
+<li>
+<p>P2P</p>
+<p>网络之间结点采取对等方式进行通讯，无服务器端或服务端的概念。</p>
+<ol>
+<li>优点：通讯过程不经过服务器，而是直接与其他主机相连；</li>
+<li>缺点：安全性受到影响；消耗更多的用户机器资源；</li>
+<li>应用：P2P下载</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>网络核心部分通信方式是什么？</p>
+<p>分组交换。（路由器是实现分组交换的关键构件，任务是转发收到的分组）</p>
+</li>
+<li>
+<p>实体、协议、服务、接口分别是什么？</p>
+<p>实体表示任何可发送或接收信息的硬件或软件进程。</p>
+<p>协议是控制两个对等实体或多个实体进行通信的规则的集合。</p>
+<p>在协议的控制下，两个对等实体间的通信使得本层能够向上一层提供服务。要实现本层协议，还需要使用下面一层所提供的服务。</p>
+<p>接口是同一结点相邻两层之间交换信息的连接点。</p>
+<p>协议是水平的，服务是垂直的。</p>
+</li>
+<li>
+<p>计算机网络提供的服务类型</p>
+<ol>
+<li>
+<p>面向连接服务与无连接服务</p>
+<p>TCP是面向连接的，IP和UDP是无连接的；</p>
+</li>
+<li>
+<p>可靠服务与不可靠服务</p>
+<p>可靠指的是网络具有纠错、检错、应答机制；</p>
+<p>不可靠指的是尽最大努力交付；</p>
+</li>
+<li>
+<p>有应答服务与无应答服务</p>
+<p>接收方收到数据后给出应答，包括接收应答与否定应答，例如TCP协议；</p>
+<p>无应答服务则在接收数据后不给出应答。例如WWW服务。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>网络协议是什么？具有哪些核心要素？各起到什么作用？</p>
+<p>网络中进行数据交换而建立的规则称为协议。</p>
+<ol>
+<li>语法。数据和控制信息的结构与格式。</li>
+<li>语义。发出何种控制信息、完成何种动作以及如何响应。</li>
+<li>同步。事件发生顺序的详细说明。</li>
+</ol>
+</li>
+<li>
+<p>信息数据交换方式有哪些？</p>
+<p>电路交换和分组交换（包括报文交换）。</p>
+<ol>
+<li>
+<p>电路交换是面向连接的</p>
+<p>通信前建立一条双方专用的物理通信路径，通信结束后释放。</p>
+</li>
+<li>
+<p>分组交换是无连接的</p>
+<p>可靠性高，利用率高，无连接（无建立时延），多目标服务</p>
+<ol>
+<li>
+<p>报文交换使用存储转发方式</p>
+</li>
+<li>
+<p>分组交换在报文交换的方式上限制了每次传送的数据块大小的上限</p>
+<p>额外具有简化了存储管理，减少了出错概率和重发数据量</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>东西蓝军和白军问题</p>
+<p>东边先发送计划，及要求确认。西边收到电文并回发同意。但是西边现在还要等待东边蓝军发送对确认的确认，而东边蓝军发送后还需要等待对这个确认的确认的确认，如此反复，两边都无法确定对方是否一定收到了电文，因此无法百分之百保证双方会共同进攻。</p>
+</li>
+<li>
+<p>点到点通信与端到端通信的区别（见运输层/传输层题2）</p>
+<p>从本质上说,由物理层、数据链路层和<strong>网络层</strong>组成的通信子网为网络环境中的主机提供<strong>点到点</strong>的服务, 而<strong>传输层</strong>为网络中的主机提供<strong>端到端</strong>的通信。</p>
+<ol>
+<li>
+<p>点到点通信</p>
+<p>直接相连的结点之间的通信称为点到点通信,</p>
+<p>它只提供一台机器到另一台机器之间的通信，不涉及程序或进程的概念。</p>
+<p>点到点通信并不能保证数据传输的可靠性,也不能说明源主机与目的主机之间是哪两个进程在通信,这些工作都是由传输层来完成的。</p>
+</li>
+<li>
+<p>端到端通信</p>
+<p>建立在点到点通信的基础上,它是由一段段的点到点通信信道构成的,是比点到点通信更高一级的通信方式，以完成<strong>应用程序(进程)</strong> 之间的通信。</p>
+<p>”端” 是指用户程序的端口，端口号标识了应用层中不同的进程。</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="物理层">物理层</h2>
+<ol>
+<li>
+<p>物理层特性</p>
+<ol>
+<li>机械特性 主要定义物理连接的边界点</li>
+<li>电气特性 传输二进制位时线路上信号的电压、传输速率、距离等限制</li>
+<li>功能特性 指明某一电平具体表示的意义</li>
+<li>过程特性 主要与事件时序等相关</li>
+</ol>
+</li>
+<li>
+<p><strong>基带</strong>和<strong>频带</strong>的区别</p>
+<ol>
+<li>
+<p>基带信号</p>
+<p><strong>基带信号</strong>即基本频带信号（低频），是来自信源的信号，既包括数字信号也包括模拟信号；</p>
+</li>
+<li>
+<p>基带传输</p>
+<p>将基带信号送到数字信道上传输称为<strong>基带传输</strong>；<u>距离近，速率快</u>；</p>
+</li>
+<li>
+<p>带通信号</p>
+<p>将基带信号进行载波调制后（可能是频分复用模拟信号），信号的频率范围被搬移到较高的频段；</p>
+</li>
+<li>
+<p>带通传输/宽带传输</p>
+<p>将带通信号/宽带信号放到模拟信道传输称为带通传输（或宽带传输）；<u>距离远，速率慢</u>；</p>
+</li>
+</ol>
+</li>
+<li>
+<p>比特和波特的区别？</p>
+<p>波特是设备每秒钟发生信号变化的度量，它代表的是信号的变化。1波特表示数字通信系统每秒传输1个码元。码元是指用一个固定时长的信号波形表示的<strong>k进制数字</strong>。</p>
+<p>比特是信息量的单位。</p>
+<p>换算关系为$1\ Baud=log_2k\ bit$</p>
+</li>
+<li>
+<p>奈奎斯特定理（解决码间串扰）</p>
+<p>理想低通，没有噪声，带宽有限的信道中，</p>
+<ol>
+<li>极限码元传输率为$2W\ Baud$；</li>
+<li>极限数据传输速率为$2Wlog_2k\ bit$</li>
+</ol>
+<p>其中W是带宽，<strong>k代表码元离散电平的数目，或不同码元的个数，或码元代表k进制数</strong></p>
+</li>
+<li>
+<p>香农定理（解决噪声影响）</p>
+<p>信道的极限数据传输率为$Wlog_2(1+S/N)$</p>
+<p>式中W为信道的带宽，S为信道所输信号的平均功率，N为高斯噪声功率。</p>
+</li>
+<li>
+<p>采样定理</p>
+<p>采样频率至少需要大于等于信号最高频率的2倍，才能保证完整保留原始模拟信号的信息。</p>
+</li>
+<li>
+<p>信道复用技术</p>
+<ol>
+<li>
+<p>频分复用</p>
+<p>多路基带信号调制到不同频率载波上，叠加形成一个复合信号；</p>
+</li>
+<li>
+<p>时分复用</p>
+<p>物理信道分为N个时间片，轮流分配给各个信号使用；</p>
+</li>
+<li>
+<p>波分复用</p>
+<p>光的频分复用，在光纤中传输多种不同波长（频率）的光信号</p>
+</li>
+<li>
+<p>码分复用</p>
+<p>既共享信道的频率，又共享信道的时间。</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="数据链路层">数据链路层</h2>
+<ol>
+<li>
+<p>数据链路层的三个基本问题？（<strong>待完善</strong>）</p>
+<p>封装成帧，透明传输和差错检测。</p>
+</li>
+<li>
+<p>什么是可靠传输？（<strong>待完善</strong>）</p>
+</li>
+<li>
+<p>点对点和端到端工作在哪层？是什么工作机制？</p>
+<p>传输层用来提供端到端的服务，两个主机上的进程进行通信，不需要关心报文的中间的转发，看上去就像两端进程直接在通信。</p>
+<p>数据链路层和网络层则提供点到点的通信；其中数据链路层使用点对点协议PPP，而网络层则考虑的是报文的存储转发，具体来说是从一台主机到另外一台主机。</p>
+</li>
+<li>
+<p>局域网有哪些？</p>
+<p>以太网是最普遍的有线局域网。逻辑拓扑是总线型，物理拓扑是星型。</p>
+</li>
+<li>
+<p>局域网的介质访问控制方式是？</p>
+<ol>
+<li>CSMA/CD协议</li>
+<li>令牌总线</li>
+<li>令牌环</li>
+</ol>
+<p>其中前两种用于总线型局域网，如以太网的介质访问控制方式是CSMA/CD协议。</p>
+</li>
+</ol>
+<h2 id="网络层">网络层</h2>
+<ol>
+<li>
+<p>互联网网络层的设计思路和传统的电信网络有何不同？</p>
+<p>电信网是面向连接的，而网络层向上只提供简单灵活、无连接、尽最大努力交付的数据报服务。</p>
+<p>优点：使网络中路由器简单，价格低廉。</p>
+<p>如果需要<strong>可靠通信</strong>，由网络的主机中的<strong>运输层</strong>负责。</p>
+</li>
+<li>
+<p>什么是虚拟互连网络？</p>
+<p>使用相同的网际协议（IP协议）参与互连的网络，屏蔽各种物理网络的异构性使这些性能各异的网络看起来好像是一个统一的网络，称之为虚拟互连网络。</p>
+</li>
+<li>
+<p>网络互连的中间设备/中继系统有哪些？</p>
+<p>物理层使用转发器；</p>
+<p>数据链路层使用网桥或桥接器；</p>
+<p>网络层使用路由器；</p>
+<p>网络层以上使用网关；</p>
+</li>
+<li>
+<p>IP地址编址的阶段？</p>
+<ol>
+<li>分类的IP地址；</li>
+<li>子网的划分；</li>
+<li>构成超网；</li>
+</ol>
+</li>
+<li>
+<p>分类的IP地址具有哪些特点？</p>
+<ol>
+<li>IP地址管理时只分配网络号，路由器仅<u>根据网络号</u>转发分组；</li>
+<li>当主机连接到两个不同的网络中时，必须具有两个相应的IP地址，因此<u>一个路由器至少应该有两个以上不同的IP地址</u>。</li>
+<li>用转发器或网桥连接起来的若干局域网仍然为一个网络；</li>
+<li>所有分配到网络号的网络都是平等的。</li>
+</ol>
+</li>
+<li>
+<p>请简述子网划分？</p>
+<p>子网划分的原理是从主机号借用若干比特作为子网号；</p>
+</li>
+<li>
+<p>请简述子网掩码？</p>
+<p>子网掩码的原理是使用一个与IP地址相对应的、长32bit的二进制串。</p>
+<p>通过子网掩码和IP地址进行按位与运算，可以得到子网地址。</p>
+</li>
+<li>
+<p>请简述无分类域间路由选择（CIDR）？</p>
+<p>CIDR是使用网络前缀来消除传统ABC类网络划分及实现超网构造的方法。</p>
+<p>子网掩码与CIDR的区别就是子网掩码在使用传统的ABC类地址而CIDR消除了这种传统的网络划分。</p>
+<p>路由选择时，使用最长前缀匹配方法。</p>
+</li>
+<li>
+<p>如果某些线路上未分配IP地址，是否属于网络？</p>
+<p>可能属于，如两个路由器直接相连时，可以不分配IP地址，这种特殊网络称之为无名网络/无编号网络。</p>
+</li>
+<li>
+<p>IP地址与硬件地址的区别？</p>
+<p>在网络层及以上各层使用IP地址（逻辑地址）；</p>
+<p>在物理层和数据链路层使用硬件地址（物理地址）；</p>
+<pre><code>  1. 在网络层看到的是IP数据报，源IP地址和目的IP地址不变；
+  2. 路由器转发时根据目的IP进行路由选择，不改变目的IP地址；
+  3. IP数据报交给数据链路层封装成MAC帧，MAC帧在传送时使用硬件地址，上层不可见；
+  4. IP层忽略下层的实现细节，使用统一的、抽象的IP地址研究主机之间或与路由器的通信。
+</code></pre>
+</li>
+<li>
+<p>请简述ARP协议？</p>
+<p>ARP协议用于将IP地址转化为硬件地址。</p>
+<ol>
+<li>使用ARP高速缓存（特别地，高速缓存有生存时间）；</li>
+<li>ARP进行在局域网上广播ARP请求分组（广播）；</li>
+<li>主机B的IP地址与ARP查询的一致，收下ARP请求分组，并回发ARP响应分组（单播）；</li>
+<li>主机A收到响应分组后在其高速缓存中写入；</li>
+</ol>
+</li>
+<li>
+<p>为什么不直接使用硬件地址？</p>
+<p>存在很多异构网络，它们使用不同的硬件地址；若要使得它们能够互相通信就必须进行非常复杂的硬件地址转换工作，由用户主机来完成这项工作几乎不可能。</p>
+</li>
+<li>
+<p>解决IP地址耗尽的问题的方法</p>
+<ol>
+<li>使用无分类域间路由选择 CIDR 方法</li>
+<li>使用网络地址转化 NAT 方法</li>
+<li>使用IPv6地址</li>
+</ol>
+</li>
+<li>
+<p>IPv6地址</p>
+<ol>
+<li>单播（点对点通信）</li>
+<li>多播（类似广播通信）</li>
+<li>任播（目的站是一组计算机，交付时只交最近的一台）</li>
+</ol>
+</li>
+<li>
+<p>请简述ICMP协议？</p>
+<p>ICMP是网际控制报文协议，目的是更有效的转发IP数据报，提高交付成功的机会，使用ICMP协议来让主机或路由器报告差错和异常等情况。</p>
+<p>应用：分组网间探测ping命令是用来探测主机到主机之间是否可通信。ping命令是使用 IP 和网络控制信息协议 (ICMP)，它发送icmp回送请求，收到回答报文。</p>
+<p>ICMP协议规定：目的主机必须返回ICMP回送应答消息给源主机。如果源主机在一定时间内收到应答，则认为主机可达。</p>
+</li>
+<li>
+<p>请简述DHCP协议？</p>
+<p>动态主机配置协议常用于给主机动态地分配IP地址，它是应用层协议，基于UDP。</p>
+<p>DHCP使用客户/服务器方式，分为以下几步：</p>
+<ol>
+<li>主机向DHCP服务器广播DHCP发现报文；</li>
+<li>DHCP服务器向主机广播DHCP提供报文；</li>
+<li>如果接收DHCP服务器提供的相关参数，广播DHCP请求报文；</li>
+<li>DHCP服务器广播DHCP确认消息，分配IP地址给主机；</li>
+</ol>
+</li>
+<li>
+<p>路由选择协议</p>
+<p>分为静态路由选择策略（非自适应路由选择）和动态路由选择策略（自适应路由选择）。</p>
+<p>路由选择协议划分为：内部网关协议 IGP 和外部网关协议 EGP 。其中自治系统间的路由选择叫域间路由选择，自治系统内部的路由选择叫域内路由选择。</p>
+</li>
+<li>
+<p>IGP</p>
+<ol>
+<li>RIP</li>
+<li>OSPF</li>
+</ol>
+</li>
+<li>
+<p>EGP</p>
+</li>
+</ol>
+<h2 id="运输层传输层">运输层/传输层</h2>
+<ol>
+<li>
+<p>运输层的作用是什么？</p>
+<p>运输层向它上面的应用层提供通信服务，对上层来说，运输层提供应用进程间的逻辑通信。</p>
+</li>
+<li>
+<p>运输层和网络层的区别？</p>
+<p>由物理层、数据链路层和网络层组成的通信子网为主机之间提供<strong>点对点</strong>的<strong>逻辑通信</strong>，运输层/传输层为应用进程之间提供<strong>端到端</strong>的<strong>逻辑通信</strong>；</p>
+<p>网络层提供简单灵活、无连接、尽最大努力交付的服务；而运输层提供面向连接 TCP 或无连接 UDP 的运输协议，并对收到的报文进行差错检测。</p>
+</li>
+<li>
+<p>TCP和UDP的全称是什么？TCP/IP协议是什么？</p>
+<p>TCP Transmission Control Protocol；UDP User Datagram Protocol</p>
+<p>TCP/IP协议叫做传输控制/网际协议族。</p>
+<p>协议分成4层，自上而下分别是应用层、运输层、网络层和网络接口层。</p>
+<p>应用层：HTTP，Telnet，FTP，DNS</p>
+<p>运输层：UDP，TCP</p>
+<p>网络层：IP，ICMP，IGMP</p>
+<p>网络接口层：ARP</p>
+</li>
+<li>
+<p>比较TCP与UDP的区别和联系？</p>
+<ol>
+<li>
+<p>联系：</p>
+<p>TCP与UDP都是传输层的协议，且都用端口号标识数据所达的进程。</p>
+</li>
+<li>
+<p>区别：</p>
+<p>TCP提供的是面向连接服务，UDP提供的是无连接服务；</p>
+<p>TCP提供可靠交付，UDP提供不可靠交付，且无确认机制；</p>
+<p>TCP保证数据顺序，UDP不保证；</p>
+<p>TCP占用资源较多，具有流量控制和拥塞控制，可用于可靠要求高的场合；UDP占用资源较少，主要用于即时强的场合；</p>
+<p>TCP是基于字节流模式，UDP是基于数据报（报文）模式；</p>
+<p>TCP是点对点的，UDP则提供一对一，一对多，多对一和多对多的交互通信；</p>
+</li>
+</ol>
+</li>
+<li>
+<p>TCP运输连接包括哪些步骤？</p>
+<p>**连接建立、数据传送、连接释放。**其中建立连接又称为TCP三报文握手，断开连接称为TCP四报文挥手。</p>
+</li>
+<li>
+<p>TCP三次握手的过程</p>
+<p>具体步骤如下</p>
+<ol>
+<li>
+<p>假设A是客户，B是服务器，A主动打开连接，B被动打开连接；</p>
+</li>
+<li>
+<p>第一次握手：</p>
+<p>A向B发出连接请求报文段，SYN=1，初始序号seq=x；</p>
+<p>A进入SYN_SENT状态（同步已发送）；</p>
+</li>
+<li>
+<p>第二次握手：</p>
+<p>B收到A的连接请求报文段，同意建立连接，向A发送确认报文段；</p>
+<p>确认报文段中SYN=1，ACK=1，初始序号seq=y，确认号ack=x+1；</p>
+<p>B进入SYN-RCVD状态（同步已收到）；</p>
+</li>
+<li>
+<p>第三次握手：</p>
+<p>A收到B的确认后，检查ACK是否为1，ack是否正确，向B发送确认报文段；</p>
+<p>确认报文段中ACK=1，seq=x+1，ack=y+1；</p>
+<p>特别地，ACK报文段若不携带数据则不消耗序号，下一数据报文段序号仍为seq=x+1；</p>
+<p>A进入ESTABLISHED状态（已建立连接）；</p>
+<p>B收到A的确认后也进入ESTABLISHED状态。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>为什么需要A最后再发送一次确认？</p>
+<p>为了防止已失效的连接请求报文段突然传到了B，从而产生错误。</p>
+<p>比如A想向B建立连接，发送了一次连接请求，未收到确认，于是重传了请求，并建立了连接，数据传输完毕后释放了连接。然而第一个连接请求并没有丢失，而是长时间滞留在网络结点中，并在稍后连接释放后到达了B。B误以为是重新要求连接，因而回发确认。此时如果A并没有发出请求，就不会理睬B的确认。B以为连接已经建立，造成资源浪费。</p>
+</li>
+<li>
+<p>你觉得TCP三次握手是否有缺陷？</p>
+<p>当A向B发送请求报文段成功，B向A发送确认报文段成功，A向B发送确认报文段而B并未收到时，A会进入ESTABLISHED状态，而B由于收不到A的确认，只会恢复到LISTEN状态。</p>
+</li>
+<li>
+<p>数据传送（<strong>待完善</strong>）</p>
+<ol>
+<li>超时重传</li>
+<li>快速重传</li>
+<li>流量控制</li>
+<li>拥塞控制</li>
+</ol>
+</li>
+<li>
+<p>TCP如何进行连接释放？TCP四次挥手的过程？</p>
+</li>
+<li></li>
+<li>
+<p>HTTPS和HTTP</p>
+</li>
+</ol>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/compilersprinciples/" class="block">编译原理</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-2/" class="block">数据库原理</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概述">概述</a></li>
+    <li><a href="#物理层">物理层</a></li>
+    <li><a href="#数据链路层">数据链路层</a></li>
+    <li><a href="#网络层">网络层</a></li>
+    <li><a href="#运输层传输层">运输层/传输层</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

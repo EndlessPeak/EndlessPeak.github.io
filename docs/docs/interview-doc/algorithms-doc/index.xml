@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Algorithms on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/</link>
+    <description>Recent content in Algorithms on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Mon, 17 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Merge Sorted Array</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/1-merge-sorted-array/</link>
+      <pubDate>Mon, 10 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/1-merge-sorted-array/</guid>
+      <description>Question 题目链接: Merge Sorted Array 给你两个按 非递减顺序 排列的整数数组 nums1 和 nums2=，另有两个整数 =m 和 n ，分别表示 nums1 和 nums2 中的元素数目。 请你 合并 nums2 到 nums1 中，使合并后的数组</description>
+    </item>
+    <item>
+      <title>Remove Element</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/2-remove-elements/</link>
+      <pubDate>Mon, 10 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/2-remove-elements/</guid>
+      <description>Remove Element 给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素。元素的顺序可能发生改变。然后返回 nums 中与 val 不同的元素的数量。 假设 nums 中不等于 val 的元素</description>
+    </item>
+    <item>
+      <title>MeiTuan Interview 1</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/3-meituan-interview/</link>
+      <pubDate>Mon, 17 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/3-meituan-interview/</guid>
+      <description>平衡矩阵 小美拿到了一个 $n∗n$ 的矩阵，其中每个元素是 0 或者 1。小美认为一个矩形区域是完美的，当且仅当该区域内 0 的数量恰好等于 1 的数量。 现在，小美希望</description>
+    </item>
+    <item>
+      <title>Sqrt(x)</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/sqrtx/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/sqrtx/</guid>
+      <description>Question Implement int sqrt(int x). Compute and return the square root of x. Answer 二分查找 对于一个非负数n，它的平方根不会大于$\frac{n}{2}+1$。在$[0, \frac{n}{2}+1]$这个范</description>
+    </item>
+    <item>
+      <title>字符串公共元素问题</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/string-common-element/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/string-common-element/</guid>
+      <description>Question 1 给定两个字符串，找出他们的相同元素。 注：可以把字符串换成数组。 Answer 1 双循环遍历法 算法思想： 遍历字符串A； 对A的每个元素，遍历字符串B； 遇到相同元素就</description>
+    </item>
+  </channel>
+</rss>

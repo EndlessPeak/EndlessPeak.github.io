@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Computer Interview | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本系列文章记录在计算机面试过程中涉及到的知识内容。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Computer Interview",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/"}]
+}
+</script>
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context":"https://schema.org",
+    "@type":"ItemList",
+    "itemListElement":[{
+            "@type":"ListItem",
+            "position":  1 ,
+            "name": "Company Seek",
+            "description": "记录简历投递的相关情况。",
+            "url": "https://endlesspeak.github.io/docs/docs/interview-doc/company/"
+        },{
+            "@type":"ListItem",
+            "position":  2 ,
+            "name": "Algorithms",
+            "description": "本系列文章记录算法学习方面的笔记。",
+            "url": "https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/"
+        },{
+            "@type":"ListItem",
+            "position":  3 ,
+            "name": "Data Structure",
+            "description": "Eureka is a elegant and powerful theme for Hugo.",
+            "url": "https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/"
+        },{
+            "@type":"ListItem",
+            "position":  4 ,
+            "name": "Computer Interview",
+            "description": "本系列文章是计算机面试过程中涉及到的杂项知识内容简单提要。",
+            "url": "https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/"
+        },{
+            "@type":"ListItem",
+            "position":  5 ,
+            "name": "Operating System",
+            "description": "本系列文章记录操作系统方面的内容。",
+            "url": "https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/"
+        }
+    ]
+}
+</script><meta property="og:title" content="Computer Interview | 悦翎轩" />
+<meta property="og:type" content="website" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/interview-doc/" />
+
+
+
+
+
+<meta property="og:description" content="Eureka is a elegant and powerful theme for Hugo." />
+
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="og:updated_time" content="2022-03-01T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+<link rel="alternate" type="application/rss+xml" href="https://endlesspeak.github.io/docs/docs/interview-doc/index.xml" title="悦翎轩" />
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+<article class="prose mx-6 my-8">
+  <h1>Computer Interview</h1>
+  
+    <p>本系列文章记录在计算机面试过程中涉及到的知识内容。</p>
+
+  
+</article>
+
+<div class="bg-secondary-bg rounded px-6">
+  <div class="overflow-hidden divide-y">
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="prose">
+  <a href="https://endlesspeak.github.io/docs/docs/interview-doc/company/" class="no-underline">
+    <h3 class="mt-0">Company Seek</h3>
+  </a>
+  
+    记录简历投递的相关情况。
+  
+
+  
+    <div class="mx-6">
+      
+      <a href="https://endlesspeak.github.io/docs/docs/interview-doc/company/" class="no-underline">
+        <h4>
+          阅读更多
+          <i
+            class="fas fa-caret-right ms-1"
+          ></i>
+        </h4>
+      </a>
+    </div>
+  
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="prose">
+  <a href="https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/" class="no-underline">
+    <h3 class="mt-0">Algorithms</h3>
+  </a>
+  
+    本系列文章记录算法学习方面的笔记。
+  
+
+  
+    <div class="mx-6">
+      
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/1-merge-sorted-array/" class="no-underline">
+          <h4>Merge Sorted Array</h4>
+        </a>
+        
+          合并两个有序的数组
+        
+      
+        
+          <div class="-mx-4 my-4 border-t"></div>
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/2-remove-elements/" class="no-underline">
+          <h4>Remove Element</h4>
+        </a>
+        
+          移除数组中指定的元素
+        
+      
+        
+          <div class="-mx-4 my-4 border-t"></div>
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/3-meituan-interview/" class="no-underline">
+          <h4>MeiTuan Interview 1</h4>
+        </a>
+        
+          美团2024年春招第一场笔试题目。
+        
+      
+      <a href="https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/" class="no-underline">
+        <h4>
+          阅读更多
+          <i
+            class="fas fa-caret-right ms-1"
+          ></i>
+        </h4>
+      </a>
+    </div>
+  
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="prose">
+  <a href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/" class="no-underline">
+    <h3 class="mt-0">Data Structure</h3>
+  </a>
+  
+
+  
+    <div class="mx-6">
+      
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/datastructure-summary/" class="no-underline">
+          <h4>数据结构基本概念</h4>
+        </a>
+        
+          数据结构基本概念 基本概念 数据是信息的载体，表现为能被计算机识别和处理的符号集合。 数据元素是数据的基本单位，用来描述个体。 数据项是构成数据元素的不可分割
+        
+      
+        
+          <div class="-mx-4 my-4 border-t"></div>
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-terms/" class="no-underline">
+          <h4>线性表基本概念</h4>
+        </a>
+        
+          线性表定义 线性表是：①具有相同数据类型的$n(n\ge 0)$个数据元素 ②有限 ③序列。 特别地，当数据元素个数$n=0$时，线性表是空表； 非空线性表中位序
+        
+      
+        
+          <div class="-mx-4 my-4 border-t"></div>
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-operation/" class="no-underline">
+          <h4>线性表基本操作</h4>
+        </a>
+        
+          线性表的基本操作如下： void InitList(&amp;L);//初始化表，构造一个空的线性表 int Length(L);//求表长 ElemType LocateElem(L,
+        
+      
+      <a href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/" class="no-underline">
+        <h4>
+          阅读更多
+          <i
+            class="fas fa-caret-right ms-1"
+          ></i>
+        </h4>
+      </a>
+    </div>
+  
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="prose">
+  <a href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/" class="no-underline">
+    <h3 class="mt-0">Computer Interview</h3>
+  </a>
+  
+    本系列文章是计算机面试过程中涉及到的杂项知识内容简单提要。
+  
+
+  
+    <div class="mx-6">
+      
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/projectdevelopment/" class="no-underline">
+          <h4>项目经历</h4>
+        </a>
+        
+          你本科阶段有哪些项目经历？ 做过三个项目，分别是一个使用Java Server Page的考务管理系统，一个使用MybatisPlus &#43; Springboot的商城系统
+        
+      
+        
+          <div class="-mx-4 my-4 border-t"></div>
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/softwareengineering/" class="no-underline">
+          <h4>软件工程</h4>
+        </a>
+        
+          基本概念 软件概念 软件：软件=程序&#43;数据&#43;文档 程序:按事先设计的功能和性能需求执行的指令序列； 数据:是程序能正常操纵信息的数据结构； 文档:与程序开发、维
+        
+      
+        
+          <div class="-mx-4 my-4 border-t"></div>
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/englishinterview/" class="no-underline">
+          <h4>英语面试</h4>
+        </a>
+        
+          基本情况 自我介绍 Tell me a few things about yourself. Dear professors, it’s a great honor for me to have the opportunity to present myself. My name is Li Qing han,22 years old, come from Hu Bei province. I received my bachelor’s degree in software engineering from Chang’an University in last June. In the past 4 years,I focused on my study. I passed CET-4 and CET-6 in my sophomore and
+        
+      
+      <a href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/" class="no-underline">
+        <h4>
+          阅读更多
+          <i
+            class="fas fa-caret-right ms-1"
+          ></i>
+        </h4>
+      </a>
+    </div>
+  
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="prose">
+  <a href="https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/" class="no-underline">
+    <h3 class="mt-0">Operating System</h3>
+  </a>
+  
+    本系列文章记录操作系统方面的内容。
+  
+
+  
+    <div class="mx-6">
+      
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/operating-system-summary/" class="no-underline">
+          <h4>绪论</h4>
+        </a>
+        
+          操作系统概念 操作系统 操作系统是： 计算机系统资源的管理者，组织、调度、分配软硬件资源； 作为用户与计算机硬件之间的接口，向上层（用户）提供服务； 最接近硬件
+        
+      
+        
+          <div class="-mx-4 my-4 border-t"></div>
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/process-manage/" class="no-underline">
+          <h4>进程管理</h4>
+        </a>
+        
+          进程与线程 进程的概念与特征 进程的概念 引入 为实现操作系统的并发性和共享性，引入进程。 概念 进程是具有独立功能的程序在某个数据集合上的一次执行过程。 进程是进
+        
+      
+        
+          <div class="-mx-4 my-4 border-t"></div>
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/synchronization-exclusion/" class="no-underline">
+          <h4>经典同步问题</h4>
+        </a>
+        
+          生产者与消费者问题 一组生产者和一组消费者交替使用缓冲区。 设缓冲区是临界资源，它只允许一个生产者放入内容或一个消费者取出内容。 代码描述如下： semaphore mutex=1; semaphore empty=n; semaphore full=0;
+        
+      
+      <a href="https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/" class="no-underline">
+        <h4>
+          阅读更多
+          <i
+            class="fas fa-caret-right ms-1"
+          ></i>
+        </h4>
+      </a>
+    </div>
+  
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+</div>
+
+
+</div>
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

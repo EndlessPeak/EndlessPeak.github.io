@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>软件工程 | Computer Interview | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="基本概念 软件概念 软件：软件=程序&#43;数据&#43;文档 程序:按事先设计的功能和性能需求执行的指令序列； 数据:是程序能正常操纵信息的数据结构； 文档:与程序开发、维">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Computer Interview",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Computer Interview",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"软件工程",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/softwareengineering/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/softwareengineering/"
+    },
+    "headline": "软件工程 | Computer Interview | 悦翎轩","datePublished": "2022-04-01T00:00:00+00:00",
+    "dateModified": "2022-04-01T00:00:00+00:00",
+    "wordCount":  1558 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "基本概念 软件概念 软件：软件=程序\u002b数据\u002b文档 程序:按事先设计的功能和性能需求执行的指令序列； 数据:是程序能正常操纵信息的数据结构； 文档:与程序开发、维"
+}
+</script><meta property="og:title" content="软件工程 | Computer Interview | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/softwareengineering/" />
+
+
+
+
+<meta property="og:description" content="基本概念 软件概念 软件：软件=程序&#43;数据&#43;文档 程序:按事先设计的功能和性能需求执行的指令序列； 数据:是程序能正常操纵信息的数据结构； 文档:与程序开发、维" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-04-01T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2022-04-01T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/">Computer Interview</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/projectdevelopment/">项目经历</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/softwareengineering/">软件工程</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/englishinterview/">英语面试</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/comprehensiveinterview/">综合问题</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/compilersprinciples/">编译原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computernetwork/">计算机网络</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-2/">数据库原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-1/">数据库原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computercomponents/">组成原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/linuxpoints/">Linux Basic</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">软件工程</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-04-01</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>4分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="基本概念">基本概念</h2>
+<h3 id="软件概念">软件概念</h3>
+<p>软件：软件=程序+数据+文档</p>
+<ol>
+<li>程序:按事先设计的功能和性能需求执行的指令序列；</li>
+<li>数据:是程序能正常操纵信息的数据结构；</li>
+<li>文档:与程序开发、维护和使用有关的图文材料；</li>
+</ol>
+<p>软件的特征：</p>
+<ol>
+<li>软件不是制造的，而是设计开发或工程化的；</li>
+<li>软件的开发时间和工作量难以估计；</li>
+<li>软件会多次修改，测试困难；</li>
+<li>软件可能随着运行的时间增加而效率变低或问题变多；</li>
+<li>软件生产是简单的拷贝；</li>
+<li>软件开发环境对产品影响巨大；</li>
+</ol>
+<p>软件功能划分：</p>
+<ol>
+<li>系统软件:服务于其他程序的程序。(操作系统、编译器)</li>
+<li>应用软件:解决特定需要的独立应用程序。(管理系统、浏览器)</li>
+<li>支撑软件:支持需求分析、设计、实现、测试和支持管理的软件。(如中间件、数据库)</li>
+<li>工程/科学软件:带数值计算的特征。</li>
+<li>嵌入式软件。</li>
+<li>产品线软件:为不同用户使用提供特定功能。</li>
+<li>web 应用软件。</li>
+<li>人工智能软件:利用非数值计算解决复杂问题。</li>
+</ol>
+<h3 id="软件危机">软件危机</h3>
+<p>软件危机：在计算机软件的开发、运行和维护过程中所遇到的一系列严重问题。 (效率和质量问题)</p>
+<p>软件危机的原因：</p>
+<ol>
+<li>客观上，即软件本身特点：逻辑部件、规模庞大。</li>
+<li>主观上，即不正确的开发方法：忽视需求分析，忽视设计，忽视合作，忽视软件维护。</li>
+</ol>
+<p>消除软件危机的途径：</p>
+<ol>
+<li>正确的认识</li>
+<li>软件开发是一种组织良好、管理严密、各类人员协同配合、共同完成的工程项目。</li>
+<li>推广使用在实践中总结出来的开发软件的成功技术。</li>
+</ol>
+<h3 id="软件工程">软件工程</h3>
+<p>软件工程的定义：</p>
+<ol>
+<li>将系统的、规范的、可度量的方法应用于软件开发、运行和维护过程，即将工程应用到软件。</li>
+<li>对上述中各种方法的研究。</li>
+</ol>
+<p>软件工程的目标：</p>
+<p>在给定的时间和预算内，按照用户的需求，开发易修改、高效、可靠、可维护、适应力强、可移动、可重用的软件。</p>
+<p>软件工程三要素：方法、工具、过程</p>
+<ol>
+<li>方法：软件工程方法是构建软件工程的解决方法，软件工程方法分两类：结构化方法和面向对象方法。</li>
+<li>工具：为软件工程的过程和方法提供自动化或半自动化的工具支持。</li>
+<li>过程：过程贯穿软件开发的各个环节,在各环节之间建立里程碑；</li>
+</ol>
+<p>软件工程的发展过程：</p>
+<p>传统软件工程→对象工程→过程工程→构件工程</p>
+<h2 id="过程模型">过程模型</h2>
+<h3 id="软件生命周期">软件生命周期</h3>
+<p>定义：一个软件产品或软件系统从定义、开发、投入使用到被淘汰的全过程；</p>
+<p>三阶段：定义、开发、维护；</p>
+<p>八步骤：问题的定义、可行性研究、需求分析、概要设计、详细设计、编码实现、测试、维护；</p>
+<h3 id="软件过程">软件过程</h3>
+<p>定义：软件生产过程中的一系列活动、动作、任务的集合，这些活动贯穿于软件开发的整个过程。</p>
+<p>软件过程也称为软件生存周期过程，是指软件生存周期中的一系列相关过程。为了获得高质量软件所需要完成的一系列任务的框架，它规定了完成各项任务的工作步骤。</p>
+<h3 id="能力成熟度模型">能力成熟度模型</h3>
+<p>成熟度模型标准(CMM)如下：</p>
+<ol>
+<li>初始级:工作无序,缺乏健全的管理制度。</li>
+<li>可重复级:管理制度化,建立了基本的管理制度和规程,初步实现标准化。</li>
+<li>已定义级:过程标准化,工作和管理工作,均已实现标准化、文档化。</li>
+<li>量化管理级:产品和过程已建立了定量的质量目标。开发活动中的生产率和质量是可量度的。</li>
+<li>优化级:持续的过程改进,拥有防止出现缺陷、识别薄弱环节以及加以改进的手段。</li>
+</ol>
+<h2 id="需求分析">需求分析</h2>
+<h2 id="系统设计">系统设计</h2>
+<h2 id="质量保证">质量保证</h2>
+<h3 id="回归测试">回归测试</h3>
+<p>回归测试的概念</p>
+<ol>
+<li>在软件测试的各个阶段，在修正发现的软件缺陷或增加新功能时，变化的部分必须进行再测试。此外,对软件进行修改还可能会导致引入新的软件缺陷以及其他问题。为解决这些问题，需要进行回归测试。</li>
+<li>回归测试是指有选择地重新测试系统或其组件，以验证对软件的修改没有导致不希望出现的影响，以及系统或组件仍然符合其指定的需求。</li>
+<li>回归测试可以在所有的测试级别执行，并应用于功能和非功能测试中。</li>
+<li>回归测试应该尽量采用自动化测试。</li>
+</ol>
+<p>回归测试的范围</p>
+<ol>
+<li>缺陷再测试：重新运行所有发现故障的测试，而新的软件版本已经修正了这些故障。</li>
+<li>功能改变的测试：测试所有修改或修正过的程序部分。</li>
+<li>新功能测试：测试所有新集成的程序。</li>
+<li>完全回归测试：测试整个系统。</li>
+</ol>
+<h2 id="软件维护">软件维护</h2>
+<h2 id="项目管理">项目管理</h2>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/projectdevelopment/" class="block">项目经历</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/englishinterview/" class="block">英语面试</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#基本概念">基本概念</a>
+      <ul>
+        <li><a href="#软件概念">软件概念</a></li>
+        <li><a href="#软件危机">软件危机</a></li>
+        <li><a href="#软件工程">软件工程</a></li>
+      </ul>
+    </li>
+    <li><a href="#过程模型">过程模型</a>
+      <ul>
+        <li><a href="#软件生命周期">软件生命周期</a></li>
+        <li><a href="#软件过程">软件过程</a></li>
+        <li><a href="#能力成熟度模型">能力成熟度模型</a></li>
+      </ul>
+    </li>
+    <li><a href="#需求分析">需求分析</a></li>
+    <li><a href="#系统设计">系统设计</a></li>
+    <li><a href="#质量保证">质量保证</a>
+      <ul>
+        <li><a href="#回归测试">回归测试</a></li>
+      </ul>
+    </li>
+    <li><a href="#软件维护">软件维护</a></li>
+    <li><a href="#项目管理">项目管理</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

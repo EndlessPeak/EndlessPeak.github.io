@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Robot Operation System on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/</link>
+    <description>Recent content in Robot Operation System on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Sun, 08 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ROS1 Installation</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/1-ros1-install/</link>
+      <pubDate>Tue, 18 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/1-ros1-install/</guid>
+      <description>Ubuntu Configuration Ubuntu Install 虚拟机平台不限，推荐使用： VMWare Virtualbox Qemu Ubuntu 版本需要选择 Ubuntu 20.04 安装。发行版代码应该为 focal 。 请使用 lsb_release -a 或 lsb_release -c 验证。 Additional Function 虚拟机工具之增强功能可以使得虚拟操作系统</description>
+    </item>
+    <item>
+      <title>ROS2 Installation</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/1-ros2-install/</link>
+      <pubDate>Sun, 08 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/1-ros2-install/</guid>
+      <description>Install ROS2 by one command fishros 可用 fishros 提供的实用程序一行代码在 ubuntu 上安装 ROS2。 wget http://fishros.com/install -O fishros &amp;amp;&amp;amp; . fishros global view 总体来看，它的安装流程包含如下命令: mkdir -p /tmp/fishinstall/tools wget http://fishros.com/install/install1s/install.py -O /tmp/fishinstall/install.py 2&amp;gt;&amp;gt;/dev/null source /etc/profile sudo apt install python3-distro python3-yaml -y if [</description>
+    </item>
+    <item>
+      <title>Race Car Project</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/3-racecarnotes/</link>
+      <pubDate>Fri, 11 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/3-racecarnotes/</guid>
+      <description>Project Init Project 从 github 上克隆代码，以此作为工作目录，克隆完成后进入工作目录。 git clone https://github.com/endlesspeak/rosracecar Racecar_ws cd Racecar_ws 配置环境变量，以便每次启动项目不必切换到工作目录。编辑 ~/.bashrc source ~/Racecar_ws/devel/setup.bash Run Project 通过键盘控</description>
+    </item>
+    <item>
+      <title>Intergrate Environment</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/2-intergrateenvironment/</link>
+      <pubDate>Tue, 25 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/2-intergrateenvironment/</guid>
+      <description>ROS HelloWorld Create Project 创建项目的顺序如下： 创建工作空间 将工作空间命名为 ROSRace mkdir -p ROSRace/src cd ROSRace catkin_make 创建功能包 将功能包命名为 helloworld ，并添加所需的依赖。 roscpp 是用 C++ 实现的库； rospy 是用 python 实现的库</description>
+    </item>
+  </channel>
+</rss>

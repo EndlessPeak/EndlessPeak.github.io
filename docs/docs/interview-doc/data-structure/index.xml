@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Structure on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/</link>
+    <description>Recent content in Data Structure on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Thu, 10 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数据结构基本概念</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/datastructure-summary/</link>
+      <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/datastructure-summary/</guid>
+      <description>数据结构基本概念 基本概念 数据是信息的载体，表现为能被计算机识别和处理的符号集合。 数据元素是数据的基本单位，用来描述个体。 数据项是构成数据元素的不可分割</description>
+    </item>
+    <item>
+      <title>线性表基本概念</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-terms/</link>
+      <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-terms/</guid>
+      <description>线性表定义 线性表是：①具有相同数据类型的$n(n\ge 0)$个数据元素 ②有限 ③序列。 特别地，当数据元素个数$n=0$时，线性表是空表； 非空线性表中位序</description>
+    </item>
+    <item>
+      <title>线性表基本操作</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-operation/</link>
+      <pubDate>Fri, 06 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-operation/</guid>
+      <description>线性表的基本操作如下： void InitList(&amp;amp;L);//初始化表，构造一个空的线性表 int Length(L);//求表长 ElemType LocateElem(L,</description>
+    </item>
+    <item>
+      <title>线性表算法题解</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-algorithms/</link>
+      <pubDate>Sat, 07 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-algorithms/</guid>
+      <description>本节尝试对具有代表性的线性表编程题及经典算法进行实现。 题1 删除单链表中的指定结点 递归算法实现删除不带头结点的单链表L中所有值为x的结点。 void RecurseDel(LinkList &amp;amp;L,ElemType x){ if(L==NULL) return; if(L-&amp;gt;data!=x)</description>
+    </item>
+    <item>
+      <title>栈基本操作</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/stack-operation/</link>
+      <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/stack-operation/</guid>
+      <description>栈的基本操作如下： bool InitStack(LinkStack &amp;amp;L); bool IsEmpty(LinkStack L); bool Push(LinkStack &amp;amp;L, ElemType x); bool Pop(LinkStack &amp;amp;L, ElemType &amp;amp;x); bool GetTop(LinkStack L, ElemType &amp;amp;x); bool DestroyStstack(LinkStack &amp;amp;L); 顺序栈 栈的顺序存储类型： #define MaxSize 50 typedef struct{ ElemType data[MaxSize]; int top; }SqStack; 初始化： bool InitStack(SqStack S){ S.top=-1; return true; } 判断栈空： bool IsEmpty(SqStack S){ if(S.top==-1)</description>
+    </item>
+    <item>
+      <title>二叉树的基本操作</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-operation/</link>
+      <pubDate>Tue, 02 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-operation/</guid>
+      <description>二叉树存储结构 二叉树链式存储数据结构如下： typedef struct BitNode { int data; BitNode *left; BitNode *right; }BitNode,*BiTree; 二叉树遍历 设根结点为N，左结点L，右结点R。常见遍历有先序、中序、后序、层序遍历。 递归</description>
+    </item>
+    <item>
+      <title>二叉树的算法</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-algorithms/</link>
+      <pubDate>Thu, 10 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-algorithms/</guid>
+      <description>二叉树算法索引 二叉树的建立 设二叉树初始由数组存储，生成为二叉链表存储，编写递归建立算法和非递归建立算法 二叉树的遍历 编写先序、中序、后序遍历的递归和非递</description>
+    </item>
+    <item>
+      <title>二叉排序树</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-sort-caculation/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-sort-caculation/</guid>
+      <description>二叉排序树 查找长度计算 查找成功情况下： $$ ASL_{成功}=\frac{SearchLength}{N} $$ $SearchLength$是链表中搜索各有值</description>
+    </item>
+    <item>
+      <title>图的基本概念</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/map-basic-terms/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/map-basic-terms/</guid>
+      <description>图的定义 图G由顶点集V和边集E组成，记为G=(V,E)。 其中V(G) 表示图G中顶点的有限非空集；E(G)表示图G中顶点之间的关系集合（即边集）。 用|V</description>
+    </item>
+    <item>
+      <title>图的弗洛伊德算法</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/map-floyd-algorithms/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/map-floyd-algorithms/</guid>
+      <description>Floyd算法 解题步骤： 图的顶点从\(V_0\)开始，依次标记所有顶点位序； 按图画出邻接矩阵\(A^{-1}\)；\(path^{0}\)矩阵全取-1</description>
+    </item>
+    <item>
+      <title>散列查找</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/search-hash/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/search-hash/</guid>
+      <description>处理冲突方法 主要分为开放定址法、拉链法（链地址法）和再散列法。 开放定址法 开放定址法意思是可存放新表项的空闲地址既向同义词开放，又向非同义词开放。 $$ H_i=(H(key)+d_i)\%m $$</description>
+    </item>
+  </channel>
+</rss>

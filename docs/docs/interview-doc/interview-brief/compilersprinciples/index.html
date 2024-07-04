@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>编译原理 | Computer Interview | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="词法分析 什么是形式语言？ 人们把用一组数学符号和规则来描述语言的方式称为形式描述； 把所用的数学符号和规则称为形式语言。 说明词法分析器的作用？ 主要任务：读">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Computer Interview",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Computer Interview",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"编译原理",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/compilersprinciples/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/compilersprinciples/"
+    },
+    "headline": "编译原理 | Computer Interview | 悦翎轩","datePublished": "2022-03-01T00:00:00+00:00",
+    "dateModified": "2022-03-01T00:00:00+00:00",
+    "wordCount":  3041 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "词法分析 什么是形式语言？ 人们把用一组数学符号和规则来描述语言的方式称为形式描述； 把所用的数学符号和规则称为形式语言。 说明词法分析器的作用？ 主要任务：读"
+}
+</script><meta property="og:title" content="编译原理 | Computer Interview | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/compilersprinciples/" />
+
+
+
+
+<meta property="og:description" content="词法分析 什么是形式语言？ 人们把用一组数学符号和规则来描述语言的方式称为形式描述； 把所用的数学符号和规则称为形式语言。 说明词法分析器的作用？ 主要任务：读" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-03-01T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2022-03-01T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/">Computer Interview</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/projectdevelopment/">项目经历</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/softwareengineering/">软件工程</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/englishinterview/">英语面试</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/comprehensiveinterview/">综合问题</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/compilersprinciples/">编译原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computernetwork/">计算机网络</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-2/">数据库原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-1/">数据库原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computercomponents/">组成原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/linuxpoints/">Linux Basic</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">编译原理</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-03-01</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>7分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="词法分析">词法分析</h2>
+<ol>
+<li>
+<p>什么是形式语言？</p>
+<p>人们把用一组数学符号和规则来描述语言的方式称为形式描述；</p>
+<p>把所用的数学符号和规则称为形式语言。</p>
+</li>
+<li>
+<p>说明词法分析器的作用？</p>
+<p>主要任务：读入输入字符，将它们组成词素，生成并输出词法单元序列，提供给语法分析使用。</p>
+<p>辅助任务：</p>
+<ol>
+<li>过滤注释和空白；</li>
+<li>将各阶段发现的错误与源程序位置联系起来；</li>
+</ol>
+</li>
+<li>
+<p>划分词法分析和语法分析的原因？</p>
+<ol>
+<li>简化编译器的设计；</li>
+<li>提高编译器的效率；</li>
+<li>增强编译器的可移植性；</li>
+</ol>
+</li>
+<li>
+<p>什么是词法单元、模式、词素？</p>
+<ol>
+<li>词法单元由一个词法名和一个可选的属性值组成；</li>
+<li>模式描述一个词法单元的词素可能具有的形式；</li>
+<li>词素是源程序中的一个字符序列；</li>
+</ol>
+</li>
+<li>
+<p>串和语言的相关概念</p>
+<ol>
+<li>字母表：符号的有限集合；</li>
+<li>串：字母表中符号的有穷序列；</li>
+<li>串的长度：出现在串中的符号个数；</li>
+<li>语言：字母表上的一个串集合；</li>
+<li>句子：属于语言的串；</li>
+</ol>
+</li>
+<li>
+<p>串的运算</p>
+<ol>
+<li>连接：串是同一字母表，直接拼接；</li>
+<li>积：串与自身的n-1次连接；</li>
+</ol>
+</li>
+<li>
+<p>语言的运算</p>
+<ol>
+<li>和：$L∪M = {s | s∈L 或 s ∈M}$</li>
+<li>连接（积）：$LM = {st | s∈L 且 s ∈M}$</li>
+<li>指数：$L^0$是${\epsilon}$，$L^i$是$L^{i-1}L$</li>
+<li>闭包：$L^*=L^0 \cup L^1 \cup L^2 \cup &hellip;$</li>
+<li>正闭包：$L^+=L^*-{\epsilon}=L^1 \cup L^2 \cup &hellip;$</li>
+</ol>
+</li>
+<li>
+<p>正则表达式</p>
+<p>用于匹配一系列符合某种规则的字符串，它表示的语言叫做正规集合。</p>
+<ol>
+<li>$(r)|(s)$是正则表达式，表示$L(r) \cup L(s)$</li>
+<li>$(r)(s)$是正则表达式，表示$L(r)L(s)$</li>
+<li>$(r)^<em>$是正则表达式，表示语言$(L(r))^</em>$</li>
+<li>约定如下：
+<ol>
+<li>闭包运算（算符*）具有最高的优先级，并且是左结合。特别地，具有幂等性；</li>
+<li>连接的优先级次之，也是左结合；</li>
+<li>或运算的优先级最低，同样是左结合</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>正则定义</p>
+<p>对正则表达式命名，并用这些名字定义正则表达式。</p>
+</li>
+<li>
+<p>正则表达式的扩展</p>
+<ol>
+<li>+表示正闭包</li>
+<li>? 表示零个或一个出现 $r|\epsilon$</li>
+<li>字符类缩写$[a_1a_2..a_n]$或$[a-z]$</li>
+</ol>
+</li>
+<li>
+<p>状态转换图</p>
+<p>用于识别或接受一定的字符串。</p>
+<p>*代表最后一个字符不属于字符串，输入需要回退一个位置。</p>
+<p>有关超前搜索，特别地，</p>
+<ol>
+<li>所有基本字都是保留字，用户不能用它们作自己的标识符；</li>
+<li>基本字作为特殊的标识符来处理，使用保留字表；</li>
+<li>基本字、标识符和常数直接没有确定的运算符或界符，则必须使用一个空白符作间隔；</li>
+</ol>
+</li>
+<li>
+<p>有穷自动机</p>
+<ol>
+<li>
+<p>有穷自动机是识别器，能对输入串回答“是”或“否”；</p>
+</li>
+<li>
+<p>分类：</p>
+<ol>
+<li>不确定的有穷自动机 NFA</li>
+<li>确定的有穷自动机 DFA</li>
+</ol>
+<p>NFA与DFA能够识别的语言集合相同。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>不确定的有穷自动机</p>
+<p>与状态转换图的区别：</p>
+<ol>
+<li>同一个字符可以标记同一个起始状态到多个目标状态的转换；</li>
+<li>边不仅可以是输入字母表中的符号，也可以是空符号串</li>
+</ol>
+</li>
+</ol>
+<h2 id="语法分析">语法分析</h2>
+<ol>
+<li>
+<p><strong>什么是文法</strong>？什么是上下文无关文法？</p>
+<p>描述语言的语法结构的形式规则称为文法。</p>
+<p>四元组$G=(V_T,V_N,S,P)$</p>
+<ol>
+<li>$V_T$是终结符集合</li>
+<li>$V_N$是非终结符集合，且$V_T \cap V_N=\varnothing$</li>
+<li>$S$是文法的开始符号，$S ∈ V_N$，开始符号必须在某个产生式左部出现一次</li>
+<li>$P$是产生式集合（有限）形式为$P→\alpha,P∈V_N,\alpha∈(V_T \cup V_N)^*$</li>
+</ol>
+<p>上下文无关文法是四元组，且文法中所有产生式的左边只有一个非终结符。</p>
+<p>上下文无关体现在：无论非终结符前后的串是什么，只要它在文法定义内有某产生式，就可以使用该产生式进行推导。</p>
+</li>
+<li>
+<p><strong>什么是句型、句子、短语、句柄、素短语</strong>？</p>
+<ol>
+<li>
+<p>句型：如果$S\Rightarrow*\alpha，\alpha∈(V_T \cup V_N)^*$，则称$α$是G的一个句型</p>
+<p>句型中既可以有终结符，又可以有非终结符，还可以有空串</p>
+</li>
+<li>
+<p>句子：不包含非终结符的句型（句型的一个完全的推导实例）</p>
+</li>
+<li>
+<p>短语：句型的分析树中的每一棵<strong>子树</strong>（一个结点不算子树）的<strong>所有叶结点</strong>所组成的符号串称为该句型的一个短语</p>
+<p>直接短语：句型分析树只有父子两代结点的子树（简单子树）</p>
+</li>
+<li>
+<p>句柄：句型的分析树中最左简单子树为该句型的句柄。</p>
+<p>这取决于推导方法是最左推导还是最右推导，或者取决于是自顶向下还是自底向上。</p>
+</li>
+<li>
+<p>素短语：是指一个短语至少包含一个终结符，并且除它自身之外不再包含其他短语。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>左递归的消除</p>
+<ol>
+<li>
+<p>消除立即左递归</p>
+<ol>
+<li>
+<p>$A→A\alpha_1|A\alpha_2|&hellip;|A\alpha_m|\beta_1|\beta_2|&hellip;\beta_n$</p>
+</li>
+<li>
+<p>$A→\beta_1A&rsquo;|\beta_2A^{&rsquo;}|&hellip;|\beta_nA^{&rsquo;}$</p>
+<p>$A&rsquo;→\alpha_1A&rsquo;|\alpha_2A&rsquo;|&hellip;|\alpha_mA&rsquo;|\epsilon$</p>
+</li>
+</ol>
+</li>
+<li>
+<p>消除两步及以上的左递归</p>
+<ol>
+<li>
+<p>排列非终结符$A_1,A_2,&hellip;A_n$</p>
+</li>
+<li>
+<p>从1到n的每个i，从1到i-1的每个j</p>
+<p>将每个$A_i→A_j\gamma$替换成$A_i→\delta_1\gamma$</p>
+</li>
+<li>
+<p>消除立即左递归</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>提取左公因式</p>
+<p>将产生式 $A\rightarrow\alpha\beta_1|\alpha\beta_2|..|\alpha\beta_n|\gamma$ 替换为：</p>
+<ol>
+<li>$A\rightarrow\alpha_1A&rsquo;|\gamma$</li>
+<li>$A&rsquo;\rightarrow\beta_1|\beta_2|&hellip;|\beta_n$</li>
+</ol>
+</li>
+<li>
+<p><strong>递归下降语法分析</strong></p>
+<p>从开始符号开始，对每一个文法中的每一个非终结符号，都根据相应的产生式的右边出现的非终结符，调用对应的过程，识别该非终结符号所表示的语法范畴，最终实现自顶向下语法分析。</p>
+</li>
+<li>
+<p>自顶向下语法分析的缺陷</p>
+<ol>
+<li>不能处理左递归</li>
+<li>需要复杂的回溯</li>
+<li>难以报告出错的确切位置</li>
+<li>低效</li>
+</ol>
+</li>
+<li>
+<p>First集和Follow集</p>
+<p>简而言之：</p>
+<ol>
+<li>
+<p>FIRST(α)是可从α推导得到的串的首符号的<strong>终结符号集合</strong>，其中α是<strong>任意的文法符号串</strong></p>
+<p>算法：</p>
+<ol>
+<li>X是终结符号，则$FIRST(X)=X$；</li>
+<li>X是产生式，且$X\rightarrow Y_1Y_2&hellip;Y_n$，若a在FIRST($Y_i$)中，且$\epsilon$在FIRST($Y_1$)，FIRST($Y_2$)，&hellip;，FIRST($Y_{i-1}$)中，则把a加入FIRST(X)，如果$\epsilon$在所有的FIRST($Y_i$)中，则加入$\epsilon$ 到FIRST(X)中；</li>
+<li>如果$X→\epsilon$是产生式，将$\epsilon$加入FIRST(X)中。</li>
+</ol>
+</li>
+<li>
+<p>FOLLOW(A)是可能在句型中紧跟在A右边的<strong>终结符号集合</strong>，其中A是非终结符号。</p>
+<p>注：这里假设结束标记#不是任何文法的符号。</p>
+<p>算法：</p>
+<ol>
+<li>
+<p>对于文法开始符号S，令$∈FOLLOW(S)</p>
+<p>$是输入串的结束符；</p>
+</li>
+<li>
+<p>如果$A\rightarrow \alpha B \beta$，则将FIRST(β)中除ε以外的符号都放入到FOLLOW(B)中，即：
+</p>
+$$
+         FIRST(\beta) －\{\epsilon\} ⊆FOLLOW(B)
+         $$
+</li>
+<li>
+<p>如果$A\rightarrow \alpha B$，或$A\rightarrow \alpha B \beta$，其中FIRST(β)中包含ε（$\beta \Rightarrow *\epsilon$），则将FOLLOW(A)中所有符号都放入到FOLLOW(B)中，即：
+</p>
+$$
+         FOLLOW(A) ⊆FOLLOW(B)
+         $$
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>LL文法和LR文法</p>
+<ol>
+<li>
+<p>LL(1)文法是自顶向下分析法</p>
+<p>自顶向下：从开始符号出发，根据产生式推导给定的句子，用推导，最右推导是规范推导。</p>
+</li>
+<li>
+<p>LR(0),LR(1),SLR(1),LALR(1)是自底向上分析法</p>
+<p>自底向上：从给定的句子归约到文法的非终结符号，用归约，最左归约是规范归约。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>LL(1)文法</p>
+<p>L表示从左到右扫描，L表示产生最左推导，1表示作决定时每次向前看1个输入符号。</p>
+<p>对于产生式$A \rightarrow \alpha | \beta$，需要满足条件：</p>
+<ol>
+<li>
+<p>不存在终结符号a使得α和β都能推导出以a开头的串
+</p>
+$$
+      FIRST(\alpha) \cap FIRST(\beta)=\varnothing
+      $$
+</li>
+<li>
+<p>α和β最多只有一个可以推导出空串</p>
+</li>
+<li>
+<p>若$\beta \Rightarrow *\epsilon$
+</p>
+$$
+      FIRST(\alpha) \cap FOLLOW(A)=\varnothing
+      $$
+</li>
+</ol>
+<p>特点：</p>
+<ol>
+<li>无公共左因子</li>
+<li>无二义性</li>
+<li>无左递归</li>
+</ol>
+</li>
+<li>
+<p>LR(0)</p>
+<p>L表示从左到右扫描，R表示反向构造一个最右推导序列，0表示作决定时每次向前看0个符号。</p>
+</li>
+<li>
+<p>LR(1)</p>
+</li>
+<li>
+<p>SLR(1)</p>
+</li>
+<li>
+<p>LALR(1)</p>
+</li>
+</ol>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/comprehensiveinterview/" class="block">综合问题</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computernetwork/" class="block">计算机网络</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#词法分析">词法分析</a></li>
+    <li><a href="#语法分析">语法分析</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>综合问题 | Computer Interview | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="专业问题 谈谈你对大数据的认识 大数据，或称巨量资料。是具有如下特点的信息资产。 数据量大 增长速度快 形式多样 大数据的类型： 结构化数据 半结构化数据 非结构化数据">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Computer Interview",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Computer Interview",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"综合问题",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/comprehensiveinterview/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/comprehensiveinterview/"
+    },
+    "headline": "综合问题 | Computer Interview | 悦翎轩","datePublished": "2022-03-04T00:00:00+00:00",
+    "dateModified": "2022-03-04T00:00:00+00:00",
+    "wordCount":  5344 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "专业问题 谈谈你对大数据的认识 大数据，或称巨量资料。是具有如下特点的信息资产。 数据量大 增长速度快 形式多样 大数据的类型： 结构化数据 半结构化数据 非结构化数据"
+}
+</script><meta property="og:title" content="综合问题 | Computer Interview | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/comprehensiveinterview/" />
+
+
+
+
+<meta property="og:description" content="专业问题 谈谈你对大数据的认识 大数据，或称巨量资料。是具有如下特点的信息资产。 数据量大 增长速度快 形式多样 大数据的类型： 结构化数据 半结构化数据 非结构化数据" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-03-04T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2022-03-04T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/">Computer Interview</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/projectdevelopment/">项目经历</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/softwareengineering/">软件工程</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/englishinterview/">英语面试</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/comprehensiveinterview/">综合问题</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/compilersprinciples/">编译原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computernetwork/">计算机网络</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-2/">数据库原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-1/">数据库原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computercomponents/">组成原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/linuxpoints/">Linux Basic</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">综合问题</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-03-04</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>11分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="专业问题">专业问题</h2>
+<ol>
+<li>
+<p>谈谈你对<strong>大数据</strong>的认识</p>
+<p>大数据，或称巨量资料。是具有如下特点的信息资产。</p>
+<ol>
+<li>数据量大</li>
+<li>增长速度快</li>
+<li>形式多样</li>
+</ol>
+<p>大数据的类型：</p>
+<ol>
+<li>
+<p>结构化数据</p>
+</li>
+<li>
+<p>半结构化数据</p>
+</li>
+<li>
+<p>非结构化数据</p>
+<p>非结构化数据越来越成为数据的主要部分。</p>
+</li>
+</ol>
+<p>大数据所涉及到的数据量规模巨大且信息密度低，无法通过传统软件工具在合理时间内处理。相较于传统数据来说，处理大数据所需要的处理模式和流程等方面的要求更高。</p>
+<p>大数据的关键在于提高对数据的处理能力，通过“加工”对数据进行提纯，实现数据的“增值”。主要采用分布式技术和数据挖掘等。</p>
+<p>所用到的分布式技术包括：</p>
+<ol>
+<li>分布式文件存储</li>
+<li>分布式计算技术</li>
+<li>分布式数据库（非关系型数据库）</li>
+</ol>
+<p>非关系型数据库：</p>
+<ol>
+<li>去掉关系数据库的关系型特性，数据之间无关系，容易扩展</li>
+<li>数据库结构简单，读写速度快，性能强大</li>
+<li>数据格式自定义，只需要使用约定好的格式进行存储，如Json、哈希表、列存储、图形存储等。</li>
+</ol>
+<p>JSON：</p>
+<ol>
+<li>一种轻量级的数据交换格式，易于阅读和编写</li>
+<li>由对象、数组、数字、字符串或者字面值(false,null,true)组成</li>
+</ol>
+</li>
+<li>
+<p>谈谈你对<strong>数据挖掘</strong>的认识</p>
+<p>数据挖掘是指通过分析数据，从大量数据中揭示出隐含的、先前未知的并有潜在价值的信息的非平凡过程。</p>
+<ol>
+<li>
+<p>收集数据</p>
+</li>
+<li>
+<p>存储与集成</p>
+<p>存储数据，同时尝试将多种数据源的数据组合；</p>
+</li>
+<li>
+<p>选择与处理</p>
+<p>对数据的处理包括审核、筛选、变换；</p>
+<ol>
+<li>审核包括完整性和适用性；</li>
+<li>筛选则是纠正或抛弃错误数据；</li>
+<li>变换和统一成适合挖掘的形式；</li>
+</ol>
+</li>
+<li>
+<p>计算与挖掘</p>
+<p>根据数据的内容和特点建立对应的数据模型或数据模式，需要大量的计算</p>
+</li>
+<li>
+<p>评估与决策</p>
+<p>评估建立的模型，解释模型的价值，利用模型揭示的规律进行预测等，利用可视化技术表示模型</p>
+</li>
+</ol>
+</li>
+<li>
+<p>大数据和机器学习之间有什么联系？</p>
+<p>我的理解是，机器学习是实现大数据的工具，大数据的价值通过机器学习等技术得以体现；</p>
+<p>机器学习研究的是能通过经验自动改进的计算机算法，它在经验学习中改善具体算法的性能；</p>
+<p>在大数据量的基础上，通过机器学习，不断发掘其中蕴含的有用的信息，其处理的数据越多，机器学习就越能体现出优势，包括更好的问题解决方案或性能的提升，如自然语言处理、语音识别、图像设别、天气预测等。</p>
+</li>
+<li>
+<p>谈谈你对<strong>云计算</strong>的认识</p>
+<p>云计算又称为网格计算，是分布式计算的一种。</p>
+<ol>
+<li>分解计算任务：将数据计算程序分解</li>
+<li>分发计算任务：控制各个服务器运行计算</li>
+<li>合并计算结果</li>
+</ol>
+<p>现代云计算技术包括：</p>
+<ol>
+<li>
+<p>分布式计算</p>
+</li>
+<li>
+<p>效用计算</p>
+</li>
+<li>
+<p>负载均衡</p>
+</li>
+<li>
+<p>并行计算</p>
+</li>
+<li>
+<p>网络存储</p>
+<p>网络存储是一种特殊的专用数据存储服务器或相关的存储技术。</p>
+</li>
+<li>
+<p>虚拟化</p>
+</li>
+</ol>
+</li>
+<li>
+<p>谈谈你对<strong>虚拟化</strong>的认识</p>
+<p>虚拟化是指计算元件虚拟，包括：</p>
+<ol>
+<li>
+<p>硬件虚拟</p>
+<p>硬件虚拟化技术直接应用在硬件设计上，如内存虚拟化技术，扩大逻辑容量；</p>
+</li>
+<li>
+<p>软件虚拟</p>
+<ol>
+<li>
+<p>介于硬件和操作系统之间</p>
+<p>模拟不同的指令集，从而在单CPU上模拟多CPU运行</p>
+<p>在同一平台运行不同的操作系统</p>
+</li>
+<li>
+<p>运行在操作系统之上 Wine，JVM/JRE</p>
+<p>提供虚拟环境，专用于安装或运行软件</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>谈谈你对<strong>区块链</strong>的认识</p>
+<p>区块链是一种共享数据库，存储于其中的数据或信息具有如下特征：</p>
+<ol>
+<li>
+<p>不可篡改、不可伪造</p>
+<p>必须掌控全部数据结点的一半以上才可能修改</p>
+</li>
+<li>
+<p>具有访问记录且可以追溯</p>
+<p>数字签名进行认证和记录</p>
+</li>
+<li>
+<p>相关技术及非私有信息公开透明</p>
+<p>相关技术是开源的，除私有信息外都是开放的</p>
+</li>
+<li>
+<p>用分布式技术生成和更新数据</p>
+<p>去中心化，通过分布式技术进行存储和计算；各个结点可以对信息进行验证、传递和管理。</p>
+</li>
+<li>
+<p>利用密码学保证数据传输和访问的安全</p>
+<p>相对独立，基于某种安全的非对称密码学算法规范</p>
+</li>
+</ol>
+<p><u>区块链是数字世界现实化的核心支撑。</u></p>
+</li>
+<li>
+<p>谈谈你对<strong>元宇宙</strong>的认识</p>
+<p>元宇宙是把网络、硬件终端和用户合并的虚拟现实系统。</p>
+<p>它是扩展现实、虚拟现实、区块链、云计算、数字孪生技术的概念具化。</p>
+<ol>
+<li>
+<p>现实世界的数字化、虚拟化</p>
+<p>现实世界的数字化复制物，如数字人民币；</p>
+</li>
+<li>
+<p>数字世界的现实化</p>
+<p>数字世界的现实化创造物；如数字孪生技术、区块链技术；</p>
+</li>
+<li>
+<p>在空间维度上虚拟，时间维度上真实</p>
+<p>利用扩展现实(XR)或虚拟现实(VR)技术提供沉浸式体验；</p>
+</li>
+</ol>
+</li>
+<li>
+<p>谈谈你对<strong>5G</strong>的认识</p>
+<p>第五代通信技术，主要特点是高速率，低时延，大连接；实现经济社会数字化、网络化、智能化；</p>
+<ol>
+<li>高速率指峰值速率10-20Gbit/s</li>
+<li>空中接口时延低至1ms</li>
+<li>解决人与人、人与物、物与物之间的通信问题，满足<strong>物联网</strong>应用的需求；</li>
+</ol>
+</li>
+<li>
+<p>谈谈你对<strong>物联网</strong>的认识</p>
+<p>物联网是互联网基础上延伸和扩展的网络，实现人、机、物的互联互通。</p>
+</li>
+<li>
+<p>谈谈你对机器学习和深度学习的认识，它们之间的区别是什么？</p>
+</li>
+</ol>
+<p>机器学习是利用经验改善系统性能，是一个通过提供的数据学得对应关系的过程。</p>
+<p>深度学习是机器学习的一个分支，一般具有深层非线性网络结构，能形成更加复杂的模型函数拟合。</p>
+<p>传统的机器学习算法和深度学习算法主要是在特征提取方面存在差异，传统机器学习属于浅层结构，主要由人工进行特征提取，复杂程度有限，而深度学习算法具备的深层结构能提取更加复杂的特征，进而使权重学习更加有效。</p>
+   <div class="mermaid">
+       graph LR
+           B[输入]-->|传统机器学习|C[人工特征提取] 
+           B-->|深度学习|D[基础特征提取]
+           C-->E[权重学习]
+           E-->F[预测结果]
+           D-->G[多层复杂特征提取]
+           G-->E
+   </div>
+<ol start="11">
+<li>
+<p>谈谈你对C和Java的认识，它们之间有什么区别？</p>
+<ol>
+<li>从编译角度说，C是编译型语言，通过编译器获得二进制文件，直接执行；而Java是混合型语言，需要先编译成java字节码，然后交由JVM虚拟机进行解释执行；</li>
+<li>应用场景不同。Java语言属于“全场景”编程语言之一，可以应用于Web开发、Android开发、大数据开发等场景，而C语言的应用场景则相对比较集中，主要应用于操作系统开发和嵌入式开发领域。</li>
+<li>技术体系不同。Java是面向对象编程语言，虽然也借鉴了C语言的很多写法，但是在技术体系的设计上更注重可移植性、安全性和可扩展性，所以Java语言更契合互联网的应用环境，这也是Java在互联网时代得到快速发展的一个重要原因。由于Java语言极强的扩展性能，所以Java语言可以在互联网时代、移动互联网时代和大数据时代都能够找到自己的位置。</li>
+<li>发展道路不同。虽然Java语言的出现要比C语言晚一些，但是Java语言的发展道路与C语言还是具有明显的区别，或者说Java的开发人员并不是想让Java取代C语言。Java语言的发展道路主要可以体现出三个特点，第一是跨平台；第二是资源整合能力强；第三是并发处理能力强。可以说Java语言在设计上是希望解决C语言之上的问题，也就是网络问题。</li>
+</ol>
+</li>
+<li>
+<p>XXX</p>
+</li>
+</ol>
+<h2 id="个人问题">个人问题</h2>
+<p>本部分内容与英语面试大部分问题相同，准备的答案尽可能统一。</p>
+<h3 id="报考相关">报考相关</h3>
+<ol>
+<li>
+<p>你为什么考研而不是找工作？（见英语面试题1）</p>
+<p>科学技术的知识是没有限制的。因此，随着我对这一领域的深入研究，我对知识的渴望将永远不会停止。</p>
+<p>计算机科学与技术是一类博大精深的科学，我希望在其中能提高自己的认知能力、自我学习能力、独立思考能力和批判性思维能力，扩宽视野和范围，学习到更多的知识。</p>
+<p>当然，我更希望我能为这门科学做一点小小的贡献。所以我认为毕业后继续深造而不是去工作是很有必要的。</p>
+</li>
+<li>
+<p>你为什么选择计算机科学与技术而非软件工程？（见英语面试题2）</p>
+<p>我认为软件工程是一种程序开发范式，而计算机科学与技术是一门博大精深的科学。</p>
+<p>我在本科的学习中了解了如何规范化开发软件，现在我应该学习如何利用科学技术和编程知识去实现软件。因此我选择计算机科学与技术，希望探索更高更深的科学技术领域，并能够通过这种方式实现系统的知识获取。</p>
+</li>
+<li>
+<p>你为什么选择我们学校？（见英语面试题3）</p>
+<p>在贵校深造一直是我的梦想。我最初被贵校的高声誉所吸引。我有一个同学曾在贵校学习，在与他交流后，我对贵校浓厚的学术氛围和教授的责任心印象更加深刻。这一切都坚定了我的决心，要尽我最大的努力在这里开始我的学习。</p>
+</li>
+<li>
+<p>你对电子科技大学的印象如何?（见英语面试题4）</p>
+<p>电子科技大学是全国重点大学之一，是国内外现代社会大学科学技术协调发展的前沿阵地。</p>
+</li>
+<li>
+<p>你是否有出国留学的打算？（见英语面试题5）</p>
+<p>我之前有了解过，出国留学对成绩和专业素质都有一定的要求，如果有机会的话，我会试一试。</p>
+</li>
+<li>
+<p>你对选择导师有什么想法？（见英语面试题6）</p>
+<p>我有提前了解过各个科研团队，对这些未知的领域都很感兴趣。不过在选择导师方面我没有什么特别的想法，每个导师都有自己独特的学术方法和特点，我所做的就是尽可能提升自己，争取让适合的导师选到我。</p>
+</li>
+<li>
+<p>是否考虑读博？（见英语面试题7）</p>
+<p>有这方面的想法，如果能力满足且有机会读博的话，我非常感激。我希望通过硕士研究生三年的学习和积累，掌握学术研究所需要的各种能力，能在自己感兴趣的领域钻研，在学术道路上走的更远更长。</p>
+</li>
+<li>
+<p>你周围的人如何看待计算机科学与技术/软件工程？（见英语面试题8）</p>
+<p>他们通常不能区分计算机科学与技术和软件工程之间的差异，但他们都认为计算机专业在如今社会很多岗位都有很好的结合性，从事计算机工作的人通常被看作是高素质复合型人才。</p>
+</li>
+</ol>
+<h3 id="个人问题-1">个人问题</h3>
+<ol>
+<li>
+<p>你认为你的最大优点和最大缺点是什么？</p>
+</li>
+<li>
+<p>你之前有参加过培训机构的培训吗？</p>
+</li>
+<li>
+<p>如果你不幸被刷,你会怎么办?你愿意来读非全日制吗?</p>
+<p>复试是筛选过程，被刷意味着我的能力不足，我会认真反思自己的不足之处，对缺陷之处进行查漏补缺，力求在后续做到更加优秀，更加完美。</p>
+<p>我读研究生的决心不会改变，但是不想做将军的士兵不是好士兵。</p>
+<p>人的价值不仅仅取决于他自己，也依赖于社会。因此我可能会考虑通过调剂的方式实现目标。</p>
+</li>
+</ol>
+<h3 id="未来规划">未来规划</h3>
+<ol>
+<li>
+<p>如你能顺利考入我校研究生，你对今后2-3年的学习规划是什么？</p>
+<ol>
+<li>首先，我会认真夯实编程语言基础，迅速掌握C++的STL、C++11和C++17等新特性和技术，为未来的编程开发作准备；</li>
+<li>其次，就是努力掌握研究生阶段的知识，多进行算法、编程能力方面的训练，多思考知识的应用化；</li>
+<li>第三，就是多读文献，了解前沿发展方向，多做探索性的工作，努力将学习的知识转化为研究成果；</li>
+</ol>
+</li>
+<li>
+<p>你今后想从事什么方向的学习?为什么?</p>
+</li>
+</ol>
+<h3 id="本科学习">本科学习</h3>
+<ol>
+<li>
+<p>介绍一下你的大学？</p>
+<p>我本科就读于长安大学，长安大学位于六朝古都西安。</p>
+<p>校园是一个长方形，图书馆是校园里最高的建筑，座位在长方形的中心。</p>
+<p>图书馆的东北方向是宿舍，西北方向是汽车试验场，西南方向是教学楼，东南方向是实验室。</p>
+<p>我很欣赏校园的风景。学校有两个人工湖，教学楼依湖而建。在这样的环境中学习会感到轻松和快乐。</p>
+</li>
+<li>
+<p>简要讲述下你的本科毕业论文？</p>
+<p>我的毕业设计是利用决策树、支持向量机和前馈神经网络来解决分类问题。</p>
+<ol>
+<li>
+<p>决策树在每个决策中选择最优属性进行划分，得到最终结果。</p>
+</li>
+<li>
+<p>支持向量机的目的是在高维空间划分分类超平面。</p>
+<p>通过阅读相关论文我了解了一些进阶实现版本：</p>
+<ol>
+<li>最小二乘支持向量机遵循结构风险最小化原则，简化了计算。</li>
+<li>它的加权版本解决了对异常值的敏感性问题，并减少了错误。</li>
+</ol>
+</li>
+<li>
+<p>前馈神经网络通过计算输出值与实际值之间的误差来校正各层的权值。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>你本科成绩怎么样?本科排名怎么样?为什么这门课挂科了?</p>
+<p>本科成绩概括为部分突出，整体中等。</p>
+</li>
+<li>
+<p>专业方面，你读过哪些书？</p>
+<p>K &amp; R C</p>
+</li>
+<li>
+<p>你本科最感兴趣的一门课是什么?说一说你对这个课程一些自己的理解。</p>
+</li>
+<li>
+<p>你学习过什么编程语言?你为什么学习该编程语言?</p>
+</li>
+<li>
+<p>你在过去的编程中,遇到的最困难的事是什么?你是如何解决的?</p>
+<p>一般来说学习了一种新的算法思想，尝试在具体实现它的时候，都会显得十分困难。</p>
+<p>最困难的是刚学会支持向量机的原理，想要通过numpy进行实现的时候，有种两眼一抹黑，不知道该怎么办的感觉。</p>
+<p>解决的方法是查阅更多的资料，参考其他人的实现方法，照猫画虎进行仿写。</p>
+</li>
+<li>
+<p>你是否有个人技术博客?</p>
+<p>是的，我有个人技术博客，尝试过很多现成的框架搭建，比如hexo，hugo，vuepress等等。</p>
+<p>开始部署在gitee上，随着gitee逐渐加大了对页面的审核，部署很容易失败，正在考虑迁移到github上。</p>
+<p>它们的主要区别是hexo使用nodejs编写，hugo使用go实现，nodejs是面向对象的高级解释型语言，而go是一种编译型语言。Vuepress则是使用Vue和webpack实现。</p>
+</li>
+<li>
+<p>比较熟悉的开发工具是什么?</p>
+<ol>
+<li>大一大二使用C++编写程序的时候，主要用的是Visual Studio;</li>
+<li>大三使用Java编写程序的时候，主要用的是Eclipse;</li>
+<li>大四使用Python编写程序的时候，主要用的是VS Code;</li>
+<li>其他的开发工具也能够使用，比如Jet Brains公司的Web Storm，IDEA，还有轻量级的开发工具DevC++，以及文本编辑器vim和emacs也略会。</li>
+</ol>
+</li>
+</ol>
+<h3 id="其他问题">其他问题</h3>
+<ol>
+<li>
+<p>介绍一下你的家庭？</p>
+<p>我的家庭有三个成员，我的父母和我。总体来说，我的家庭是温暖和谐的。</p>
+<p>我父亲是电梯行业的一名中级工程师。从我记事起，他就一直在辅导我学习。他经常告诉我，态度决定成就。每个阳光明媚的周末他都会去钓鱼。他认为，钓鱼不仅可以训练人们的耐心，还能让人们感到轻松舒适。</p>
+<p>我妈妈是工厂的产品检验员。无论是工作还是生活，她总是一丝不苟。谨慎是避免犯错误的唯一方法。在她的影响下，我总是反复检查我的重要工作。</p>
+</li>
+<li>
+<p>介绍一下你的家乡？</p>
+<p>我的家乡在随州，位于湖北省的北部。北接襄阳，南连武昌，西眺荆门，东迎信阳。举世闻名的编钟就是在这里出土的。同时，据传它还是炎帝神农故里，另战国时期曾侯乙的陵墓也坐落此地。</p>
+<p>此外，随州盛产专用汽车。它被称为专用汽车之乡。城东自北向南的大片开发区，全是专用汽车制造厂。</p>
+<p>城区有涢水和㵐水两大水系交汇，古城环山绕水，灵气氤氲而风景秀美。</p>
+</li>
+<li>
+<p>介绍一下你的大学？（见本科学习面试题1）</p>
+</li>
+</ol>
+<p>//多线程是宏观上同时运行，微观上并行运行，多线程运行的环境是同一环境，共享存储空间。</p>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/englishinterview/" class="block">英语面试</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/compilersprinciples/" class="block">编译原理</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#专业问题">专业问题</a></li>
+    <li><a href="#个人问题">个人问题</a>
+      <ul>
+        <li><a href="#报考相关">报考相关</a></li>
+        <li><a href="#个人问题-1">个人问题</a></li>
+        <li><a href="#未来规划">未来规划</a></li>
+        <li><a href="#本科学习">本科学习</a></li>
+        <li><a href="#其他问题">其他问题</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

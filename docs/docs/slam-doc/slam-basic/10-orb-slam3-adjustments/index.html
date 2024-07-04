@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>ORB SLAM Adjustments | SLAM Programming Basic | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文记录了 ORB-SLAM 系列框架在 ArchLinux 和 NixOS 上的编译适配过程。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"SLAM Programming and Interviewing",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"SLAM Programming Basic",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"ORB SLAM Adjustments",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/10-orb-slam3-adjustments/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/10-orb-slam3-adjustments/"
+    },
+    "headline": "ORB SLAM Adjustments | SLAM Programming Basic | 悦翎轩","datePublished": "2024-01-27T00:00:00+00:00",
+    "dateModified": "2024-01-27T00:00:00+00:00",
+    "wordCount":  1877 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "本文记录了 ORB-SLAM 系列框架在 ArchLinux 和 NixOS 上的编译适配过程。"
+}
+</script><meta property="og:title" content="ORB SLAM Adjustments | SLAM Programming Basic | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/10-orb-slam3-adjustments/" />
+
+
+
+<meta property="og:description" content="本文记录了 ORB-SLAM 系列框架在 ArchLinux 和 NixOS 上的编译适配过程。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2024-01-27T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2024-01-27T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/">SLAM Programming Basic</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/1-slam-summary/">SLAM Summary</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/2-vslam-summary/">VSLAM Summary</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-1-rotation-and-translation-matrix/">Rotation &amp; Translation Matrix</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-2-eigen-exercise/">Eigen Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-4-geometry-exercise/">Geometry Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-5-pangolin/">Pangolin Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/4-lie-group-and-lie-algebras-1/">Lie Group and Lie Algebras 1</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/5-lie-group-and-lie-algebras-exercise/">Lie Group and Lie Algebras Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/7-nonlinear-optimize/">Non linear Optimize</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/10-orb-slam3-adjustments/">ORB SLAM Adjustments</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/11-orb-slam3-stereo/">ORB SLAM3 Stereo</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/12-slam-evo/">SLAM Evaluation</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">ORB SLAM Adjustments</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2024-01-27</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>4分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="orb-slam3">ORB SLAM3</h2>
+<p>orb-slam3 的项目地址：<a href="https://github.com/UZ-SLAMLab/ORB_SLAM3">https://github.com/UZ-SLAMLab/ORB_SLAM3</a>
+目前 orb-slam3 的代码直接编译会报错，因此需要解决一些冲突。</p>
+<h3 id="opencv">Opencv</h3>
+<p>orb-slam 系列要求 opencv 版本包含了对 gtk 的支持，这一点尤其重要。</p>
+<p>在 NixOS 中可以使用下面的代码开启对 gtk 的支持。</p>
+<pre><code class="language-nix">let
+    pkgs = nixpkgs.legacyPackages.${system};
+    opencv = pkgs.opencv;
+    opencvGtk = opencv.override( old:{
+      enableGtk2 = true;
+      gtk2 = pkgs.gtk2;
+      enableGtk3 = true;
+      gtk3 = pkgs.gtk3;
+      enableDocs = true;
+    });
+in
+  {
+    devShells.default = pkgs.mkShell {
+      packages = with pkgs; [
+        opencvGtk
+      ];
+    }
+  }
+</code></pre>
+<h3 id="eigen">Eigen</h3>
+<p>Eigen 是一个矩阵运算库，可以直接从系统包管理器安装，也可以从源码编译。</p>
+<ol>
+<li>官方项目地址：<a href="https://gitlab.com/libeigen/eigen">https://gitlab.com/libeigen/eigen</a></li>
+<li>官方文档地址：<a href="https://eigen.tuxfamily.org/index.php?title=Main_Page">https://eigen.tuxfamily.org/index.php?title=Main_Page</a>
+有关如何在 CMake 项目中使用 Eigen，可以在对应版本的 Eigen 文档中参考 <a href="https://eigen.tuxfamily.org/dox/TopicCMakeGuide.html">Using Eigen in CMake Projects</a></li>
+</ol>
+<h3 id="sophus">Sophus</h3>
+<p>Sophus 是一个李群李代数库，一般发行版不提供安装，可以从源码编译，但是 <strong>编译测试部分时会报错误</strong> 。</p>
+<ol>
+<li>官方项目地址：<a href="https://github.com/strasdat/Sophus">https://github.com/strasdat/Sophus</a></li>
+<li>该项目可选依赖于 <code>fmt</code> ，可以通过包管理器安装该库。</li>
+</ol>
+<p>安装说明：</p>
+<ol>
+<li>若安装到系统环境下，为以后所有依赖 Sophus 的项目使用，可以添加参数去除测试部分的编译（仅对较新的版本有效）
+<pre><code class="language-shell">cmake .. -DBUILD_SOPHUS_TESTS=OFF -DBUILD_SOPHUS_EXAMPLES=OFF
+</code></pre>
+</li>
+<li>若作为项目依赖，仅为单个项目使用，可以在 <code>CMakeLists.txt</code> 中添加如下代码
+<pre><code class="language-cmake">add_compile_options(-Wno-error=array-bounds)
+</code></pre>
+</li>
+</ol>
+<p>NixOS 上可以通过编写 <code>sophus.nix</code> 的方式安装到系统</p>
+<pre><code class="language-nix">{ lib
+, stdenv
+, fetchFromGitHub
+, cmake
+, pkgs
+, ...
+}:
+
+stdenv.mkDerivation rec {
+  pname = &quot;sophus&quot;;
+  version = &quot;1.22.10&quot;;
+
+  src = fetchFromGitHub {
+    owner = &quot;strasdat&quot;;
+    repo = &quot;Sophus&quot;;
+    rev = &quot;d270df2be6e46501b1e7efc09b107517e0be0645&quot;;
+    sha256 = &quot;sha256-t0PkXdXO+2PChlsMeKK3IPxudurqrDD4oOllNKphglk=&quot;;
+  };
+
+  buildInputs = with pkgs;[
+    eigen
+    fmt
+  ];
+
+  nativeBuildInputs = [ cmake ];
+  cmakeFlags = [
+    &quot;-DBUILD_SOPHUS_TESTS=OFF&quot;
+    &quot;-DBUILD_SOPHUS_EXAMPLES=OFF&quot;
+  ];
+  meta = with lib; {
+    homepage = &quot;https://strasdat.github.io/Sophus&quot;;
+    description = &quot;C++ implementation of Lie groups commonly used for 2d and 3d geometric problems&quot;;
+    license = licenses.lgpl3Plus;
+    maintainers = with maintainers; [ endlesspeak ];
+    platforms = platforms.unix;
+  };
+}
+</code></pre>
+<h3 id="pangolin">Pangolin</h3>
+<p>Pangolin 是一个轻量可移植的 OpenGL 显示管理图形库。
+Pangolin 可以直接从系统包管理器安装，也可以从源码安装。</p>
+<ol>
+<li>官方项目地址：<a href="https://github.com/stevenlovegrove/Pangolin">https://github.com/stevenlovegrove/Pangolin</a></li>
+<li>该项目建议安装到系统环境，因为各 SLAM 框架基本都依赖 Pangolin 。</li>
+</ol>
+<p>由于 Gcc13 不再包含 <code>cstdint</code> 头文件，在 NixOS 中需要显式指明：</p>
+<pre><code class="language-nix">(pangolin.overrideAttrs(old:{
+  env.CXXFLAGS = toString [
+    # GCC 13: error: 'uint32_t' does not name a type
+    &quot;-include cstdint&quot;
+  ];
+}))
+</code></pre>
+<h3 id="other-dependencies">Other Dependencies</h3>
+<h4 id="realsense2">realsense2</h4>
+<p>orb-slam3 可选依赖于该库，去掉该依赖项仅会导致与 realsense2 有关的测试代码不能正确生成</p>
+<h4 id="dependencies">dependencies</h4>
+<ol>
+<li>orb-slam3 的运行需要 qt 界面显示运行结果，可以安装 Qt5 或 Qt6 。</li>
+<li>orb-slam3 的 <code>src/System.cc</code> 引入了 <code>openssl</code> 的头文件。</li>
+<li>orb-slam3 的 <code>DBoW2</code> 模块要求 <code>boost</code> 库。</li>
+</ol>
+<h4 id="nixos-configuration">NixOS configuration</h4>
+<pre><code class="language-nix">devShells.default = pkgs.mkShell {
+  packages = with pkgs; [
+    qt6.full
+    boost
+    openssl
+  ];
+}
+
+</code></pre>
+<h4 id="ros-support">ROS support</h4>
+<p>orb-slam3 可选依赖于 ROS，但是 ROS 在非 Ubuntu 上的安装并不容易，因此该部分建议使用 docker 或虚拟机部署。</p>
+<h3 id="c-plus-plus-14-support">C++14 support</h3>
+<p>orb-slam3 需要 C++ 14 的支持， <strong>即使 Readme 上说只需要 C++ 11</strong> 。为此，需要修改所有和 C++11 有关的内容，这包括 <code>CMakeLists.txt</code> 和代码中的宏。</p>
+<p>可以使用下面的代码替换掉 <code>CMakeLists.txt</code> 中的内容</p>
+<pre><code class="language-shell">sed -i 's/++11/++14/g' CMakeLists.txt
+</code></pre>
+<p>代码中还需要手动将 <code>COMPILEDWITHC11</code> 替换为 <code>COMPILEDWITHC14</code> 宏。</p>
+<h3 id="compile">Compile</h3>
+<p>给它一个编译核心，它能从 1.8GiB 干到 6.1GiB。如果不想内存寄掉就别 <code>make -j</code></p>
+<h2 id="orb-slam2">ORB SLAM2</h2>
+<p>ORB SLAM2 需要的依赖同上，例外的是不需要 <code>Sophus</code> 和 <code>realsence2</code> 。
+项目地址：<a href="https://github.com/raulmur/ORB_SLAM2/">https://github.com/raulmur/ORB_SLAM2/</a></p>
+<h3 id="problems">Problems</h3>
+<h4 id="c-plus-plus-14-support">C++ 14 support</h4>
+<p>根据“保持最新”理念，升级到 C++14 已成必然。步骤与 ORB SLAM3 类似。</p>
+<h4 id="cmake-modules">CMake Modules</h4>
+<p>删除 <code>cmake_modules</code> 文件夹，因为它指示了错误的 <code>Eigen</code> 依赖寻找方法。</p>
+<h4 id="static-assert-std-map">static assert std map</h4>
+<p>Corrected typedef so that map value_type and allocator are the same. 参考 <a href="https://github.com/raulmur/ORB_SLAM2/pull/585/commits/d5c04468ce85d600f8a0a23fa280b0153fe115e0">PullRequest #585</a> 或 <a href="https://github.com/craymichael/ORB_SLAM2/">Repo</a></p>
+<p>更改 <code>include/LoopClosing.h</code> 第 50 行。</p>
+<pre><code class="language-cpp">typedef map&lt;KeyFrame*,g2o::Sim3,std::less&lt;KeyFrame*&gt;,
+    Eigen::aligned_allocator&lt;std::pair&lt;KeyFrame* const, g2o::Sim3&gt; &gt; &gt; KeyFrameAndPose;//原来是 const KeyFrame*
+</code></pre>
+<h4 id="double-free-or-corruption">double free or corruption</h4>
+<p>这是由于 <code>-march=native</code> 导致的，这个问题在 orb-slam3 上不存在，具体原因尚不明确。</p>
+<p>修改时，需要为 <strong>所有</strong> 依赖的构建都取消该编译选项。</p>
+<h3 id="opencv-version">OpenCV Version</h3>
+<p>关于 OpenCV 的 PullRequest，参考 <a href="https://github.com/raulmur/ORB_SLAM2/pull/1076/commits/966ac5e218820248f353b86fa4406d530a9e9585">PullRequest #1076</a> 或 <a href="https://github.com/aaronxavier/ORB_SLAM2/">Repo</a></p>
+<h4 id="cmake">cmake</h4>
+<ol>
+<li>将所有 cmake 文件中的 <code>find_package</code> 中的 opencv 版本更正到 OpenCV 4 。</li>
+<li>如果需要与 ROS 集成调试，需要在 <code>Examples/ROS/ORB_SLAM2/CMakeLists.txt</code> 中添加 <code>-lboost_system</code> 链接选项</li>
+</ol>
+<h4 id="header">header</h4>
+<ol>
+<li>
+<p>将所有 <code>#include&lt;opencv/cv.h&gt;</code> 更正为 <code>#include&lt;opencv2/opencv.hpp&gt;</code></p>
+</li>
+<li>
+<p>在下列文件范围内进行操作。
+操作内容：</p>
+<ol>
+<li>新增 <code>#include&lt;opencv2/imgproc/types_c.h&gt;</code></li>
+<li>新增 <code>#include&lt;opencv2/opencv.hpp&gt;</code></li>
+<li>[deprecated]新增命名空间标识符或 <code>using namespace cv;</code></li>
+</ol>
+<p>文件范围：</p>
+<ol>
+<li><code>include/PnPsolver.h</code></li>
+<li><code>include/Sim3Solver.h</code></li>
+<li><code>include/System.h</code></li>
+<li><code>src/FrameDrawer.cc</code></li>
+<li><code>src/LoopClosing.cc</code></li>
+<li><code>src/Optimizer.cc</code></li>
+<li><code>src/Tracking.cc</code></li>
+</ol>
+</li>
+<li>
+<p>在下列文件中新增 <code>#include&lt;opencv2/core/core_c.h&gt;</code></p>
+<ol>
+<li><code>src/Sim3Solver.cc</code></li>
+</ol>
+</li>
+<li>
+<p>在头文件 <code>System.h</code> 中新增 <code>#include &lt;unistd.h&gt;</code>
+需要说明的是：</p>
+<ol>
+<li>这是为了解决 <code>usleep()</code> 函数未定义的问题</li>
+<li>相当一部分 PullRequest 给每个使用到 <code>usleep()</code> 的函数都添加了该头文件，个人认为这是没有必要的</li>
+</ol>
+</li>
+</ol>
+<h4 id="cv-macro">cv macro</h4>
+<ol>
+<li>更改下列标识符
+<ol>
+<li>
+<p><code>CvMat</code> → <code>cv::Mat</code>
+由于：</p>
+<ol>
+<li><code>cvCreate(rows,cols,type)</code> 返回的是 <code>CvMat</code> 类型的指针</li>
+<li><code>cv::Mat(rows,cols,type)</code> 返回的是 <code>cv::Mat</code> 类型的对象</li>
+</ol>
+<p>因此：</p>
+<ol>
+<li>形参中，~CvMat *~ 改为 <code>cv::Mat *</code> ，到时候实参传 <code>&amp;M</code> 进去</li>
+<li>函数内 <code>CvMat *</code> 或 <code>CvMat</code> 都改为 <code>cv::Mat</code> ，同时 <code>cvCreateMat()</code> 也改为 <code>cv::Mat</code></li>
+<li>经过 2 的修改，函数内临时变量变为 <code>cv::Mat</code> 类型，在进行其他函数运算时可以去掉 <code>&amp;</code></li>
+</ol>
+</li>
+<li>
+<p><code>cvMulTransposed()</code> → <code>cv::mulTransposed()</code></p>
+<pre><code class="language-cpp">cvMulTransposed(PW0,&amp;PW0tPW0,1);
+cv::mulTransposed(PW0,PW0tPW0,1);
+</code></pre>
+</li>
+<li>
+<p><code>cvSVD()</code> → <code>cv::SVD::compute()</code></p>
+<pre><code class="language-cpp">cvSVD(&amp;PW0tPW0, &amp;DC, &amp;UCt, 0, CV_SVD_MODIFY_A | CV_SVD_U_T);
+cv::SVD::compute(PW0tPW0,DC,UCt,cv::Mat(), cv::SVD::MODIFY_A | cv::SVD::NO_UV);
+cvSVD(&amp;ABt, &amp;ABt_D, &amp;ABt_U, &amp;ABt_V, CV_SVD_MODIFY_A);
+cv::SVD::compute(ABt, ABt_D, ABt_U, ABt_V, cv::SVD::MODIFY_A);
+</code></pre>
+</li>
+<li>
+<p><code>cvInvert</code> → <code>cv::invert()</code></p>
+<pre><code class="language-cpp">cvInvert(&amp;CC, &amp;CC_inv, CV_SVD);
+cv::invert(CC, CC_inv, cv::DECOMP_SVD);
+</code></pre>
+</li>
+<li>
+<p><code>(CvMat *)M-&gt;data.db + x</code> → <code>(cv::Mat *)M-&gt;ptr&lt;double&gt;(x)</code></p>
+<pre><code class="language-cpp">//data成员的db数组是double数组
+double * M1 = M-&gt;data.db + row * 12;
+//使用cv::Mat::ptr 成员函数访问矩阵某行的指针，该行是double
+double * M1 = M-&gt;ptr&lt;double&gt;(row * 12);
+</code></pre>
+</li>
+<li>
+<p><code>cvSetZero(CvMat *)</code> → <code>cv::Mat.setTo(0)</code></p>
+<pre><code class="language-cpp">cvSetZero(&amp;ABt);
+ABt.setTo(0);
+</code></pre>
+</li>
+<li>
+<p><code>cvmSet()</code> → <code>cv::Mat-&gt;at&lt;double&gt;</code></p>
+<pre><code class="language-cpp">cvmSet(&amp;L_6x4, i, 0, cvmGet(L_6x10, i, 0));
+cvmSet(&amp;L_6x4, i, 1, cvmGet(L_6x10, i, 1));
+cvmSet(&amp;L_6x4, i, 2, cvmGet(L_6x10, i, 3));
+cvmSet(&amp;L_6x4, i, 3, cvmGet(L_6x10, i, 6));
+L_6x4.at&lt;double&gt;(i, 0) = L_6x10-&gt;at&lt;double&gt;(i, 0);
+L_6x4.at&lt;double&gt;(i, 1) = L_6x10-&gt;at&lt;double&gt;(i, 1);
+L_6x4.at&lt;double&gt;(i, 1) = L_6x10-&gt;at&lt;double&gt;(i, 3);
+L_6x4.at&lt;double&gt;(i, 1) = L_6x10-&gt;at&lt;double&gt;(i, 6);
+</code></pre>
+</li>
+<li>
+<p><code>cvSolve()</code> → <code>cv::solve()</code></p>
+<pre><code class="language-cpp">cvSolve(&amp;L_6x4, Rho, &amp;B4, CV_SVD);
+cv::solve(L_6x4, *Rho, B4, cv::DECOMP_SVD);
+</code></pre>
+</li>
+</ol>
+</li>
+<li>更正下列 OpenCV 颜色宏
+<ol>
+<li>将 <code>CV_BGR2GRAY</code> 更正为 <code>cv::COLOR_BGR2GRAY</code></li>
+<li>将 <code>CV_RGB2GRAY</code> 更正为 <code>cv::COLOR_RGB2GRAY</code></li>
+<li>将 <code>CV_BGRA2GRAY</code> 更正为 <code>cv::COLOR_BGRA2GRAY</code></li>
+<li>将 <code>CV_RGBA2GRAY</code> 更正为 <code>cv::COLOR_RGBA2GRAY</code></li>
+</ol>
+</li>
+<li>更正下列 OpenCV 加载宏
+<ol>
+<li>将 <code>CV_LOAD_IMAGE_UNCHANGED</code> 更正为 <code>cv::IMREAD_UNCHANGED</code></li>
+<li>将 <code>CV_REDUCE_SUM</code> 更正为 <code>cv::REDUCE_SUM</code></li>
+</ol>
+</li>
+</ol>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/7-nonlinear-optimize/" class="block">Non linear Optimize</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/11-orb-slam3-stereo/" class="block">ORB SLAM3 Stereo</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#orb-slam3">ORB SLAM3</a>
+      <ul>
+        <li><a href="#opencv">Opencv</a></li>
+        <li><a href="#eigen">Eigen</a></li>
+        <li><a href="#sophus">Sophus</a></li>
+        <li><a href="#pangolin">Pangolin</a></li>
+        <li><a href="#other-dependencies">Other Dependencies</a></li>
+        <li><a href="#c-plus-plus-14-support">C++14 support</a></li>
+        <li><a href="#compile">Compile</a></li>
+      </ul>
+    </li>
+    <li><a href="#orb-slam2">ORB SLAM2</a>
+      <ul>
+        <li><a href="#problems">Problems</a></li>
+        <li><a href="#opencv-version">OpenCV Version</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

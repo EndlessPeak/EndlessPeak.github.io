@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Non linear Optimize | SLAM Programming Basic | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文记录了非线性优化的相关内容。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"SLAM Programming and Interviewing",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"SLAM Programming Basic",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"Non linear Optimize",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/7-nonlinear-optimize/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/7-nonlinear-optimize/"
+    },
+    "headline": "Non linear Optimize | SLAM Programming Basic | 悦翎轩","datePublished": "2024-06-01T00:00:00+00:00",
+    "dateModified": "2024-06-01T00:00:00+00:00",
+    "wordCount":  3366 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "本文记录了非线性优化的相关内容。"
+}
+</script><meta property="og:title" content="Non linear Optimize | SLAM Programming Basic | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/7-nonlinear-optimize/" />
+
+
+
+<meta property="og:description" content="本文记录了非线性优化的相关内容。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2024-06-01T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2024-06-01T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/">SLAM Programming Basic</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/1-slam-summary/">SLAM Summary</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/2-vslam-summary/">VSLAM Summary</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-1-rotation-and-translation-matrix/">Rotation &amp; Translation Matrix</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-2-eigen-exercise/">Eigen Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-4-geometry-exercise/">Geometry Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-5-pangolin/">Pangolin Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/4-lie-group-and-lie-algebras-1/">Lie Group and Lie Algebras 1</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/5-lie-group-and-lie-algebras-exercise/">Lie Group and Lie Algebras Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/7-nonlinear-optimize/">Non linear Optimize</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/10-orb-slam3-adjustments/">ORB SLAM Adjustments</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/11-orb-slam3-stereo/">ORB SLAM3 Stereo</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/12-slam-evo/">SLAM Evaluation</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Non linear Optimize</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2024-06-01</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>7分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="matrix-derivative">Matrix Derivative</h2>
+<p>下面介绍矩阵求导的相关内容。</p>
+<p>矩阵和向量求导是批量求导数的一种方式，其本质上还是矩阵或向量中的标量在求导，只是借助矩阵或者向量的形式，同时对多个因变量进行关于自变量的求导。</p>
+<p>矩阵求导的类型如下表所示：</p>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 10px;
+        text-align: center;
+        height: 60px; /* Adjust the font size as needed */
+        vertical-align: middle; /* Ensure text is vertically centered */
+        font-size: 15px; /* Adjust the font size as needed */
+    }
+</style>
+<table>
+  <thead>
+    <tr>
+      <th>Types</th>
+      <th>Scalar</th>
+      <th>Vector</th>
+      <th>Matrix</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Scalar</td>
+      <td>$\frac{\partial y}{\partial x}$</td>
+      <td>\(\frac{\partial \mathbf{y}}{\partial x}\)</td>
+      <td>\(\frac{\partial \mathbf{Y}}{\partial x}\)</td>
+    </tr>
+    <tr>
+      <td>Vector</td>
+      <td>$\frac{\partial y}{\partial \mathbf{x}}$</td>
+      <td>\(\frac{\partial \mathbf{y}}{\partial \mathbf{x}}\)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Matrix</td>
+      <td>$\frac{\partial y}{\partial \mathbf{X}}$</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="derivative-of-a-scalar-with-respect-to-a-vector">Derivative of a scalar with respect to a vector</h3>
+<p>标量对向量求导。</p>
+<p>假设我们有一个标量值函数 \( f(\mathbf{x}) \)，其中 \(\mathbf{x} = [x_1, x_2, \ldots, x_n]^T\) 是一个 \( n \) 维向量。标量对向量的导数结果是一个行向量（梯度），表示为：
+</p>
+$$
+\nabla_{\mathbf{x}} f = \frac{\partial f}{\partial \mathbf{x}} = \begin{bmatrix}
+\frac{\partial f}{\partial x_1} & \frac{\partial f}{\partial x_2} & \cdots & \frac{\partial f}{\partial x_n}
+\end{bmatrix}^T 
+$$
+<h3 id="derivative-of-a-vector-with-respect-to-a-scalar">Derivative of a vector with respect to a scalar</h3>
+<p>向量对标量求导。</p>
+<p>假设我们有一个向量值函数 \(\mathbf{f}(x)\)，其中 \(\mathbf{f} = [f_1(x), f_2(x), \ldots, f_m(x)]^T\)，而 \( x \) 是一个标量。向量对标量的导数结果是一个列向量，表示为：
+</p>
+$$ 
+\frac{d \mathbf{f}}{d x} = \begin{bmatrix}
+\frac{d f_1}{d x} \\
+\frac{d f_2}{d x} \\
+\vdots \\
+\frac{d f_m}{d x}
+\end{bmatrix} 
+$$
+<h3 id="derivative-of-a-vector-with-respect-to-a-vector">Derivative of a vector with respect to a vector</h3>
+<p>假设我们有一个向量值函数 \(\mathbf{f}(\mathbf{x})\)，其中 \(\mathbf{f}\) 是 \( \mathbb{R}^n \to \mathbb{R}^m \) 的函数，\(\mathbf{f}(\mathbf{x}) = [f_1(\mathbf{x}), f_2(\mathbf{x}), \ldots, f_m(\mathbf{x})]^T\)，而 \(\mathbf{x} = [x_1, x_2, \ldots, x_n]^T\) 是一个 \( n \) 维向量。</p>
+<p>列向量 \(\mathbf{f}(\mathbf{x})\) 对行向量 \(\mathbf{x}\) 的导数是<strong>雅可比矩阵（Jacobian matrix）</strong>，定义如下：
+</p>
+$$
+\frac{\partial \mathbf{f}}{\partial \mathbf{x}^T}=
+\begin{bmatrix}
+\frac{\partial f_1}{\partial \mathbf{x}^T} \\
+\frac{\partial f_2}{\partial \mathbf{x}^T} \\
+\vdots \\
+\frac{\partial f_m}{\partial \mathbf{x}^T}
+\end{bmatrix}=
+\begin{bmatrix}
+\frac{\partial f_1}{\partial x_1} & \frac{\partial f_1}{\partial x_2} & \cdots & \frac{\partial f_1}{\partial x_n} \\
+\frac{\partial f_2}{\partial x_1} & \frac{\partial f_2}{\partial x_2} & \cdots & \frac{\partial f_2}{\partial x_n} \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{\partial f_m}{\partial x_1} & \frac{\partial f_m}{\partial x_2} & \cdots & \frac{\partial f_m}{\partial x_n}
+\end{bmatrix} 
+$$
+<blockquote>
+<p>这是雅可比矩阵的分子分布，还有一种是分母分布，即行向量对列向量求导得到的，结果是以上雅可比矩阵的转置。</p>
+</blockquote>
+<p>这个矩阵的第 $i$ 行第 $j$ 列的元素是函数 $ f_i $ 对变量 $ x_j $ 的偏导数。换句话说，雅可比矩阵的每一行对应于向量值函数的一个分量对所有变量的偏导数组成的行向量。</p>
+<p>对于一个具体的例子，假设 $\mathbf{f}(\mathbf{x})$ 是一个二维向量值函数：
+</p>
+$$ 
+\mathbf{f}(\mathbf{x}) = \begin{bmatrix} f_1(x_1, x_2) \\ f_2(x_1, x_2) \end{bmatrix} 
+$$
+<p>
+则雅可比矩阵为：
+</p>
+$$
+\mathbf{J} = 
+\frac{\partial \mathbf{f}}{\partial \mathbf{x}^T} = 
+\begin{bmatrix} 
+\frac{\partial f_1}{\partial x_1} & \frac{\partial f_1}{\partial x_2} \\ 
+\frac{\partial f_2}{\partial x_1} & \frac{\partial f_2}{\partial x_2} 
+\end{bmatrix} 
+$$
+<p>这是向量对向量求导的公式和方法。</p>
+<h3 id="derivative-of-a-matrix-with-respect-to-a-vector">Derivative of a matrix with respect to a vector</h3>
+<h3 id="key-derivative">Key Derivative</h3>
+<p>下面介绍几个重点导数：</p>
+<p>假设我们有两个向量 \(\mathbf{a}\) 和 \(\mathbf{x}\)，其中 \(\mathbf{a} = [a_1, a_2, \ldots, a_n]^T\) 和 \(\mathbf{x} = [x_1, x_2, \ldots, x_n]^T\)，则 $\frac{\partial \mathbf{a}\mathbf{x}}{\partial \mathbf{x}}$ 推导如下：</p>
+<p>首先，向量 \(\mathbf{a}\) 和 \(\mathbf{x}\) 的内积定义为：
+</p>
+\[ f(\mathbf{x}) = \mathbf{a}^T \mathbf{x} = a_1 x_1 + a_2 x_2 + \cdots + a_n x_n \]
+<p>
+我们需要对 \(\mathbf{x}\) 求导。根据向量微积分的定义，对 \(\mathbf{x}\) 求导时，每个分量 \(x_i\) 的偏导数是 \(a_i\)。因此，梯度（导数）可以表示为一个列向量：
+</p>
+$$ 
+\nabla_{\mathbf{x}} (\mathbf{a}^T \mathbf{x}) = \begin{bmatrix}
+\frac{\partial (\mathbf{a}^T \mathbf{x})}{\partial x_1} \\
+\frac{\partial (\mathbf{a}^T \mathbf{x})}{\partial x_2} \\
+\vdots \\
+\frac{\partial (\mathbf{a}^T \mathbf{x})}{\partial x_n}
+\end{bmatrix} = \begin{bmatrix}
+a_1 \\
+a_2 \\
+\vdots \\
+a_n
+\end{bmatrix} = \mathbf{a}
+$$
+<p>
+因此，向量 \(\mathbf{a}\) 和 \(\mathbf{x}\) 的内积对 \(\mathbf{x}\) 的导数结果是向量 \(\mathbf{a}\) 本身。</p>
+<hr>
+<p>假设 $x$ 是一个 $n \times 1$ 的列向量，$A$ 是一个 $n \times n$的对称矩阵，则 $\frac{\partial x^TAx}{\partial x}$ 推导如下：</p>
+<ol>
+<li>
+<p>展开 $x^TAx$:
+</p>
+$$
+    x^TAx=\sum_{i=1}^{n}\sum_{j=1}^{n}x_iA_{ij}x_j
+    $$
+<p>
+其中 $x_i$ 是 $x$ 的第 $i$ 个分量，$A_{ij}$ 是 $A$ 的第 $i$ 行第 $j$ 列的元素。</p>
+</li>
+<li>
+<p>对 $x_k$ 求导：
+</p>
+$$
+       \frac{\partial }{\partial x} \left ( \sum_{i=1}^{n} \sum_{j=1}^{n} x_i A_{ij} x_j \right ) = \sum_{i=1}^n\sum_{j=1}^n \frac{\partial }{\partial x_k}(x_i A_{ij} x_j)
+    $$
+</li>
+<li>
+<p>考虑每一项 $x_i A_{ij} x_j$ 的导数：
+</p>
+$$
+    \frac{\partial}{\partial x_k} \left ( x_i A_{ij} x_j \right ) = \delta_{ik} A_{ij} x_j + x_i A_{ij} \delta_{jk}
+    $$
+<p>其中 $\delta_{ik}$ 和 $\delta_{jk}$ 是克罗内克 $delta$ 函数，当且仅当 $i=k$ 或 $j=k$ 时其值为 1，否则为 0。</p>
+</li>
+<li>
+<p>非零项的和为：
+</p>
+$$
+    \sum_{i=1}^{n} \sum_{j=1}^{n} (\delta_{ik} A_{ij} x_j + x_i A_{ij} \delta_{jk})=\sum_{j=1}^{n}A_{kj}x_j + \sum_{i=1}^{n}x_iA_{ik}
+    $$
+</li>
+<li>
+<p>由于 $A$ 是对称的，即 $A_{ij}=A_{ji}$ ，所以：
+</p>
+$$
+    \sum_{j=1}^{n}A_{kj}x_j + \sum_{i=1}^{n}x_iA_{ik} = \sum_{j=1}^{n}A_{kj}x_j + \sum_{j=1}^{n}x_jA_{jk} =
+    2\sum_{j=1}^{n}A_{kj}x_j
+    $$
+<p>相当于：
+</p>
+$$
+    \frac{\partial}{\partial x_k}(x^TAx)=2(Ax)_k
+    $$
+</li>
+<li>
+<p>因此向量形式的求导结果是：
+</p>
+$$
+    \frac{\partial}{\partial x}(x^TAx)=2Ax
+    $$
+</li>
+</ol>
+<hr>
+<p>不失一般性，若 $A$ 不是对称矩阵，则推导如下：
+考虑函数的微分形式：</p>
+\[ df = d(\mathbf{x}^T \mathbf{A} \mathbf{x}) \]
+<p>根据微分的性质：</p>
+\[ d(\mathbf{x}^T \mathbf{A} \mathbf{x}) = (\mathbf{d x})^T \mathbf{A} \mathbf{x} + \mathbf{x}^T \mathbf{A} (\mathbf{d x}) \]
+<p>这可以进一步简化为：</p>
+\[ df = (\mathbf{d x})^T \mathbf{A} \mathbf{x} + \mathbf{x}^T \mathbf{A} (\mathbf{d x}) \]
+<p>注意到 \((\mathbf{d x})^T \mathbf{A} \mathbf{x}\) 是一个标量，等于它的转置，即：</p>
+\[ (\mathbf{d x})^T \mathbf{A} \mathbf{x} = (\mathbf{x}^T \mathbf{A}^T \mathbf{d x})^T = \mathbf{d x}^T \mathbf{A}^T \mathbf{x} \]
+<p>因此我们有：</p>
+\[ df = (\mathbf{d x})^T \mathbf{A} \mathbf{x} + (\mathbf{d x})^T \mathbf{A}^T \mathbf{x} = (\mathbf{d x})^T (\mathbf{A} + \mathbf{A}^T) \mathbf{x} \]
+<p>由此可以看出：</p>
+\[ \frac{\partial (\mathbf{x}^T \mathbf{A} \mathbf{x})}{\partial \mathbf{x}} = (\mathbf{A} + \mathbf{A}^T) \mathbf{x} \]
+<p>如果 \(\mathbf{A}\) 是对称矩阵：</p>
+\[ \frac{\partial (\mathbf{x}^T \mathbf{A} \mathbf{x})}{\partial \mathbf{x}} = 2 \mathbf{A} \mathbf{x} \]
+<p>如果 \(\mathbf{A}\) 不是对称矩阵：</p>
+\[ \frac{\partial (\mathbf{x}^T \mathbf{A} \mathbf{x})}{\partial \mathbf{x}} = (\mathbf{A} + \mathbf{A}^T) \mathbf{x} \]
+<h2 id="least-squares-introduce">Least Squares Introduce</h2>
+<p>接下来探讨为什么SLAM问题中使用优化方法时需要引入最小二乘。</p>
+<p>在SLAM（Simultaneous Localization and Mapping，即时定位与地图构建）中，最小二乘法是用于优化的问题解决方法之一。我们需要从SLAM中的条件概率分布出发，通过后验概率分布的最大化，再到最大似然估计，最终引出最小二乘的使用。</p>
+<p>即，<strong>最小二乘问题的解等价于状态的最大似然估计。</strong></p>
+<h3 id="conditional-probability-distribution">Conditional Probability Distribution</h3>
+<p>在SLAM中，我们需要估计机器人在环境中的位置和地图，这可以表示为状态变量 $\mathbf{x}$（包括机器人的位置和地图的所有特征）。SLAM问题可以描述为在给定所有观测数据 $\mathbf{z}$ 和运动数据 $\mathbf{u}$ 的条件下，求状态变量 $\mathbf{x}$ 的概率分布：</p>
+$$
+p(\mathbf{x} \mid \mathbf{z}, \mathbf{u})
+$$
+<h3 id="posterior-probability-distribution">Posterior Probability Distribution</h3>
+<p>我们希望找到最有可能的状态变量 $\mathbf{x}$，即后验概率最大的状态。这涉及最大化上述条件概率分布。根据贝叶斯公式，后验概率可以表示为：
+</p>
+$$
+p(\mathbf{x} \mid \mathbf{z}, \mathbf{u}) = \frac{p(\mathbf{z}, \mathbf{u} \mid \mathbf{x}) p(\mathbf{x})}{p(\mathbf{z}, \mathbf{u})} \propto p(\mathbf{z},\mathbf{u} \mid \mathbf{x})p(\mathbf{x})
+$$
+<p>其中，分母 $p(\mathbf{z}, \mathbf{u})$ 对于给定的观测和运动数据是一个常数。分子中左侧的 $p(\mathbf{z},\mathbf{u} \mid \mathbf{x})$ 代表似然，而 $p(\mathbf{x})$ 称为先验。</p>
+<p><strong>直接求后验分布是困难的，但是求一个状态最优估计，使得在该状态下后验概率最大化，则是可行的。</strong></p>
+<p>最大化后验概率 $p(\mathbf{x} \mid \mathbf{z}, \mathbf{u})$ 等价于最大化联合概率 $p(\mathbf{z}, \mathbf{u} \mid \mathbf{x}) p(\mathbf{x})$:
+</p>
+$$
+\mathbf{x}_{\text{MAP}} = \arg\max_{\mathbf{x}} p(\mathbf{x} \mid \mathbf{z}, \mathbf{u}) = \arg\max_{\mathbf{x}} p(\mathbf{z}, \mathbf{u} \mid \mathbf{x}) p(\mathbf{x})
+$$
+<h3 id="maximum-likelihood-estimation">Maximum Likelihood Estimation</h3>
+<p>在许多情况下，先验概率 $p(\mathbf{x})$ 被假设为均匀分布或者对所有可能的状态 $\mathbf{x}$ 来说是相同的，或者我们可能没有关于状态变量 $\mathbf{x}$（例如机器人的位置或路标的位置）的先验知识。</p>
+<p>此时，最大化后验概率就简化为最大化似然函数 $p(\mathbf{z}, \mathbf{u} \mid \mathbf{x})$ ，即最大似然估计（Maximum Likelihood Estimation, MLE）：
+</p>
+$$
+\mathbf{x}_{\text{MLE}} = \arg\max_{\mathbf{x}} p(\mathbf{z}, \mathbf{u} \mid \mathbf{x})
+$$
+<h3 id="leads-to-least-squares">Leads to Least Squares</h3>
+<p>为了实际进行计算，我们需要对似然函数 $p(\mathbf{z}, \mathbf{u} \mid \mathbf{x})$ 进行建模。常见的做法是将观测误差和运动误差建模为高斯分布。假设观测误差 $\mathbf{e}_{\mathbf{z}}$ 和运动误差 \(\mathbf{e}_\mathbf{u}\) 是独立的高斯分布，即：</p>
+$$
+\mathbf{e}_{\mathbf{z}} \sim \mathcal{N}(0, \mathbf{R}) \quad \text{和} \quad \mathbf{e}_{\mathbf{u}} \sim \mathcal{N}(0, \mathbf{Q})
+$$
+<p>其中 $\mathbf{R}$ 和 $\mathbf{Q}$ 分别是观测和运动误差的协方差矩阵。于是，似然函数可以表示为：
+</p>
+$$
+p(\mathbf{z}, \mathbf{u} \mid \mathbf{x}) \propto \exp\left(-\frac{1}{2} \left( \mathbf{e}_{\mathbf{z}}^T \mathbf{R}^{-1} \mathbf{e}_{\mathbf{z}} + \mathbf{e}_{\mathbf{u}}^T \mathbf{Q}^{-1} \mathbf{e}_{\mathbf{u}} \right)\right)
+$$
+<p>最大化这个似然函数等价于最小化其负对数似然函数：
+</p>
+$$
+\mathbf{x}_{\text{MLE}} = \arg\min_{\mathbf{x}} \left( \mathbf{e}_{\mathbf{z}}^T \mathbf{R}^{-1} \mathbf{e}_{\mathbf{z}} + \mathbf{e}_{\mathbf{u}}^T \mathbf{Q}^{-1} \mathbf{e}_{\mathbf{u}} \right)
+$$
+<p>这实际上就是一个加权最小二乘问题，因为我们在最小化误差的平方和。</p>
+<h2 id="least-squares-solution">Least Squares Solution</h2>
+<h3 id="introduce">Introduce</h3>
+<p>考虑最简单的最小二乘问题：
+</p>
+$$
+\min_x F(x)=\frac{1}{2} \| f(x) \|_2^2
+$$
+<p>其中，自变量 $x \in \mathbb{R}^n$， $f$ 是任意标量非线性函数 $f(x): \mathbb{R}^n \to \mathbb{R}$ 。</p>
+<p>当求解
+</p>
+$$
+\frac{\mathrm{d} y}{\mathrm{d} x}=0
+$$
+<p>
+较为困难时，可以使用迭代的方式，从初始值出发，不断更新当前的优化变量，以令目标函数下降：</p>
+<ol>
+<li>给定初始值 $x_0$</li>
+<li>对于第 $k$ 次迭代，寻找增量 $\Delta x_k$，使得 \(\| f(x_k+\Delta x_k) \|_2^2\) 达到极小值</li>
+<li>若 $\Delta x_k$ 足够小，则停止</li>
+<li>否则，令 $x_{k+1}=x_k+\Delta x_k$，返回2</li>
+</ol>
+<h3 id="gradient-descent-method">Gradient Descent Method</h3>
+<p>考虑第 $k$ 次迭代，将目标函数 $F(x)$ 在 $x_k$ 处泰勒展开：
+</p>
+$$
+F(x_k+\Delta x_k) \approx F(x_k) + \mathbf{J}(x_k)^T\Delta x_k + \frac{1}{2}\Delta x_k^T\mathbf{H}(x_k)\Delta x_k
+$$
+<p>其中 $\mathbf{J}(x_k)$ 是 $F(x)$ 关于 $x$ 的一阶导数（或雅可比矩阵），而 $\mathbf{H}$ 是二阶导数（海塞Hessian矩阵）。</p>
+<p>由于梯度是向量，自变量沿着该向量方向变化时，函数增长最快，因此保留一阶梯度时，取增量为反向的梯度保证函数下降：
+</p>
+$$
+\Delta x^* = -\alpha \mathbf{J}(x_k)
+$$
+<p>其中 $\alpha$ 是学习率或者步长，以上的方法称为最速下降法(Gradient Descent Method)。</p>
+<h3 id="newton-method">Newton Method</h3>
+<p>保留二阶梯度时，增量方程为
+</p>
+$$
+\Delta x^* = \arg\min \left ( F(x)+\mathbf{J}(x)^T\Delta x + \frac{1}{2}\Delta x^T\mathbf{H}\Delta x \right )
+$$
+<p>设
+</p>
+$$
+G(\Delta x)=\mathbf{J}(x)^T\Delta x + \frac{1}{2}\Delta x^T\mathbf{H}\Delta x
+$$
+<p>我们希望找到 $\Delta x$ 使得 $G(\Delta x)$ 最小。求解其关于 $\Delta x$ 的导数并令其为零，得到
+</p>
+$$
+\mathbf{J}+\mathbf{H}\Delta x=0 \Rightarrow \mathbf{H}\Delta x=-\mathbf{J}
+$$
+<p>最终得到
+</p>
+$$
+\Delta x_k=-\mathbf{H}(x_k)^{-1}\mathbf{J}(x_k)
+$$
+<p>该方法称为牛顿法。</p>
+<h3 id="derivative">Derivative</h3>
+<p>对 $\Delta x$ 向量，$\frac{1}{2} \Delta x^T \mathbf{H} \Delta x$ 关于 $\Delta x$ 求导：</p>
+<ol>
+<li>
+<p>由于 $\mathbf{H}$ 是 Hessian 矩阵，因此它是对称的</p>
+</li>
+<li>
+<p>根据
+</p>
+$$
+    \frac{\partial}{\partial x}(x^TAx)=2Ax
+    $$
+<p>
+其中，$A$ 是对称矩阵。</p>
+<p>我们有：
+</p>
+$$
+    \frac{\partial}{\partial x}(\frac{1}{2} x^T\mathbf{H}x)=\mathbf{H}x
+    $$
+</li>
+</ol>
+<h3 id="gauss-newton-method">Gauss-Newton Method</h3>
+<p>高斯牛顿法用于求解非线性最小二乘问题，它的思想是将 $f(x)$ 进行一阶泰勒展开，注意是 $f(x)$ 不是目标函数 $F(x)$。
+</p>
+$$
+f(x+\Delta x) \approx f(x) + J(x)^T \Delta x
+$$
+<p>其中 $ J(x)^T $ 是 $f(x)$ 关于 $x$ 的雅可比矩阵。根据前面所述，目标是寻找增量 $\Delta x$ 使得 \( \| x+\Delta x \|^2\) 达到最小
+</p>
+$$
+\begin{aligned}
+\Delta x^*&=\| x+\Delta x \|^2 \\
+&=\frac{1}{2} \| f(x_k) + J(x_k) \Delta x \|^2
+\end{aligned}
+$$
+<p>接下来，我们需要化简这个目标函数。首先展开并利用矩阵范数性质：
+</p>
+$$
+\frac{1}{2} \| f(x_k) + J(x_k) \Delta x \|^2 = \frac{1}{2} (f(x_k) + J(x_k) \Delta x)^T (f(x_k) + J(x_k) \Delta x)
+$$
+<p>展开内积：
+</p>
+$$
+= \frac{1}{2} \left( f(x_k)^T f(x_k) + f(x_k)^T J(x_k) \Delta x + (\Delta x)^T J(x_k)^T f(x_k) + (\Delta x)^T J(x_k)^T J(x_k) \Delta x \right)
+$$
+<p>注意到 $ f(x_k)^T J(x_k) \Delta x $ 和 $ (\Delta x)^T J(x_k)^T f(x_k) $ 是标量，且它们互为转置，因此相等：
+</p>
+$$
+= \frac{1}{2} \left( f(x_k)^T f(x_k) + 2 f(x_k)^T J(x_k) \Delta x + (\Delta x)^T J(x_k)^T J(x_k) \Delta x \right)
+$$
+<p>我们可以进一步简化：
+</p>
+$$
+= \frac{1}{2} f(x_k)^T f(x_k) + f(x_k)^T J(x_k) \Delta x + \frac{1}{2} (\Delta x)^T J(x_k)^T J(x_k) \Delta x
+$$
+<p>这个目标函数是关于 $ \Delta x $ 的二次函数。为了最小化它，我们对 $ \Delta x $ 求导并设导数为零：
+</p>
+$$
+\nabla_{\Delta x} \left( \frac{1}{2} f(x_k)^T f(x_k) + f(x_k)^T J(x_k) \Delta x + \frac{1}{2} (\Delta x)^T J(x_k)^T J(x_k) \Delta x \right) = 0
+$$
+<p>求导得到：
+</p>
+$$
+J(x_k)^T f(x_k) + J(x_k)^T J(x_k) \Delta x = 0
+$$
+<p>解得：
+</p>
+$$
+\Delta x = - (J(x_k)^T J(x_k))^{-1} J(x_k)^T f(x_k)
+$$
+<p>因此，高斯-牛顿法的迭代更新公式为：
+</p>
+$$
+x_{k+1} = x_k + \Delta x = x_k - (J(x_k)^T J(x_k))^{-1} J(x_k)^T f(x_k)
+$$
+<p>这个更新公式将新的迭代值 $ x_{k+1} $ 计算为当前迭代值 $ x_k $ 减去修正量 $\Delta x$，其中 $\Delta x$ 由雅可比矩阵 $ J(x_k) $ 和函数值 $ f(x_k) $ 计算得到。</p>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/5-lie-group-and-lie-algebras-exercise/" class="block">Lie Group and Lie Algebras Exercise</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/10-orb-slam3-adjustments/" class="block">ORB SLAM Adjustments</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#matrix-derivative">Matrix Derivative</a>
+      <ul>
+        <li><a href="#derivative-of-a-scalar-with-respect-to-a-vector">Derivative of a scalar with respect to a vector</a></li>
+        <li><a href="#derivative-of-a-vector-with-respect-to-a-scalar">Derivative of a vector with respect to a scalar</a></li>
+        <li><a href="#derivative-of-a-vector-with-respect-to-a-vector">Derivative of a vector with respect to a vector</a></li>
+        <li><a href="#derivative-of-a-matrix-with-respect-to-a-vector">Derivative of a matrix with respect to a vector</a></li>
+        <li><a href="#key-derivative">Key Derivative</a></li>
+      </ul>
+    </li>
+    <li><a href="#least-squares-introduce">Least Squares Introduce</a>
+      <ul>
+        <li><a href="#conditional-probability-distribution">Conditional Probability Distribution</a></li>
+        <li><a href="#posterior-probability-distribution">Posterior Probability Distribution</a></li>
+        <li><a href="#maximum-likelihood-estimation">Maximum Likelihood Estimation</a></li>
+        <li><a href="#leads-to-least-squares">Leads to Least Squares</a></li>
+      </ul>
+    </li>
+    <li><a href="#least-squares-solution">Least Squares Solution</a>
+      <ul>
+        <li><a href="#introduce">Introduce</a></li>
+        <li><a href="#gradient-descent-method">Gradient Descent Method</a></li>
+        <li><a href="#newton-method">Newton Method</a></li>
+        <li><a href="#derivative">Derivative</a></li>
+        <li><a href="#gauss-newton-method">Gauss-Newton Method</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

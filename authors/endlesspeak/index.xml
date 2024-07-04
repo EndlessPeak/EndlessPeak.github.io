@@ -1,0 +1,1141 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Serene Feather Pavilion on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/authors/endlesspeak/</link>
+    <description>Recent content in Serene Feather Pavilion on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/authors/endlesspeak/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RK3588 SDK</title>
+      <link>https://endlesspeak.github.io/docs/build/arm-linux-doc/1-rk3588-sdk/</link>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/arm-linux-doc/1-rk3588-sdk/</guid>
+      <description>SDK SDK Content RK3588 平台上的SDK(Software Development Kit)软件开发套件主要分为两类： 瑞芯微原厂提供的SDK 开发板销售商提供的SDK 目前，ATK-DLRK358</description>
+    </item>
+    <item>
+      <title>Company Seek</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/company/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/company/</guid>
+      <description>记录简历投递的相关情况。</description>
+    </item>
+    <item>
+      <title>Kalman Filter</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/1-kalman-filter/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/1-kalman-filter/</guid>
+      <description>Kalman Filter Process Model 假设系统状态空间模型为： $$ \begin{aligned} X(k) &amp;= AX(k-1) + BU(k-1) + W(k) \\ Z(k) &amp;= HX(k) + V(k) \end{aligned} $$ 其中： $A$ 和 $B$ 分别表示系统状态参数矩阵和系统控制参数矩阵； $Z(k)$ 是在 $k$ 时刻的测量值; $H$ 是系</description>
+    </item>
+    <item>
+      <title>Thread</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/1-thread/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/1-thread/</guid>
+      <description>Basic Thread C Thread Impl C中实现多线程编程需要使用如下的函数原型： int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine) (void *), void *arg); 其中： *pthread_t thread 用于存储创建的线程标识符； *const pthread_attr_t attr 用于设置线程属性； void *(*start_routine)(void *) 是指向函</description>
+    </item>
+    <item>
+      <title>System Management</title>
+      <link>https://endlesspeak.github.io/docs/build/terminalconfiguration/linux-technology-6-2-sysstat/</link>
+      <pubDate>Sun, 09 Jun 2024 20:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/terminalconfiguration/linux-technology-6-2-sysstat/</guid>
+      <description>Mem management All Mem statistic 统计本机所有内存使用量。 free -h Sort by all user 统计所有用户的内存使用量。 ps aux --sort=-%mem | head -n 10 | awk &#39;NR==1 {print $0; next} { $5=int($5/1024) &amp;quot;M&amp;quot;; $6=int($6/1024) &amp;quot;M&amp;quot;; $11=substr($11, 1, 100); print $0; }&#39; 其中，~$11=substr(</description>
+    </item>
+    <item>
+      <title>Git submodule Manage</title>
+      <link>https://endlesspeak.github.io/docs/docs/git-doc/git-submodule/</link>
+      <pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/git-doc/git-submodule/</guid>
+      <description>Git子模块是一个强大的工具，用于在Git仓库中跟踪和管理另一个Git仓库。当你想要在你的项目中包含并跟踪第三方库（比如库的特定版本）的时候会使用到。</description>
+    </item>
+    <item>
+      <title>VSCode Configuration</title>
+      <link>https://endlesspeak.github.io/docs/build/editorconfiguration/1-vscode-configuration/</link>
+      <pubDate>Fri, 19 Jan 2024 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/editorconfiguration/1-vscode-configuration/</guid>
+      <description>Installation 参考 Visual Studio Code Installation Deb install 从官网下载 deb 包，使用命令安装 sudo dpkg -i code_XXX_amd64.deb sudo apt install ./code_XXX_amd64.deb 使用 apt install 命令安装后会自动将该软件的 apt 存储库和签名密钥添加到系统包管理器中，其位于 /etc/apt/keyrings/packages.microsoft.gpg 。 也可</description>
+    </item>
+    <item>
+      <title>Python Development on NixOS</title>
+      <link>https://endlesspeak.github.io/docs/build/nixos-configuration/1-nixos-configuration/</link>
+      <pubDate>Tue, 19 Dec 2023 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/nixos-configuration/1-nixos-configuration/</guid>
+      <description>Self Configuration Import Configuration 以 sddm 为例，浅谈如何导入 nix 配置文件。 如下所示，在基本设置中导入 sddm-theme.nix 。 # Enable the X11 windowing system. services = { xserver = { enable = true; # Enable the Plasma 5 Desktop Environment. displayManager ={ sddm.enable = true; sddm.theme = &amp;quot;${import ./sddm-theme.nix { inherit pkgs;}}&amp;quot;; }; desktopManager.plasma5.enable = true; #</description>
+    </item>
+    <item>
+      <title>Linux 迁移</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-tool/1-linux-migrating/</link>
+      <pubDate>Tue, 19 Dec 2023 20:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-tool/1-linux-migrating/</guid>
+      <description>Migrating rsync -aAXvhP --exclude={&amp;quot;/dev/*&amp;quot;,&amp;quot;/proc/*&amp;quot;,&amp;quot;/sys/*&amp;quot;,&amp;quot;/tmp/*&amp;quot;,&amp;quot;/run/*&amp;quot;,&amp;quot;/mnt/*&amp;quot;,&amp;quot;/media/*&amp;quot;,&amp;quot;/lost+found&amp;quot;} / /mnt rsync是一个用于复制和同步文件的强大工具。在您提供的命令中，-aAXv选项组合的意义如下： -a（或&amp;ndash;archive）：这个</description>
+    </item>
+    <item>
+      <title>Modules for CPP</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/2-advanced-doc/1-modules/</link>
+      <pubDate>Sun, 19 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/2-advanced-doc/1-modules/</guid>
+      <description>GCC GCC 13 支持 p1689 特性，但是与 cmake 配合尚存在一定问题。 Clang Clang 16 支持 p1689 特性，且可以直接与 cmake 配合使用。 注意： 模块特性尚处于实验状态，需要开启对应的 cmake 版本的 API。 目</description>
+    </item>
+    <item>
+      <title>SLAM Programming and Interviewing</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/</link>
+      <pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/</guid>
+      <description>本系列文章是SLAM方面的内容。</description>
+    </item>
+    <item>
+      <title>SLAM Programming Basic</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/</link>
+      <pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/</guid>
+      <description>&lt;p&gt;本系列文章是SLAM方面的基础内容。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Rust Installation</title>
+      <link>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/1-installation/</link>
+      <pubDate>Tue, 04 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/1-installation/</guid>
+      <description>Rustup rustup 是管理 Rust 版本和相关工具的命令行工具。即使部分 Linux 发行版已经打包提供了 rust 软件包，我们仍然建议使用 rustup ，因为它可以自由地添加目标平台支持以及工具链列表。 Unix</description>
+    </item>
+    <item>
+      <title>STM32 Basic Knowledge</title>
+      <link>https://endlesspeak.github.io/docs/docs/stm32-doc/1-stm32-basic/</link>
+      <pubDate>Thu, 09 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/stm32-doc/1-stm32-basic/</guid>
+      <description>嵌入式系统组成 嵌入式系统由硬件和软件组成。 硬件 硬件是嵌入式系统的运行基础，提供了嵌入式软件运行的物理平台、通信接口。 硬件主要包括处理器、存储器、IO 设</description>
+    </item>
+    <item>
+      <title>ROS1 Installation</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/1-ros1-install/</link>
+      <pubDate>Tue, 18 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/1-ros1-install/</guid>
+      <description>Ubuntu Configuration Ubuntu Install 虚拟机平台不限，推荐使用： VMWare Virtualbox Qemu Ubuntu 版本需要选择 Ubuntu 20.04 安装。发行版代码应该为 focal 。 请使用 lsb_release -a 或 lsb_release -c 验证。 Additional Function 虚拟机工具之增强功能可以使得虚拟操作系统</description>
+    </item>
+    <item>
+      <title>Reuse Terminal by Tmux</title>
+      <link>https://endlesspeak.github.io/docs/build/terminalconfiguration/linux-technology-6-1-tmux/</link>
+      <pubDate>Mon, 17 Oct 2022 20:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/terminalconfiguration/linux-technology-6-1-tmux/</guid>
+      <description>Tmux Brief Report Tmux 是一个终端复用器(terminal multiplexer)，属于常用的开发工具。 Session 命令行的使用方式是：打开一个终端窗口(terminal win</description>
+    </item>
+    <item>
+      <title>Compiler Language</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-1-compilerlanguage/</link>
+      <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-1-compilerlanguage/</guid>
+      <description>计算机系统层次结构 微程序级 本级的语言是微指令集，使用微指令编写微程序，由硬件执行。微命令→微指令→微程序 传统机器级 本级的语言是指令集，可以使用微程序翻</description>
+    </item>
+    <item>
+      <title>机器学习综述</title>
+      <link>https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/1-summarize/</link>
+      <pubDate>Fri, 25 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/1-summarize/</guid>
+      <description>名词释义 入侵检测技术的原理如何？ 包括基于数据源划分和基于检测技术的划分。数据源就是数据如何产生，可基于主机或基于网络；检测技术则分为基于误用和基于异常</description>
+    </item>
+    <item>
+      <title>项目经历</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/projectdevelopment/</link>
+      <pubDate>Fri, 04 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/projectdevelopment/</guid>
+      <description>你本科阶段有哪些项目经历？ 做过三个项目，分别是一个使用Java Server Page的考务管理系统，一个使用MybatisPlus + Springboot的商城系统</description>
+    </item>
+    <item>
+      <title>Linux命令行程序</title>
+      <link>https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/</link>
+      <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>C/C&#43;&#43; Programming Basic</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/</link>
+      <pubDate>Thu, 10 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/</guid>
+      <description>本系列文章是C/C++程序设计基础方面的内容。</description>
+    </item>
+    <item>
+      <title>第一卷</title>
+      <link>https://endlesspeak.github.io/novel/volume1/</link>
+      <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/novel/volume1/</guid>
+      <description>本部分是小说的第一卷内容。</description>
+    </item>
+    <item>
+      <title>React前端开发</title>
+      <link>https://endlesspeak.github.io/docs/docs/develop-doc/blog-react-springboot/</link>
+      <pubDate>Thu, 12 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/develop-doc/blog-react-springboot/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Arch Linux 桌面环境配置</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-1-desktop-config/</link>
+      <pubDate>Tue, 18 Feb 2020 20:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-1-desktop-config/</guid>
+      <description>&lt;p&gt;如果现在让我选择一个我心目中最好的Linux发行版，同时也是最简单的Linux发行版，作为长期甚至终身使用的Linux，我会选择的发行版是：Arch Linux！&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Parrot Linux 物理机的安装、引导与配置</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-1-parrot-linux-installation/</link>
+      <pubDate>Sat, 11 Jan 2020 20:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-1-parrot-linux-installation/</guid>
+      <description>&lt;p&gt;Parrot Sec OS是Linux发行版中十大渗透测试系统之一，为广大渗透测试工作者提供了大量已经集成好的测试工具。采用的是基于Gnome的Mate桌面，外观上非常炫酷，科技感十足。系统中编程环境完善，支持C++、Java、Python等多种语言编程，官方还提供了多种版本以适应不同电脑下载。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Linux 绪论</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-sum/</link>
+      <pubDate>Thu, 09 Jan 2020 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-sum/</guid>
+      <description>本系列文章讲述Linux宏观方面的内容，主要是一些杂谈。</description>
+    </item>
+    <item>
+      <title>完全使用Linux工作</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-sum/linux-technology-1-fully-use-linux/</link>
+      <pubDate>Thu, 09 Jan 2020 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-sum/linux-technology-1-fully-use-linux/</guid>
+      <description>&lt;p&gt;尽管很多人已经不习惯看长篇大论, 但我还是要说, 这是一篇值得你从头读到尾的长篇文章。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RK3588 移植 Ubuntu 24.04</title>
+      <link>https://endlesspeak.github.io/docs/build/arm-linux-doc/2-rk3588-ubuntu-migrate/</link>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/arm-linux-doc/2-rk3588-ubuntu-migrate/</guid>
+      <description>Ubuntu-base 准备 ubuntu-base 镜像，我选择的是24.04镜像。 注意各镜像站存储 ubuntu-base 的路径可能不一样： 官方 https://cdimage.ubuntu.com/ubuntu-base/releases/24.04/release 清华大学 https://mirrors.tuna.tsinghua.edu.cn/ubuntu-cdimage/ubuntu-base/releases/24.04/release Build Rootfs 构建 ubuntu 根文件系统步骤如下： 创建文件夹，并将下载的根文件</description>
+    </item>
+    <item>
+      <title>Python Development on NixOS</title>
+      <link>https://endlesspeak.github.io/docs/build/nixos-configuration/2-python-poetry-devshell/</link>
+      <pubDate>Tue, 11 Jun 2024 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/nixos-configuration/2-python-poetry-devshell/</guid>
+      <description>Discourse NixOS 该部分文章尚未完成。 Impure Python Poetry devShell (pkgs.poetry.override { python = pkgs.python39; }) poetry run python -c &amp;quot;import matplotlib&amp;quot; Traceback (most recent call last): File &amp;quot;&amp;lt;string&amp;gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt; ModuleNotFoundError: No module named &#39;matplotlib&#39; python -m site sys.path = [ &#39;/home/asymmetric/code/foo&#39;, &#39;/nix/store/6qk2ybm2yx2dxmx9h4dikr1shjhhbpfr-python3-3.10.11/lib/python310.zip&#39;, &#39;/nix/store/6qk2ybm2yx2dxmx9h4dikr1shjhhbpfr-python3-3.10.11/lib/python3.10&#39;, &#39;/nix/store/6qk2ybm2yx2dxmx9h4dikr1shjhhbpfr-python3-3.10.11/lib/python3.10/lib-dynload&#39;, &#39;/nix/store/6qk2ybm2yx2dxmx9h4dikr1shjhhbpfr-python3-3.10.11/lib/python3.10/site-packages&#39;, &#39;/nix/store/qyy1khnfvvv6m57gkh8qijj45v3h78jy-python3-3.10.11-env/lib/python3.10/site-packages&#39;, ] USER_BASE: &#39;/home/asymmetric/.local&#39; (exists) USER_SITE: &#39;/home/asymmetric/.local/lib/python3.10/site-packages&#39; (doesn&#39;t exist) ENABLE_USER_SITE: False poetry run python -m site sys.path = [ &#39;/home/asymmetric/code/foo&#39;,</description>
+    </item>
+    <item>
+      <title>Pose Caculating</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/2-pose-caculating/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/2-pose-caculating/</guid>
+      <description>Rotation Matrix 2 Dimensional 从二维角度推导旋转矩阵更加明确。 假设二维坐标系 $xOy$ 的第一象限中有点 $P(x,y)$，其与原点 $O$ 的连线 $OP$ 与 $x$ 轴正向夹角为 $\alpha$，则： $$ \left</description>
+    </item>
+    <item>
+      <title>STL</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/2-stl/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/2-stl/</guid>
+      <description>Vector Brief std::vector 是 C++ 标准模板库(STL)中的一个动态数组类。它能够自动管理内存，在需要时自动扩展或收缩。std::vector 具有以下特点： 动态大小：可以根据需</description>
+    </item>
+    <item>
+      <title>CPP Programming</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/</link>
+      <pubDate>Tue, 28 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/</guid>
+      <description>本系列文章记录在计算机面试过程中涉及到的知识内容。</description>
+    </item>
+    <item>
+      <title>SLAM Interviewing</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/</link>
+      <pubDate>Tue, 28 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/</guid>
+      <description>&lt;p&gt;本系列文章是SLAM方面的面试内容。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>C&#43;&#43; Programming Advanced</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/2-advanced-doc/</link>
+      <pubDate>Sun, 19 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/2-advanced-doc/</guid>
+      <description>本系列文章是C++20 高级编程方面的内容。</description>
+    </item>
+    <item>
+      <title>Compare</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/2-advanced-doc/n-compare/</link>
+      <pubDate>Sun, 19 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/2-advanced-doc/n-compare/</guid>
+      <description>Three-way Comparison 三向比较运算符是C++20引入的特性，可用于确定两个值的大小顺序。它返回一个类枚举(enumeration-like)类型，其定义在 &amp;lt;compare&amp;gt; 和 std 名称空间</description>
+    </item>
+    <item>
+      <title>ROS2 Installation</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/1-ros2-install/</link>
+      <pubDate>Sun, 08 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/1-ros2-install/</guid>
+      <description>Install ROS2 by one command fishros 可用 fishros 提供的实用程序一行代码在 ubuntu 上安装 ROS2。 wget http://fishros.com/install -O fishros &amp;amp;&amp;amp; . fishros global view 总体来看，它的安装流程包含如下命令: mkdir -p /tmp/fishinstall/tools wget http://fishros.com/install/install1s/install.py -O /tmp/fishinstall/install.py 2&amp;gt;&amp;gt;/dev/null source /etc/profile sudo apt install python3-distro python3-yaml -y if [</description>
+    </item>
+    <item>
+      <title>RDP 远程桌面连接</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-tool/2-linux-rdp-connection/</link>
+      <pubDate>Fri, 07 Jul 2023 20:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-tool/2-linux-rdp-connection/</guid>
+      <description>RDP(Remote Desktop Protocol)是一种远程桌面协议，由微软开发用于远程连接和控制计算机。允许用户通过网络从本地计算机的远程桌面客户端连接到远程计算机。 Server 在需要被</description>
+    </item>
+    <item>
+      <title>Hello Cargo</title>
+      <link>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/2-hello-cargo/</link>
+      <pubDate>Fri, 07 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/2-hello-cargo/</guid>
+      <description>Hello Rust Editor 主流编辑器均支持 Rust 语言。此处仅讨论 Emacs 中如何获得 Rust 支持。 首先，可以通过 melpa 安装 rust-mode ，基本配置如下： (use-package rust-mode :ensure t :mode (&amp;quot;\\.rs\\&#39;&amp;quot; . rust-mode) :hook (rust-mode . (lambda () (setq tab-width 4))) ) 其次，Rust 代码</description>
+    </item>
+    <item>
+      <title>STM32 Cube</title>
+      <link>https://endlesspeak.github.io/docs/docs/stm32-doc/2-stm32-cube/</link>
+      <pubDate>Thu, 09 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/stm32-doc/2-stm32-cube/</guid>
+      <description>Cube 此处文章尚在施工。</description>
+    </item>
+    <item>
+      <title>Robot Operation System</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/</link>
+      <pubDate>Tue, 18 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/</guid>
+      <description>本系列文章是ROS机器人操作系统方面的内容。</description>
+    </item>
+    <item>
+      <title>Vanilla Emacs</title>
+      <link>https://endlesspeak.github.io/docs/build/editorconfiguration/2-vanilla-emacs-configuration/</link>
+      <pubDate>Fri, 01 Jul 2022 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/editorconfiguration/2-vanilla-emacs-configuration/</guid>
+      <description>参考配置 以下记录在 Emacs 中所遇到的常见问题与解决方案。 如果不希望从零开始，这里有一些常见的配置推荐（持续更新）： MatthewZMD&amp;rsquo;s emacs Centaur&amp;rsquo;s emacs Redguard&amp;rsquo;s emacs Evanmeek&amp;rsquo;s emacs SpringHan&amp;rsquo;s emacs Cabins&amp;rsquo; emacs 7ym0n&amp;rsquo;s emacs 中文输入 fcitx5 是新</description>
+    </item>
+    <item>
+      <title>软件工程</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/softwareengineering/</link>
+      <pubDate>Fri, 01 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/softwareengineering/</guid>
+      <description>基本概念 软件概念 软件：软件=程序+数据+文档 程序:按事先设计的功能和性能需求执行的指令序列； 数据:是程序能正常操纵信息的数据结构； 文档:与程序开发、维</description>
+    </item>
+    <item>
+      <title>决策树问题</title>
+      <link>https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/2-decisiontree/</link>
+      <pubDate>Fri, 25 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/2-decisiontree/</guid>
+      <description>原理 简要描述一下决策树的原理 决策树解决二分类问题时，每一次决策都选择一种最佳属性进行划分，最终得到结果。 为了得到最佳划分，就需要在每次划分中获得更多的</description>
+    </item>
+    <item>
+      <title>Algorithms</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/</guid>
+      <description>本系列文章记录算法学习方面的笔记。</description>
+    </item>
+    <item>
+      <title>英语面试</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/englishinterview/</link>
+      <pubDate>Fri, 04 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/englishinterview/</guid>
+      <description>基本情况 自我介绍 Tell me a few things about yourself. Dear professors, it&amp;rsquo;s a great honor for me to have the opportunity to present myself. My name is Li Qing han,22 years old, come from Hu Bei province. I received my bachelor&amp;rsquo;s degree in software engineering from Chang&amp;rsquo;an University in last June. In the past 4 years,I focused on my study. I passed CET-4 and CET-6 in my sophomore and</description>
+    </item>
+    <item>
+      <title>第一章 紫霞</title>
+      <link>https://endlesspeak.github.io/novel/volume1/ch1/</link>
+      <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/novel/volume1/ch1/</guid>
+      <description>​ 襄州，地处平原中部，夏季凉爽宜人，冬季略有寒意，山峦稀少略有起伏，河流宽阔少见湍急，温润时不显潮湿，干爽时不见燥闷，非常适合居住。闻名江湖的真武道宗</description>
+    </item>
+    <item>
+      <title>数据结构基本概念</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/datastructure-summary/</link>
+      <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/datastructure-summary/</guid>
+      <description>数据结构基本概念 基本概念 数据是信息的载体，表现为能被计算机识别和处理的符号集合。 数据元素是数据的基本单位，用来描述个体。 数据项是构成数据元素的不可分割</description>
+    </item>
+    <item>
+      <title>绪论</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/operating-system-summary/</link>
+      <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/operating-system-summary/</guid>
+      <description>操作系统概念 操作系统 操作系统是： 计算机系统资源的管理者，组织、调度、分配软硬件资源； 作为用户与计算机硬件之间的接口，向上层（用户）提供服务； 最接近硬件</description>
+    </item>
+    <item>
+      <title>Hello React</title>
+      <link>https://endlesspeak.github.io/docs/docs/develop-doc/blog-react-springboot/react-develop-1/</link>
+      <pubDate>Thu, 12 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/develop-doc/blog-react-springboot/react-develop-1/</guid>
+      <description>创建项目 用create-next-app快速创建项目。create-next-app是Next.js的脚手架工具，用于直接建立项目目录和基本结构。首次</description>
+    </item>
+    <item>
+      <title>使用Man命令</title>
+      <link>https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/1-man/</link>
+      <pubDate>Thu, 11 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/1-man/</guid>
+      <description>通过输入man man进入man命令的帮助手册。 Unix的联机帮助分为很多章节，如表所示： 章节 内容 1 可执行程序或 shell 命令 2 系统调用(内核提供的函数) 3 库调</description>
+    </item>
+    <item>
+      <title>Arch Linux 文本环境配置</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-2-textmode-config/</link>
+      <pubDate>Thu, 27 Feb 2020 20:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-2-textmode-config/</guid>
+      <description>&lt;p&gt;如果是经常从事文本工作(如软件工作者进行代码编辑、学生进行笔记整理、文字工作者的撰写、校对等工作)的用户建议选用窗口管理器作为日常工作环境。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Arch Linux 物理机的安装与引导</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-2-arch-linux-installation/</link>
+      <pubDate>Thu, 16 Jan 2020 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-2-arch-linux-installation/</guid>
+      <description>&lt;p&gt;Arch Linux 是通用 x86-64 GNU/Linux 发行版，初始安装仅提供命令行环境：用户不需要删除大量不需要的软件包，而是可以从&lt;strong&gt;官方软件仓库&lt;/strong&gt;成千上万的高质量软件包中进行选择，搭建自己的系统。支持x86-64架构。Arch采用滚动升级模式，尽全力提供最新的稳定版软件。&lt;/p&gt;&#xA;&lt;p&gt;本文拟以&lt;a href=&#34;https://wiki.archlinux.org/&#34;&gt;Arch Wiki&lt;/a&gt;与&lt;a href=&#34;https://wiki.archlinux.org/index.php/installation_guide&#34;&gt;Installation guide&lt;/a&gt;为原本，附带一些自己的理解，尝试说明在物理机上安装Arch Linux。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Linux 安装教程</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-installation/</link>
+      <pubDate>Sat, 11 Jan 2020 20:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-installation/</guid>
+      <description>本系列文章讲述Linux安装方面的内容，包括Parrot OS和Arch Linux等系统的安装内容。</description>
+    </item>
+    <item>
+      <title>Linux综合概述</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-sum/linux-technology-2-linux-comprehensive-overview/</link>
+      <pubDate>Fri, 10 Jan 2020 14:50:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-sum/linux-technology-2-linux-comprehensive-overview/</guid>
+      <description>&lt;p&gt;GNU/Linux，无论你是否相信，它已经成为目前增长最迅速的系统。无论是企业还是个人用户，Linux都是一个足够可靠的选择。我希望本系列文章能够使更多的人完全理解Linux，并热切地尝试去使用甚至探索它。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RK3588 远程连接</title>
+      <link>https://endlesspeak.github.io/docs/build/arm-linux-doc/3-rk3588-connect/</link>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/arm-linux-doc/3-rk3588-connect/</guid>
+      <description>要使用 KRDC（KDE Remote Desktop Client）连接到 RK3588 嵌入式开发板，可以按以下步骤操作： XRDP Install 在 RK3588 嵌入式开发板上设置远程桌面服务 首先，安装 xrdp（远程桌面协</description>
+    </item>
+    <item>
+      <title>Matrix Base</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/3-matrix-basic/</link>
+      <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/3-matrix-basic/</guid>
+      <description>Direct Method Gauss LU Decomposition QR Decomposition Cholesky Decomposition 迭代解法 迭代解法通常用于处理大型稀疏矩阵，或当矩阵 A 具有特定结构时。 Jacobi Method 雅可比迭代法 Gauss-Seidel Method 高斯-赛德尔迭代法是雅可比迭代法的改进，每次</description>
+    </item>
+    <item>
+      <title>Sophus</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/5-sophus/</link>
+      <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/5-sophus/</guid>
+      <description>Basic Sophus 是Strasdat 维护的 Sophus 库，地址。 此处介绍 Sophus 的基础使用方法。 #include &amp;lt;iostream&amp;gt; #include &amp;lt;cmath&amp;gt; #include &amp;lt;Eigen/Core&amp;gt; #include &amp;lt;Eigen/Geometry&amp;gt; #include &amp;quot;sophus/se3.hpp&amp;quot; using namespace std; using namespace Eigen; /// 本程序演示sophus的基本用法 int main(int argc, char **argv) { // 沿Z</description>
+    </item>
+    <item>
+      <title>OpenCV</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/6-opencv/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/6-opencv/</guid>
+      <description>CV::Mat 在 OpenCV 中，cv::Mat 是用于表示图像或矩阵的主要数据结构。它封装了一个 n 维数组，可以存储不同类型的数值（如图像的像素值）。 cv::Mat 的构造和析构过程涉及内存</description>
+    </item>
+    <item>
+      <title>C&#43;&#43; Programming Interview</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/</link>
+      <pubDate>Tue, 28 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/</guid>
+      <description>本系列文章是C++ 面试方面的内容。</description>
+    </item>
+    <item>
+      <title>STM32 Clion Develop</title>
+      <link>https://endlesspeak.github.io/docs/docs/stm32-doc/3-stm32-clion-develop/</link>
+      <pubDate>Thu, 02 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/stm32-doc/3-stm32-clion-develop/</guid>
+      <description>ToolChain Embedded Toolchain 需要配置嵌入式编译工具链，它应该包括： arm-none-eabi-gcc arm-none-eabi-g++ arm-none-eabi-ar arm-none-eabi-ld (bfd 链接方式) arm-none-eabi-gdb arm-none-eabi-nm arm-none-eabi-objcopy arm-none-eabi-objdump 在 NixOS 上配置工具链需要如下软件包： packages = with pkgs; [ gcc-arm-embedded ]; 在 Arch Linux 上需要安装如下软件包： pacman -S</description>
+    </item>
+    <item>
+      <title>Emacs Org</title>
+      <link>https://endlesspeak.github.io/docs/build/editorconfiguration/3-org/</link>
+      <pubDate>Tue, 11 Jul 2023 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/editorconfiguration/3-org/</guid>
+      <description>Org 具体来说它的功能有： 折叠 这个在 IDE 里是很常见的了，但是我所见到的大多限于对于函数的折叠。如果只是想写写提纲，草稿，这个功能就能很有效地帮助理清思路，和</description>
+    </item>
+    <item>
+      <title>Guess Number</title>
+      <link>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/3-guessnumber/</link>
+      <pubDate>Mon, 10 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/3-guessnumber/</guid>
+      <description>Handle A Guess 请求用户输入，处理输入，并检查是否符合预期。 use std::io; fn main() { println!(&amp;quot;Guess the number.&amp;quot;); println!(&amp;quot;Please input your guess.&amp;quot;); let mut guess = String::new(); io::stdin() .read_line(&amp;amp;mut guess) .expect(&amp;quot;Failed to read line.&amp;quot;); println!(&amp;quot;You guessed: {}&amp;quot;,guess); } 在这段程序中包含了下面的内容： prelude prelude 是 Rust 自动导</description>
+    </item>
+    <item>
+      <title>支持向量机推导</title>
+      <link>https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/3-svm-derivation/</link>
+      <pubDate>Wed, 31 May 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/3-svm-derivation/</guid>
+      <description>目标综述 在特征空间中找到一 分离超平面 能将实例分到不同类。 当数据集 线性可分 时，有无数个分离超平面可将数据正确分开，支持向量机利用 间隔最大化 求解最优分离超</description>
+    </item>
+    <item>
+      <title>Race Car Project</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/3-racecarnotes/</link>
+      <pubDate>Fri, 11 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/3-racecarnotes/</guid>
+      <description>Project Init Project 从 github 上克隆代码，以此作为工作目录，克隆完成后进入工作目录。 git clone https://github.com/endlesspeak/rosracecar Racecar_ws cd Racecar_ws 配置环境变量，以便每次启动项目不必切换到工作目录。编辑 ~/.bashrc source ~/Racecar_ws/devel/setup.bash Run Project 通过键盘控</description>
+    </item>
+    <item>
+      <title>Intergrate Environment</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/2-intergrateenvironment/</link>
+      <pubDate>Tue, 25 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/2-intergrateenvironment/</guid>
+      <description>ROS HelloWorld Create Project 创建项目的顺序如下： 创建工作空间 将工作空间命名为 ROSRace mkdir -p ROSRace/src cd ROSRace catkin_make 创建功能包 将功能包命名为 helloworld ，并添加所需的依赖。 roscpp 是用 C++ 实现的库； rospy 是用 python 实现的库</description>
+    </item>
+    <item>
+      <title>Gentoo Linux Nvidia 显卡驱动</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-3-gentoo-nvidia/</link>
+      <pubDate>Sun, 21 Aug 2022 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-3-gentoo-nvidia/</guid>
+      <description>由于Gentoo Linux 配置显卡驱动需要额外设置内核，因此记录下配置的内容。 Kernel Dist Kernel 编辑 x11-drivers/nvidia-drivers 所需要使用的 use 选项，加入 dist-kernel 这一项。 Custom Kernel 依次开启下列选项： CONFIG_MODULES CONFIG_MTRR CONFIG_VGA_ARB CONFIG_ACPI_IPMI CONFIG_AGP 内</description>
+    </item>
+    <item>
+      <title>Linux Kernel Configuration</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-4-kernel/</link>
+      <pubDate>Sun, 21 Aug 2022 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-4-kernel/</guid>
+      <description>Linux内核的配置大同小异，但是Gentoo Linux 官方软件源提供了多种内核的源码，并且配置多内核之间的切换非常方便，而Arch也提供软件包的形式下载或自</description>
+    </item>
+    <item>
+      <title>Gentoo Linux 物理机安装与配置</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-3-gentoo-linux-installation/</link>
+      <pubDate>Thu, 18 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-3-gentoo-linux-installation/</guid>
+      <description>Note Gentoo Linux是一个快速、现代的元发行版，它的设计简洁、灵活。具有自由、高性能、开放和稳定等优点。 Motivation 自由 高度自由的选择，用户可以选择自己想要的组件 性能</description>
+    </item>
+    <item>
+      <title>支持向量机问题</title>
+      <link>https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/3-svm/</link>
+      <pubDate>Fri, 25 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/3-svm/</guid>
+      <description>原理 支持向量机使用的是什么类型的间隔？为什么？ 使用几何间隔定义。 因为函数间隔只需要成比例的改变w和b，函数间隔就会发生变化，而实际分类超平面并未变化。</description>
+    </item>
+    <item>
+      <title>综合问题</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/comprehensiveinterview/</link>
+      <pubDate>Fri, 04 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/comprehensiveinterview/</guid>
+      <description>专业问题 谈谈你对大数据的认识 大数据，或称巨量资料。是具有如下特点的信息资产。 数据量大 增长速度快 形式多样 大数据的类型： 结构化数据 半结构化数据 非结构化数据</description>
+    </item>
+    <item>
+      <title>Computer Interview</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/</guid>
+      <description>本系列文章记录在计算机面试过程中涉及到的知识内容。</description>
+    </item>
+    <item>
+      <title>编译原理</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/compilersprinciples/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/compilersprinciples/</guid>
+      <description>词法分析 什么是形式语言？ 人们把用一组数学符号和规则来描述语言的方式称为形式描述； 把所用的数学符号和规则称为形式语言。 说明词法分析器的作用？ 主要任务：读</description>
+    </item>
+    <item>
+      <title>传统机器学习系列</title>
+      <link>https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>第二章 是非</title>
+      <link>https://endlesspeak.github.io/novel/volume1/ch2/</link>
+      <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/novel/volume1/ch2/</guid>
+      <description>回到真武殿后的弟子居中，张慎峰将自己房间的门窗尽皆关闭，而后拉上屏风帐幔，在自己屋中点亮烛火，这才小心翼翼地将师尊留给自己的古籍和自己之前捡到的那本书</description>
+    </item>
+    <item>
+      <title>进程管理</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/process-manage/</link>
+      <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/process-manage/</guid>
+      <description>进程与线程 进程的概念与特征 进程的概念 引入 为实现操作系统的并发性和共享性，引入进程。 概念 进程是具有独立功能的程序在某个数据集合上的一次执行过程。 进程是进</description>
+    </item>
+    <item>
+      <title>线性表基本概念</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-terms/</link>
+      <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-terms/</guid>
+      <description>线性表定义 线性表是：①具有相同数据类型的$n(n\ge 0)$个数据元素 ②有限 ③序列。 特别地，当数据元素个数$n=0$时，线性表是空表； 非空线性表中位序</description>
+    </item>
+    <item>
+      <title>Data Structure</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/</link>
+      <pubDate>Fri, 06 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>编写Who命令</title>
+      <link>https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/2-who/</link>
+      <pubDate>Thu, 11 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/2-who/</guid>
+      <description>Man Who 阅读who的联机帮助： man who 通过阅读联机帮助，发现已登录的用户信息放在/var/run/utmp或者/var/log/wtmp中。 搜索联机帮助： man -k</description>
+    </item>
+    <item>
+      <title>Linux 环境配置</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/</link>
+      <pubDate>Tue, 18 Feb 2020 20:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/</guid>
+      <description>本系列文章讲述Linux环境方面的内容，包括桌面环境(DE)和窗口管理器(WM)等内容。</description>
+    </item>
+    <item>
+      <title>STM32 LED &amp; KEY</title>
+      <link>https://endlesspeak.github.io/docs/docs/stm32-doc/4-stm32-ledkey/</link>
+      <pubDate>Sun, 21 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/stm32-doc/4-stm32-ledkey/</guid>
+      <description>GPIO GPIO 是通用型输入输出，可以输入或输出高低电平。高电平是 3.3V，低电平是 0V。 Output 输出控制器接两个 MOS 管，一个 PMOS 管，一个 NMOS 管。 No Q1 Q2 Status 1 打开 关闭 高电平 2 关</description>
+    </item>
+    <item>
+      <title>NixOS Linux 物理机安装与配置</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-4-nixos-linux-installation/</link>
+      <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-4-nixos-linux-installation/</guid>
+      <description>NixOS Linux是一个精确、纯净、可信赖、可重部署的发行版，它的设计包含一些独立的特性。 Reference 参考资料如下： NixOS 中文网 NixOS Manual Start Network Configuration NixOS 使用 wpa_supplicant 作为无线守护程序，因此可</description>
+    </item>
+    <item>
+      <title>Manage By Org Mode</title>
+      <link>https://endlesspeak.github.io/docs/build/editorconfiguration/4-manage-by-orgmode/</link>
+      <pubDate>Tue, 11 Jul 2023 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/editorconfiguration/4-manage-by-orgmode/</guid>
+      <description>Organization Form Related works 我们通常可以有如下几种形式来管理配置文件： 单文件法 模块化法 将所有配置文件模块化，通过 init.el 来统一加载； 将所有配置文件通过 org 文件来管理，通过 org-babel-load-file 函数来</description>
+    </item>
+    <item>
+      <title>Variable</title>
+      <link>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/4-variable/</link>
+      <pubDate>Tue, 11 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/4-variable/</guid>
+      <description>Variable Basic Varibale 变量拥有以下特性： 默认情况下变量是不可变的(immutable) 它是 Rust 众多精妙特性的其中一个 它令用户充分利用 Rust 提供的安全性和简单并发性的方式来编</description>
+    </item>
+    <item>
+      <title>STM32 Develop Documents</title>
+      <link>https://endlesspeak.github.io/docs/docs/stm32-doc/</link>
+      <pubDate>Thu, 09 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/stm32-doc/</guid>
+      <description>本系列文章是STM32开发方面的内容，开发硬件环境是正点原子STM32F767核心板和阿波罗开发底板。</description>
+    </item>
+    <item>
+      <title>前馈神经网络问题</title>
+      <link>https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/4-nerualnetwork/</link>
+      <pubDate>Fri, 25 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/4-nerualnetwork/</guid>
+      <description>原理 简要描述一下前馈神经网络算法的实现原理 确定每层隐藏层的层数、激活函数，根据净输入计算输出和活性值，然后传递给下一层，直到最终的输出层； 通过输出层的</description>
+    </item>
+    <item>
+      <title>Computer Interview</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/</guid>
+      <description>本系列文章是计算机面试过程中涉及到的杂项知识内容简单提要。</description>
+    </item>
+    <item>
+      <title>计算机网络</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computernetwork/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computernetwork/</guid>
+      <description>概述 21世纪的三大特征？三类网络是哪三类？ 数字化、信息化、网络化；电信网络、有线电视网络、计算机网络 计算机网络经历了哪些发展阶段？ 一共有三大阶段，分别</description>
+    </item>
+    <item>
+      <title>第三章 交锋</title>
+      <link>https://endlesspeak.github.io/novel/volume1/ch3/</link>
+      <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/novel/volume1/ch3/</guid>
+      <description>眼见燕书磐疾速奔来，张慎峰面色凝重，刚刚记诵的紫霞功心法马上在脑海中逐字浮现出来：“紫霞功，起于灵台，收于识海，韧如精丝，绵如云霞，至阴至柔，至阳至刚</description>
+    </item>
+    <item>
+      <title>经典同步问题</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/synchronization-exclusion/</link>
+      <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/synchronization-exclusion/</guid>
+      <description>生产者与消费者问题 一组生产者和一组消费者交替使用缓冲区。 设缓冲区是临界资源，它只允许一个生产者放入内容或一个消费者取出内容。 代码描述如下： semaphore mutex=1; semaphore empty=n; semaphore full=0;</description>
+    </item>
+    <item>
+      <title>线性表基本操作</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-operation/</link>
+      <pubDate>Fri, 06 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-operation/</guid>
+      <description>线性表的基本操作如下： void InitList(&amp;amp;L);//初始化表，构造一个空的线性表 int Length(L);//求表长 ElemType LocateElem(L,</description>
+    </item>
+    <item>
+      <title>Linux 工具与实用内容</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-tool/</link>
+      <pubDate>Thu, 09 Jan 2020 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-tool/</guid>
+      <description>本系列文章讲述Linux的一些工具或者实用内容。</description>
+    </item>
+    <item>
+      <title>Git Knowledge</title>
+      <link>https://endlesspeak.github.io/docs/docs/git-doc/</link>
+      <pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/git-doc/</guid>
+      <description>本系列文章讲述Git配置的内容。</description>
+    </item>
+    <item>
+      <title>Data Type</title>
+      <link>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/5-data-type/</link>
+      <pubDate>Tue, 11 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/5-data-type/</guid>
+      <description>Data Type Rust 是一种静态类型（statically typed）的语言，它必须在编译期知道所有变量的类型。 常见的静态类型语言有 C/C++/Java/C#/Rust/Go/Swift/TypeScript/Kotlin/Haskell 常见的动态类型语言有 JavaScript/Python/Ruby/PHP/Perl/Lua/Shell/R/Matlab/Lisp Scalar 标量类型</description>
+    </item>
+    <item>
+      <title>Rust Programming Basic</title>
+      <link>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/</link>
+      <pubDate>Sun, 18 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/</guid>
+      <description>本系列文章是Rust语言编程方面的内容。</description>
+    </item>
+    <item>
+      <title>Linux KDE 桌面使用指南</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-5-kde-usage/</link>
+      <pubDate>Sat, 18 Mar 2023 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-5-kde-usage/</guid>
+      <description>Plasma Configuration 如果 KDE 的外观设置下载缓慢，可以在 KDE 商店 中下载。 Global Theme 全局主题安装在 ~/.local/share/plasma/look-and-feel 下，其包括 layouts 和 splash 等部分 一般地，安装全局主题后会自动配置 Plasma 主题和 Colors 等部分 Plasma Theme Plasma 主题</description>
+    </item>
+    <item>
+      <title>STM32 FMC</title>
+      <link>https://endlesspeak.github.io/docs/docs/stm32-doc/5-stm32-fmc/</link>
+      <pubDate>Fri, 10 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/stm32-doc/5-stm32-fmc/</guid>
+      <description>SDRAM SDRAM 概念 STM32 控制器芯片内部有一定大小的 SRAM 及 FLASH 作为内存和程序存储空间，例如 STM32F767 的 RAM=512K，FLASH=1024K； 当程序较大，内存和程序空间不足时，</description>
+    </item>
+    <item>
+      <title>Terminal  Configuration</title>
+      <link>https://endlesspeak.github.io/docs/build/terminalconfiguration/</link>
+      <pubDate>Tue, 18 Oct 2022 10:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/terminalconfiguration/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sqrt(x)</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/sqrtx/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/sqrtx/</guid>
+      <description>Question Implement int sqrt(int x). Compute and return the square root of x. Answer 二分查找 对于一个非负数n，它的平方根不会大于$\frac{n}{2}+1$。在$[0, \frac{n}{2}+1]$这个范</description>
+    </item>
+    <item>
+      <title>字符串公共元素问题</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/string-common-element/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/string-common-element/</guid>
+      <description>Question 1 给定两个字符串，找出他们的相同元素。 注：可以把字符串换成数组。 Answer 1 双循环遍历法 算法思想： 遍历字符串A； 对A的每个元素，遍历字符串B； 遇到相同元素就</description>
+    </item>
+    <item>
+      <title>第四章 律令</title>
+      <link>https://endlesspeak.github.io/novel/volume1/ch4/</link>
+      <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/novel/volume1/ch4/</guid>
+      <description>燕书磐正要继续给一云子摆脸色，可是他还没来得及实施，就被狂怒的一云子拎小鸡一般拎起来。身形一闪，一云子带着燕书磐掠上太极道场前的一道崖壁，两人的身影才</description>
+    </item>
+    <item>
+      <title>Operating System</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/</link>
+      <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/</guid>
+      <description>本系列文章记录操作系统方面的内容。</description>
+    </item>
+    <item>
+      <title>进程管理</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/memory-manage/</link>
+      <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/memory-manage/</guid>
+      <description>请求分页管理方式 设计算机中各项操作时间如下所示： 访问快表命中率$P_1$ 访问内存页表命中率$P_2$ 访问快表耗时$a$ 访问内存耗时$b$ 更新快表耗时$</description>
+    </item>
+    <item>
+      <title>线性表算法题解</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-algorithms/</link>
+      <pubDate>Sat, 07 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-algorithms/</guid>
+      <description>本节尝试对具有代表性的线性表编程题及经典算法进行实现。 题1 删除单链表中的指定结点 递归算法实现删除不带头结点的单链表L中所有值为x的结点。 void RecurseDel(LinkList &amp;amp;L,ElemType x){ if(L==NULL) return; if(L-&amp;gt;data!=x)</description>
+    </item>
+    <item>
+      <title>ARM Linux Construction</title>
+      <link>https://endlesspeak.github.io/docs/build/arm-linux-doc/</link>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/arm-linux-doc/</guid>
+      <description>记录 Arm Linux 移植的相关内容。</description>
+    </item>
+    <item>
+      <title>Guass Newton Algorithm</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/7-gauss-newton/</link>
+      <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-related/7-gauss-newton/</guid>
+      <description>Guass Newton 考虑曲线拟合问题，使用加权非线性最小二乘法 代码如下： #include &amp;lt;Eigen/Core&amp;gt; #include &amp;lt;Eigen/Dense&amp;gt; #include &amp;lt;chrono&amp;gt; #include &amp;lt;iostream&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;opencv2/opencv.hpp&amp;gt; using namespace std; using namespace Eigen; int main(int argc, char **argv){ double ar = 1.0, br = 2.0, cr = 1.0; // 真实参数值 double ae = 2.0, be = -1.0, ce</description>
+    </item>
+    <item>
+      <title>Function</title>
+      <link>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/6-function/</link>
+      <pubDate>Tue, 11 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/6-function/</guid>
+      <description>Function （待完成）</description>
+    </item>
+    <item>
+      <title>STM32 RGBLCD</title>
+      <link>https://endlesspeak.github.io/docs/docs/stm32-doc/6-stm32-rgblcd/</link>
+      <pubDate>Thu, 09 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/stm32-doc/6-stm32-rgblcd/</guid>
+      <description>开发环境 开发板： STM32F767IGT6 核心板加正点原子阿波罗底板 屏幕：正点原子 ALIENTEK 7 RGB LCD 屏幕 开发软件：STM32CubeIDE LTDC 外设概述 LTDC 概念 LTDC 全称 LCD-TFT Display Controller</description>
+    </item>
+    <item>
+      <title>数据库原理</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-2/</link>
+      <pubDate>Mon, 11 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-2/</guid>
+      <description>请解释数据库的四个基本概念 数据 数据(Data)是描述事物的符号记录，是数据库中存储的基本对象。 数据库 数据库(Data Base DB)是长期存储在计算机内，有组</description>
+    </item>
+    <item>
+      <title>数据库原理</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-1/</link>
+      <pubDate>Fri, 04 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-1/</guid>
+      <description>绪论 graph LR A[现实世界]--&gt;|抽象|B[信息世界 E-R图] B--&gt;|设计|C[计算机世界 关系模式] 请解释数据库的四个基本概念 数据 数据(Data)是描述</description>
+    </item>
+    <item>
+      <title>第五章 天籁</title>
+      <link>https://endlesspeak.github.io/novel/volume1/ch5/</link>
+      <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/novel/volume1/ch5/</guid>
+      <description>张真人曾说：“先入世，方可出世；先得道，方可忘道。” 那么何谓入世？入世便是真武门下弟子同江湖中其他各派打交道。 虽然真武门下弟子终年在真武山上修行，观想</description>
+    </item>
+    <item>
+      <title>文件管理</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/file-manage/</link>
+      <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/file-manage/</guid>
+      <description>文件分配方式 简述连续分配、链接分配、索引分配方式的原理、主要优缺点。 连续分配： 优点：由于线性地占用磁盘上一组连续的物理块，因此寻道数和寻道时间最小。支</description>
+    </item>
+    <item>
+      <title>NixOS 配置</title>
+      <link>https://endlesspeak.github.io/docs/build/nixos-configuration/</link>
+      <pubDate>Tue, 11 Jun 2024 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/nixos-configuration/</guid>
+      <description>本系列文章讲述 NixOS 的配置内容。</description>
+    </item>
+    <item>
+      <title>STM32 LD Segments &amp; Issues</title>
+      <link>https://endlesspeak.github.io/docs/docs/stm32-doc/7-stm32-ld-segmentsissues/</link>
+      <pubDate>Tue, 23 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/stm32-doc/7-stm32-ld-segmentsissues/</guid>
+      <description>Reference [1] The linker’s warnings about executable stacks and segments [2] Hardened/GNU stack quickstart [3] Executable Stack [4] Nested Functions [5] Arm Gcc warning: Load segment with RWX permissions [6] Solution to LOAD segment with RWX permissions warning with CMSIS Summary 本文讨论 BFD 链接器中添加的一些新警告消息：它们的含义、重</description>
+    </item>
+    <item>
+      <title>组成原理</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computercomponents/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computercomponents/</guid>
+      <description>计算机系统概述 冯诺依曼结构是什么？ 冯提出了存储程序的概念，以该思想为基础的计算机称为冯诺依曼机。 计算机硬件系统由运算器、存储器、控制器、输入设备、输出</description>
+    </item>
+    <item>
+      <title>第七章 待修改</title>
+      <link>https://endlesspeak.github.io/novel/volume1/ch7/</link>
+      <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/novel/volume1/ch7/</guid>
+      <description>看着自己两侧的景色飞速向身后移动，张慎峰那颗急速跳动的心逐渐安定下来。不得不说，刚才绝对是他平生所遇到的最危险的境况了。若是稍有不慎，行为出错，很可能</description>
+    </item>
+    <item>
+      <title>栈基本操作</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/stack-operation/</link>
+      <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/stack-operation/</guid>
+      <description>栈的基本操作如下： bool InitStack(LinkStack &amp;amp;L); bool IsEmpty(LinkStack L); bool Push(LinkStack &amp;amp;L, ElemType x); bool Pop(LinkStack &amp;amp;L, ElemType &amp;amp;x); bool GetTop(LinkStack L, ElemType &amp;amp;x); bool DestroyStstack(LinkStack &amp;amp;L); 顺序栈 栈的顺序存储类型： #define MaxSize 50 typedef struct{ ElemType data[MaxSize]; int top; }SqStack; 初始化： bool InitStack(SqStack S){ S.top=-1; return true; } 判断栈空： bool IsEmpty(SqStack S){ if(S.top==-1)</description>
+    </item>
+    <item>
+      <title>STM32 Rust Develop</title>
+      <link>https://endlesspeak.github.io/docs/docs/stm32-doc/8-stm32-rust-develop/</link>
+      <pubDate>Wed, 24 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/stm32-doc/8-stm32-rust-develop/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Package And Crate</title>
+      <link>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/8-package-and-crate/</link>
+      <pubDate>Tue, 11 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/8-package-and-crate/</guid>
+      <description>Crate crate 是 Rust 代码编译单元，它可以是库或者二进制 二进制 crate 生成一个可执行文件 库 crate 可以被其他程序调用，但不能独自执行 Package 包对应一个项目/代码仓库，它可以包含一个或</description>
+    </item>
+    <item>
+      <title>文本编辑器配置</title>
+      <link>https://endlesspeak.github.io/docs/build/editorconfiguration/</link>
+      <pubDate>Fri, 01 Jul 2022 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/editorconfiguration/</guid>
+      <description>本系列文章讲述文本编辑器配置的内容，主要是 Emacs 的内容。</description>
+    </item>
+    <item>
+      <title>Linux Basic</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/linuxpoints/</link>
+      <pubDate>Fri, 11 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/linuxpoints/</guid>
+      <description>发行版 Linux分为哪些发行版？具体而言有什么区别？ 概括地讲，Linux的发行版本可以大体分为两类 商业公司维护的发行版本，如Redhat Enterprise Linux 社区组织维</description>
+    </item>
+    <item>
+      <title>第八章 待修改</title>
+      <link>https://endlesspeak.github.io/novel/volume1/ch8/</link>
+      <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/novel/volume1/ch8/</guid>
+      <description>江云梦并不知道张慎峰的内心在想些什么，之前她听着张慎峰这篇关于琴曲的评点，觉得相当满意，甚至自己有些未表达的内容都被张慎峰说了出来，此际正听得连连点头</description>
+    </item>
+    <item>
+      <title>二叉树的基本操作</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-operation/</link>
+      <pubDate>Tue, 02 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-operation/</guid>
+      <description>二叉树存储结构 二叉树链式存储数据结构如下： typedef struct BitNode { int data; BitNode *left; BitNode *right; }BitNode,*BiTree; 二叉树遍历 设根结点为N，左结点L，右结点R。常见遍历有先序、中序、后序、层序遍历。 递归</description>
+    </item>
+    <item>
+      <title>Ubuntu Linux 桌面环境</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-9-ubuntu/</link>
+      <pubDate>Fri, 21 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-9-ubuntu/</guid>
+      <description>Installation 安装镜像：建议选用非官方 Ubuntu 的安装镜像，如 Kubuntu 或 Lubuntu 等； Ubuntu 安装镜像：5.7 GiB； Kubuntu 安装镜像：3.8 GiB； Lubuntu 安装镜像：3.1 GiB； 自 24.04 开始，安装时对于</description>
+    </item>
+    <item>
+      <title>二叉树的算法</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-algorithms/</link>
+      <pubDate>Thu, 10 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-algorithms/</guid>
+      <description>二叉树算法索引 二叉树的建立 设二叉树初始由数组存储，生成为二叉链表存储，编写递归建立算法和非递归建立算法 二叉树的遍历 编写先序、中序、后序遍历的递归和非递</description>
+    </item>
+    <item>
+      <title>第九章 待修改</title>
+      <link>https://endlesspeak.github.io/novel/volume1/ch9/</link>
+      <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/novel/volume1/ch9/</guid>
+      <description>张慎峰看出来江云梦的难过，温言宽慰道：“师妹放心，我真武师叔一辈的人物皆是德高望重之辈，断不可能做出强娶强嫁之事。今日师妹以琴曲直抒胸臆，寒湘子师叔必</description>
+    </item>
+    <item>
+      <title>SLAM Summary</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/1-slam-summary/</link>
+      <pubDate>Sun, 08 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/1-slam-summary/</guid>
+      <description>What&amp;rsquo;s SLAM SLAM 是 Simultaneous Localization and Mapping，即同时定位与建图。 history separate 最初，定位和建图问题是被看成两个独立问题研究的： 定位问题的关键是事先给定环境地图； 建图问题的关键是</description>
+    </item>
+    <item>
+      <title>第十章 待修改</title>
+      <link>https://endlesspeak.github.io/novel/volume1/ch10/</link>
+      <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/novel/volume1/ch10/</guid>
+      <description>“呼——”，习练完生太极招式的张慎峰长舒一口气，全身的心神不由得都放松下来，心中喃喃，“原先习练观水一式时，林林总总将近七天时间才略有小成，如今练习这</description>
+    </item>
+    <item>
+      <title>二叉排序树</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-sort-caculation/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-sort-caculation/</guid>
+      <description>二叉排序树 查找长度计算 查找成功情况下： $$ ASL_{成功}=\frac{SearchLength}{N} $$ $SearchLength$是链表中搜索各有值</description>
+    </item>
+    <item>
+      <title>第X章 待修改</title>
+      <link>https://endlesspeak.github.io/novel/volume1/extra/</link>
+      <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/novel/volume1/extra/</guid>
+      <description>“为什么？为什么你的心中只有剑，难道我为你做的这一切，甚至拨不起你的心中的一道褶皱吗？”张慎峰披头散发，状若疯魔，脸上泛着血色的光，眼中似有火焰在燃烧</description>
+    </item>
+    <item>
+      <title>图的基本概念</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/map-basic-terms/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/map-basic-terms/</guid>
+      <description>图的定义 图G由顶点集V和边集E组成，记为G=(V,E)。 其中V(G) 表示图G中顶点的有限非空集；E(G)表示图G中顶点之间的关系集合（即边集）。 用|V</description>
+    </item>
+    <item>
+      <title>图的弗洛伊德算法</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/map-floyd-algorithms/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/map-floyd-algorithms/</guid>
+      <description>Floyd算法 解题步骤： 图的顶点从\(V_0\)开始，依次标记所有顶点位序； 按图画出邻接矩阵\(A^{-1}\)；\(path^{0}\)矩阵全取-1</description>
+    </item>
+    <item>
+      <title>散列查找</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/search-hash/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/search-hash/</guid>
+      <description>处理冲突方法 主要分为开放定址法、拉链法（链地址法）和再散列法。 开放定址法 开放定址法意思是可存放新表项的空闲地址既向同义词开放，又向非同义词开放。 $$ H_i=(H(key)+d_i)\%m $$</description>
+    </item>
+    <item>
+      <title>VSLAM Summary</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/2-vslam-summary/</link>
+      <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/2-vslam-summary/</guid>
+      <description>Visual SLAM 在计算机视觉中，与同时定位与地图构建(Simultaneous Localization And Mapping)相似的是运动推断结构(Structure from motion,SFM)</description>
+    </item>
+    <item>
+      <title>DataType</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-1-datatype/</link>
+      <pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-1-datatype/</guid>
+      <description>概述 数据类型用于声明不同类型的变量或函数，变量的类型决定了变量存储占用的空间和变量存储的格式。 存储类型定义程序中变量/函数的范围（可见性）和生命周期。</description>
+    </item>
+    <item>
+      <title>StoreType</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-2-storetype/</link>
+      <pubDate>Fri, 01 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-2-storetype/</guid>
+      <description>概述 存储类型指示编译器以何种方式使用变量，它定义程序中变量/函数的范围（可见性）和生命周期。 数据类型用于声明不同类型的变量或函数，变量的类型决定了变量</description>
+    </item>
+    <item>
+      <title>Statement</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-1-statement/</link>
+      <pubDate>Tue, 22 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-1-statement/</guid>
+      <description>运算符 优先级 运算符 名称或含义 使用形式 结合方向 说明 1 [] 数组下标 数组名[常量表达式] 左到右 -- () 圆括号 (表达式）/函数名(形参表) -- . 成员选择（对象） 对象.</description>
+    </item>
+    <item>
+      <title>Rotation &amp; Translation Matrix</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-1-rotation-and-translation-matrix/</link>
+      <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-1-rotation-and-translation-matrix/</guid>
+      <description>Point &amp;amp; Vector &amp;amp; Coordinate System 旋转矩阵的推导可以参考 姿态解算 部分。 基是张成三维空间的一组线性无关的向量。三维空间中的某个点 $a$ 可以用 $\mathbb{R}^3$ 来描述，假设线性空间中存在一组基 $(</description>
+    </item>
+    <item>
+      <title>Structure</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-2-structure/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-2-structure/</guid>
+      <description>循环结构 continue&amp;amp;break 注意continue和break关键字的用法： continue指的是结束本次循环，进行下一次循环； break指的是结束本次循环并跳出循环体；</description>
+    </item>
+    <item>
+      <title>Eigen Exercise</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-2-eigen-exercise/</link>
+      <pubDate>Thu, 16 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-2-eigen-exercise/</guid>
+      <description>CMake Usage Eigen 是用头文件组成的库，对于它的使用，有两种办法： 理论上只需要引入头文件即可，见下面代码中的“直接引入”； 按照官网说明和 cmake 规范，依次 find_package 并 target_link_libraries 下面提供了</description>
+    </item>
+    <item>
+      <title>Geometry Exercise</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-4-geometry-exercise/</link>
+      <pubDate>Wed, 19 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-4-geometry-exercise/</guid>
+      <description>Geometry Declaration 四元数，旋转矩阵和旋转向量的声明： // 3D 旋转矩阵直接使用 Matrix3d 或 Matrix3f Eigen::Matrix3d rotation_matrix; // 旋转向量使用 AngleAxis, 它底层不直接是Matrix，但运算可以当作矩阵（因为重载了运算符）</description>
+    </item>
+    <item>
+      <title>Pangolin Exercise</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-5-pangolin/</link>
+      <pubDate>Wed, 19 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-5-pangolin/</guid>
+      <description>CMake Usage 下面提供了一个 pangolin 的 cmake 模板。 cmake_minimum_required(VERSION 3.24) project(eigen_example) set(CMAKE_CXX_STANDARD 17) find_package(Eigen3 REQUIRED) find_package(Pangolin REQUIRED) find_package(GLEW REQUIRED) # find_package(OpenGL REQUIRED) # 非必须的，但还是加上 include_directories( ${Pangolin_INCLUDE_DIRS} ) include_directories( &amp;quot;src/eigen_geometry&amp;quot; &amp;quot;src/eigen_matrix&amp;quot; &amp;quot;src/argparse&amp;quot; &amp;quot;src/coordinate_transform&amp;quot; &amp;quot;src/visualize_plot&amp;quot; ) file(GLOB_RECURSE SOURCES &amp;quot;src/*&amp;quot; &amp;quot;src/argparse/*&amp;quot; &amp;quot;src/coordinate_transform/*&amp;quot; &amp;quot;src/eigen_geometry/*&amp;quot; &amp;quot;src/eigen_matrix/*&amp;quot; &amp;quot;src/visualize_plot/*&amp;quot; ) add_executable(${PROJECT_NAME} ${SOURCES}) target_link_libraries(${PROJECT_NAME} Eigen3::Eigen) target_link_libraries(${PROJECT_NAME} ${Pangolin_LIBRARIES}) 注意事项： 对于 target_link_libraries(${PROJECT_NAME} Pangolin) 在</description>
+    </item>
+    <item>
+      <title>Lie Group and Lie Algebras 1</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/4-lie-group-and-lie-algebras-1/</link>
+      <pubDate>Mon, 20 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/4-lie-group-and-lie-algebras-1/</guid>
+      <description>Raise 在 SLAM 中，除表示位姿(旋转)外，还需要对其进行估计和优化。然而，旋转矩阵自身带有约束(正交矩阵且行列式为 1)，此时对其进行优化显得困难。通过一定的转换</description>
+    </item>
+    <item>
+      <title>Function</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-1-function/</link>
+      <pubDate>Tue, 22 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-1-function/</guid>
+      <description>函数组成 概念 函数是以固定的格式封装，可以重复使用的代码模块，用于完成特定的功能。 通过调用模块名来重复使用这段代码。 特别地， 函数不能嵌套定义。 函数外不能</description>
+    </item>
+    <item>
+      <title>Pass By Value &amp; Reference</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-2-functionassignment/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-2-functionassignment/</guid>
+      <description>值传递 变量作值传递 函数参数通过值来传递，即传递给被调用函数的参数值存放在临时变量中，而不是原来的变量中。 void swap1(int a,int b){ int temp = a; a = b; b = temp; } int main(){ swap1(</description>
+    </item>
+    <item>
+      <title>Lie Group and Lie Algebras Exercise</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/5-lie-group-and-lie-algebras-exercise/</link>
+      <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/5-lie-group-and-lie-algebras-exercise/</guid>
+      <description>Lie Group &amp;amp; Lie Algebras 李群 \(\mathcal{L}\) 是一个群同时也是一个光滑的(可微的)的流形, 定义其上的群乘法和求逆运算均可微; 李代数 \(\mathcal{A}\) 是 \(\mathcal{L}\) 的在单位元 \(\mathcal{1}\) 处的正切空间;最常见的李群就是 SO(n)</description>
+    </item>
+    <item>
+      <title>Scope</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/5-scope/</link>
+      <pubDate>Tue, 22 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/5-scope/</guid>
+      <description>所谓作用域，就是变量的有效范围。 局部变量 定义在函数内部或代码块内部的变量称为局部变量，它的作用域仅限于函数或代码块内部， 否则无效。 说明： 在 main 函数中定义</description>
+    </item>
+    <item>
+      <title>Pointer</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/6-pointer/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/6-pointer/</guid>
+      <description>概念 计算机程序在存储数据时需要跟踪三种属性： 信息存储在何处 存储的值是多少 存储的信息是什么类型 声明变量时： 通过声明语句指明的符号名跟踪内存单元； 程序为该</description>
+    </item>
+    <item>
+      <title>Non linear Optimize</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/7-nonlinear-optimize/</link>
+      <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/7-nonlinear-optimize/</guid>
+      <description>Matrix Derivative 下面介绍矩阵求导的相关内容。 矩阵和向量求导是批量求导数的一种方式，其本质上还是矩阵或向量中的标量在求导，只是借助矩阵或者向量的形式，同时对多个因变</description>
+    </item>
+    <item>
+      <title>Custom Data Type</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/7-customdatatypes/</link>
+      <pubDate>Fri, 25 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/7-customdatatypes/</guid>
+      <description>结构体 存储空间：所有成员变量占用内存空间的和。 结构体定义： struct student{ int num; char name[20]; char sex; char addr[20]; }std1,std2;//分号前可以直接声明具有结构体类型的变量 声明结构</description>
+    </item>
+    <item>
+      <title>Standard I/O</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-1-io-standard/</link>
+      <pubDate>Wed, 23 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-1-io-standard/</guid>
+      <description>Output puts()：只能输出字符串，并且输出结束后会自动换行； putchar()：只能输出单个字符； printf()：可以输出各种类型的数据； Printf() int printf(const char *format, ...)</description>
+    </item>
+    <item>
+      <title>File I/O</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-2-io-file/</link>
+      <pubDate>Wed, 23 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-2-io-file/</guid>
+      <description>概述 文件输入输出主要包括： 文件打开与关闭 打开函数fopen() 关闭函数fclose() 文件状态 是否到文件尾函数feof() 检查错误函数ferror()</description>
+    </item>
+    <item>
+      <title>ORB SLAM Adjustments</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/10-orb-slam3-adjustments/</link>
+      <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/10-orb-slam3-adjustments/</guid>
+      <description>ORB SLAM3 orb-slam3 的项目地址：https://github.com/UZ-SLAMLab/ORB_SLAM3 目前 orb-slam3 的代码直接编译会报错，因此需要解决一些冲突。 Opencv orb-slam</description>
+    </item>
+    <item>
+      <title>ORB SLAM3 Stereo</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/11-orb-slam3-stereo/</link>
+      <pubDate>Wed, 31 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/11-orb-slam3-stereo/</guid>
+      <description>Stereo Kitti Yaml modification 修改 KITTI00-02.yaml 文件中的 Viewer.ViewpointY: -100 改为 Viewer.ViewpointY: -100.0 Settings Orb slam3 在运行 stereo 时，输出第二个摄像头参数位置报 segment fault //for(size_t i = 0; i &amp;lt; settings.originalCalib2_-&amp;gt;size(); i++){ // output &amp;lt;&amp;lt; &amp;quot; &amp;quot; &amp;lt;&amp;lt; settings.originalCalib2_-&amp;gt;getParameter(i); //} if (settings.cameraType_ == Settings::PinHole) { for(size_t i = 0; i &amp;lt; settings.originalCalib2_-&amp;gt;size(); i++){ output &amp;lt;&amp;lt; &amp;quot; &amp;quot; &amp;lt;&amp;lt;</description>
+    </item>
+    <item>
+      <title>SLAM Evaluation</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/12-slam-evo/</link>
+      <pubDate>Sat, 30 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/12-slam-evo/</guid>
+      <description>EVO 在使用evo对ORB-SLAM或OpenVSLAM等SLAM系统在KITTI数据集上以双目模式运行的结果进行评估时，你首先需要确保你的轨迹文件和基准</description>
+    </item>
+    <item>
+      <title>Hugo及其Eureka主题</title>
+      <link>https://endlesspeak.github.io/posts/tattle/base-hugo-theme-eureka/</link>
+      <pubDate>Thu, 08 Apr 2021 12:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/posts/tattle/base-hugo-theme-eureka/</guid>
+      <description>&lt;p&gt;Hugo 是 Go 编写的静态网站生成器，速度快，易用，可配置。Hugo 具有基于各种主题生成的内容和模板目录，以把markdown文件（包括org文件）渲染到完全静态的 HTML 网站。&lt;/p&gt;&#xA;&lt;p&gt;Eureka是一个功能丰富且可高度定制化的Hugo主题，使用Eureka可以轻松快捷地定制并部署网站。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>新目标，新征程，新的2021</title>
+      <link>https://endlesspeak.github.io/posts/tattle/2021-what-is-the-learn-plan-as-coder/</link>
+      <pubDate>Sat, 09 Jan 2021 18:05:00 +0800</pubDate>
+      <guid>https://endlesspeak.github.io/posts/tattle/2021-what-is-the-learn-plan-as-coder/</guid>
+      <description>&lt;p&gt;站在年关的十字路口，我不禁回忆起刚刚结束的2020年——失败的一年，我这样称呼它，不是对今年忙于考研无暇做事的批判，而是对我所应当专注的事情不能全身心地投入而遗憾和愤恨。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Linux救援模式</title>
+      <link>https://endlesspeak.github.io/posts/linux/linux-technology-7-linux-rescue-mode/</link>
+      <pubDate>Tue, 05 May 2020 15:00:07 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/posts/linux/linux-technology-7-linux-rescue-mode/</guid>
+      <description>本文主要尝试叙述Linux系统在运行某些守护进程或者启动服务时出错后，应该如何进行修复操作。同时阐述比较常见的导致登陆时挂机/关机的情况。</description>
+    </item>
+    <item>
+      <title>Linux 软件使用问题与解决方案</title>
+      <link>https://endlesspeak.github.io/posts/linux/linux-technology-6-1-linux-software-usage-1/</link>
+      <pubDate>Fri, 03 Apr 2020 02:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/posts/linux/linux-technology-6-1-linux-software-usage-1/</guid>
+      <description>&lt;p&gt;在这一部分中我尝试讲述常用软件的安装过程中遇到的问题，以及我自己探索的解决思路。&lt;/p&gt;&#xA;&lt;p&gt;本节主要讨论的是家目录和QQ的解决方案汇总。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Linux的桌面环境</title>
+      <link>https://endlesspeak.github.io/posts/linux/linux-technology-4-x-environment/</link>
+      <pubDate>Tue, 28 Jan 2020 20:15:32 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/posts/linux/linux-technology-4-x-environment/</guid>
+      <description>&lt;p&gt;Linux中”桌面“的概念——由X窗口系统组成的，可以卸载的图形环境——复杂且抽象，好在那些试图解释清楚这件事情的人也有同样的感受。&lt;/p&gt;&#xA;&lt;p&gt;图形用户界面是可以为Linux工作站提供图形化工作界面的强大工具，但许多新用户会碰到一个令他们十分惊奇的事实： 如此强大的工具只不过是运行在系统上的一个应用程序。它不是Linux内核的一部分，也并非集成在Linux系统中。它需要额外安装，只不过一些发行版将这种安装过程自动化了而已。&lt;/p&gt;&#xA;&lt;p&gt;UNIX like操作系统需要图形界面(Graphical User Interface)。由于标准的重要性，有人为窗口的绘制和移动、通过鼠标的移动和键盘实现程序和用户间的互动，以及其它重要的方面创建了一种标准，这种标准就叫做&lt;strong&gt;X 窗口系统&lt;/strong&gt;，它通常缩写为 X11 或者X。它广泛应用于Unix，Linux，以及其他类Unix操作系统上。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>浅谈计算机&amp;编程发展路线——自顶向下脱发方法</title>
+      <link>https://endlesspeak.github.io/posts/tattle/the-brief-talk-of-computer-and-programming/</link>
+      <pubDate>Sun, 29 Dec 2019 21:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/posts/tattle/the-brief-talk-of-computer-and-programming/</guid>
+      <description>&lt;p&gt;很多年轻人打算搞IT，问要看什么书，以下是比较专业的回答：&lt;/p&gt;&#xA;&lt;p&gt;第一阶段：《数据结构》《C语言》《C++》《C#》《PHP》《Java》《设计模式》《框架》&#xA;第二阶段：《莫生气》《佛教》《道》《思想与政治》《论持久战》&#xA;第三阶段：《脊椎匡扶指南》《腰间盘突出康复指南》《心脏病的预防与防止》《高血压降压宝典》《强迫症的自我恢复》&#xA;第四阶段：《迷恋》《谢谢你折磨我》《自私与贪婪》《走向奴役之路》《精神变态日记》&#xA;第五阶段：《活着》&#xA;第六阶段：《棺材的质量与选材》《墓地的风水与选择》《死后的思想》&#xA;第七阶段：《中国传统丧葬礼仪概述》&#xA;第八阶段：《论投胎的方法与技巧》&#xA;第十阶段：《论出生后如何不成为程序员》&lt;/p&gt;&#xA;&lt;p&gt;你可能很疑惑，为什么没有第九阶段。别问，问就是喝孟婆汤忘记了。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hello World——从写博客到记录人生</title>
+      <link>https://endlesspeak.github.io/posts/tattle/2020-helloworld-from-blogs-to-life/</link>
+      <pubDate>Sat, 28 Dec 2019 20:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/posts/tattle/2020-helloworld-from-blogs-to-life/</guid>
+      <description>&lt;p&gt;时光，匆匆，像是天空中，自由变幻的一缕缕云烟；人生，短暂，像是电影剪辑里的一帧帧片段。&lt;/p&gt;&#xA;&lt;p&gt;简单的事物，总是比想象中更美一些，而博客的作用，大抵就是记录下这些瞬间。多年之后，再点开博客，饱含着记忆的旧时光如同投入镜湖中的石子，在脑海中荡漾起一圈圈的涟漪；又仿佛清晨的微风，扑面而来，令人心旷神怡。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

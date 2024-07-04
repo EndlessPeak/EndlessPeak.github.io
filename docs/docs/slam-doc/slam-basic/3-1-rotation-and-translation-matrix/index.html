@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Rotation &amp; Translation Matrix | SLAM Programming Basic | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文总结了三维空间刚体的运动相关内容。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"SLAM Programming and Interviewing",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"SLAM Programming Basic",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"Rotation \u0026 Translation Matrix",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-1-rotation-and-translation-matrix/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-1-rotation-and-translation-matrix/"
+    },
+    "headline": "Rotation \u0026 Translation Matrix | SLAM Programming Basic | 悦翎轩","datePublished": "2024-06-18T00:00:00+00:00",
+    "dateModified": "2024-06-18T00:00:00+00:00",
+    "wordCount":  1530 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "本文总结了三维空间刚体的运动相关内容。"
+}
+</script><meta property="og:title" content="Rotation &amp; Translation Matrix | SLAM Programming Basic | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-1-rotation-and-translation-matrix/" />
+
+
+
+<meta property="og:description" content="本文总结了三维空间刚体的运动相关内容。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2024-06-18T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2024-06-18T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/">SLAM Programming Basic</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/1-slam-summary/">SLAM Summary</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/2-vslam-summary/">VSLAM Summary</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-1-rotation-and-translation-matrix/">Rotation &amp; Translation Matrix</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-2-eigen-exercise/">Eigen Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-4-geometry-exercise/">Geometry Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-5-pangolin/">Pangolin Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/4-lie-group-and-lie-algebras-1/">Lie Group and Lie Algebras 1</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/5-lie-group-and-lie-algebras-exercise/">Lie Group and Lie Algebras Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/7-nonlinear-optimize/">Non linear Optimize</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/10-orb-slam3-adjustments/">ORB SLAM Adjustments</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/11-orb-slam3-stereo/">ORB SLAM3 Stereo</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/12-slam-evo/">SLAM Evaluation</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Rotation &amp; Translation Matrix</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2024-06-18</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>4分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="point--vector--coordinate-system">Point &amp; Vector &amp; Coordinate System</h2>
+<p>旋转矩阵的推导可以参考 <strong>姿态解算</strong> 部分。</p>
+<p>基是张成三维空间的一组线性无关的向量。三维空间中的某个点 $a$ 可以用 $\mathbb{R}^3$ 来描述，假设线性空间中存在一组基 $(e_1,e_2,e_3)$，则由原地到点 $a$ 的向量 $\mathbf{a}$ 在这组基下的坐标是：$(a_1,a_2,a_3)$ ，满足
+</p>
+$$
+\mathbf{a} = \mathbf{e} \cdot \mathbf{a} =
+\begin{bmatrix} 
+e_1 & e_2 & e_3 
+\end{bmatrix}
+\begin{bmatrix} 
+a_1 \\ a_2 \\ a_3 
+\end{bmatrix} = a_1 e_1 + a_2 e_2 + a_3 e_3
+$$
+<p>对于向量 $\mathbf{a},\mathbf{b} \in \mathbb{R}^3$ 的内积：
+</p>
+$$
+\mathbf{a} \cdot \mathbf{b} = \mathbf{a}^T \mathbf{b} = \sum_{i=1}^3 a_ib_i = |a||b|\cos\langle \mathbf{a},\mathbf{b} \rangle 
+$$
+<p>其中 $\left \langle \mathbf{a},\mathbf{b} \right \rangle$ 是两个向量的夹角。<strong>内积可以描述向量间的投影关系。</strong></p>
+<p>对于向量 $\mathbf{a},\mathbf{b} \in \mathbb{R}^3$ 的外积：
+</p>
+$$
+\begin{aligned}
+\mathbf{a} \times \mathbf{b} &= 
+\left \|  
+\begin{matrix}
+e_1 & e_2 & e_3 \\
+a_1 & a_2 & a_3 \\
+b_1 & b_2 & b_3
+\end{matrix}
+\right \| \\
+&= \left( a_2 b_3 - a_3 b_2 \right) e_1 - \left( a_1 b_3 - a_3 b_1 \right) e_2 + \left( a_1 b_2 - a_2 b_1 \right) e_3 \\
+&=
+\begin{bmatrix}
+a_2b_3-a_3b_2 \\
+a_3b_1-a_1b_3 \\
+a_1b_2-a_2b_1
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+0 & -a_3 & a_2 \\
+a_3 & 0 & -a_1 \\
+-a_2 & a_1 & 0
+\end{bmatrix}\mathbf{b}
+\stackrel{\mathrm{def}}{=} \mathbf{a}^{\wedge}\mathbf{b}
+\end{aligned}
+$$
+<p><strong>外积的结果是向量</strong>，且有以下性质：</p>
+<ol>
+<li>方向：垂直于两个向量</li>
+<li>长度： $\left |a \right |\left |b \right | \sin \left \langle \mathbf{a},\mathbf{b} \right \rangle$</li>
+<li>几何意义：两个向量张成的四边形的有向面积</li>
+</ol>
+<p>记符号 $\wedge$ 为反对称符号， $\mathbf{a} \times \mathbf{b} = \mathbf{a}^{\wedge} \mathbf{b}$ 将外积变成了线性运算。</p>
+<p><strong>任何向量都对应唯一的反对称矩阵，反之亦然</strong>，其对应关系为：
+</p>
+$$
+\mathbf{a}^{\wedge}=
+\begin{bmatrix}
+0 & -a_3 & a_2 \\
+a_3 & 0 & -a_1 \\
+-a_2 & a_1 & 0
+\end{bmatrix}
+$$
+<h2 id="coordinate-systems-euclidean-transformation">Coordinate Systems&rsquo; Euclidean transformation</h2>
+<p>坐标系之间的欧式变换由一个旋转加上一个平移组成，这种变换称之为刚体运动。</p>
+<p>设单位正交基 $(e_1,e_2,e_3)$ 经过一次旋转变成 $(e_1&rsquo;,e_2&rsquo;,e_3&rsquo;)$，对同一个向量 $\mathbf{a}$ 分别在两个正交基下的坐标 $\begin{bmatrix} a_1,a_2,a_3 \end{bmatrix}^T$ 和 $\begin{bmatrix} a_1&rsquo;,a_2&rsquo;,a_3&rsquo; \end{bmatrix}^T$ 有：
+</p>
+$$
+\begin{bmatrix}
+e_1,e_2,e_3
+\end{bmatrix}
+\begin{bmatrix}
+a_1 \\
+a_2 \\
+a_3
+\end{bmatrix} =
+\begin{bmatrix}
+e_1',e_2',e_3'
+\end{bmatrix}
+\begin{bmatrix}
+a_1' \\
+a_2' \\
+a_3'
+\end{bmatrix}
+$$
+<p>等式同时左乘下面的向量
+</p>
+$$
+\begin{bmatrix} 
+e_1^T \\
+e_2^T \\
+e_3^T 
+\end{bmatrix}
+$$
+<p>得到：</p>
+$$
+\begin{bmatrix}
+a_1 \\
+a_2 \\
+a_3
+\end{bmatrix} =
+\begin{bmatrix}
+e_1^Te_1' & e_1^Te_2' & e_1^Te_3' \\
+e_2^Te_1' & e_2^Te_2' & e_2^Te_3' \\
+e_3^Te_1' & e_3^Te_2' & e_3^Te_3' \\
+\end{bmatrix}
+\begin{bmatrix}
+a_1' \\
+a_2' \\
+a_3'
+\end{bmatrix}
+\stackrel{\mathrm{def}}{=}
+\mathbf{Ra}'
+$$
+<p>定义中间的矩阵为旋转矩阵，可以看到:</p>
+<ol>
+<li><strong>旋转矩阵由两组基的内积组成</strong>。</li>
+<li>矩阵各分量是两个坐标系基的内积，基的长度为1，因此实际上是各基向量夹角的余弦值，又称方向余弦矩阵。</li>
+<li>旋转矩阵是正交矩阵，即 $R^{-1}=R^T$ 或 $R^{T}R=RR^{T}=I$，且行列式为1；反过来说，行列式为1的正交矩阵即为旋转矩阵</li>
+</ol>
+<blockquote>
+<p>特别地，行列式为-1也称为旋转矩阵，这种旋转是瑕旋转，即一次旋转加上一次反射。</p>
+</blockquote>
+<p>旋转矩阵的集合定义为：
+</p>
+$$
+SO(n)=\left \{\mathbf{R} \in \mathbb{R}^{n \times n} | \mathbf{RR^T=I},\det(R)=1 \right \}
+$$
+<p>旋转矩阵为正交矩阵，其逆等于转置，均描述了一个相反的旋转：
+</p>
+$$
+\mathbf{a'}=\mathbf{R}^{-1}\mathbf{a}=\mathbf{R}^T\mathbf{a}
+$$
+<p>平移相对旋转来说更加简单，只需要进行简单的坐标相加，若考虑世界坐标系中的向量 $\mathbf{a}$ ，经过一次旋转 $\mathbf{R}$ 和一次平移 $\mathbf{t}$ 后得到 $\mathbf{a}&rsquo;$ ，那么把旋转和平移合到一起为：
+</p>
+$$
+\mathbf{a}'=\mathbf{Ra}+\mathbf{t}
+$$
+<p>若定义两个坐标系1和2，向量 $\mathbf{a}$ 在两个坐标系下的坐标为 $\mathbf{a}_1$ 和 $\mathbf{a}_2$，则：
+</p>
+$$
+\mathbf{a}_1=\mathbf{R}_{12}\mathbf{a}_2+\mathbf{t}_{12}
+$$
+<p>其中 \(\mathbf{R}_{12}\) 表示把坐标系2的向量变换到1，而 \(\mathbf{t}_{12}\) 对应的是坐标系1原点指向坐标系2原点的向量在<strong>坐标系1下的坐标</strong>。</p>
+<blockquote>
+<p>在完成旋转后，我们还需要考虑坐标系2相对于坐标系1的位置，这一步通过平移向量 \( \mathbf{t}_{12} \) 来实现。
+因此，在完成旋转变换后，我们需要再加上\( \mathbf{t}_{12} \)来获得最终在坐标系1中的表示。</p>
+</blockquote>
+<p>反过来，\(\mathbf{t}_{21}\) 虽然是坐标系2原点指向坐标系1原点的向量在<strong>坐标系2下的坐标</strong>，却并不等于 \(-\mathbf{t}_{12}\) 。</p>
+<blockquote>
+<p>从向量层面上来看，两个向量是完全反向的关系，但是由于两个坐标系的方向可能发生了变化，因此它们在各自坐标系下的坐标值并非相反数。</p>
+</blockquote>
+<h2 id="transform-matrix--homogeneous-coordinate">Transform Matrix &amp; Homogeneous Coordinate</h2>
+<p>为了让旋转和平移满足线性关系，引入齐次坐标和变换矩阵：
+</p>
+$$
+\begin{bmatrix}
+\mathbf{a}' \\
+1
+\end{bmatrix} = 
+\begin{bmatrix}
+\mathbf{R} & \mathbf{t} \\
+0^T & 1
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{a} \\
+1
+\end{bmatrix}
+\stackrel{\mathrm{def}}{=}
+\mathbf{T}
+\begin{bmatrix}
+\mathbf{a} \\
+1
+\end{bmatrix}
+$$
+<p>在这里，三维向量末尾添加1变成了<strong>齐次坐标</strong>，矩阵 $\mathbf{T}$ 是<strong>变换矩阵</strong>。</p>
+<p>关于该变换矩阵，称其为特殊欧式群：
+</p>
+$$
+\operatorname{SE}(3) = \left\{ 
+\mathbf{T} = 
+\begin{bmatrix}
+\mathbf{R} & \mathbf{t} \\
+\mathbf{0}^\mathrm{T} & 1
+\end{bmatrix} 
+\in \mathbb{R}^{4 \times 4} \mid
+\mathbf{R} \in \mathrm{SO}(3), \mathbf{t} \in \mathbb{R}^3 \right\}
+$$
+<p>求解该矩阵的逆表示一个反向的变换：
+</p>
+$$
+\mathbf{T}^{-1} = 
+\begin{bmatrix}
+\mathbf{R}^T & \mathbf{-R}^T\mathbf{t} \\
+\mathbf{0}^\mathrm{T} & 1
+\end{bmatrix}
+$$
+<p>为了实现计算 $\mathbf{Ta}$ 时使用齐次坐标，计算 $\mathbf{Ra}$ 时使用非齐次坐标，可以采用以下思路：</p>
+<ol>
+<li>先进行矩阵转换，后进行计算</li>
+<li>定义运算符重载，以适应不同的矩阵</li>
+</ol>
+<p>有关该部分的内容查看后面的 Eigen 编程实践内容。</p>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/2-vslam-summary/" class="block">VSLAM Summary</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-2-eigen-exercise/" class="block">Eigen Exercise</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#point--vector--coordinate-system">Point &amp; Vector &amp; Coordinate System</a></li>
+    <li><a href="#coordinate-systems-euclidean-transformation">Coordinate Systems&rsquo; Euclidean transformation</a></li>
+    <li><a href="#transform-matrix--homogeneous-coordinate">Transform Matrix &amp; Homogeneous Coordinate</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>二叉树的算法 | Data Structure | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="二叉树算法索引 二叉树的建立 设二叉树初始由数组存储，生成为二叉链表存储，编写递归建立算法和非递归建立算法 二叉树的遍历 编写先序、中序、后序遍历的递归和非递">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Computer Interview",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Data Structure",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"二叉树的算法",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-algorithms/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-algorithms/"
+    },
+    "headline": "二叉树的算法 | Data Structure | 悦翎轩","datePublished": "2022-02-10T00:00:00+00:00",
+    "dateModified": "2022-02-10T00:00:00+00:00",
+    "wordCount":  5078 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "二叉树算法索引 二叉树的建立 设二叉树初始由数组存储，生成为二叉链表存储，编写递归建立算法和非递归建立算法 二叉树的遍历 编写先序、中序、后序遍历的递归和非递"
+}
+</script><meta property="og:title" content="二叉树的算法 | Data Structure | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-algorithms/" />
+
+
+
+
+<meta property="og:description" content="二叉树算法索引 二叉树的建立 设二叉树初始由数组存储，生成为二叉链表存储，编写递归建立算法和非递归建立算法 二叉树的遍历 编写先序、中序、后序遍历的递归和非递" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-02-10T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2022-02-10T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/">Data Structure</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/datastructure-summary/">数据结构基本概念</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-terms/">线性表基本概念</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-operation/">线性表基本操作</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/linear-list-algorithms/">线性表算法题解</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/stack-operation/">栈基本操作</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-operation/">二叉树的基本操作</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-algorithms/">二叉树的算法</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-sort-caculation/">二叉排序树</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/map-basic-terms/">图的基本概念</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/map-floyd-algorithms/">图的弗洛伊德算法</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/search-hash/">散列查找</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">二叉树的算法</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-02-10</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>11分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="二叉树算法索引">二叉树算法索引</h2>
+<ol>
+<li>
+<p>二叉树的建立</p>
+<p>设二叉树初始由数组存储，生成为二叉链表存储，编写递归建立算法和非递归建立算法</p>
+</li>
+<li>
+<p>二叉树的遍历</p>
+<p>编写先序、中序、后序遍历的递归和非递归算法，层序遍历算法</p>
+<p>求先序遍历序列中第n个结点的值</p>
+</li>
+<li>
+<p>二叉树的深宽</p>
+<p>计算二叉树指定结点的高度/深度</p>
+<p>计算二叉树的最大宽度</p>
+</li>
+<li>
+<p>二叉树的形态</p>
+<p>判断二叉树是否是完全二叉树</p>
+<p>判断二叉树是否是镜像对称的</p>
+<p>对二叉树镜像翻转，或将二叉树所有结点的左右子树相互交换</p>
+</li>
+<li>
+<p>二叉树的结点</p>
+<p>计算二叉树的叶子结点、非叶子结点个数</p>
+<p>查找特定值的结点，并打印其所有祖先结点的值</p>
+</li>
+<li>
+<p>二叉树的遍历与建立综合</p>
+<p>通过先序遍历序列和中序遍历序列建立二叉树</p>
+<p>通过中序遍历序列和后序遍历序列建立二叉树</p>
+<p>将满二叉树的先序遍历序列转为后序遍历序列</p>
+</li>
+<li>
+<p>二叉树与链表综合</p>
+<p>将二叉树中所有叶子结点链接为链表，并返回头指针</p>
+</li>
+</ol>
+<h2 id="二叉树的建立">二叉树的建立</h2>
+<p>题目描述：设二叉树初始由数组存储，生成为二叉链表存储，编写递归建立算法和非递归建立算法。初始给定数组首地址指针和二叉树的深度。</p>
+<p>二叉树链式存储数据结构如下：</p>
+<pre><code class="language-c++">typedef struct BitNode {
+    int data;
+    BitNode *left;
+    BitNode *right;
+}BitNode,*BiTree;
+</code></pre>
+<p>解答：</p>
+<p>设虚结点在数组中用-1表示，递归建立算法如下：</p>
+<pre><code class="language-c++">int size=pow(2,depth)-1;
+BiTree CreateBiTree(int *a,int index,int size){
+	BiTNode *T=NULL;//初始化二叉树根结点
+    if(size==0||a[index]==-1)
+        return NULL;
+    T=(BiTNode*)malloc(sizeof(BiTNode));
+    T-&gt;data=a[index];
+    T-&gt;lchild = CreateBiTree(a, 2 * index, size);
+    T-&gt;rchild = CreateBiTree(a, 2 * index + 1, size);
+    return T;
+}
+BiTree T = CreateBiTree(a, 1, size); //创建二叉树
+</code></pre>
+<p>非递归使用队列实现，类似层次遍历思想：</p>
+<pre><code class="language-c++">typedef struct TNode{
+    BiTree bt;//二叉树结点指针
+    int num;//指示当前结点在一维数组中的位序
+}TNode;
+TNode Q[MaxSize];//循环队列
+BiTree CreateBiTree(int *a,int depth){
+    int size=pow(2,depth)-1;
+    BiTree p;//用于暂存出队的元素
+    int i=0;//指示暂存的出队元素在数组中的位序
+    TNode tn;//队列元素
+    BiTree T=(BiTNode*)malloc(sizeof(BiTNode));//根结点
+    T-&gt;data=a[1];
+    tn.bt=T;
+    tn.num=1;
+    int front=rear=0;
+    Q[rear++%MaxSize]=tn;
+    while(front!=rear){
+        tn=Q[front++%MaxSize];//出队
+        p=tn.bt;
+        i=tn.num;
+        if(2*i&gt;size||a[2*i]==-1)
+            p-&gt;lchild=NULL;
+        else{
+            //左结点
+            p-&gt;lchild=(BiTNode*)malloc(sizeof(BiTNode));
+            p-&gt;lchild-&gt;data=a[2*i];
+            //左结点入队
+            tn.bt=p-&gt;lchild;
+            tn.num=2*i;
+            Q[rear++%MaxSize]=tn;
+        }
+        if(2*i+1&gt;size||a[2*i+1]==-1)
+            p-&gt;rchild=NULL;
+        else{
+            //右结点
+            p-&gt;rchild=(BiTNode*)malloc(sizeof(BiTNode));
+            p-&gt;rchild-&gt;data=a[2*i+1];
+            //右结点入队
+            tn.bt=p-&gt;rchild;
+            tn.num=2*i+1;
+            Q[rear++%MaxSize]=tn;
+        }
+    }
+}
+</code></pre>
+<h2 id="二叉树的遍历">二叉树的遍历</h2>
+<p>先序、中序和后序遍历的非递归算法均使用栈实现。</p>
+<h3 id="先序遍历">先序遍历</h3>
+<p>递归算法</p>
+<pre><code class="language-c++">void PreOrder(BiTree T)
+{
+    if (T != NULL)
+    {
+        visit(T);
+        PreOrder(T-&gt;lchild);
+        PreOrder(T-&gt;rchild);
+    }
+}
+</code></pre>
+<p>非递归算法</p>
+<pre><code class="language-c++">const int MaxSize=1000;
+void PreOrder2(BiTree T)
+{
+    int top=-1;//top指向栈顶元素
+    BiTNode* stack[MaxSize];
+    BiTree p = T; //p是工作指针
+    while (p || top!=-1)
+    {
+        if (p) //先访问根结点，然后一路向左
+        {
+            visit(p);
+            stack[++top]=p;
+            p = p-&gt;lchild;
+        }
+        else //出栈，后转向右子结点（出栈条件是当前结点为空）
+        {
+            p=stack[top--];
+            p = p-&gt;rchild;
+        }
+    }
+}
+</code></pre>
+<h3 id="中序遍历">中序遍历</h3>
+<p>递归算法</p>
+<pre><code class="language-c++">void InOrder(BiTree T)
+{
+    if (T != NULL)
+    {
+        InOrder(T-&gt;lchild);
+        visit(T);
+        InOrder(T-&gt;rchild);
+    }
+}
+</code></pre>
+<p>非递归算法</p>
+<pre><code class="language-c++">const int MaxSize=1000;
+void InOrder2(BiTree T)
+{
+    int top=-1;//top指向栈顶元素
+    BiTNode* stack[MaxSize];
+    BiTree p = T; //p是工作指针
+    while (p || top!=-1)
+    {
+        if (p) //一路向左
+        {
+            stack[++top]=p;
+            p = p-&gt;lchild;
+        }
+        else //出栈，访问根结点，后转向右子结点（出栈条件是当前结点为空）
+        {
+            p=stack[top--];
+            visit(p);
+            p = p-&gt;rchild;
+        }
+    }
+}
+</code></pre>
+<h3 id="后序遍历">后序遍历</h3>
+<p>递归算法</p>
+<pre><code class="language-c++">void PostOrder(BiTree T)
+{
+    if (T != NULL)
+    {
+        PostOrder(T-&gt;lchild);
+        PostOrder(T-&gt;rchild);
+        visit(T);
+    }
+}
+</code></pre>
+<p><strong>※ 非递归算法：</strong></p>
+<p>①先沿着根找所有的左孩子，依次入栈，直到左孩子为空；</p>
+<p>②读栈顶元素，若该元素的右孩子不空且未被访问过，则将其右子树转①；否则栈顶元素出栈并对其进行访问。</p>
+<p>上述第②步中，关键在于必须分清返回到当前结点时是通过左子树返回的还是右子树返回的。若是左子树，则当前结点需要一路向左，若是右子树，则访问当前结点。</p>
+<p>为达到上述目的，代码实现中设辅助指针r指向最近访问过的结点。</p>
+<pre><code class="language-c++">const int MaxSize=1000;
+void PostOrder2(BiTree T)
+{
+    int top=-1;//top指向栈顶元素
+    BiTNode* stack[MaxSize];
+    BiTree p = T, r = NULL; //p是工作指针,r指向上一个访问的结点
+    //工作指针有结点，则说明需要向左走，工作指针指向空，说明需要向右
+    while (p || top!=-1)
+    {
+        if (p) //一路向左
+        {
+            stack[++top]=p;
+            p = p-&gt;lchild;
+        }
+        else //向右，元素出栈
+        {
+            p=stack[top];//读栈顶元素赋给p（并非出栈）
+            if (p-&gt;rchild&amp;&amp;p-&gt;rchild!=r) //右子树且尚未被访问
+            {
+                p = p-&gt;rchild;
+                stack[++top]=p;
+                p = p-&gt;lchild; //继续向左走
+            }
+            else
+            {
+                p=stack[top--];//弹出结点
+                visit(p);
+                r = p;
+                p = NULL; //重置p指针
+            }
+        }
+    }
+}
+</code></pre>
+<p>层序遍历</p>
+<p>思想：使用队列实现</p>
+<pre><code class="language-c++">const int MaxSize=1000;
+void LevelOrder(BiTree T)
+{
+    BiTree Queue[MaxSize];
+    BiTree p;
+    int rear=front=0;
+    Queue[rear++%MaxSize]=T;
+    while (front!=rear)
+    {
+        p=Queue[front++%MaxSize];
+        visit(p);
+        if (p-&gt;lchild != NULL)
+            Queue[rear++%MaxSize]=p-&gt;lchild;
+        if (p-&gt;rchild != NULL)
+            Queue[rear++%MaxSize]=p-&gt;rchild;
+    }
+}
+</code></pre>
+<h3 id="求先序遍历序列中第n个结点的值">求先序遍历序列中第n个结点的值</h3>
+<p>假设二叉树共有$n$个结点，采用二叉链表存储结构，试设计算法求先序遍历序列中第$k(1\leq k \leq n)$的叶子结点的值。</p>
+<pre><code class="language-c++">ElemType PreOrder(BiTree T,int k,int &amp;num){
+	ElemType value=NULL;
+    if(T==NULL)
+        return value;
+	if(num==k)
+		return T-&gt;data;
+	num+=1;
+	//当num&lt;k时
+	if(T-&gt;lchild!=NULL){
+		value=PreOrder(T-&gt;lchild,k,num);
+		if(value!=NULL)
+			return value;
+    }
+    if(T-&gt;rchild!=NULL){
+        value=PreOrder(T-&gt;rchild,k,num);
+        return value;
+    }   
+}
+ElemType PreNode(BiTree T,int k){
+    return PreOrder(T,k,0);
+}
+</code></pre>
+<h2 id="二叉树的深宽">二叉树的深宽</h2>
+<p>题目描述：设二叉树初始由二叉链表存储，编写计算二叉树的深度和最大宽度的算法。初始给定二叉树根结点。</p>
+<h3 id="二叉树的深度">二叉树的深度</h3>
+<p>递归算法</p>
+<p>注：无论是给二叉树的根还是给指定结点，计算深度均可采用下面的算法。</p>
+<pre><code class="language-c++">int treeDepth(BiTree T)
+{
+    if (T == NULL)
+        return 0;
+    else
+    {
+        int l = treeDepth(T-&gt;lchild);
+        int r = treeDepth(T-&gt;rchild);
+        return l &gt; r ? l + 1 : r + 1;
+    }
+}
+</code></pre>
+<h3 id="二叉树的宽度">二叉树的宽度</h3>
+<p>算法思想：</p>
+<p>采用层次遍历的方法，通过记录各层结点数最后得到最大结点数。</p>
+<p>遍历中需要区分不同层，区分方法有很多种，一是用整数保存当前层元素的个数控制出队和入队；二是保存当前层最右侧结点。</p>
+<p>法一，用整数保存当前层元素的个数控制出队和入队。</p>
+<pre><code class="language-c++">const int MaxSize=1000;
+BiTree Q[MaxSize];//定义队列
+int rear=front=0;
+int BiTreeWidth(BiTree T){
+    if(T==NULL)
+        return 0;
+    currentWidth=0;//本层结点个数
+    Q[rear++%MaxSize]=T;//根结点入队
+    lastWidth=1;//上一层（即当前队列中的元素个数）
+    maxWidth=1;//根结点已入队，因此最大宽度从1开始计算
+    while(rear!=front){
+        while(lastWidth!=0){//当前队列中元素个数不为0，则持续出队
+            BiTree p=Q[front++%MaxSize];
+            if(p-&gt;lchild){
+                Q[rear++%MaxSize]=p-&gt;lchild;
+            	currentWidth+=1;
+            }
+            if(p-&gt;rchild){
+                Q[rear++%MaxSize]=p-&gt;rchild;
+                currentWidth+=1;
+            }
+            if(currentWidth&gt;maxWidth)
+                maxWidth=currentWidth;
+            lastWidth-=1;
+        }
+        lastWidth=currentWidth;
+        currentWidth=0;//清零当前层计数器，转下一层
+    }
+    return maxWidth;
+}
+</code></pre>
+<p>法二，用整数保存当前层最右侧结点。</p>
+<pre><code class="language-c++">const int MaxSize=1000;
+BiTree Q[MaxSize];//定义队列
+int BiTreeWidth(BiTree T){
+	if(T==NULL)
+	   return 0;
+    int font=0,rear=0;
+    int last=0;//last指向当前层的最右结点
+    int maxWidth=0,currentWidth=0;
+    //maxWidth保存最大宽度，currentWidth保存本层宽度
+    Q[rear++%MaxSize]=T；//根结点入队
+    BiTree p;
+    while(front%MaxSize&lt;last%MaxSize){//在当前层循环
+    	p=Q[front++%MaxSize];  
+        currentWidth++;  
+    	if(p-&gt;lchild)
+    	   Q[rear++%MaxSize]=p-&gt;lchild;
+ 	    if(p-&gt;rchild)
+ 	       Q[rear++%MaxSize]=p-&gt;rchild;
+        if(front&gt;=last){//由于last=rear,rear指向下一个结点，因此这里相等也成立
+		   if(maxWidth&lt;currentWidth)
+		      maxWidth=currentWidth;
+		   last=rear;//将下一层的最后一个结点赋给last
+		   currentWidth=0;//每一层宽度置空一次
+		}
+	}
+	return maxWidth;
+}
+</code></pre>
+<h2 id="二叉树的形态">二叉树的形态</h2>
+<h3 id="完全二叉树">完全二叉树</h3>
+<p>使用队列进行层序遍历，如果某结点无左孩子，也必须无右孩子。</p>
+<p>特别注意两点：</p>
+<ol>
+<li>不能通过证明左右子树是完全二叉树，则该树是完全二叉树，证法是错误的；</li>
+<li>不能在入队时只考虑左右孩子均有、有左无右、有右无左、都无这四种情况，因为可能存在左子树和右子树都只有左孩子无右孩子。</li>
+</ol>
+<p>因此需要加设一个变量flag，指示当前结点的左兄弟的子树是否是满二叉树。</p>
+<pre><code class="language-c++">const int MaxSize=1000;
+BiTree Queue[MaxSize];
+bool judgeComplete(BiTree T){
+    if(!T)
+        return true;
+    int flag=1;//判断当前层的左兄弟的子树是满二叉树(1)或无子树/仅有左子树(0)
+    int front=rear=0;
+    Queue[rear++%MaxSize]=T;
+    while(front!=rear){
+        BiTree p=Q[front++%MaxSize];
+        if(p-&gt;lchild&amp;&amp;flag){
+            Queue[rear++%MaxSize]=p-&gt;lchild;
+        }
+        else if(p-&gt;lchild)//有左孩子，但左兄弟不是满二叉树
+            return false;
+        else
+            flag=0;
+        if(p-&gt;rchild&amp;&amp;flag){
+            Queue[rear++%MaxSize]=p-&gt;rchild;
+        }
+        else if(p-&gt;rchild)
+            return false;
+        else
+            flag=0;
+    }
+    return true;
+}
+</code></pre>
+<h3 id="镜像对称">镜像对称</h3>
+<p>递归算法</p>
+<p>两个结点是镜像对称的需要满足以下两个条件：</p>
+<ol>
+<li>结点上的值相等</li>
+<li>结点a的左孩子的值等于结点b的右孩子的值，结点a的右孩子的值等于结点b的左孩子的值。</li>
+</ol>
+<pre><code class="language-c++">bool isMirror(BiTree T1,BiTree T2) {
+    if(T1==NULL&amp;&amp;T2==NULL)
+        return true;
+    else if(T1==NULL&amp;&amp;T2!=NULL)
+        return false;
+    else if(T1!=NULL&amp;&amp;T2==NULL)
+        return false;
+    else
+        return (T1-&gt;val==T2-&gt;val) &amp;&amp; isMirror(T1-&gt;left,T2-&gt;right) &amp;&amp; isMirror(T1-&gt;right,T2-&gt;left);
+}
+bool isMirrorTree(BiTree T){
+    if(T==NULL)	return true;
+    else return isMirror(T1,T2);
+}
+</code></pre>
+<p>非递归算法</p>
+<p>直接由递归算法修改而来，并不尽如人意。</p>
+<pre><code class="language-c++">const int MaxSize=1000;
+BiTree stack1[MaxSize];
+BiTree stack2[MaxSize];//定义两个栈
+Bool isMirror(BiTree T1,BiTree T2) {
+    int top=-1;
+    BiTree p1,p2;
+    stack1[++top]=T1;
+    stack2[++top]=T2;//同时入栈
+    while(top!=-1){
+        p1=stack[top--];
+        p2=stack[top--];
+        //值判断
+        if(p1-&gt;data!=p2-&gt;data)
+            return false;
+        //结构判断
+        else if(!(p1-&gt;lchild&amp;&amp;p2-&gt;rchild))
+            return false;
+        else if(!(p1-&gt;rchild&amp;&amp;p2-&gt;lchild))
+            return false;
+        else{
+            if(p1-&gt;lchild)
+                stack1[++top]=p1-&gt;lchild;
+        	if(p1-&gt;rchild)
+                stack1[++top]=p1-&gt;rchild;
+            if(p2-&gt;lchild)
+                stack2[++top]=p2-&gt;lchild;
+            if(p2-&gt;rchild)
+                stack2[++top]=p2-&gt;rchild;
+        }
+    }
+    return true;
+}
+</code></pre>
+<h3 id="镜像翻转">镜像翻转</h3>
+<p>递归算法思想：</p>
+<p>递归地对每层，使用三变量交换法交换左右子树。</p>
+<pre><code class="language-c++">BiTree invertTree(BiTree T) {
+    if(T == null)
+        return T;
+    BiTree temp = T-&gt;left;
+    T-&gt;left = T-&gt;right;
+    T-&gt;right = temp;
+    invertTree(T-&gt;left);
+    invertTree(T-&gt;right);
+}
+</code></pre>
+<p>或者不使用三变量交换法，先递归得到左右子树，然后直接交叉赋值。</p>
+<pre><code class="language-C++">BiTree invertTree(BiTree T){
+    if (!T)
+        return NULL;
+    BiTree left = invertTree(T-&gt;lchild);
+    BiTree right = invertTree(T-&gt;rchild);
+    T-&gt;lchild = right;
+    T-&gt;rchild = left;
+    return T;
+}
+</code></pre>
+<p>迭代算法思想：</p>
+<p>采用层次遍历，依次遍历结点并入队，出队时交换结点的左右孩子，并将左右孩子分别入队，循环直到队列为空。</p>
+<pre><code class="language-c++">const int MaxSize=1000;
+BiTree Q[MaxSize];//定义队列
+BiTree Mirror(BiTree T) {
+    int rear=front=0;
+    BiTree temp,current;
+    if(T==NULL)
+        return T;
+    Q[rear++%MaxSize]=T;
+    while(front!=rear) {
+        current=Q[front++%MaxSize];
+        temp=current-&gt;left;
+        current-&gt;left=current-&gt;right;
+        current-&gt;right=temp;
+        if(current-&gt;left!=NULL)
+            Q[rear++%MaxSize]=current-&gt;left;
+        if(current-&gt;right!=NULL)
+            Q[rear++%MaxSize]=current-&gt;right;
+    }
+    return T;
+}
+</code></pre>
+<h3 id="二叉树的子结构">二叉树的子结构</h3>
+<p>给定两棵二叉树，要求判断树B是否是树A的子结构。</p>
+<pre><code class="language-C++">//依次查找树T1的根、左子树、右子树
+bool HasSubtree(BiTree T1,BiTree T2){
+    if(T1 == NULL || T2 == NULL) 
+        return false;
+    else
+        return (isSubtree(T1,T2))||HasSubtree(T1-&gt;left, T2)||HasSubtree(T1-&gt;right, T2);
+}
+//判断树T2（根结点）是否是树T1（根结点）的子结构
+bool isSubtree(BiTree T1,BiTree T2){
+    if(T2 == NULL)  return true;
+    if(T1 == NULL)  return false;//r2非空，r1为空
+    if(T1-&gt;data!=T2-&gt;data)
+        return false;
+    return isSubtree(T1-&gt;left, T2-&gt;left) &amp;&amp; isSubtree(T1-&gt;right, T2-&gt;right);
+}
+</code></pre>
+<h2 id="二叉树的结点">二叉树的结点</h2>
+<h3 id="计算二叉树叶子结点数与非叶子结点数">计算二叉树叶子结点数与非叶子结点数</h3>
+<p>本节分别叙述二叉树以数组、二叉链表的存储方式存储时计算叶子结点和非叶子结点。</p>
+<p>数组形式，给定数组和二叉树深度：</p>
+<pre><code class="language-c++">int leafCount=nodeCount=0;
+void leaves(int *a,int depth,int &amp;leafCount,int &amp;nodeCount){
+    int size=pow(2,depth)-1;
+    for(int i=1;i&lt;=size;i++){
+        if(a[i]!=-1){//即不是虚结点
+            nodeCount++;//总结点数加1
+            if(i*2&gt;size)
+                leafCount++;//叶结点数加1
+            else if(a[2*i]==-1&amp;&amp;2*i+1&lt;=size&amp;&amp;a[2*i+1]==-1)
+                leafCount++;
+        }
+    }
+}
+int nonLeafCount=nodeCount-leafCount;
+</code></pre>
+<p>二叉链表形式，给定根结点：</p>
+<pre><code class="language-c++">int leafCount=nodeCount=0;
+void Count(BiTree T,int &amp;leafCount,int &amp;nodeCount){
+    if(T){
+        nodeCount++;
+        if(!T-&gt;lchild&amp;&amp;!T-&gt;rchild)
+            leafCount++;
+    }
+	else
+        return;
+    Count(T-&gt;lchild,leafCount,nodeCount);
+    Count(T-&gt;rchild,leafCount,nodeCount);
+}
+int nonLeafCount=nodeCount-leafCount;
+</code></pre>
+<p>二叉链表形式</p>
+<h3 id="计算二叉树某层的叶子结点数与非叶子结点数">计算二叉树某层的叶子结点数与非叶子结点数</h3>
+<p>题目描述：二叉树采用二叉链表存储结构，设计算法求指定某一层k(k&gt;1)的叶子结点个数。</p>
+<p>递归算法</p>
+<p>算法思想：采用先序遍历，递归得到该层的叶子结点</p>
+<pre><code class="language-c++">int level=1;
+int CountNode(BiTree T,int k){
+  	level=0;
+    PreOrder(T,0,k);
+    return level;
+}
+void PreOrder(BiTree T,int depth,int k){
+    if(depth&lt;k){
+        if(T-&gt;lchild!=NULL)
+            PreOrder(T-&gt;lchild,depth+1,k);
+        if(T-&gt;rchild!=NULL)
+            PreOrder(T-&gt;rchild,depth+1,k);
+    }
+    else{
+        if(depth==k&amp;&amp;T-&gt;lchild==NULL&amp;&amp;T-&gt;rchild==NULL)
+            level+=1;
+    }
+} 
+</code></pre>
+<p>非递归算法</p>
+<p>算法思想：采用层序遍历，设置整数记录当前层最后一个结点</p>
+<pre><code class="language-c++">const int MaxSize=1000;
+BiTree Q[MaxSize];//定义队列
+int BiTreeWidth(BiTree T,int k){
+	int level=1,count=0;
+    int font=0,rear=0;
+    int last=0;//last指向当前层的最右结点
+    Q[rear++%MaxSize]=T；//根结点入队
+    BiTree p;
+    while(front%MaxSize&lt;=last%MaxSize){//在层内循环
+        if(level==k){//已到指定层，队列中元素即为本层所有元素，依次出队
+            while(front!=rear){
+                p=Q[front++%MaxSize];
+                if(p-&gt;lchild==NULL&amp;&amp;p-&gt;rchild==NULL)
+                    count+=1;
+            }
+            return count;
+        }
+    	else{
+            p=Q[front++%MaxSize];
+            if(p-&gt;lchild)
+                Q[rear++%MaxSize]=p-&gt;lchild;
+            if(p-&gt;rchild)
+ 	       		Q[rear++%MaxSize]=p-&gt;rchild;
+            if(front&gt;=last){//该层结束，注意体会等号
+		  		last=rear;//记录下层最右结点
+                level+=1;//跳到下层
+            }
+        }
+	}
+}
+</code></pre>
+<h3 id="查找指定值结点及其祖先">查找指定值结点及其祖先</h3>
+<p>题目描述：在二叉树中查找值为x的结点，设该结点不会多于1个，获得该结点的所有祖先。</p>
+<p>算法思想：后续遍历二叉树，当访问到该结点时，栈中所有值均为该结点的祖先。</p>
+<pre><code class="language-c++">const int MaxSize=1000;
+void PostOrder2(BiTree T)
+{
+    int top=-1;//top指向栈顶元素
+    BiTNode* stack[MaxSize];
+    BiTree p = T, r = NULL; //p是工作指针,r指向上一个访问的结点
+    //工作指针有结点，则说明需要向左走，工作指针指向空，说明需要向右
+    while (p || top!=-1)
+    {
+        if (p) //一路向左
+        {
+            stack[++top]=p;
+            p = p-&gt;lchild;
+        }
+        else //向右，元素出栈
+        {
+            p=stack[top];//读栈顶元素赋给p（并非出栈）
+            if(p-&gt;data==x){
+                top--; //当前结点删除
+                cout &lt;&lt; &quot;当前结点的所有祖先为：&quot; &lt;&lt; endl;
+                while (top!=-1)
+                {
+                    p=stack[top--];
+                    cout &lt;&lt; p-&gt;data &lt;&lt; endl;
+                }
+                return;
+            }
+            if (p-&gt;rchild&amp;&amp;p-&gt;rchild!=r) //右子树且尚未被访问
+            {
+                p = p-&gt;rchild;
+                stack[++top]=p;
+                p = p-&gt;lchild; //继续向左走
+            }
+            else
+            {
+                p=stack[top--];//弹出结点
+                visit(p);
+                r = p;
+                p = NULL; //重置p指针
+            }
+        }
+    }
+}
+</code></pre>
+<h2 id="二叉树的遍历与建立综合">二叉树的遍历与建立综合</h2>
+<h3 id="先序遍历和中序遍历序列建立二叉树">先序遍历和中序遍历序列建立二叉树</h3>
+<pre><code class="language-c++">BiTree PrePostCreate(int *pre,int *in,int l1,int h1,int l2,int h2){
+    //pre和in是二叉树的先序和中序遍历序列
+    //l1,h1是先序序列第一和最后一个结点的下标
+    //l2,h2是中序序列第一和最后一个结点的下标
+    BiTree T=(BiTree)malloc(sizeof(BiTNode));
+    T-&gt;data=pre[l1];
+    for(int i=l2;i&lt;=h2;i++)//获取根结点在中序遍历序列中的位置i,第i个记为根
+        if(pre[l1]==in[i])
+            break;
+    if(i==l2)
+        T-&gt;lchild=NULL;
+    else
+        //左子树在中序遍历的位置为前半部分，共i-(l2+1)+1=i-l2个，因此范围从l1到l1+i-l2
+        T-&gt;lchild=PrePostCreate(pre,in,l1+1,l1+i-l2,l2,i-1);
+    if(i==h2)
+        T-&gt;rchild=NULL;
+    else
+        //右子树在中序遍历的位置为后半部分，因此范围从l1+i-l2+1到h1,第i个是根
+        T-&gt;rchild=PrePostCreate(pre,in,l1+i-l2+1,h1,i+1,h2);
+}
+</code></pre>
+<h3 id="中序遍历和后序遍历序列建立二叉树">中序遍历和后序遍历序列建立二叉树</h3>
+<pre><code class="language-c++">BiTree InPostCreate(int *in,int *post,int l1,int h1,int l2,int h2){
+    //in和post是二叉树的中序和后序遍历序列
+    //l1,h1是中序序列第一和最后一个结点的下标
+    //l2,h2是后序序列第一和最后一个结点的下标
+    BiTree T=(BiTree)malloc(sizeof(BiTNode));
+    T-&gt;data=post[h2];//后序遍历的最后一个结点是根结点
+    for(i=l1;i&lt;=h1;i++)//获取根结点在中序遍历序列中的位置i,第i个记为根
+        if(in[i]==post[h2])
+            break;
+    if(i==l1)//处理左子树
+        T-&gt;lchild=NULL;
+    else
+        //左子树在后序遍历的位置为前半部分，共i-l1+1个，因此范围从l2到l2+(i-l1+1)
+        T-&gt;lchild=InPostCreate(in,post,l1,i-1,l2,l2-l1+i-1);
+    if(i==h1)
+        T-&gt;rchild=NULL;
+    else
+        //右子树在后序遍历的位置为后半部分，范围从l2+(i-l1)到h2-1,最后一个是根
+        T-&gt;rchild=InPostCreate(in,post,i+1,h1,l2+i-l1,h2-1);
+    return T;
+}
+</code></pre>
+<h3 id="满二叉树先序遍历转为后序遍历序列">满二叉树先序遍历转为后序遍历序列</h3>
+<pre><code class="language-c++">void PreToPost(int *pre,int *post,int l1,int h1,int l2,int h2){
+    //pre和post是二叉树的先序和后序遍历序列
+    //l1,h1是先序序列第一和最后一个结点的下标
+    //l2,h2是后序序列第一和最后一个结点的下标
+    if(h1&gt;=l1){
+        post[h2]=pre[l1];
+        half=(h1-l1)/2;//half是左子树的结点数（或右子树的结点数）
+        PreToPost(pre,post,l1+1,l1+half,l2,l2+half-1);
+        //将左子树先序转为后序
+        PreToPost(pre,post,l1+half+1,h1,l2+half,h2-1);
+        //将右子树先序转为后序
+    }
+}
+</code></pre>
+<h2 id="二叉树与链表综合">二叉树与链表综合</h2>
+<h3 id="将二叉树中所有叶子结点链接为双链表">将二叉树中所有叶子结点链接为双链表</h3>
+<pre><code class="language-c++">BiTree CreateLeafList(BiTree T){
+    BiTree head=NULL,pre;
+    if(T){
+        CreateLeafList(T-&gt;lchild);
+        if(T-&gt;lchild==NULL&amp;&amp;T-&gt;rchild==NULL){
+            if(head==NULL){
+                head=(BiTree)malloc(sizeof(BiTree));
+                head-&gt;lchild=NULL;
+                head-&gt;rchild=T;
+                T-&gt;lchild=head;
+                pre=T;
+            }
+            else{
+                pre-&gt;rchild=T;
+                T-&gt;lchild=pre;
+                pre=T;
+            }
+    	}
+        CreateLeafList(T-&gt;rchild);
+        pre-&gt;rchild=NULL;//最后一个叶子结点为空
+    }
+    return head;//返回头指针
+}
+</code></pre>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-operation/" class="block">二叉树的基本操作</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/data-structure/binary-tree-sort-caculation/" class="block">二叉排序树</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#二叉树算法索引">二叉树算法索引</a></li>
+    <li><a href="#二叉树的建立">二叉树的建立</a></li>
+    <li><a href="#二叉树的遍历">二叉树的遍历</a>
+      <ul>
+        <li><a href="#先序遍历">先序遍历</a></li>
+        <li><a href="#中序遍历">中序遍历</a></li>
+        <li><a href="#后序遍历">后序遍历</a></li>
+        <li><a href="#求先序遍历序列中第n个结点的值">求先序遍历序列中第n个结点的值</a></li>
+      </ul>
+    </li>
+    <li><a href="#二叉树的深宽">二叉树的深宽</a>
+      <ul>
+        <li><a href="#二叉树的深度">二叉树的深度</a></li>
+        <li><a href="#二叉树的宽度">二叉树的宽度</a></li>
+      </ul>
+    </li>
+    <li><a href="#二叉树的形态">二叉树的形态</a>
+      <ul>
+        <li><a href="#完全二叉树">完全二叉树</a></li>
+        <li><a href="#镜像对称">镜像对称</a></li>
+        <li><a href="#镜像翻转">镜像翻转</a></li>
+        <li><a href="#二叉树的子结构">二叉树的子结构</a></li>
+      </ul>
+    </li>
+    <li><a href="#二叉树的结点">二叉树的结点</a>
+      <ul>
+        <li><a href="#计算二叉树叶子结点数与非叶子结点数">计算二叉树叶子结点数与非叶子结点数</a></li>
+        <li><a href="#计算二叉树某层的叶子结点数与非叶子结点数">计算二叉树某层的叶子结点数与非叶子结点数</a></li>
+        <li><a href="#查找指定值结点及其祖先">查找指定值结点及其祖先</a></li>
+      </ul>
+    </li>
+    <li><a href="#二叉树的遍历与建立综合">二叉树的遍历与建立综合</a>
+      <ul>
+        <li><a href="#先序遍历和中序遍历序列建立二叉树">先序遍历和中序遍历序列建立二叉树</a></li>
+        <li><a href="#中序遍历和后序遍历序列建立二叉树">中序遍历和后序遍历序列建立二叉树</a></li>
+        <li><a href="#满二叉树先序遍历转为后序遍历序列">满二叉树先序遍历转为后序遍历序列</a></li>
+      </ul>
+    </li>
+    <li><a href="#二叉树与链表综合">二叉树与链表综合</a>
+      <ul>
+        <li><a href="#将二叉树中所有叶子结点链接为双链表">将二叉树中所有叶子结点链接为双链表</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

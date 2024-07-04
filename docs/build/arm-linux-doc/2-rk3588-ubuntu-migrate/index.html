@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>RK3588 移植 Ubuntu 24.04 | ARM Linux Construction | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文记录了如何向 ATK-DLRK3588 移植 Ubuntu24.04 系统。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/build/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"ARM Linux Construction",
+      "item":"https://endlesspeak.github.io/docs/build/arm-linux-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"RK3588 移植 Ubuntu 24.04",
+      "item":"https://endlesspeak.github.io/docs/build/arm-linux-doc/2-rk3588-ubuntu-migrate/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/build/arm-linux-doc/2-rk3588-ubuntu-migrate/"
+    },
+    "headline": "RK3588 移植 Ubuntu 24.04 | ARM Linux Construction | 悦翎轩","datePublished": "2024-07-01T00:00:00+00:00",
+    "dateModified": "2024-07-01T00:00:00+00:00",
+    "wordCount":  1460 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "本文记录了如何向 ATK-DLRK3588 移植 Ubuntu24.04 系统。"
+}
+</script><meta property="og:title" content="RK3588 移植 Ubuntu 24.04 | ARM Linux Construction | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/build/arm-linux-doc/2-rk3588-ubuntu-migrate/" />
+
+
+
+<meta property="og:description" content="本文记录了如何向 ATK-DLRK3588 移植 Ubuntu24.04 系统。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2024-07-01T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2024-07-01T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/build/arm-linux-doc/">ARM Linux Construction</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/build/arm-linux-doc/1-rk3588-sdk/">RK3588 SDK</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/build/arm-linux-doc/2-rk3588-ubuntu-migrate/">RK3588 移植 Ubuntu 24.04</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/build/arm-linux-doc/3-rk3588-connect/">RK3588 远程连接</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">RK3588 移植 Ubuntu 24.04</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2024-07-01</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>3分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="ubuntu-base">Ubuntu-base</h2>
+<p>准备 <code>ubuntu-base</code> 镜像，我选择的是24.04镜像。</p>
+<p>注意各镜像站存储 <code>ubuntu-base</code> 的路径可能不一样：</p>
+<ol>
+<li>官方 <a href="https://cdimage.ubuntu.com/ubuntu-base/releases/24.04/release">https://cdimage.ubuntu.com/ubuntu-base/releases/24.04/release</a></li>
+<li>清华大学 <a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu-cdimage/ubuntu-base/releases/24.04/release">https://mirrors.tuna.tsinghua.edu.cn/ubuntu-cdimage/ubuntu-base/releases/24.04/release</a></li>
+</ol>
+<h2 id="build-rootfs">Build Rootfs</h2>
+<p>构建 ubuntu 根文件系统步骤如下：</p>
+<ol>
+<li>创建文件夹，并将下载的根文件系统解压到文件夹中</li>
+<li>安装跨架构运行器，以在非 ARM64 架构的主机上设置一个 ARM64 架构的 chroot 环境。
+<ol>
+<li><code>apt isntall qemu-user-static</code> 并拷贝到</li>
+<li><code>cp /usr/bin/qemu-aarch64-static ./ubuntu-rootfs/usr/bin</code></li>
+</ol>
+</li>
+<li>设置 DNS <code>cp -L /etc/resolv.conf ./ubuntu-rootfs/etc/resolv.conf</code>
+<ol>
+<li><code>-L</code> 追踪被拷贝目标的真实位置，防止拷贝软链接过去</li>
+<li><code>-b</code> 若拷贝到的目标位置已有文件，则备份后拷贝</li>
+</ol>
+</li>
+<li>设置软件源 DEB822 格式</li>
+<li>挂载根文件系统，需要写<code>mount-rootfs.sh</code>，并赋予可执行权限
+<pre><code class="language-bash">#!/bin/bash
+
+# Ensure the path ends with a slash
+normalize_path() {
+    if [[ &quot;$1&quot; != */ ]]; then
+        echo &quot;${1}/&quot;
+    else
+        echo &quot;$1&quot;
+    fi
+}
+
+mnt() {
+    MOUNT_PATH=$(normalize_path &quot;$2&quot;)
+    echo &quot;MOUNTING at $MOUNT_PATH&quot;
+
+    sudo mount -t proc /proc &quot;${MOUNT_PATH}proc&quot;
+    sudo mount -t sysfs /sys &quot;${MOUNT_PATH}sys&quot;
+    sudo mount -o bind /dev &quot;${MOUNT_PATH}dev&quot;
+    sudo mount -o bind /dev/pts &quot;${MOUNT_PATH}dev/pts&quot;
+    # sudo chroot &quot;${MOUNT_PATH}&quot;
+}
+
+umnt() {
+    MOUNT_PATH=$(normalize_path &quot;$2&quot;)
+    echo &quot;UNMOUNTING from $MOUNT_PATH&quot;
+
+    sudo umount &quot;${MOUNT_PATH}proc&quot;
+    sudo umount &quot;${MOUNT_PATH}sys&quot;
+    sudo umount &quot;${MOUNT_PATH}dev/pts&quot;
+    sudo umount &quot;${MOUNT_PATH}dev&quot;
+}
+
+if [ &quot;$1&quot; == &quot;-m&quot; ] &amp;&amp; [ -n &quot;$2&quot; ] ;
+then
+    mnt $1 $2
+elif [ &quot;$1&quot; == &quot;-u&quot; ] &amp;&amp; [ -n &quot;$2&quot; ];
+then
+    umnt $1 $2
+else
+    echo &quot;&quot;
+    echo &quot;Either 1'st, 2'nd or both parameters were missing&quot;
+    echo &quot;&quot;
+    echo &quot;1'st parameter can be one of these: -m(mount) OR -u(umount)&quot;
+    echo &quot;2'nd parameter is the full path of rootfs directory(with trailing '/')&quot;
+    echo &quot;&quot;
+    echo &quot;For example: ch-mount -m /media/sdcard/&quot;
+    echo &quot;&quot;
+    echo 1st parameter : ${1}
+    echo 2nd parameter : ${2}
+fi
+</code></pre>
+</li>
+<li><code>chroot ubuntu-rootfs</code> 进入根文件系统</li>
+<li>安装一些常见的软件
+<pre><code class="language-bash">apt install dialog apt-utils language-pack-en-base
+apt install sudo vim udev net-tools ethtool udhcpc netplan.io iputils-ping
+locale-gen en_US.UTF-8
+dpkg-reconfigure locales
+dpkg-reconfigure tzdata
+apt install ifupdown language-pack-zh-han* openssh-server
+systemctl set-default graphical.target
+</code></pre>
+<ol>
+<li>首先是一些可能抱怨的问题
+<ol>
+<li>debconf 会抱怨没有 dialog-like 程序</li>
+<li>apt 会建议加上 apt-utils</li>
+<li>perl 会抱怨 locale 设置不正确</li>
+</ol>
+</li>
+<li>其次是需要优先安装网络工具
+<ol>
+<li>net-tools 提供 ifconfig netstat route arp 等实用工具</li>
+<li>ethtool 是配置以太网的</li>
+<li>udhcpc 是轻量 dhcp 客户端</li>
+<li>netplan.io 用于配置网络</li>
+<li>iputils-ping 提供 ping 命令以测试</li>
+</ol>
+</li>
+<li>运行一些修复命令</li>
+<li>安装其他的软件，安装前检查 <code>snap install core</code>
+<ol>
+<li>可以安装桌面环境
+<ol>
+<li><code>ubuntu-desktop-minial</code></li>
+<li><code>lubuntu-desktop</code></li>
+<li><code>lxqt</code> 是否是更佳的选择？</li>
+<li><code>xubuntu-desktop</code></li>
+</ol>
+</li>
+<li>可以在安装桌面环境后裁剪软件，如卸载 libreoffice* lubuntu-update-notifier 等</li>
+<li>如果不需要 ssh 连接，或者只需要 sftp，可改安装 openssh-sftp-server 等</li>
+<li>language-pack-zh-han* 包括了 hans 和 hant</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>设置启动图形界面</li>
+<li>设置管理员密码和普通用户密码</li>
+<li>制作根文件系统镜像 <code>mk-ubuntu-image.sh</code>
+<pre><code class="language-bash">#!/bin/bash
+# stage 1
+# 读取输入参数，包括根文件系统目录和目标镜像文件
+rootfs_dir=$1
+rootfs_file=$2
+# 定义临时挂载目录
+rootfs_mnt=&quot;mnt&quot;
+# stage 2
+# 检查输入参数时候存在
+if [ ! $rootfs_dir ] || [ ! $rootfs_file ];
+then
+    echo &quot;Folder or target is empty.&quot;
+    exit 0
+fi
+# stage 3
+# 删除已存在的目标镜像文件
+if [ -f &quot;$rootfs_file&quot; ]; then
+    echo &quot;-- Delete exist $rootfs_file ...&quot;
+    rm -f &quot;$rootfs_file&quot;
+fi
+# stage 4
+# 创建新的目标镜像文件
+echo &quot;-- Create $rootfs_file ...&quot;
+dd if=/dev/zero of=&quot;$rootfs_file&quot; bs=1M count=5120
+sudo mkfs.ext4 -F -L linuxroot &quot;$rootfs_file&quot;
+# stage 5
+# 创建挂载点目录
+if [ ! -d &quot;$rootfs_mnt&quot; ]; then
+mkdir $rootfs_mnt
+fi
+# stage 6
+# 将源根文件系统的数据复制到目标镜像文件中
+# 方法是：
+# 1. 将目标镜像文件挂载到挂载点
+# 2. 复制文件到挂载点
+# 3. 同步文件系统缓存
+# 4. 卸载镜像，删除挂载点
+echo &quot;-- Copy data to $rootfs_file ...&quot;
+sudo mount $rootfs_file $rootfs_mnt
+sudo cp -rfp $rootfs_dir/* $rootfs_mnt
+sudo sync
+sudo umount $rootfs_mnt
+rm -r $rootfs_mnt
+# stage 7
+# 检查与调整目标镜像大小
+echo &quot;-- Resize $rootfs_file ...&quot;
+e2fsck -p -f &quot;$rootfs_file&quot;
+resize2fs -M &quot;$rootfs_file&quot;
+echo &quot;-- Done.&quot;
+</code></pre>
+</li>
+</ol>
+<h2 id="rootfs-post-hooks">Rootfs Post Hooks</h2>
+<h3 id="size">Size</h3>
+<p>查看制作的根文件系统大小：</p>
+<pre><code class="language-bash">sudo du -sh ubuntu-rootfs --exclude=ubuntu-rootfs/{proc,sys,dev}
+</code></pre>
+<h3 id="dbus">Dbus</h3>
+<p>关于可能遇到的 dbus 错误 <code>/run/dbus/system_bus_socket</code>:</p>
+<pre><code class="language-bash">service dbus start
+service cron start
+</code></pre>
+<h3 id="user--group">User &amp; Group</h3>
+<p>新建用户和组：</p>
+<pre><code class="language-bash">adduser leesin
+usermod -aG sudo leesin
+</code></pre>
+<h3 id="sleep">Sleep</h3>
+<p>禁用睡眠、休眠等：</p>
+<pre><code class="language-bash">systemctl mask sleep.target
+systemctl mask suspend.target
+systemctl mask hibernate.target
+systemctl mask hybrid-sleep.target
+</code></pre>
+<h3 id="display-manager">Display Manager</h3>
+<p>检查显示管理器</p>
+<pre><code class="language-bash">cat /etc/X11/default-display-manager
+</code></pre>
+<h2 id="flash-firmware">Flash Firmware</h2>
+<h3 id="device">Device</h3>
+<p>设备连接到系统后在 <code>/dev/ttyACM0</code> 位置。</p>
+<h3 id="user--group-1">User &amp; Group</h3>
+<p>PC 添加用户到 dialout 组，或者 uucp 组</p>
+<pre><code class="language-bash">usermod -aG dialout leesin
+</code></pre>
+<h3 id="parameter">Parameter</h3>
+<p>分区表需要重新设置，原来的分区表是：</p>
+<pre><code class="language-text">CMDLINE: mtdparts=:0x00002000@0x00004000(uboot),0x00002000@0x00006000(misc),0x00020000@0x00008000(boot),0x00040000@0x00028000(recovery),0x00010000@0x00068000(backup),0x01c00000@0x00078000(rootfs),0x00040000@0x01c78000(oem),-@0x01cb8000(userdata:grow)
+</code></pre>
+<p>现在需要将分区表改为：</p>
+<pre><code class="language-text">CMDLINE: mtdparts=:0x00002000@0x00004000(uboot),0x00002000@0x00006000(misc),0x00020000@0x00008000(boot),0x00040000@0x00028000(recovery),-@0x00068000(rootfs:grow)
+</code></pre>
+<p>特别地，后面写的<code>uuid</code>千万<strong>不要</strong>修改。</p>
+<h3 id="flash">Flash</h3>
+<p>首先进入 Loader 模式或者 Maskrom 模式；然后执行设备检查</p>
+<pre><code class="language-bash">sudo ./upgrade_tool LD
+</code></pre>
+<p>识别出设备后执行烧写</p>
+<pre><code class="language-bash">sudo ./upgrade_tool UL MiniLoaderAll.bin -noreset
+sudo ./upgrade_tool DI -p parameter.txt
+sudo ./upgrade_tool DI -uboot uboot.img
+sudo ./upgrade_tool DI -misc misc.img
+sudo ./upgrade_tool DI -boot boot.img
+sudo ./upgrade_tool DI -recovery recovery.img
+</code></pre>
+<p>下面的命令仅在烧录 <code>buildroot</code> 系统时会用到</p>
+<pre><code class="language-bash">sudo ./upgrade_tool DI -oem oem.img
+sudo ./upgrade_tool DI -rootfs rootfs.img
+sudo ./upgrade_tool DI -userdata userdata.img
+</code></pre>
+<h3 id="resize">Resize</h3>
+<p>烧录之后需要进行磁盘扩容。</p>
+<p>由于分区有 uboot,misc,boot,recovery,rootfs 五个，所以扩容需要用 <code>sudo resize2fs /dev/mmcblk0p5</code>，否则mmcblk0p5分区只有5GiB。</p>
+<h3 id="ethernet-network">Ethernet Network</h3>
+<p>修改 <code>/usr/lib/NetworkManager/conf.d/10-globally-managed-devices.conf</code></p>
+<p>内容为</p>
+<pre><code class="language-text">unmanaged-devices=*,except:type:ethernet,except:type:wifi,except:type:gsm,except:type:cdma
+</code></pre>
+<p>即加入 <code>except:type:ethernet</code> 以允许网口连接有线网络。</p>
+<h2 id="issues">Issues</h2>
+<h3 id="graphical-target">Graphical Target</h3>
+<p>如果 sddm 进入之后是空，修改 <code>/etc/sddm.conf</code> 脚本</p>
+<pre><code class="language-conf">[X11]
+SessionCommand=/etc/sddm/Xsession
+</code></pre>
+<h3 id="ping">ping</h3>
+<p>在测试网络时报错如下：</p>
+<pre><code class="language-text">ping: socktype: SOCK_RAW
+ping: socket: Operation not permitted
+ping: =&gt; missing cap_net_raw+p capability or setuid?
+</code></pre>
+<p>意思是缺少 cap_net_raw 权能，或未设置 setuid 位：</p>
+<ol>
+<li>cap_net_raw 是一种 Linux 能力，允许程序创建原始套接字，而不需要拥有 root 权限。</li>
+<li>setuid 位是文件权限位，允许程序以文件所有者的权限运行。</li>
+</ol>
+<p>解决办法：</p>
+<ol>
+<li><code>sudo setcap cap_net_raw+p $(which ping)</code></li>
+<li><code>sudo ping www.bing.com</code> 逆天</li>
+<li><code>sudo set chmod u+s $(which ping)</code> 逆天无极限</li>
+</ol>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/build/arm-linux-doc/1-rk3588-sdk/" class="block">RK3588 SDK</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/build/arm-linux-doc/3-rk3588-connect/" class="block">RK3588 远程连接</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ubuntu-base">Ubuntu-base</a></li>
+    <li><a href="#build-rootfs">Build Rootfs</a></li>
+    <li><a href="#rootfs-post-hooks">Rootfs Post Hooks</a>
+      <ul>
+        <li><a href="#size">Size</a></li>
+        <li><a href="#dbus">Dbus</a></li>
+        <li><a href="#user--group">User &amp; Group</a></li>
+        <li><a href="#sleep">Sleep</a></li>
+        <li><a href="#display-manager">Display Manager</a></li>
+      </ul>
+    </li>
+    <li><a href="#flash-firmware">Flash Firmware</a>
+      <ul>
+        <li><a href="#device">Device</a></li>
+        <li><a href="#user--group-1">User &amp; Group</a></li>
+        <li><a href="#parameter">Parameter</a></li>
+        <li><a href="#flash">Flash</a></li>
+        <li><a href="#resize">Resize</a></li>
+        <li><a href="#ethernet-network">Ethernet Network</a></li>
+      </ul>
+    </li>
+    <li><a href="#issues">Issues</a>
+      <ul>
+        <li><a href="#graphical-target">Graphical Target</a></li>
+        <li><a href="#ping">ping</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

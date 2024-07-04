@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>STM32 RGBLCD | STM32 Develop Documents | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文主要记述在STM32CubeIDE下如何为正点原子ALIENTEK 7 RGB LCD屏幕移植驱动程序。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"STM32 Develop Documents",
+      "item":"https://endlesspeak.github.io/docs/docs/stm32-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"STM32 RGBLCD",
+      "item":"https://endlesspeak.github.io/docs/docs/stm32-doc/6-stm32-rgblcd/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/stm32-doc/6-stm32-rgblcd/"
+    },
+    "headline": "STM32 RGBLCD | STM32 Develop Documents | 悦翎轩","datePublished": "2023-02-09T00:00:00+00:00",
+    "dateModified": "2023-02-09T00:00:00+00:00",
+    "wordCount":  2117 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "本文主要记述在STM32CubeIDE下如何为正点原子ALIENTEK 7 RGB LCD屏幕移植驱动程序。"
+}
+</script><meta property="og:title" content="STM32 RGBLCD | STM32 Develop Documents | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/stm32-doc/6-stm32-rgblcd/" />
+
+
+
+<meta property="og:description" content="本文主要记述在STM32CubeIDE下如何为正点原子ALIENTEK 7 RGB LCD屏幕移植驱动程序。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2023-02-09T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2023-02-09T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/stm32-doc/">STM32 Develop Documents</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/stm32-doc/1-stm32-basic/">STM32 Basic Knowledge</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/stm32-doc/2-stm32-cube/">STM32 Cube</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/stm32-doc/3-stm32-clion-develop/">STM32 Clion Develop</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/stm32-doc/4-stm32-ledkey/">STM32 LED &amp; KEY</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/stm32-doc/5-stm32-fmc/">STM32 FMC</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/stm32-doc/6-stm32-rgblcd/">STM32 RGBLCD</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/stm32-doc/7-stm32-ld-segmentsissues/">STM32 LD Segments &amp; Issues</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/stm32-doc/8-stm32-rust-develop/">STM32 Rust Develop</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">STM32 RGBLCD</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2023-02-09</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>5分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="开发环境">开发环境</h2>
+<ol>
+<li>开发板： STM32F767IGT6 核心板加正点原子阿波罗底板</li>
+<li>屏幕：正点原子 ALIENTEK 7 RGB LCD 屏幕</li>
+<li>开发软件：STM32CubeIDE</li>
+</ol>
+<h2 id="ltdc-外设概述">LTDC 外设概述</h2>
+<h3 id="ltdc-概念">LTDC 概念</h3>
+<p>LTDC 全称 LCD-TFT Display Controller，LCD 显示控制器，提供了 RGB 信号和控制信号来直接控制外部 LCD 显示屏。</p>
+<ol>
+<li>TFT-LCD 屏幕
+<ol>
+<li>一般 TFT-LCD 屏幕中带有驱动 IC，并集成有显存，其内部就在不断的将显存内容显示到 LCD 面板上；</li>
+<li>驱动屏幕时往往是直接去操作驱动 IC，通过发送操作命令来设置显示模式，通过发送显示数据来修改显存内容。</li>
+<li>数据通信
+<ol>
+<li>GPIO 传送 LCD_RS 命令/数据到 IC；</li>
+<li>FMC 传送 LCD_CS 片选信号到 IC；</li>
+<li>FMC 传送 LCD_WR 写使能信号到 IC；</li>
+<li>FMC 传送 LCD_RD 读使能信号到 IC；</li>
+<li>IC 传送 D0-D15 16 位数据总线到 FMC；</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>RGB 屏幕
+<ol>
+<li>RGB 类型的屏幕中内部没有驱动 IC，操作这种屏幕时往往使用 MCU 内部集成的 LCD 控制器直接去控制 LCD 显示；</li>
+<li>显存空间当然也是在 MCU 内部，按照空间大小可以选择放在内部 SRAM 或者外部 SDRAM 中。</li>
+<li>数据通信
+<ol>
+<li>LTDC 传送 LCD_HSYNC 水平同步信号；</li>
+<li>LTDC 传送 LCD_VSYNC 垂直同步信号；</li>
+<li>LTDC 传送 LCD_DE 数据使能信号；</li>
+<li>LTDC 传送 LCD_CLK 像素时钟；</li>
+<li>LTDC 传送 R0-R7 8 位数据总线；</li>
+<li>LTDC 传送 G0-G7 8 位数据总线；</li>
+<li>LTDC 传送 B0-B7 8 位数据总线；</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="颜色格式">颜色格式</h3>
+<p>LCD 可以理解为像素阵，其常见的参数是：</p>
+<ol>
+<li>屏幕尺寸
+表示对角线的长度，单位是英寸</li>
+<li>屏幕分辨率
+像素点的数量，1024*600 表示一行有 1024 个像素点，共 600 行</li>
+<li>色彩格式
+<ol>
+<li>用于控制每个像素点的颜色</li>
+<li>单色屏每个像素点只需要 1 bit 表示（非黑即白）</li>
+<li>彩色屏每个像素点由 RGB 三原色的值混合
+<ol>
+<li>RGB888(3B)：R值 8 位、G值 8 位、B值 8 位</li>
+<li>RGB565(2B)：R值 5 位、G值 6 位、B值 5 位</li>
+<li>ARGB8888(4B)：在 RGB888 基础上增加 8 位 Alpha 值表示透明度，0x00 表示完全透明，0xFF 表示完全不透明</li>
+<li>ARGB1555(2B)：在 RGB565 基础上砍掉 1 位用于 Alpha，0 表示完全透明，1表示完全不透明</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>可以看到，RGB888 比 RGB565 表示的颜色更多，LTDC 对上述格式均支持；但是 RGB888 每个像素点需要 24bit（3 个字节）的显存空间来存储。</p>
+<p>在资源紧张的嵌入式系统中，在一般屏幕显示需求中 RGB888 格式过于浪费珍贵的 SRAM 空间；因此在不影响显示的情况下，建议使用 <code>RGB565</code> 格式，每个像素点只需要 16bit（两个字节）的显存空间就够了。</p>
+</blockquote>
+<h3 id="液晶面板的控制信号">液晶面板的控制信号</h3>
+<ol>
+<li>RGB 信号线
+RGB 信号线各有 8 根，分别用于表示液晶屏一个像素点的红、绿、蓝颜色分量。</li>
+<li>同步时钟信号 CLK
+液晶屏与外部使用同步通讯方式，以 CLK 信号作为同步时钟，在同步时钟的驱动下,每个时钟传输一个像素点数据。</li>
+<li>水平同步信号 HSYNC
+<ol>
+<li>水平同步信号 HSYNC(Horizontal Sync) 用于表示液晶屏一行像素数据的传输结束</li>
+<li>每传输完成液晶屏的一行像素数据时，HSYNC 会发生电平跳变
+如分辨率为 800x480 的显示屏(800 列,480 行)，传输一帧的图像 HSYNC 的电平会跳变 480 次。</li>
+</ol>
+</li>
+<li>垂直同步信号 VSYNC
+<ol>
+<li>垂直同步信号 VSYNC(Vertical Sync) 用于表示液晶屏一帧像素数据的传输结束</li>
+<li>每传输完成一帧像素数据时,VSYNC 会发生电平跳变。</li>
+<li>“帧”是图像的单位，一幅图像称为一帧。在液晶屏中，一帧指一个完整屏液晶像素点</li>
+<li>人们常常用“帧每秒”来表示液晶屏的刷新特性，即液晶屏每秒可以显示多少帧图像。如液晶屏以 60 帧每秒的速率运行时，VSYNC 每秒钟电平会跳变 60 次。</li>
+</ol>
+</li>
+<li>数据使能信号 DE
+数据使能信号 DE(Data Enable) 用于表示数据的有效性,当 DE 信号线为高电平时,RGB 信号线表示的数据有效。</li>
+</ol>
+<h3 id="液晶通讯的时间参数和传输时序">液晶通讯的时间参数和传输时序</h3>
+<p>建议参考《野火 STM32 HAL 库开发指南》书中 LTDC 部分。</p>
+<ol>
+<li>液晶屏显示的图像可看作一个矩形。液晶屏有一个显示指针，它指向将要显示的像素。</li>
+<li>显示指针的扫描方向方向从左到右、从上到下，一个像素点一个像素点地描绘图形。这些像素点的数据通过 RGB 数据线传输至液晶屏，它们在同步时钟 CLK 的驱动下依次传输到液晶屏中交给显示指针。</li>
+<li>当传输完成一行时，水平同步信号 HSYNC 电平跳变一次，当完成传输一帧时，垂直同步信号 VSYNC 电平跳变一次。</li>
+<li>Active width 和 Active height 是可见的 LCD 显示面板分辨率，称为有效宽度和有效高度。</li>
+<li>传送数据行过程：
+<ol>
+<li>传输 HSYNC 信号数据，用 <code>HSW</code> 表示其宽度，单位为 CLK 个数；</li>
+<li>等待 <code>HBP</code> ，即从该水平同步信号开始到有效数据开始间的 CLK 个数；</li>
+<li>传送有效数据；</li>
+<li>等待 <code>HFP</code> ，即从有效数据结束到下一个水平同步信号开始间的 CLK 个数；</li>
+</ol>
+</li>
+<li>传送数据帧过程：
+<ol>
+<li>传输 VSYNC 信号数据，用 <code>VSW</code> 表示其宽度，单位为行；</li>
+<li>等待 <code>VBP</code> ，它表示在一帧图像开始时，垂直同步信号以后的无效的行数；</li>
+<li>传送有效高度的数据行；</li>
+<li>等待 <code>VFP</code> ，表示在一帧图像结束后，垂直同步信号以前的无效的行数；</li>
+</ol>
+</li>
+<li>在时间参数控制区域，数据使能信号线 DE 均为低电平；仅在传送有效数据时 DE 为高电平；</li>
+</ol>
+<h3 id="图像数据混合">图像数据混合</h3>
+<p>LTDC 有三个层：背景层（BG）、图层 1（Layer1）、图层 2（Layer2）。</p>
+<ol>
+<li>背景层只能是 RGB888 格式，并且是一个常量值，在 LTDC 初始化结构体中由 Backcolor 成员指定；</li>
+<li>图层用来显示内容；
+<ol>
+<li>大小是设置的 Active width 和 Active height，称为有效区域；</li>
+<li>在这个图层的有效区域中，用户可以设置一个任意大小的窗口用于显示，称为 Window；</li>
+<li>当窗口小于图层有效区域时，窗口之外的区域会显示该图层背景色；</li>
+</ol>
+</li>
+<li>图层混合
+<ol>
+<li>首先，背景和图层的大小都是 Active width 和 Active height；</li>
+<li>背景层在最下面，如果开了单个图层，则显示结果为背景层和单个图层混合结果；如果两个图层都开，则显示结果为背景层先和图层 1 混合，混合结果再与图层 2 混合的结果；</li>
+<li>图层混合在 LTDC 硬件上是一直开启的，可以直接配置该图层用于混合的 Alapha 常量来调节整层透明度，范围为 0-255，0 为完全透明、255 为不透明、127 为半透明；</li>
+</ol>
+</li>
+</ol>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/stm32-doc/5-stm32-fmc/" class="block">STM32 FMC</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/stm32-doc/7-stm32-ld-segmentsissues/" class="block">STM32 LD Segments &amp; Issues</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#开发环境">开发环境</a></li>
+    <li><a href="#ltdc-外设概述">LTDC 外设概述</a>
+      <ul>
+        <li><a href="#ltdc-概念">LTDC 概念</a></li>
+        <li><a href="#颜色格式">颜色格式</a></li>
+        <li><a href="#液晶面板的控制信号">液晶面板的控制信号</a></li>
+        <li><a href="#液晶通讯的时间参数和传输时序">液晶通讯的时间参数和传输时序</a></li>
+        <li><a href="#图像数据混合">图像数据混合</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

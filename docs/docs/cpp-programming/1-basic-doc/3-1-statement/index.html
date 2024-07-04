@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Statement | C/C&#43;&#43; Programming Basic | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="运算符 优先级 运算符 名称或含义 使用形式 结合方向 说明 1 [] 数组下标 数组名[常量表达式] 左到右 -- () 圆括号 (表达式）/函数名(形参表) -- . 成员选择（对象） 对象.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"CPP Programming",
+      "item":"https://endlesspeak.github.io/docs/docs/cpp-programming/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"C/C++ Programming Basic",
+      "item":"https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"Statement",
+      "item":"https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-1-statement/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-1-statement/"
+    },
+    "headline": "Statement | C\/C\u002b\u002b Programming Basic | 悦翎轩","datePublished": "2022-03-22T00:00:00+00:00",
+    "dateModified": "2022-03-22T00:00:00+00:00",
+    "wordCount":  3388 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "运算符 优先级 运算符 名称或含义 使用形式 结合方向 说明 1 [] 数组下标 数组名[常量表达式] 左到右 -- () 圆括号 (表达式）\/函数名(形参表) -- . 成员选择（对象） 对象."
+}
+</script><meta property="og:title" content="Statement | C/C&#43;&#43; Programming Basic | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-1-statement/" />
+
+
+
+
+<meta property="og:description" content="运算符 优先级 运算符 名称或含义 使用形式 结合方向 说明 1 [] 数组下标 数组名[常量表达式] 左到右 -- () 圆括号 (表达式）/函数名(形参表) -- . 成员选择（对象） 对象." />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-03-22T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2022-03-22T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/">C/C&#43;&#43; Programming Basic</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-1-compilerlanguage/">Compiler Language</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-2-program-compilation-by-gcc/">Program Compilation by GCC</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-3-program-compilation-by-clang/">Program Compilation by Clang</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-1-datatype/">DataType</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-2-storetype/">StoreType</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-1-statement/">Statement</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-2-structure/">Structure</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-1-function/">Function</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-2-functionassignment/">Pass By Value &amp; Reference</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/5-scope/">Scope</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/6-pointer/">Pointer</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/7-customdatatypes/">Custom Data Type</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-1-io-standard/">Standard I/O</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-2-io-file/">File I/O</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/10-modules-development/">Module Development</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/11-debug-method/">Debug Method</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/12-ccpp-mix-programming/">C&amp;CPP Mix Programming</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Statement</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-03-22</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>7分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="运算符">运算符</h2>
+<style>
+	table,table tr th, table tr td { border:1px solid #000000;text-align:center; }
+    table tr td { vertical-align:middle;}
+</style>
+<table border="1" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr>
+            <td>
+                <p><b>优先级</b></p>
+            </td>
+            <td>
+                <p><b>运算符</b></p>
+            </td>
+            <td>
+                <p><b>名称或含义</b></p>
+            </td>
+            <td>
+                <p><b>使用形式</b></p>
+            </td>
+            <td>
+                <p><b>结合方向</b></p>
+            </td>
+            <td>
+                <p><b>说明</b></p>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="4">
+                <p>1</p>
+            </td>
+            <td>
+                <p>[]</p>
+            </td>
+            <td>
+                <p>数组下标</p>
+            </td>
+            <td>
+                <p>数组名[常量表达式]</p>
+            </td>
+            <td rowspan="4">
+                <p>左到右</p>
+            </td>
+            <td>
+                <p>--</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>()</p>
+            </td>
+            <td>
+                <p>圆括号</p>
+            </td>
+            <td>
+                <p>(表达式）/函数名(形参表)</p>
+            </td>
+            <td>
+                <p>--</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>.</p>
+            </td>
+            <td>
+                <p>成员选择（对象）</p>
+            </td>
+            <td>
+                <p>对象.成员名</p>
+            </td>
+            <td>
+                <p>--</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>-&gt;</p>
+            </td>
+            <td>
+                <p>成员选择（指针）</p>
+            </td>
+            <td>
+                <p>对象指针-&gt;成员名</p>
+            </td>
+            <td>
+                <p>--</p>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="9">
+                <p>2</p>
+            </td>
+            <td>
+                <p>-</p>
+            </td>
+            <td>
+                <p>负号运算符</p>
+            </td>
+            <td>
+                <p>-表达式</p>
+            </td>
+            <td rowspan="9">
+                <p><b>右到左</b></p>
+            </td>
+            <td rowspan="7">
+                <p>单目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>~</p>
+            </td>
+            <td>
+                <p>按位取反运算符</p>
+            </td>
+            <td>
+                <p>~表达式</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>++</p>
+            </td>
+            <td>
+                <p>自增运算符</p>
+            </td>
+            <td>
+                <p>++变量名/变量名++</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>--</p>
+            </td>
+            <td>
+                <p>自减运算符</p>
+            </td>
+            <td>
+                <p>--变量名/变量名--</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>*</p>
+            </td>
+            <td>
+                <p>取值运算符</p>
+            </td>
+            <td>
+                <p>*指针变量</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>&amp;</p>
+            </td>
+            <td>
+                <p>取地址运算符</p>
+            </td>
+            <td>
+                <p>&amp;变量名</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>!</p>
+            </td>
+            <td>
+                <p>逻辑非运算符</p>
+            </td>
+            <td>
+                <p>!表达式</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>(类型)</p>
+            </td>
+            <td>
+                <p>强制类型转换</p>
+            </td>
+            <td>
+                <p>(数据类型)表达式</p>
+            </td>
+            <td>
+                <p>--</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>sizeof</p>
+            </td>
+            <td>
+                <p>长度运算符</p>
+            </td>
+            <td>
+                <p>sizeof(表达式)</p>
+            </td>
+            <td>
+                <p>--</p>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="3">
+                <p>3</p>
+            </td>
+            <td>
+                <p>/</p>
+            </td>
+            <td>
+                <p>除</p>
+            </td>
+            <td>
+                <p>表达式/表达式</p>
+            </td>
+            <td rowspan="3">
+                <p>左到右</p>
+            </td>
+            <td rowspan="3">
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>*</p>
+            </td>
+            <td>
+                <p>乘</p>
+            </td>
+            <td>
+                <p>表达式*表达式</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>%</p>
+            </td>
+            <td>
+                <p>余数（取模）</p>
+            </td>
+            <td>
+                <p>整型表达式%整型表达式</p>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2">
+                <p>4</p>
+            </td>
+            <td>
+                <p>+</p>
+            </td>
+            <td>
+                <p>加</p>
+            </td>
+            <td>
+                <p>表达式+表达式</p>
+            </td>
+            <td rowspan="2">
+                <p>左到右</p>
+            </td>
+            <td rowspan="2">
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>-</p>
+            </td>
+            <td>
+                <p>减</p>
+            </td>
+            <td>
+                <p>表达式-表达式</p>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2">
+                <p>5</p>
+            </td>
+            <td>
+                <p>&lt;&lt;&nbsp;</p>
+            </td>
+            <td>
+                <p>左移</p>
+            </td>
+            <td>
+                <p>变量&lt;&lt;表达式</p>
+            </td>
+            <td rowspan="2">
+                <p>左到右</p>
+            </td>
+            <td rowspan="2">
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>&gt;&gt;&nbsp;</p>
+            </td>
+            <td>
+                <p>右移</p>
+            </td>
+            <td>
+                <p>变量&gt;&gt;表达式</p>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="4">
+                <p>6</p>
+            </td>
+            <td>
+                <p>&gt;&nbsp;</p>
+            </td>
+            <td>
+                <p>大于</p>
+            </td>
+            <td>
+                <p>表达式&gt;表达式</p>
+            </td>
+            <td rowspan="4">
+                <p>左到右</p>
+            </td>
+            <td rowspan="4">
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>&gt;=</p>
+            </td>
+            <td>
+                <p>大于等于</p>
+            </td>
+            <td>
+                <p>表达式&gt;=表达式</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>&lt;&nbsp;</p>
+            </td>
+            <td>
+                <p>小于</p>
+            </td>
+            <td>
+                <p>表达式&lt;表达式</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>&lt;=</p>
+            </td>
+            <td>
+                <p>小于等于</p>
+            </td>
+            <td>
+                <p>表达式&lt;=表达式</p>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2">
+                <p>7</p>
+            </td>
+            <td>
+                <p>==</p>
+            </td>
+            <td>
+                <p>等于</p>
+            </td>
+            <td>
+                <p>表达式==表达式</p>
+            </td>
+            <td rowspan="2">
+                <p>左到右</p>
+            </td>
+            <td rowspan="2">
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>!=</p>
+            </td>
+            <td>
+                <p>不等于</p>
+            </td>
+            <td>
+                <p>表达式!= 表达式</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>8</p>
+            </td>
+            <td>
+                <p>&amp;</p>
+            </td>
+            <td>
+                <p>按位与</p>
+            </td>
+            <td>
+                <p>表达式&amp;表达式</p>
+            </td>
+            <td>
+                <p>左到右</p>
+            </td>
+            <td>
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>9</p>
+            </td>
+            <td>
+                <p>^</p>
+            </td>
+            <td>
+                <p>按位异或</p>
+            </td>
+            <td>
+                <p>表达式^表达式</p>
+            </td>
+            <td>
+                <p>左到右</p>
+            </td>
+            <td>
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>10</p>
+            </td>
+            <td>
+                <p>|</p>
+            </td>
+            <td>
+                <p>按位或</p>
+            </td>
+            <td>
+                <p>表达式|表达式</p>
+            </td>
+            <td>
+                <p>左到右</p>
+            </td>
+            <td>
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>11</p>
+            </td>
+            <td>
+                <p>&amp;&amp;</p>
+            </td>
+            <td>
+                <p>逻辑与</p>
+            </td>
+            <td>
+                <p>表达式&amp;&amp;表达式</p>
+            </td>
+            <td>
+                <p>左到右</p>
+            </td>
+            <td>
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>12</p>
+            </td>
+            <td>
+                <p>||</p>
+            </td>
+            <td>
+                <p>逻辑或</p>
+            </td>
+            <td>
+                <p>表达式||表达式</p>
+            </td>
+            <td>
+                <p>左到右</p>
+            </td>
+            <td>
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>13</p>
+            </td>
+            <td>
+                <p>?:</p>
+            </td>
+            <td>
+                <p>条件运算符</a></p>
+            </td>
+            <td>
+                <p>表达式1?</p>
+                <p>表达式2: 表达式3</p>
+            </td>
+            <td>
+                <p><b>右到左</b></p>
+            </td>
+            <td>
+                <p>三目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="11">
+                <p>14</p>
+            </td>
+            <td>
+                <p>=</p>
+            </td>
+            <td>
+                <p>赋值运算符</p>
+            </td>
+            <td>
+                <p>变量=表达式</p>
+            </td>
+            <td rowspan="11">
+                <p><b>右到左</b></p>
+            </td>
+            <td>
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>/=</p>
+            </td>
+            <td>
+                <p>除后赋值</p>
+            </td>
+            <td>
+                <p>变量/=表达式</p>
+            </td>
+            <td>
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>*=</p>
+            </td>
+            <td>
+                <p>乘后赋值</p>
+            </td>
+            <td>
+                <p>变量*=表达式</p>
+            </td>
+            <td>
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>%=</p>
+            </td>
+            <td>
+                <p>取模后赋值</p>
+            </td>
+            <td>
+                <p>变量%=表达式</p>
+            </td>
+            <td>
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>+=</p>
+            </td>
+            <td>
+                <p>加后赋值</p>
+            </td>
+            <td>
+                <p>变量+=表达式</p>
+            </td>
+            <td>
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>-=</p>
+            </td>
+            <td>
+                <p>减后赋值</p>
+            </td>
+            <td>
+                <p>变量-=表达式</p>
+            </td>
+            <td>
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>&lt;&lt;=</p>
+            </td>
+            <td>
+                <p>左移后赋值</p>
+            </td>
+            <td>
+                <p>变量&lt;&lt;=表达式</p>
+            </td>
+            <td>
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>&gt;&gt;=</p>
+            </td>
+            <td>
+                <p>右移后赋值</p>
+            </td>
+            <td>
+                <p>变量&gt;&gt;=表达式</p>
+            </td>
+            <td>
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>&amp;=</p>
+            </td>
+            <td>
+                <p>按位与后赋值</p>
+            </td>
+            <td>
+                <p>变量&amp;=表达式</p>
+            </td>
+            <td>
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>^=</p>
+            </td>
+            <td>
+                <p>按位异或后赋值</p>
+            </td>
+            <td>
+                <p>变量^=表达式</p>
+            </td>
+            <td>
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>|=</p>
+            </td>
+            <td>
+                <p>按位或后赋值</p>
+            </td>
+            <td>
+                <p>变量|=表达式</p>
+            </td>
+            <td>
+                <p>双目运算符</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>15</p>
+            </td>
+            <td>
+                <p>，</p>
+            </td>
+            <td>
+                <p>逗号运算符</a></p>
+            </td>
+            <td>
+                <p>表达式,表达式,…</p>
+            </td>
+            <td>
+                <p>左到右</p>
+            </td>
+            <td>
+                <p>--</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="表达式">表达式</h2>
+<p>表达式可以包含有关的运算符，也可以是不包含任何运算符的初等量，如常数是算数表达式的最简单形式。</p>
+<ol>
+<li>
+<p>算术表达式</p>
+<p>整型表达式：参与运算的是整型量</p>
+<p>实型表达式：参与运算的是实型量，运算自动转为double类型。</p>
+</li>
+<li>
+<p>逻辑表达式</p>
+<p>用<strong>逻辑运算符</strong>连接，结果类型为整型int；可认为是整型表达式的一种特殊形式。</p>
+</li>
+<li>
+<p>字位表达式</p>
+<p>用<strong>位运算符</strong>连接，结果类型为整型变量；可认为是整型表达式的一种特殊形式。</p>
+</li>
+<li>
+<p>强制类型转换</p>
+<p>用“(类型)”运算符进行强制类型转换；</p>
+</li>
+<li>
+<p>逗号表达式</p>
+<p>形式为表达式1，表达式2，&hellip;，表达式n；计算方法为依次求出各个表达式的值，取最后一个值作为结果</p>
+</li>
+<li>
+<p>赋值表达式</p>
+</li>
+<li>
+<p>条件表达式</p>
+</li>
+<li>
+<p>指针表达式</p>
+</li>
+<li>
+<p><strong>sizeof与strlen()的区别</strong></p>
+<ol>
+<li>
+<p>sizeof是运算符，strlen()是函数；</p>
+</li>
+<li>
+<p>sizeof计算实际占用存储空间，不受初始化影响；</p>
+<p>strlen计算有效字符串的长度，不包括&rsquo;\0&rsquo;，受初始化影响；</p>
+</li>
+<li>
+<p>sizeof可以用类型做参数，计算类型占内存的大小；</p>
+<p>strlen只能以char*作参数，且必须以&rsquo;\0&rsquo;结尾，用来计算字符串的长度。</p>
+<p>特别地，数组作sizeof的参数不变化，而传递给strlen时就变化成指针了。</p>
+</li>
+<li>
+<p>sizeof在编译时计算，strlen在运行时才计算。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>左值与右值</p>
+<p>左值指的是允许出现在赋值表达式左侧的值，它是可修改的值，如变量；</p>
+<p>右值指的是允许出现在赋值表达式右侧的值，它包括常量、表达式等；</p>
+<p>左值可作右值，右值不一定能作左值。</p>
+</li>
+<li>
+<p><strong>常量表达式</strong></p>
+<p>即参与运算的均为常量，不允许有变量，也不允许函数调用；</p>
+<p>个人推测常量表达式的值在编译时就已经确定。</p>
+</li>
+</ol>
+<h2 id="预处理语句">预处理语句</h2>
+<p>以<code>#</code>号开头的命令称为预处理命令，均由<strong>预处理器</strong>处理。</p>
+<h3 id="包含指令">包含指令</h3>
+<p>包含指令<code>#include</code>原理：将该头文件包括到用户源文件中。</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt; //从C语言编译系统的目录寻找
+#include &quot;stdio.h&quot; //从用户的当前目录寻找，未找到则再去编译系统目录查找
+</code></pre>
+<h3 id="条件编译指令">条件编译指令</h3>
+<p>根据不同情况编译不同代码、产生不同目标文件的机制，称为条件编译。</p>
+<p>条件编译主要用于在不同环境或条件下启用不同的语句。</p>
+<h4 id="if">#if</h4>
+<pre><code class="language-c">//不同的平台下引入不同的头文件
+#if _WIN32  //识别windows平台
+#include &lt;windows.h&gt;
+#elif __linux__  //识别linux平台
+#include &lt;unistd.h&gt;
+#else //识别其他平台
+#endif
+</code></pre>
+<h4 id="ifdef">#ifdef</h4>
+<p>该条件编译指令通常用于Debug/Release程序发布。</p>
+<pre><code class="language-c">#ifdef _DEBUG
+	printf(&quot;正在使用 Debug 模式编译程序...\n&quot;);
+#else
+	printf(&quot;正在使用 Release 模式编译程序...\n&quot;);
+#endif
+	system(&quot;pause&quot;);
+</code></pre>
+<h4 id="ifndef">#ifndef</h4>
+<p>该条件编译指令通常用于多文件结构的单次编译。</p>
+<pre><code class="language-c">#ifndef Function1_H
+#define Function1_H
+//some declaration codes
+#endif
+</code></pre>
+<p>特别注意：</p>
+<p>#if 后面跟的是“整型常量表达式”，而 #ifdef 和 #ifndef 后面跟的只能是一个宏名，不能是其他的。</p>
+<h4 id="undef">#undef</h4>
+<p>用于取消已定义的宏。</p>
+<h3 id="宏定义指令">宏定义指令</h3>
+<h4 id="宏定义指令概念">宏定义指令概念</h4>
+<p>宏定义指令<code>#define</code>，用一个标识符来表示一个字符串，如果在后面的代码中出现了该标识符，那么就全部替换成指定的字符串。例如：</p>
+<pre><code class="language-c">#define M (n*n+3*n)
+...
+#undef M //结束该宏的作用域
+</code></pre>
+<p>注意：</p>
+<ol>
+<li>宏定义中表达式<strong>两边的括号不能少</strong>，否则在宏展开以后可能会由于运算符的优先级产生歧义。</li>
+<li>宏定义是简单替换，预处理程序不会检查，如有错误，只可能在编译时（展开宏）发现；</li>
+<li>宏定义不是说明或语句，在行末不必加分号，如加上分号则连分号也一起替换；</li>
+<li>引号括起来的视为字符串常量，不会产生宏替换；</li>
+<li>宏定义允许嵌套使用，即可以在宏定义中使用已定义的宏名；</li>
+<li>宏定义可用于表示数据类型</li>
+</ol>
+<h4 id="宏定义与typedef">宏定义与typedef</h4>
+<p>特别注意<strong>宏定义与typedef定义的区别</strong>：</p>
+<ol>
+<li>宏定义只是<strong>简单的字符串替换</strong>，<strong>以实参代换形参</strong>。由预处理器来处理；</li>
+<li>typedef 是在编译阶段由编译器处理的，它并不是简单的字符串替换，而给原有的数据类型起一个新的名字，将它作为一种新的数据类型。</li>
+</ol>
+<pre><code class="language-c">#define PIN1 int *
+typedef int *PIN2;  //也可以写作typedef int (*PIN2);
+PIN1 a, b;//宏替换后成为int *a,b;表示a是指针，b是整型；
+printf(&quot;%d,%d&quot;,sizeof(a),sizeof(b));//输出8，4
+PIN2 a, b;//typedef定义则a和b均为int*类型
+printf(&quot;%d,%d&quot;,sizeof(a),sizeof(b));//输出8.8
+</code></pre>
+<h4 id="带参数的宏定义指令">带参数的宏定义指令</h4>
+<p>C语言允许宏带有参数。</p>
+<p>在宏定义中的参数称为“形式参数”，在宏调用中的参数称为“实际参数”，这点和函数有些类似。</p>
+<p>例1：</p>
+<pre><code class="language-c">#define M(y) y*y+3*y  //宏定义
+// TODO:
+k=M(5);  //宏调用
+</code></pre>
+<p>例2：</p>
+<pre><code class="language-c">#define MAX(a,b) (a&gt;b) ? a : b
+// TODO：
+max = MAX(x, y);
+</code></pre>
+<p>注意：<strong>宏调用在预处理时采用简单替换</strong>，这与函数的调用是不同的，函数调用时要把实参表达式的值求出来再传递给形参，而宏展开中对实参表达式不作计算，直接按照原样替换。</p>
+<p>例3：</p>
+<pre><code class="language-c">#define SQ(y) (y)*(y)
+// TODO:
+sq = SQ(a+1);//预处理后得到 sq=(a+1)*(a+1);
+</code></pre>
+<p>注意：对于带参宏定义不仅要在<strong>参数两侧加括号</strong>，还应该在<strong>整个字符串外加括号</strong>。</p>
+<p>例4：</p>
+<pre><code class="language-c">#define SQ(y) (y)*(y)
+// TODO:
+sq = 100/SQ(a+1);
+//预处理后得到 sq=100/(a+1)*(a+1);按运算符次序得到的与预期不相符。
+</code></pre>
+<pre><code class="language-c">#define SQ(y) ((y)*(y))
+// TODO:
+sq = 100/SQ(a+1);
+//预处理后得到 sq=100/((a+1)*(a+1));现在能得到正确答案。
+</code></pre>
+<p>进一步体会宏定义与函数调用的区别：</p>
+<p><strong>※ 例5：</strong></p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int SQ(int y){
+  return ((y)*(y));
+}
+int main(){
+    int i=1;
+    while(i&lt;=5){
+        printf(&quot;%d^2 = %d\n&quot;, (i-1), SQ(i++));
+    }
+    return 0;
+}
+</code></pre>
+<p>分析：</p>
+<p>在printf函数处，调用函数SQ(i++)，此时<strong>传入SQ函数的参数为i，而printf函数内i=i+1。</strong></p>
+<p>输出为$1^2 = 1,2^2 = 4,3^2 = 9,4^2 = 16,5^2 = 25$</p>
+<p><strong>※ 例6：</strong></p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#define SQ(y) ((y)*(y))
+int main(){
+    int i=1;
+    while(i&lt;=5){
+        printf(&quot;%d^2 = %d\n&quot;, i, SQ(i++));
+    }
+    return 0;
+}
+</code></pre>
+<p>分析：</p>
+<p>在printf函数处SQ(i++)会被简单替换为(i++)*(i++)；此时依次计算两次自增，i从3开始，依次为3，5，7。</p>
+<p>输出为$3^2=2,5^2 = 12,7^2 = 30$。</p>
+<p>带参数的宏也可以定义多个语句。始终记住宏是简单替换即可。</p>
+<h2 id="总结">总结</h2>
+<h3 id="宏和typedef的区别">宏和typedef的区别</h3>
+<p>见 <a href="/#宏定义与typedef">宏定义与typedef</a> 内容。</p>
+<h3 id="带参数的宏调用和函数的区别">带参数的宏调用和函数的区别</h3>
+<ol>
+<li>函数调用时，若实参为表达式，先求表达式的值，再带入形参；而宏调用则是简单字符替换，如果未加入足够的括号声明优先级，可能由于优先级顺序不当使得运算结果不正确；</li>
+<li>函数调用是在运行时处理，而宏则是在编译前进行预处理的时候完成；</li>
+<li>函数的实参和形参有严格的类型限制，宏是字符替换，无类型限制；</li>
+<li>宏会使得实际程序变长，函数调用则无此情况；</li>
+<li>宏不占用运行时间，只消耗预处理时间和编译时间，函数调用则消耗运行时间；</li>
+<li>在不利用指针作值传递的情况下，函数调用最多修改一个值，宏则可以修改多个值；</li>
+</ol>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-2-storetype/" class="block">StoreType</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-2-structure/" class="block">Structure</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#运算符">运算符</a></li>
+    <li><a href="#表达式">表达式</a></li>
+    <li><a href="#预处理语句">预处理语句</a>
+      <ul>
+        <li><a href="#包含指令">包含指令</a></li>
+        <li><a href="#条件编译指令">条件编译指令</a></li>
+        <li><a href="#宏定义指令">宏定义指令</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a>
+      <ul>
+        <li><a href="#宏和typedef的区别">宏和typedef的区别</a></li>
+        <li><a href="#带参数的宏调用和函数的区别">带参数的宏调用和函数的区别</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

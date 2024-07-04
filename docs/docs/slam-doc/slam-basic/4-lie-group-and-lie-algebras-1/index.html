@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Lie Group and Lie Algebras 1 | SLAM Programming Basic | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文记录了李群和李代数的相关概念、性质。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"SLAM Programming and Interviewing",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"SLAM Programming Basic",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"Lie Group and Lie Algebras 1",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/4-lie-group-and-lie-algebras-1/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/4-lie-group-and-lie-algebras-1/"
+    },
+    "headline": "Lie Group and Lie Algebras 1 | SLAM Programming Basic | 悦翎轩","datePublished": "2023-11-20T00:00:00+00:00",
+    "dateModified": "2023-11-20T00:00:00+00:00",
+    "wordCount":  2862 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "本文记录了李群和李代数的相关概念、性质。"
+}
+</script><meta property="og:title" content="Lie Group and Lie Algebras 1 | SLAM Programming Basic | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/4-lie-group-and-lie-algebras-1/" />
+
+
+
+<meta property="og:description" content="本文记录了李群和李代数的相关概念、性质。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2023-11-20T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2023-11-20T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/">SLAM Programming Basic</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/1-slam-summary/">SLAM Summary</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/2-vslam-summary/">VSLAM Summary</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-1-rotation-and-translation-matrix/">Rotation &amp; Translation Matrix</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-2-eigen-exercise/">Eigen Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-4-geometry-exercise/">Geometry Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-5-pangolin/">Pangolin Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/4-lie-group-and-lie-algebras-1/">Lie Group and Lie Algebras 1</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/5-lie-group-and-lie-algebras-exercise/">Lie Group and Lie Algebras Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/7-nonlinear-optimize/">Non linear Optimize</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/10-orb-slam3-adjustments/">ORB SLAM Adjustments</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/11-orb-slam3-stereo/">ORB SLAM3 Stereo</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/12-slam-evo/">SLAM Evaluation</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Lie Group and Lie Algebras 1</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2023-11-20</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>6分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="raise">Raise</h2>
+<p>在 SLAM 中，除表示位姿(旋转)外，还需要对其进行估计和优化。然而，旋转矩阵自身带有约束(正交矩阵且行列式为 1)，此时对其进行优化显得困难。通过一定的转换关系，可以把带约束的优化问题转为无约束的优化问题。我们将这种转换称为李群——李代数转换关系。</p>
+<p>三维旋转矩阵构成了特殊正交群 SO(3)，三维欧氏变换矩阵构成了特殊欧氏群 SE(3)，三维相似变换矩阵构成了相似变换群 Sim(3)。</p>
+$$
+\begin{aligned}
+&\operatorname{SO}(3) = \left \{\mathbf{R} \in \mathbb{R}^3 | \mathbf{R}\mathbf{R}^T=\mathbf{I},det( R)=1 \right \} \\
+&\operatorname{SE}(3) = \left\{ \mathbf{T} \in \mathbb{R}^{4 \times 4} \mid \mathbf{T} = 
+\begin{bmatrix}
+\mathbf{R} & \mathbf{t} \\
+\mathbf{0}^\mathrm{T} & 1
+\end{bmatrix}, 
+\mathbf{R} \in \mathrm{SO}(3), \mathbf{t} \in \mathbb{R}^3 \right\} \\
+&\operatorname{Sim}(3) = \left\{ \mathbf{S} \in \mathbb{R}^{4 \times 4} \mid \mathbf{S} = 
+\begin{bmatrix}
+s\mathbf{R} & \mathbf{t} \\
+\mathbf{0}^\mathrm{T} & 1
+\end{bmatrix}, 
+\mathbf{R} \in \mathrm{SO}(3), \mathbf{t} \in \mathbb{R}^3 \right\}
+\end{aligned}
+$$
+<p>注意到旋转矩阵和变换矩阵对加法不封闭，仅对乘法封闭。</p>
+<h2 id="group">Group</h2>
+<h3 id="defination">Defination</h3>
+<p>群是一种集合加一种运算的代数结构，集合记作\(A\)，运算记作\(\cdot\)，则群记为\(G=(A,\cdot)\)，群满足 4 个条件：</p>
+<ol>
+<li>
+<p>封闭性</p>
+<p>\(\forall a_1,a_2\in A, a_1\cdot a_2\in A\)</p>
+</li>
+<li>
+<p>结合律</p>
+<p>\(\forall a_1,a_2,a_3\in A,(a_1\cdot a_2)\cdot a_3=a_1\cdot(a_2\cdot a_3)\)</p>
+</li>
+<li>
+<p>幺元</p>
+<p>\(\exists a_0\in A,\mathrm{s.t.}\forall a\in A, a_0\cdot a=a\cdot a_0=a\)</p>
+</li>
+<li>
+<p>逆</p>
+<p>\(\forall a\in A,\exists a^{-1}\in A, s.t. a\cdot a^{-1}=a_{0}\)</p>
+</li>
+</ol>
+<p>常见的群有：整数的加法，去掉 0 以后有理数的乘法，由 \(n \times n\) 的可逆矩阵构成的一般线性群等。</p>
+<p>接下来验证 SO(3)、SE(3)和 Sim(3)关于乘法成群。</p>
+<h3 id="so3">SO(3)</h3>
+<p>首先验证 SO(3):</p>
+<p>\begin{equation}
+\operatorname{SO}(3)=\{\mathbf{R} \in \mathbb{R}^3 | \mathbf{R}\mathbf{R}^T=\mathbf{I},det( R)=1\}
+\end{equation}</p>
+<p>首先验证封闭性</p>
+<p>\begin{gather}
+\mathbf{R}_1\mathbf{R}_2 \in \mathbb{R}^{3 \times 3} \\
+(\mathbf{R}_1\mathbf{R}_2)(\mathbf{R}_1\mathbf{R}_2)^T=\mathbf{R}_1\mathbf{R}_2\mathbf{R}_2^\mathrm{T}\mathbf{R}_1^\mathrm{T}=\boldsymbol{I} \\
+\det(\mathbf{R}_1\mathbf{R}_2)=\det(\mathbf{R}_1)\det(\mathbf{R}_2)=1
+\end{gather}</p>
+<p>其次验证结合律</p>
+<p>\begin{equation}
+(\mathbf{R}_1\mathbf{R}_2)\mathbf{R}_3=\mathbf{R}_1(\mathbf{R}_2)\mathbf{R}_3)
+\end{equation}</p>
+<p>再次验证幺元</p>
+<p>\begin{equation}
+\exists \boldsymbol{E}_{3\times 3}, s.t. \boldsymbol{R}\boldsymbol{E}=\boldsymbol{R}
+\end{equation}</p>
+<p>需要注意 3 维单位矩阵是旋转矩阵。</p>
+<p>最后验证逆</p>
+<p>\begin{align}
+\forall \boldsymbol{R}, \boldsymbol{R}_1^{-1}(\boldsymbol{R}_1^{-1})^{\mathrm{T}}=\boldsymbol{R}_1^{-1}(\boldsymbol{R}_1^{\mathrm{T}})^{-1}=\boldsymbol{R}_1^{-1}\boldsymbol{R}=\boldsymbol{I} \\
+\det(\mathbf{R}_1^{-1})=\det(\mathbf{R}_1^{\mathrm{T}})=\det(\mathbf{R})=1
+\end{align}</p>
+<p>因此证明得 SO(3)关于乘法成群。</p>
+<h3 id="se3">SE(3)</h3>
+<p>接下来验证 SE(3):</p>
+$$
+\operatorname{SE}(3) = \left\{ \mathbf{T} \in \mathbb{R}^{4 \times 4} \mid \mathbf{T} = 
+\begin{bmatrix}
+\mathbf{R} & \mathbf{t} \\
+\mathbf{0}^\mathrm{T} & 1
+\end{bmatrix}, \mathbf{R} \in \mathrm{SO}(3), \mathbf{t} \in \mathbb{R}^3 \right\}
+$$
+<p>首先验证封闭性</p>
+<p>\begin{equation}
+T_{1}T_{2} =\begin{bmatrix}\mathbf{R}_{1}&amp;\mathbf{t}_{1}\\mathbf{0}^{\mathrm{T}}&amp;1\end{bmatrix}\begin{bmatrix}\mathbf{R}_{2}&amp;\mathbf{t}_{2}\\mathbf{0}^{\mathrm{T}}&amp;1\end{bmatrix}=\begin{bmatrix}\mathbf{R}_{1}\mathbf{R}_{2}&amp;\mathbf{R}_{1}\mathbf{t}_{2}+\mathbf{t}_{1}\\mathbf{0}^{\mathrm{T}}&amp;1\end{bmatrix}
+\end{equation}</p>
+<p>由上面 SO(3)的证明过程得到</p>
+<p>\begin{equation}
+\mathbf{R}_1\mathbf{R}_2 \in \operatorname{SO}(3)
+\end{equation}</p>
+<p>且有</p>
+<p>\begin{equation}
+\mathbf{R}_1\mathbf{t}_2+\mathbf{t}_1 \in \mathbb{R}^3
+\end{equation}</p>
+<p>其次验证结合律</p>
+<p>\begin{equation}
+(\mathbf{T}_1\mathbf{T}_2)\mathbf{T}_3=\mathbf{T}_1(\mathbf{T}_2\mathbf{T}_3)
+\end{equation}</p>
+<p>再次验证幺元</p>
+<p>\begin{equation}
+\exists \boldsymbol{E}_{4\times 4}, s.t. \boldsymbol{T}\boldsymbol{E}=\boldsymbol{T}
+\end{equation}</p>
+<p>需要注意 4 维单位矩阵是旋转矩阵。</p>
+<p>最后验证逆</p>
+<p>\begin{gather}
+\forall \boldsymbol{T}=\begin{bmatrix} \mathbf{R} &amp; \mathbf{t}\\ \mathbf{0^{\mathrm{T}}} &amp; 1 \end{bmatrix},
+\exists \mathbf{T}^{-1}=\begin{bmatrix} \mathbf{R}^{-1} &amp; -\mathbf{R}^{-1}\mathbf{t}\\ \mathbf{0^{\mathrm{T}}} &amp; 1 \end{bmatrix},
+s.t. \mathbf{T}^{-1} \mathbf{T} = \mathbf{E} \\
+\det{T}=\det{T}^{-1}=1
+\end{gather}</p>
+<p>因此验证得 SE(3)关于乘法成群。</p>
+<h3 id="sim3">Sim(3)</h3>
+<p>接下来证明 Sim(3):</p>
+<p>\begin{equation}
+\operatorname{Sim}(3) = \left\{ S \in \begin{bmatrix} s\mathbf{R} &amp; \boldsymbol{t} \\ \boldsymbol{0}^{\mathrm{T}} &amp; 1 \end{bmatrix} \in \mathbb{R}^{4\times4} \right\}
+\end{equation}</p>
+<p>首先验证封闭性：</p>
+<p>\begin{equation}
+S_{1}S_{2} = \begin{bmatrix} s_{1}\mathbf{R_1} &amp; \mathbf{t_1} \\ \mathbf{0}^{\mathrm{T}} &amp; 1 \end{bmatrix} \begin{bmatrix} s_{2}\mathbf{R_2} &amp; t_{2} \\ \mathbf{0}^{\mathrm{T}} &amp; 1 \end{bmatrix} = \begin{bmatrix} s_{1}s_{2}\mathbf{R_1R_2} &amp; s_{1}\mathbf{R_1t_2}+\mathbf{t_1} \\ \mathbf{0}^{\mathrm{T}} &amp; 1 \end{bmatrix} \in \mathbb{R}^{4\times4}
+\end{equation}</p>
+<p>其次验证结合律</p>
+<p>\begin{equation}
+(\mathbf{S}_1\mathbf{S}_2)\mathbf{S}_3=\mathbf{S}_1(\mathbf{S}_2\mathbf{S}_3)
+\end{equation}</p>
+<p>再次验证幺元</p>
+<p>\begin{equation}
+\exists \boldsymbol{E}_{4\times 4}, s.t. \boldsymbol{S}\boldsymbol{E}=\boldsymbol{S}
+\end{equation}</p>
+<p>需要注意 4 维单位矩阵是特殊的相似变换矩阵。</p>
+<p>最后验证逆</p>
+<p>\begin{equation}
+\forall \mathbf{S}=\begin{bmatrix} s\mathbf{R} &amp; \boldsymbol{t} \\ \boldsymbol{0}^{\mathrm{T}} &amp; 1 \end{bmatrix},
+\exists \mathbf{S}^{-1}=\begin{bmatrix} \frac{1}{s}\mathbf{R}^{-1} &amp; -\frac{1}{s} \mathbf{R}^{-1}\mathbf{t} \\ \boldsymbol{0}^{\mathrm{T}} &amp; 1 \end{bmatrix}, s.t.
+\mathbf{S}^{-1}\mathbf{S} = \mathbf{E}
+\end{equation}</p>
+<p>因此证得 Sim(3)关于乘法成群。</p>
+<h2 id="lie-algebras-raise">Lie Algebras Raise</h2>
+<p>李群是具有连续光滑性质的群。</p>
+<ol>
+<li>直观上看，刚体能够连续地在空间中运动，所以 SO(3)和 SE(3)都是李群</li>
+<li>可以说 SO(3)和 SE(3)在实数空间上是连续的</li>
+</ol>
+<p>考虑旋转矩阵 \(\mathbf{R}\)</p>
+<p>\begin{equation}
+\mathbf{R}\mathbf{R}^\mathrm{T}=I
+\end{equation}</p>
+<p>将旋转看作过程，即扩展到随时间变化的函数 \(\mathbf{R}(t)\)</p>
+<p>\begin{equation}
+\mathbf{R}(t)\mathbf{R}^\mathrm{T}(t)=I
+\end{equation}</p>
+<p>同时求导得到:</p>
+<p>\begin{equation}
+\dot{\mathbf{R}}(t)\mathbf{R}(t)^\mathrm{T}+\mathbf{R}(t)\dot{\mathbf{R}}(t)^\mathrm{T}=0
+\end{equation}</p>
+<p>整理得:</p>
+<p>\begin{equation}
+\dot{\mathbf{R}}(t)\mathbf{R}(t)^\mathrm{T}=-\left(\dot{\mathbf{R}}(t)\mathbf{R}(t)^\mathrm{T}\right)^\mathrm{T}
+\end{equation}</p>
+<p>于是$\dot{\mathbf{R}}(t)\mathbf{R}(t)^\mathrm{T}$是一个反对称矩阵。对每个向量，都可以反对称化为一个反对称矩阵；反之也成立。</p>
+$$
+a^{\wedge}=A=
+\left[\begin{array}{ccc}
+0 & -a_3 & a_2 \\
+a_3 & 0 & -a_1 \\
+-a_2 & a_1 & 0
+\end{array}\right],\quad A^{\vee}=a
+$$
+<p>设三维向量 \(\phi(t) \in \mathbb{R}^3\) 满足：</p>
+<p>\begin{equation}
+\dot{\mathbf{R}}(t)\mathbf{R}(t)^\mathrm{T}=\phi(t)^{\wedge}
+\end{equation}</p>
+<p>同时右乘 \(\mathbf{R}(t)\)，由于正交阵具有\(\mathbf{R}^\mathrm{T}\mathbf{R}=I\)</p>
+<p>\begin{equation}
+\left.\dot{\mathbf{R}}(t)=\phi(t)^{\wedge}\mathbf{R}(t)=\left[\begin{array}{ccc}0&amp;-\phi_3&amp;\phi_2\\ \phi_3 &amp; 0 &amp; -\phi_1 \\ -\phi_2 &amp; \phi_1 &amp; 0 \end{array}\right.\right]\mathbf{R}(t)
+\end{equation}</p>
+<p>即每次对旋转矩阵求一次导数，相当于左乘 \(\phi^{\wedge}(t)\) 。</p>
+<p>考虑简单情况，假设 \(t_0=0\) 时刻，旋转矩阵\(\mathbf{R}(0)=I\)，则</p>
+<p>\begin{equation}
+\begin{aligned}
+\mathbf{R}\left(t\right) &amp;\approx \mathbf{R}\left(t_{0}\right) + \dot{\mathbf{R}}\left(t_{0}\right)\left(t-t_{0}\right) \\
+&amp;= \mathbf{R}\left(t_{0}\right) + \phi\left(t_0\right)^{\wedge}\mathbf{R}(t_0)\left(t-t_{0}\right) \\
+&amp;= I + \phi\left(t_{0}\right)^{\wedge}\left(t\right)
+\end{aligned}
+\end{equation}</p>
+<p>函数 \(\phi\) 反映了 \(\mathbf{R}\) 的导数性质，它在 SO(3)原点附近的正切空间上，同时在单位元 \(t_0\) 附近，称其为单位元是因为 \(R(t_0)=I\) 。</p>
+<p>设 \(\phi\) 保持为常数 \(\phi(t_0)=\phi_0\)，则</p>
+<p>\begin{equation}
+\dot{\mathbf{R}}(t)=\phi(t_0)^{\wedge}\mathbf{R}(t)=\phi_0^{\wedge}\mathbf{R}(t)
+\end{equation}</p>
+<p>对上述微分方程，存在初始值 \(\mathbf{R}(0)=I\)，因此其特解为：</p>
+<p>\begin{equation}
+\mathbf{R}(t)=exp(\phi_0^{\wedge}t)
+\end{equation}</p>
+<p>综上所述，</p>
+<ol>
+<li>给定某时刻 \(\mathbf{R}\) 即能够求出 \(\phi\) ，它描述了 \(\mathbf{R}\) 在局部的导数关系，且 \(\phi\) 正是对应到 SO(3)上的李代数\(\mathfrak{so}(3)\)</li>
+<li>给定 \(\phi\) 时，可以根据 \(exp(\phi^{\wedge})\) 计算李群，反之亦然，这正是李群与李代数之间的指数和对数映射。</li>
+</ol>
+<h2 id="lie-algebras-definations">Lie Algebras Definations</h2>
+<p>每个李群都有对应的李代数。</p>
+<ol>
+<li>注意到 SO(3)和 SE(3)只有定义良好的乘法，没有定义良好的加法，因此难以进行取极限和求导的操作</li>
+<li>李代数对应单位元附近的正切空间，描述了李群的局部性质(导数)</li>
+</ol>
+<h3 id="definations">Definations</h3>
+<p>李代数由集合 \(\mathbb{V}\) ，数域 \(\mathbb{F}\) 和一个二元运算 \([,]\) 组成。称李代数为\((\mathbb{V},\mathbb{F},[,])\)，记为 \(\mathfrak{g}\)</p>
+<ol>
+<li>
+<p>封闭性</p>
+<p>\(\forall X,Y\in\mathbb{V},[X,Y]\in\mathbb{V}\)</p>
+</li>
+<li>
+<p>双线性</p>
+<p>\(\forall X,Y,Z\in\mathbb{V},a,b\in\mathbb{F}\),有：</p>
+<p>\[
+[aX+bY,Z]=a[X,Z]+b[Y,Z],\quad[Z,aX+bY]=a[Z,X]+b[Z,Y].
+\]</p>
+</li>
+<li>
+<p>自反性</p>
+<p>\(\forall X\in\mathbb{V},[X, X] = 0\)</p>
+</li>
+<li>
+<p>雅可比等价
+\[
+\forall X,Y,Z\in\mathbb{V},[X,[Y,Z]]+[Z,[X,Y]]+[Y,[Z,X]]=0
+\]</p>
+</li>
+</ol>
+<p>满足上述性质的 \((\mathbb{V},\mathbb{F},[,])\) 称为李代数，二元运算称为李括号。</p>
+<h3 id="example-and-provement">Example and Provement</h3>
+<p>下面以三维向量叉积为例，证明 \(\mathfrak{g}=(\mathbb{R}^3,\mathbb{R},\times)\) 构成李代数。</p>
+<p>首先验证封闭性</p>
+<p>\begin{equation}
+\forall X,Y\in\mathbb{R}^3 X\times Y\in\mathbb{R}^3
+\end{equation}</p>
+<p>然后验证双线性</p>
+<p>\(\forall X,Y,Z\in\mathbb{R}^3,a,b\in\mathbb{R}\), 由叉乘的分配率可知</p>
+<p>\begin{equation}
+\begin{aligned}
+(aX+bY)\times Z=a(X\times Z)+b(Y\times Z)
+Z\times(aX+bY)=a(Z\times X)+b(Z\times Y)
+\end{aligned}
+\end{equation}</p>
+<p>其次验证自反性</p>
+<p>\(\forall X\in\mathbb{R}^3\)，由叉乘定义可知 \(X\times X=0\)</p>
+<p>最后验证雅可比等价</p>
+<p>\(\forall X,Y,Z\in\mathbb{R}^3\)，由叉乘的定义，展开计算可以得到</p>
+<p>\begin{equation}
+X\times(Y\times Z)=(X\cdot Z)\cdot Y-(X\cdot Y)\cdot Z
+\end{equation}</p>
+<p>因此有</p>
+<p>\begin{equation}
+X\times(Y\times Z)+Z\times(X\times Y)+Y\times(Z\times X)=\mathbf{0}
+\end{equation}</p>
+<p>该式类似球对称的性质。</p>
+<h2 id="two-lie-algebras">Two Lie Algebras</h2>
+<p>下面讨论 SO(3)和 SE(3)上的李代数。</p>
+<h3 id="so3-1">SO(3)</h3>
+<p>记 SO(3)对应的李代数为 \(\phi\)，它是定义在 \(\mathbb{R}^3\) 上的向量。</p>
+<p>定义 \(\mathbf{\Phi}\) 满足</p>
+<p>\begin{equation}
+\mathbf{\Phi}=\phi^{\wedge}=\left[\begin{array}{ccc}0&amp;-\phi_3&amp;\phi_2\\ \phi_3 &amp; 0 &amp; -\phi_1 \\ -\phi_2 &amp; \phi_1 &amp; 0 \end{array}\right]\in\mathbb{R}^{3 \times 3}
+\end{equation}</p>
+<p>则两个向量 \(\phi_1,\phi_2\) 的李括号为</p>
+<p>\begin{equation}
+[\phi_1,\phi_2]=(\mathbf{\Phi}_1\mathbf{\Phi}_2-\mathbf{\Phi}_2\mathbf{\Phi}_1)^\vee
+\end{equation}</p>
+<p>下面证明该李代数满足上述性质。</p>
+<p>\begin{equation}
+\mathfrak{so}(3)=\{\phi\in\mathbb{R}^{3},\Phi=\phi^{\wedge}\in\mathbb{R}^{3\times3}\}
+\end{equation}</p>
+<p>对于 \(\mathfrak{so}(3)\) 的封闭性</p>
+<p>\begin{equation}
+\forall\phi_{1},\phi_{2}\in\mathbb{R}^{3},[\phi_{1},\phi_{2}]=(\Phi_{1}\Phi_{2}-\Phi_{2}\Phi_{1})^{\vee}\in\mathbb{R}^{3}
+\end{equation}</p>
+<p>对于 \(\mathfrak{so}(3)\) 的双线性</p>
+<p>\begin{equation}
+\begin{aligned}
+&amp;\forall\phi_1,\phi_2,\phi_3\in\mathbb{R}^3,a,b\in\mathbb{R} \\
+\left[a\phi_{1}+b\phi_{2},\phi_{3}\right] &amp;=[(a\Phi_{1}+b\Phi_{2})\Phi_{3}-\Phi_{3}(a\Phi_{1}+b\Phi_{2})]^{\vee} \\
+&amp;=[a(\Phi_{1}\Phi_{3}-\Phi_{3}\Phi_{1})+b(\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})]^{\vee} \\
+&amp;=a(\Phi_{1}\Phi_{3}-\Phi_{3}\Phi_{1})^{\vee}+b(\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})^{\vee} \\
+&amp;=a[\phi_{1},\phi_{3}]+b[\phi_{2},\phi_{3}]
+\end{aligned}
+\end{equation}</p>
+<p>同理可得</p>
+<p>\begin{equation}
+[\phi_{3},a\phi_{1}+b\phi_{2}]=a[\phi_{3},\phi_{1}]+b[\phi_{3},\phi_{2}]
+\end{equation}</p>
+<p>对于 \(\mathfrak{so}(3)\) 的自反性</p>
+<p>\begin{equation}
+\forall\phi\in\mathbb{R}^3,[\phi,\phi]=(\Phi\Phi-\Phi\Phi)^\vee=\mathbf{0}
+\end{equation}</p>
+<p>对于 \(\mathfrak{so}(3)\) 的雅可比等价</p>
+<p>\begin{equation}
+\begin{aligned}
+&amp;\forall\phi_1,\phi_2,\phi_3\in\mathbb{R}^{3} \\
+\left[\phi_{1},[\phi_{2},\phi_{3}]\right]&amp;=[\phi_{1},(\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})^{\vee}] \\
+&amp;=(\Phi_{1}(\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})-(\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})\Phi_{1})^{\vee}
+\end{aligned}
+\end{equation}</p>
+<blockquote>
+<p>关于上式的详细说明：</p>
+<p>对于给定的三个旋转向量 \(\phi_1, \phi_2, \phi_3 \in \mathbb{R}^3\) ，考虑李代数 \(\mathfrak{so}(3)\) 中的雅可比等式。</p>
+<p>\begin{equation}
+\left[\phi_{1},[\phi_{2},\phi_{3}]\right] = [\phi_{1}, (\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})^{\vee}]
+\end{equation}</p>
+<p>这里，\([\phi_{1},[\phi_{2},\phi_{3}]]\) 表示两次李括号运算，\((\Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2})^{\vee}\) 表示将矩阵形式转换为向量形式（即反对称矩阵到旋转向量）。</p>
+<p>根据李括号的定义，有</p>
+<p>\begin{equation}
+[\phi_{1},[\phi_{2},\phi_{3}]] = [\phi_{1}, \Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2}]
+\end{equation}</p>
+<p>现在展开右侧的李括号运算，得到</p>
+<p>\begin{equation}
+[\phi_{1}, \Phi_{2}\Phi_{3}-\Phi_{3}\Phi_{2}] = (\Phi_1 (\Phi_2 \Phi_3 - \Phi_3 \Phi_2) - (\Phi_2 \Phi_3 - \Phi_3 \Phi_2) \Phi_1)^{\vee}
+\end{equation}</p>
+<p>因此上式成立</p>
+</blockquote>
+<p>同理</p>
+<p>\begin{equation}
+\begin{aligned}
+\left[\phi_{3},[\phi_{1},\phi_{2}]\right]=(\Phi_{3}(\Phi_{1}\Phi_{2}-\Phi_{2}\Phi_{1})-(\Phi_{1}\Phi_{2}-\Phi_{2}\Phi_{1})\Phi_{3})^{\vee} \\
+\left[\phi_{2},[\phi_{3},\phi_{1}]\right]=(\Phi_{2}(\Phi_{3}\Phi_{1}-\Phi_{1}\Phi_{3})-(\Phi_{3}\Phi_{1}-\Phi_{1}\Phi_{3})\Phi_{2})^{\vee}
+\end{aligned}
+\end{equation}</p>
+<p>相加可得</p>
+<p>\begin{equation}
+\left[\phi_{1},[\phi_{2},\phi_{3}]\right]+\left[\phi_{3},[\phi_{1},\phi_{2}]\right]+\left[\phi_{2},[\phi_{3},\phi_{1}]\right]=0
+\end{equation}</p>
+<p>综上所述，\(\mathfrak{so}(3)\) 满足李代数的性质，该李代数形式为:</p>
+<p>\begin{equation}
+\mathfrak{so}(3) = \left\{ \phi \in \mathbb{R}^3 , \Phi=\phi^{\wedge} \in \mathbb{R}^{3 \times 3}\right\}
+\end{equation}</p>
+<p>该李代数是一个由三维向量组成的集合，每个向量对应到一个反对称矩阵，它与特殊正交群 SO(3)的关系为指数映射</p>
+<p>\begin{equation}
+\mathbf{R}(t)=exp(\phi^{\wedge})
+\end{equation}</p>
+<h3 id="se3-1">SE(3)</h3>
+<p>与 \(\mathfrak{so}(3)\) 相似，\(\mathfrak{se}(3)\) 位于 \(\mathbb{R}^6\) 空间中</p>
+<p>\begin{equation}
+\mathfrak{se}(3)=\left\{\xi=\left[\begin{array}{c}\boldsymbol{\rho}\\phi\end{array}\right]\in\mathbb{R}^6,\boldsymbol{\rho}\in\mathbb{R}^3,\phi\in\mathfrak{so}\left(3\right),\xi^{\wedge}=\left[\begin{array}{cc}\phi^{\wedge}&amp;\boldsymbol{\rho}\\mathbf{0}^{\mathrm{T}}&amp;0\end{array}\right]\in\mathbb{R}^{4\times4}\right\}
+\end{equation}</p>
+<p>把每个 \(\mathfrak{se}(3)\) 元素记作 \(\epsilon\) ，它是一个六维向量，</p>
+<ol>
+<li>前三维为平移(不是变换矩阵中的平移)，记为 \(\boldsymbol{\rho}\)，</li>
+<li>后三维为旋转，记作 \(\phi\)，实质上是 \(\mathfrak{so}(3)\) 元素</li>
+</ol>
+<p>此处 \(\wedge\) 不再表示反对称，而是满足</p>
+<p>\begin{equation}
+\xi^{\wedge}=\left[\begin{array}{cc}\phi^{\wedge}&amp;\boldsymbol{\rho}\\ \mathbf{0}^{\mathrm{T}}&amp;0\end{array}\right]\in\mathbb{R}^{4\times4}
+\end{equation}</p>
+<p>形式上仍然保留 \(\wedge\) 和 \(\vee\) 来指代从“向量到矩阵”和“从矩阵到向量”的关系，李代数 \(\mathfrak{se}(3)\) 可以简单理解成一个平移加一个 \(\mathfrak{so}(3)\) 构成的向量(此平移不直接是平移)</p>
+<p>李代数 \(\mathfrak{se}(3)\) 具有李括号:</p>
+<p>\begin{equation}
+\left[\xi_1,\xi_2\right]=(\xi_1^{\wedge}\xi_2^{\wedge}-\xi_2^{\wedge}\xi_1^{\wedge})^\vee
+\end{equation}</p>
+<p>下面证明 \(\mathfrak{se}(3)\)  满足李代数的性质</p>
+<p>对于 \(\mathfrak{se}(3)\) 封闭性，</p>
+<p>\begin{equation}
+\begin{aligned}
+&amp;\forall \xi_1,\xi_2 \in \mathbb{R}^6 \\
+[\xi_{1},\xi_{2}]&amp; =(\xi_{1}^{\wedge}\xi_{2}^{\wedge}-\xi_{2}^{\wedge}\xi_{1}^{\wedge})^{\vee}  \\
+&amp;\left.=\left(\begin{bmatrix}\phi_1^{\wedge}&amp;\boldsymbol{\rho}_1\\mathbf{0}^{\mathrm{T}}&amp;0\end{bmatrix}\right.\begin{bmatrix}\phi_2^{\wedge}&amp;\boldsymbol{\rho}_2\\mathbf{0}^{\mathrm{T}}&amp;0\end{bmatrix}-\begin{bmatrix}\phi_2^{\wedge}&amp;\boldsymbol{\rho}_2\\mathbf{0}^{\mathrm{T}}&amp;0\end{bmatrix}\begin{bmatrix}\phi_1^{\wedge}&amp;\boldsymbol{\rho}_1\\mathbf{0}^{\mathrm{T}}&amp;0\end{bmatrix}\right)^{\vee} \\
+&amp;\left.=\left(\begin{bmatrix}\phi_1^{\wedge}\phi_2^{\wedge}&amp;\phi_1^{\wedge}\boldsymbol{\rho}_2\\mathbf{0}^\mathrm{T}&amp;0\end{bmatrix}\right.-\begin{bmatrix}\phi_2^{\wedge}\phi_1^{\wedge}&amp;\phi_2^{\wedge}\boldsymbol{\rho}_1\\mathbf{0}^\mathrm{T}&amp;0\end{bmatrix}\right)^{\vee} \\
+&amp;=\begin{bmatrix}\phi_{1}^{\wedge}\phi_{2}^{\wedge}-\phi_{2}^{\wedge}\phi_{1}^{\wedge}&amp;\phi_{1}^{\wedge}\boldsymbol{\rho_{2}}-\phi_{2}^{\wedge}\boldsymbol{\rho_{1}}\\mathbf{0}^{\mathrm{T}}&amp;0\end{bmatrix}^{\vee}
+\end{aligned}
+\end{equation}</p>
+<p>由于 \(\mathfrak{so}(3)\) 的封闭性可知</p>
+<p>\begin{equation}
+(\phi_{1}^{\wedge}\phi_{2}^{\wedge}-\phi_{2}^{\wedge}\phi_{1}^{\wedge})^{\vee}\in\mathfrak{so}(3)
+\end{equation}</p>
+<p>由于 \(\phi_i^{\wedge}\) 为 \(3 \times 3\) 反对称矩阵，且 \(\mathbf{\rho}_i\) 是三维向量，因此容易得到</p>
+<p>\begin{equation}
+\phi_1^\wedge\boldsymbol{\rho}_2-\phi_2^\wedge\boldsymbol{\rho}_1\in\mathbb{R}^6
+\end{equation}</p>
+<p>对于 \(\mathfrak{se}(3)\) 的双线性</p>
+<p>\begin{equation}
+\begin{aligned}
+&amp;\forall\xi_{1},\xi_{2},\xi_{3}\in\mathbb{R}^{6},a,b\in\mathbb{R} \\
+[a\xi_{1}+b\xi_{2},\xi_{3}]&amp; =[(a\xi_{1}^{\wedge}+b\xi_{2}^{\wedge})\xi_{3}^{\wedge}-\xi_{3}^{\wedge}(a\xi_{1}^{\wedge}+b\xi_{2}^{\wedge})]^{\vee}  \\
+&amp;=[a(\xi_{1}^{\wedge}\xi_{3}^{\wedge}-\xi_{3}^{\wedge}\xi_{1}^{\wedge})+b(\xi_{2}^{\wedge}\xi_{3}^{\wedge}-\xi_{3}^{\wedge}\xi_{2}^{\wedge})]^{\vee} \\
+&amp;=a[\xi_{1},\xi_{3}]+b[\xi_{2},\xi_{3}]
+\end{aligned}
+\end{equation}</p>
+<p>对于 \(\mathfrak{se}(3)\) 的自反性</p>
+<p>\begin{equation}
+\forall\xi\in\mathbb{R}^6,[\xi,\xi]=(\xi^\wedge\xi^\wedge-\xi^\wedge\xi^\wedge)^\vee=\mathbf{0}
+\end{equation}</p>
+<p>对于 \(\mathfrak{se}(3)\) 的雅可比等价性</p>
+<p>\begin{equation}
+\begin{aligned}
+&amp;\forall\xi_{1},\xi_{2},\xi_{3}\in\mathbb{R}^{6},a,b\in\mathbb{R} \\
+\left[\xi_{1},[\xi_{2},\xi_{3}]\right]&amp; =[\xi_{1},(\xi_{2}^{\wedge}\xi_{3}^{\wedge}-\xi_{3}^{\wedge}\xi_{2}^{\wedge})^{\vee}]  \\
+&amp;=[\xi_{1}^{\wedge}(\xi_{2}^{\wedge}\xi_{3}^{\wedge}-\xi_{3}^{\wedge}\xi_{2}^{\wedge})-(\xi_{2}^{\wedge}\xi_{3}^{\wedge}-\xi_{3}^{\wedge}\xi_{2}^{\wedge})\xi_{1}^{\wedge}]^{\vee}
+\end{aligned}
+\end{equation}</p>
+<p>同理可得</p>
+<p>\begin{equation}
+\begin{aligned}
+\left[\xi_{3},[\xi_{1},\xi_{2}]\right]=[\xi_{3}^{\wedge}(\xi_{1}^{\wedge}\xi_{2}^{\wedge}-\xi_{2}^{\wedge}\xi_{1}^{\wedge})-(\xi_{1}^{\wedge}\xi_{2}^{\wedge}-\xi_{2}^{\wedge}\xi_{1}^{\wedge})\xi_{3}^{\wedge}]^{\vee} \\
+\left[\xi_{2},[\xi_{3},\xi_{1}]\right]=[\xi_{2}^{\wedge}(\xi_{3}^{\wedge}\xi_{1}^{\wedge}-\xi_{1}^{\wedge}\xi_{3}^{\wedge})-(\xi_{3}^{\wedge}\xi_{1}^{\wedge}-\xi_{1}^{\wedge}\xi_{3}^{\wedge})\xi_{2}^{\wedge}]^{\vee}
+\end{aligned}
+\end{equation}</p>
+<p>三个式子相加即得</p>
+<p>\begin{equation}
+\left[\xi_{1},[\xi_{2},\xi_{3}]\right]+\left[\xi_{3},[\xi_{1},\xi_{2}]\right]+\left[\xi_{2},[\xi_{3},\xi_{1}]\right]=0
+\end{equation}</p>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-5-pangolin/" class="block">Pangolin Exercise</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/5-lie-group-and-lie-algebras-exercise/" class="block">Lie Group and Lie Algebras Exercise</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#raise">Raise</a></li>
+    <li><a href="#group">Group</a>
+      <ul>
+        <li><a href="#defination">Defination</a></li>
+        <li><a href="#so3">SO(3)</a></li>
+        <li><a href="#se3">SE(3)</a></li>
+        <li><a href="#sim3">Sim(3)</a></li>
+      </ul>
+    </li>
+    <li><a href="#lie-algebras-raise">Lie Algebras Raise</a></li>
+    <li><a href="#lie-algebras-definations">Lie Algebras Definations</a>
+      <ul>
+        <li><a href="#definations">Definations</a></li>
+        <li><a href="#example-and-provement">Example and Provement</a></li>
+      </ul>
+    </li>
+    <li><a href="#two-lie-algebras">Two Lie Algebras</a>
+      <ul>
+        <li><a href="#so3-1">SO(3)</a></li>
+        <li><a href="#se3-1">SE(3)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

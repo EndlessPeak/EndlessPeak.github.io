@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NixOS 配置 on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/build/nixos-configuration/</link>
+    <description>Recent content in NixOS 配置 on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Tue, 11 Jun 2024 22:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/build/nixos-configuration/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python Development on NixOS</title>
+      <link>https://endlesspeak.github.io/docs/build/nixos-configuration/1-nixos-configuration/</link>
+      <pubDate>Tue, 19 Dec 2023 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/nixos-configuration/1-nixos-configuration/</guid>
+      <description>Self Configuration Import Configuration 以 sddm 为例，浅谈如何导入 nix 配置文件。 如下所示，在基本设置中导入 sddm-theme.nix 。 # Enable the X11 windowing system. services = { xserver = { enable = true; # Enable the Plasma 5 Desktop Environment. displayManager ={ sddm.enable = true; sddm.theme = &amp;quot;${import ./sddm-theme.nix { inherit pkgs;}}&amp;quot;; }; desktopManager.plasma5.enable = true; #</description>
+    </item>
+    <item>
+      <title>Python Development on NixOS</title>
+      <link>https://endlesspeak.github.io/docs/build/nixos-configuration/2-python-poetry-devshell/</link>
+      <pubDate>Tue, 11 Jun 2024 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/nixos-configuration/2-python-poetry-devshell/</guid>
+      <description>Discourse NixOS 该部分文章尚未完成。 Impure Python Poetry devShell (pkgs.poetry.override { python = pkgs.python39; }) poetry run python -c &amp;quot;import matplotlib&amp;quot; Traceback (most recent call last): File &amp;quot;&amp;lt;string&amp;gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt; ModuleNotFoundError: No module named &#39;matplotlib&#39; python -m site sys.path = [ &#39;/home/asymmetric/code/foo&#39;, &#39;/nix/store/6qk2ybm2yx2dxmx9h4dikr1shjhhbpfr-python3-3.10.11/lib/python310.zip&#39;, &#39;/nix/store/6qk2ybm2yx2dxmx9h4dikr1shjhhbpfr-python3-3.10.11/lib/python3.10&#39;, &#39;/nix/store/6qk2ybm2yx2dxmx9h4dikr1shjhhbpfr-python3-3.10.11/lib/python3.10/lib-dynload&#39;, &#39;/nix/store/6qk2ybm2yx2dxmx9h4dikr1shjhhbpfr-python3-3.10.11/lib/python3.10/site-packages&#39;, &#39;/nix/store/qyy1khnfvvv6m57gkh8qijj45v3h78jy-python3-3.10.11-env/lib/python3.10/site-packages&#39;, ] USER_BASE: &#39;/home/asymmetric/.local&#39; (exists) USER_SITE: &#39;/home/asymmetric/.local/lib/python3.10/site-packages&#39; (doesn&#39;t exist) ENABLE_USER_SITE: False poetry run python -m site sys.path = [ &#39;/home/asymmetric/code/foo&#39;,</description>
+    </item>
+  </channel>
+</rss>

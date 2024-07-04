@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux 环境配置 on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/</link>
+    <description>Recent content in Linux 环境配置 on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Fri, 21 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/build/operating-system-configuration/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Arch Linux 桌面环境配置</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-1-desktop-config/</link>
+      <pubDate>Tue, 18 Feb 2020 20:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-1-desktop-config/</guid>
+      <description>&lt;p&gt;如果现在让我选择一个我心目中最好的Linux发行版，同时也是最简单的Linux发行版，作为长期甚至终身使用的Linux，我会选择的发行版是：Arch Linux！&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Arch Linux 文本环境配置</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-2-textmode-config/</link>
+      <pubDate>Thu, 27 Feb 2020 20:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-2-textmode-config/</guid>
+      <description>&lt;p&gt;如果是经常从事文本工作(如软件工作者进行代码编辑、学生进行笔记整理、文字工作者的撰写、校对等工作)的用户建议选用窗口管理器作为日常工作环境。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Gentoo Linux Nvidia 显卡驱动</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-3-gentoo-nvidia/</link>
+      <pubDate>Sun, 21 Aug 2022 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-3-gentoo-nvidia/</guid>
+      <description>由于Gentoo Linux 配置显卡驱动需要额外设置内核，因此记录下配置的内容。 Kernel Dist Kernel 编辑 x11-drivers/nvidia-drivers 所需要使用的 use 选项，加入 dist-kernel 这一项。 Custom Kernel 依次开启下列选项： CONFIG_MODULES CONFIG_MTRR CONFIG_VGA_ARB CONFIG_ACPI_IPMI CONFIG_AGP 内</description>
+    </item>
+    <item>
+      <title>Linux Kernel Configuration</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-4-kernel/</link>
+      <pubDate>Sun, 21 Aug 2022 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-4-kernel/</guid>
+      <description>Linux内核的配置大同小异，但是Gentoo Linux 官方软件源提供了多种内核的源码，并且配置多内核之间的切换非常方便，而Arch也提供软件包的形式下载或自</description>
+    </item>
+    <item>
+      <title>Linux KDE 桌面使用指南</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-5-kde-usage/</link>
+      <pubDate>Sat, 18 Mar 2023 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-5-kde-usage/</guid>
+      <description>Plasma Configuration 如果 KDE 的外观设置下载缓慢，可以在 KDE 商店 中下载。 Global Theme 全局主题安装在 ~/.local/share/plasma/look-and-feel 下，其包括 layouts 和 splash 等部分 一般地，安装全局主题后会自动配置 Plasma 主题和 Colors 等部分 Plasma Theme Plasma 主题</description>
+    </item>
+    <item>
+      <title>Ubuntu Linux 桌面环境</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-9-ubuntu/</link>
+      <pubDate>Fri, 21 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-9-ubuntu/</guid>
+      <description>Installation 安装镜像：建议选用非官方 Ubuntu 的安装镜像，如 Kubuntu 或 Lubuntu 等； Ubuntu 安装镜像：5.7 GiB； Kubuntu 安装镜像：3.8 GiB； Lubuntu 安装镜像：3.1 GiB； 自 24.04 开始，安装时对于</description>
+    </item>
+  </channel>
+</rss>

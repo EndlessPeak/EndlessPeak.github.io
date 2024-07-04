@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>绪论 | Operating System | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="操作系统概念 操作系统 操作系统是： 计算机系统资源的管理者，组织、调度、分配软硬件资源； 作为用户与计算机硬件之间的接口，向上层（用户）提供服务； 最接近硬件">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Computer Interview",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Operating System",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"绪论",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/operating-system-summary/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/operating-system-summary/"
+    },
+    "headline": "绪论 | Operating System | 悦翎轩","datePublished": "2021-11-03T00:00:00+00:00",
+    "dateModified": "2021-11-03T00:00:00+00:00",
+    "wordCount":  2957 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "操作系统概念 操作系统 操作系统是： 计算机系统资源的管理者，组织、调度、分配软硬件资源； 作为用户与计算机硬件之间的接口，向上层（用户）提供服务； 最接近硬件"
+}
+</script><meta property="og:title" content="绪论 | Operating System | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/operating-system-summary/" />
+
+
+
+
+<meta property="og:description" content="操作系统概念 操作系统 操作系统是： 计算机系统资源的管理者，组织、调度、分配软硬件资源； 作为用户与计算机硬件之间的接口，向上层（用户）提供服务； 最接近硬件" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2021-11-03T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2021-11-03T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/">Operating System</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/operating-system-summary/">绪论</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/process-manage/">进程管理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/synchronization-exclusion/">经典同步问题</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/memory-manage/">进程管理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/file-manage/">文件管理</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">绪论</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2021-11-03</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>6分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="操作系统概念">操作系统概念</h2>
+<h3 id="操作系统">操作系统</h3>
+<p>操作系统是：</p>
+<ol>
+<li>计算机系统资源的管理者，组织、调度、分配软硬件资源；</li>
+<li>作为用户与计算机硬件之间的接口，向上层（用户）提供服务；</li>
+<li>最接近硬件的软件，即计算机系统中最基本的<strong>系统软件</strong>。</li>
+</ol>
+<p>扩展：系统软件和应用软件</p>
+<p>系统软件：OS、<u>数据库管理系统</u>、<u>语言处理程序</u>、服务性程序、标准库程序；</p>
+<p>应用软件：用户编写的程序、<u>驱动程序</u>、辅助设计软件、<u>实时控制软件</u></p>
+<h3 id="操作系统特征">操作系统特征</h3>
+<p>操作系统基本特征包括并发、共享、虚拟、异步。最基本特征是<strong>并发</strong>和<strong>共享</strong>，两者互为存在条件。</p>
+<ol>
+<li>
+<p>并发</p>
+<ol>
+<li>
+<p>并发是同一时间间隔发生。如单核CPU。</p>
+<p>并行是同一时刻发生。如多核CPU。</p>
+</li>
+<li>
+<p>操作系统的并发性通过<u>分时</u>得以实现，需要<u>中断</u>的支持。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>共享</p>
+<ol>
+<li>互斥共享方式，如打印机，磁带。该共享方式称为互斥式共享，其所需的资源在一段时间内只允许一个进程访问，称之为临界资源或独占资源。</li>
+<li>同时访问方式，如磁盘设备，通常是宏观上的同时访问，微观上分时访问，称分时共享。</li>
+</ol>
+</li>
+<li>
+<p>虚拟</p>
+<ol>
+<li>一个物理上的实体变为若干逻辑上的对应物。虚拟通过并发性实现。</li>
+<li>时分复用技术：将一个物理上的CPU虚拟为多个逻辑上的CPU，称虚拟处理器；</li>
+<li>空分复用技术：从逻辑上扩充存储器的容量，称之为虚拟存储器。</li>
+</ol>
+</li>
+<li>
+<p>异步</p>
+<ol>
+<li>多个并发执行的程序以<u>不可预知</u>的速度向前推进，称之为进程的异步性。</li>
+<li>需要保证运行环境相同时产生的结果也相同。</li>
+</ol>
+</li>
+</ol>
+<h3 id="操作系统的目的与功能">操作系统的目的与功能</h3>
+<ol>
+<li>
+<p>计算机角度来说，操作系统是计算机系统资源的管理者</p>
+<p>处理器管理、存储管理、文件管理、设备管理</p>
+</li>
+<li>
+<p>用户角度来说，操作系统是用户与计算机硬件系统之间的接口</p>
+<ol>
+<li>
+<p>命令接口，直接给用户使用的接口，包括</p>
+<ol>
+<li>
+<p><strong>联机</strong>命令接口，或<strong>交互式</strong>命令接口，用于<strong>分时</strong>或<strong>实时</strong>系统。</p>
+<p>例如终端。</p>
+</li>
+<li>
+<p><strong>脱机</strong>命令接口，或<strong>批处理</strong>命令接口，用于<strong>批处理</strong>系统。</p>
+<p>类似可执行脚本。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>程序接口，由一组<strong>系统调用</strong>（<strong>广义指令</strong>）组成。用户通过系统调用来请求系统的服务。</p>
+</li>
+<li>
+<p>注：也可将接口分为<u>直接给用户使用的接口</u>与<u>通过程序间接调用的接口</u>，直接给用户使用的包括命令接口和GUI图形接口，通过程序间接调用的是程序接口；与此同时GUI图形接口也会调用程序接口。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>操作系统用作扩充机器</p>
+<p>仅包括硬件的计算机称逻辑，经过操作系统扩充后方可使用。覆盖了软件的机器称之为扩充机器或虚拟机。</p>
+</li>
+</ol>
+<h2 id="操作系统的发展与分类">操作系统的发展与分类</h2>
+<h3 id="手工操作阶段">手工操作阶段</h3>
+<ol>
+<li>用户<strong>独占全机</strong>，资源利用率低；</li>
+<li><strong>人机速度矛盾</strong>，CPU等待手工操作，CPU利用不充分。</li>
+</ol>
+<h3 id="批处理阶段">批处理阶段</h3>
+<ol>
+<li>在此阶段操作系统开始出现。</li>
+<li>为解决下列矛盾而产生：
+<ol>
+<li><strong>人机速度矛盾</strong></li>
+<li><strong>CPU、IO设备速度不匹配的矛盾</strong></li>
+</ol>
+</li>
+<li>主要缺点：<strong>缺乏交互性</strong>。</li>
+</ol>
+<h4 id="单道批处理系统">单道批处理系统</h4>
+<p>优点：解决了人机速度矛盾；</p>
+<p>缺点：未解决CPU与IO设备之间的矛盾。</p>
+<p>特点：自动性、顺序性、单道性。</p>
+<h4 id="多道批处理系统">多道批处理系统</h4>
+<p>优点：解决了人机速度矛盾、CPU与IO设备之间的矛盾；资源利用率高。</p>
+<p>缺点：用户响应的时间长，不能提供<strong>人机交互</strong>功能。</p>
+<p>特点：多道、<strong>宏观上并行</strong>、<strong>微观上串行</strong>。</p>
+<h3 id="分时操作系统">分时操作系统</h3>
+<p>分时是将处理机的时间分成很短的时间片，轮流上处理机运行。</p>
+<p>优点：解决了人机交互的问题（用户的请求可以被及时响应）。</p>
+<p>缺点：不能处理紧急任务（未区分各任 务之间的优先级）。</p>
+<h3 id="实时操作系统">实时操作系统</h3>
+<p>优点：在严格时限内作出处理，利于完成紧急任务。</p>
+<p>特点：<strong>及时性</strong>和<strong>可靠性</strong>。</p>
+<p>注意：对于实时操作系统，资源利用率不是需要重点考虑的因素。</p>
+<p>分类：</p>
+<ol>
+<li>
+<p>硬实时操作系统</p>
+<p>飞行控制系统、导弹发射系统</p>
+</li>
+<li>
+<p>软实时操作系统</p>
+<p>股票交易系统、铁路订票/铁路信号系统、银行管理系统、门禁系统</p>
+</li>
+<li>
+<p><strong>非</strong>实时操作系统</p>
+<p>干扰项：计算机辅助设计（CAD）系统、办公自动化系统等</p>
+</li>
+</ol>
+<h3 id="其他操作系统">其他操作系统</h3>
+<ol>
+<li>
+<p>网络操作系统</p>
+<p>实现网络中资源共享和计算机间的通信。</p>
+</li>
+<li>
+<p>分布时计算机系统</p>
+<p>特点：分布性、并行性。与网络操作系统的本质不同是：分布式操作系统中的若干计算机相互协同完成同一任务。（所有计算机地位相当）</p>
+</li>
+<li>
+<p>个人计算机操作系统</p>
+</li>
+</ol>
+<h2 id="操作系统的运行环境">操作系统的运行环境</h2>
+<h3 id="运行机制">运行机制</h3>
+<p>CPU执行两种程序，一种是操作系统内核程序，另一种是（系统外层的）应用程序。</p>
+<p>特权指令=广义指令；</p>
+<p>管态=内核态，运行内核程序；</p>
+<p>目态=用户态，运行应用程序；</p>
+<p>内核态→用户态：执行特权指令修改<code>PSW</code>（程序状态字寄存器）；</p>
+<p>用户态→内核态：由中断（外中断）引发，或由异常（内中断）引发，硬件自动变态；</p>
+<ol>
+<li>
+<p>时钟管理</p>
+<p>置时钟指令是特权指令，读时钟指令是非特权指令。</p>
+</li>
+<li>
+<p>中断机制</p>
+<p>中断是操作系统必须提供的功能；并发、多道需要中断的支持。</p>
+</li>
+<li>
+<p>原语</p>
+<p>运行具有原子性，不可中断。</p>
+</li>
+</ol>
+<h3 id="中断与异常">中断与异常</h3>
+<h4 id="定义">定义</h4>
+<p>广义来说，操作系统内核夺回CPU使用权的唯一途径是中断。</p>
+<p>狭义来说，中断分为外中断和内中断，其中外中断称作中断，内中断称作异常。</p>
+<p>中断具体是内还是外，取决于中断信号的来源，来自CPU内部称内中断，来自CPU外部称外中断。</p>
+<p>中断与异常是从用户态到内核态的途径。</p>
+<p>通常异常会引起中断，但中断不一定是由异常引起的。</p>
+<h4 id="分类">分类</h4>
+<ol>
+<li>
+<p>内中断/异常</p>
+<p><u>异常不能被屏蔽，一旦出现必须立即处理。</u></p>
+<ol>
+<li>
+<p>自愿中断、<strong>陷入</strong>、陷阱——指令中断（如访管指令，它不是特权指令）</p>
+</li>
+<li>
+<p>强迫中断</p>
+<ol>
+<li>
+<p>硬件<strong>故障</strong></p>
+<p>由错误条件引起，可能被内核程序修复，修复后内核会将CPU使用权还给应用程序。例如缺页故障。</p>
+</li>
+<li>
+<p>软件<strong>终止</strong></p>
+<p>致命错误引起，不可被修复。应用程序执行结束。如整数除以0，非法使用特权指令等。</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>外中断/中断</p>
+<ol>
+<li>时钟中断</li>
+<li>IO中断请求</li>
+</ol>
+</li>
+</ol>
+<h4 id="中断实现原理">中断实现原理</h4>
+<ol>
+<li>
+<p>硬件完成部分（中断隐指令）</p>
+<ol>
+<li>
+<p>关中断</p>
+</li>
+<li>
+<p>保存断点</p>
+<p>主要是将断点：程序计数器PC 保存</p>
+</li>
+<li>
+<p>引出中断服务程序</p>
+</li>
+</ol>
+</li>
+<li>
+<p>操作系统完成部分（内核态，进入中断服务程序）</p>
+<ol>
+<li>
+<p>保存现场和屏蔽字</p>
+<p>保存程序状态字寄存器<code>PSW</code>和通用寄存器的内容。</p>
+<p>特别地，子程序调用不需要保存。</p>
+</li>
+<li>
+<p>开中断</p>
+</li>
+<li>
+<p>执行中断服务程序</p>
+<p>CPU根据中断类型查询中断向量表，根据类型使用中断处理程序处理中断。</p>
+</li>
+<li>
+<p>关中断</p>
+</li>
+<li>
+<p>恢复现场和屏蔽字</p>
+</li>
+<li>
+<p>开中断</p>
+</li>
+<li>
+<p>中断返回</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="系统调用">系统调用</h3>
+<p>系统调用是操作系统向上层（编程语言或用户）提供的一系列操作的接口。</p>
+<p>请求系统调用（用户态）→执行系统调用（内核态）→返回（用户态）。</p>
+<p>这样做的目的是：用户不能直接执行对系统影响非常大的操作，保证了系统的<strong>稳定性</strong>和<strong>安全性</strong>。</p>
+<p>表：各种指令的区别。</p>
+<table>
+<thead>
+<tr>
+<th>指令名称</th>
+<th>指令类别</th>
+<th>定义角度</th>
+<th>详细释义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>特权指令</td>
+<td>特权指令</td>
+<td>指令系统</td>
+<td>用于管理硬件和系统安全的指令。仅能在管态（核心态）执行，目态下执行该种指令，CPU会自动中断并切换至管态。</td>
+</tr>
+<tr>
+<td>访管指令或陷入指令或Trap指令</td>
+<td>非特权指令</td>
+<td>指令系统</td>
+<td>应用程序自愿进管的指令，目的是请求系统的服务。执行后进入管态，同时也意味着程序放弃CPU的控制权。访管指令后可以接系统调用。一般是需要执行特权指令时使用。</td>
+</tr>
+<tr>
+<td>广义指令或系统调用</td>
+<td>不定</td>
+<td>操作系统</td>
+<td>应用程序通过系统调用来请求获得操作系统内核的服务，系统调用是一段代码。特别地，特权指令是系统调用的真子集，执行系统调用并不一定非得执行特权指令，亦有可能有非特权指令。但执行系统调用必须在内核态下。</td>
+</tr>
+</tbody>
+</table>
+<p>表：系统调用与库函数的区别</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>详细释义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>库函数</td>
+<td>库函数可以理解为是编程语言向上层对某些请求服务的一种封装，使编程更加方便快捷。库函数中有可能包含零个（如取绝对值），一个或多个系统调用（如创建文件）。它运行在用户态，需要时可以请求系统调用从而转到内核态，结束后返回用户态。</td>
+</tr>
+<tr>
+<td>系统调用</td>
+<td>操作系统向上层（编程语言或用户）提供的一系列操作的接口，应用程序通过系统调用来请求获得操作系统内核的服务。执行系统调用必须在内核态下。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="操作系统的体系结构">操作系统的体系结构</h2>
+<ol>
+<li>大/单/宏内核
+<ol>
+<li>优点：高性能</li>
+<li>缺点：庞大，结构混乱，难以维护</li>
+<li>典例：Linux，Unix</li>
+</ol>
+</li>
+<li>微内核
+<ol>
+<li>优点：可靠，清晰</li>
+<li>缺点：性能低下（因需要频繁切换用户态和内核态）</li>
+<li>典例：Windows NT</li>
+</ol>
+</li>
+</ol>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/process-manage/" class="block">进程管理</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#操作系统概念">操作系统概念</a>
+      <ul>
+        <li><a href="#操作系统">操作系统</a></li>
+        <li><a href="#操作系统特征">操作系统特征</a></li>
+        <li><a href="#操作系统的目的与功能">操作系统的目的与功能</a></li>
+      </ul>
+    </li>
+    <li><a href="#操作系统的发展与分类">操作系统的发展与分类</a>
+      <ul>
+        <li><a href="#手工操作阶段">手工操作阶段</a></li>
+        <li><a href="#批处理阶段">批处理阶段</a></li>
+        <li><a href="#分时操作系统">分时操作系统</a></li>
+        <li><a href="#实时操作系统">实时操作系统</a></li>
+        <li><a href="#其他操作系统">其他操作系统</a></li>
+      </ul>
+    </li>
+    <li><a href="#操作系统的运行环境">操作系统的运行环境</a>
+      <ul>
+        <li><a href="#运行机制">运行机制</a></li>
+        <li><a href="#中断与异常">中断与异常</a></li>
+        <li><a href="#系统调用">系统调用</a></li>
+      </ul>
+    </li>
+    <li><a href="#操作系统的体系结构">操作系统的体系结构</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

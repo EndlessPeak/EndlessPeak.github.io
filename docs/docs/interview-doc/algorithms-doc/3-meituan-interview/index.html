@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>MeiTuan Interview 1 | Algorithms | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="美团2024年春招第一场笔试题目。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Computer Interview",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Algorithms",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"MeiTuan Interview 1",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/3-meituan-interview/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/3-meituan-interview/"
+    },
+    "headline": "MeiTuan Interview 1 | Algorithms | 悦翎轩","datePublished": "2024-06-17T00:00:00+00:00",
+    "dateModified": "2024-06-17T00:00:00+00:00",
+    "wordCount":  1203 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "美团2024年春招第一场笔试题目。"
+}
+</script><meta property="og:title" content="MeiTuan Interview 1 | Algorithms | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/3-meituan-interview/" />
+
+
+
+<meta property="og:description" content="美团2024年春招第一场笔试题目。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2024-06-17T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2024-06-17T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/">Algorithms</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/1-merge-sorted-array/">Merge Sorted Array</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/2-remove-elements/">Remove Element</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/3-meituan-interview/">MeiTuan Interview 1</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/sqrtx/">Sqrt(x)</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/string-common-element/">字符串公共元素问题</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">MeiTuan Interview 1</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2024-06-17</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>3分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="平衡矩阵">平衡矩阵</h2>
+<p>小美拿到了一个 $n∗n$ 的矩阵，其中每个元素是 0 或者 1。小美认为一个矩形区域是完美的，当且仅当该区域内 0 的数量恰好等于 1 的数量。</p>
+<p>现在，小美希望你回答有多少个 $i∗i$ 的完美矩形区域。</p>
+<p>你需要回答 $1\leq i \leq n$ 的所有答案。</p>
+<p><strong>输入描述：</strong></p>
+<p>第一行输入一个正整数n，代表矩阵大小。
+接下来的n行，每行输入一个长度为n的 01 串，用来表示矩阵。
+$1\leq n \leq 200$</p>
+<p><strong>输出描述：</strong></p>
+<p>输出n行，第i行输出i*i的完美矩形区域的数量。</p>
+<p><strong>解题思想：</strong></p>
+<ol>
+<li>
+<p>前缀和数组计算：</p>
+<ol>
+<li>prefix_zeros 数组的每个元素 prefix_zeros[i][j] 表示从矩阵左上角 (0, 0) 到 (i, j) 范围内 0 的数量。</li>
+<li>利用动态规划的方法逐步累加每个位置的0数量，并减去重复计算的部分</li>
+</ol>
+</li>
+<li>
+<p>快速计算子矩阵中的0数量：</p>
+<p>利用 prefix_zeros 数组，快速计算任意子矩阵中0的数量。计算公式基于二维前缀和的性质。</p>
+</li>
+</ol>
+<pre><code class="language-cpp">bool perfect_matrix(int count_zero, int size) {
+    int total_elements = size * size;
+    return count_zero * 2 == total_elements;
+}
+
+std::vector&lt;std::vector&lt;int&gt;&gt; compute_prefix_zeros(const std::vector&lt;std::vector&lt;int&gt;&gt;&amp; a, int n) {
+    std::vector&lt;std::vector&lt;int&gt;&gt; prefix_zeros(n, std::vector&lt;int&gt;(n, 0));
+    for (int i = 0; i &lt; n; i++) {
+        for (int j = 0; j &lt; n; j++) {
+            prefix_zeros[i][j] = (a[i][j] == 0 ? 1 : 0);
+            if (i &gt; 0) prefix_zeros[i][j] += prefix_zeros[i-1][j];
+            if (j &gt; 0) prefix_zeros[i][j] += prefix_zeros[i][j-1];
+            if (i &gt; 0 &amp;&amp; j &gt; 0) prefix_zeros[i][j] -= prefix_zeros[i-1][j-1];
+        }
+    }
+    return prefix_zeros;
+}
+
+int count_zeros_in_submatrix(const std::vector&lt;std::vector&lt;int&gt;&gt;&amp; prefix_zeros, int x1, int y1, int size) {
+    int x2 = x1 + size - 1;
+    int y2 = y1 + size - 1;
+    int total = prefix_zeros[x2][y2];
+    if (x1 &gt; 0) total -= prefix_zeros[x1-1][y2];
+    if (y1 &gt; 0) total -= prefix_zeros[x2][y1-1];
+    if (x1 &gt; 0 &amp;&amp; y1 &gt; 0) total += prefix_zeros[x1-1][y1-1];
+    return total;
+}
+
+int main() {
+    int n;
+    std::cin &gt;&gt; n;
+    std::vector&lt;std::vector&lt;int&gt;&gt; a(n, std::vector&lt;int&gt;(n)); 
+    for (int i = 0; i &lt; n; i++) {
+        std::string row;
+        std::cin &gt;&gt; row;
+        for (int j = 0; j &lt; n; j++) {
+            a[i][j] = row[j] - '0';
+        }
+    }
+
+    // 计算前缀和数组
+    std::vector&lt;std::vector&lt;int&gt;&gt; prefix_zeros = compute_prefix_zeros(a, n);
+
+    for (int size = 1; size &lt;= n; size++) {
+        int count = 0;
+        // 遍历所有可能的子矩阵起点
+        for (int i = 0; i &lt;= n - size; i++) {
+            for (int j = 0; j &lt;= n - size; j++) {
+                int count_zero = count_zeros_in_submatrix(prefix_zeros, i, j, size);
+                if (perfect_matrix(count_zero, size))
+                    count++;
+            }
+        }
+        std::cout &lt;&lt; count &lt;&lt; std::endl;
+    }
+
+    return 0;
+}
+</code></pre>
+<h2 id="数组询问">数组询问</h2>
+<p>小美拿到了一个由正整数组成的数组，但其中有一些元素是未知的（用0来表示）。</p>
+<p>现在小美想知道，如果那些未知的元素在区间 $[l,r]$ 范围内随机取值的话，数组所有元素之和的最小值和最大值分别是多少？</p>
+<p>共有q次询问。</p>
+<p><strong>输入描述：</strong></p>
+<p>第一行输入两个正整数n,q，代表数组大小和询问次数。
+第二行输入n个整数a_i，其中如果输入的a_i为 0，那么说明a_i是未知的。
+接下来的q行，每行输入两个正整数 l,r，代表一次询问。</p>
+$$
+\begin{aligned}
+1\leq n,q \leq 10^5
+0 \leq a_i \leq 10^9
+1\leq l \leq r \leq 10^9
+\end{aligned}
+$$
+<p><strong>输出描述：</strong></p>
+<p>输出 $q$ 行，每行输出两个正整数，代表所有元素之和的最小值和最大值。</p>
+<p>示例：</p>
+<p>输入例子：</p>
+<pre><code class="language-text">3 2
+1 0 3
+1 2
+4 4
+</code></pre>
+<p>输出例子：</p>
+<pre><code class="language-text">5 6
+8 8
+</code></pre>
+<p>例子说明：</p>
+<ol>
+<li>只有第二个元素是未知的。</li>
+<li>第一次询问，数组最小的和是 1+1+3=5，最大的和是 1+2+3=6。</li>
+<li>第二次询问，显然数组的元素和必然为 8。</li>
+</ol>
+<p><strong>解题思想：</strong></p>
+<ol>
+<li>前缀和数组：预处理已知元素的前缀和，使得每次查询能够快速计算已知元素的和。</li>
+<li>统计未知元素：在处理每个查询时，统计数组中未知元素（即值为0的元素）的数量，并根据查询的范围 $[l, r]$ 计算最小值和最大值。</li>
+</ol>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;numeric&gt;
+using namespace std;
+
+int main() {
+    int n, q;
+    cin &gt;&gt; n &gt;&gt; q;
+    vector&lt;int&gt; a(n);
+    vector&lt;long long&gt; prefix_sum(n + 1, 0);
+    vector&lt;int&gt; unknown_count(n + 1, 0);
+
+    for (int i = 0; i &lt; n; ++i) {
+        cin &gt;&gt; a[i];
+        // 计算前缀和，对已知元素进行累加
+        prefix_sum[i + 1] = prefix_sum[i] + (a[i] != 0 ? a[i] : 0);
+        // 统计未知元素的数量
+        unknown_count[i + 1] = unknown_count[i] + (a[i] == 0 ? 1 : 0);
+    }
+
+    for (int i = 0; i &lt; q; ++i) {
+        int l, r;
+        cin &gt;&gt; l &gt;&gt; r;
+        long long known_sum = prefix_sum[n];
+        int zero_count = unknown_count[n];
+        long long min_value = known_sum + zero_count * l;
+        long long max_value = known_sum + zero_count * r;
+        cout &lt;&lt; min_value &lt;&lt; &quot; &quot; &lt;&lt; max_value &lt;&lt; endl;
+    }
+
+    return 0;
+}
+</code></pre>
+
+</article>
+
+                    
+                    
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/2-remove-elements/" class="block">Remove Element</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/algorithms-doc/sqrtx/" class="block">Sqrt(x)</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#平衡矩阵">平衡矩阵</a></li>
+    <li><a href="#数组询问">数组询问</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

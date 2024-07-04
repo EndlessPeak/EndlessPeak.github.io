@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SLAM Programming Basic on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/</link>
+    <description>Recent content in SLAM Programming Basic on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Wed, 19 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SLAM Summary</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/1-slam-summary/</link>
+      <pubDate>Sun, 08 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/1-slam-summary/</guid>
+      <description>What&amp;rsquo;s SLAM SLAM 是 Simultaneous Localization and Mapping，即同时定位与建图。 history separate 最初，定位和建图问题是被看成两个独立问题研究的： 定位问题的关键是事先给定环境地图； 建图问题的关键是</description>
+    </item>
+    <item>
+      <title>VSLAM Summary</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/2-vslam-summary/</link>
+      <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/2-vslam-summary/</guid>
+      <description>Visual SLAM 在计算机视觉中，与同时定位与地图构建(Simultaneous Localization And Mapping)相似的是运动推断结构(Structure from motion,SFM)</description>
+    </item>
+    <item>
+      <title>Rotation &amp; Translation Matrix</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-1-rotation-and-translation-matrix/</link>
+      <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-1-rotation-and-translation-matrix/</guid>
+      <description>Point &amp;amp; Vector &amp;amp; Coordinate System 旋转矩阵的推导可以参考 姿态解算 部分。 基是张成三维空间的一组线性无关的向量。三维空间中的某个点 $a$ 可以用 $\mathbb{R}^3$ 来描述，假设线性空间中存在一组基 $(</description>
+    </item>
+    <item>
+      <title>Eigen Exercise</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-2-eigen-exercise/</link>
+      <pubDate>Thu, 16 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-2-eigen-exercise/</guid>
+      <description>CMake Usage Eigen 是用头文件组成的库，对于它的使用，有两种办法： 理论上只需要引入头文件即可，见下面代码中的“直接引入”； 按照官网说明和 cmake 规范，依次 find_package 并 target_link_libraries 下面提供了</description>
+    </item>
+    <item>
+      <title>Geometry Exercise</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-4-geometry-exercise/</link>
+      <pubDate>Wed, 19 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-4-geometry-exercise/</guid>
+      <description>Geometry Declaration 四元数，旋转矩阵和旋转向量的声明： // 3D 旋转矩阵直接使用 Matrix3d 或 Matrix3f Eigen::Matrix3d rotation_matrix; // 旋转向量使用 AngleAxis, 它底层不直接是Matrix，但运算可以当作矩阵（因为重载了运算符）</description>
+    </item>
+    <item>
+      <title>Pangolin Exercise</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-5-pangolin/</link>
+      <pubDate>Wed, 19 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-5-pangolin/</guid>
+      <description>CMake Usage 下面提供了一个 pangolin 的 cmake 模板。 cmake_minimum_required(VERSION 3.24) project(eigen_example) set(CMAKE_CXX_STANDARD 17) find_package(Eigen3 REQUIRED) find_package(Pangolin REQUIRED) find_package(GLEW REQUIRED) # find_package(OpenGL REQUIRED) # 非必须的，但还是加上 include_directories( ${Pangolin_INCLUDE_DIRS} ) include_directories( &amp;quot;src/eigen_geometry&amp;quot; &amp;quot;src/eigen_matrix&amp;quot; &amp;quot;src/argparse&amp;quot; &amp;quot;src/coordinate_transform&amp;quot; &amp;quot;src/visualize_plot&amp;quot; ) file(GLOB_RECURSE SOURCES &amp;quot;src/*&amp;quot; &amp;quot;src/argparse/*&amp;quot; &amp;quot;src/coordinate_transform/*&amp;quot; &amp;quot;src/eigen_geometry/*&amp;quot; &amp;quot;src/eigen_matrix/*&amp;quot; &amp;quot;src/visualize_plot/*&amp;quot; ) add_executable(${PROJECT_NAME} ${SOURCES}) target_link_libraries(${PROJECT_NAME} Eigen3::Eigen) target_link_libraries(${PROJECT_NAME} ${Pangolin_LIBRARIES}) 注意事项： 对于 target_link_libraries(${PROJECT_NAME} Pangolin) 在</description>
+    </item>
+    <item>
+      <title>Lie Group and Lie Algebras 1</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/4-lie-group-and-lie-algebras-1/</link>
+      <pubDate>Mon, 20 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/4-lie-group-and-lie-algebras-1/</guid>
+      <description>Raise 在 SLAM 中，除表示位姿(旋转)外，还需要对其进行估计和优化。然而，旋转矩阵自身带有约束(正交矩阵且行列式为 1)，此时对其进行优化显得困难。通过一定的转换</description>
+    </item>
+    <item>
+      <title>Lie Group and Lie Algebras Exercise</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/5-lie-group-and-lie-algebras-exercise/</link>
+      <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/5-lie-group-and-lie-algebras-exercise/</guid>
+      <description>Lie Group &amp;amp; Lie Algebras 李群 \(\mathcal{L}\) 是一个群同时也是一个光滑的(可微的)的流形, 定义其上的群乘法和求逆运算均可微; 李代数 \(\mathcal{A}\) 是 \(\mathcal{L}\) 的在单位元 \(\mathcal{1}\) 处的正切空间;最常见的李群就是 SO(n)</description>
+    </item>
+    <item>
+      <title>Non linear Optimize</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/7-nonlinear-optimize/</link>
+      <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/7-nonlinear-optimize/</guid>
+      <description>Matrix Derivative 下面介绍矩阵求导的相关内容。 矩阵和向量求导是批量求导数的一种方式，其本质上还是矩阵或向量中的标量在求导，只是借助矩阵或者向量的形式，同时对多个因变</description>
+    </item>
+    <item>
+      <title>ORB SLAM Adjustments</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/10-orb-slam3-adjustments/</link>
+      <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/10-orb-slam3-adjustments/</guid>
+      <description>ORB SLAM3 orb-slam3 的项目地址：https://github.com/UZ-SLAMLab/ORB_SLAM3 目前 orb-slam3 的代码直接编译会报错，因此需要解决一些冲突。 Opencv orb-slam</description>
+    </item>
+    <item>
+      <title>ORB SLAM3 Stereo</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/11-orb-slam3-stereo/</link>
+      <pubDate>Wed, 31 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/11-orb-slam3-stereo/</guid>
+      <description>Stereo Kitti Yaml modification 修改 KITTI00-02.yaml 文件中的 Viewer.ViewpointY: -100 改为 Viewer.ViewpointY: -100.0 Settings Orb slam3 在运行 stereo 时，输出第二个摄像头参数位置报 segment fault //for(size_t i = 0; i &amp;lt; settings.originalCalib2_-&amp;gt;size(); i++){ // output &amp;lt;&amp;lt; &amp;quot; &amp;quot; &amp;lt;&amp;lt; settings.originalCalib2_-&amp;gt;getParameter(i); //} if (settings.cameraType_ == Settings::PinHole) { for(size_t i = 0; i &amp;lt; settings.originalCalib2_-&amp;gt;size(); i++){ output &amp;lt;&amp;lt; &amp;quot; &amp;quot; &amp;lt;&amp;lt;</description>
+    </item>
+    <item>
+      <title>SLAM Evaluation</title>
+      <link>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/12-slam-evo/</link>
+      <pubDate>Sat, 30 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/12-slam-evo/</guid>
+      <description>EVO 在使用evo对ORB-SLAM或OpenVSLAM等SLAM系统在KITTI数据集上以双目模式运行的结果进行评估时，你首先需要确保你的轨迹文件和基准</description>
+    </item>
+  </channel>
+</rss>

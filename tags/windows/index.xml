@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windows on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/tags/windows/</link>
+    <description>Recent content in Windows on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Thu, 09 Jan 2020 22:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>完全使用Linux工作</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-sum/linux-technology-1-fully-use-linux/</link>
+      <pubDate>Thu, 09 Jan 2020 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-sum/linux-technology-1-fully-use-linux/</guid>
+      <description>&lt;p&gt;尽管很多人已经不习惯看长篇大论, 但我还是要说, 这是一篇值得你从头读到尾的长篇文章。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

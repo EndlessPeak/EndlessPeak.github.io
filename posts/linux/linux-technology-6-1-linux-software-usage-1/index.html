@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Linux 软件使用问题与解决方案 | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="在这一部分中我尝试讲述常用软件的安装过程中遇到的问题，以及我自己探索的解决思路。
+本节主要讨论的是家目录和QQ的解决方案汇总。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Posts",
+      "item":"https://endlesspeak.github.io/posts/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Linux 软件使用问题与解决方案",
+      "item":"https://endlesspeak.github.io/posts/linux/linux-technology-6-1-linux-software-usage-1/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/posts/linux/linux-technology-6-1-linux-software-usage-1/"
+    },
+    "headline": "Linux 软件使用问题与解决方案 | 悦翎轩","datePublished": "2020-04-03T02:00:00+00:00",
+    "dateModified": "2020-04-03T02:00:00+00:00",
+    "wordCount":  7084 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "\u003cp\u003e在这一部分中我尝试讲述常用软件的安装过程中遇到的问题，以及我自己探索的解决思路。\u003c\/p\u003e\n\u003cp\u003e本节主要讨论的是家目录和QQ的解决方案汇总。\u003c\/p\u003e"
+}
+</script><meta property="og:title" content="Linux 软件使用问题与解决方案 | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/posts/linux/linux-technology-6-1-linux-software-usage-1/" />
+
+
+
+
+<meta property="og:description" content="在这一部分中我尝试讲述常用软件的安装过程中遇到的问题，以及我自己探索的解决思路。
+本节主要讨论的是家目录和QQ的解决方案汇总。" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2020-04-03T02:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2020-04-03T02:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="posts" />
+
+
+<meta property="article:tag" content="Linux" />
+
+
+
+
+
+<meta property="og:see_also" content="https://endlesspeak.github.io/posts/linux/linux-technology-4-x-environment/" />
+
+<meta property="og:see_also" content="https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-2-arch-linux-installation/" />
+
+<meta property="og:see_also" content="https://endlesspeak.github.io/docs/build/operating-system-sum/linux-technology-2-linux-comprehensive-overview/" />
+
+<meta property="og:see_also" content="https://endlesspeak.github.io/docs/build/operating-system-sum/linux-technology-1-fully-use-linux/" />
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+  
+  
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-8 lg:pt-12">
+    <div
+      class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
+    >
+      <article class="prose">
+  <h1 class="mb-4">Linux 软件使用问题与解决方案</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2020-04-03</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>15分钟阅读时长</span>
+  </div>
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="https://endlesspeak.github.io/categories/linux-basic/" class="hover:text-eureka"
+          >Linux Basic</a
+        >
+      
+        
+          <span>, </span>
+        <a href="https://endlesspeak.github.io/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="hover:text-eureka"
+          >解决方案</a
+        >
+      
+    </div>
+  
+
+  
+</div>
+
+
+  
+  
+
+  <p>在这一部分中我尝试讲述常用软件的安装过程中遇到的问题，以及我自己探索的解决思路。</p>
+<p>本节主要讨论的是家目录和QQ的解决方案汇总。</p>
+<h2 id="xdg-user-directories">XDG user directories</h2>
+<p>问题的提出：我的实体机Linux每次进入用户目录的时候需要输入类似如下的命令：</p>
+<pre><code class="language-bash">$ cd 下载/
+</code></pre>
+<p>进入用户目录需要切换两次输入法，相当麻烦。于是萌生了将家目录下的用户目录整体改为英文。</p>
+<blockquote>
+<p>Arch Wiki的定义：用户目录指位于 $HOME 下的一系列常用目录，例如 Documents，Downloads，Music，还有 Desktop。用户目录会在文件管理器中显示为不同的图标，且被多种应用程序所参照。可以使用 <code>xdg-user-dirs</code>命令自动生成这些目录。</p>
+</blockquote>
+<h3 id="gnome解决办法">Gnome解决办法</h3>
+<p>我不知道是因为Ubuntu还是因为Gnome作为桌面环境的缘故，总之这些Linux用户可以采用以下办法：</p>
+<ol>
+<li>
+<p>输入命令<code>export LANG=en_US</code> 和<code>xdg-user-dirs-gtk-update</code></p>
+</li>
+<li>
+<p>在弹出的窗口中询问是否将目录转化为英文路径，同意并关闭</p>
+</li>
+<li>
+<p>使用命令<code>epxort LANG=zh_CN</code></p>
+</li>
+</ol>
+<h3 id="kde解决办法">KDE解决办法</h3>
+<p>由于我是Manjaro Linux，基于Arch，同时安装的是KDE桌面环境，故命令<code>xdg-user-dirs-gtk-update</code>会提示找不到。查阅Arch Wiki内容如下：</p>
+<h4 id="创建默认目录">创建默认目录</h4>
+<p>可以用 <code>xdg-user-dirs</code> 命令在 <code>$HOME</code> 下创建一整套默认的经本地化的用户目录。运行：</p>
+<pre><code>$ xdg-user-dirs-update
+</code></pre>
+<p>运行后该命令还会自动地：</p>
+<ul>
+<li>创建一个本地的 <code>~/.config/user-dirs.dirs</code> 配置文件：应用程序通过他来查找使用特定帐号指定的用户目录。</li>
+<li>创建一个本地的 <code>~/.config/user-dirs.locale</code> 配置文件：根据使用的 locale 指定语言。</li>
+</ul>
+<p>由于我的发行版Manjaro在安装的时候Manjaro Installation软件已经自动帮我完成了上述工作，因此这里我不需要做任何操作。其实Arch Linux也不需要做这一步操作，上述内容只是在解释<code>xdg-user-dirs-update</code>命令的工作原理。</p>
+<p>Arch Wiki注明说使用 <code>LC_ALL=C xdg-user-dirs-update --force</code> 命令可以强制创建英语目录。但就我个人实践情况来看，这条命令并不起作用。我想可能必须在刚安装完的Arch系统上，尚未创建用户目录的系统，使用该命令才可以，或者需要先手动将所有用户目录先改成英文。</p>
+<h4 id="创建自定义目录">创建自定义目录</h4>
+<p>本地的 <code>~/.config/user-dirs.dirs</code> 和全局的 <code>/etc/xdg/user-dirs.defaults</code> 配置文件都使用如下的环境变量格式： <code>XDG_DIRNAME_DIR=&quot;$HOME/目录名&quot;</code>。</p>
+<p>比如，我原先家目录下的配置如下所示：</p>
+<pre><code class="language-text">~/.config/user-dirs.dirs
+XDG_DESKTOP_DIR=&quot;$HOME/桌面&quot;
+XDG_DOCUMENTS_DIR=&quot;$HOME/文档&quot;
+XDG_DOWNLOAD_DIR=&quot;$HOME/下载&quot;
+XDG_MUSIC_DIR=&quot;$HOME/音乐&quot;
+XDG_PICTURES_DIR=&quot;$HOME/图片&quot;
+XDG_PUBLICSHARE_DIR=&quot;$HOME/公共&quot;
+XDG_TEMPLATES_DIR=&quot;$HOME/模板&quot;
+XDG_VIDEOS_DIR=&quot;$HOME/视频&quot;
+</code></pre>
+<p>Linux本地化后目录都会是中文，而我想将其改为英文，故我应该先将<code>~/.config/user-dirs.dirs</code>中的内容改为如下形式：</p>
+<pre><code class="language-text">~/.config/user-dirs.dirs
+XDG_DESKTOP_DIR=&quot;$HOME/Desktop&quot;
+XDG_DOCUMENTS_DIR=&quot;$HOME/Documents&quot;
+XDG_DOWNLOAD_DIR=&quot;$HOME/Downloads&quot;
+XDG_MUSIC_DIR=&quot;$HOME/Music&quot;
+XDG_PICTURES_DIR=&quot;$HOME/Pictures&quot;
+XDG_PUBLICSHARE_DIR=&quot;$HOME/Public&quot;
+XDG_TEMPLATES_DIR=&quot;$HOME/Templetes&quot;
+XDG_VIDEOS_DIR=&quot;$HOME/videos&quot;
+</code></pre>
+<p>然后切记不要立刻执行<code>xdg-user-dirs-update</code>，否则会提示：</p>
+<pre><code class="language-text">(用户目录) has been removed,($用户目录) has been renamed.
+</code></pre>
+<p>紧接着你会发现你刚才编辑的文件内容全都被改回原样了，别问我是怎么知道的。</p>
+<p>出现这样的原因就是此时本地的文件夹还没有重命名，只是更改了配置文件。家目录下的常用目录必须<strong>被手动重命名</strong>之后再行更新命令。</p>
+<p>于是我在<code>Dolphin</code>(KDE File Manager)中为各个用户目录手动重命名，顺便提一句，重命名的快捷键是F2。</p>
+<blockquote>
+<p>值得注意的是，KDE中可能设置有单击文件夹视为直接进入的选项，故如果在KDE中，需要点击文件夹左上角的加号以选中文件夹或文件。其他桌面环境的文件管理器如Gnome的Nautilus，XFCE的Thunar等等或在窗口管理器运行的Dolphin都不需要考虑这段。</p>
+</blockquote>
+<p>手动重命名完成后，使用如下命令更新：</p>
+<pre><code class="language-bash">$ LANG=en_US.UTF-8 xdg-user-dirs-update
+</code></pre>
+<h2 id="deepin-qq-install">Deepin QQ Install</h2>
+<p>问题的提出：我希望在Linux上安装QQ。</p>
+<p>QQ 是腾讯公司开发的即时通讯软件，为 ICQ 的仿制品，是中国最流行的 IM 软件。关于QQ的内容，Arch wiki中总共有两种大体的解决思路：</p>
+<ol>
+<li>虚拟机</li>
+<li>Wine</li>
+</ol>
+<p>虚拟机自不必多说，主要是资源占用过高，而我的实体机Linux安装的时候分配的磁盘空间又过小，故无法安装虚拟机，只能用Wine的思路。</p>
+<p>此处推荐<code>Deepin</code>社区的<code>deepin-wine-qq</code>/<code>deepin-wine-tim</code>或<code>deepin.com.qq.im</code>/<code>deepin.com.qq.office</code>,至于手动实现wine方案等等，我推荐参考<a href="https://wiki.archlinux.org/index.php/Tencent_QQ_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">官方文档</a>。说实话，耗时耗力还不一定讨好，比如之前很出名的清风老师的解决方案已经近两年没更新了，再比如那个手动实现wine方案，光配置代码就超过一个屏幕了。</p>
+<h3 id="安装deepin-wine-qqtim">安装Deepin-wine-qq/tim</h3>
+<h4 id="安装及配置">安装及配置</h4>
+<p>结合我自己尝试的经历，我并不是很推荐deepin-wine-qq/tim，主要原因就是安装的依赖过多。一个聊天软件居然要占800多MiB的空间，在我看来是不敢想象的。但是既然已经尝试过了，就说一说：</p>
+<pre><code class="language-bash">$ yay -S deepin-wine-qq #或者deepin-wine-tim，二者任选其一
+</code></pre>
+<p>依次等待安装依赖，下载构建文件，从源代码编译，打包，安装最后结束。</p>
+<p>很可能打开QQ或TIM会发现字体全部显示为□，而且巨卡无比，别问我是怎么知道的。</p>
+<p>在Linux的<code>/usr/share/fonts</code>中查找<code>wqy-microhei.ttc</code>字体。</p>
+<blockquote>
+<p>之前试着用的是微软的simsun宋体字体，结果因为日常文件往来里面字体很多是宋体，不安装宋体会造成排版不一致，但是安装上宋体后wine QQ就又会巨卡，并且聊天窗口标题栏字体还是有概率显示成方框，令人自闭。</p>
+</blockquote>
+<p>如果你没有装文泉驿的字体，那就pacman把这个装上；如果对文泉驿不放心，还可以选择微软雅黑<code>msyh.ttc</code>。因为我是双系统，很容易就从C:\Windows\System\Fonts中找到这个字体。</p>
+<p>(可选的步骤)修改wine系统注册表，输入命令：</p>
+<pre><code class="language-bash">$ vim ~/.deepinwine/Deepin-WeChat/system.reg
+</code></pre>
+<p>更改下面两行内容为：</p>
+<pre><code>&quot;MS Shell Dlg&quot;=&quot;msyh&quot; 
+&quot;MS Shell Dlg 2&quot;=&quot;msyh&quot;
+</code></pre>
+<p>我说这一步是可选的，原因就是我当时就并没有做这一步。</p>
+<p>注册字体，输入命令：</p>
+<pre><code class="language-bash">$ vim msyh_config.reg
+</code></pre>
+<p>添加如下内容：</p>
+<pre><code class="language-text">REGEDIT4
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink]
+&quot;Lucida Sans Unicode&quot;=&quot;msyh.ttc&quot;
+&quot;Microsoft Sans Serif&quot;=&quot;msyh.ttc&quot;
+&quot;MS Sans Serif&quot;=&quot;msyh.ttc&quot;
+&quot;Tahoma&quot;=&quot;msyh.ttc&quot;
+&quot;Tahoma Bold&quot;=&quot;msyhbd.ttc&quot;
+&quot;msyh&quot;=&quot;msyh.ttc&quot;
+&quot;Arial&quot;=&quot;msyh.ttc&quot;
+&quot;Arial Black&quot;=&quot;msyh.ttc&quot;
+</code></pre>
+<p>最后输入命令完成字体注册：</p>
+<pre><code class="language-bash">$ deepin-wine regedit msyh_config.reg
+</code></pre>
+<p>然后应该就可以正常使用了，当然，图片和头像应该还是加载不出来，这一点见后文。</p>
+<h3 id="安装deepincomqqimoffice">安装Deepin.com.qq.im/office</h3>
+<h4 id="安装及配置-1">安装及配置</h4>
+<pre><code class="language-bash">$ sudo pacman -S deepin.com.qq.office deepin.com.qq.im #需要ArchLinuxCN源才能安装
+#或者直接yay安装
+$ yay -S deepin.com.qq.office deepin.com.qq.im
+</code></pre>
+<p>检查安装包gnome-settings-daemon是否存在，如果不存在，就安装该包。</p>
+<pre><code class="language-bash">$ sudo pacman -Qs gnome-settings-daemon
+$ sudo pacman -S gnome-settings-daemon
+</code></pre>
+<p>可通过以下命令来启动 <code>gnome-settings-daemon</code></p>
+<pre><code class="language-bash">$ /usr/lib/gsd-xsettings
+</code></pre>
+<p>在QQ/TIM的执行脚本中添加语句使其在软件启动前自动启动。</p>
+<pre><code class="language-bash">$ vim /opt/deepwine/apps/Deepin-QQ/run.sh #或者为Deepin-TIM
+</code></pre>
+<p>在文件首添加下面的内容：<code>/usr/lib/gsd-xsettings &amp;</code></p>
+<h3 id="问题与解决方案">问题与解决方案</h3>
+<h4 id="问题1tim和qq可能会在点击好友图像时卡死">问题1：Tim和QQ可能会在点击好友图像时卡死</h4>
+<p>原因是pulseaudio进程的问题。可以考虑结束，但会影响到声音的调整。</p>
+<p>(鬼知道这两个千里之外的包为什么会产生冲突，就像我不知道为什么deepin社区在打包QQ和TIM的时候需要加上gnome-settings-daemon依赖一样。)</p>
+<h4 id="问题2在i3wm中图标可能无法正常使用">问题2：在i3wm中图标可能无法正常使用</h4>
+<p>i3wm的system tray实现方式比较特殊，QQ/TIM的托盘为<code>wine system trayer</code>。不过天无绝人之路，deepin-TIM和deepin-QQ在目录/opt/deepinwine/tools中有工具sendkeys.exe，使用时需要指定wine路径，运行下面的代码会向qq和TIM进程发送ctrl+alt+z，QQ和TIM如果使用默认的快捷键会被弹出：</p>
+<pre><code class="language-bash">$ env WINEPREFIX=/home/&lt;username&gt;/.deepinwine/Deepin-QQ deepin-wine /opt/deepinwine/tools/sendkeys.exe $3 z
+</code></pre>
+<p>释义：env是外部命令，用于列出环境变量或赋值；此处即给环境变量<code>WINEPREFIX</code>赋值为/home/<username>/.deepinwine/Deepin-QQ，而后启动deep-wine容器(其环境变量前面已定义)，在其中执行/opt/deepinwine/tools/sendkeys.exe，sendkeys.exe需要传入参数，此处传入<code>$3</code>和<code>z</code>两个参数($3被定义为宏 <code>Ctrl+Alt</code> )。</p>
+<blockquote>
+<p>注：同一文件目录下sendkeys.sh 文件做了封装，直接运行sendkeys.sh z在有的环境下会出bug。(因为环境变量可能无法识别)</p>
+</blockquote>
+<p>执行：通常情况下会报错，但QQ/TIM界面会收到快捷键并弹出。</p>
+<pre><code class="language-shell">Wine cannot find the ncurses library (libncurses.so.5).
+key down: (ctrl+alt+Z), 3, 0
+key up: (ctrl+alt+Z), 3, 0
+</code></pre>
+<h4 id="问题3qqtim微信的图标可能显示不正确">问题3：QQ、TIM、微信的图标可能显示不正确</h4>
+<p>下面以微信为例说明这个问题。</p>
+<p>在Linux下面桌面图标快捷方式是由一个desktop文件配置，比如微信的内容基本上如下：</p>
+<pre><code class="language-shell">#!/usr/bin/env xdg-open
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+X-Created-By=Deepin WINE Team
+Categories=chat;
+Icon=deepin.com.wechat
+Exec=&quot;/opt/deepinwine/apps/Deepin-WeChat/run.sh&quot; -u %u
+Name=WeChat
+Name[zh_CN]=微信
+Comment=Tencent WeChat Client on Deepin Wine
+StartupWMClass=WeChat.exe
+MimeType=
+</code></pre>
+<p>其中比较关键的地方，是Icon，Exec，Name和<strong>StartupWMClass</strong> 。默认情况下，Linux是根据可执行文件的名称判定是属于哪个desktop文件配置的，大部分desktop文件的Exec配置的可执行文件刚好就是实际执行的文件名，所以很多没有StartupWMClass配置项。但这个配置项其实很重要，比如说在上面的微信的配置里面这个值是”WeChat.exe“，但是为什么还是不行呢？</p>
+<p>通过<code>xprop WM_CLASS</code>获取窗口的属性值，在命令行下执行这个命令，鼠标会变成+，然后点击要微信的窗口，输入和输出如下：</p>
+<pre><code class="language-bash">$ xprop WM_CLASS
+WM_CLASS(STRING) = &quot;wechat.exe&quot;, &quot;Wine&quot;
+</code></pre>
+<p>检查<code>WM_CLASS(STRING)</code>字段和<code>desktop</code>文件配置中的区别，然后修正。这<strong>可能</strong>可以解决图标问题。</p>
+<h4 id="问题4deepin-qq无法加载头像和图片">问题4：Deepin QQ无法加载头像和图片</h4>
+<p>这是IPV6的问题，我先提一下IPV6：</p>
+<blockquote>
+<p>理想情况下，由IPV4向IPv6过渡的进程不应该被最终的用户所看见，但是IPv4/IPv6混合环境有时会让你碰到各种源于IPv4和IPv6之间不经意间的相互碰撞的问题。举个例子，你会碰到应用程序超时的问题，比如pacman或ssh尝试通过IPv6连接失败、DNS服务器意外清空了IPv6的记录、或者你支持IPv6的设备不兼容你的互联网服务提供商遗留下的IPv4网络，等等。</p>
+<p>当然这不意味着你应该盲目地在你的Linux机器上禁用IPv6。鉴于IPv6许诺的种种好处，作为社会的一份子我们最终还是要充分拥抱它的，但是作为给最终用户进行故障排除过程的一部分，如果IPv6确实是罪魁祸首，那你可以尝试去关闭它。</p>
+</blockquote>
+<p>再提一下我对于QFL的观点：</p>
+<blockquote>
+<p>19年10月24日QQ推出了QQ for linux，大部分人以为这是腾讯对Linux的支持，必须指出，这是幻想。推出QFL的原因应该是QQ的图片传输开始使用ipv6传输，原先在Linux上运行的八仙过海QQ版本基本上图片加载都成了问题。</p>
+<p>个人观点：QFL太过敷衍，无良软件注定得不到使用者的认可。</p>
+</blockquote>
+<h5 id="法一禁用ipv6">法一：禁用IPV6</h5>
+<p>禁用IPV6分为三种办法，分述如下：</p>
+<p>一是输入下列三个命令将Linux上的ipv6全部禁用即可。</p>
+<pre><code class="language-bash">$ sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+$ sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+$ sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
+</code></pre>
+<blockquote>
+<p>注：这种方法是永久禁用；禁用后开启很简单，把命令的1改为0即可。</p>
+</blockquote>
+<p>第二种禁用IPV6的办法是：写文件以禁用</p>
+<pre><code class="language-bash">$ sudo sh -c 'echo 1 &gt; /proc/sys/net/ipv6/conf/&lt;interface-name&gt;/disable_ipv6'
+</code></pre>
+<p>举个例子，你的Linux通过eth0接口访问网络，那么禁用IPv6代码如下:</p>
+<pre><code class="language-bash">$ sudo sh -c 'echo 1 &gt; /proc/sys/net/ipv6/conf/eth0/disable_ipv6'
+</code></pre>
+<p>重新启用eth0接口的IPv6：</p>
+<pre><code class="language-bash">$ sudo sh -c 'echo 0 &gt; /proc/sys/net/ipv6/conf/eth0/disable_ipv6'
+</code></pre>
+<p>如果你想要将整个系统所有接口包括回环接口禁用IPv6，使用以下命令：</p>
+<pre><code class="language-bash">$ sudo sh -c 'echo 1 &gt; /proc/sys/net/ipv6/conf/all/disable_ipv6'
+</code></pre>
+<p>注：这种方法不是永久禁用IPv6，你一旦重启系统IPv6还是会被启用。</p>
+<p>三是在开机的时候传递一个必要的内核参数：</p>
+<p>这种实现思路与开源驱动nouveau在开机的时候自动禁用同理。</p>
+<blockquote>
+<p>Manjaro Linux和Arch Linux在具有独显却未安装独显驱动的时候，需要在boot的时候按<code>e</code>，在第一个<code>quiet</code>字符串后面输入一串开机神秘代码：<code>nouveau.modest=0</code>；或者将之保存到<code>grub.cfg</code>文件中。</p>
+</blockquote>
+<p>输入下面的命令编辑文件：</p>
+<pre><code class="language-bash">$ vim /boot/grub/grub.cfg
+</code></pre>
+<p>向文件中添加如下内容：</p>
+<pre><code class="language-bash">GRUB_CMDLINE_LINUX=&quot;xxxxx ipv6.disable=1&quot;
+</code></pre>
+<p>上面的&quot;xxxxx&quot;代表任何已有的内核参数，注意是在它后面添加&quot;ipv6.disable=1&quot;。修改完后，使用下面的命令保存对grub的更改(这应该是可选的)。</p>
+<pre><code class="language-bash">$ sudo update-grub #Debian，Ubuntu，Linux Mint，Arch Linux系统使用该命令
+$ sudo grub2-mkconfig -o /boot/grub2/grub.cfg #Fedora、CentOS/RHEL系统：
+</code></pre>
+<p>现在只要你重启你的Linux系统，IPv6就会完全被禁用。重新开启的方法也很简单，就是从文件中将此参数删去。</p>
+<h5 id="法二http代理">法二：http代理</h5>
+<p>安装privoxy，并查看默认监听端口。</p>
+<pre><code class="language-bash">$ pacman -S privoxy
+$ vim /etc/privoxy/config
+</code></pre>
+<p>在文件中搜索搜索listen-address，默认为：</p>
+<pre><code class="language-bash">listen-address 127.0.0.1:8118
+</code></pre>
+<p>输入下面的命令启动privoxy</p>
+<pre><code class="language-bash">$ systemctl start privoxy
+</code></pre>
+<p>然后设置http代理：即在QQ/TIM的登录界面点击右上角的设置，然后选择http代理，输入之前记录下的信息和端口，默认为127.0.0.1和8118。再登录就能看到图片和头像了。</p>
+<h2 id="netease-cloud-music">Netease-Cloud-Music</h2>
+<p>问题：想听个歌放松一下，打开网易云却不能在搜索框输入中文以搜索歌曲。</p>
+<p>查找问题：</p>
+<p>第一反应是<code>DWM(dynamic window manager)</code>标签的设定，使得我只能在单个程序上使用<code>fcitx</code>而不能多个程序均使用<code>fcitx</code>，故右击<code>fcitx</code>打开配置，选择全局配置，调整在多个窗口之间共享显示从<code>None</code>到<code>All</code>。</p>
+<p>然后我发现在不同标签处打开不同的程序都可以呼出<code>fcitx</code>，但是唯独网易云音乐不行。</p>
+<p>第二反应是网易云音乐不支持fcitx，百度一下果然有很多人遇到了和我一样的问题。</p>
+<h3 id="失效的解决办法">失效的解决办法</h3>
+<p><strong>2020年1月以前</strong>可以用如下解决方案：</p>
+<ol>
+<li>
+<p>查看本机是否安装有qcef软件包</p>
+<pre><code class="language-bash">$ pacman -Q qcef
+</code></pre>
+<p>如果查询发现没有，那就安装一个包。</p>
+<pre><code class="language-bash">$ sudo pacman -S qcef
+</code></pre>
+</li>
+<li>
+<p>编辑网易云音乐的脚本</p>
+<pre><code class="language-bash">$ vim /opt/netease/netease-cloud-music/netease-cloud-music.bash
+</code></pre>
+</li>
+</ol>
+<p>变化内容如下：</p>
+<pre><code>- export LD_LIBRARY_PATH=&quot;${HERE}&quot;/libs
+#注释原有的LD_LIBRARY_PATH，以下是修改过的
++ export LD_LIBRARY_PATH=/usr/libs
+</code></pre>
+<p><strong>但是现在这个方案已经不起作用了</strong>，原因是qcef软件包已经被Arch社区移出了软件仓库。</p>
+<h3 id="目前的解决办法">目前的解决办法</h3>
+<h4 id="法一构建编译安装网易云音乐的qcef">法一，构建，编译，安装网易云音乐的qcef</h4>
+<p>经过在AUR上查找，两名受信任的开发者用户提供了如下的解决思路，分享如下：</p>
+<p>首先感谢这两名开发者：@springzfx和@laomocode。据@springzfx分析，网易云音乐linux版v1.2.1，在arch和manjaro中无法输入中文，是软件自带库qcef所导致的，具体为以下目录和文件：</p>
+<pre><code>/opt/netease/netease-cloud-music/libs/qcef
+/opt/netease/netease-cloud-music/libs/libqcef.so
+/opt/netease/netease-cloud-music/libs/libqcef.so.1
+/opt/netease/netease-cloud-music/libs/libqcef.so.1.1.4
+</code></pre>
+<p>输入如下的命令编辑启动文件。</p>
+<pre><code class="language-bash">$ sudo vim /opt/netease/netease-cloud-music/netease-cloud-music.bash
+</code></pre>
+<p>内容变化如下：</p>
+<pre><code class="language-shell">#!/bin/sh
+HERE=&quot;$(dirname &quot;$(readlink -f &quot;${0}&quot;)&quot;)&quot;
+- export LD_LIBRARY_PATH=&quot;${HERE}&quot;/libs
+- export QT_PLUGIN_PATH=&quot;${HERE}&quot;/plugins 
+- export QT_QPA_PLATFORM_PLUGIN_PATH=&quot;${HERE}&quot;/plugins/platforms
++ export XDG_CURRENT_DESKTOP=DDE
++ export LD_LIBRARY_PATH=/usr/lib
++ exec &quot;${HERE}&quot;/netease-cloud-music $@
+</code></pre>
+<p>然后安装qcef，由于aur已经移除qcef，所以只能自己构建安装包。</p>
+<p>这个包能还在github上找到，需要克隆下来自己构建。构建见后面的内容。如果有人上传已经构建好的软件包，则直接安装：</p>
+<pre><code class="language-bash">$ sudo pacman -U qcef-1.1.6-1-x86_64.pkg.tar.xz
+</code></pre>
+<h4 id="法二构建编译安装整个软件">法二：构建，编译，安装整个软件</h4>
+<p>操作步骤、输入的命令如下：</p>
+<pre><code class="language-bash">$ yay -Rsn netease-cloud-music
+$ git clone https://github.com/springzfx/archlinux
+# compile qcef 1.1.6 and build it
+$ cd qcef
+makepkg -si
+# compile netease-cloud-music and build it
+$ cd netease-cloud-music
+makepkg -si
+</code></pre>
+<p>注意：安装运行时的依赖包括gconf、gtk2、libxss、nss、libpulse、qt5-webchannel、qt5-x11extras。你可能会缺少<code>gconf</code>这个软件包。</p>
+<p>安装编译时的依赖cmake、qt5-tools。你应该不缺少这些打包工具，除非你从未用过yay安装软件。安装<code>base-devel</code>软件包组以解决编译打包的问题。</p>
+<blockquote>
+<p>还有一位大佬提出的观点是：Linux版网易云由Deepin和网易合作开发，无法输入中文是因为软件使用了deepin魔改过的cogl，安装deepin-cogl就解决了，但是其他使用cogl的软件又会出问题……所以这种安装deepin-cogl的方法仅供参考。</p>
+</blockquote>
+<h4 id="法三以wine为兼容层安装windows版网易云">法三，以wine为兼容层安装windows版网易云</h4>
+<p>虽然网易云音乐已经推出了 linux 版，但是诸如本地歌曲扫描、心动模式等功能有所缺失，并且更新相对较慢，因此这里介绍使用 <code>wine</code> 完美运行网易云音乐<code>windows</code>版本的方法。</p>
+<p>PS：我试着用Deepin-Wine安装和运行网易云音乐，测试发现安装和卸载都可以正常进行，这些过程没什么大问题，但是运行就不行了，所以还是得安装wine版本。</p>
+<pre><code class="language-bash">$ sudo pacman -S wine
+</code></pre>
+<p>然后一个非常关键的步骤：你需要将windows系统中的字体拷贝到你的wine容器中，否则启动网易云会提示崩溃。</p>
+<p>由于我是实体机双系统，因此直接切换到Windows系统下<code>C:\Windows\Fonts</code>，将之复制到Linux系统的家目录中wine目录Windows文件夹下<code>~/.wine/Windows/Fonts</code></p>
+<blockquote>
+<p>在Linux下你的Windows磁盘的字体文件应该被挂载为如下的路径：</p>
+<pre><code class="language-text">/run/media/\&lt;user name&gt;/C:/Windows/Fonts
+</code></pre>
+</blockquote>
+<p>直接下载网易云的客户端(Win可执行文件exe)，然后切换到终端用wine安装该软件：</p>
+<pre><code class="language-bash">$ wine &lt;your package setup&gt;.exe
+</code></pre>
+<p>wine提示安装三个软件以提供支持，这是可选的，由于众所周知的原因，安装异常的缓慢。</p>
+<p>安装完毕后运行如下的设置：</p>
+<pre><code class="language-bash">$ wine winecfg
+</code></pre>
+<ol>
+<li>
+<p>关闭允许桌面管理器装饰窗口：</p>
+<p>运行 <code>winecfg</code> 在 <strong>显示</strong> 选项卡中取消勾选 <strong>允许窗口管理器装饰窗口</strong>以修复网易云音乐最大化后超出屏幕边界的问题</p>
+</li>
+<li>
+<p>调整屏幕分辨率：</p>
+<p>将屏幕分辨率调整至 105 以上，以修复托盘图标无法点击的问题（在屏幕分辨率大于一定值后即可点击，但不确定具体为多少，可以自行尝试）</p>
+</li>
+<li>
+<p>修改 windows 版本:</p>
+<p>网易云音乐只能在 Windows XP 容器中运行。</p>
+</li>
+</ol>
+<p>启动网易云时只需要输入:(命令可能在不同机器上不同)</p>
+<pre><code class="language-bash">$ wine ~/.wine/c:/Program\ Files (x86)\\Netease\\Cloudmusic\\cloudmusic.exe
+</code></pre>
+</article>
+
+
+      
+        <div class="my-4">
+    
+    <a href="https://endlesspeak.github.io/tags/linux/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#Linux</a>
+    
+</div>
+      
+
+      
+
+
+
+      
+        <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+      
+
+      
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/posts/linux/linux-technology-7-linux-rescue-mode/" class="block">Linux救援模式</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/posts/linux/linux-technology-4-x-environment/" class="block">Linux的桌面环境</a>
+      
+    </div>
+  </div>
+
+
+      
+
+
+
+    </div>
+    
+      <div class="col-span-2">
+        
+        
+          <div
+  class="
+    bg-primary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc  hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#xdg-user-directories">XDG user directories</a>
+      <ul>
+        <li><a href="#gnome解决办法">Gnome解决办法</a></li>
+        <li><a href="#kde解决办法">KDE解决办法</a></li>
+      </ul>
+    </li>
+    <li><a href="#deepin-qq-install">Deepin QQ Install</a>
+      <ul>
+        <li><a href="#安装deepin-wine-qqtim">安装Deepin-wine-qq/tim</a></li>
+        <li><a href="#安装deepincomqqimoffice">安装Deepin.com.qq.im/office</a></li>
+        <li><a href="#问题与解决方案">问题与解决方案</a></li>
+      </ul>
+    </li>
+    <li><a href="#netease-cloud-music">Netease-Cloud-Music</a>
+      <ul>
+        <li><a href="#失效的解决办法">失效的解决办法</a></li>
+        <li><a href="#目前的解决办法">目前的解决办法</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+        
+      </div>
+    
+
+    
+    
+      <div
+        class=" bg-secondary-bg prose col-span-2 rounded p-6 lg:col-span-6"
+      >
+        <h3>相关</h3>
+        
+          <a href="https://endlesspeak.github.io/posts/linux/linux-technology-4-x-environment/" class="no-underline">Linux的桌面环境</a>
+          <br />
+        
+          <a href="https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-2-arch-linux-installation/" class="no-underline">Arch Linux 物理机的安装与引导</a>
+          <br />
+        
+          <a href="https://endlesspeak.github.io/docs/build/operating-system-sum/linux-technology-2-linux-comprehensive-overview/" class="no-underline">Linux综合概述</a>
+          <br />
+        
+          <a href="https://endlesspeak.github.io/docs/build/operating-system-sum/linux-technology-1-fully-use-linux/" class="no-underline">完全使用Linux工作</a>
+          <br />
+        
+      </div>
+    
+  </div>
+
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        hljs.highlightAll();
+      });
+    </script>
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

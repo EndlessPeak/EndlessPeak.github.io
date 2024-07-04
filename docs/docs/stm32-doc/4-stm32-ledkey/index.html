@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>STM32 LED &amp; KEY | STM32 Develop Documents | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文对STM32的LED和按键驱动进行了总结。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"STM32 Develop Documents",
+      "item":"https://endlesspeak.github.io/docs/docs/stm32-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"STM32 LED \u0026 KEY",
+      "item":"https://endlesspeak.github.io/docs/docs/stm32-doc/4-stm32-ledkey/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/stm32-doc/4-stm32-ledkey/"
+    },
+    "headline": "STM32 LED \u0026 KEY | STM32 Develop Documents | 悦翎轩","datePublished": "2024-01-21T00:00:00+00:00",
+    "dateModified": "2024-01-21T00:00:00+00:00",
+    "wordCount":  1035 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "本文对STM32的LED和按键驱动进行了总结。"
+}
+</script><meta property="og:title" content="STM32 LED &amp; KEY | STM32 Develop Documents | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/stm32-doc/4-stm32-ledkey/" />
+
+
+
+<meta property="og:description" content="本文对STM32的LED和按键驱动进行了总结。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2024-01-21T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2024-01-21T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/stm32-doc/">STM32 Develop Documents</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/stm32-doc/1-stm32-basic/">STM32 Basic Knowledge</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/stm32-doc/2-stm32-cube/">STM32 Cube</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/stm32-doc/3-stm32-clion-develop/">STM32 Clion Develop</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/stm32-doc/4-stm32-ledkey/">STM32 LED &amp; KEY</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/stm32-doc/5-stm32-fmc/">STM32 FMC</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/stm32-doc/6-stm32-rgblcd/">STM32 RGBLCD</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/stm32-doc/7-stm32-ld-segmentsissues/">STM32 LD Segments &amp; Issues</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/stm32-doc/8-stm32-rust-develop/">STM32 Rust Develop</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">STM32 LED &amp; KEY</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2024-01-21</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>3分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="gpio">GPIO</h2>
+<p>GPIO 是通用型输入输出，可以输入或输出高低电平。高电平是 3.3V，低电平是 0V。</p>
+<h3 id="output">Output</h3>
+<p>输出控制器接两个 MOS 管，一个 PMOS 管，一个 NMOS 管。</p>
+<table>
+<thead>
+<tr>
+<th>No</th>
+<th>Q1</th>
+<th>Q2</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>打开</td>
+<td>关闭</td>
+<td>高电平</td>
+</tr>
+<tr>
+<td>2</td>
+<td>关闭</td>
+<td>打开</td>
+<td>低电平</td>
+</tr>
+<tr>
+<td>3</td>
+<td>打开</td>
+<td>打开</td>
+<td>短路/不可用</td>
+</tr>
+<tr>
+<td>4</td>
+<td>关闭</td>
+<td>关闭</td>
+<td>浮空/高阻态</td>
+</tr>
+</tbody>
+</table>
+<p>三种可用的 MOS 管状态将输出分为了推挽输出和开漏输出。</p>
+<p>其中，序号 1 和 2 组成了推挽输出，序号 2 和 4 组成了开漏输出。一般地，开漏输出需要搭配上拉电阻，以在高阻态时输出高电平，由于输出引脚并非直连电源电压，而是外部上拉电阻提供电压，因此开漏输出能够减小噪声对输出信号的影响。</p>
+<p>使用推挽输出的场景较多，一般需要高低电平的场景都可以选择推挽输出，尤其是无上拉电阻的时候，建议选择推挽输出；在多个 IO 输出接到一个 IO 输入时（线与）需要选择开漏输出。</p>
+<p>此外，对于接口电平转换，同供电电平选择推挽输出，不同供电电平选择开漏输出。</p>
+<h2 id="led">LED</h2>
+<h3 id="macro">Macro</h3>
+<p>下面是定义 LED 的相关引脚代码</p>
+<pre><code class="language-cpp">#define LED1_Pin     GPIO_PIN_0
+#define LED2_Pin     GPIO_PIN_1
+#define LED1_GPIO_Port    GPIOB
+#define LED2_GPIO_Port    GPIOB
+</code></pre>
+<p>下面是定义 LED 的相关逻辑代码</p>
+<pre><code class="language-cpp">#ifdef LED1_Pin
+    #define LED1_ON() HAL_GPIO_WritePin(LED1_GPIO_Port,LED1_Pin,GPIO_PIN_RESET)
+    #define LED1_OFF() HAL_GPIO_WritePin(LED1_GPIO_Port,LED1_Pin,GPIO_PIN_SET)
+    #define LED1_Toggle() HAL_GPIO_TogglePin(LED1_GPIO_Port,LED1_Pin)
+#endif
+
+#ifdef LED2_Pin
+    #define LED2_ON() HAL_GPIO_WritePin(LED2_GPIO_Port,LED2_Pin,GPIO_PIN_RESET)
+    #define LED2_OFF() HAL_GPIO_WritePin(LED2_GPIO_Port,LED2_Pin,GPIO_PIN_SET)
+    #define LED2_Toggle() HAL_GPIO_TogglePin(LED2_GPIO_Port,LED2_Pin)
+#endif
+</code></pre>
+<h2 id="key">KEY</h2>
+<h3 id="macro">Macro</h3>
+<p>下面是定义 KEY 的相关代码</p>
+<pre><code class="language-cpp">#define KEY_UP_Pin          GPIO_PIN_0
+#define KEY_RIGHT_Pin       GPIO_PIN_3  //实际上是KEY0
+#define KEY_DOWN_Pin        GPIO_PIN_2  //实际上是KEY1
+#define KEY_LEFT_Pin        GPIO_PIN_13 //实际上是KEY2
+#define KEY_UP_GPIO_Port    GPIOA
+#define KEY_RIGHT_GPIO_Port GPIOH
+#define KEY_DOWN_GPIO_Port  GPIOH
+#define KEY_LEFT_GPIO_Port  GPIOC
+</code></pre>
+<h3 id="polling">Polling</h3>
+<p>下面是一段轮询检测按键是否按下的代码，其中 <code>KEYS</code> 和 <code>key_wait_aways</code> 变量定义如下：</p>
+<pre><code class="language-cpp">typedef enum {
+    KEY_NONE = 0,
+    KEY_LEFT,
+    KEY_RIGHT,
+    KEY_UP,
+    KEY_DOWN,
+} KEYS;
+
+const uint8_t key_wait_always = 0;
+</code></pre>
+<p>轮询检测代码如下，其中KEY_LEFT、KEY_RIGHT、KEY_DOWN都是低电平触发的。</p>
+<pre><code class="language-cpp">KEYS ScanPressedKey(uint32_t timeout){
+    uint32_t tickstart = HAL_GetTick();
+    const uint8_t btn_delay = 20;
+    while(1){
+#ifdef KEY_UP_Pin
+        if(HAL_GPIO_ReadPin(KEY_UP_GPIO_Port,KEY_UP_Pin)==GPIO_PIN_SET){
+            HAL_Delay(btn_pre_delay);
+            if(HAL_GPIO_ReadPin(KEY_UP_GPIO_Port,KEY_UP_Pin)==GPIO_PIN_SET){
+              return KEY_UP;
+            }
+        }
+#endif
+#ifdef KEY_LEFT_Pin
+        if(HAL_GPIO_ReadPin(KEY_LEFT_GPIO_Port,KEY_LEFT_Pin)==GPIO_PIN_RESET){
+            HAL_Delay(btn_pre_delay);
+            if(HAL_GPIO_ReadPin(KEY_LEFT_GPIO_Port,KEY_LEFT_Pin)==GPIO_PIN_RESET){
+              return KEY_LEFT;
+            }
+        }
+#endif
+#ifdef KEY_RIGHT_Pin
+        if(HAL_GPIO_ReadPin(KEY_RIGHT_GPIO_Port,KEY_RIGHT_Pin)==GPIO_PIN_RESET){
+            HAL_Delay(btn_pre_delay);
+            if(HAL_GPIO_ReadPin(KEY_RIGHT_GPIO_Port,KEY_RIGHT_Pin)==GPIO_PIN_RESET){
+              return KEY_RIGHT;
+            }
+        }
+#endif
+#ifdef KEY_DOWN_Pin
+        if(HAL_GPIO_ReadPin(KEY_DOWN_GPIO_Port,KEY_DOWN_Pin)==GPIO_PIN_RESET){
+            HAL_Delay(btn_pre_delay);
+            if(HAL_GPIO_ReadPin(KEY_DOWN_GPIO_Port,KEY_DOWN_Pin)==GPIO_PIN_RESET){
+              return KEY_DOWN;
+            }
+        }
+#endif
+        if(timeout!=key_wait_always){
+            if((HAL_GetTick()-tickstart)&gt;timeout)
+                break;
+        }
+    }
+}
+</code></pre>
+<p>主函数中代码如下：</p>
+<pre><code class="language-cpp">KEYS cur_key = ScanPressedKey(100);
+const uint8_t btn_post_delay = 200;
+switch (cur_key) {
+case KEY_UP:
+    LED1_ON();
+    LED2_ON();
+    printf(&quot;KEY_UP input.\n&quot;);
+    break;
+case KEY_LEFT:
+    LED1_Toggle();
+    printf(&quot;KEY_LEFT input.\n&quot;);
+    break;
+case KEY_RIGHT:
+    LED2_Toggle();
+    printf(&quot;KEY_RIGHT input.\n&quot;);
+    break;
+case KEY_DOWN:
+    LED1_OFF();
+    LED2_OFF();
+    printf(&quot;KEY_DOWN input.\n&quot;);
+    break;
+default:
+    printf(&quot;No input keys.\n&quot;);
+    break;
+}
+HAL_Delay(btn_post_delay);
+</code></pre>
+<h2 id="reuse-code">Reuse code</h2>
+<h3 id="main-function-call">Main Function call</h3>
+<p>首先使用函数调用的方式优化代码，将主函数中冗长的switch语句变为新函数，然后手动调用该函数。</p>
+<ol>
+<li><code>-Og -g</code> 下大小增加了32B</li>
+<li><code>-Ofast -g</code> 下大小不变</li>
+</ol>
+<h3 id="macro-extend">Macro Extend</h3>
+<p>宏展开的方法</p>
+<pre><code class="language-cpp">#define IS_KEY_UP_PRESSED()     (HAL_GPIO_ReadPin(KEY_UP_GPIO_Port, KEY_UP_Pin) == GPIO_PIN_SET)
+#define IS_KEY_RIGHT_PRESSED()  (HAL_GPIO_ReadPin(KEY_RIGHT_GPIO_Port, KEY_RIGHT_Pin) == GPIO_PIN_RESET)
+#define IS_KEY_DOWN_PRESSED()   (HAL_GPIO_ReadPin(KEY_DOWN_GPIO_Port, KEY_DOWN_Pin) == GPIO_PIN_RESET)
+#define IS_KEY_LEFT_PRESSED()   (HAL_GPIO_ReadPin(KEY_LEFT_GPIO_Port, KEY_LEFT_Pin) == GPIO_PIN_RESET)
+</code></pre>
+<pre><code class="language-cpp">if (IS_KEY_UP_PRESSED()) {
+    HAL_Delay(btn_pre_delay);
+    if (IS_KEY_UP_PRESSED()) {
+        return KEY_UP;
+    }
+}
+if (IS_KEY_LEFT_PRESSED()) {
+    HAL_Delay(btn_pre_delay);
+    if (IS_KEY_UP_PRESSED()) {
+        return KEY_LEFT;
+    }
+}
+if (IS_KEY_RIGHT_PRESSED()) {
+    HAL_Delay(btn_pre_delay);
+    if (IS_KEY_RIGHT_PRESSED()) {
+        return KEY_RIGHT;
+    }
+}
+if (IS_KEY_DOWN_PRESSED()) {
+    HAL_Delay(btn_pre_delay);
+    if (IS_KEY_DOWN_PRESSED()) {
+        return KEY_DOWN;
+    }
+}
+</code></pre>
+<ol>
+<li><code>-Og -g</code> 下大小增加了144B</li>
+<li><code>-Ofast -g</code> 下大小减少了4B</li>
+</ol>
+<h3 id="mutiple-funtion-call">Mutiple Funtion Call</h3>
+<p>多次函数调用</p>
+<pre><code class="language-cpp">uint8_t is_key_pull_down_pressed(GPIO_TypeDef* gpio_port, uint16_t gpio_pin) {
+    return (HAL_GPIO_ReadPin(gpio_port, gpio_pin) == GPIO_PIN_SET);
+}
+uint8_t is_key_pull_up_pressed(GPIO_TypeDef* gpio_port, uint16_t gpio_pin){
+    return (HAL_GPIO_ReadPin(gpio_port,gpio_pin) == GPIO_PIN_RESET);
+}
+
+//省略函数形参
+if(is_key_pull_down_pressed(KEY_UP_GPIO_Port,KEY_UP_Pin)){
+    HAL_Delay(btn_pre_delay);
+    if(is_key_pull_down_pressed(KEY_UP_GPIO_Port,KEY_UP_Pin)){
+        return KEY_UP;
+    }
+}
+if(is_key_pressed(KEY_LEFT_GPIO_Port,KEY_LEFT_Pin)){
+    HAL_Delay(btn_pre_delay);
+    if(is_key_pull_up_pressed(KEY_LEFT_GPIO_Port,KEY_LEFT_Pin)){
+        return KEY_LEFT;
+    }
+}
+if(is_key_pull_up_pressed(KEY_LEFT_GPIO_Port,KEY_LEFT_Pin)){
+    HAL_Delay(btn_pre_delay);
+    if(is_key_pull_up_pressed(KEY_LEFT_GPIO_Port,KEY_LEFT_Pin)){
+        return KEY_LEFT;
+    }
+}
+if(is_key_pull_up_pressed(KEY_RIGHT_GPIO_Port,KEY_RIGHT_Pin)){
+    HAL_Delay(btn_pre_delay);
+    if(is_key_pull_up_pressed(KEY_RIGHT_GPIO_Port,KEY_RIGHT_Pin)){
+        return KEY_RIGHT;
+    }
+}
+</code></pre>
+<h3 id="inline-function-call">Inline Function Call</h3>
+<p>内联函数调用</p>
+<pre><code class="language-cpp">static inline uint8_t is_key_pressed(void) {
+    return (HAL_GPIO_ReadPin(KEY_UP_GPIO_Port, KEY_UP_Pin) == GPIO_PIN_SET);
+}
+
+if (is_key_pressed()) {
+    HAL_Delay(btn_pre_delay);  // 等待按键稳定
+    if (is_key_pressed()) {
+        return KEY_UP;
+    }
+}
+</code></pre>
+<h3 id="combined-function-call">Combined Function Call</h3>
+<p>合并函数调用</p>
+<pre><code class="language-cpp">bool is_key_pressed(uint16_t gpio_pin_set_status,GPIO_TypeDef* gpio_port,uint16_t gpio_pin){
+    if(HAL_GPIO_ReadPin(gpio_port,gpio_pin) == gpio_pin_set_status){
+        HAL_Delay(btn_pre_delay);
+        if(HAL_GPIO_ReadPin(gpio_port,gpio_pin) == gpio_pin_set_status)
+            return true;
+    }
+}
+</code></pre>
+<h3 id="template">Template</h3>
+<p>C++函数模板调用</p>
+<pre><code class="language-cpp">template&lt;typename GPIO_Port, typename GPIO_Pin&gt;
+bool is_key_pressed() {
+    return (HAL_GPIO_ReadPin(GPIO_Port, GPIO_Pin) == GPIO_PIN_SET);
+}
+
+if (is_key_pressed&lt;KEY0_GPIO_Port, KEY0_Pin&gt;()) {
+    HAL_Delay(20);  // 等待按键稳定
+    if (is_key_pressed&lt;KEY0_GPIO_Port, KEY0_Pin&gt;()) {
+        return KEY_0;
+    }
+}
+</code></pre>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/stm32-doc/3-stm32-clion-develop/" class="block">STM32 Clion Develop</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/stm32-doc/5-stm32-fmc/" class="block">STM32 FMC</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#gpio">GPIO</a>
+      <ul>
+        <li><a href="#output">Output</a></li>
+      </ul>
+    </li>
+    <li><a href="#led">LED</a>
+      <ul>
+        <li><a href="#macro">Macro</a></li>
+      </ul>
+    </li>
+    <li><a href="#key">KEY</a>
+      <ul>
+        <li><a href="#macro">Macro</a></li>
+        <li><a href="#polling">Polling</a></li>
+      </ul>
+    </li>
+    <li><a href="#reuse-code">Reuse code</a>
+      <ul>
+        <li><a href="#main-function-call">Main Function call</a></li>
+        <li><a href="#macro-extend">Macro Extend</a></li>
+        <li><a href="#mutiple-funtion-call">Mutiple Funtion Call</a></li>
+        <li><a href="#inline-function-call">Inline Function Call</a></li>
+        <li><a href="#combined-function-call">Combined Function Call</a></li>
+        <li><a href="#template">Template</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

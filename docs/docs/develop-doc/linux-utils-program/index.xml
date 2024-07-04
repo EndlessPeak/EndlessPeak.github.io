@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux命令行程序 on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/</link>
+    <description>Recent content in Linux命令行程序 on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Thu, 11 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用Man命令</title>
+      <link>https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/1-man/</link>
+      <pubDate>Thu, 11 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/1-man/</guid>
+      <description>通过输入man man进入man命令的帮助手册。 Unix的联机帮助分为很多章节，如表所示： 章节 内容 1 可执行程序或 shell 命令 2 系统调用(内核提供的函数) 3 库调</description>
+    </item>
+    <item>
+      <title>编写Who命令</title>
+      <link>https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/2-who/</link>
+      <pubDate>Thu, 11 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/2-who/</guid>
+      <description>Man Who 阅读who的联机帮助： man who 通过阅读联机帮助，发现已登录的用户信息放在/var/run/utmp或者/var/log/wtmp中。 搜索联机帮助： man -k</description>
+    </item>
+  </channel>
+</rss>

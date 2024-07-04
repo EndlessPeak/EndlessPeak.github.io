@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Python Development on NixOS | NixOS 配置 | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="NixOS 配置说明">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/build/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"NixOS 配置",
+      "item":"https://endlesspeak.github.io/docs/build/nixos-configuration/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Python Development on NixOS",
+      "item":"https://endlesspeak.github.io/docs/build/nixos-configuration/1-nixos-configuration/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/build/nixos-configuration/1-nixos-configuration/"
+    },
+    "headline": "Python Development on NixOS | NixOS 配置 | 悦翎轩","datePublished": "2023-12-19T22:00:00+00:00",
+    "dateModified": "2023-12-19T22:00:00+00:00",
+    "wordCount":  663 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "NixOS 配置说明"
+}
+</script><meta property="og:title" content="Python Development on NixOS | NixOS 配置 | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/build/nixos-configuration/1-nixos-configuration/" />
+
+
+
+<meta property="og:description" content="NixOS 配置说明" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2023-12-19T22:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2023-12-19T22:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/build/nixos-configuration/">NixOS 配置</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/build/nixos-configuration/1-nixos-configuration/">Python Development on NixOS</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/build/nixos-configuration/2-python-poetry-devshell/">Python Development on NixOS</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Python Development on NixOS</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2023-12-19</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>2分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="self-configuration">Self Configuration</h2>
+<h3 id="import-configuration">Import Configuration</h3>
+<p>以 <code>sddm</code> 为例，浅谈如何导入 nix 配置文件。</p>
+<p>如下所示，在基本设置中导入 <code>sddm-theme.nix</code> 。</p>
+<pre><code class="language-nix"># Enable the X11 windowing system.
+services = {
+  xserver = {
+    enable = true;
+
+    # Enable the Plasma 5 Desktop Environment.
+    displayManager ={
+      sddm.enable = true;
+      sddm.theme = &quot;${import ./sddm-theme.nix { inherit pkgs;}}&quot;;
+    };
+
+    desktopManager.plasma5.enable = true;
+
+    # Enable touchpad support (enabled default in most desktopManager).
+    libinput.enable = true;
+  };
+};
+</code></pre>
+<p>在 <code>sddm-theme.nix</code> 中写入</p>
+<pre><code class="language-nix"># sddm-theme-nix
+{ pkgs }:
+
+let
+  image = pkgs.fetchurl {
+    url = &quot;https://z1.ax1x.com/2023/11/18/piNMTFs.jpg&quot;;
+    sha256 = &quot;02pgyhmm42bdx31yn64vbmyx7cfnn89zswj40rwr32fdgz83bxy7&quot;;
+  };
+in
+pkgs.stdenv.mkDerivation {
+  name = &quot;sddm-theme&quot;;
+  # src = pkgs.fetchFromGitHub {
+  #   owner = &quot;MarianArlt&quot;;
+  #   repo = &quot;kde-plasma-chili&quot;;
+  #   rev = &quot;a371123959676f608f01421398f7400a2f01ae06&quot;;
+  #   sha256 = &quot;sha256-fWRf96CPRQ2FRkSDtD+N/baZv+HZPO48CfU5Subt854=&quot;;
+  # };
+
+  src = pkgs.fetchFromGitLab {
+    domain = &quot;framagit.org&quot;;
+    owner = &quot;MarianArlt&quot;;
+    repo = &quot;sddm-sugar-candy&quot;;
+    #url = &quot;https://framagit.org/MarianArlt/sddm-sugar-candy.git&quot;;
+    rev = &quot;2b72ef6c6f720fe0ffde5ea5c7c48152e02f6c4f&quot;;
+    sha256 = &quot;1db4p2d0k5a6avr7dg9h1r7y9mx711ci5dgwmljqjb8pq5b0a22y&quot;;
+  };
+  installPhase = ''
+    mkdir -p $out
+    cp -R ./* $out/
+    cd $out/Backgrounds
+    cp -r ${image} $out/Backgrounds/magenta.jpg
+    cd $out
+    sed -i 's/Background=&quot;Backgrounds\/Mountain.jpg&quot;/Background=&quot;Backgrounds\/magenta.jpg&quot;/g' theme.conf
+
+  '';
+    # the following are commented
+}
+
+</code></pre>
+<p>特别地，使用 <code>SDDM</code> 主题需要额外加上两个软件包：</p>
+<pre><code class="language-nix">environment.systemPackage = with pkgs;[
+  libsForQt5.qt5.qtquickcontrols2
+  libsForQt5.qt5.qtgraphicaleffects
+];
+</code></pre>
+<h3 id="overattrs-configuration">OverAttrs Configuration</h3>
+<p>下面的两个例子提供了软件包 <code>overrideAttrs</code> 的方法。</p>
+<pre><code class="language-nix">environment.systemPackage = with pkgs;[
+  # KDE Programs
+  # latte-dock is out of date,let's override it.
+  # Refer to https://nixos.org/manual/nixpkgs/stable/#chap-overrides
+  (latte-dock.overrideAttrs{
+    version = &quot;v0.10&quot;;
+    src = fetchFromGitLab {
+      domain = &quot;invent.kde.org&quot;;
+      owner = &quot;plasma&quot;;
+      repo = &quot;latte-dock&quot;;
+      rev = &quot;a840ac6faa9acb1570f8fa016e7ac7f2e5686e90&quot;;
+      sha256 = &quot;sha256-+9ksvGB6IRlJ1PXsrLA5PuHFCHs80tkKPAu2iknNEAQ=&quot;;
+    };
+  })
+];
+</code></pre>
+<p>如果希望对打包的过程进行修改，可以用 <code>old</code> 参数指代原有的步骤，并在后面附上需要添加的内容。</p>
+<pre><code class="language-nix">environment.systemPackages = with pkgs-unstable;[
+  # IDE
+  (jetbrains.clion.overrideAttrs (old:{
+    postFixup = ''
+      ${old.postFixup}
+
+      # add ja-netfilter
+      cd $out/clion/bin
+      echo '-javaagent:/home/leesin/Downloads/jetbra/ja-netfilter.jar=jetbrains' &gt;&gt; clion64.vmoptions
+      echo '--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED' &gt;&gt; clion64.vmoptions
+      echo '--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED' &gt;&gt; clion64.vmoptions
+    '';
+  }))
+];
+</code></pre>
+<h3 id="concat-list">Concat List</h3>
+<p>连接列表有两种办法。</p>
+<ol>
+<li>使用语法糖
+<pre><code class="language-nix">(with pkgs;[
+  git
+])++
+(with pkgs-unstable;[
+  eza
+])
+</code></pre>
+</li>
+<li>使用库自带的函数
+<pre><code class="language-nix">lib.concatLists [
+  (with pkgs;[
+    git
+  ])
+  (with pkgs-unstable;[
+    eza
+  ])
+];
+</code></pre>
+</li>
+</ol>
+<h2 id="self-package">Self Package</h2>
+<p>自行打的包记录如下：</p>
+<pre><code class="language-nix">{   stdenv,
+    fetchurl,
+    dpkg,
+    buildFHSUserEnv,
+    pkgs,
+    makeWrapper,
+    writeText,
+    ...
+}:
+let
+    baidunetdisk = stdenv.mkDerivation rec {
+        pname = &quot;baidunetdisk&quot;;
+        version = &quot;4.17.7&quot;;
+
+        src = fetchurl{
+            url = &quot;http://wppkg.baidupcs.com/issue/netdisk/Linuxguanjia/${version}/baidunetdisk_${version}_amd64.deb&quot;;
+            sha256 = &quot;sha256-UOwY8FYmoT9X7wNGMEFtSBaCvBAYU58zOX1ccbxlOz0=&quot;;
+        };
+        nativeBuildInputs = [ dpkg  makeWrapper ];
+        unpackPhase = &quot;dpkg-deb -x ${src} .&quot;;
+
+        # 菜单项
+        desktopFile = writeText &quot;baidunetdisk.desktop&quot; ''
+            [Desktop Entry]
+            Name=baidunetdisk
+            Name[zh_CN]=百度网盘
+            Name[zh_TW]=百度网盘
+            Exec=baidunetdisk --no-sandbox %U
+            Terminal=false
+            Type=Application
+            Icon=baidunetdisk
+            StartupWMClass=baidunetdisk
+            Comment=百度网盘
+            Comment[zh_CN]=百度网盘
+            Comment[zh_TW]=百度网盘
+            MimeType=x-scheme-handler/baiduyunguanjia;
+            Categories=Network;
+        '';
+
+        installPhase = ''
+            mkdir -p $out/opt/${pname}
+            mkdir -p $out/share
+            mkdir -p $out/bin
+            cp -r ./usr/share/* $out/share
+            rm $out/share/applications/${pname}.desktop
+            install -Dm644 ${desktopFile} $out/share/applications/${pname}.desktop
+            cp -r ./opt/${pname}/* $out/opt/${pname}
+            chmod 644 $out/opt/${pname}/*.so
+            makeWrapper $out/opt/${pname}/${pname} $out/bin/${pname} --set LD_LIBRARY_PATH $out/opt/${pname} --run &quot;echo $out&quot;
+        '';
+};
+in
+buildFHSUserEnv {
+    name = &quot;${baidunetdisk.pname}&quot;;
+    targetPkgs = pkgs:
+        (with pkgs.xorg; [
+            libX11
+            libxcb
+            libXcomposite
+            libXcursor
+            libXdamage
+            libXext
+            libXfixes
+            libXi
+            libXrandr
+            libXrender
+            libXScrnSaver
+            libXtst ]) ++
+        (with pkgs; [
+            nss
+            nspr
+            atk
+            alsa-lib
+            cups
+            at-spi2-atk
+            dbus
+            glib
+            gdk-pixbuf
+            gtk3-x11
+            pango
+            cairo
+            expat
+            libdrm
+            libxkbcommon
+            libGL
+            stdenv.cc.cc.lib
+            mesa
+            libudev0-shim
+        ]) ++
+        (with pkgs; [ ]) ++ [baidunetdisk];
+    runScript = &quot;/bin/${baidunetdisk.pname}&quot;;
+
+}
+</code></pre>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/build/nixos-configuration/2-python-poetry-devshell/" class="block">Python Development on NixOS</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#self-configuration">Self Configuration</a>
+      <ul>
+        <li><a href="#import-configuration">Import Configuration</a></li>
+        <li><a href="#overattrs-configuration">OverAttrs Configuration</a></li>
+        <li><a href="#concat-list">Concat List</a></li>
+      </ul>
+    </li>
+    <li><a href="#self-package">Self Package</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

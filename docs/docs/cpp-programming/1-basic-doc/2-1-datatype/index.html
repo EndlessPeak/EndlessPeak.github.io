@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>DataType | C/C&#43;&#43; Programming Basic | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="概述 数据类型用于声明不同类型的变量或函数，变量的类型决定了变量存储占用的空间和变量存储的格式。 存储类型定义程序中变量/函数的范围（可见性）和生命周期。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"CPP Programming",
+      "item":"https://endlesspeak.github.io/docs/docs/cpp-programming/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"C/C++ Programming Basic",
+      "item":"https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"DataType",
+      "item":"https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-1-datatype/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-1-datatype/"
+    },
+    "headline": "DataType | C\/C\u002b\u002b Programming Basic | 悦翎轩","datePublished": "2022-03-20T00:00:00+00:00",
+    "dateModified": "2022-03-20T00:00:00+00:00",
+    "wordCount":  1976 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "概述 数据类型用于声明不同类型的变量或函数，变量的类型决定了变量存储占用的空间和变量存储的格式。 存储类型定义程序中变量\/函数的范围（可见性）和生命周期。"
+}
+</script><meta property="og:title" content="DataType | C/C&#43;&#43; Programming Basic | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-1-datatype/" />
+
+
+
+
+<meta property="og:description" content="概述 数据类型用于声明不同类型的变量或函数，变量的类型决定了变量存储占用的空间和变量存储的格式。 存储类型定义程序中变量/函数的范围（可见性）和生命周期。" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-03-20T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2022-03-20T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/">C/C&#43;&#43; Programming Basic</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-1-compilerlanguage/">Compiler Language</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-2-program-compilation-by-gcc/">Program Compilation by GCC</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-3-program-compilation-by-clang/">Program Compilation by Clang</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-1-datatype/">DataType</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-2-storetype/">StoreType</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-1-statement/">Statement</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-2-structure/">Structure</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-1-function/">Function</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-2-functionassignment/">Pass By Value &amp; Reference</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/5-scope/">Scope</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/6-pointer/">Pointer</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/7-customdatatypes/">Custom Data Type</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-1-io-standard/">Standard I/O</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-2-io-file/">File I/O</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/10-modules-development/">Module Development</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/11-debug-method/">Debug Method</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/12-ccpp-mix-programming/">C&amp;CPP Mix Programming</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">DataType</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-03-20</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>4分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="概述">概述</h2>
+<p>数据类型用于声明不同类型的变量或函数，变量的类型决定了变量存储占用的空间和变量存储的格式。</p>
+<p>存储类型定义程序中变量/函数的范围（可见性）和生命周期。</p>
+<p>数据类型包括基本类型、派生类型、枚举类型(enum)和空类型(void)。</p>
+<ol>
+<li>基本类型
+<ol>
+<li>整型</li>
+<li>浮点类型</li>
+</ol>
+</li>
+<li>派生类型
+<ol>
+<li>指针类型</li>
+<li>数组类型</li>
+<li>结构体类型(struct)</li>
+<li>共用体类型(union)</li>
+<li>函数类型</li>
+</ol>
+</li>
+</ol>
+<p>其中：</p>
+<ol>
+<li>基本类型和枚举类型变量都是都是值，统称为算数类型；</li>
+<li>算数类型和指针类型变量的值都是以数字表示的，统称为纯量类型；</li>
+<li>数组类型和结构体类型统称为组合类型，共用体类型不属于组合类型因为同一时间只有一个值。</li>
+</ol>
+<p>注意：</p>
+<ol>
+<li>
+<p>共用体类型与枚举类型的区别：</p>
+<ol>
+<li>共用体类型是多变量共享存储空间的派生类型，其中的元素是变量；共用体空间等于最大成员变量占据的空间，共用体不能赋初值；</li>
+<li>枚举类型是多常量共享存储空间的数据类型，其中的元素是常量；因此枚举类型变量的值定义时确定，可以全部列出；</li>
+</ol>
+</li>
+<li>
+<p>声明时必须注意到<strong>C语言区分大小写</strong>！</p>
+</li>
+</ol>
+<h2 id="整型">整型</h2>
+<ol>
+<li>
+<p>基本整型int</p>
+<p>输出格式：十进制<code>%d</code>，八进制<code>%o</code>或<code>%#o</code>，十六进制<code>%x</code>或<code>%#x</code>；</p>
+<p>16位机器上2字节，32位机器上4字节，64位机器上4字节；</p>
+</li>
+<li>
+<p>短整型short int</p>
+<p>输出格式：十进制<code>%hd</code>，八进制<code>%ho</code>或<code>%#ho</code>，十六进制<code>%hx</code>或<code>%#hx</code>；</p>
+<p>简记为16位int，因此占2字节；</p>
+</li>
+<li>
+<p>长整型long int</p>
+<p>输出格式：十进制<code>%ld</code>，八进制<code>%lo</code>或<code>%#lo</code>，十六进制<code>%lx</code>或<code>%#lx；</code></p>
+<p>简记为32位int，因此占4字节；</p>
+</li>
+<li>
+<p>双长型long long int</p>
+<p>输出格式：十进制<code>%ll</code>，八进制<code>%llo</code>或<code>%#llo</code>，十六进制<code>%llx</code>或<code>%#llx</code>；</p>
+<p>至少分配8个字节；</p>
+</li>
+<li>
+<p>无符号数变体</p>
+<p>当存在<code>unsigned</code>前缀且需要用十进制表示时用<code>%u</code>替换<code>%d</code>，其他时候均不变；</p>
+</li>
+</ol>
+<h2 id="实型">实型</h2>
+<p>利用浮点表示法表示实型数据。浮点表示法指的是小数点位置可以浮动，又称IEEE754标准。</p>
+<h3 id="实型表示">实型表示</h3>
+<p>浮点数用数符、阶码(移码)和尾数(隐藏首位的原码)表示。</p>
+<ol>
+<li>
+<p>单精度浮点型float</p>
+<p>输出格式：<code>%f</code></p>
+<p>分配4个字节；</p>
+</li>
+<li>
+<p>双精度浮点型double</p>
+<p>输出格式：<code>%f</code>或<code>%lf</code>或指数记数法<code>%e</code>，十六进制<code>%a</code></p>
+<p>分配8个字节；</p>
+</li>
+<li>
+<p>长双精度浮点型long double</p>
+<p>输出格式：<code>%Lf</code>或指数记数法<code>%Le</code>，十六进制<code>%La</code></p>
+<p>可能是8个字节，12字节，16字节；</p>
+</li>
+</ol>
+<h3 id="实型运算">实型运算</h3>
+<h3 id="注意事项">注意事项</h3>
+<ol>
+<li>
+<p><strong>输出宽度控制</strong></p>
+<ol>
+<li>可以用<code>%g</code>输出浮点数，系统自动选择f格式或e格式输出，自动选择长度较短的格式，不输出无意义的0。</li>
+<li>可以用<code>%m.nf</code>指定数据宽度和小数位数，m表示浮点数所占的列数，n表示小数所占的位数。</li>
+</ol>
+</li>
+<li>
+<p>浮点型常量写法</p>
+<p>有符号数字(包括小数点)+e/E+有符号数字(指数)。</p>
+<ol>
+<li>可以省略正号，可以省略小数点(2E5)或指数部分(19.28)，但不能同时省略两者；</li>
+<li>可以省略小数部分(3.E16)或整数部分(.45E-6)，但不能同时省略两者。</li>
+</ol>
+<p><strong>不能在浮点型常量中加空格</strong>！</p>
+</li>
+<li>
+<p>浮点型变量比较</p>
+<p><strong>不可将浮点变量用“==”或“!=”与任何数字比较!</strong></p>
+<p>而应该设法转化成两数相减后用“&gt; =”或“ &lt;=”形式，比较的数称为误差。</p>
+</li>
+<li>
+<p>上溢与下溢</p>
+<ol>
+<li>上溢时显示inf或infinity(无穷大)</li>
+<li>下溢时损失精度(尾数的末尾被舍去)</li>
+</ol>
+</li>
+</ol>
+<h2 id="字符型">字符型</h2>
+<h3 id="定义">定义</h3>
+<ul>
+<li>
+<p>char或unsigned char</p>
+<p>输出格式：<code>%c</code></p>
+<p>分配1个字节，且该字节中第一位置为0。</p>
+</li>
+<li>
+<p>char *类型</p>
+<p>输出格式：<code>%s</code></p>
+<p>分配N个字节(存储N个字符时)</p>
+</li>
+</ul>
+<h3 id="概念区分">概念区分</h3>
+<ol>
+<li>
+<p>字符常量是用<strong>单括号</strong>括起来的<strong>一个字符</strong>；</p>
+</li>
+<li>
+<p>字符串常量是用<strong>一对双括号</strong>括起来的零个或多个字符组成的<strong>字符序列</strong>，结尾不需要加&rsquo;\0&rsquo;。</p>
+</li>
+<li>
+<p>字符数组是用一对大括号括起来的零个或多个字符组成的<strong>字符序列</strong>，结尾不需要加&rsquo;\0&rsquo;。</p>
+</li>
+</ol>
+<p>注意：</p>
+<ol>
+<li>
+<p><strong>输出宽度控制</strong></p>
+<p>可以用<code>%md</code>进行右对齐；</p>
+<p>可以用<code>%ms</code>指定输出字符串占的列数，少则左补空格，多则突破限制；</p>
+<p>可以用<code>%m.ns</code>指定输出字符串占的列数及只取字符串左边n个字符输出在m列的右侧，左补空格。</p>
+</li>
+<li>
+<p>使用整型输出格式可以输出字符型数据的ASCII码；</p>
+</li>
+<li>
+<p>字符常量中，&lsquo;101&rsquo;是八进制字符；&lsquo;x41&rsquo;是十六进制字符；他们都指代ASCII码为65的字符，即A；</p>
+<p>特别地，&lsquo;101&rsquo;可写为'0101&rsquo;，&lsquo;x41&rsquo;可写为'0x41&rsquo;；</p>
+</li>
+<li>
+<p>字符串常量中，\101是八进制字符；\x41是十六进制字符；他们都指代ASCII码为65的字符，即A；</p>
+<p>特别地，\101<strong>不可写为</strong>\0101，x41可写为\0x41；</p>
+</li>
+</ol>
+<h3 id="赋值">赋值</h3>
+<p><code>char []</code> 类型的变量只有在定义时可赋<code>const char []</code>类型的初值，即<strong>字符串常量</strong>。</p>
+<p>若需要为其赋值，可用<code>strcpy()</code>，它位于<code>string.h</code>头文件中。</p>
+<h2 id="数据类型判断">数据类型判断</h2>
+<p>C语言中无判断数据类型的函数，可考虑使用<code>sizeof</code>运算符进行占用存储空间的计算，见下面：</p>
+<pre><code class="language-c++">#include&lt;stdio.h&gt;
+int main(){
+    printf(&quot;%d&quot;,sizeof(double));
+    printf(&quot;%d&quot;,sizeof(5/3.0));
+}
+</code></pre>
+<p>C++中可以使用typeid()函数判断数据类型，见下面：</p>
+<pre><code class="language-c++">#include&lt;stdio.h&gt;
+#include&lt;typeinfo&gt;
+int main(){
+    printf(&quot;%s&quot;,typeid(double).name());
+    printf(&quot;%s&quot;,typeid(5/3.0).name());
+}
+</code></pre>
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-3-program-compilation-by-clang/" class="block">Program Compilation by Clang</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-2-storetype/" class="block">StoreType</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概述">概述</a></li>
+    <li><a href="#整型">整型</a></li>
+    <li><a href="#实型">实型</a>
+      <ul>
+        <li><a href="#实型表示">实型表示</a></li>
+        <li><a href="#实型运算">实型运算</a></li>
+        <li><a href="#注意事项">注意事项</a></li>
+      </ul>
+    </li>
+    <li><a href="#字符型">字符型</a>
+      <ul>
+        <li><a href="#定义">定义</a></li>
+        <li><a href="#概念区分">概念区分</a></li>
+        <li><a href="#赋值">赋值</a></li>
+      </ul>
+    </li>
+    <li><a href="#数据类型判断">数据类型判断</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

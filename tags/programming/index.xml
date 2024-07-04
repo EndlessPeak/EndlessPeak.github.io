@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/tags/programming/</link>
+    <description>Recent content in Programming on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Sun, 29 Dec 2019 21:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>浅谈计算机&amp;编程发展路线——自顶向下脱发方法</title>
+      <link>https://endlesspeak.github.io/posts/tattle/the-brief-talk-of-computer-and-programming/</link>
+      <pubDate>Sun, 29 Dec 2019 21:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/posts/tattle/the-brief-talk-of-computer-and-programming/</guid>
+      <description>&lt;p&gt;很多年轻人打算搞IT，问要看什么书，以下是比较专业的回答：&lt;/p&gt;&#xA;&lt;p&gt;第一阶段：《数据结构》《C语言》《C++》《C#》《PHP》《Java》《设计模式》《框架》&#xA;第二阶段：《莫生气》《佛教》《道》《思想与政治》《论持久战》&#xA;第三阶段：《脊椎匡扶指南》《腰间盘突出康复指南》《心脏病的预防与防止》《高血压降压宝典》《强迫症的自我恢复》&#xA;第四阶段：《迷恋》《谢谢你折磨我》《自私与贪婪》《走向奴役之路》《精神变态日记》&#xA;第五阶段：《活着》&#xA;第六阶段：《棺材的质量与选材》《墓地的风水与选择》《死后的思想》&#xA;第七阶段：《中国传统丧葬礼仪概述》&#xA;第八阶段：《论投胎的方法与技巧》&#xA;第十阶段：《论出生后如何不成为程序员》&lt;/p&gt;&#xA;&lt;p&gt;你可能很疑惑，为什么没有第九阶段。别问，问就是喝孟婆汤忘记了。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

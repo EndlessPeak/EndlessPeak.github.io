@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>支持向量机问题 | Machine Learning Doc | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="原理 支持向量机使用的是什么类型的间隔？为什么？ 使用几何间隔定义。 因为函数间隔只需要成比例的改变w和b，函数间隔就会发生变化，而实际分类超平面并未变化。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Machine Learning Doc",
+      "item":"https://endlesspeak.github.io/docs/docs/machinelearning-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"传统机器学习系列",
+      "item":"https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"支持向量机问题",
+      "item":"https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/3-svm/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/3-svm/"
+    },
+    "headline": "支持向量机问题 | Machine Learning Doc | 悦翎轩","datePublished": "2022-03-25T00:00:00+00:00",
+    "dateModified": "2022-03-25T00:00:00+00:00",
+    "wordCount":  1588 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "原理 支持向量机使用的是什么类型的间隔？为什么？ 使用几何间隔定义。 因为函数间隔只需要成比例的改变w和b，函数间隔就会发生变化，而实际分类超平面并未变化。"
+}
+</script><meta property="og:title" content="支持向量机问题 | Machine Learning Doc | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/3-svm/" />
+
+
+
+
+<meta property="og:description" content="原理 支持向量机使用的是什么类型的间隔？为什么？ 使用几何间隔定义。 因为函数间隔只需要成比例的改变w和b，函数间隔就会发生变化，而实际分类超平面并未变化。" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-03-25T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2022-03-25T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/machinelearning-doc/">Machine Learning Doc</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/">传统机器学习系列</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/1-summarize/">机器学习综述</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/2-decisiontree/">决策树问题</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/3-svm-derivation/">支持向量机推导</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/3-svm/">支持向量机问题</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/4-nerualnetwork/">前馈神经网络问题</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">支持向量机问题</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-03-25</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>4分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="原理">原理</h2>
+<ol>
+<li>
+<p>支持向量机使用的是什么类型的间隔？为什么？</p>
+<ol>
+<li>使用几何间隔定义。</li>
+<li>因为函数间隔只需要成比例的改变w和b，函数间隔就会发生变化，而实际分类超平面并未变化。</li>
+<li>对超平面的w和b加上规范化约束，除以w的L2范数，可以使得间隔是确定的。</li>
+<li>最后通过几何间隔和函数间隔之间的关系转化最优化问题。</li>
+</ol>
+</li>
+<li>
+<p>为什么需要间隔最大化？</p>
+<p>对训练集找到几何间隔最大的超平面意味着以充分大的确信度对训练数据进行分类。对最难分的实例点(离超平面最近的点)也有足够大的确信度将它们分开，对未知新实例有很好的分类预测能力。</p>
+</li>
+<li>
+<p>简要描述一下支持向量机的原理</p>
+<ol>
+<li>支持向量机学习的结果是在高维空间中划分出一条分类超平面（同时也是判别函数），得到一个约束最优化问题，求解以得到分类超平面的各个参数；</li>
+<li>通过非线性变换将问题转化为线性问题，使用的是高斯核函数/径向基核函数；</li>
+<li>求解参数使用序列最小优化算法；</li>
+<li>其中，线性分类中y=wx+b，w是行向量，x是列向量，b是一个数；</li>
+<li>支持向量机的损失函数是：合页损失函数；</li>
+<li>支持向量机有三宝，间隔（几何间隔转为函数间隔），对偶（拉格朗日对偶），核技巧。</li>
+</ol>
+</li>
+<li>
+<p>简要描述一下核函数原理</p>
+<p>核函数应用在支持向量机需要由线性空间推广到非线性空间的场景。</p>
+<p>支持向量机通过非线性变换$φ(x)$，将输入空间映射到高维特征空间，由此将输入空间中的超曲面模型对应特征空间（希尔伯特空间）中的超平面模型，从而求解特征空间中的线性支持向量机完成输入空间分类问题的学习。</p>
+<p>如果支持向量机的求解只用到内积运算，而在低维输入空间又存在某个内积函数$K(x_1, x_2)$ ，它恰好等于在高维空间中这个内积，即$K(x_1,x_2)=φ(x_1)⋅φ(x_2)$。那么支持向量机就不用计算复杂的非线性变换，而由这个函数$K(x_1, x_2)$直接得到非线性变换的内积。</p>
+<p>该内积函数$K(x_1, x_2)$称为核函数，变换过程称为核技巧。</p>
+</li>
+<li>
+<p>简要描述一下序列最小优化算法：</p>
+<ol>
+<li>序列最小优化算法是一种启发式算法。如果所有的变量都满足最优化问题的KKT条件，那么最优化问题的解就得到了。（<strong>KKT条件是最优化问题的充要条件</strong>）</li>
+<li>先固定N-2个变量，迭代2个变量，重复直到收敛；外层选择违反KKT条件程度最大的点，内层循环使另一个变量产生足够大的差异（具体实现上是选择差值最大$|E_2-E_1|$的变量；选择边界变量；随机选择变量），最后更新阈值和差值。</li>
+</ol>
+</li>
+<li>
+<p>简要描述一下最小二乘法算法</p>
+<ol>
+<li>最小二乘法将所有训练点视为支持向量，因为$\alpha_i=\gamma e_i \neq 0$；</li>
+<li>利用等式约束代替不等式约束；</li>
+<li>求解线性方程组代替求解非线性方程组，简化计算；</li>
+<li>求解矩阵方程，得到变量的值；</li>
+</ol>
+</li>
+<li>
+<p>参数</p>
+<p>高斯径向基核函数公式为
+</p>
+$$
+   K(x_1,x_2)=exp\{-\frac{\Vert x_1-x_2\Vert^2}{\sigma}\}
+   $$
+<p>
+径向基核的参数$\sigma$，取值影响着分类超平面的复杂程度：</p>
+<p>参数越小，深远，过拟合；</p>
+<p>参数越大，浅近，欠拟合。</p>
+<p>惩罚因子C的取值综合了经验与结构风险：</p>
+<p>参数越大，扭曲，过拟合；</p>
+<p>参数越小，平滑，欠拟合。</p>
+</li>
+</ol>
+<h2 id="实现思路">实现思路</h2>
+<ol>
+<li>
+<p>计算核函数矩阵第i列的值</p>
+<p>输入：训练集train，核函数选项kernelOption（列表，包括核函数类型和参数）</p>
+<p>算法：</p>
+<ol>
+<li>$K(x_i,x_j)=exp{-\frac{\Vert x_i-x_j\Vert^2}{2\sigma^2}}$，其中$x_i,x_j$是样本；</li>
+<li>根据训练集获得训练集的第i行内容，每行减去第i行逐个计算每个元素；</li>
+</ol>
+<p>输出：核函数矩阵；</p>
+<p>其中创建零矩阵的代码为<code>numpy.mat(zeors(n,n))</code></p>
+</li>
+<li>
+<p>SVM数据结构：</p>
+<ol>
+<li>
+<p>样本</p>
+</li>
+<li>
+<p>样本分类标签</p>
+</li>
+<li>
+<p>惩罚系数</p>
+</li>
+<li>
+<p>迭代终止条件</p>
+</li>
+<li>
+<p>拉格朗日因子 $num\times 1$ 的列向量</p>
+</li>
+<li>
+<p>核函数矩阵 $num \times num$的矩阵</p>
+</li>
+<li>
+<p>样本误差缓存 $num\times2$的矩阵</p>
+<p>需要缓存旧误差和新误差</p>
+</li>
+</ol>
+</li>
+<li>
+<p>计算$\alpha_1$</p>
+</li>
+<li>
+<p>计算$\alpha$的误差$E_k$并更新误差缓存</p>
+<ol>
+<li>
+<p>公式如下：
+</p>
+$$
+      E_k=\sum\limits_{i=1}^{N}\alpha_iy_iK_i1+b-y_k
+      $$
+</li>
+<li>
+<p>向量对应元素相乘得到向量的代码为<code>numpy.mutiply(matA,matB)</code></p>
+</li>
+<li>
+<p>向量对应元素相乘再相加得到数的代码为<code>matA * matB</code></p>
+</li>
+<li>
+<p>$\alpha$更新缓存为$[1,E_k]$</p>
+</li>
+</ol>
+</li>
+</ol>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/3-svm-derivation/" class="block">支持向量机推导</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/machinelearning-doc/traddional-machine-learning/4-nerualnetwork/" class="block">前馈神经网络问题</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#原理">原理</a></li>
+    <li><a href="#实现思路">实现思路</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

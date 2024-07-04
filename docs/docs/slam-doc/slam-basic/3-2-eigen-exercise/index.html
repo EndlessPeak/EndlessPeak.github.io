@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Eigen Exercise | SLAM Programming Basic | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文记录了使用Eigen的相关实验。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"SLAM Programming and Interviewing",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"SLAM Programming Basic",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"Eigen Exercise",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-2-eigen-exercise/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-2-eigen-exercise/"
+    },
+    "headline": "Eigen Exercise | SLAM Programming Basic | 悦翎轩","datePublished": "2023-11-16T00:00:00+00:00",
+    "dateModified": "2023-11-16T00:00:00+00:00",
+    "wordCount":  1644 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "本文记录了使用Eigen的相关实验。"
+}
+</script><meta property="og:title" content="Eigen Exercise | SLAM Programming Basic | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-2-eigen-exercise/" />
+
+
+
+<meta property="og:description" content="本文记录了使用Eigen的相关实验。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2023-11-16T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2023-11-16T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/">SLAM Programming Basic</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/1-slam-summary/">SLAM Summary</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/2-vslam-summary/">VSLAM Summary</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-1-rotation-and-translation-matrix/">Rotation &amp; Translation Matrix</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-2-eigen-exercise/">Eigen Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-4-geometry-exercise/">Geometry Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-5-pangolin/">Pangolin Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/4-lie-group-and-lie-algebras-1/">Lie Group and Lie Algebras 1</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/5-lie-group-and-lie-algebras-exercise/">Lie Group and Lie Algebras Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/7-nonlinear-optimize/">Non linear Optimize</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/10-orb-slam3-adjustments/">ORB SLAM Adjustments</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/11-orb-slam3-stereo/">ORB SLAM3 Stereo</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/12-slam-evo/">SLAM Evaluation</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Eigen Exercise</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2023-11-16</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>4分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="cmake-usage">CMake Usage</h2>
+<p><code>Eigen</code> 是用头文件组成的库，对于它的使用，有两种办法：</p>
+<ol>
+<li>理论上只需要引入头文件即可，见下面代码中的“直接引入”；</li>
+<li>按照官网说明和 <code>cmake</code> 规范，依次 <code>find_package</code> 并 <code>target_link_libraries</code></li>
+</ol>
+<p>下面提供了一些 <code>Eigen</code> 的 <code>cmake</code> 模板。</p>
+<pre><code class="language-cmake">cmake_minimum_required(VERSION 3.24)
+project(eigen_example)
+
+set(CMAKE_CXX_STANDARD 17)
+find_package(Eigen3 REQUIRED)
+# 直接引入的办法：
+# include_directories(&quot;/usr/include/eigen3&quot;)
+
+# 使用 include_directories 加入代码头文件
+# 也可以用 target_include_directories
+include_directories(
+      &quot;src/eigen_matrix&quot;
+      &quot;src/argparse&quot;
+)
+
+# 使用 file 递归加入代码文件
+# 建议使用 add_executable 或 add_library 手动加入代码文件
+file(GLOB_RECURSE SOURCES
+      &quot;src/*&quot;
+      &quot;src/argparse/*&quot;
+      &quot;src/eigen_matrix/*&quot;
+      )
+
+add_executable(${PROJECT_NAME} ${SOURCES})
+# 方法一：直接使用 Eigen3::Eigen
+target_link_libraries(${PROJECT_NAME} 
+    Eigen3::Eigen
+)
+# 方法二：使用 ${EIGEN3_INCLUDE_DIR} 加上 ${EIGEN3_LIBS}
+target_include_directories(${PROJECT_NAME}
+    PRIVATE #也可以使用 PUBLIC
+    ${EIGEN3_INCLUDE_DIR}
+)
+target_link_libraries(${PROJECT_NAME}
+    ${EIGEN3_LIBS}
+)
+</code></pre>
+<p>下面提供了一些 <code>eigen</code> 的代码模板。</p>
+<h2 id="variable">Variable</h2>
+<p>变量的声明如下：</p>
+<pre><code class="language-cpp">// 变量表
+// Eigen 中所有向量和矩阵都是Eigen::Matrix，它是一个模板类。它的前三个参数为：数据类型，行，列
+Eigen::Matrix&lt;float, 2, 3&gt; matrix_f23;
+
+// Eigen 通过 typedef 提供了许多内置类型，其底层是Eigen::Matrix
+Eigen::Vector3d v_3d_1;
+Eigen::Matrix&lt;float, 3, 1&gt; v_3f_1;
+
+// Matrix3d 实质上是 Eigen::Matrix&lt;double, 3, 3&gt;
+Eigen::Matrix3d matrix_d33 = Eigen::Matrix3d::Zero(); //初始化为0
+// 如果不确定矩阵大小，可以使用动态大小的矩阵
+Eigen::Matrix&lt;double, Eigen::Dynamic, Eigen::Dynamic&gt; matrix_dynamic;
+// 或者更简单的方式
+Eigen::MatrixXd matrix_x;
+
+clock_t time_stt;
+</code></pre>
+<h2 id="initialize">Initialize</h2>
+<p>初始化部分代码如下：</p>
+<pre><code class="language-cpp">// 下面是对Eigen阵的操作
+// 输入数据（初始化）
+matrix_f23 &lt;&lt; 1, 2, 3, 4, 5, 6;
+// 输出
+std::cout &lt;&lt; &quot;matrix 2x3 from 1 to 6: \n&quot; &lt;&lt; matrix_f23 &lt;&lt; &quot;\n&quot;;
+
+// 用()访问矩阵中的元素
+std::cout &lt;&lt; &quot;print matrix 2x3: &quot; &lt;&lt; &quot;\n&quot;;
+for (int i = 0; i &lt; 2; i++) {
+    for (int j = 0; j &lt; 3; j++)
+        std::cout &lt;&lt; matrix_f23(i, j) &lt;&lt; &quot;\t&quot;;
+    std::cout &lt;&lt; &quot;\n&quot;;
+}
+</code></pre>
+<h2 id="mutiplication">Mutiplication</h2>
+<p>矩阵与向量相乘代码如下：</p>
+<pre><code class="language-cpp">// 矩阵和向量相乘（实际上仍是矩阵和矩阵）
+v_3d_1 &lt;&lt; 3, 2, 1;
+v_3f_1 &lt;&lt; 4, 5, 6;
+
+// 但是在Eigen里你不能混合两种不同类型的矩阵，这样是错的
+// Eigen::Matrix&lt;double, 2, 1&gt; result_wrong_type = matrix_f23 * v_3d_1;
+// 应该显式转换
+Eigen::Matrix&lt;double, 2, 1&gt; result = matrix_f23.cast&lt;double&gt;() * v_3d_1;
+std::cout &lt;&lt; &quot;[1,2,3;4,5,6]*[3,2,1]=&quot; &lt;&lt; result &lt;&lt; &quot;\n&quot;;
+// transpose 代表转置
+std::cout &lt;&lt; &quot;[1,2,3;4,5,6]*[3,2,1]=&quot; &lt;&lt; result.transpose() &lt;&lt; &quot;\n&quot;;
+
+Eigen::Matrix&lt;float, 2, 1&gt; result2 = matrix_f23 * v_3f_1;
+std::cout &lt;&lt; &quot;[1,2,3;4,5,6]*[4,5,6]: &quot; &lt;&lt; result2 &lt;&lt; &quot;\n&quot;;
+std::cout &lt;&lt; &quot;[1,2,3;4,5,6]*[4,5,6]: &quot; &lt;&lt; result2.transpose() &lt;&lt; &quot;\n&quot;;
+
+// 同样你不能搞错矩阵的维度
+// 试着取消下面的注释，看看Eigen会报什么错
+// Eigen::Matrix&lt;double, 2, 3&gt; result_wrong_dimension = matrix_23.cast&lt;double&gt;() * v_3d_1;
+</code></pre>
+<h2 id="operation">Operation</h2>
+<p>矩阵运算与操作代码如下：</p>
+<pre><code class="language-cpp">// 四则运算直接用+-*/即可。
+
+// 生成随机数矩阵
+matrix_d33 = Eigen::Matrix3d::Random();
+// 显示矩阵
+std::cout &lt;&lt; &quot;random matrix: \n&quot; &lt;&lt; matrix_d33 &lt;&lt; &quot;\n&quot;;
+// 转置
+std::cout &lt;&lt; &quot;transpose: \n&quot; &lt;&lt; matrix_d33.transpose() &lt;&lt; &quot;\n&quot;;
+// 各元素和
+std::cout &lt;&lt; &quot;sum: &quot; &lt;&lt; matrix_d33.sum() &lt;&lt; &quot;\n&quot;;
+// 迹
+std::cout &lt;&lt; &quot;trace: &quot; &lt;&lt; matrix_d33.trace() &lt;&lt; &quot;\n&quot;;
+// 数乘
+std::cout &lt;&lt; &quot;times 10: \n&quot; &lt;&lt; 10 * matrix_d33 &lt;&lt; &quot;\n&quot;;
+// 逆
+std::cout &lt;&lt; &quot;inverse: \n&quot; &lt;&lt; matrix_d33.inverse() &lt;&lt; &quot;\n&quot;;
+// 行列式
+std::cout &lt;&lt; &quot;det: &quot; &lt;&lt; matrix_d33.determinant() &lt;&lt; &quot;\n&quot;;
+
+</code></pre>
+<h2 id="matrix-values--vectors">Matrix values &amp; vectors</h2>
+<p>矩阵的特征值与特征向量代码如下：</p>
+<pre><code class="language-cpp">// 实对称矩阵可以保证对角化成功
+// A^T*A 一定是实对称矩阵
+Eigen::SelfAdjointEigenSolver&lt;Eigen::Matrix3d&gt; eigen_solver(matrix_d33.transpose() * matrix_d33);
+// 特征值
+std::cout &lt;&lt; &quot;Eigen values = \n&quot; &lt;&lt; eigen_solver.eigenvalues() &lt;&lt; &quot;\n&quot;;
+// 特征向量
+std::cout &lt;&lt; &quot;Eigen vectors = \n&quot; &lt;&lt; eigen_solver.eigenvectors() &lt;&lt; &quot;\n&quot;;
+
+</code></pre>
+<h2 id="matrix-inverse">Matrix inverse</h2>
+<p>矩阵求逆的三种方法：</p>
+<ol>
+<li>直接求逆</li>
+<li>矩阵分解 QR 分解</li>
+<li>正定矩阵 cholesky 分解</li>
+</ol>
+<pre><code class="language-cpp">// 直接求逆法
+int matrix_equation_direct(Eigen::Matrix&lt;double, MATRIX_SIZE, 1&gt; &amp;x,const Eigen::Matrix&lt;double, MATRIX_SIZE, MATRIX_SIZE&gt; &amp;matrix_NN,const Eigen::Matrix&lt;double,MATRIX_SIZE,1&gt; &amp;v_Nd) {
+    time_stt = clock(); // 计时
+    x = matrix_NN.inverse() * v_Nd;
+    std::cout &lt;&lt; &quot;time of normal inverse is &quot;
+              &lt;&lt; (double) (1000 * (clock() - time_stt)) / (double) CLOCKS_PER_SEC &lt;&lt; &quot;ms&quot; &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+
+// 矩阵分解法，通常用此方法来求解，例如QR分解，速度会快很多
+int matrix_equation_qr(Eigen::Matrix&lt;double, MATRIX_SIZE, 1&gt; &amp;x,const Eigen::Matrix&lt;double, MATRIX_SIZE, MATRIX_SIZE&gt; &amp;matrix_NN,const Eigen::Matrix&lt;double,MATRIX_SIZE,1&gt; &amp;v_Nd) {
+    time_stt = clock();
+    x = matrix_NN.colPivHouseholderQr().solve(v_Nd);
+    std::cout &lt;&lt; &quot;time of Qr decomposition is &quot;
+              &lt;&lt; (double)(1000 * (clock() - time_stt)) / (double) CLOCKS_PER_SEC &lt;&lt; &quot;ms&quot; &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+
+// cholesky分解法
+// 对于正定矩阵，还可以用cholesky分解来解方程
+int matrix_equation_cholesky(Eigen::Matrix&lt;double, MATRIX_SIZE, 1&gt; &amp;x,const Eigen::Matrix&lt;double, MATRIX_SIZE, MATRIX_SIZE&gt; &amp;matrix_NN,const Eigen::Matrix&lt;double,MATRIX_SIZE,1&gt; &amp;v_Nd) {
+    time_stt = clock();
+    x = matrix_NN.ldlt().solve(v_Nd);
+    std::cout &lt;&lt; &quot;time of ldlt decomposition is &quot;
+              &lt;&lt; (double)(1000 * (clock() - time_stt)) / (double) CLOCKS_PER_SEC &lt;&lt; &quot;ms&quot; &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+</code></pre>
+<h2 id="matrix-equation">Matrix Equation</h2>
+<p>解矩阵方程代码如下：</p>
+<pre><code class="language-cpp">// 解矩阵方程
+int matrix_equation() {
+    // 我们求解 matrix_NN * x = v_Nd 这个方程
+    // N的大小在前边的宏里定义，它由随机数生成
+    // 直接求逆自然是最直接的，但是求逆运算量大
+
+    //Eigen::Matrix&lt;double, MATRIX_SIZE, MATRIX_SIZE&gt; matrix_NN
+    //        = Eigen::MatrixXd::Random(MATRIX_SIZE, MATRIX_SIZE);
+    Eigen::Matrix&lt;double, MATRIX_SIZE, MATRIX_SIZE&gt; matrix_NN
+            = Eigen::Matrix&lt;double, MATRIX_SIZE, MATRIX_SIZE&gt;::Random();
+    matrix_NN = matrix_NN * matrix_NN.transpose();  // 保证半正定
+    Eigen::Matrix&lt;double, MATRIX_SIZE, 1&gt; v_Nd = Eigen::MatrixXd::Random(MATRIX_SIZE, 1);
+
+    Eigen::Matrix&lt;double, MATRIX_SIZE, 1&gt; x{Eigen::Matrix&lt;double,MATRIX_SIZE,1&gt;::Random()};
+    matrix_equation_direct(x,matrix_NN,v_Nd);
+    std::cout &lt;&lt; &quot;x = &quot; &lt;&lt; x.transpose() &lt;&lt; &quot;\n&quot;;
+    matrix_equation_qr(x,matrix_NN,v_Nd);
+    std::cout &lt;&lt; &quot;x = &quot; &lt;&lt; x.transpose() &lt;&lt; &quot;\n&quot;;
+    matrix_equation_cholesky(x,matrix_NN,v_Nd);
+    std::cout &lt;&lt; &quot;x = &quot; &lt;&lt; x.transpose() &lt;&lt; &quot;\n&quot;;
+    return 0;
+}
+</code></pre>
+<h2 id="homogeneous-computation">Homogeneous Computation</h2>
+<p>为了实现计算 $\mathbf{Ta}$ 时使用齐次坐标，计算 $\mathbf{Ra}$ 时使用非齐次坐标，可以使用以下办法：</p>
+<ol>
+<li>实现齐次坐标矩阵与非齐次坐标矩阵之间的转换</li>
+<li>实现运算符重载</li>
+</ol>
+<p>假设实现旋转和平移的矩阵叫作 SE3，则代码如下：</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;Eigen/Dense&gt;
+
+class SE3 {
+public:
+    Eigen::Matrix3d rotation_matrix;
+    Eigen::Vector3d translation_matrix;
+    Eigen::Matrix4d homogeneous_matrix;
+
+    SE3() {
+        rotation_matrix = Eigen::Matrix3d::Identity();
+        translation_matrix = Eigen::Vector3d::Zero();
+        homogeneous_matrix = Eigen::Matrix4d::Identity();
+    }
+
+    SE3(const Eigen::Matrix3d&amp; R, const Eigen::Vector3d&amp; t) {
+        rotation_matrix = R;
+        translation_matrix = t;
+        to_homogeneous_matrix();
+    }
+
+    // 转为齐次坐标矩阵
+    // 该函数不能为 const，因为他会修改成员变量
+    void to_homogeneous_matrix() {
+        homogeneous_matrix = Eigen::Matrix4d::Identity();
+        homogeneous_matrix.block&lt;3, 3&gt;(0, 0) = rotation_matrix;
+        homogeneous_matrix.block&lt;3, 1&gt;(0, 3) = translation_matrix;
+    }
+
+    // 与三维向量相乘
+    Eigen::Vector3d operator*(const Eigen::Vector3d&amp; vec) const {
+        return rotation_matrix * vec + translation_matrix;
+    }
+
+    // 与四维齐次向量相乘
+    Eigen::Vector4d operator*(const Eigen::Vector4d&amp; vec) const {
+        return homogeneous_matrix * vec;
+    }
+
+    friend std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, const SE3&amp; se3) {
+        os &lt;&lt; &quot;Rotation:\n&quot; &lt;&lt; se3.rotation_matrix &lt;&lt; &quot;\n&quot;;
+        os &lt;&lt; &quot;Translation:\n&quot; &lt;&lt; se3.translation_matrix.transpose() &lt;&lt; &quot;\n&quot;;
+        os &lt;&lt; &quot;Homogeneous Matrix:\n&quot; &lt;&lt; se3.homogeneous_matrix &lt;&lt; &quot;\n&quot;;
+        return os;
+    }
+};
+
+int main() {
+    // 定义一个旋转矩阵 (SO(3))
+    Eigen::Matrix3d R = Eigen::AngleAxisd(M_PI / 4, Eigen::Vector3d::UnitZ()).toRotationMatrix();
+
+    // 定义一个平移向量
+    Eigen::Vector3d t(1, 2, 3);
+
+    // 创建一个 SE3 对象
+    SE3 se3(R, t);
+
+    // 打印 SE3 对象
+    std::cout &lt;&lt; se3 &lt;&lt; std::endl;
+
+    // 定义一个三维向量
+    Eigen::Vector3d a(4, 5, 6);
+    // 使用非齐次坐标相乘
+    Eigen::Vector3d result_non_homogeneous = se3 * a;
+    std::cout &lt;&lt; &quot;Result (non-homogeneous):\n&quot; &lt;&lt; result_non_homogeneous &lt;&lt; std::endl;
+
+    // 定义一个四维齐次向量
+    Eigen::Vector4d a_homogeneous(4, 5, 6, 1);
+    // 使用齐次坐标相乘
+    Eigen::Vector4d result_homogeneous = se3 * a_homogeneous;
+    std::cout &lt;&lt; &quot;Result (homogeneous):\n&quot; &lt;&lt; result_homogeneous &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-1-rotation-and-translation-matrix/" class="block">Rotation &amp; Translation Matrix</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-4-geometry-exercise/" class="block">Geometry Exercise</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#cmake-usage">CMake Usage</a></li>
+    <li><a href="#variable">Variable</a></li>
+    <li><a href="#initialize">Initialize</a></li>
+    <li><a href="#mutiplication">Mutiplication</a></li>
+    <li><a href="#operation">Operation</a></li>
+    <li><a href="#matrix-values--vectors">Matrix values &amp; vectors</a></li>
+    <li><a href="#matrix-inverse">Matrix inverse</a></li>
+    <li><a href="#matrix-equation">Matrix Equation</a></li>
+    <li><a href="#homogeneous-computation">Homogeneous Computation</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

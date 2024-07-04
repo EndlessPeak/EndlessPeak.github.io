@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>数据库原理 | Computer Interview | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="请解释数据库的四个基本概念 数据 数据(Data)是描述事物的符号记录，是数据库中存储的基本对象。 数据库 数据库(Data Base DB)是长期存储在计算机内，有组">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Computer Interview",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Computer Interview",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"数据库原理",
+      "item":"https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-2/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-2/"
+    },
+    "headline": "数据库原理 | Computer Interview | 悦翎轩","datePublished": "2022-04-11T00:00:00+00:00",
+    "dateModified": "2022-04-11T00:00:00+00:00",
+    "wordCount":  2656 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "请解释数据库的四个基本概念 数据 数据(Data)是描述事物的符号记录，是数据库中存储的基本对象。 数据库 数据库(Data Base DB)是长期存储在计算机内，有组"
+}
+</script><meta property="og:title" content="数据库原理 | Computer Interview | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-2/" />
+
+
+
+
+<meta property="og:description" content="请解释数据库的四个基本概念 数据 数据(Data)是描述事物的符号记录，是数据库中存储的基本对象。 数据库 数据库(Data Base DB)是长期存储在计算机内，有组" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-04-11T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2022-04-11T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/">Computer Interview</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/projectdevelopment/">项目经历</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/softwareengineering/">软件工程</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/englishinterview/">英语面试</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/comprehensiveinterview/">综合问题</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/compilersprinciples/">编译原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computernetwork/">计算机网络</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-2/">数据库原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-1/">数据库原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computercomponents/">组成原理</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/linuxpoints/">Linux Basic</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">数据库原理</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-04-11</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>6分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <ol>
+<li>
+<p>请解释数据库的四个<strong>基本概念</strong></p>
+<ol>
+<li>
+<p>数据</p>
+<p>数据(Data)是描述事物的符号记录，是数据库中存储的基本对象。</p>
+</li>
+<li>
+<p>数据库</p>
+<p>数据库(Data Base DB)是<strong>长期存储</strong>在计算机内，<strong>有组织</strong>的，<strong>可共享的</strong>大量数据的集合。</p>
+</li>
+<li>
+<p>数据库管理系统</p>
+<p>数据库管理系统(Data Base Management System DBMS)位于用户和操作系统之间的一层<strong>数据管理软件</strong>；是<strong>基础软件</strong>，是一个<strong>大型复杂的软件系统</strong>。</p>
+</li>
+<li>
+<p>数据库系统</p>
+<p>数据库系统(Data Base System)是指在计算机系统中<strong>引入数据库后的系统构成</strong>。</p>
+<p>包括：DB 数据库、DBMS 数据库管理系统、APP 应用程序、DBA 数据库管理员、用户</p>
+</li>
+</ol>
+</li>
+<li>
+<p>数据模型是什么？分为哪些？</p>
+<p>数据模型是对现实世界数据特征的抽象。</p>
+<ol>
+<li>
+<p>概念模型</p>
+<p>信息世界的建模，是现实世界到信息世界的第一层抽象；</p>
+</li>
+<li>
+<p>逻辑模型</p>
+<p>数据的逻辑结构。它包括层次模型、网状模型、关系模型和其他模型；</p>
+<p>其他模型包括面向对象模型、对象关系数据模型和半结构化数据模型；</p>
+</li>
+<li>
+<p>物理模型</p>
+<p>描述数据是如何在计算机中存储和组织的。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>请描述数据库三级模式的结构</p>
+<ol>
+<li>
+<p>模式与实例</p>
+<ol>
+<li>模式：对数据库逻辑结构和特征的描述，是型的描述（模式是相对稳定的）</li>
+<li>实例：数据库某一时刻的状态，模式的具体值，同一个模式可以有很多实例</li>
+</ol>
+</li>
+<li>
+<p>三级模式结构</p>
+<ol>
+<li>
+<p>外模式（用户模式、子模式）</p>
+<p>与某一应用有关的数据的逻辑表示，如视图</p>
+</li>
+<li>
+<p>模式（逻辑模式）</p>
+<p>是数据库中全体数据的逻辑结构和特征的描述，是所有用户的公共数据视图</p>
+</li>
+<li>
+<p>内模式（存储模式）</p>
+<p>是数据物理结构和存储方式的描述，如聚簇和索引</p>
+</li>
+</ol>
+</li>
+<li>
+<p>二级映像</p>
+<ol>
+<li>外模式-模式映像：保证数据与程序的逻辑独立性</li>
+<li>模式-内模式映像：保证数据与程序的物理独立性</li>
+</ol>
+</li>
+<li>
+<p>数据与程序的逻辑独立性与物理独立性</p>
+<ol>
+<li>逻辑独立性：模式改变，外模式和应用程序不变</li>
+<li>物理独立性：数据存储结构改变，模式、外模式、应用程序不变</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>数据模型的组成要素</p>
+<ol>
+<li>
+<p>数据结构（静态）</p>
+<p>描述系统的静态特性，它是刻画数据模型性质的重要方面</p>
+</li>
+<li>
+<p>数据操作（增删改查）</p>
+</li>
+<li>
+<p>数据完整性约束条件</p>
+<p>是一组完整性规则，描述数据及其联系所具有的制约和依存关系</p>
+</li>
+</ol>
+</li>
+<li>
+<p>关系完整性约束分为哪些</p>
+<ol>
+<li>实体完整性：主属性不可以取空值；</li>
+<li>参照完整性：外码要么取空值要么取参照关系中某个元组定义的主码值</li>
+<li>用户自定义的完整性</li>
+</ol>
+</li>
+<li>
+<p>视图和基本表的区别</p>
+<ol>
+<li>视图是从一个或多个基本表中导出的表，是已经编译好的SQL语句；</li>
+<li>视图没有实际的物理记录，不占用物理空间，而基本表相反；</li>
+<li>视图是查看表内容的窗口，查看数据表的一种方法，视图可以不给用户接触表，使用户不知道表结构，安全性更高；</li>
+<li>视图是逻辑概念，视图的建立删除只影响它本身，而不影响对应的基本表；基本表是物理概念，对基本表的操作就是数据库的实际读写；</li>
+</ol>
+</li>
+<li>
+<p>数据库范式</p>
+<ol>
+<li>
+<p>1NF 是指数据库表的每一列都是不可分割的基本数据项；（队伍中是由人组成的）</p>
+</li>
+<li>
+<p>2NF 是指实体的非主属性对码完全依赖，不是部分依赖；（对一把手的绝对服从）</p>
+</li>
+<li>
+<p>3NF 是指非主属性属性之间不互相依赖；（队伍内部不拉帮结派）</p>
+<p>例如存在部门信息表，每个部门除了部门号还有部门名称等；员工信息表中列出部门编号后不能再列出部门名称等，防止信息冗余。</p>
+</li>
+<li>
+<p>BCNF 是指在3NF基础上，消除主属性对码/键的部分依赖、传递依赖，则称它符合BCNF；（一把手之间互不影响）</p>
+<p>即每一个决定因素都包含码。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>数据库设计基本步骤</p>
+</li>
+<li>
+<p>ODBC、JDBC是什么？</p>
+<ol>
+<li>ODBC是微软公司开发的开放数据库互连系统。不依赖任何DBMS。</li>
+<li>JDBC是一种用于执行SQL语句的Java API，可以为多种关系数据库提供统一访问，它由一组用Java语言编写的类和接口组成。
+<ol>
+<li>加载jdbc驱动程序；</li>
+<li>创建数据库的连接；</li>
+<li>创建preparedStatement；</li>
+<li>执行SQL语句；</li>
+<li>遍历结果集；</li>
+<li>处理异常及关闭JDBC对象资源。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>事务的四大特性是？</p>
+<ol>
+<li>
+<p>原子性</p>
+<p>全部成功或全部失败；</p>
+</li>
+<li>
+<p>一致性</p>
+<p>事务的执行不能破坏数据库的完整性和一致性；</p>
+</li>
+<li>
+<p>隔离性</p>
+<p>在并发环境中，并发的事务是相互隔离的，一个事务的执行不能不被其他事务干扰。</p>
+</li>
+<li>
+<p>持久性</p>
+<p>一旦事务提交，那么它对数据库中的对应数据的状态的变更就会永久保存到数据库中。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>数据库故障的种类有哪些</p>
+<ol>
+<li>事务内部故障</li>
+<li>系统故障</li>
+<li>存储介质故障（硬件故障）</li>
+<li>计算机病毒</li>
+</ol>
+</li>
+<li>
+<p>数据并发操作所造成的数据库不一致性</p>
+<ol>
+<li>丢失修改</li>
+<li>不可重复读</li>
+<li>读“脏”数据</li>
+</ol>
+</li>
+<li>
+<p>什么是封锁？什么是两段锁协议？有哪些封锁类型？</p>
+<ol>
+<li>封锁就是事务T在对某个数据对象（例如表、记录等）操作之前，先向系统发出请求，对其加锁。</li>
+<li>两段锁协议指的是事务执行分为两个阶段：加锁阶段和解锁阶段。
+<ol>
+<li>一次封锁法要求每个事务必须一次将所有要使用的数据全部加锁，否则就不能继续执行，因此一次封锁法遵守两段锁协议；</li>
+<li>但是两段锁协议并不要求事务必须一次将所有要使用的数据全部加锁，因此遵守两段锁协议的事务可能发生死锁。</li>
+</ol>
+</li>
+<li>基本锁的类型
+<ol>
+<li>排它锁X锁，也称为写锁，表示对数据进行写操作。</li>
+<li>共享锁S锁，也称为读锁，用于所有的只读数据操作。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>一级、二级和三级封锁协议</p>
+<ol>
+<li>一级封锁协议
+<ol>
+<li>事务T在修改数据R之前必须先对其加X锁，直到事务结束才释放。事务结束包括正常结束（COMMIT）和非正常结束（ROLLBACK）。</li>
+<li>一级封锁协议可以防止丢失修改，并保证事务T是可恢复的。使用一级封锁协议可以解决<strong>丢失修改</strong>问题。</li>
+<li>在一级封锁协议中，如果仅仅是读数据不对其进行修改，是不需要加锁的，它不能保证可重复读和不读“脏”数据。</li>
+</ol>
+</li>
+<li>二级封锁协议
+<ol>
+<li>一级封锁协议加上事务T在读取数据R之前必须先对其加S锁，<strong>读完后</strong>释放S锁。</li>
+<li>二级封锁协议防止了<strong>丢失修改</strong>和<strong>读“脏”数据</strong>。但在二级封锁协议中，由于读完数据后即可释放S锁，所以它不能保证可重复读。</li>
+</ol>
+</li>
+<li>三级封锁协议
+<ol>
+<li>一级封锁协议加上事务T在读取数据R之前必须先对其加S锁，<strong>直到事务结束</strong>才释放。</li>
+<li>三级封锁协议防止了<strong>丢失修改</strong>和<strong>读“脏”数据</strong>，还进一步<strong>防止了不可重复读</strong>。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>饥饿、活锁、死锁的区别？</p>
+<ol>
+<li>饥饿：任务一直等待得不到处理；</li>
+<li>活锁：任务或者执行者没有被阻塞，由于某些条件没有满足，导致一直重复尝试，失败，尝试，失败。</li>
+<li>死锁：两个或多个事务都已封锁了一些数据对象，然后又都请求对已为其他事务封锁的数据对象加锁，从而出现死等待</li>
+</ol>
+</li>
+<li>
+<p>可串行化调度的充分条件有哪些？</p>
+<ol>
+<li>事务遵守两段锁协议是可串行化调度的充分条件</li>
+<li>冲突可串行化调度是可串行化调度的充分条件</li>
+</ol>
+</li>
+<li>
+<p>自主存取控制和强制存取控制的区别</p>
+<ol>
+<li>自主存取控制
+<ol>
+<li>通过 SQL 的GRANT 语句和REVOKE语句实现</li>
+<li>用户对不同的数据对象有不同的存取权限。</li>
+<li>不同的用户对同一对象也有不同的权限。</li>
+<li>用户还可以将其拥有的存取权限转授给其他用户。</li>
+</ol>
+</li>
+<li>强制存取控制
+<ol>
+<li>每个数据对象被标注为一个特定的等级</li>
+<li>每个用户被授予一个特定等级的许可证</li>
+<li>对于任意一个对象，只有具备合法许可证的用户才可以存取。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>为什么强制存取控制规定仅当主体许可证级别小于等于客体密级才能写入相应客体，而非大于等于？</p>
+</li>
+<li>
+<p>自主存取控制的缺点？</p>
+</li>
+</ol>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/computernetwork/" class="block">计算机网络</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/interview-doc/interview-brief/databaseprinciples-1/" class="block">数据库原理</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

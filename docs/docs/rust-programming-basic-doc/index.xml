@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rust Programming Basic on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/</link>
+    <description>Recent content in Rust Programming Basic on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Tue, 11 Jul 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rust Installation</title>
+      <link>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/1-installation/</link>
+      <pubDate>Tue, 04 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/1-installation/</guid>
+      <description>Rustup rustup 是管理 Rust 版本和相关工具的命令行工具。即使部分 Linux 发行版已经打包提供了 rust 软件包，我们仍然建议使用 rustup ，因为它可以自由地添加目标平台支持以及工具链列表。 Unix</description>
+    </item>
+    <item>
+      <title>Hello Cargo</title>
+      <link>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/2-hello-cargo/</link>
+      <pubDate>Fri, 07 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/2-hello-cargo/</guid>
+      <description>Hello Rust Editor 主流编辑器均支持 Rust 语言。此处仅讨论 Emacs 中如何获得 Rust 支持。 首先，可以通过 melpa 安装 rust-mode ，基本配置如下： (use-package rust-mode :ensure t :mode (&amp;quot;\\.rs\\&#39;&amp;quot; . rust-mode) :hook (rust-mode . (lambda () (setq tab-width 4))) ) 其次，Rust 代码</description>
+    </item>
+    <item>
+      <title>Guess Number</title>
+      <link>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/3-guessnumber/</link>
+      <pubDate>Mon, 10 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/3-guessnumber/</guid>
+      <description>Handle A Guess 请求用户输入，处理输入，并检查是否符合预期。 use std::io; fn main() { println!(&amp;quot;Guess the number.&amp;quot;); println!(&amp;quot;Please input your guess.&amp;quot;); let mut guess = String::new(); io::stdin() .read_line(&amp;amp;mut guess) .expect(&amp;quot;Failed to read line.&amp;quot;); println!(&amp;quot;You guessed: {}&amp;quot;,guess); } 在这段程序中包含了下面的内容： prelude prelude 是 Rust 自动导</description>
+    </item>
+    <item>
+      <title>Variable</title>
+      <link>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/4-variable/</link>
+      <pubDate>Tue, 11 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/4-variable/</guid>
+      <description>Variable Basic Varibale 变量拥有以下特性： 默认情况下变量是不可变的(immutable) 它是 Rust 众多精妙特性的其中一个 它令用户充分利用 Rust 提供的安全性和简单并发性的方式来编</description>
+    </item>
+    <item>
+      <title>Data Type</title>
+      <link>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/5-data-type/</link>
+      <pubDate>Tue, 11 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/5-data-type/</guid>
+      <description>Data Type Rust 是一种静态类型（statically typed）的语言，它必须在编译期知道所有变量的类型。 常见的静态类型语言有 C/C++/Java/C#/Rust/Go/Swift/TypeScript/Kotlin/Haskell 常见的动态类型语言有 JavaScript/Python/Ruby/PHP/Perl/Lua/Shell/R/Matlab/Lisp Scalar 标量类型</description>
+    </item>
+    <item>
+      <title>Function</title>
+      <link>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/6-function/</link>
+      <pubDate>Tue, 11 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/6-function/</guid>
+      <description>Function （待完成）</description>
+    </item>
+    <item>
+      <title>Package And Crate</title>
+      <link>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/8-package-and-crate/</link>
+      <pubDate>Tue, 11 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/rust-programming-basic-doc/8-package-and-crate/</guid>
+      <description>Crate crate 是 Rust 代码编译单元，它可以是库或者二进制 二进制 crate 生成一个可执行文件 库 crate 可以被其他程序调用，但不能独自执行 Package 包对应一个项目/代码仓库，它可以包含一个或</description>
+    </item>
+  </channel>
+</rss>

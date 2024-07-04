@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux 工具与实用内容 on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/build/operating-system-tool/</link>
+    <description>Recent content in Linux 工具与实用内容 on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Tue, 19 Dec 2023 20:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/build/operating-system-tool/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux 迁移</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-tool/1-linux-migrating/</link>
+      <pubDate>Tue, 19 Dec 2023 20:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-tool/1-linux-migrating/</guid>
+      <description>Migrating rsync -aAXvhP --exclude={&amp;quot;/dev/*&amp;quot;,&amp;quot;/proc/*&amp;quot;,&amp;quot;/sys/*&amp;quot;,&amp;quot;/tmp/*&amp;quot;,&amp;quot;/run/*&amp;quot;,&amp;quot;/mnt/*&amp;quot;,&amp;quot;/media/*&amp;quot;,&amp;quot;/lost+found&amp;quot;} / /mnt rsync是一个用于复制和同步文件的强大工具。在您提供的命令中，-aAXv选项组合的意义如下： -a（或&amp;ndash;archive）：这个</description>
+    </item>
+    <item>
+      <title>RDP 远程桌面连接</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-tool/2-linux-rdp-connection/</link>
+      <pubDate>Fri, 07 Jul 2023 20:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-tool/2-linux-rdp-connection/</guid>
+      <description>RDP(Remote Desktop Protocol)是一种远程桌面协议，由微软开发用于远程连接和控制计算机。允许用户通过网络从本地计算机的远程桌面客户端连接到远程计算机。 Server 在需要被</description>
+    </item>
+  </channel>
+</rss>

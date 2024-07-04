@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Program Compilation by GCC | C/C&#43;&#43; Programming Basic | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文总结了 C/C&#43;&#43; 程序使用GCC从源文件进行编译的过程。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"CPP Programming",
+      "item":"https://endlesspeak.github.io/docs/docs/cpp-programming/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"C/C++ Programming Basic",
+      "item":"https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"Program Compilation by GCC",
+      "item":"https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-2-program-compilation-by-gcc/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-2-program-compilation-by-gcc/"
+    },
+    "headline": "Program Compilation by GCC | C\/C\u002b\u002b Programming Basic | 悦翎轩","datePublished": "2022-07-01T00:00:00+00:00",
+    "dateModified": "2022-07-01T00:00:00+00:00",
+    "wordCount":  2329 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "本文总结了 C\/C\u002b\u002b 程序使用GCC从源文件进行编译的过程。"
+}
+</script><meta property="og:title" content="Program Compilation by GCC | C/C&#43;&#43; Programming Basic | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-2-program-compilation-by-gcc/" />
+
+
+
+<meta property="og:description" content="本文总结了 C/C&#43;&#43; 程序使用GCC从源文件进行编译的过程。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-07-01T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2022-07-01T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/">C/C&#43;&#43; Programming Basic</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-1-compilerlanguage/">Compiler Language</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-2-program-compilation-by-gcc/">Program Compilation by GCC</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-3-program-compilation-by-clang/">Program Compilation by Clang</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-1-datatype/">DataType</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-2-storetype/">StoreType</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-1-statement/">Statement</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-2-structure/">Structure</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-1-function/">Function</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-2-functionassignment/">Pass By Value &amp; Reference</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/5-scope/">Scope</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/6-pointer/">Pointer</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/7-customdatatypes/">Custom Data Type</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-1-io-standard/">Standard I/O</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-2-io-file/">File I/O</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/10-modules-development/">Module Development</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/11-debug-method/">Debug Method</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/12-ccpp-mix-programming/">C&amp;CPP Mix Programming</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Program Compilation by GCC</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-07-01</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>5分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="gnu-compile-collection">GNU Compile Collection</h2>
+<p>Linux 平台上使用的编译器是 GCC(GNU Compile Collection) 编译器。</p>
+<p>当提到 GCC 时，通常指的是 GNU 编译器套件，它支持多种高级语言（实验性的），提供较好支持的语言包括：</p>
+<ol>
+<li>C/C++</li>
+<li>Fortran</li>
+<li>Ada</li>
+<li>Objective-C/C++</li>
+<li>D</li>
+<li>Rust</li>
+</ol>
+<p>GCC 为这些语言提供了良好的链接支持，同时提供了相对应的编译工具，它们都属于 GCC 的一部分。</p>
+<p>当提到 gcc 时，专指的是 gcc 编译器，它的编译选项可以归纳为以下几类：</p>
+<ol>
+<li>
+<p>总体选项</p>
+<pre><code class="language-text">-c	对源文件进行编译或汇编
+-E	对源文件进行预处理
+-S	对源文件进行编译
+-o	输出目标文件
+-v	显示编译阶段命令
+</code></pre>
+</li>
+<li>
+<p>语言选项</p>
+<pre><code class="language-text">-ansi	支持符合ANSI标准的C语言程序
+-x	用户可以输出希望gcc处理的语言
+</code></pre>
+<p>对 GCC 的 <code>-x</code> 功能说明：</p>
+<ol>
+<li>可以用该功能调用 GCC 针对不同语言的编译前端处理不同的代码，支持 <code>c/c++/assembly</code> 等三种语言</li>
+<li><code>-x c++</code> 可以处理 C++代码，但是有以下内容需要注意：
+<ol>
+<li>gcc 默认不会链接 C++的标准库，需要 <code>-lstdc++</code> 才能正常编译</li>
+<li>gcc 不会自动定义 <code>__cplusplus</code> 宏，需要手动添加 <code>-D__cplusplus</code> 参数</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>警告选项</p>
+<pre><code class="language-text">-W	屏蔽所有的警告信息
+-Wall	显示所有类型的警告信息
+-Werror	出现警告信息就停止编译（将警告视作错误）
+</code></pre>
+</li>
+<li>
+<p>调试选项</p>
+<pre><code class="language-text">-g	产生调试信息
+</code></pre>
+</li>
+<li>
+<p>优化选项</p>
+<pre><code class="language-text">-O0	不进行任何优化
+-O1	对目标文件的性能进行优化
+-O2	提高目标文件的运行性能
+-O3	支持函数集成优化
+</code></pre>
+</li>
+<li>
+<p>链接选项</p>
+<pre><code class="language-text">-Wl,&lt;option&gt;	将该选项跳过并传递该选项给链接器
+-l&lt;library&gt;	链接指定的库文件
+-L &lt;dir&gt;	指定链接器的额外搜索路径
+-static	指定使用静态链接
+-shared	生成共享文件（动态库）
+-fuse-ld 指定使用哪个链接器
+</code></pre>
+</li>
+<li>
+<p>目录选项</p>
+<pre><code class="language-text">-I &lt;dir&gt;	指定头文件的搜索目录
+-L &lt;dir&gt;	指定链接器的额外搜索路径
+</code></pre>
+</li>
+<li>
+<p>配置选项
+待补充。</p>
+</li>
+</ol>
+<h2 id="preprocessing">Preprocessing</h2>
+<p>处理宏定义和 <code>include</code> ，去除所有的注释。 <strong>不会对语法错误进行检查。</strong></p>
+<p>如果需要知道 <code>#inlcude &lt;...&gt;</code> 的搜素路径，可以在预处理时加上 <code>-v</code> 选项，显示搜索列表的详情。</p>
+<p>特别地，如果仅执行 <code>gcc -v</code> ，则得到的是 gcc 的版本。</p>
+<pre><code class="language-shell">gcc -E a.c -o a.i
+gcc -E a.c -o a.i -v
+</code></pre>
+<h2 id="compilation">Compilation</h2>
+<h3 id="native-compilation">Native Compilation</h3>
+<p>狭义上编译指的是生成汇编代码，并在此阶段检查语法错误。 <strong>不会对逻辑错误进行检查。</strong></p>
+<pre><code class="language-shell">gcc -S a.i -o a.s
+</code></pre>
+<p>广义上编译指一直到生成 <strong>可重定位</strong> 的目标代码。</p>
+<h3 id="cross-compilation">Cross Compilation</h3>
+<p>交叉编译是在一个平台上生成另一个平台上的可执行代码。用来编译这种程序的编译器叫交叉编译器。交叉编译器的名字一般都有前缀，如 <code>arm-none-eabi-gcc</code> 。</p>
+<p>交叉编译的使用方法跟本地编译相似，但有一点特殊的是：必须用 <code>-L</code> 和 <code>-I</code> 参数指定编译器用 arm 系统的库和头文件，不能用本地(X86)的库。或者也可以在 <code>makefile</code> 中使用 <code>-include</code> 指定头文件位置。</p>
+<h2 id="assembly">Assembly</h2>
+<p>使用 <code>-C</code> 参数生成可重定位的目标代码。</p>
+<pre><code class="language-shell">gcc -c a.s -o a.o
+</code></pre>
+<p>可重定位的目标代码不能直接执行，可使用 <code>file</code> 命令查看：</p>
+<pre><code class="language-shell">file a.o
+a.o: ELF 64-bit LSB relocatable
+</code></pre>
+<p>考虑下面的两个 C++ 源代码文件：
+A.cpp：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &quot;B.h&quot;
+int main(){
+    int a = 100;
+    swap(&amp;a, &amp;shared);
+    std::cout&lt;&lt;a&lt;&lt;std::endl;
+    std::cout&lt;&lt;shared&lt;&lt;std::endl;
+}
+</code></pre>
+<p>B.h:</p>
+<pre><code class="language-cpp">extern int shared;
+void swap(int * a, int * b);
+</code></pre>
+<p>B.cpp：</p>
+<pre><code class="language-cpp">#include &quot;B.h&quot;
+int shared = 1;
+void swap(int* a, int* b){
+    int tmp = *a;
+    *a =  *b;
+    *b = tmp;
+}
+</code></pre>
+<p>编译上面两个程序的命令是：</p>
+<pre><code class="language-shell">g++ -c B.cpp -o B.o
+g++ -c A.cpp -o A.o
+</code></pre>
+<h2 id="linking">Linking</h2>
+<p>将各个可重定位的目标代码与启动代码组合起来。</p>
+<pre><code class="language-shell">gcc a.o -o a
+</code></pre>
+<p>例如，将上面两个程序的目标代码组合并运行：</p>
+<pre><code class="language-shell">g++ A.o B.o -o a1
+</code></pre>
+<p>链接分为静态链接和动态链接两种，默认为动态链接，不必指明链接方式，可以添加需要链接的库文件参数；静态链接则均需显式说明。</p>
+<p>需要注意的是，无论是静态链接还是动态链接，链接的目标都是 <strong>库文件</strong> 而不是 <strong>目标文件</strong> 。</p>
+<h3 id="dynamic-linking">Dynamic Linking</h3>
+<h4 id="concept">Concept</h4>
+<p>动态链接是运行时链接，把调用所需要的动态库(或称为共享库)的模块和在库中的*位置信息*链接进目标程序，程序运⾏的时候寻找相应的库文件，并从中执行相应的代码，因此需要被链接的动态库文件的支持 。</p>
+<p><code>gcc</code> 和 <code>g++</code> 都是默认使用动态链接的。因此不需要考虑额外的命令。</p>
+<h4 id="generate">Generate</h4>
+<p>生成动态库的方法如下：</p>
+<ol>
+<li>
+<p>准备好源文件和其对应的头文件，源文件可以有多个，头文件数量可以和源文件数量不同，也可以和编译出的库文件数量不同；</p>
+</li>
+<li>
+<p>使用下面的命令编译动态库：</p>
+<pre><code class="language-shell">g++ B.cpp -shared -fPIC -o libB.so
+</code></pre>
+<p>需要注意：</p>
+<ol>
+<li><code>-shared</code> 表明编译的是共享库</li>
+<li><code>-fPIC</code> 表明指定生成位置无关代码</li>
+<li>特别地，此处绝对不能使用 <code>-c</code> 选项，否则编译结果将为可重定向的目标文件，而非共享库</li>
+</ol>
+</li>
+<li>
+<p>使用下面的命令链接：</p>
+<pre><code class="language-shell">g++ A.cpp -L . -lB -o A
+</code></pre>
+</li>
+<li>
+<p>由于默认动态库的链接路径为 <code>/usr/lib</code> ，因此从当前路径链接需要修改生成的二进制文件，可以修改 <code>LD_LIBRARY_PATH</code> 或者使用 <code>patchelf</code></p>
+<pre><code class="language-shell">patchelf --add-rpath . A
+</code></pre>
+</li>
+<li>
+<p>使用 <code>ldd</code> 来检查二进制程序依赖的动态库。</p>
+<pre><code class="language-shell">ldd ./a1
+</code></pre>
+</li>
+</ol>
+<h4 id="advantage">Advantage</h4>
+<ol>
+<li>对同一个函数的调用只会在内存中产生一份拷贝，无论是多个相同的程序还是不同的程序；
+这是因为动态库使用相对地址，所有依赖的进程都可从同一入口进入；</li>
+<li>更新方便，只需要对库文件进行更新，而不需要更新依赖库文件的程序；</li>
+<li>动态库可以再包含其他的动态或静态库。</li>
+</ol>
+<h4 id="disadvantage">Disadvantage</h4>
+<p>链接推迟到了程序运行时，执行程序会有性能损失。</p>
+<h3 id="static-linking">Static Linking</h3>
+<h4 id="concept-1">Concept</h4>
+<p>静态链接是编译时链接，把源文件中用到的静态库（归档文件）直接放进目标程序，程序运行的时候不再需要其它的库文件。</p>
+<h4 id="generate-1">Generate</h4>
+<p>生成静态库的方法如下：</p>
+<ol>
+<li>
+<p>编译代码为目标文件</p>
+<pre><code class="language-shell">g++ -c B.cpp -o B.o
+</code></pre>
+</li>
+<li>
+<p>将目标文件生成静态库(归档文件)</p>
+<ol>
+<li><code>r</code> 将文件插入到静态库中，如果文件已经存在于库中，则替换原有的文件</li>
+<li><code>c</code> 创建一个静态库，如果库文件不存在，则创建一个新的库文件</li>
+<li><code>s</code> 为静态库中的成员文件创建符号表，这对于链接时解析符号非常重要</li>
+</ol>
+<pre><code class="language-shell">ar rcs libB.a B.o
+</code></pre>
+</li>
+<li>
+<p>使用 <code>-static</code> 参数显式指定使用静态链接的方式。</p>
+<pre><code class="language-shell">g++ -static A.o -L . -lB -o a2
+</code></pre>
+</li>
+</ol>
+<p>静态链接下，所有依赖的库均已与该程序一起合并成了一个二进制文件，因此无法查看依赖的库。</p>
+<h4 id="advantage-1">Advantage</h4>
+<p>直接执行程序而不需要链接，没有性能损失。</p>
+<h4 id="disadvantage-1">Disadvantage</h4>
+<ol>
+<li>对同一个函数的调用会在内存中产生多份拷贝，即使是相同的程序的多个运行实例（即进程）也会如此；
+这是因为不同的进程有各自的地址空间，入口不同，程序不知道如何共享；</li>
+<li>库文件需要更新时，依赖它的所有程序都需要重新编译，否则只能使用原来的版本；</li>
+<li>静态库不能再 <strong>包含其他静态库和动态库</strong> 。
+因为静态库是编译好的归档文件，不能与其他库链接。除非重新用归档工具将多个静态库的源文件链接成一个新的静态库。</li>
+</ol>
+<h2 id="loading">Loading</h2>
+<p>运行生成的可执行文件。</p>
+<pre><code class="language-shell">./a
+</code></pre>
+<p>可执行的目标代码可以直接执行，可使用 <code>file</code> 命令查看：</p>
+<pre><code class="language-shell">file a
+a: ELF 64-bit LSB executable
+</code></pre>
+<p>如需检查返回值，使用命令 <code>echo $?</code> ，它将显示上次程序执行完后的返回值。</p>
+<h2 id="optimization">Optimization</h2>
+<p>编译的过程并非每一步命令都是必须的，可以跳过一些步骤，编译器会自动处理。</p>
+<h3 id="precompileassembly">Pre/Compile/Assembly</h3>
+<p>从源文件快速生成目标文件的命令：</p>
+<pre><code class="language-shell">gcc -c a.c -o a.o
+</code></pre>
+<h3 id="rapid-generation">Rapid Generation</h3>
+<p>从源文件快速生成可执行文件的命令：</p>
+<pre><code class="language-shell">gcc a.c -o a
+</code></pre>
+
+</article>
+
+                    
+                    
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-1-compilerlanguage/" class="block">Compiler Language</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-3-program-compilation-by-clang/" class="block">Program Compilation by Clang</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#gnu-compile-collection">GNU Compile Collection</a></li>
+    <li><a href="#preprocessing">Preprocessing</a></li>
+    <li><a href="#compilation">Compilation</a>
+      <ul>
+        <li><a href="#native-compilation">Native Compilation</a></li>
+        <li><a href="#cross-compilation">Cross Compilation</a></li>
+      </ul>
+    </li>
+    <li><a href="#assembly">Assembly</a></li>
+    <li><a href="#linking">Linking</a>
+      <ul>
+        <li><a href="#dynamic-linking">Dynamic Linking</a></li>
+        <li><a href="#static-linking">Static Linking</a></li>
+      </ul>
+    </li>
+    <li><a href="#loading">Loading</a></li>
+    <li><a href="#optimization">Optimization</a>
+      <ul>
+        <li><a href="#precompileassembly">Pre/Compile/Assembly</a></li>
+        <li><a href="#rapid-generation">Rapid Generation</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

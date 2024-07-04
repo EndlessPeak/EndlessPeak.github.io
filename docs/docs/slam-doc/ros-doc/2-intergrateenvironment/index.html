@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Intergrate Environment | Robot Operation System | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文主要讨论ROS例程以及如何构建ROS集成开发环境。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"SLAM Programming and Interviewing",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Robot Operation System",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"Intergrate Environment",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/2-intergrateenvironment/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/2-intergrateenvironment/"
+    },
+    "headline": "Intergrate Environment | Robot Operation System | 悦翎轩","datePublished": "2022-10-25T00:00:00+00:00",
+    "dateModified": "2022-10-25T00:00:00+00:00",
+    "wordCount":  943 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "本文主要讨论ROS例程以及如何构建ROS集成开发环境。"
+}
+</script><meta property="og:title" content="Intergrate Environment | Robot Operation System | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/2-intergrateenvironment/" />
+
+
+
+<meta property="og:description" content="本文主要讨论ROS例程以及如何构建ROS集成开发环境。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-10-25T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2022-10-25T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/">Robot Operation System</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/1-ros1-install/">ROS1 Installation</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/1-ros2-install/">ROS2 Installation</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/3-racecarnotes/">Race Car Project</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/2-intergrateenvironment/">Intergrate Environment</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Intergrate Environment</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-10-25</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>2分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="ros-helloworld">ROS HelloWorld</h2>
+<h3 id="create-project">Create Project</h3>
+<p>创建项目的顺序如下：</p>
+<ol>
+<li>
+<p>创建工作空间
+将工作空间命名为 <code>ROSRace</code></p>
+<pre><code class="language-shell">mkdir -p ROSRace/src
+cd ROSRace
+catkin_make
+</code></pre>
+</li>
+<li>
+<p>创建功能包
+将功能包命名为 <code>helloworld</code> ，并添加所需的依赖。</p>
+<ol>
+<li>roscpp 是用 C++ 实现的库；</li>
+<li>rospy 是用 python 实现的库；</li>
+<li>std_msgs 是标准消息库</li>
+</ol>
+<!--listend-->
+<pre><code class="language-shell">cd src
+catkin_create_pkg helloworld roscpp rospy std_msgs
+</code></pre>
+</li>
+</ol>
+<h3 id="edit-source-file">Edit Source File</h3>
+<ol>
+<li>
+<p>编辑源文件(C++)</p>
+<pre><code class="language-shell">cd helloworld/src
+vim helloworld_c.cpp
+</code></pre>
+<p>输入以下内容：</p>
+<pre><code class="language-cpp">//包含ros的头文件
+#include &quot;ros/ros.h&quot;
+//编写main函数
+int main(int argc,char* argv[]){
+    //执行ros节点初始化
+    ros::init(argc,argv,&quot;hello_node&quot;);
+    //创建ros节点句柄，非必须
+    ros::NodeHandle n;
+    //控制台输出日志
+    ROS_INFO(&quot;hello world!&quot;);
+    return 0;
+}
+</code></pre>
+</li>
+<li>
+<p>编辑源文件(Python)</p>
+<pre><code class="language-shell">cd helloworld
+mkdir scripts # python 文件必须在该文件夹下
+</code></pre>
+<p>输入以下内容：</p>
+<pre><code class="language-python">#! /usr/bin/env python
+
+&quot;&quot;&quot;
+    Python 版 HelloWorld
+
+&quot;&quot;&quot;
+import rospy
+
+if __name__ == &quot;__main__&quot;:
+    rospy.init_node(&quot;Hello&quot;)
+    rospy.loginfo(&quot;Hello World!!!!&quot;)
+
+</code></pre>
+<pre><code class="language-shell">chmod +x helloworld_py.py
+</code></pre>
+</li>
+<li>
+<p>编辑配置文件(C++)
+编辑功能包下的 cmake 文件，~vim CMakeLists.txt~ ，修改以下内容:</p>
+<pre><code class="language-text">add_executable( ${PROJECT_NAME}_node
+  src/helloworld_c.cpp
+)
+target_link_libraries( ${PROJECT_NAME}_node
+  ${catkin_LIBRARIES}
+)
+</code></pre>
+<p>注意：</p>
+<ol>
+<li>如 <code>add_dependencies</code> 未注释，则注释该项</li>
+<li>需要修改源文件名与 <code>add_executable</code> 中的内容一致</li>
+<li>如需修改生成的可执行文件名，可修改 <code>project(helloworld)</code> 中的内容</li>
+</ol>
+</li>
+<li>
+<p>编辑配置文件(Python)</p>
+<pre><code class="language-shell">catkin_install_python(PROGRAMS scripts/helloworld_py.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+</code></pre>
+</li>
+</ol>
+<h3 id="compile-and-excute">Compile and Excute</h3>
+<p>编译并执行步骤如下：</p>
+<ol>
+<li>回到工作空间目录</li>
+<li>输入 <code>catkin_make</code> 编译所有 C++ 内容，python 文件是即时解释执行不需要编译</li>
+<li>执行下面的命令，特别地，如不执行第二行，则会报找不到 <code>helloworld</code> 包。
+<pre><code class="language-shell">roscore
+source ./devel/setup.bash # use zsh if you need
+# C++
+rosrun helloworld helloworld_node # Package_name + target_name
+# Python
+rosrun helloworld helloworld_py.py
+</code></pre>
+</li>
+</ol>
+<h3 id="locale">Locale</h3>
+<p>解决乱码问题，以下方法任选一种。</p>
+<ol>
+<li>在 cpp 源文件中加入一行 <code>setlocale(LC_ALL,&quot;&quot;);</code></li>
+<li>在 cpp 源文件中加入一行 <code>setlocale(LC_ALL,&quot;zh_CN.utf8&quot;);</code></li>
+</ol>
+<h2 id="terminal-reuse">Terminal Reuse</h2>
+<p>在 ROS 中，需要频繁的使用到终端，且需要同时开启多个进程，因此需要用到终端复用工具。</p>
+<ol>
+<li>terminator</li>
+<li>tmux</li>
+</ol>
+<h2 id="vscode">VSCode</h2>
+<h3 id="extensions">Extensions</h3>
+<p>首先建议 VSCode 安装原版而非开源的社区驱动版本，便于下载插件。</p>
+<p>其次建议安装下列插件：</p>
+<ol>
+<li>C/C++</li>
+<li>Python</li>
+<li>ROS</li>
+<li>CMake</li>
+</ol>
+<p>为使界面显示正常，=Arch Linux= 建议安装 <code>ttf-ms-font</code></p>
+<h3 id="usage">Usage</h3>
+<ol>
+<li>
+<p>创建工作空间和 HelloWorld 的步骤一样。</p>
+</li>
+<li>
+<p>编译 ROS 可使用快捷键 <code>Ctrl+Shift+B</code> 调用，选择 <code>catkin_make:build</code> ，点击右侧的齿轮，会自动生成 <code>.vscode/task.json</code> ，点击修改</p>
+<p>注意：如修改为下列内容</p>
+<pre><code class="language-js">&quot;type&quot; : &quot;shell&quot;,
+&quot;command&quot; : &quot;catkin_make&quot;,
+</code></pre>
+<p>则表示执行命令为 <code>/usr/bin/zsh -c '...'</code> ，通常该形式的命令不会从 .zshrc 中加载，因而不包含 <code>/opt/ros/noetic/bin</code> 环境变量</p>
+</li>
+<li>
+<p>对工作空间的 src 右键点击 <code>create catkin packages</code> 可以创建功能包，回答包名和依赖即可</p>
+</li>
+<li>
+<p>修改 <code>.vscode/c_cpp_properties.json</code> 的内容</p>
+<pre><code class="language-js">&quot;cStandard&quot; : &quot;gnu17&quot;,
+&quot;cppStandard&quot; : &quot;c++17&quot;
+</code></pre>
+</li>
+</ol>
+<h3 id="launch">Launch</h3>
+<p>使用 launch 一次性启动多个 ros 节点</p>
+<ol>
+<li>
+<p>选择功能包，右击，添加一个 launch 文件夹</p>
+</li>
+<li>
+<p>选定 launch 文件夹，右击，添加一个 launch 文件，如 <code>start_turtle.launch</code></p>
+</li>
+<li>
+<p>编辑 launch 文件内容</p>
+<pre><code class="language-cfg">&lt;launch&gt;
+    &lt;!--添加被执行的节点--&gt;
+    &lt;!--乌龟GUI--&gt;
+    &lt;node pkg=&quot;turtlesim&quot; type=&quot;turtlesim_node&quot; name=&quot;turtle_GUI&quot; /&gt;
+    &lt;!--乌龟键盘控制--&gt;
+    &lt;node pkg=&quot;turtlesim&quot; type=&quot;turtle_teleop_key&quot; name=&quot;turtle_key&quot; /&gt;
+    &lt;!--HelloWorld--&gt;
+    &lt;node pkg=&quot;helloworld&quot; type=&quot;helloworld_node&quot; name=&quot;hello&quot; output=&quot;screen&quot; /&gt;
+&lt;/launch&gt;
+</code></pre>
+<p>其中：</p>
+<ol>
+<li>node 是包含的某个节点</li>
+<li>pkg 是功能包</li>
+<li>type 是被运行的节点文件</li>
+<li>name 是为节点命名</li>
+<li>output 设置日志的输出目标</li>
+</ol>
+</li>
+<li>
+<p>运行 launch 文件</p>
+<pre><code class="language-shell">roslaunch helloworld start_turtle.launch
+</code></pre>
+</li>
+</ol>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/3-racecarnotes/" class="block">Race Car Project</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ros-helloworld">ROS HelloWorld</a>
+      <ul>
+        <li><a href="#create-project">Create Project</a></li>
+        <li><a href="#edit-source-file">Edit Source File</a></li>
+        <li><a href="#compile-and-excute">Compile and Excute</a></li>
+        <li><a href="#locale">Locale</a></li>
+      </ul>
+    </li>
+    <li><a href="#terminal-reuse">Terminal Reuse</a></li>
+    <li><a href="#vscode">VSCode</a>
+      <ul>
+        <li><a href="#extensions">Extensions</a></li>
+        <li><a href="#usage">Usage</a></li>
+        <li><a href="#launch">Launch</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

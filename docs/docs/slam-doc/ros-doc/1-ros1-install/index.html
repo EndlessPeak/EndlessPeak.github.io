@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>ROS1 Installation | Robot Operation System | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文主要讨论如何构建ROS环境。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"SLAM Programming and Interviewing",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Robot Operation System",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"ROS1 Installation",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/1-ros1-install/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/1-ros1-install/"
+    },
+    "headline": "ROS1 Installation | Robot Operation System | 悦翎轩","datePublished": "2022-10-18T00:00:00+00:00",
+    "dateModified": "2022-10-18T00:00:00+00:00",
+    "wordCount":  1175 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "本文主要讨论如何构建ROS环境。"
+}
+</script><meta property="og:title" content="ROS1 Installation | Robot Operation System | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/1-ros1-install/" />
+
+
+
+<meta property="og:description" content="本文主要讨论如何构建ROS环境。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-10-18T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2022-10-18T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/">Robot Operation System</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/1-ros1-install/">ROS1 Installation</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/1-ros2-install/">ROS2 Installation</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/3-racecarnotes/">Race Car Project</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/2-intergrateenvironment/">Intergrate Environment</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">ROS1 Installation</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-10-18</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>3分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="ubuntu-configuration">Ubuntu Configuration</h2>
+<h3 id="ubuntu-install">Ubuntu Install</h3>
+<p>虚拟机平台不限，推荐使用：</p>
+<ol>
+<li>VMWare</li>
+<li>Virtualbox</li>
+<li>Qemu</li>
+</ol>
+<p>Ubuntu 版本需要选择 Ubuntu 20.04 安装。发行版代码应该为 <code>focal</code> 。
+请使用 <code>lsb_release -a</code> 或 <code>lsb_release -c</code> 验证。</p>
+<h3 id="additional-function">Additional Function</h3>
+<p>虚拟机工具之增强功能可以使得虚拟操作系统的屏幕自适应窗口大小。</p>
+<ol>
+<li>点击 Virualbox 菜单栏中的安装增强功能。</li>
+<li>如果没有启动安装，可打开文件管理器，在挂载的逻辑设备中手动运行安装文件。</li>
+<li>为使增强工具生效，需要重启操作系统，在 Virubalbox 中可以设置缩放模式。</li>
+</ol>
+<h3 id="files-exchange">Files Exchange</h3>
+<p>虚拟机交换文件可以实现与宿主机的文件交换。</p>
+<ol>
+<li>点击 Virualbox 工具栏中的设置</li>
+<li>依次点击 <strong>常规，高级</strong> ，将共享剪贴板和拖放均改为双向。</li>
+</ol>
+<h3 id="virualbox-extension">VirualBox Extension</h3>
+<ol>
+<li>在 VirualBox 官网下载 Extension Pack</li>
+<li>在 VirualBox 中点击 管理，扩展，添加扩展包</li>
+</ol>
+<h3 id="input-method">Input Method</h3>
+<p>安装 fcitx5</p>
+<pre><code class="language-shell">sudo apt install fcitx5 fcitx5-*
+im-config #配置输入法为fcitx5
+</code></pre>
+<p>特别地，尽管有多种方法配置环境变量，仍然建议将环境变量配置到 <code>~/.xprofile</code> 中。</p>
+<pre><code class="language-shell">export GTK_IM_MODULE=fcitx5
+export QT_IM_MODULE=fcitx5
+export XMODIFIERS=@im=fcitx
+</code></pre>
+<p>如果输入法有问题，尝试执行 <code>fcitx5-dignose</code> 进行问题诊断。</p>
+<h3 id="new-template">New Template</h3>
+<p>Ubuntu 操作系统右键菜单中没有新建文档的选项，需要到 <code>~/Templates</code> 下新建各种文档用作新建的模板。
+比如，至少新建一个 <code>.txt</code> 文件。</p>
+<h2 id="ros-install">ROS Install</h2>
+<h3 id="ubuntu-software-settings">Ubuntu Software Settings</h3>
+<p>配置 Ubuntu 的软件和更新，允许安装不经认证的软件。</p>
+<ol>
+<li>在 ubuntu 中搜索应用程序 <strong>软件和更新</strong> ，打开软件和更新对话框</li>
+<li>依次勾选：
+<ol>
+<li>main</li>
+<li>universe</li>
+<li>restricted</li>
+<li>multiverse</li>
+</ol>
+</li>
+</ol>
+<h3 id="ubuntu-mirror">Ubuntu Mirror</h3>
+<p>按照 <a href="https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu">Ubuntu 镜像使用帮助</a> 操作，编辑 <code>/etc/apt/sources.list</code> 文件。</p>
+<pre><code class="language-shell"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+
+# 预发布软件源，不建议启用
+# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+</code></pre>
+<h3 id="ubuntu-software-source">Ubuntu Software Source</h3>
+<p>配置 Ubuntu 的软件源。主要介绍从官方源和国内镜像源两种方法。特别地，官方源由于需要访问 github 网站，需要科学上网工具。</p>
+<h4 id="install-from-offical">Install From Offical</h4>
+<p>官方源的安装方法如下：</p>
+<!--list-separator-->
+<ul>
+<li>
+<p>Setup sources.list</p>
+<p>允许操作系统从 <code>packages.ros.org</code> 上接受 ROS 软件。</p>
+<pre><code class="language-shell">sudo sh -c 'echo &quot;deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list'
+# 有关源的选择可以使用国内镜像源
+</code></pre>
+</li>
+</ul>
+<!--list-separator-->
+<ul>
+<li>
+<p>Setup keys</p>
+<p>如果从官方源接受 ROS 软件，则需要执行下面的操作以安装密钥。</p>
+<pre><code class="language-shell">sudo apt install curl # if you haven't already installed curl
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+</code></pre>
+</li>
+</ul>
+<h4 id="install-from-china">Install From China</h4>
+<p>国内源的安装方法如下：</p>
+<!--list-separator-->
+<ul>
+<li>
+<p>Setup sources.list</p>
+<p>下面是部分国内的镜像源：</p>
+<ol>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/ros/ubuntu/">https://mirrors.tuna.tsinghua.edu.cn/ros/ubuntu/</a></li>
+<li><a href="https://mirrors.ustc.edu.cn/ros/ubuntu/">https://mirrors.ustc.edu.cn/ros/ubuntu/</a></li>
+</ol>
+<p>可参考对应的使用帮助：</p>
+<ol>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/help/ros">https://mirrors.tuna.tsinghua.edu.cn/help/ros</a></li>
+<li><a href="https://mirrors.ustc.edu.cn/help/ros.html">https://mirrors.ustc.edu.cn/help/ros.html</a></li>
+</ol>
+</li>
+</ul>
+<h3 id="ubuntu-install-ros">Ubuntu Install ROS</h3>
+<p>建议使用 <code>apt</code> 而不是 <code>apt-get</code> 进行安装。</p>
+<ol>
+<li>
+<p>安装 ROS 本体</p>
+<pre><code class="language-shell">sudo apt update
+sudo apt install ros-noetic-desktop-full # recommand
+</code></pre>
+</li>
+<li>
+<p>安装 ROS 相关的软件</p>
+<pre><code class="language-shell">sudo apt install ros-noetic-ackermann-msgs
+sudo apt install ros-noetic-controller-manager
+sudo apt install ros-noetic-driver-base
+sudo apt install ros-noetic-effort-controllers
+sudo apt install ros-noetic-geographic-info
+sudo apt install ros-noetic-gazebo-ros-control
+sudo apt install ros-noetic-gmapping
+sudo apt install ros-noetic-joint-state-controller
+sudo apt install ros-noetic-navigation
+sudo apt install ros-noetic-rtabmap-ros
+sudo apt install ros-noetic-teb-local-planner
+sudo apt install ros-noetic-openslam-gmapping
+</code></pre>
+</li>
+<li>
+<p>安装其他插件</p>
+<pre><code class="language-shell">sudo apt install tcl-dev tk-dev python3-tk
+</code></pre>
+</li>
+<li>
+<p>安装依赖
+其中 <code>build-essential</code> 包括了 <code>gcc</code> , <code>g++</code> , <code>make</code> , <code>dpkg-dev</code> 等工具。
+由于 <code>catkin_make</code> 命令依赖 <code>cmake</code> ，因此 <code>cmake</code> 和 <code>extra-cmake-modules</code> 是必须的。</p>
+<pre><code class="language-shell">sudo apt install git build-essential cmake extra-cmake-modules python3 python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool
+</code></pre>
+</li>
+<li>
+<p>下载 gazebo 模型
+如果从 github 下载慢，可以尝试从 gitee 导入模型。</p>
+<pre><code class="language-shell">git clone https://github.com/osrf/gazebo_models.git ~/.gazebo/models
+sudo chmod 777 -R ~/.gazebo/models/*
+</code></pre>
+</li>
+<li>
+<p>如果有其他包需要安装，可以直接指定包名。</p>
+<pre><code class="language-shell">sudo apt install ros-noetic-PACKAGE
+</code></pre>
+</li>
+<li>
+<p>如果需要搜索包，可以指定搜索关键词</p>
+<pre><code class="language-shell">apt search ros-noetic
+</code></pre>
+</li>
+</ol>
+<h3 id="environment">Environment</h3>
+<p>将 <code>ros-noetic</code> 和 <code>gazebo</code> 均加入 <code>PATH</code> 中，编辑 <code>~/.bashrc</code></p>
+<pre><code class="language-shell">source /opt/ros/noetic/setup.bash # change bash to zsh if you need
+source /usr/share/gazebo/setup.bash # check if it is setup.sh
+</code></pre>
+<h3 id="dependencies">Dependencies</h3>
+<pre><code class="language-shell">sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
+</code></pre>
+<p>初始化 <code>rosdep</code> 以使用部分 ROS 工具。</p>
+<pre><code class="language-shell">sudo apt install python3-rosdep
+sudo rosdep init
+rosdep update
+</code></pre>
+<h3 id="test-ros-installation">Test ROS Installation</h3>
+<p>可以设置终端的新建方式为新建标签，然后新建三个终端标签，依次输入下面的命令用以测试 ROS 是否顺利安装。</p>
+<pre><code class="language-shell">roscore
+rosrun turtlesim turtlesim_node
+rosrun turtlasim turtle_teleop_key
+</code></pre>
+<h3 id="compile">Compile</h3>
+<p>一切就绪后，~Ctrl+C~ 结束运行的测试程序，编译项目。</p>
+<pre><code class="language-shell">catkin_make
+</code></pre>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/ros-doc/1-ros2-install/" class="block">ROS2 Installation</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ubuntu-configuration">Ubuntu Configuration</a>
+      <ul>
+        <li><a href="#ubuntu-install">Ubuntu Install</a></li>
+        <li><a href="#additional-function">Additional Function</a></li>
+        <li><a href="#files-exchange">Files Exchange</a></li>
+        <li><a href="#virualbox-extension">VirualBox Extension</a></li>
+        <li><a href="#input-method">Input Method</a></li>
+        <li><a href="#new-template">New Template</a></li>
+      </ul>
+    </li>
+    <li><a href="#ros-install">ROS Install</a>
+      <ul>
+        <li><a href="#ubuntu-software-settings">Ubuntu Software Settings</a></li>
+        <li><a href="#ubuntu-mirror">Ubuntu Mirror</a></li>
+        <li><a href="#ubuntu-software-source">Ubuntu Software Source</a></li>
+        <li><a href="#ubuntu-install-ros">Ubuntu Install ROS</a></li>
+        <li><a href="#environment">Environment</a></li>
+        <li><a href="#dependencies">Dependencies</a></li>
+        <li><a href="#test-ros-installation">Test ROS Installation</a></li>
+        <li><a href="#compile">Compile</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

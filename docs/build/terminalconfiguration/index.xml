@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Terminal  Configuration on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/build/terminalconfiguration/</link>
+    <description>Recent content in Terminal  Configuration on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Sun, 09 Jun 2024 20:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/build/terminalconfiguration/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>System Management</title>
+      <link>https://endlesspeak.github.io/docs/build/terminalconfiguration/linux-technology-6-2-sysstat/</link>
+      <pubDate>Sun, 09 Jun 2024 20:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/terminalconfiguration/linux-technology-6-2-sysstat/</guid>
+      <description>Mem management All Mem statistic 统计本机所有内存使用量。 free -h Sort by all user 统计所有用户的内存使用量。 ps aux --sort=-%mem | head -n 10 | awk &#39;NR==1 {print $0; next} { $5=int($5/1024) &amp;quot;M&amp;quot;; $6=int($6/1024) &amp;quot;M&amp;quot;; $11=substr($11, 1, 100); print $0; }&#39; 其中，~$11=substr(</description>
+    </item>
+    <item>
+      <title>Reuse Terminal by Tmux</title>
+      <link>https://endlesspeak.github.io/docs/build/terminalconfiguration/linux-technology-6-1-tmux/</link>
+      <pubDate>Mon, 17 Oct 2022 20:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/terminalconfiguration/linux-technology-6-1-tmux/</guid>
+      <description>Tmux Brief Report Tmux 是一个终端复用器(terminal multiplexer)，属于常用的开发工具。 Session 命令行的使用方式是：打开一个终端窗口(terminal win</description>
+    </item>
+  </channel>
+</rss>

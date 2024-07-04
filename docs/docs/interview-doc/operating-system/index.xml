@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Operating System on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/</link>
+    <description>Recent content in Operating System on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Wed, 03 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>绪论</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/operating-system-summary/</link>
+      <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/operating-system-summary/</guid>
+      <description>操作系统概念 操作系统 操作系统是： 计算机系统资源的管理者，组织、调度、分配软硬件资源； 作为用户与计算机硬件之间的接口，向上层（用户）提供服务； 最接近硬件</description>
+    </item>
+    <item>
+      <title>进程管理</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/process-manage/</link>
+      <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/process-manage/</guid>
+      <description>进程与线程 进程的概念与特征 进程的概念 引入 为实现操作系统的并发性和共享性，引入进程。 概念 进程是具有独立功能的程序在某个数据集合上的一次执行过程。 进程是进</description>
+    </item>
+    <item>
+      <title>经典同步问题</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/synchronization-exclusion/</link>
+      <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/synchronization-exclusion/</guid>
+      <description>生产者与消费者问题 一组生产者和一组消费者交替使用缓冲区。 设缓冲区是临界资源，它只允许一个生产者放入内容或一个消费者取出内容。 代码描述如下： semaphore mutex=1; semaphore empty=n; semaphore full=0;</description>
+    </item>
+    <item>
+      <title>进程管理</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/memory-manage/</link>
+      <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/memory-manage/</guid>
+      <description>请求分页管理方式 设计算机中各项操作时间如下所示： 访问快表命中率$P_1$ 访问内存页表命中率$P_2$ 访问快表耗时$a$ 访问内存耗时$b$ 更新快表耗时$</description>
+    </item>
+    <item>
+      <title>文件管理</title>
+      <link>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/file-manage/</link>
+      <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/interview-doc/operating-system/file-manage/</guid>
+      <description>文件分配方式 简述连续分配、链接分配、索引分配方式的原理、主要优缺点。 连续分配： 优点：由于线性地占用磁盘上一组连续的物理块，因此寻道数和寻道时间最小。支</description>
+    </item>
+  </channel>
+</rss>

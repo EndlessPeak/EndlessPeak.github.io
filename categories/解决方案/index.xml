@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>解决方案 on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</link>
+    <description>Recent content in 解决方案 on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Tue, 05 May 2020 15:00:07 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux救援模式</title>
+      <link>https://endlesspeak.github.io/posts/linux/linux-technology-7-linux-rescue-mode/</link>
+      <pubDate>Tue, 05 May 2020 15:00:07 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/posts/linux/linux-technology-7-linux-rescue-mode/</guid>
+      <description>本文主要尝试叙述Linux系统在运行某些守护进程或者启动服务时出错后，应该如何进行修复操作。同时阐述比较常见的导致登陆时挂机/关机的情况。</description>
+    </item>
+    <item>
+      <title>Linux 软件使用问题与解决方案</title>
+      <link>https://endlesspeak.github.io/posts/linux/linux-technology-6-1-linux-software-usage-1/</link>
+      <pubDate>Fri, 03 Apr 2020 02:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/posts/linux/linux-technology-6-1-linux-software-usage-1/</guid>
+      <description>&lt;p&gt;在这一部分中我尝试讲述常用软件的安装过程中遇到的问题，以及我自己探索的解决思路。&lt;/p&gt;&#xA;&lt;p&gt;本节主要讨论的是家目录和QQ的解决方案汇总。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

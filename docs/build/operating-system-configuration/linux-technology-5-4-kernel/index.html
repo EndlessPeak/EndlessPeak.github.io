@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Linux Kernel Configuration | Linux 环境配置 | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文主要讨论在 Gentoo/Arch Linux下如何配置内核。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/build/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Linux 环境配置",
+      "item":"https://endlesspeak.github.io/docs/build/operating-system-configuration/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Linux Kernel Configuration",
+      "item":"https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-4-kernel/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-4-kernel/"
+    },
+    "headline": "Linux Kernel Configuration | Linux 环境配置 | 悦翎轩","datePublished": "2022-08-21T22:00:00+00:00",
+    "dateModified": "2022-08-21T22:00:00+00:00",
+    "wordCount":  7275 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "本文主要讨论在 Gentoo\/Arch Linux下如何配置内核。"
+}
+</script><meta property="og:title" content="Linux Kernel Configuration | Linux 环境配置 | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-4-kernel/" />
+
+
+
+<meta property="og:description" content="本文主要讨论在 Gentoo/Arch Linux下如何配置内核。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-08-21T22:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2022-08-21T22:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/build/operating-system-configuration/">Linux 环境配置</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-1-desktop-config/">Arch Linux 桌面环境配置</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-2-textmode-config/">Arch Linux 文本环境配置</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-3-gentoo-nvidia/">Gentoo Linux Nvidia 显卡驱动</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-4-kernel/">Linux Kernel Configuration</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-5-kde-usage/">Linux KDE 桌面使用指南</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-9-ubuntu/">Ubuntu Linux 桌面环境</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Linux Kernel Configuration</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-08-21</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>15分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <p>Linux内核的配置大同小异，但是Gentoo Linux 官方软件源提供了多种内核的源码，并且配置多内核之间的切换非常方便，而Arch也提供软件包的形式下载或自行克隆仓库，因此以Gentoo/Arch下配置为例进行说明。</p>
+<h2 id="写在前面">写在前面</h2>
+<h3 id="参考文献">参考文献</h3>
+<ol>
+<li>LINUX 内核技术手册
+LINUX KERNEL IN A NUTSHELL</li>
+<li>Linux-4.4-x86_64 内核配置选项简介
+参阅更多 <a href="%E9%87%91%E6%AD%A5%E5%9B%BD%E4%BD%9C%E5%93%81%E9%9B%86">www.jinbuguo.com</a></li>
+</ol>
+<h3 id="写作动机">写作动机</h3>
+<ol>
+<li>工作应用
+<ol>
+<li>嵌入式实时操作系统需要裁剪内核以获得专用性、适配性和性能</li>
+<li>定制内核是成为 Linux 内核开发者的基本任务</li>
+</ol>
+</li>
+<li>个人应用
+<ol>
+<li>Linux From Scratch</li>
+<li>Special Hardware Adjustment</li>
+</ol>
+</li>
+</ol>
+<h2 id="构建内核">构建内核</h2>
+<h3 id="源码获取">源码获取</h3>
+<p>Gentoo 官方以软件包的形式提供内核源码，因此可用 emerge 直接安装。</p>
+<pre><code class="language-shell">emerge -av sys-kernel/gentoo-source
+emerge -av sys-kernel/gentoo-kernel
+emerge -av sys-kernel/genkernel
+</code></pre>
+<p>Arch 官方提供的内核是编译过的，如需获得内核源码，需在 <a href="Kernel"><a href="https://wiki.archlinux.org/title/Kernel">https://wiki.archlinux.org/title/Kernel</a></a> 处选择版本，然后下载或克隆下来。</p>
+<pre><code class="language-shell">git clone https://github.com/archlinux/linux.git ./src/linux-5.19 --depth=1
+</code></pre>
+<p>Gentoo 由于 <code>eselect</code> 的存在，可以将源码保存到 <code>/usr/src</code> 目录下；而 Arch 由于需要手动克隆，因此建议放到 <code>~</code> 下。</p>
+<h3 id="配置">配置</h3>
+<p>通过下面的命令配置内核，生成的配置文件为 <code>.config</code> 。</p>
+<h4 id="最基本的方法">最基本的方法</h4>
+<p>使用 <code>make config</code> ，内核配置程序将逐步跟踪每一个配置选项并向用户询问，回答方式是 <code>[y/n/m/?]</code>
+y 直接构建为内核一部分；
+n 不构建；
+m 构建成模块，按需加载；
+? 打印帮助</p>
+<h4 id="使用默认配置选项">使用默认配置选项</h4>
+<ol>
+<li><code>make defconfig</code> 或 <code>make ${PLATFORM}_defconfig</code>
+基于某种体系结构的一般性选项。</li>
+<li><code>make localmodconfig</code>
+针对当前硬件进行适配性优化，可选的组件以模块方式加载。</li>
+<li><code>make localyesconfig</code>
+对所有可选的组件均构建成为内核的一部分。</li>
+<li><code>make oldconfig</code>
+根据之前的配置自动回答，仅向用户询问新配置项。</li>
+</ol>
+<h4 id="对所有配置选项统一操作">对所有配置选项统一操作</h4>
+<ol>
+<li><code>make allyesconfig</code>
+尽可能所有配置项均编译进内核</li>
+<li><code>make allmodconfig</code>
+尽可能所有配置项都以模块方式构建</li>
+<li><code>make allnoconfig</code>
+尽可能所有配置项都不构建</li>
+<li><code>make randconfig</code>
+是否选择构建配置项交给天意。</li>
+<li><code>make tinyconfig</code>
+构建一个可能的最小内核。(除开配置项外还有其他的缩减)</li>
+</ol>
+<h4 id="手动配置">手动配置</h4>
+<ol>
+<li><code>make menuconfig</code> 或 <code>make nconfig</code>
+命令行配置方法，适用于 <code>tty</code> 环境，特别地，后者界面中斜体表示选中</li>
+<li><code>make xconfig</code> 或 <code>make gconfig</code>
+图形化配置方法，前者基于 <code>QT</code> 后者基于 <code>GTK</code></li>
+</ol>
+<h3 id="构建">构建</h3>
+<h4 id="全部构建">全部构建</h4>
+<p>特别地，不应该在 root 权限下构建内核，而应该使用权限代理工具，如 <code>sudo</code> 或 <code>doas</code></p>
+<pre><code class="language-shell">make #单线程
+make -j6 #多线程
+make -j6 modules_install #安装构建好的模块
+make install #安装内核映像
+</code></pre>
+<h4 id="部分构建">部分构建</h4>
+<ol>
+<li>指明特定的构建位置 <code>make drivers/usb/serial</code></li>
+<li>构建模块 <code>make M=dirvers/usb/serial</code></li>
+<li>链接合并 <code>make</code></li>
+</ol>
+<h4 id="输出位置">输出位置</h4>
+<p>例如，如果源码保存在只读位置上；或需要以普通身份构建内核，而源码在系统目录中，执行下面的命令：~make O=~/Develop/src/linux~</p>
+<h4 id="交叉编译">交叉编译</h4>
+<p>交叉编译的意思是编译环境和运行环境不同。
+内核的交叉编译特性允许更强大的机器为较小的嵌入式系统构建内核。</p>
+<pre><code class="language-shell">make ARCH=x86_64 defconfig
+make ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-
+</code></pre>
+<h4 id="编译器">编译器</h4>
+<p>如需选择其他编译器程序，请输入：
+<code>make CC=&quot;ccache gcc&quot;</code>
+<code>make CC=&quot;ccache distcc&quot;</code></p>
+<h3 id="清理构建">清理构建</h3>
+<ol>
+<li><code>make clean</code>
+移除几乎所有生成的文件，但保留配置文件和足够的构建支持以构建外部模块</li>
+<li><code>make mrproper</code>
+移除所有生成的文件，包括配置文件和一些备份文件</li>
+<li><code>make distclean</code>
+移除 <strong>所有</strong> 生成的文件，包括任何可能的补丁文件等</li>
+</ol>
+<h3 id="升级构建">升级构建</h3>
+<ol>
+<li>获取新的源代码（可以重新克隆，也可以直接从远程合并）
+无论如何，避免以为源码树打 patch 的方式更新。如遇冲突，工作量太大。</li>
+<li><code>make oldconfig</code></li>
+</ol>
+<h2 id="配置驱动">配置驱动</h2>
+<h3 id="发行版配置">发行版配置</h3>
+<p>各个发行版都提供内核配置文件，它们保存在 <code>/proc/config.gz</code> 中。如需以该配置作为基础配置内核，运行下面的命令</p>
+<pre><code class="language-shell">zcat /proc/config.gz &gt; ~/Develop/src/linux
+cp /prco/config.gz ~/Develop/src/linux
+gzip -dv config.gz
+</code></pre>
+<h3 id="设备查找">设备查找</h3>
+<h4 id="查找驱动名称">查找驱动名称</h4>
+<p>通过下面的脚本查找硬件设备所依赖的内核驱动的名称。</p>
+<pre><code class="language-shell">#!/bin/sh
+#
+# Find all modules and drivers for a given class device.
+#
+
+if [ $# != &quot;1&quot; ] ; then
+    # $# 表示的是传递给脚本或函数的参数个数(argc)
+    echo
+    echo &quot;Script to display the drivers and modules for a specified sysfs class device&quot;
+    echo &quot;usage: $0 &lt;CLASS_NAME&gt;&quot;
+    echo
+    echo &quot;example usage:&quot;
+    echo &quot;      $0 sda&quot;
+    # $0 表示的是当前脚本的文件名
+    echo &quot;Will show all drivers and modules for the sda block device.&quot;
+    echo
+    exit 1
+fi
+
+DEV=$1
+# $1表示的是传递给脚本或函数的参数(在本脚本中只接受一个参数)
+
+if test -e &quot;$1&quot;; then
+    # test -e测试文件是否存在，这里测试是否是当前目录文件
+    DEVPATH=$1
+else
+    # find sysfs device directory for device
+    # 从 /sys/class 目录查找设备
+    DEVPATH=$(find /sys/class -name &quot;$1&quot; | head -1)
+    # find [path] -name [filename] 根据设备名在对应路径查找
+    # 管道 head -1显示的是第一个结果
+    test -z &quot;$DEVPATH&quot; &amp;&amp; DEVPATH=$(find /sys/block -name &quot;$1&quot; | head -1)
+    # test -z当且仅当字符串是0时返回真，否则返回假
+    # 当前一条语句顺利执行，则此处短路；前一条语句无结果才继续执行后面
+    test -z &quot;$DEVPATH&quot; &amp;&amp; DEVPATH=$(find /sys/bus -name &quot;$1&quot; | head -1)
+    if ! test -e &quot;$DEVPATH&quot;; then
+        echo &quot;no device found&quot;
+        exit 1
+    fi
+fi
+
+echo &quot;looking at sysfs device: $DEVPATH&quot;
+
+if test -L &quot;$DEVPATH&quot;; then
+    # resolve class device link to device directory
+    # test -L 检查字符串是否存在且是链接文件
+    DEVPATH=$(readlink -f $DEVPATH)
+    # readlink 打印解析的符号链接或规范文件名
+    # -f 递归跟随给出文件名的所有符号链接以标准化，除最后一个外所有组件必须存在
+    echo &quot;resolve link to: $DEVPATH&quot;
+fi
+
+if test -d &quot;$DEVPATH&quot;; then
+    # resolve old-style &quot;device&quot; link to the parent device
+    # test -d 检查是否是目录类型
+    PARENT=&quot;$DEVPATH&quot;;
+    while test &quot;$PARENT&quot; != &quot;/&quot;; do
+        if test -L &quot;$PARENT/device&quot;; then
+            DEVPATH=$(readlink -f $PARENT/device)
+            echo &quot;follow 'device' link to parent: $DEVPATH&quot;
+            break
+        fi
+        PARENT=$(dirname $PARENT)
+        # dirname是寻找当前目录的上级目录
+    done
+fi
+
+while test &quot;$DEVPATH&quot; != &quot;/&quot;; do
+    DRIVERPATH=
+    DRIVER=
+    MODULEPATH=
+    MODULE=
+    if test -e $DEVPATH/driver; then
+        DRIVERPATH=$(readlink -f $DEVPATH/driver)
+        DRIVER=$(basename $DRIVERPATH)
+        # basename 是去除路径得到文件名
+        echo -n &quot;found driver: $DRIVER&quot;
+        if test -e $DRIVERPATH/module; then
+            MODULEPATH=$(readlink -f $DRIVERPATH/module)
+            MODULE=$(basename $MODULEPATH)
+            echo -n &quot; from module: $MODULE&quot;
+        fi
+        echo
+    fi
+
+    DEVPATH=$(dirname $DEVPATH)
+done
+</code></pre>
+<h4 id="查找内核选项">查找内核选项</h4>
+<p>通过上面脚本查找到的硬件设备对应的内核驱动名称，到内核的源码树中读取 <code>Makefile</code> 并从中找到对应的真正的内核选项名称。</p>
+<pre><code class="language-shell">find -type f -name Makefile | xargs grep &quot;ModulesName&quot;
+</code></pre>
+<p>特别地：</p>
+<ol>
+<li>有些选项的内核驱动名是以下划线连接的，而在内核选项名称中是以横线连接，因此寻找时需要尝试。</li>
+<li>有些设备是系统内核自行创建的虚拟设备(逻辑设备)，因此脚本查找不到物理驱动(因为对逻辑设备来说本来就不需要物理驱动)</li>
+</ol>
+<p>查找到内核选项名称后，进入配置界面，通过搜索查看对应需要配置的选项。</p>
+<h4 id="快速查找设备">快速查找设备</h4>
+<p>通过下面的脚本自动化查找硬件驱动，弊端是会掺杂很多无关的驱动。</p>
+<pre><code class="language-shell">#!/bin/bash
+for i in `find /sys/ -name modalias -exec cat {} \;`; do
+    /sbin/modprobe --config /dev/null --show-depends $i ;
+done | rev | cut -f 1 -d '/' | rev | sort -u
+</code></pre>
+<p>脚本解释：</p>
+<ol>
+<li>查找 <code>/sys</code> 下名称为 <code>modalias</code> 的所有文件
+<code>modalias</code> 是一个 <code>sysfs</code> 技巧，它将硬件信息导出到该文件；参考 <a href="Modalias-ArchWiki">wiki.archlinux.org/title/Modalias</a></li>
+<li>依次查看找到的文件，其中 <code>{}</code> 是占位符，表示找到的文件的名字；
+其中用转义 <code>\;</code> 表示 <code>-exec</code> 的结束，因为 <code>shell</code> 已使用 <code>;</code> 作为命令分隔符；</li>
+<li>调用 <code>/sbin/modprobe</code> 检查内核依赖，列出模块的依赖项(包括模块本身)，使用缺省设置</li>
+<li>反转两次字符，在两次反转之间取第一个字段，分隔符是斜杠，目的是得到最后一段字符</li>
+<li>将结果排序输出，=-u= 表示 unqiue ，删除重复行</li>
+</ol>
+<h3 id="添加固件">添加固件</h3>
+<p>Gentoo 和 Arch 支持通过安装软件包组的方式安装固件。安装完成的路径在 <code>/lib/modules</code></p>
+<pre><code class="language-shell">sudo emerge sys-kernel/linux-firmware
+sudo pacman linux-firmware
+</code></pre>
+<p>向内核中添加固件的步骤：
+Device Drivers -&gt; Generic Driver Options -&gt; Firmware loader -&gt; Build named firmware blobs into the kernel binary</p>
+<p>特别地，只需要填写固件名，构建时系统会自动去源码目录下的 <code>./modules</code> 下去寻找，需要更改目录为 <code>/lib/modules</code> ，同时多个固件之间以空格隔开。</p>
+<p>如果硬件驱动是直接编译进内核，且无法正常工作，则需要将固件编译到内核中。因此硬件不能正常工作时：</p>
+<ol>
+<li>排查问题
+<ol>
+<li><code>lspci -k</code> 观察硬件驱动是否正确加载</li>
+<li><code>sudo dmesg | grep &quot;error&quot;</code></li>
+</ol>
+</li>
+<li>解决办法
+<ol>
+<li>尝试把问题所在的硬件驱动编译成模块重试</li>
+<li>尝试将固件编译进内核，例如 <code>regulatory.db</code></li>
+<li>尝试查找资料，有的硬件需要其他操作
+如笔记本 3.5mm 耳机接口需要在 <code>/etc/modprobe.d/</code> 中单独编辑配置，参考 <a href="https://wiki.archlinux.org/title/Advanced_Linux_Sound_Architecture#Correctly_detect_microphone_plugged_in_a_4-pin_3.5mm_(TRRS)_jack">Correctly Detected Microphone</a></li>
+</ol>
+</li>
+</ol>
+<h2 id="定制内核">定制内核</h2>
+<h3 id="general-setup">General Setup</h3>
+<ol>
+<li>Kernel compression mode
+<ol>
+<li>LZ4 高压缩比的同时性能最强</li>
+<li>XZ 极高压缩比，但性能有损失</li>
+</ol>
+</li>
+<li>POSIX Message Queues
+<ol>
+<li>在 POSIX 消息队列中，每条消息都有一个优先级，它决定了进程接收消息的先后顺序。</li>
+<li>如果你想编译和运行那些使用&quot;mq_*&ldquo;系统调用的程序，或者需要使用 Docker 容器,就必须开启此选项。</li>
+<li>POSIX 消息队列可以作为&quot;mqueue&quot;文件系统挂载以方便用户对队列进行操作。不确定的选&quot;Y&rdquo;.</li>
+</ol>
+</li>
+<li>Enable process_vm_readv/writev syscalls
+<ol>
+<li>提供 <code>process_vm_readv</code> 和 <code>writev syscalls</code> 系统调用</li>
+<li>允许程序以正确的优先级直接读或写另一进程的地址空间</li>
+</ol>
+</li>
+<li>uselib syscall
+建议禁止，因为现在大部分人在用 <code>glibc</code> 而不是 <code>libc5</code> 或更早</li>
+<li>Auditing support
+<ol>
+<li>提供应用于内核子系统的审计基础设施，例如 <code>SELinux</code> 等等</li>
+<li>有关审计系统调用的支持包含在支持它的体系结构中</li>
+</ol>
+</li>
+<li>Timers subsystem
+<ol>
+<li>Timer tick handling
+<ol>
+<li>Periodic timer ticks(constant rate,no dynticks)
+强制按固定频率触发时钟中断，最耗电，当然性能最好</li>
+<li>Idle dynticks system(tickless idle)
+空闲状态不产生不必要的时钟中断，降低处理器能耗</li>
+<li>Full dynticks system(tickless)
+即使在忙碌状态也尽可能关闭所有时钟中断</li>
+</ol>
+</li>
+<li>High Resolution Timer Support
+<ol>
+<li>高精度定时器(hrtimer)用于取代传统 timer wheel(基于 jiffies 定时器)的时钟子系统</li>
+<li>可以降低与内核其他模块的耦合性,还可以提供比 1 毫秒更高的精度(因为它可以读取 HPET/TSC 等新型硬件时钟源)</li>
+<li>可以更好的支持音视频等对时间精度要求较高的应用，如 pulseAudio 等等，因此建议选&quot;Y&quot;</li>
+<li>特别地，此处&quot;定时器&quot;是指&quot;软件定时器&quot;,而不是主板或 CPU 上集成的硬件时钟发生器(ACPI PM Timer/HPET Timer/TSC Timer)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Preemption Model
+内核抢占模式
+<ol>
+<li>No Forced Preemption
+禁止内核抢占，适合服务器、科学计算</li>
+<li>Voluntary Kernel Preemption
+自愿内核抢占，提高响应速度，对吞吐量有影响</li>
+<li>Preemptible Kernel
+主动内核抢占，允许抢占所有内核代码，适合实时操作系统、高响应桌面环境，但对吞吐量的影响也更大</li>
+</ol>
+</li>
+<li>CPU/Task time and stats accounting
+<ol>
+<li>CPU time accounting
+<ol>
+<li>Simple tick based cputime accounting
+简单的基于滴答的统计,适用于大多数场合</li>
+<li>Full dynticks CPU time accounting
+<ol>
+<li>利用上下文跟踪子系统,通过观察每一个内核与用户空间的边界进行统计</li>
+<li>该选项对性能有显著的不良影响,目前仅用于完全滴答子系统的开发调试</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>BSD Process Accounting
+<ol>
+<li>用户空间程序可以要求内核将进程的统计信息写入一个指定的文件</li>
+<li>主要包括进程的创建时间/创建者/内存占用等信息</li>
+<li>内核开发者认为这通常是一个好主意，建议选择</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Namespaces support
+命名空间支持.主要用于支持基于容器的轻量级虚拟化技术
+<ol>
+<li>UTS namespace
+uname()系统调用的命名空间支持</li>
+<li>IPC namespace
+进程间通信对象 ID 的命名空间支持</li>
+<li>User namespace
+<ol>
+<li>允许容器使用 user 命名空间</li>
+<li>建议同时开启 <code>CONFIG_MEMCG</code> 和 <code>CONFIG_MEMCG_KMEM</code></li>
+<li>systemd 服务单元依赖该项</li>
+</ol>
+</li>
+<li>PID namespaces
+进程 PID 命名空间支持</li>
+<li>Network namespaces
+网络协议栈的命名空间支持，systemd 服务单元依赖该项。</li>
+</ol>
+</li>
+<li>Checkpoint/restore support
+<ol>
+<li>在内核中添加&quot;检查点/恢复&quot;支持
+添加一些辅助的代码用于设置进程的 text, data, heap 段,并且在 /proc 文件系统中添加一些额外的条目</li>
+<li>用于检测两个进程是否共享同一个内核资源的 kcmp()系统调用依赖于它</li>
+<li>使用 systemd 建议开启此项</li>
+<li>使用 intel 核显驱动 mesa 建议开启此项</li>
+</ol>
+</li>
+<li>Automatic process group scheduling
+<ol>
+<li>每个 tty 动态地创建任务分组(cgroup)，可以降低高负载情况下的桌面延迟</li>
+<li>桌面用户建议开启，而服务器建议关闭.</li>
+</ol>
+</li>
+<li>Initial RAM filesystem and RAM disk (initramfs/initrd) support
+初始内存文件系统，占用额外的容量和性能。</li>
+<li>Compiler optimization level
+编译优化级别
+<ol>
+<li>Optimize for performance
+O2 级别的优化</li>
+<li>Optimize for size
+<ol>
+<li>Os 级别的优化，可以得到更小的内核但运行速度更慢</li>
+<li>通常用于专用操作系统，例如嵌入式系统</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="processor-type-and-features">Processor type and features</h3>
+<p>中央处理器(CPU)类型及特性</p>
+<ol>
+<li>Symmetric multi-processing support
+激活对 SMP(对称多处理器)的支持。如果是多个 CPU(包括多个 CPU 核心)选择此项。</li>
+<li>Enable MPS table
+仅古董级 SMP 系统需要，64 位系统支持 ACPI，因此可以安全地关闭</li>
+<li>x86 CPU resource control support
+<ol>
+<li>启用 x86 CPU 资源控制支持，为 CPU 的系统资源的分配和监控提供支持。</li>
+<li>Intel 称之为 Intel 资源控制器技术</li>
+<li>AMD 称之为 AMD 平台服务质量</li>
+</ol>
+</li>
+<li>Support for extended (non-PC) x86 platforms
+<ol>
+<li>支持非标准的 PC 平台: Numascale NumaChip, ScaleMP vSMP, SGI Ultraviolet</li>
+<li>绝大多数情况下不会使用这些平台</li>
+</ol>
+</li>
+<li>Intel Low Power Subsystem Support
+为 <code>Intel Lynx Point PCH</code> 或更高级别芯片提供因特尔低电量子系统支持</li>
+<li>Linux guest support
+如果该内核在虚拟机中运行，开启本选项，否则就关闭</li>
+<li>Processor family
+按实际使用的处理器类型进行选择。
+<ol>
+<li>Generic-x86-64
+表示通用于所有 x86-64 平台</li>
+<li>Core 2/newer Xeon
+支持 Core2 之后的所有 IntelCPU，包括 I3，I5，I7，I9</li>
+<li>Opteron/Athlon64/Hammer/K8
+支持 AMD 类型的 CPU</li>
+</ol>
+</li>
+<li>Maximum number of CPUs
+支持的最大逻辑 CPU 数量</li>
+<li>Multi-core scheduler support
+<ol>
+<li>针对多核 CPU 进行调度策略优化</li>
+<li>会略微增加日常开支</li>
+<li>对计算机不一定会很有用，可能对 CPU 集群更有效</li>
+</ol>
+</li>
+<li>Reroute for broken boot IRQs
+对某些(陈旧的)芯片组 bug 的修复功能</li>
+<li>Machine Check / overheating reporting
+<ol>
+<li>CPU 检测到硬件故障时通知内核，以使内核采取相应的措施</li>
+<li>只需要开启对应 CPU 的支持(Intel or AMD)</li>
+</ol>
+</li>
+<li>Machine check injector support
+MCE 注入支持，仅用于内核调试</li>
+<li>Performance monitor support
+<ol>
+<li>对 CPU 进行性能监控的框架支持</li>
+<li>只需要开启对应 CPU 的支持(Intel or AMD)</li>
+</ol>
+</li>
+<li>IOPERM and IOPL Emulation
+提供设置端口权限的系统调用，以获取对端口进行 I/O 操作权限</li>
+<li>CPU microcode loading support
+CPU 的微码支持，提高 CPU 的稳定性</li>
+<li>Enable 5-level page tables support
+<ol>
+<li>5 级页表支持仅在使用很大的内存(64TiB 物理地址空间或 256TiB 逻辑地址空间)和极高线程时才建议启用</li>
+<li>开启后支持 4PiB 物理地址空间或 128PiB 逻辑地址空间</li>
+<li>即使是计算机集群或超级计算机，对其中的单个计算机也很少有如此高内存的情况(当然确实存在)</li>
+<li>该选项是对未来大内存地址空间的一种实现目标</li>
+</ol>
+</li>
+<li>NUMA Memory Allocation
+<ol>
+<li>开启 NUMA(Non Uniform Memory Access) 支持</li>
+<li>虽然说集成了内存控制器的 CPU 都属于 NUMA 架构，但对于大多数只有一颗物理 CPU 的个人电脑而言，即使支持 NUMA 架构，也没必要开启此特性.</li>
+<li>可以参考 <a href="https://www.cnblogs.com/yubo/archive/2010/04/23/1718810.html">SMP/NUMA/MPP 体系结构对比</a>
+<ol>
+<li>SMP for Symmetric multi-processor</li>
+<li>NUMA for Non Uniform Memory Access</li>
+<li>MPP for Massive Parallel Processing</li>
+</ol>
+</li>
+<li>对于不支持&quot;虚拟 NUMA&quot;或&quot;虚拟 NUMA&quot;被禁用的虚拟机(即使所在的物理机是 NUMA 系统)，应该关闭此项</li>
+</ol>
+</li>
+<li>Check for low memory corruption
+<ol>
+<li>低位内存脏数据检查，可关可不关</li>
+<li>需要该选项与 <code>memory_corruption_check=1</code> 内核引导参数配合使用
+通过开启 <code>Set the default setting of memory_corruption_check</code> 选项设置默认开启上述选项</li>
+<li>该选项的原理是在 BIOS 存在问题时：
+<ol>
+<li>每 60s 扫描一次
+扫描周期可通过 <code>memory_corruption_check_period</code> 内核参数调整</li>
+<li>扫描范围是 0-64k 内存地址
+扫描范围可通过 <code>memory_corruption_check_size</code> 内核参数调整</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Memory Type Range Register support
+存储器类型范围寄存器支持
+其下级选项 MTRR cleanup support 是将 MTRR 内存布局由连续转为离散，以利于 X 驱动添加写回条目
+<ol>
+<li>MTRR cleanup enable value
+建议图形界面用户设为&quot;1&quot;，仅在开启后导致无法正常启动或者显卡驱动不能正常工作的情况下才需要关闭</li>
+<li>MTRR cleanup spare reg num
+指示内核可供清理或修改的内存段个数(参考 <code>/proc/mtrr</code>)
+通常保持默认值&quot;1&quot;，修改通常是为了解决某些 MTRR 故障。</li>
+</ol>
+</li>
+<li>Memory Protection Keys
+内存保护密钥提供一种用于强制执行基于页面的保护，但在应用程序更改保护域时不需要修改页面表</li>
+<li>TSX enable mode
+<ol>
+<li>Intel 事务扩展技术是 intel 为旗下的 CPU 开发的一项优化指令集</li>
+<li>存在僵尸负载漏洞（ZombieLoad）</li>
+<li>开启 TSX 后，在编译程序时速度有小幅度的提升</li>
+<li>牺牲内核安全性换取性能</li>
+</ol>
+</li>
+<li>kexec system call
+<ol>
+<li>提供系统调用，允许在运行某内核后关闭它本身并运行另一个内核，即使不是 Linux 内核</li>
+<li>由于其所依赖的硬件接口在快速变化，因此无法给出好的建议</li>
+<li>kernel crash dumps 依赖于 kexec 系统调用，因此应对两者作相同的选择</li>
+</ol>
+</li>
+</ol>
+<h3 id="mitigations-for-speculative-execution-vulnerabilities">Mitigations for speculative execution vulnerabilities</h3>
+<p>缓解或修复推断性执行漏洞的内核补丁</p>
+<ol>
+<li>Avoid speculative indirect branches in kernel
+<ol>
+<li>CPU 会提前执行 <code>jmp</code> 或 <code>call</code> 等跳转指令的下一句，原理是将该句存到 <code>RSB</code> 栈中</li>
+<li>病毒可能展开 CPU 预测分支执行，因此需要在该句之后添上一端无用的死循环代码，使 CPU 预测分支执行无用化</li>
+<li>redpoline 因此而生，显然该补丁会带来性能损失</li>
+</ol>
+</li>
+<li>Enable IBPB on kernel entry
+为内核编译 <code>retbleed=ibpb</code> 补丁</li>
+<li>Enable IBRS on kernel entry
+为内核编译 <code>spectre_v2=ibrs</code> 补丁</li>
+</ol>
+<h3 id="power-management-and-acpi-options">Power management and ACPI options</h3>
+<ol>
+<li>Suspend to RAM and standby
+即休眠到内存。系统休眠后，除了内存之外，其他所有部件都停止工作，重开机之后可以直接从内存中恢复运行状态
+通过命令 <code>echo mem &gt; /sys/power/state</code> 使用此功能</li>
+<li>Hibernation (aka &lsquo;suspend to disk&rsquo;)
+即休眠到硬盘。其他同上
+通过命令 <code>echo disk &gt; /sys/power/state</code> 使用此功能，前提是有内核引导参数 <code>resume=/dev/swappartition</code></li>
+<li>Opportunistic sleep
+激进的休眠方案，来源于安卓。理念是只要不工作，就开始休眠。</li>
+<li>ACPI(Advanced Configuration and Power Interface)
+高级配置与电源接口，包括了软件和硬件方面的规范,目前已被软硬件厂商广泛支持,并且取代了许多过去的配置与电源管理接口</li>
+<li>CPU Idle
+<ol>
+<li>该指令可以让 CPU 在空闲时&quot;打盹&quot;以节约电力和减少发热</li>
+<li>只要是支持 ACPI 的 CPU 就应该开启，又由于所有 64 位 CPU 都已支持 ACPI,所以开启</li>
+</ol>
+</li>
+<li>Cpuidle Driver for Intel Processors
+<ol>
+<li>该选项是专用于 Intel CPU 的 cpuidle 驱动</li>
+<li><code>CONFIG_CPU_IDLE</code> 则可用于非 Intel 的 CPU.</li>
+</ol>
+</li>
+</ol>
+<h3 id="binary-emulations">Binary Emulations</h3>
+<ol>
+<li>IA32 Emulation
+提供兼容运行 32 位的应用程序支持(multilib)，建议开启。</li>
+<li>x32 ABI for 64-bit mode
+建议禁止</li>
+</ol>
+<h3 id="general-architecture-dependent-options">General architecture-dependent options</h3>
+<ol>
+<li>Kprobes
+主要用于内核调试，允许追踪几乎任何内核地址并执行回调函数</li>
+<li>Optimize very unlikely/likely branches
+<ol>
+<li>启用透明的分支优化，使得执行几乎总是正确/错误的分支条件更少；</li>
+<li>某些性能敏感的内核代码都有这样的分支并支持该优化技术
+例如跟踪点、调度程序、网络、基于内核的虚拟机(KVM)等</li>
+<li>此技术降低了开销，更多的是对处理器的分支预测施加压力，通常会使内核速度更快，而条件的更新速度则更慢，但这种情况总是非常罕见的</li>
+</ol>
+</li>
+<li>Enable seccomp to safely execute untrusted bytecode
+<ol>
+<li>启用 <code>seccomp</code> 安全执行不可信任代码</li>
+<li>仅嵌入式系统应当否决</li>
+</ol>
+</li>
+<li>Use a virtually-mapped stack
+该选项使用带保护页的虚拟映射内核堆栈，它的作用是立即捕获内核堆栈溢出而不是在造成难以诊断的损失之后。
+开启需要支持一些条件，详见选项说明。</li>
+</ol>
+<h3 id="enable-loadable-module-support">Enable loadable module support</h3>
+<p>激活可加载模块支持</p>
+<ol>
+<li>Forced module loading
+允许使用 <code>modprobe --force</code> 命令，它将在不校验版本信息的情况下强制加载模块，建议关闭</li>
+<li>Module unloading
+<ol>
+<li>允许卸载已经加载的模块</li>
+<li>如果将模块静态编译进内核中，那么内核的执行效率会更好</li>
+<li>如果代码作为动态模块加载，那么不使用时可以减少内核的内存使用并减少启动的时间，然而内核和模块在内存上相互独立又会影响内核的执行性能</li>
+<li>Forced module unloading
+允许使用 <code>rmmod -f</code> 强制卸载正在使用的模块，建议关闭</li>
+</ol>
+</li>
+<li>Module versioning support
+允许当前内核使用为其他内核版本编译的模块,可能会造成系统崩溃，建议关闭</li>
+</ol>
+<h3 id="executable-file-formats">Executable file formats</h3>
+<p>可执行文件格式/仿真</p>
+<ol>
+<li>Kernel support for ELF binaries
+ELF 是最常用的跨平台二进制文件格式,支持动态连接,支持不同的硬件平台,支持不同的操作系统.</li>
+<li>Write ELF core dumps with partial segments
+当打算在此 Linux 上开发应用程序或者帮助调试 bug 时开启</li>
+<li>Kernel support for scripts starting with #!
+支持以 <code>#!/path/to/interpreter</code> 运行的脚本
+<strong>务必选 Y，除非你知道你自己在做什么</strong></li>
+<li>Kernel support for MISC binaries
+<ol>
+<li>允许插入二进制封装层到内核中</li>
+<li>理论上允许直接运行 Java,.NET,Python,Emacs-lisp 等等</li>
+</ol>
+</li>
+</ol>
+<h3 id="enable-the-block-layer">Enable the block layer</h3>
+<p>激活块设备支持</p>
+<ol>
+<li>Partition Types
+支持不同的磁盘分区格式，务必选择此项</li>
+<li>IO Schedulers
+<ol>
+<li>快速响应的实时系统可以选择 <code>BFQ I/O scheduler</code> ，即 BFQ 调度器</li>
+<li>在开启了 BFQ 的条件下，可以禁用另外两个调度器</li>
+</ol>
+</li>
+</ol>
+<h3 id="memory-management-options">Memory Management options</h3>
+<ol>
+<li>Support for paging of anonymous memory (swap)
+<ol>
+<li>使内核支持虚拟内存，即交换分区</li>
+<li>仅在 PC 上使用，嵌入式系统不应开启，因为嵌入式系统主要使用 <code>flash</code> ，磁盘寿命远大于闪存</li>
+</ol>
+</li>
+<li>SLAB allocator
+选择内存分配器
+<ol>
+<li>SLAB
+该内存分配器在大多数情况下都具有良好的适应性</li>
+<li>SLUB
+<ol>
+<li>SLUB 与 SLAB 兼容,但通过取消大量的队列和相关开销,简化了 slab 的结构</li>
+<li>在多核时 SLUB 拥有比 SLAB 更好的性能和更好的系统可伸缩性</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Low address space to protect from user allocation
+建议设置为 65536</li>
+<li>Transparent Hugepages support
+<ol>
+<li>允许内核使用大页面和大快表，能够提高应用程序计算性能</li>
+<li>原理是
+<ol>
+<li>加快内存分配期间的缺页中断速度</li>
+<li>减少快表未命中的数量</li>
+<li>加快页表的整体遍历(主要开销是换页而非向下查找)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Enable idle page tracking
+此功能允许估计在给定时间段内未触及的用户页面的数量，该信息可用于调整内存 <code>cgroup</code> 限制或计算集群内的放置作业。</li>
+</ol>
+<h2 id="检查选项">检查选项</h2>
+<h3 id="basic">Basic</h3>
+<ol>
+<li>CONFIG_FB
+FB for framebuffer
+<ol>
+<li>帧缓冲设备是对图形硬件的抽象</li>
+<li>它把屏幕上的所有像素点都直接映射到一段线性的内存空间，为软件提供了访问图形硬件的统一接口，软件不需要了解硬件的底层细节(例如寄存器)，只要简单的改变相应内存位置的值，就能改变屏幕上显示的内容(颜色/亮度等)</li>
+<li>Xorg 的高度可移植性根源于此，图形界面用户必选</li>
+</ol>
+</li>
+<li>CONFIG_FRAMEBUFFER_CONSOLE
+<ol>
+<li>基于 Framebuffer 的图形模式控制台</li>
+<li>KMS 特性依赖于它.CJKTTY 补丁也依赖于它</li>
+<li>桌面用户必选&quot;Y&quot;(使用了 CONFIG_DRM_*的用户必须开启)</li>
+<li>服务器以 UEFI 方式启动的也必选&quot;Y&quot;.</li>
+</ol>
+</li>
+<li>CONFIG_FW_LOADER
+向内核中编译固件
+<ol>
+<li>CONFIG_EXTRA_FIRMWARE</li>
+<li>CONFIG_EXTRA_FIRMWARE_DIR</li>
+</ol>
+</li>
+</ol>
+<h3 id="networking-support">Networking support</h3>
+<ol>
+<li>CONFIG_PACKET</li>
+<li>CONFIG_UNIX</li>
+<li>CONFIG_INET</li>
+<li>CONFIG_NETFILTER
+Netfilter 可以对数据包进行过滤和修改,可以作为
+<ol>
+<li>防火墙(packet filter or proxy-based)</li>
+<li>网关 NAT</li>
+<li>代理 proxy</li>
+<li>网桥</li>
+</ol>
+</li>
+<li>NET_REDIRECT</li>
+<li>IPTABLES
+参考 <a href="https://wiki.gentoo.org/wiki/Iptables">GentooWiki-iptables</a></li>
+<li>NFTABLES
+参考 <a href="https://wiki.gentoo.org/wiki/Nftables">GentooWiki-nftables</a></li>
+<li>NAT
+<ol>
+<li>NETFILTER_XT_NAT</li>
+<li>NET_ACT_NAT</li>
+<li>NF_NAT</li>
+<li>NF_NAT_FTP</li>
+<li>NF_NAT_IRC</li>
+<li>NF_NAT_MASQUERADE</li>
+<li>NF_NAT_REDIRECT
+建议搜索 <code>REDIRECT</code> ，将所有实现网络透明代理的均选中</li>
+<li>NFT_NAT</li>
+</ol>
+</li>
+<li>PPP
+参考 <a href="https://wiki.gentoo.org/wiki/PPP">GentooWiki-PPP</a></li>
+</ol>
+<h3 id="graphics-support">Graphics support</h3>
+<ol>
+<li>CONFIG_AGP
+GART(图形地址重映射表)可以看做一种被各种显卡(不只是 AGP 显卡,还包括 PCI-E 显卡与集成显卡以及核心显卡)使用的&quot;伪 IOMMU&quot;(参见 <code>CONFIG_GART_IOMMU</code> 选项),它将物理地址不连续的系统内存映射成连续的&quot;显存&quot;供 GPU 使用
+<ol>
+<li>CONFIG_AGP_AMD64
+提供 AMD 支持</li>
+<li>CONFIG_AGP_INTEL
+提供 Intel 支持</li>
+<li>CONFIG_AGP_SIS
+提供 SIS 芯片组支持</li>
+<li>CONFIG_AGP_VIA
+提供 VIA 芯片组支持</li>
+</ol>
+</li>
+<li>CONFIG_VGA_SWITCHEROO
+用于多个显卡之间的切换</li>
+<li>CONFIG_DRM
+Direct Rendering Manager 管理的是 Direct Rendering Infrastructure 主要用于硬件 3D 加速</li>
+<li>CONFIG_SYSFB_SIMPLEFB
+使用 VESA 和 UEFI 建议选择</li>
+<li>CONFIG_DRM_SIMPLEDRM</li>
+<li>CONFIG_FRAMERBUFFER_CONSOLE
+见前文</li>
+<li>CONFIG_LOGO
+启动时显示 LOGO</li>
+<li>Nvidia
+有关英伟达显卡的问题，参阅文档。</li>
+</ol>
+<h3 id="sound-card-support">Sound Card support</h3>
+<p>如果是笔记本，建议以模块形式编译本部分(尤其是 ALSA)</p>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-3-gentoo-nvidia/" class="block">Gentoo Linux Nvidia 显卡驱动</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/build/operating-system-configuration/linux-technology-5-5-kde-usage/" class="block">Linux KDE 桌面使用指南</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#写在前面">写在前面</a>
+      <ul>
+        <li><a href="#参考文献">参考文献</a></li>
+        <li><a href="#写作动机">写作动机</a></li>
+      </ul>
+    </li>
+    <li><a href="#构建内核">构建内核</a>
+      <ul>
+        <li><a href="#源码获取">源码获取</a></li>
+        <li><a href="#配置">配置</a></li>
+        <li><a href="#构建">构建</a></li>
+        <li><a href="#清理构建">清理构建</a></li>
+        <li><a href="#升级构建">升级构建</a></li>
+      </ul>
+    </li>
+    <li><a href="#配置驱动">配置驱动</a>
+      <ul>
+        <li><a href="#发行版配置">发行版配置</a></li>
+        <li><a href="#设备查找">设备查找</a></li>
+        <li><a href="#添加固件">添加固件</a></li>
+      </ul>
+    </li>
+    <li><a href="#定制内核">定制内核</a>
+      <ul>
+        <li><a href="#general-setup">General Setup</a></li>
+        <li><a href="#processor-type-and-features">Processor type and features</a></li>
+        <li><a href="#mitigations-for-speculative-execution-vulnerabilities">Mitigations for speculative execution vulnerabilities</a></li>
+        <li><a href="#power-management-and-acpi-options">Power management and ACPI options</a></li>
+        <li><a href="#binary-emulations">Binary Emulations</a></li>
+        <li><a href="#general-architecture-dependent-options">General architecture-dependent options</a></li>
+        <li><a href="#enable-loadable-module-support">Enable loadable module support</a></li>
+        <li><a href="#executable-file-formats">Executable file formats</a></li>
+        <li><a href="#enable-the-block-layer">Enable the block layer</a></li>
+        <li><a href="#memory-management-options">Memory Management options</a></li>
+      </ul>
+    </li>
+    <li><a href="#检查选项">检查选项</a>
+      <ul>
+        <li><a href="#basic">Basic</a></li>
+        <li><a href="#networking-support">Networking support</a></li>
+        <li><a href="#graphics-support">Graphics support</a></li>
+        <li><a href="#sound-card-support">Sound Card support</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

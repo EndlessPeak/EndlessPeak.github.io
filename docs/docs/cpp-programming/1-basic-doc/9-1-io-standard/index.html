@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Standard I/O | C/C&#43;&#43; Programming Basic | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="Output puts()：只能输出字符串，并且输出结束后会自动换行； putchar()：只能输出单个字符； printf()：可以输出各种类型的数据； Printf() int printf(const char *format, ...)">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"CPP Programming",
+      "item":"https://endlesspeak.github.io/docs/docs/cpp-programming/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"C/C++ Programming Basic",
+      "item":"https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"Standard I/O",
+      "item":"https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-1-io-standard/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-1-io-standard/"
+    },
+    "headline": "Standard I\/O | C\/C\u002b\u002b Programming Basic | 悦翎轩","datePublished": "2022-03-23T00:00:00+00:00",
+    "dateModified": "2022-03-23T00:00:00+00:00",
+    "wordCount":  2720 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "Output puts()：只能输出字符串，并且输出结束后会自动换行； putchar()：只能输出单个字符； printf()：可以输出各种类型的数据； Printf() int printf(const char *format, ...)"
+}
+</script><meta property="og:title" content="Standard I/O | C/C&#43;&#43; Programming Basic | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-1-io-standard/" />
+
+
+
+
+<meta property="og:description" content="Output puts()：只能输出字符串，并且输出结束后会自动换行； putchar()：只能输出单个字符； printf()：可以输出各种类型的数据； Printf() int printf(const char *format, ...)" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-03-23T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2022-03-23T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/">C/C&#43;&#43; Programming Basic</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-1-compilerlanguage/">Compiler Language</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-2-program-compilation-by-gcc/">Program Compilation by GCC</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/1-3-program-compilation-by-clang/">Program Compilation by Clang</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-1-datatype/">DataType</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/2-2-storetype/">StoreType</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-1-statement/">Statement</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/3-2-structure/">Structure</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-1-function/">Function</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/4-2-functionassignment/">Pass By Value &amp; Reference</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/5-scope/">Scope</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/6-pointer/">Pointer</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/7-customdatatypes/">Custom Data Type</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-1-io-standard/">Standard I/O</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-2-io-file/">File I/O</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/10-modules-development/">Module Development</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/11-debug-method/">Debug Method</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/12-ccpp-mix-programming/">C&amp;CPP Mix Programming</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Standard I/O</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-03-23</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>6分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="output">Output</h2>
+<ol>
+<li>puts()：只能输出字符串，并且输出结束后会自动换行；</li>
+<li>putchar()：只能输出单个字符；</li>
+<li>printf()：可以输出各种类型的数据；</li>
+</ol>
+<h3 id="printf">Printf()</h3>
+<pre><code class="language-c">int printf(const char *format, ...) 
+</code></pre>
+<p>功能：发送格式化输出到标准输出 stdout。</p>
+<h4 id="格式控制">格式控制</h4>
+<style>
+	table,table tr th, table tr td { border:1px solid #000000;text-align:center; }
+    table tr td { vertical-align:middle;}
+</style>
+<table>
+	<tbody>
+    	<tr>
+            <td>
+        		<p><b>格式控制符</b></p>
+            </td>
+            <td>
+            	<p><b>说明</b></p>
+            </td>
+        </tr>
+        <tr>
+			<td>
+        		<p>%hd、%d、%ld</p>
+            </td>
+            <td>
+            	<p>以十进制、有符号的形式输出 short、int、long 类型的整数</p>
+            </td>
+        </tr>
+        <tr>
+			<td>
+        		<p>%hu、%u、%lu</p>
+            </td>
+            <td>
+            	<p>以十进制、无符号的形式输出 short、int、long 类型的整数</p>
+            </td>
+        </tr>
+        <tr>
+			<td>
+        		<p>%ho、%o、%lo</p>
+            </td>
+            <td>
+            	<p>以八进制、<b>不带前缀</b>、无符号的形式输出 short、int、long 类型的整数</b></p>
+            </td>
+        </tr>
+        <tr>
+			<td>
+        		<p>%#ho、%#o、%#lo</p>
+            </td>
+            <td>
+            	<p>以八进制、<b>带前缀</b>、无符号的形式输出 short、int、long 类型的整数</p>
+            </td>
+        </tr>
+        <tr>
+			<td>
+        		<p>%hx、%x、%lx、%hX、%X、%lX</p>
+            </td>
+            <td>
+            	<p>以十六进制、<b>不带前缀</b>、无符号的形式输出 short、int、long 类型的整数。如果 x 小写，那么输出的十六进制数字也小写；如果 X 大写，那么输出的十六进制数字也大写。</p>
+            </td>
+        </tr>
+		<tr>
+            <td>
+            	<p>%#hx、%#x、%#lx、%#hX、%#X、%#lX</p>
+            </td>
+            <td>
+            	<p>以十六进制、<b>带前缀</b>、无符号的形式输出 short、int、long 类型的整数。如果 x 小写，那么输出的十六进制数字和前缀都小写；如果 X 大写，那么输出的十六进制数字和前缀都大写。</p>
+            </td>
+		</tr>
+		<tr>
+            <td>
+            	<p>%f、%lf</p>
+            </td>
+            <td>
+            	<p>以十进制的形式输出 float、double 类型的小数</p>
+            </td>
+		</tr>
+<tr>
+            <td>
+            	<p>%e、%le、%E、%lE</p>
+            </td>
+            <td>
+            	<p>以指数的形式输出 float、double 类型的小数。如果 e 小写，那么输出结果中的 e 也小写；如果 E 大写，那么输出结果中的 E 也大写。</p>
+            </td>
+		</tr>
+		</tr>
+<tr>
+            <td>
+            	<p>%g、%lg、%G、%lG</p>
+            </td>
+            <td>
+            	<p>以十进制和指数中较短的形式输出 float、double 类型的小数，并且小数部分的最后不会添加多余的 0。如果 g 小写，那么当以指数形式输出时 e 也小写；如果 G 大写，那么当以指数形式输出时 E 也大写。</p>
+            </td>
+		</tr>
+		<tr>
+			<td>
+	    		<p>%c</p>
+	        </td>
+	        <td>
+	        	<p>输出一个单一的字符</b></p>
+	        </td>
+	    </tr>
+		<tr>
+	        <td>
+	        	<p>%s</p>
+	        </td>
+	        <td>
+	        	<p>输出一个字符串</p>
+	        </td>
+		</tr>
+	</tbody>
+</table>
+<h4 id="高级用法">高级用法</h4>
+<pre><code class="language-c">%[flag][width][.precision]type
+</code></pre>
+<p>注释：</p>
+<ol>
+<li>
+<p>type表示输出类型，如d、f、c等；</p>
+</li>
+<li>
+<p>width表示最小输出宽度，即至少占用多少字符</p>
+<p>当输出结果小于最小宽度，则左对齐时右补空格，右对齐时左补空格（默认）。</p>
+<p>当输出结果大于最小宽度，该限制失效。</p>
+</li>
+<li>
+<p>precision表示只取输出的左边字符数（保留有效数字位数）。</p>
+</li>
+<li>
+<p>flag指示左右对齐方式，默认为右对齐，<strong>-为左对齐</strong>；<strong>+为输出数据的符号</strong>。</p>
+</li>
+</ol>
+<p>下面是一些应用举例(m为常数)：</p>
+<ol>
+<li>
+<p>可以用<code>%m.nf</code>指定数据宽度和小数位数，m表示浮点数所占的列数，n表示小数所占的位数。</p>
+</li>
+<li>
+<p>可以用<code>%md</code>进行右对齐；</p>
+<p>可以用<code>%-md</code>进行右对齐；</p>
+</li>
+<li>
+<p>可以用<code>%ms</code>指定输出字符串占的列数，少则左补空格，多则突破限制；</p>
+</li>
+<li>
+<p>可以用<code>%m.ns</code>指定输出字符串占的列数及只取字符串左边n个字符输出在m列的右侧，左补空格</p>
+</li>
+</ol>
+<h4 id="补充">补充</h4>
+<p>如果需要输出%，则需要额外用一个%转义。</p>
+<h3 id="puts">puts()</h3>
+<pre><code class="language-c">int puts(const char *str) 
+</code></pre>
+<p>功能：把一个字符串写入到标准输出 stdout，直到空字符，但不包括空字符。换行符会被追加到输出中。</p>
+<h3 id="putchar">putchar()</h3>
+<pre><code class="language-c">int putchar(int char) 
+</code></pre>
+<p>功能：把参数 char 指定的字符（一个无符号字符）写入到标准输出 stdout 中。</p>
+<h3 id="输出缓冲区">输出缓冲区</h3>
+<p>见下面的例子：</p>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+#if linux
+#include&lt;unistd.h&gt;
+#elif _WIN32
+#include&lt;windows.h&gt;
+#endif
+int main()
+{
+    printf(&quot;Before sleep.&quot;);
+    #if linux
+    sleep(5);//该函数以秒为单位
+    #elif _WIN32
+    Sleep(5000);//该函数以毫秒为单位
+    #endif
+    printf(&quot;After sleep.\n&quot;);
+    return 0;
+}
+</code></pre>
+<p>printf函数执行结束以后数据并没有直接输出到显示器上，而是放入了缓冲区，直到遇见换行符<code>\n</code>才将缓冲区中的数据输出到显示器上。</p>
+<h2 id="input">Input</h2>
+<ol>
+<li>scanf()：和 printf() 类似，scanf() 可以输入多种类型的数据。</li>
+<li>getchar()、getche()、getch()：这三个函数都用于输入单个字符。</li>
+<li>gets()：获取一行数据，并作为字符串处理。</li>
+</ol>
+<h3 id="scanf">scanf()</h3>
+<p>最重要的事情：<strong>等待输入的变量必须加<code>&amp;</code></strong>。</p>
+<p>特别地，输入字符串的变量不加<code>&amp;</code>，因为字符串的名字会自动转换为字符串的地址。加上&amp;会产生警告。</p>
+<h4 id="格式控制-1">格式控制</h4>
+<style>
+	table,table tr th, table tr td { border:1px solid #000000;text-align:center; }
+    table tr td { vertical-align:middle;}
+</style>
+<table>
+	<tbody>
+    	<tr>
+            <td>
+        		<p><b>格式控制符</b></p>
+            </td>
+            <td>
+            	<p><b>说明</b></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+        		<p>%c</p>
+            </td>
+            <td>
+            	<p>读取一个单一的字符</p>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<p>
+                   %s
+                </p>
+            </td>
+            <td>
+            	<p>
+                    读取一个字符串（以空白符为结束）
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+        		<p>%hd、%d、%ld</p>
+            </td>
+            <td>
+            	<p>读取一个十进制整数，并分别赋值给 short、int、long 类型</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+        		<p>%ho、%o、%lo</p>
+            </td>
+            <td>
+            	<p>读取一个八进制整数（可带前缀也可不带），并分别赋值给 short、int、long 类型</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+        		<p>%hx、%x、%lx</p>
+            </td>
+            <td>
+            	<p>读取一个十六进制整数（可带前缀也可不带），并分别赋值给 short、int、long 类型</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+        		<p>%hu、%u、%lu</p>
+            </td>
+            <td>
+            	<p>读取一个无符号十进制整数，并分别赋值给 unsigned short、unsigned int、unsigned long 类型</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+        		<p>%f、%lf</p>
+            </td>
+            <td>
+            	<p>读取一个十进制形式的小数，并分别赋值给 float、double 类型</p>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<p>
+                    %e、%le
+                </p>
+            </td>
+            <td>
+            	<p>
+                    读取一个指数形式的小数，并分别赋值给 float、double 类型
+                </p>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<p>
+                    %g、%lg
+                </p>
+            </td>
+            <td>
+            	<p>
+                    既可以读取一个十进制形式的小数，也可以读取一个指数形式的小数，并分别赋值给 float、double 类型
+                </p>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<p>
+                    %p
+                </p>
+            </td>
+            <td>
+            	<p>
+                    读入一个指针
+                </p>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<p>
+                    %[]
+                </p>
+            </td>
+            <td>
+            	<p>
+                    扫描字符集合
+                </p>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<p>
+                    %%
+                </p>
+            </td>
+            <td>
+            	<p>
+                    读入%符号
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>scanf() 读取字符串时以空格为分隔，遇到空格就认为当前字符串结束了，所以<strong>无法读取含有空格的字符串。</strong></p>
+<h3 id="输入缓冲区">输入缓冲区</h3>
+<p>当遇到 scanf() 函数时，程序会先检查输入缓冲区中是否有数据：</p>
+<ol>
+<li>
+<p>无数据，就等待用户输入。直到产生换行符，输入结束；</p>
+</li>
+<li>
+<p>有数据，是否符合控制字符串的规则：</p>
+<ol>
+<li>
+<p>匹配控制字符串，读取；</p>
+</li>
+<li>
+<p>仅匹配前半部分控制字符串，则等待用户输入剩下的数据；</p>
+</li>
+<li>
+<p>不符合，尝试忽略一些空白符，如空格、制表符、换行符；</p>
+<p>特别地，仅控制字符串是<code>%d、%c、%f</code>等开头时，可以忽略空白符。</p>
+<ol>
+<li>尝试成功，重复匹配过程；</li>
+<li>尝试不成功，读取失败。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>例1，scanf()输入读取失败</p>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+int main(){
+    int a,b=999;
+    char str[30];
+    printf(&quot;b=%d\n&quot;,b);
+    scanf(&quot;%d&quot;,&amp;a);
+    scanf(&quot;%d&quot;,&amp;b);
+    scanf(&quot;%s&quot;,str);
+    printf(&quot;a=%d,b=%d,str=%s\n&quot;,a,b,str);
+    return 0;
+}
+</code></pre>
+<p>程序分析：</p>
+<ol>
+<li>第一个 scanf() 时等待用户输入，从键盘输入内容<code>100 testScanf</code>，按下回车键，scanf() 匹配到 100，赋值给变量a，同时将内部的位置指针移动到 100 后面。</li>
+<li>第二个 scanf()，缓冲区中有数据，直接读取。此时缓冲区中的内容为<code>testScanf\n</code>，忽略开头的空格，不是 scanf() 想要的整数，匹配失败。不会给变量 b 赋值，b 的值保持不变。</li>
+<li>第三个 scanf() 时，控制字符串要求输入一个字符串，而缓冲区的位置指针由于匹配失败而未发生改变，正好将<code>testScanf</code>赋给str。此时缓冲区仅剩<code>\n</code>，它在下次控制字符串符合要求时会被忽略。</li>
+</ol>
+<p>例2，scanf()无法忽略空白符的情形</p>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+int main(){
+	int a=1,b=2;
+    scanf(&quot;a=%d&quot;,&amp;a);
+    scanf(&quot;b=%d&quot;,&amp;b);
+    printf(&quot;a=%d,b=%d\n&quot;,a,b);
+    return 0;
+}
+</code></pre>
+<p>程序分析：</p>
+<ol>
+<li>若输入<code>a=10</code>，按下回车键，程序直接运行结束。只有第一个 scanf() 成功读取了数据，第二个 scanf() 没有给用户任何机会去输入数据。</li>
+<li>当控制字符串不是以格式控制符<code>%d、%c、%f </code>等开头时，空白符就不能忽略了，它会参与匹配过程，如果匹配失败，就意味着 scanf() 读取失败。</li>
+<li>若输入<code>a=10 b=20</code>，按下回车键，程序运行结束。第二个 scanf() 又读取失败。执行到第二个 scanf() 时，缓冲区中剩下 <code>b=200\n</code>，开头的空格依然不能忽略，然而空格与控制字符串不匹配，所以读取失败。</li>
+</ol>
+<p>程序修改：</p>
+<ol>
+<li>考虑输入两个变量的时候中间不留空白符号；</li>
+<li>考虑不在scanf()中添加多余的控制字符，仅保留格式控制符；</li>
+</ol>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/7-customdatatypes/" class="block">Custom Data Type</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/cpp-programming/1-basic-doc/9-2-io-file/" class="block">File I/O</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#output">Output</a>
+      <ul>
+        <li><a href="#printf">Printf()</a></li>
+        <li><a href="#puts">puts()</a></li>
+        <li><a href="#putchar">putchar()</a></li>
+        <li><a href="#输出缓冲区">输出缓冲区</a></li>
+      </ul>
+    </li>
+    <li><a href="#input">Input</a>
+      <ul>
+        <li><a href="#scanf">scanf()</a></li>
+        <li><a href="#输入缓冲区">输入缓冲区</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

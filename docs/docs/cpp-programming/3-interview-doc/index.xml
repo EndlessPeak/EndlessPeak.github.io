@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43; Programming Interview on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/</link>
+    <description>Recent content in C&#43;&#43; Programming Interview on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Tue, 11 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Thread</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/1-thread/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/1-thread/</guid>
+      <description>Basic Thread C Thread Impl C中实现多线程编程需要使用如下的函数原型： int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine) (void *), void *arg); 其中： *pthread_t thread 用于存储创建的线程标识符； *const pthread_attr_t attr 用于设置线程属性； void *(*start_routine)(void *) 是指向函</description>
+    </item>
+    <item>
+      <title>STL</title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/2-stl/</link>
+      <pubDate>Tue, 11 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/2-stl/</guid>
+      <description>Vector Brief std::vector 是 C++ 标准模板库(STL)中的一个动态数组类。它能够自动管理内存，在需要时自动扩展或收缩。std::vector 具有以下特点： 动态大小：可以根据需</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/3-pointer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/3-pointer/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

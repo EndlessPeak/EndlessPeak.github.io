@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>STM32 Develop Documents on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/docs/stm32-doc/</link>
+    <description>Recent content in STM32 Develop Documents on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Wed, 24 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/docs/stm32-doc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>STM32 Basic Knowledge</title>
+      <link>https://endlesspeak.github.io/docs/docs/stm32-doc/1-stm32-basic/</link>
+      <pubDate>Thu, 09 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/stm32-doc/1-stm32-basic/</guid>
+      <description>嵌入式系统组成 嵌入式系统由硬件和软件组成。 硬件 硬件是嵌入式系统的运行基础，提供了嵌入式软件运行的物理平台、通信接口。 硬件主要包括处理器、存储器、IO 设</description>
+    </item>
+    <item>
+      <title>STM32 Cube</title>
+      <link>https://endlesspeak.github.io/docs/docs/stm32-doc/2-stm32-cube/</link>
+      <pubDate>Thu, 09 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/stm32-doc/2-stm32-cube/</guid>
+      <description>Cube 此处文章尚在施工。</description>
+    </item>
+    <item>
+      <title>STM32 Clion Develop</title>
+      <link>https://endlesspeak.github.io/docs/docs/stm32-doc/3-stm32-clion-develop/</link>
+      <pubDate>Thu, 02 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/stm32-doc/3-stm32-clion-develop/</guid>
+      <description>ToolChain Embedded Toolchain 需要配置嵌入式编译工具链，它应该包括： arm-none-eabi-gcc arm-none-eabi-g++ arm-none-eabi-ar arm-none-eabi-ld (bfd 链接方式) arm-none-eabi-gdb arm-none-eabi-nm arm-none-eabi-objcopy arm-none-eabi-objdump 在 NixOS 上配置工具链需要如下软件包： packages = with pkgs; [ gcc-arm-embedded ]; 在 Arch Linux 上需要安装如下软件包： pacman -S</description>
+    </item>
+    <item>
+      <title>STM32 LED &amp; KEY</title>
+      <link>https://endlesspeak.github.io/docs/docs/stm32-doc/4-stm32-ledkey/</link>
+      <pubDate>Sun, 21 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/stm32-doc/4-stm32-ledkey/</guid>
+      <description>GPIO GPIO 是通用型输入输出，可以输入或输出高低电平。高电平是 3.3V，低电平是 0V。 Output 输出控制器接两个 MOS 管，一个 PMOS 管，一个 NMOS 管。 No Q1 Q2 Status 1 打开 关闭 高电平 2 关</description>
+    </item>
+    <item>
+      <title>STM32 FMC</title>
+      <link>https://endlesspeak.github.io/docs/docs/stm32-doc/5-stm32-fmc/</link>
+      <pubDate>Fri, 10 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/stm32-doc/5-stm32-fmc/</guid>
+      <description>SDRAM SDRAM 概念 STM32 控制器芯片内部有一定大小的 SRAM 及 FLASH 作为内存和程序存储空间，例如 STM32F767 的 RAM=512K，FLASH=1024K； 当程序较大，内存和程序空间不足时，</description>
+    </item>
+    <item>
+      <title>STM32 RGBLCD</title>
+      <link>https://endlesspeak.github.io/docs/docs/stm32-doc/6-stm32-rgblcd/</link>
+      <pubDate>Thu, 09 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/stm32-doc/6-stm32-rgblcd/</guid>
+      <description>开发环境 开发板： STM32F767IGT6 核心板加正点原子阿波罗底板 屏幕：正点原子 ALIENTEK 7 RGB LCD 屏幕 开发软件：STM32CubeIDE LTDC 外设概述 LTDC 概念 LTDC 全称 LCD-TFT Display Controller</description>
+    </item>
+    <item>
+      <title>STM32 LD Segments &amp; Issues</title>
+      <link>https://endlesspeak.github.io/docs/docs/stm32-doc/7-stm32-ld-segmentsissues/</link>
+      <pubDate>Tue, 23 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/stm32-doc/7-stm32-ld-segmentsissues/</guid>
+      <description>Reference [1] The linker’s warnings about executable stacks and segments [2] Hardened/GNU stack quickstart [3] Executable Stack [4] Nested Functions [5] Arm Gcc warning: Load segment with RWX permissions [6] Solution to LOAD segment with RWX permissions warning with CMSIS Summary 本文讨论 BFD 链接器中添加的一些新警告消息：它们的含义、重</description>
+    </item>
+    <item>
+      <title>STM32 Rust Develop</title>
+      <link>https://endlesspeak.github.io/docs/docs/stm32-doc/8-stm32-rust-develop/</link>
+      <pubDate>Wed, 24 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/stm32-doc/8-stm32-rust-develop/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

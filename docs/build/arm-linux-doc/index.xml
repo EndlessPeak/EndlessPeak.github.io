@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ARM Linux Construction on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/build/arm-linux-doc/</link>
+    <description>Recent content in ARM Linux Construction on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/build/arm-linux-doc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RK3588 SDK</title>
+      <link>https://endlesspeak.github.io/docs/build/arm-linux-doc/1-rk3588-sdk/</link>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/arm-linux-doc/1-rk3588-sdk/</guid>
+      <description>SDK SDK Content RK3588 平台上的SDK(Software Development Kit)软件开发套件主要分为两类： 瑞芯微原厂提供的SDK 开发板销售商提供的SDK 目前，ATK-DLRK358</description>
+    </item>
+    <item>
+      <title>RK3588 移植 Ubuntu 24.04</title>
+      <link>https://endlesspeak.github.io/docs/build/arm-linux-doc/2-rk3588-ubuntu-migrate/</link>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/arm-linux-doc/2-rk3588-ubuntu-migrate/</guid>
+      <description>Ubuntu-base 准备 ubuntu-base 镜像，我选择的是24.04镜像。 注意各镜像站存储 ubuntu-base 的路径可能不一样： 官方 https://cdimage.ubuntu.com/ubuntu-base/releases/24.04/release 清华大学 https://mirrors.tuna.tsinghua.edu.cn/ubuntu-cdimage/ubuntu-base/releases/24.04/release Build Rootfs 构建 ubuntu 根文件系统步骤如下： 创建文件夹，并将下载的根文件</description>
+    </item>
+    <item>
+      <title>RK3588 远程连接</title>
+      <link>https://endlesspeak.github.io/docs/build/arm-linux-doc/3-rk3588-connect/</link>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/arm-linux-doc/3-rk3588-connect/</guid>
+      <description>要使用 KRDC（KDE Remote Desktop Client）连接到 RK3588 嵌入式开发板，可以按以下步骤操作： XRDP Install 在 RK3588 嵌入式开发板上设置远程桌面服务 首先，安装 xrdp（远程桌面协</description>
+    </item>
+  </channel>
+</rss>

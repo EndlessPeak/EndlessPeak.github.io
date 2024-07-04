@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>STL | C&#43;&#43; Programming Interview | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文记录C&#43;&#43;STL编程的相关知识。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"CPP Programming",
+      "item":"https://endlesspeak.github.io/docs/docs/cpp-programming/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"C++ Programming Interview",
+      "item":"https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"STL",
+      "item":"https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/2-stl/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/2-stl/"
+    },
+    "headline": "STL | C\u002b\u002b Programming Interview | 悦翎轩","datePublished": "2024-06-11T00:00:00+00:00",
+    "dateModified": "2024-06-11T00:00:00+00:00",
+    "wordCount":  1358 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "本文记录C\u002b\u002bSTL编程的相关知识。"
+}
+</script><meta property="og:title" content="STL | C&#43;&#43; Programming Interview | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/2-stl/" />
+
+
+
+<meta property="og:description" content="本文记录C&#43;&#43;STL编程的相关知识。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2024-06-11T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2024-06-11T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/">C&#43;&#43; Programming Interview</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/1-thread/">Thread</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/2-stl/">STL</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/3-pointer/"></a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">STL</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2024-06-11</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>3分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="vector">Vector</h2>
+<h3 id="brief">Brief</h3>
+<p><code>std::vector</code> 是 C++ 标准模板库(STL)中的一个动态数组类。它能够自动管理内存，在需要时自动扩展或收缩。<code>std::vector</code> 具有以下特点：</p>
+<ol>
+<li>动态大小：可以根据需要增加或减少元素的数量。</li>
+<li>连续内存：元素在内存中是连续存储的，支持高效的随机访问。</li>
+<li>自动扩展：在添加新元素时，<code>std::vector</code> 会自动扩展容量。</li>
+</ol>
+<h3 id="extend">Extend</h3>
+<p>当向 <code>std::vector</code> 添加新元素时，如果当前容量不足以容纳新元素，<code>std::vector</code> 会自动扩展其容量。扩展的过程如下：</p>
+<ol>
+<li>检测容量：检查当前容量是否足够容纳新元素。</li>
+<li>分配新内存：如果容量不足，<code>std::vector</code> 会分配一块更大的内存空间，通常是当前容量的两倍（具体倍数由实现决定）。</li>
+<li>复制元素：将现有元素从旧内存块复制到新内存块。</li>
+<li>释放旧内存：释放旧的内存块。</li>
+</ol>
+<p>下面是一个例子演示在向 ~std::vector~ 中添加元素以触发动态扩展。</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+int main() {
+    std::vector&lt;int&gt; vec;
+    // vec.reserve(5);  // 预留初始容量（可选）
+
+    std::cout &lt;&lt; &quot;Initial Capacity: &quot; &lt;&lt; vec.capacity() &lt;&lt; &quot;, Address: &quot; &lt;&lt; &amp;vec[0] &lt;&lt; std::endl;
+
+    // 添加元素并观察扩容
+    for (int i = 0; i &lt; 10; ++i) {
+        vec.push_back(i);
+        std::cout &lt;&lt; &quot;Size: &quot; &lt;&lt; vec.size() &lt;&lt; &quot;, Capacity: &quot; &lt;&lt; vec.capacity() &lt;&lt; std::endl;
+    }
+
+    // 查看地址
+    std::cout &lt;&lt; &quot;After push - Capacity: &quot; &lt;&lt; vec.capacity() &lt;&lt; &quot;, Address: &quot; &lt;&lt; &amp;vec[0] &lt;&lt; std::endl;
+    return 0;
+}
+</code></pre>
+<p>在这个示例中，vec 的容量<strong>会且仅会</strong>在需要时自动扩展，输出会显示每次扩展后的大小和容量。
+结论：扩容会从 1 开始，每次扩容为之前的 2 倍，如 1，2，4，8，16 等。</p>
+<h3 id="shrink">Shrink</h3>
+<p><code>std::vector</code> 在删除元素后不会自动减少其容量。为了减少内存占用，可以使用<code>shrink_to_fit</code> 方法，该方法会尝试减少 <code>std::vector</code> 的容量以适应其大小。</p>
+<p>以下是一个示例，演示如何缩小 ~std::vector~ 的容量：</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+int main() {
+    std::vector&lt;int&gt; vec;
+
+    // 初始情况
+    std::cout &lt;&lt; &quot;Initail Capacity: &quot; &lt;&lt; vec.capacity() &lt;&lt; &quot;, Address: &quot; &lt;&lt; &amp;vec[0] &lt;&lt; std::endl;
+    // 添加元素
+    for (int i = 0; i &lt; 10; ++i) {
+        vec.push_back(i);
+        std::cout &lt;&lt; &quot;Size: &quot; &lt;&lt; vec.size() &lt;&lt; &quot;, Capacity: &quot; &lt;&lt; vec.capacity() &lt;&lt; &quot;,Address:&quot; &lt;&lt; &amp;vec[0] &lt;&lt; std::endl;
+    }
+
+    // 删除元素
+    vec.erase(vec.begin() + 5, vec.end());
+    std::cout &lt;&lt; &quot;After erase - Size: &quot; &lt;&lt; vec.size() &lt;&lt; &quot;, Capacity: &quot; &lt;&lt; vec.capacity() &lt;&lt; &quot;, Address: &quot; &lt;&lt; &amp;vec[0] &lt;&lt; std::endl;
+
+    // 缩小内存
+    vec.shrink_to_fit();
+    std::cout &lt;&lt; &quot;After shrink_to_fit - Size: &quot; &lt;&lt; vec.size() &lt;&lt; &quot;, Capacity: &quot; &lt;&lt; vec.capacity() &lt;&lt; &quot;, Address: &quot; &lt;&lt; &amp;vec[0] &lt;&lt; std::endl;
+
+    return 0;
+}
+
+</code></pre>
+<p>结论：<code>std::vector</code> 每次扩容或缩容都会重新申请内存地址。</p>
+<h2 id="ordered--unordered">Ordered &amp; Unordered</h2>
+<p>在 C++ 的标准模板库（STL）中，<code>unordered</code> 容器和 <code>ordered</code> 容器有显著的区别。</p>
+<h3 id="unordered-container">Unordered Container</h3>
+<p>unordered 容器基于哈希表实现，包含以下几种主要类型：</p>
+<ol>
+<li><code>std::unordered_set</code></li>
+<li><code>std::unordered_map</code></li>
+<li><code>std::unordered_multiset</code></li>
+<li><code>std::unordered_multimap</code></li>
+</ol>
+<h4 id="features">Features</h4>
+<p>unordered 容器特点如下：</p>
+<ol>
+<li>无序性：元素没有特定的顺序。插入顺序不影响元素的存储顺序。</li>
+<li>哈希表实现：使用哈希函数对元素进行组织和查找。</li>
+<li>平均常数时间复杂度：对于插入、删除和查找操作，通常可以在平均常数时间内完成。这使得它们非常适合需要快速查找的场景。</li>
+<li>迭代器：由于无序性，迭代器遍历元素的顺序不确定。</li>
+</ol>
+<h4 id="scene">Scene</h4>
+<ol>
+<li>需要快速查找、插入和删除操作的场景。</li>
+<li>不关心元素顺序的情况。</li>
+</ol>
+<h3 id="ordered-container">Ordered Container</h3>
+<p><code>ordered</code> 容器基于树（通常是红黑树）实现，包含以下几种主要类型：</p>
+<ol>
+<li><code>std::set</code></li>
+<li><code>std::map</code></li>
+<li><code>std::multiset</code></li>
+<li><code>std::multimap</code></li>
+</ol>
+<h4 id="features-1">Features</h4>
+<p>ordered 容器特点如下：</p>
+<ol>
+<li>有序性：元素按特定顺序存储（通常是按升序排列）。插入顺序可能会影响元素的存储顺序。</li>
+<li>二叉树实现：使用平衡二叉树（例如红黑树）对元素进行组织和查找。</li>
+<li>对数时间复杂度：对于插入、删除和查找操作，通常可以在对数时间内完成。这使得它们适合需要有序访问的场景。</li>
+<li>迭代器：迭代器遍历元素时，按照存储顺序进行（例如升序）</li>
+</ol>
+<h4 id="scene-1">Scene</h4>
+<ol>
+<li>需要元素按顺序存储和访问的场景。</li>
+<li>需要有序的范围查询操作的情况（例如查找某个范围内的元素）。</li>
+</ol>
+<h3 id="example">Example</h3>
+<p>下面是一个简单的示例，展示如何使用 <code>unordered_map</code> 和 <code>map</code>:</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;unordered_map&gt;
+#include &lt;map&gt;
+
+int main() {
+    // unordered_map 示例
+    std::unordered_map&lt;int, std::string&gt; umap;
+    umap[1] = &quot;one&quot;;
+    umap[3] = &quot;three&quot;;
+    umap[2] = &quot;two&quot;;
+
+    std::cout &lt;&lt; &quot;Unordered map elements:&quot; &lt;&lt; std::endl;
+    for (const auto&amp; pair : umap) {
+        std::cout &lt;&lt; pair.first &lt;&lt; &quot;: &quot; &lt;&lt; pair.second &lt;&lt; std::endl;
+    }
+
+    // map 示例
+    std::map&lt;int, std::string&gt; omap;
+    omap[1] = &quot;one&quot;;
+    omap[3] = &quot;three&quot;;
+    omap[2] = &quot;two&quot;;
+
+    std::cout &lt;&lt; &quot;Ordered map elements:&quot; &lt;&lt; std::endl;
+    for (const auto&amp; pair : omap) {
+        std::cout &lt;&lt; pair.first &lt;&lt; &quot;: &quot; &lt;&lt; pair.second &lt;&lt; std::endl;
+    }
+
+    return 0;
+}
+</code></pre>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/1-thread/" class="block">Thread</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/cpp-programming/3-interview-doc/3-pointer/" class="block"></a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#vector">Vector</a>
+      <ul>
+        <li><a href="#brief">Brief</a></li>
+        <li><a href="#extend">Extend</a></li>
+        <li><a href="#shrink">Shrink</a></li>
+      </ul>
+    </li>
+    <li><a href="#ordered--unordered">Ordered &amp; Unordered</a>
+      <ul>
+        <li><a href="#unordered-container">Unordered Container</a></li>
+        <li><a href="#ordered-container">Ordered Container</a></li>
+        <li><a href="#example">Example</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

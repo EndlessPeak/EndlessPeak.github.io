@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux Basic on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/categories/linux-basic/</link>
+    <description>Recent content in Linux Basic on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Tue, 05 May 2020 15:00:07 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/categories/linux-basic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>完全使用Linux工作</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-sum/linux-technology-1-fully-use-linux/</link>
+      <pubDate>Thu, 09 Jan 2020 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-sum/linux-technology-1-fully-use-linux/</guid>
+      <description>&lt;p&gt;尽管很多人已经不习惯看长篇大论, 但我还是要说, 这是一篇值得你从头读到尾的长篇文章。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Arch Linux 物理机的安装与引导</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-2-arch-linux-installation/</link>
+      <pubDate>Thu, 16 Jan 2020 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-2-arch-linux-installation/</guid>
+      <description>&lt;p&gt;Arch Linux 是通用 x86-64 GNU/Linux 发行版，初始安装仅提供命令行环境：用户不需要删除大量不需要的软件包，而是可以从&lt;strong&gt;官方软件仓库&lt;/strong&gt;成千上万的高质量软件包中进行选择，搭建自己的系统。支持x86-64架构。Arch采用滚动升级模式，尽全力提供最新的稳定版软件。&lt;/p&gt;&#xA;&lt;p&gt;本文拟以&lt;a href=&#34;https://wiki.archlinux.org/&#34;&gt;Arch Wiki&lt;/a&gt;与&lt;a href=&#34;https://wiki.archlinux.org/index.php/installation_guide&#34;&gt;Installation guide&lt;/a&gt;为原本，附带一些自己的理解，尝试说明在物理机上安装Arch Linux。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Linux综合概述</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-sum/linux-technology-2-linux-comprehensive-overview/</link>
+      <pubDate>Fri, 10 Jan 2020 14:50:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-sum/linux-technology-2-linux-comprehensive-overview/</guid>
+      <description>&lt;p&gt;GNU/Linux，无论你是否相信，它已经成为目前增长最迅速的系统。无论是企业还是个人用户，Linux都是一个足够可靠的选择。我希望本系列文章能够使更多的人完全理解Linux，并热切地尝试去使用甚至探索它。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Linux救援模式</title>
+      <link>https://endlesspeak.github.io/posts/linux/linux-technology-7-linux-rescue-mode/</link>
+      <pubDate>Tue, 05 May 2020 15:00:07 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/posts/linux/linux-technology-7-linux-rescue-mode/</guid>
+      <description>本文主要尝试叙述Linux系统在运行某些守护进程或者启动服务时出错后，应该如何进行修复操作。同时阐述比较常见的导致登陆时挂机/关机的情况。</description>
+    </item>
+    <item>
+      <title>Linux 软件使用问题与解决方案</title>
+      <link>https://endlesspeak.github.io/posts/linux/linux-technology-6-1-linux-software-usage-1/</link>
+      <pubDate>Fri, 03 Apr 2020 02:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/posts/linux/linux-technology-6-1-linux-software-usage-1/</guid>
+      <description>&lt;p&gt;在这一部分中我尝试讲述常用软件的安装过程中遇到的问题，以及我自己探索的解决思路。&lt;/p&gt;&#xA;&lt;p&gt;本节主要讨论的是家目录和QQ的解决方案汇总。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Linux的桌面环境</title>
+      <link>https://endlesspeak.github.io/posts/linux/linux-technology-4-x-environment/</link>
+      <pubDate>Tue, 28 Jan 2020 20:15:32 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/posts/linux/linux-technology-4-x-environment/</guid>
+      <description>&lt;p&gt;Linux中”桌面“的概念——由X窗口系统组成的，可以卸载的图形环境——复杂且抽象，好在那些试图解释清楚这件事情的人也有同样的感受。&lt;/p&gt;&#xA;&lt;p&gt;图形用户界面是可以为Linux工作站提供图形化工作界面的强大工具，但许多新用户会碰到一个令他们十分惊奇的事实： 如此强大的工具只不过是运行在系统上的一个应用程序。它不是Linux内核的一部分，也并非集成在Linux系统中。它需要额外安装，只不过一些发行版将这种安装过程自动化了而已。&lt;/p&gt;&#xA;&lt;p&gt;UNIX like操作系统需要图形界面(Graphical User Interface)。由于标准的重要性，有人为窗口的绘制和移动、通过鼠标的移动和键盘实现程序和用户间的互动，以及其它重要的方面创建了一种标准，这种标准就叫做&lt;strong&gt;X 窗口系统&lt;/strong&gt;，它通常缩写为 X11 或者X。它广泛应用于Unix，Linux，以及其他类Unix操作系统上。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

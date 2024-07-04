@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux 安装教程 on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/build/operating-system-installation/</link>
+    <description>Recent content in Linux 安装教程 on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Tue, 19 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/build/operating-system-installation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Parrot Linux 物理机的安装、引导与配置</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-1-parrot-linux-installation/</link>
+      <pubDate>Sat, 11 Jan 2020 20:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-1-parrot-linux-installation/</guid>
+      <description>&lt;p&gt;Parrot Sec OS是Linux发行版中十大渗透测试系统之一，为广大渗透测试工作者提供了大量已经集成好的测试工具。采用的是基于Gnome的Mate桌面，外观上非常炫酷，科技感十足。系统中编程环境完善，支持C++、Java、Python等多种语言编程，官方还提供了多种版本以适应不同电脑下载。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Arch Linux 物理机的安装与引导</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-2-arch-linux-installation/</link>
+      <pubDate>Thu, 16 Jan 2020 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-2-arch-linux-installation/</guid>
+      <description>&lt;p&gt;Arch Linux 是通用 x86-64 GNU/Linux 发行版，初始安装仅提供命令行环境：用户不需要删除大量不需要的软件包，而是可以从&lt;strong&gt;官方软件仓库&lt;/strong&gt;成千上万的高质量软件包中进行选择，搭建自己的系统。支持x86-64架构。Arch采用滚动升级模式，尽全力提供最新的稳定版软件。&lt;/p&gt;&#xA;&lt;p&gt;本文拟以&lt;a href=&#34;https://wiki.archlinux.org/&#34;&gt;Arch Wiki&lt;/a&gt;与&lt;a href=&#34;https://wiki.archlinux.org/index.php/installation_guide&#34;&gt;Installation guide&lt;/a&gt;为原本，附带一些自己的理解，尝试说明在物理机上安装Arch Linux。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Gentoo Linux 物理机安装与配置</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-3-gentoo-linux-installation/</link>
+      <pubDate>Thu, 18 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-3-gentoo-linux-installation/</guid>
+      <description>Note Gentoo Linux是一个快速、现代的元发行版，它的设计简洁、灵活。具有自由、高性能、开放和稳定等优点。 Motivation 自由 高度自由的选择，用户可以选择自己想要的组件 性能</description>
+    </item>
+    <item>
+      <title>NixOS Linux 物理机安装与配置</title>
+      <link>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-4-nixos-linux-installation/</link>
+      <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/operating-system-installation/linux-technology-3-4-nixos-linux-installation/</guid>
+      <description>NixOS Linux是一个精确、纯净、可信赖、可重部署的发行版，它的设计包含一些独立的特性。 Reference 参考资料如下： NixOS 中文网 NixOS Manual Start Network Configuration NixOS 使用 wpa_supplicant 作为无线守护程序，因此可</description>
+    </item>
+  </channel>
+</rss>

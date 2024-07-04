@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>VSLAM Summary | SLAM Programming Basic | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文对Visual SLAM 的相关研究进行概括和综述。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"SLAM Programming and Interviewing",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"SLAM Programming Basic",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"VSLAM Summary",
+      "item":"https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/2-vslam-summary/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/2-vslam-summary/"
+    },
+    "headline": "VSLAM Summary | SLAM Programming Basic | 悦翎轩","datePublished": "2023-10-18T00:00:00+00:00",
+    "dateModified": "2023-10-18T00:00:00+00:00",
+    "wordCount":  7944 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "本文对Visual SLAM 的相关研究进行概括和综述。"
+}
+</script><meta property="og:title" content="VSLAM Summary | SLAM Programming Basic | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/2-vslam-summary/" />
+
+
+
+<meta property="og:description" content="本文对Visual SLAM 的相关研究进行概括和综述。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2023-10-18T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2023-10-18T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/">SLAM Programming Basic</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/1-slam-summary/">SLAM Summary</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/2-vslam-summary/">VSLAM Summary</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-1-rotation-and-translation-matrix/">Rotation &amp; Translation Matrix</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-2-eigen-exercise/">Eigen Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-4-geometry-exercise/">Geometry Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-5-pangolin/">Pangolin Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/4-lie-group-and-lie-algebras-1/">Lie Group and Lie Algebras 1</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/5-lie-group-and-lie-algebras-exercise/">Lie Group and Lie Algebras Exercise</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/7-nonlinear-optimize/">Non linear Optimize</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/10-orb-slam3-adjustments/">ORB SLAM Adjustments</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/11-orb-slam3-stereo/">ORB SLAM3 Stereo</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/12-slam-evo/">SLAM Evaluation</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">VSLAM Summary</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2023-10-18</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>16分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="visual-slam">Visual SLAM</h2>
+<p>在计算机视觉中，与同时定位与地图构建(Simultaneous Localization And Mapping)相似的是运动推断结构(Structure from motion,SFM)，实时的 SFM 属于 VSLAM 的范畴。</p>
+<h3 id="basic-principle">Basic Principle</h3>
+<p>VSLAM 的基本原理为多视图几何原理。</p>
+<p>VSLAM 的目标是同时恢复出每帧图像对应的相机运动参数 \(C_1,&hellip;,C_m\) ，以及场景的三维结构 \(\boldsymbol{X}_1,&hellip;,\boldsymbol{X}_n\) 。</p>
+<h4 id="camera-parameters">Camera Parameters</h4>
+<ol>
+<li>相机运动参数是描述相机在世界坐标系中的运动状态的向量</li>
+<li>每个相机运动参数 \(C_i\) 包含了相机的位置和朝向信息，或者包含相机的平移和旋转的信息</li>
+<li>相机运动参数通常表达为一个 3×3 的旋转矩阵(或四元数、欧拉角等) \(R_i\) 和一个三维位置变量 \(p_i\) (或位移向量)。</li>
+<li>通过恢复相机运动参数，可以了解相机在场景中的位置和姿态变化，以将不同帧的图像对齐并构建出场景的三维结构</li>
+</ol>
+<h4 id="three-dimensional-structure">Three-dimensional Structure</h4>
+<ol>
+<li>场景的三维结构表示相机看到的场景中每个物体点的三维位置</li>
+<li>三维结构向量通常由每个特征点的三维坐标组成，每个特征点代表场景中的一个 <strong>关键点</strong> ，它们可以是角点、边缘、纹理等</li>
+<li>通过恢复特征点的三维坐标，可以重建场景三维结构</li>
+</ol>
+<h4 id="transform-equation">Transform Equation</h4>
+<p>VSLAM的目标是同时恢复出每帧图像对应的相机运动参数 $C_1 \dots C_m$ 及场景三维结构 $X_1 \dots X_n$，其中每个相机运动参数的含义和表达如前文所述。</p>
+<p>\(R_i\) 和 \(p_i\) 将世界坐标系下的三维点 \(X_j\) 变换到 \(C_i\) 的局部坐标系：
+\[
+(\boldsymbol{X}_{ij},\boldsymbol{Y}_{ij},\boldsymbol{Z}_{ij})^T=\boldsymbol{R}_i(\boldsymbol{X}_j-\boldsymbol{p}_i)
+\]</p>
+<p>进而投影到图像中：
+\[
+\boldsymbol{h}_{ij}=(\frac{f_x\boldsymbol{X}_{ij}}{\boldsymbol{Z}_{ij}}+c_x,\frac{f_y\boldsymbol{Y}_{ij}}{\boldsymbol{Z}_{ij}}+c_y)^T
+\]</p>
+<p>其中，\(f_x\) 和 \(f_y\) 分别为沿图像 \(x,y\) 轴的图像焦距，\((c_x,c_y)\) 为镜头光心在图像中的位置，这些参数应当已事先标定且保持不变。</p>
+<h4 id="vslams-target-function">VSLAM&rsquo;s Target Function</h4>
+<p>三维点在图像中的投影位置 \(\boldsymbol{h}_{ij}\) 可表示为如下函数：
+\[
+\boldsymbol{h}_{ij}=h(C_i,\boldsymbol{X}_j)
+\]</p>
+<p>V-SLAM 需要将不同图像中对应于相同场景点的图像点匹配起来，求解优化函数：
+\[
+{ \underset{C_1&hellip;C_m,\boldsymbol{X}_1&hellip;\boldsymbol{X}_n}{\arg\min}} \sum_{i=1}^{m} \sum_{j=1}^{n} \lVert h(C_i,\boldsymbol{X}_j)-\boldsymbol{\hat{x}}_{ij} \rVert
+\]</p>
+<p>得到一组最优的 \(C_1,&hellip;,C_m,\boldsymbol{X}_1,&hellip;,\boldsymbol{X}_n\) 使得所有的 \(\boldsymbol{X}_j\) 在\(C_i\) 图像中的投影位置 \(h_{ij}\) 与观测到的图像点位置 \(X_{ij}\) 尽可能靠近。</p>
+<p>以上过程假设图像观测点符合高斯分布</p>
+<p>\begin{align}
+x_{ij} \sim N(\boldsymbol{\hat{x}}_{ij}, \Sigma_{ij}) \notag \\
+\lVert e \rVert_{\Sigma} = e^T \Sigma^{-1} e \notag
+\end{align}</p>
+<p>求解优化函数的过程称为集束调整(bundle adjustment,BA)，一般用线性方程的稀疏结构求解</p>
+<h3 id="sensors-combination">Sensors Combination</h3>
+<p>VSLAM 受图像特征匹配限制，稳定性很大程度依赖场景特征的丰富程度，因此加入多传感器用于帮助判断相机的运动是必要的。</p>
+<h4 id="target-optimization-function">Target Optimization function</h4>
+<p>常用的是在 VSLAM 中结合 IMU 数据，形成 VIN(Visual-aided inertial navigation)或 VI-SLAM(Visual-inertial SLAM)</p>
+<p>将相邻 2 帧 \((C_i,C_{i+1})\) 间所有 IMU 数据标记为集合 \(Z_i={z_1&hellip;z_{n_{i}}}\) ，VI-SLAM 求解优化如下目标函数：
+\[
+{ \underset{C_1&hellip;C_m,\boldsymbol{X}_1&hellip;\boldsymbol{X}_n }{\arg\min}} \sum_{i=1}^{m} \sum_{j=1}^{n} \lVert h(C_i,\boldsymbol{X}_j)-\hat{x}_{ij} \rVert_{\Sigma_{ij}} + \sum_{i=1}^{m-1} \lVert f(C_i,Z_i)-C_{i+1} \rVert_{\Gamma_{i}}
+\]</p>
+<h4 id="sport-equation">Sport Equation</h4>
+<p>VI-SLAM 引入了一个运动方程，其中 \(f(C_i,Z_i)\) 为 \(Z_i\) 作用于 \(C_i\) 后的运动参数，\(\Gamma_i\) 是运动方程的协方差矩阵。常见的运动方程有：</p>
+<ol>
+<li>连续时间系统</li>
+<li>预积分方程</li>
+</ol>
+<p>通常，VI-SLAM 需要求解每一时刻的运动速度 \(\boldsymbol{v_i}\) 和 IMU 数据的偏移量 \(\boldsymbol{b_i}\)
+\[
+C_i=(\boldsymbol{R}_i,\boldsymbol{p}_i,\boldsymbol{v}_i,\boldsymbol{b}_i)
+\]</p>
+<h4 id="gps">GPS</h4>
+<p>需要再引入一项 GPS 数据 \(\boldsymbol{p}_i^{G}\)到目标函数中：
+\[
+{ \underset{C_1&hellip;C_m,\boldsymbol{X}_1&hellip;\boldsymbol{X}_n }{\arg\min}} \sum_{i=1}^{m} \sum_{j=1}^{n} \lVert h(C_i,\boldsymbol{X}_j)-\hat{x}_{ij} \rVert_{\Sigma_{ij}} + \sum_{i=1}^{m-1} \lVert f(C_i,Z_i)-C_{i+1} \rVert_{\Gamma_{i}} + \sum_{i=1}^{m-1} \lVert \boldsymbol{p}_i - \boldsymbol{\hat{p}}_i^{G} \rVert_{\Lambda_i}
+\]</p>
+<h2 id="vslam-system">VSLAM System</h2>
+<p>主流 VSLAM 系统分为 3 类：</p>
+<ol>
+<li>基于滤波</li>
+<li>基于关键帧 BA</li>
+<li>基于直接跟踪</li>
+</ol>
+<h3 id="filter-based-vslam">Filter based VSLAM</h3>
+<p>基本思想：将每一时刻 \(t\) 的系统状态用一个高斯概率模型表达 \(x_t \sim N(\boldsymbol{\hat{x}}_t,\boldsymbol{\hat{P}}_t)\)</p>
+<p>其中 \(\hat{x}_t\) 为当前时刻系统状态估计值，\(\boldsymbol{P}_t\) 为估计值误差的协方差矩阵。</p>
+<h4 id="monoslam">MonoSLAM</h4>
+<p>MonoSLAM 的状态 \(\boldsymbol{x}_t=[C_1,&hellip;,C_m,\boldsymbol{X}_1,&hellip;,\boldsymbol{X}_n]\)</p>
+<p>其每一时刻相机方位均带有一个概率偏差，每个三维点位也带有一个概率偏差，可用三维椭球表示，椭球中心为估计值，椭球体积表示不确定程度，场景点投影至图像的形状为一个投影概率椭圆。</p>
+<p>MonoSLAM 选用的是扩展卡尔曼滤波 EKF，预测阶段采用运动方程：
+\[
+C_{t}=f(C_{t-1},\boldsymbol{a}_{\nu}\Delta t,\boldsymbol{a}_{\omega}\Delta t)
+\]</p>
+<p>其中，\(\boldsymbol{a}_\nu\) 和 \(\boldsymbol{a}_\omega\) 分别为线性和旋转加速度，并假设它们符合高斯分布 \(\boldsymbol{a}_\nu \sim N(0,\Gamma_\nu)\) ，\(\boldsymbol{a}_\omega \sim N(0,\Gamma_\omega)\)
+在更新阶段采用投影方程：
+\[
+\hat{x}_{j}=h(C_{t},\boldsymbol{X}_{j})+\boldsymbol{n}_{j}
+\]</p>
+<p>其中，\(\boldsymbol{\hat{x}}_j\) 为当前帧观测到 \(\boldsymbol{X}_j\) 的图像点位置，\(\boldsymbol{n}_j \sim N(0,\Sigma_j)\)</p>
+<p>MonoSLAM 每一时刻仅需估计当前时刻的状态 \(x_t\) ，之前所有时刻的相机运动参数 \(C_1,&hellip;,C_{t-1}\) 全部不参与计算，由此简化计算量</p>
+<h4 id="ekf-problems">EKF Problems</h4>
+<p>EKF 局限性在于：</p>
+<ol>
+<li>预测函数和更新函数在非线性条件下不能保证全局最优，与迭代的非线性优化技术相比更容易造成误差累积</li>
+<li>若将三维点引入状态变量，每一时刻的计算复杂度为 \(O(n^3)\) ，处理代价过大</li>
+</ol>
+<h4 id="multi-state-constraint-kalman-filter">Multi State Constraint Kalman Filter</h4>
+<p>MSCKF 用于缓解 EKF 方法的计算复杂度问题，它是 VI-SLAM 方法</p>
+<ol>
+<li>在预测阶段，使用 IMU 数据传递系统状态</li>
+<li>在更新阶段，MSCKF 将邻近的 \(l\) 帧相机运动参数包含进状态变量集合 \(C=\{C_{t-l+1},&hellip;,C_t\}\) 其中 C 集合内的每个 \(C_i\) 的估计值均在不断优化，在被移出 \(C\) 前已经较为精确，以此缓解误差累积</li>
+<li>MSCKF 对所有三维点进行消元(Marginalization)，将 \(C_i\) 与 \(\boldsymbol{X}_j\) 之间的二元约束转换为 \(\{C_{t-l+1}&hellip;C_t\}\) 间的多元约束，从而将 \(O(n^3)\) 的计算复杂度简化为 \(O(nl^3)\)</li>
+</ol>
+<p>通过以上优化，将计算复杂度从立方关系降到了线性关系，大幅降低了计算代价</p>
+<h3 id="feature-points-method">Feature Points Method</h3>
+<h4 id="fast">FAST</h4>
+<p>FAST角点是一种在计算机视觉中常用的角点检测算法，它可以快速而准确地识别出图像中的角点。FAST角点(Features from Accelerated Segment Test加速段测试特征)设计目标是在保持较高的检测速度的同时，尽可能减少误检和漏检。</p>
+<p>FAST角点的原理是通过对图像像素进行快速的二进制测试，判断某个像素是否是角点：</p>
+<ol>
+<li>FAST算法选取一个中心像素，然后选择周围的16个像素点进行测试</li>
+<li>如果中心像素与其中连续的n个像素（通常为9个）中有k个像素的亮度大于或小于中心像素的亮度阈值，那么中心像素就被认为是一个候选角点</li>
+<li>FAST算法会对候选角点进行进一步的验证和优化，以提高角点检测的准确性。</li>
+</ol>
+<p>FAST角点算法的优点：</p>
+<ol>
+<li>快速性：FAST算法通过设计高效的像素测试和优化策略，能够以非常快速的速度在图像中检测出角点。</li>
+<li>鲁棒性：FAST算法对噪声和图像变换具有一定的鲁棒性，能够在一定程度上抵抗图像的干扰和变形。</li>
+<li>低计算复杂度：FAST算法的计算复杂度相对较低，适用于实时应用和资源受限的环境。</li>
+</ol>
+<p>FAST角点算法存在的问题：</p>
+<ol>
+<li>对角点尺寸不敏感：FAST算法在设计时忽略了角点的尺寸信息，因此对于尺寸较小或较大的角点检测效果可能不理想。</li>
+<li>对噪声敏感：FAST算法对噪声比较敏感，当图像中存在较多噪声时，可能产生误检或漏检的情况。</li>
+<li>不适用于非平面场景：由于FAST算法是基于图像亮度变化的测试，在非平面场景下，可能会导致角点检测不准确。</li>
+</ol>
+<h4 id="harris">Harris</h4>
+<p>Harris角点检测算法用于检测图像中的角点。它通过分析像素的亮度变化来确定图像中可能存在的角点位置。</p>
+<p>Harris角点检测算法基于以下观察：</p>
+<ol>
+<li>在角点附近，图像的任何方向上的移动都会引起亮度的明显变化;</li>
+<li>在平坦区域或边缘上，只有沿着边缘方向的移动才会引起明显的亮度变化</li>
+</ol>
+<p>基于这一观察，Harris角点检测算法通过计算图像中每个像素的角点响应函数，并根据响应函数的大小确定角点的位置。</p>
+<p>Harris角点检测算法的计算过程如下：</p>
+<ol>
+<li>计算图像中每个像素的梯度值，通常使用Sobel算子或Prewitt算子等。</li>
+<li>根据梯度值计算每个像素的自相关矩阵（M矩阵），该矩阵描述了像素周围局部区域的亮度变化。</li>
+<li>计算M矩阵的特征值，特征值的大小反映了该像素处的亮度变化情况。</li>
+<li>根据特征值的大小确定角点的位置，通常选择特征值较大的像素作为角点。</li>
+</ol>
+<p>Harris角点检测具有以下优点：</p>
+<ol>
+<li>旋转不变性：Harris角点检测算法可以通过计算像素的梯度和自相关矩阵来确定角点的位置和方向，从而实现一定程度上的旋转不变性。</li>
+<li>精确性：Harris角点检测算法可以准确地检测出图像中的角点，并且对噪声的影响相对较小。</li>
+<li>相对简单：Harris角点检测算法的实现相对简单，计算复杂度较低，适用于实时应用和资源受限的环境。</li>
+</ol>
+<p>Harris角点检测存在以下问题：</p>
+<ol>
+<li>尺度不变性：Harris角点检测算法在计算时没有考虑尺度信息，对于尺度变化较大的图像或物体，可能无法准确地检测到相应的角点。</li>
+<li>对边缘敏感：Harris角点检测算法在边缘区域可能会产生误检，将边缘也识别为角点。</li>
+<li>参数选择：Harris角点检测算法中有一个参数k，用于调整角点响应函数的阈值，不同的图像和场景可能需要不同的参数选择。</li>
+</ol>
+<h4 id="brief">BRIEF</h4>
+<p>BRIEF（Binary Robust Independent Elementary Features）描述符用于对图像或图像中的关键点进行描述和匹配。它通过比较两个像素之间的亮度差异来生成二进制字符串，并将其作为描述符表示关键点。</p>
+<p>BRIEF描述符的生成过程如下：</p>
+<ol>
+<li>随机选择一组像素对，每个像素对(x,y)定义了一个比较器：如果x的亮度值大于y，则输出1，否则输出0。</li>
+<li>通过比较器对关键点周围的像素进行比较，得到一个由二进制数构成的向量，向量的长度等于所选像素对的数量。</li>
+<li>通常情况下，BRIEF描述符使用256位二进制字符串表示，即使用256对像素进行比较，生成256位的二进制向量作为描述符。</li>
+</ol>
+<p>BRIEF描述符具有以下优点：</p>
+<ol>
+<li>快速：BRIEF描述符使用简单的亮度比较操作生成二进制字符串，计算复杂度较低，适用于实时应用和资源受限的环境。</li>
+<li>稳定性：BRIEF描述符对图像旋转、缩放和光照变化等具有一定的不变性，可以在不同的环境中进行特征匹配。</li>
+<li>低维度：BRIEF描述符使用256位二进制字符串表示，相比于其他描述符来说，它的维度较低，存储和处理都比较方便。</li>
+</ol>
+<p>BRIEF描述符存在以下问题：</p>
+<ol>
+<li>不可扩展性：由于BRIEF描述符是通过随机选择像素对来生成的，因此无法在后续的应用中增加或减少描述符的长度。</li>
+<li>对旋转变化敏感：由于BRIEF描述符没有考虑图像中关键点的旋转信息，因此对于旋转变化较大的图像或物体，可能无法准确地进行匹配。</li>
+<li>视点变化敏感：由于BRIEF描述符只考虑了像素之间的亮度变化，没有考虑三维几何信息，因此对于视点变化较大的场景，BRIEF描述符可能无法准确匹配。</li>
+</ol>
+<h4 id="orb">ORB</h4>
+<p>ORB（Oriented FAST and Rotated BRIEF）特征结合了FAST角点检测和BRIEF描述符技术，同时加入了旋转不变性和尺度不变性的考虑。</p>
+<p>ORB特征的计算过程主要分为三个步骤：角点检测、方向分配和描述符生成。</p>
+<ol>
+<li>采用FAST角点检测算法来检测图像中的关键点，FAST算法可以快速而准确地识别图像中的角点。</li>
+<li>使用Harris角点检测算法来计算关键点的方向，以保证ORB特征具有旋转不变性。</li>
+<li>使用BRIEF描述符提取算法来计算每个关键点的描述符，其中BRIEF算法是一种高效的二进制特征描述算法，可以在短时间内生成高质量的关键点描述符。</li>
+</ol>
+<p>ORB特征具有以下几个优点：</p>
+<ol>
+<li>快速性：ORB算法通过结合FAST角点检测和BRIEF描述符技术来实现快速的图像特征提取，可以在实时应用和资源受限的环境中使用。</li>
+<li>鲁棒性：ORB算法在角点检测时使用了Harris角点检测算法来计算关键点的方向，使得ORB特征可以在一定程度上抵抗图像旋转和变形等干扰。</li>
+<li>描述性：ORB算法通过使用BRIEF描述符技术来生成关键点的特征描述符，可以准确地描述图像中的关键信息，具有良好的区分性能。</li>
+</ol>
+<p>ORB特征存在以下问题：</p>
+<ol>
+<li>尺度不变性：ORB算法在计算时没有考虑尺度信息，因此对于尺度变化较大的图像或物体，可能无法准确地提取出相应的ORB特征。</li>
+<li>难以处理遮挡：ORB算法没有考虑图像的遮挡和背景干扰等问题，在这种情况下可能会产生错误的ORB特征。</li>
+<li>计算复杂度较高：ORB算法在计算描述符时需要进行比较多的计算，因此可能会占用较高的计算资源。</li>
+</ol>
+<h3 id="keyframe-ba-based-vslam">Keyframe BA based VSLAM</h3>
+<h4 id="parallel-tracking-and-mapping">Parallel Tracking And Mapping</h4>
+<p>PTAM 是实时 SFM 系统，也是首个基于关键帧 BA 的单目 VSLAM 系统。</p>
+<ol>
+<li>特征：选取 FAST 角点作为特征点</li>
+<li>运行：在 2 个线程中并行执行 2 个独立的任务
+<ol>
+<li>相机跟踪(Tracking)</li>
+<li>地图构建(Mapping)</li>
+</ol>
+</li>
+<li>集束调整：
+<ol>
+<li>在地图构建线程中稀疏抽取关键帧及关键帧中可见的三维点进行 BA</li>
+<li>根据 BA 恢复的精确三维结构，相机跟踪线程作为前台线程，仅需优化当前帧运动参数 \(C_t\) ，以达到实时的计算效率</li>
+</ol>
+</li>
+</ol>
+<p>前台线程通过一个匀速运动模型预测当前帧方位，以搜索地图中的三维点在当前帧图像中对应的*FAST 角点* ，并根据匹配关系优化当前帧方位
+\[
+\arg\min\limits_{C_t}\sum\limits_{j=1}^nw_j\left\|h(C_t,X_j)-\hat{x}_j\right\|_{\Sigma_j}
+\]</p>
+<p>其中，\(w_j\) 是 Tukey 函数对应的权重,用于缓解误差匹配(Outliers)对结果的影响。</p>
+<p>将当前帧与已有关键帧的缩略图进行比较，选择最相似的关键帧作为当前帧方位的预测，重复特征匹配和方位优化步骤，如果跟踪成功，判断 \(C_t\) 是否满足关键帧条件，一旦符合，将当前帧作为新关键帧传递给后台构建地图。</p>
+<p>如果成功匹配点数不足（如图像模糊、快速运动），则判断跟踪失败，开始重定位。</p>
+<p>后台线程沿极线(Epipolar Line)  匹配不同关键帧之间对应于相同场景点的图像特征点，通过三角化(Triangulation) 恢复场景点的三维位置，并对所有关键帧和三维点运行 BA，恢复精确的三维地图。</p>
+<p>以下是一些相关内容的说明和注释：</p>
+<ol>
+<li>
+<p>匀速运动模型表示 PTAM 假设相邻帧之间的相机运动是匀速运动，在相邻帧间相机的位移是线性变换</p>
+</li>
+<li>
+<p>Tukey 是一种常见的鲁棒损失函数</p>
+<p>\begin{equation}
+L( r)=
+\begin{cases}
+\frac{1}{2}r^2, &amp; \text{if } |r| \leq c \\
+c \left(|r| - \frac{1}{2}c\right), &amp; \text{otherwise}
+\end{cases}
+\notag
+\end{equation}</p>
+<p>其中，\(r\) 表示残差，$c$为一个阈值，称为 Tukey&rsquo;s biweight 常数，在残差小于阈值时损失函数为平方误差（二次损失），超过阈值时损失函数线性增加。</p>
+</li>
+<li>
+<p>角点是图像中具有明显变化或边缘交汇的位置，它具有以下特征：</p>
+<ol>
+<li>强度变化，角点周围的像素强度在不同方向上有显著变化</li>
+<li>边缘交汇，角点是多个边缘相交的位置</li>
+<li>不变性，角点在旋转、平移、尺度变化下具有一定程度的不变性</li>
+</ol>
+</li>
+<li>
+<p>用于检测角点的算法如下：</p>
+<ol>
+<li>FAST 用于快速检测具有显著变化的角点，用此法检测称为 FAST 角点</li>
+<li>Harris</li>
+<li>Shi-Tomasi</li>
+</ol>
+</li>
+</ol>
+<h4 id="orb-slam">ORB SLAM</h4>
+<p>ORB-SLAM 对 PTAM 的组件作了改进：</p>
+<ol>
+<li>
+<p>选用 ORB 特征</p>
+<ol>
+<li>具有更好的视角不变性</li>
+<li>新增三维点的特征匹配效率更高</li>
+</ol>
+</li>
+<li>
+<p>加入回环检测模块</p>
+<ol>
+<li>
+<p>检测回路</p>
+<ol>
+<li>采用与重定位相同的方法</li>
+<li>匹配回路两侧关键帧上的公共点</li>
+</ol>
+</li>
+<li>
+<p>通过方位图优化来闭合回路</p>
+<ol>
+<li>关键帧作为方位图的节点</li>
+<li>每个关键帧赋予一个相似变换 \(\xi_i\) 以矫正方位图的方位</li>
+<li>方位图的边表示关键帧之间存在特征匹配</li>
+<li>2 团匹配的三维点云通过坐标对齐可求解一个相似变换 \(\xi_{ij}\)</li>
+</ol>
+<p>优化过程如下所示：</p>
+<p>\begin{equation}
+{\underset{\boldsymbol{\xi}_1,\cdots,\boldsymbol{\xi}_m}{\arg\min}}
+(\boldsymbol{\xi}_{ij},\boldsymbol{\xi}_i^{-1}\circ\boldsymbol{\xi}_j)^{\mathrm{T}}\boldsymbol{\Sigma}_{ij}^{-1}(\boldsymbol{\xi}_{ij}\circ\boldsymbol{\xi}_i^{-1}\circ\boldsymbol{\xi}_j)
+\notag
+\end{equation}</p>
+<p>其中，\(\sum_{ij}\) 为 \(\xi_{ij}\) 的协方差矩阵(文中设为单位阵)，操作符 \(\circ\) 按顺序连接两个相似变换。</p>
+</li>
+<li>
+<p>采用 g2o 优化方位图，以闭合回路</p>
+</li>
+</ol>
+<p>与全局 BA 相比，方位图优化极大简化了全局优化的计算量</p>
+</li>
+<li>
+<p>自动初始化
+对于初始化来说，需要选取 2 帧，帧间需要有足够的公共点(相似性)，又需要有足够的平移量(特异性)。通过为公共点提供视差，才能三角化精确的三维位置</p>
+<ol>
+<li>PATM 需要手动初始化
+用户指定 2 帧用于初始化系统，</li>
+<li>ORB-SLAM 自动初始化
+通过检测视差自动选择初始化的 2 帧</li>
+</ol>
+</li>
+<li>
+<p>扩展性强</p>
+<ol>
+<li>PTAM 要求新加入的关键帧提供足够的视差</li>
+<li>ORB-SLAM 采用更鲁棒的关键帧和三维点的选择机制
+<ol>
+<li>先用宽松的条件判断尽可能及时地加入新的关键帧、三维点(鲁棒跟踪)</li>
+<li>再用严格的条件判断删除冗余的关键帧、不稳定的三维点(提高 BA 过程的精度和效率)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="direct-tracking-based-vslam">Direct tracking based VSLAM</h3>
+<p>基于滤波和基于关键帧 BA 的 VSLAM 需要在图像中提取和匹配特征点，因此对环境的特征、图像质量敏感。
+直接跟踪法通过直接比较像素颜色求解相机运动，在特征缺失、图像模糊等异常情况下有更好的鲁棒性。</p>
+<h4 id="dtam">DTAM</h4>
+<p>DTAM 最显著的特点是实时恢复场景三维模型。</p>
+<p>DTAM 预测一个与当前帧相机方位 \(C_t\) 接近的虚拟相机 \(C_v\) ,并在 \(C_v\) 下绘制场景三维模型，以求解 \(C_v\) 和 \(C_t\) 之间的相对运动 \(\xi_{tv}\)</p>
+<p>\begin{equation}
+{\underset{\xi_{tv}}{\arg\min}} \sum_{\chi \in \Omega_{v}} \lVert r(\chi , D_v(\chi),\xi_{tv}) \rVert_2^2
+\notag
+\end{equation}</p>
+<p>其中，\(r(\cdot)\) 是颜色残差,</p>
+<p>\begin{equation}
+r(\chi,D_v(\chi),\xi_{tv})=I_v(\chi)-I_t(\omega(\chi ,D_v(\chi), \xi_{tv}))
+\end{equation}</p>
+<p>\(I_v\) 和 \(D_v\) 分别是三维模型在 \(C_v\) 下绘制得到的亮度和深度图，\(\omega_v\) 为亮度和深度有效像素的集合，函数 \(\omega(\chi ,D_v(\chi),\xi_{tv})\) 将虚拟帧 \(v\) 中的像素 \(\chi\) 投影到当前帧 \(t\) 中。</p>
+<h4 id="lsd-slam">LSD-SLAM</h4>
+<p>LSD-SLAM 仅恢复半稠密的深度图，每个像素深度独立计算，提高了计算效率。</p>
+<p>LSD-SLAM 每个关键帧包含图像 \(I_k\) 、逆深度图 \(D_k\) 和逆深度的方差 \(V_k\) ，系统假设每个像素 \(\chi\) 的逆深度值服从高斯分布 \(N(D_k(\chi),V_k(\chi))\) ,LSD-SLAM 的前台线程采用直接跟踪法恢复当前帧 \(t\) 与关键帧 \(k\) 之间相对运动 \(\xi_{tk}\) ,即求解优化式</p>
+<p>\begin{equation}
+{\underset{\xi}{\arg\min}} \sum_{\xi \in \Omega_k} \lVert \frac{r^2(\chi ,D_k(\chi), \xi_{tk})}{\sigma_r^2(\chi ,D_k(\chi),\xi_{tk})} \rVert_\delta
+\end{equation}</p>
+<p>其中，\(\Omega_k\) 是深度有效像素的集合；\(r(\cdot)\) 的求解与上一节相同，\(\sigma^2(\chi , \xi)\) 为 \(r(\cdot)\) 的方差，用于减小深度误差对结果的影响。</p>
+<p>\begin{equation}
+\sigma_r^2(\chi ,D_k(\chi), \xi)=2\sigma_I^2+\left ( \frac{\partial r(\chi,D_k(\chi),\xi_{tk}) }{\partial D_k(\chi )}  \right )^2 V_k(\chi )
+\end{equation}</p>
+<h3 id="vslam-comparison">VSLAM Comparison</h3>
+<p>VSLAM 的评价指标可以分为以下几个方面：</p>
+<ol>
+<li>定位精度
+<ol>
+<li>MonoSLAM 可能在变量未精确时消元，导致误差累积</li>
+<li>MSCKF 虽然也基于滤波，但是推迟了消元，同时融合了 IMU 因此能提高精度</li>
+<li>ORB-SLAM 和 PTAM 相比，其选择了匹配精度更高的 ORB 特征和更高效的 BA 实现，因此精度更高</li>
+<li>DTAM 和 LSD-SLAM 对光照和动态敏感，因此低于 ORB-SLAM</li>
+</ol>
+</li>
+<li>定位效率
+<ol>
+<li>MonoSLAM 的计算复杂度为 \(O(n^3)\)</li>
+<li>MSCKF 的计算复杂度为 \(O(nl^3)\) ，其中 \(l\) 为系统维护的局部帧数</li>
+<li>PTAM 和 ORB-SLAM 的前台线程只需要优化当前帧方位，因此定位效率最高</li>
+<li>DTAM 和 LSD-SLAM 的定位效率取决于选取的图像分辨率，因此精度和效率也存在一定的权衡</li>
+</ol>
+</li>
+<li>场景尺度
+<ol>
+<li>MonoSLAM 仅适用于几百个点的小场景</li>
+<li>MSCKF 由于只维护局部地图，因此对场景尺度不做限制</li>
+<li>PTAM 受限于全局 BA 和特征点匹配效率，可实时处理数千点的中等尺度场景</li>
+<li>ORB-SLAM 和 LSD-SLAM 用高效的方位图优化替代全局 BA，适用于较大尺度场景</li>
+<li>DTAM 由于需要维护和渲染整个场景，仅适用于小场景</li>
+</ol>
+</li>
+<li>特征缺失鲁棒性
+<ol>
+<li>特征缺失对所有 VSLAM 都有较大影响，仅 DTAM 和 LSD-SLAM 能通过利用稠密或半稠密的图像信息缓解特征依赖</li>
+<li>MSCKF 属于 VI-SLAM，可以利用 IMU 跟踪方位，因此此时鲁棒性最好</li>
+</ol>
+</li>
+<li>快速运动与扩展效率
+<ol>
+<li>处理相机运动依赖于两点：
+<ol>
+<li>匹配方法在大运动或快运动情况下的鲁棒性</li>
+<li>场景地图的扩展效率</li>
+</ol>
+</li>
+<li>MonoSLAM 使用 EKF，对于大运动会失败(残差过大，滤波发散)</li>
+<li>PTAM 依靠运动预测的方式将关键帧的三维点投影到当前帧，通过金字塔模型匹配增加鲁棒性，但扩展场景需要长时间搜索，因此扩展效率比 MonoSLAM 差</li>
+<li>DTAM 也采用基于金字塔模型的图像对齐估计相机姿态，然后绘制到这个视点下与当前帧图像进行进一步对齐优化，与 PTAM 类似</li>
+<li>ORB-SLAM 与 MSCKF 采用对视角不变性的特征描述量(SIFT 特征和 ORB 特征)，同时采用高效的全局匹配特征检索方法(ORB-SLAM 采用 <strong>词袋模型</strong> )，MSCKF 采用了 IMU，因此其扩展效率最高</li>
+<li>LSD-SLAM 假设相机做平缓运动，因此对快速运动敏感；由于 DTAM 需要稠密地图，LSD-SLAM 需要半稠密地图，因此扩展效率最差</li>
+</ol>
+</li>
+<li>重定位能力
+<ol>
+<li>MonoSLAM 和 MSCKF 均不支持重定位</li>
+<li>PTAM 需要将丢失前的已有帧与当前帧进行比较，如果不够接近以进行初始化就不容易成功</li>
+<li>ORB-SLAM 和 LSD-SLAM 都采用对视角变化具有不变性的特征描述量实现重定位，并结合了高效的检索方法(LSD-SLAM 采用 FAB-MAP 方法)</li>
+</ol>
+</li>
+<li>近似纯旋转扩展鲁棒性
+<ol>
+<li>MonoSLAM 每帧同时优化三维点和相机方位，因此对近似纯旋转与很好的鲁棒性</li>
+<li>MSCKF 仅跟踪轨迹结束时才三角化三维点，并且立即消元，且利用了 IMU 的信息，因此对近似纯旋转最鲁棒</li>
+<li>PTAM 容易因为视差不够无法三角化新的三维点，导致跟踪丢失</li>
+<li>ORB-SLAM、DTAM、LSD-SLAM 对纯旋转扩展的鲁棒性很大程度取决于后台场景地图的扩展和优化的效率；其中 ORB-SLAM 不需要恢复稠密深度，因此鲁棒性更好</li>
+</ol>
+</li>
+<li>场景变化鲁棒性
+<ol>
+<li>均假设场景是静止不变的，否则会跟踪失败</li>
+<li>使用 IMU 理论上能够对动态变化提高鲁棒性</li>
+</ol>
+</li>
+<li>回路闭合能力
+<ol>
+<li>朴素 VSLAM 没有显式的回路检测</li>
+<li>滤波 SLAM 依靠系统状态一致(即协方差真实反应了误差)可能可以检测回路</li>
+<li>优化 SLAM 采用特征点进行匹配，其中 ORB-SLAM 和 LSD-SLAM 显式检测回路构建，具有较好的回路闭合能力</li>
+</ol>
+</li>
+</ol>
+<p>不同方法的各项指标如表所示。</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>MonoSLAM</th>
+<th>MSCKF</th>
+<th>PTAM</th>
+<th>ORB-SLAM</th>
+<th>DTAM</th>
+<th>LSD-SLAM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>定位精度</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>定位效率</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>场景尺度</td>
+<td>1</td>
+<td>4</td>
+<td>2</td>
+<td>4</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>特征缺失鲁棒性</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>重定位能力</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>快速运动鲁棒性</td>
+<td>2</td>
+<td>4</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr>
+<td>扩展效率</td>
+<td>3</td>
+<td>4</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>近似纯旋转扩展鲁棒性</td>
+<td>3</td>
+<td>4</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>场景变化鲁棒性</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>回路闭合能力</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<h2 id="research-focus">Research Focus</h2>
+<h3 id="feature-dependency">Feature Dependency</h3>
+<p>VSLAM最大的问题是 <strong>过于依赖场景特征</strong> 。</p>
+<ol>
+<li>基于直接跟踪的方法通过直接对比像素颜色，避免了对特征缺失、图像模糊等敏感的特征提取和特征匹配过程</li>
+<li>然而稠密或半稠密的直接跟踪会引入很大的计算量</li>
+<li>半直接视觉测量(semi-direct VO,SVO)只对稀疏点进行直接跟踪，效率较高</li>
+</ol>
+<p>VSLAM对场景特征的依赖本质上是使用的局部特征过于底层(点特征)</p>
+<ol>
+<li>如果用边缘、平面等更为高层的图像信息，可有效缓解特征依赖</li>
+<li>更加高层的空间布局对VSLAM更有价值</li>
+</ol>
+<h3 id="dense-3d-reconstruction">Dense 3D Reconstruction</h3>
+<p>VSLAM大多只能实时重建稀疏的三维点云，和深度相机等结合才提供彩色图像、深度图等。
+如何使用单目摄像头实时重建稠密三维信息，尚待研究。</p>
+<h3 id="muti-sensor-fusion">Muti-Sensor Fusion</h3>
+<p>基于单一传感器定位有其固有的局限：</p>
+<ol>
+<li>基于图像则依赖场景纹理特征</li>
+<li>基于IMU通常有一定的误差累积</li>
+<li>基于深度的SLAM依赖场景几何特征</li>
+</ol>
+<p>融合多传感器数据成为重要的研究方向。</p>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/1-slam-summary/" class="block">SLAM Summary</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="https://endlesspeak.github.io/docs/docs/slam-doc/slam-basic/3-1-rotation-and-translation-matrix/" class="block">Rotation &amp; Translation Matrix</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#visual-slam">Visual SLAM</a>
+      <ul>
+        <li><a href="#basic-principle">Basic Principle</a></li>
+        <li><a href="#sensors-combination">Sensors Combination</a></li>
+      </ul>
+    </li>
+    <li><a href="#vslam-system">VSLAM System</a>
+      <ul>
+        <li><a href="#filter-based-vslam">Filter based VSLAM</a></li>
+        <li><a href="#feature-points-method">Feature Points Method</a></li>
+        <li><a href="#keyframe-ba-based-vslam">Keyframe BA based VSLAM</a></li>
+        <li><a href="#direct-tracking-based-vslam">Direct tracking based VSLAM</a></li>
+        <li><a href="#vslam-comparison">VSLAM Comparison</a></li>
+      </ul>
+    </li>
+    <li><a href="#research-focus">Research Focus</a>
+      <ul>
+        <li><a href="#feature-dependency">Feature Dependency</a></li>
+        <li><a href="#dense-3d-reconstruction">Dense 3D Reconstruction</a></li>
+        <li><a href="#muti-sensor-fusion">Muti-Sensor Fusion</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git Knowledge on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/docs/git-doc/</link>
+    <description>Recent content in Git Knowledge on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Sat, 20 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/docs/git-doc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git submodule Manage</title>
+      <link>https://endlesspeak.github.io/docs/docs/git-doc/git-submodule/</link>
+      <pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/docs/git-doc/git-submodule/</guid>
+      <description>Git子模块是一个强大的工具，用于在Git仓库中跟踪和管理另一个Git仓库。当你想要在你的项目中包含并跟踪第三方库（比如库的特定版本）的时候会使用到。</description>
+    </item>
+  </channel>
+</rss>

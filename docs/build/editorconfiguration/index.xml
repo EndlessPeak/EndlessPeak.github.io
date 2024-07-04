@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>文本编辑器配置 on 悦翎轩</title>
+    <link>https://endlesspeak.github.io/docs/build/editorconfiguration/</link>
+    <description>Recent content in 文本编辑器配置 on 悦翎轩</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
+</copyright>
+    <lastBuildDate>Fri, 19 Jan 2024 22:00:00 +0000</lastBuildDate>
+    <atom:link href="https://endlesspeak.github.io/docs/build/editorconfiguration/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VSCode Configuration</title>
+      <link>https://endlesspeak.github.io/docs/build/editorconfiguration/1-vscode-configuration/</link>
+      <pubDate>Fri, 19 Jan 2024 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/editorconfiguration/1-vscode-configuration/</guid>
+      <description>Installation 参考 Visual Studio Code Installation Deb install 从官网下载 deb 包，使用命令安装 sudo dpkg -i code_XXX_amd64.deb sudo apt install ./code_XXX_amd64.deb 使用 apt install 命令安装后会自动将该软件的 apt 存储库和签名密钥添加到系统包管理器中，其位于 /etc/apt/keyrings/packages.microsoft.gpg 。 也可</description>
+    </item>
+    <item>
+      <title>Vanilla Emacs</title>
+      <link>https://endlesspeak.github.io/docs/build/editorconfiguration/2-vanilla-emacs-configuration/</link>
+      <pubDate>Fri, 01 Jul 2022 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/editorconfiguration/2-vanilla-emacs-configuration/</guid>
+      <description>参考配置 以下记录在 Emacs 中所遇到的常见问题与解决方案。 如果不希望从零开始，这里有一些常见的配置推荐（持续更新）： MatthewZMD&amp;rsquo;s emacs Centaur&amp;rsquo;s emacs Redguard&amp;rsquo;s emacs Evanmeek&amp;rsquo;s emacs SpringHan&amp;rsquo;s emacs Cabins&amp;rsquo; emacs 7ym0n&amp;rsquo;s emacs 中文输入 fcitx5 是新</description>
+    </item>
+    <item>
+      <title>Emacs Org</title>
+      <link>https://endlesspeak.github.io/docs/build/editorconfiguration/3-org/</link>
+      <pubDate>Tue, 11 Jul 2023 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/editorconfiguration/3-org/</guid>
+      <description>Org 具体来说它的功能有： 折叠 这个在 IDE 里是很常见的了，但是我所见到的大多限于对于函数的折叠。如果只是想写写提纲，草稿，这个功能就能很有效地帮助理清思路，和</description>
+    </item>
+    <item>
+      <title>Manage By Org Mode</title>
+      <link>https://endlesspeak.github.io/docs/build/editorconfiguration/4-manage-by-orgmode/</link>
+      <pubDate>Tue, 11 Jul 2023 22:00:00 +0000</pubDate>
+      <guid>https://endlesspeak.github.io/docs/build/editorconfiguration/4-manage-by-orgmode/</guid>
+      <description>Organization Form Related works 我们通常可以有如下几种形式来管理配置文件： 单文件法 模块化法 将所有配置文件模块化，通过 init.el 来统一加载； 将所有配置文件通过 org 文件来管理，通过 org-babel-load-file 函数来</description>
+    </item>
+  </channel>
+</rss>

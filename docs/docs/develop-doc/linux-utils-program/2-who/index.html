@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>编写Who命令 | Develop Doc | 悦翎轩</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/eureka.min.3f9c102b2958d0308ef084ee682440b37aa0ca93912ed5c0980028307f924cfb413f8214a8ae653b7def936d6a1bc390.css">
+<script defer src="https://endlesspeak.github.io/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto&#43;Sans&#43;SC:wght@400;600;700&amp;family=Source&#43;Sans&#43;Pro:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/nnfx-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/c.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cpp.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/java.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/python.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/cmake.min.js"
+     crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/rust.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="https://endlesspeak.github.io/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="https://endlesspeak.github.io/js/fontawesome.min.15ca3da36d9676aa223d8be3b1f49c6d893c4e16cbfce12124e114e34b1f20e7f5eee796fba6948cfac4c6a9ae381fcd.js"></script>
+
+
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"],["\\(", "\\)"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://endlesspeak.github.io/images/avtar_huc2c209728b40c4588688df8c11b591ef_46235_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="Man Who 阅读who的联机帮助： man who 通过阅读联机帮助，发现已登录的用户信息放在/var/run/utmp或者/var/log/wtmp中。 搜索联机帮助： man -k">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Docs",
+      "item":"https://endlesspeak.github.io/docs/docs/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Develop Doc",
+      "item":"https://endlesspeak.github.io/docs/docs/develop-doc/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Linux命令行程序",
+      "item":"https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"编写Who命令",
+      "item":"https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/2-who/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/2-who/"
+    },
+    "headline": "编写Who命令 | Develop Doc | 悦翎轩","datePublished": "2021-02-11T00:00:00+00:00",
+    "dateModified": "2021-02-11T00:00:00+00:00",
+    "wordCount":  2701 ,
+    "author": {
+        "@type": "Person",
+        "name": ["EndlessPeak"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "EndlessPeak",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://endlesspeak.github.io/images/avtar.png"
+        }
+        },
+    "description": "Man Who 阅读who的联机帮助： man who 通过阅读联机帮助，发现已登录的用户信息放在\/var\/run\/utmp或者\/var\/log\/wtmp中。 搜索联机帮助： man -k"
+}
+</script><meta property="og:title" content="编写Who命令 | Develop Doc | 悦翎轩" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="https://endlesspeak.github.io/images/avtar.png">
+
+
+<meta property="og:url" content="https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/2-who/" />
+
+
+
+
+<meta property="og:description" content="Man Who 阅读who的联机帮助： man who 通过阅读联机帮助，发现已登录的用户信息放在/var/run/utmp或者/var/log/wtmp中。 搜索联机帮助： man -k" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="悦翎轩" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2021-02-11T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2021-02-11T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">悦翎轩</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/authors" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">关于</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="/docs/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/docs/build/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">构建</a>
+            <a href="/categories" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">分类</a>
+            <a href="/tags" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">标签</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-2xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="https://endlesspeak.github.io/docs/docs/develop-doc/">Develop Doc</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/">Linux命令行程序</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/1-man/">使用Man命令</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/2-who/">编写Who命令</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/develop-doc/blog-react-springboot/">React前端开发</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="https://endlesspeak.github.io/docs/docs/develop-doc/blog-react-springboot/react-develop-1/">Hello React</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">编写Who命令</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2021-02-11</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>6分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="man-who">Man Who</h2>
+<p>阅读<code>who</code>的联机帮助：</p>
+<pre><code class="language-shell">man who
+</code></pre>
+<p>通过阅读联机帮助，发现已登录的用户信息放在<code>/var/run/utmp</code>或者<code>/var/log/wtmp</code>中。</p>
+<p>搜索联机帮助：</p>
+<pre><code class="language-shell">man -k utmp
+man -k wtmp
+</code></pre>
+<p>返回的是：</p>
+<pre><code class="language-shell">utmp (5)             - 登录记录（login records）
+wtmp (5)             - login records
+</code></pre>
+<p>阅读<code>utmp</code>的联机帮助：</p>
+<pre><code class="language-shell">man 5 utmp
+</code></pre>
+<p>可以发现文件中保存的是结构数组，数组元素是utmp类型的结构。</p>
+<h2 id="utmp">UTMP</h2>
+<h3 id="utmp-1">utmp</h3>
+<p><code>UTMP_FILE</code>的定义在<code>/usr/include/utmp.h</code>中。</p>
+<pre><code class="language-c">/* utmp.h */
+/* Compatibility names for the strings of the canonical file names.  */
+#define UTMP_FILE _PATH_UTMP
+#define UTMP_FILENAME _PATH_UTMP
+#define WTMP_FILE _PATH_WTMP
+#define WTMP_FILENAME _PATH_WTMP
+</code></pre>
+<p>其中，变量<code>_PATH_UTMP</code>和<code>_PATH_WTMP</code>的定义在<code>/usr/inlcude/paths.h</code>中。</p>
+<pre><code class="language-c">#define	_PATH_UTMP	&quot;/var/run/utmp&quot;
+#define	_PATH_WTMP	&quot;/var/log/wtmp&quot;
+</code></pre>
+<p>所以，<code>UTMP_FILE</code>即为<code>/var/run/utmp</code> ，注意此文件不是文本文件，无法直接读取。</p>
+<p><code>struct utmp</code>的定义在<code>/usr/include/utmp.h</code>中。</p>
+<pre><code class="language-c">struct utmp {
+       short int ut_type; /* type of login */
+       pid_t ut_pid; /* pid of login process */
+       char ut_line[UT_LINESIZE]; /* device name of tty - &quot;/dev/&quot; */
+       char ut_id[4]; /* init id or abbrev. ttyname */
+       char ut_user[UT_NAMESIZE]; /* user name */
+       char ut_host[UT_HOSTSIZE]; /* hostname for remote login */
+       struct exit_status ut_exit; 
+       /* The exit status of a process marked as DEAD_PROCESS. */
+       long int ut_session; /* session ID, used for windowing*/
+       struct timeval ut_tv; /* time entry was made. */
+       int32_t ut_addr_v6[4]; /* IP address of remote host. */
+       char pad[20]; /* Reserved for future use. */
+};
+//注意有一行宏定义
+/* Backwards compatibility hacks.  */
+#define ut_name		ut_user
+//因此也可以使用ut_name作为登录用户名的别名
+</code></pre>
+<h3 id="exit_status">exit_status</h3>
+<p><code>struct exit_status</code>的定义在<code>/usr/include/utmp.h</code>中。</p>
+<pre><code class="language-c">struct exit_status
+{
+    short int e_termination;	/* Process termination status.  */
+    short int e_exit;		/* Process exit status.  */
+};
+</code></pre>
+<h3 id="timeval">timeval</h3>
+<h2 id="implement">Implement</h2>
+<p>略过介绍性的内容，utmp结构包含8个成员变量，而who命令使用到的是下面4个：</p>
+<ol>
+<li>ut_user 登录名</li>
+<li>ut_line 设备名</li>
+<li>ut_time 登录时间</li>
+<li>ut_host 登录的远程计算机名字</li>
+</ol>
+<p>思路：</p>
+<pre><code class="language-mermaid">graph LR
+	A[打开utmp]--&gt;B[读取utmp记录]
+	B--&gt;C[实例化utmp对象]
+	C--&gt;B
+	C--&gt;D[关闭utmp]
+</code></pre>
+<h3 id="file-api">File API</h3>
+<p>已经知道getc和fgets函数可以从文件中读取字符或字符串，但读取数据结构中的信息效率太低。</p>
+<p>寻求联机帮助手册：</p>
+<pre><code class="language-c">man -k file | grep read
+</code></pre>
+<pre><code class="language-c">man 2 read
+</code></pre>
+<p>由此可知，通过<code>open()</code>，<code>read()</code>，<code>close()</code>三个系统调用从<code>utmp</code>文件中取得用户登录信息。</p>
+<h4 id="open">open</h4>
+<p>open的基本用法：</p>
+<ol>
+<li>目标：打开一个文件</li>
+<li>头文件：<code>#include&lt;fcntl.h&gt;</code></li>
+<li>函数原型：<code>int fd = open(char * name,int how)</code></li>
+<li>参数：
+<ol>
+<li>name 文件名</li>
+<li>how 只读<code>O_RDONLY</code>，只写<code>O_WRONLY</code>，可读可写<code>O_RDWR</code></li>
+</ol>
+</li>
+<li>返回值：-1表示错误，int表示成功返回。</li>
+</ol>
+<p>打开后返回的正整数叫文件描述符，通过该唯一标识建立进程和文件之间的连接。不同的文件打开的文件描述符不同，同一文件的不同打开对应的文件描述符也不同。</p>
+<h4 id="read">read</h4>
+<p>read的基本用法：</p>
+<ol>
+<li>
+<p>目标：把数据读取到缓冲区</p>
+</li>
+<li>
+<p>头文件：<code>#include&lt;unistd.h&gt;</code></p>
+</li>
+<li>
+<p>函数原型：<code>ssize_t numread = read(int fd,void * buf,size_t qty)</code></p>
+<p>有关<code>ssize_t</code>和<code>size_t</code>见于stddef.h中。</p>
+<p>在32位系统中长度为4个字节：</p>
+<ol>
+<li><code>typedef unsigned int size_t;</code></li>
+<li><code>typedef signed int ssize_t;</code></li>
+</ol>
+<p>在64位系统中长度为8个字节：</p>
+<ol>
+<li><code>typedef unsigned long size_t;</code></li>
+<li><code>typedef signed int ssize_t;</code></li>
+</ol>
+</li>
+<li>
+<p>参数：</p>
+<ol>
+<li>fd 文件描述符</li>
+<li>buf 用来存放数据的目的缓冲区</li>
+<li>qty 要读取的字节数</li>
+</ol>
+</li>
+<li>
+<p>返回值：-1表示错误，numread表示成功读取的字节数。</p>
+</li>
+</ol>
+<p>如果要求读取的字符超出了文件的长度，则numread返回0。</p>
+<h4 id="close">close</h4>
+<p>close的基本用法：</p>
+<ol>
+<li>目标：关闭一个文件</li>
+<li>头文件：<code>#include&lt;unistd.h&gt;</code></li>
+<li>函数原型：<code>int result = close(int fd)</code></li>
+<li>参数：fd 文件描述符</li>
+<li>返回值：-1表示错误，0表示成功关闭。</li>
+</ol>
+<h3 id="programming">Programming</h3>
+<p>根据思路，编写代码如下：</p>
+<pre><code class="language-c">/*
+ * who.c 首次实现版本，通过读取utmp文件展示结果实现who功能
+ */
+#include&lt;stdio.h&gt;
+#include&lt;utmp.h&gt;
+#include&lt;fcntl.h&gt;//open()
+#include&lt;unistd.h&gt;//read(),close()
+#define SHOWHOST//用于包含输出远程主机的登录
+void show_info(struct utmp * utmpbufferprint);
+int main()
+{
+    struct utmp current_record;//实例化的&quot;对象&quot;，将读出的数据赋给它
+    int utmpfd;//文件描述符
+    int reclen=sizeof(current_record);//该结构的长度
+    if((utmpfd=open(UTMP_FILE,O_RDONLY))==-1)//UTMP_FILE是utmp.h中的宏定义
+    {
+        perror(UTMP_FILE);
+        //perror(s)用来将上一个函数发生错误的原因输出到标准设备(stderr)。
+        //参数 s 所指的字符串会先打印出，后面再加上错误原因字符串。
+        exit(1);//以异常情况退出
+    }
+    //current_record是utmp类型，取地址运算符后是utmp*类型
+    //reclen保证每次读一个结构体长度的数据
+    //判断是否与结构体长度相等，当需读取长度大于当前文件长度时（只可能发生在最后一次读取）抛弃本次读取
+    while(read(utmpfd,&amp;current_record,reclen)==reclen)//循环打印，确保所有用户都列出
+    {
+        show_info(&amp;current_record);
+    }
+    close(utmpfd);
+    return 0;
+}
+</code></pre>
+<p>显示登录信息函数：</p>
+<pre><code class="language-c">int show_info(struct utmp * utmpbufferprint){
+    printf(&quot;%-8.8s&quot;,utmpbufferprint-&gt;ut_name);
+    /*
+     * 1.ut_name 扩展到 ut_user 见前文
+     * 2.-代表左对齐，+代表右对齐
+     * 3.8代表字符宽度的最小值
+     * 4.&quot;.8&quot;代表将要打印的字符的最大数目
+     * 通过限制打印的最小值和最大值保证输出字符串长度为8
+     */
+    printf(&quot; &quot;);
+    printf(&quot;%-8.8s&quot;,utmpbufferprint-&gt;ut_line);
+    printf(&quot; &quot;);
+    showTime(utmpbufferprint-&gt;ut_time);
+    printf(&quot; &quot;);
+#ifdef SHOWHOST
+    if(utmpbufferprint-&gt;ut_host[0]!='\0')//检查ut_host字符串是否为空
+        printf(&quot;(%s)&quot;,utmpbufferprint-&gt;ut_host);
+#endif
+    printf(&quot;\n&quot;);
+    return 0;
+
+}
+</code></pre>
+<h2 id="improvement">Improvement</h2>
+<p>系统所带的who命令只列出已登录用户的信息，而上述代码还会显示其他的信息。</p>
+<p>简单的思路是过滤掉用户名为空的记录，但是有些记录用户名为LOGIN，这显然不是一个真实的用户。因此需要更加详细地区分用户类型。</p>
+<h3 id="ut_type">ut_type</h3>
+<p><code>ut_type</code>在<code>/usr/include/utmp.h</code>中定义：</p>
+<pre><code class="language-c">/* Values for the `ut_type' field of a `struct utmp'.  */
+#define EMPTY		0	/* No valid user accounting information.  */
+ 
+#define RUN_LVL		1	/* 系统的运行级别 The system's runlevel.  */
+#define BOOT_TIME	2	/* 系统启动时间 Time of system boot.  */
+#define NEW_TIME	3	/* 系统时钟改变后的时间 Time after system clock changed.  */
+#define OLD_TIME	4	/* 系统时钟改变的时间 Time when system clock changed.  */
+ 
+#define INIT_PROCESS	5	/*由init进程生成的进程 Process spawned by the init process. */
+#define LOGIN_PROCESS	6	/* Session leader of a logged in user.  */
+#define USER_PROCESS	7	/* Normal process.  */
+#define DEAD_PROCESS	8	/* 终止进程 Terminated process.  */
+ 
+#define ACCOUNTING	9
+</code></pre>
+<p>由该结构可知，当ut_type的值为7(USER_PROCESS)的时候，表明它是已经登录的用户。</p>
+<p>对原程序做如下的修改：</p>
+<pre><code class="language-c">void show_info(struct utmp * utbufferprint){
+    if(utbufferprint-&gt;ut_type!=USER_PROCESS)
+        return;
+    //以下是原来的代码
+    //...
+}
+</code></pre>
+<h3 id="timeval-1">timeval</h3>
+<p>接下来要以正确的格式显示时间。</p>
+<pre><code class="language-shell">man -k time | grep -i transform
+man -k time | grep -i convert
+</code></pre>
+<p>其中，<code>-i</code>是忽略大小写差异。</p>
+<p>Linux时间存储方式是<code>time_val</code>数据类型。以整数表示，数值是从1970年1月1日0时至今的总秒数，</p>
+<p>在<code>/usr/include/sys/time.h</code>中包含了头文件<code>/usr/include/bits/types/struct_timeval.h</code></p>
+<p><code>struct timeval</code>的定义在该头文件中。</p>
+<pre><code class="language-c">struct timeval{
+    __time_t tv_sec;/* Seconds 秒 */
+    __suseconds_t tv_usec;/* Microseconds 微秒 */
+};
+</code></pre>
+<pre><code>typedef __time_t time_t;
+</code></pre>
+<p>一般由函数<code>int gettimeofday(struct timeval *tv, struct timezone *tz)</code>获取系统的时间</p>
+<p>在源代码中使用了<code>ctime()</code>是因为<code>utbufp-&gt;ut_time</code>的值是距离1970.1.1的秒数总和，是长整形，要把其转换为易读的时间格式。</p>
+
+</article>
+
+                    
+                    
+                    
+                    <div class="py-2">
+  
+    <div class="my-8 flex flex-col items-center md:flex-row">
+      <a href="https://endlesspeak.github.io/authors/endlesspeak/" class="md:me-4 text-primary-text h-24 w-24">
+        
+        
+          <img
+            src="https://endlesspeak.github.io/images/avtar.png"
+            class="bg-primary-bg w-full rounded-full"
+            alt="Avatar"
+          />
+        
+      </a>
+      <div class="mt-4 w-full md:mt-0 md:w-auto">
+        <a
+          href="https://endlesspeak.github.io/authors/endlesspeak/"
+          class="mb-2 block border-b pb-1 text-lg font-bold"
+        >
+          <h3>Serene Feather Pavilion</h3>
+        </a>
+        <span class="block pb-2">瞽者无以与乎文章之观,聋者无以与乎钟鼓之声。岂唯形骸有聋盲哉?</span>
+        
+          
+          
+          
+          
+          <a href="mailto:endlesspeak@163.com" class="me-2">
+            <i class="fas fa-envelope"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://gitee.com/endlesspeak" class="me-2">
+            <i class="fab fa-git-square"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://github.com/endlesspeak" class="me-2">
+            <i class="fab fa-github"></i>
+          </a>
+        
+          
+          
+          
+          
+          <a href="https://space.bilibili.com/316071845" class="me-2">
+            <i class="fas fa-tv"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+</div>
+
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="https://endlesspeak.github.io/docs/docs/develop-doc/linux-utils-program/1-man/" class="block">使用Man命令</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#man-who">Man Who</a></li>
+    <li><a href="#utmp">UTMP</a>
+      <ul>
+        <li><a href="#utmp-1">utmp</a></li>
+        <li><a href="#exit_status">exit_status</a></li>
+        <li><a href="#timeval">timeval</a></li>
+      </ul>
+    </li>
+    <li><a href="#implement">Implement</a>
+      <ul>
+        <li><a href="#file-api">File API</a></li>
+        <li><a href="#programming">Programming</a></li>
+      </ul>
+    </li>
+    <li><a href="#improvement">Improvement</a>
+      <ul>
+        <li><a href="#ut_type">ut_type</a></li>
+        <li><a href="#timeval-1">timeval</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-2xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>
